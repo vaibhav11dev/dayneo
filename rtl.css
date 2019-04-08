@@ -1,0 +1,82 @@
+/*
+Theme Name: daydream
+
+Adding support for languages written in a Right To Left (RTL) direction is easy -
+it's just a matter of overwriting all the horizontal positioning attributes
+of your CSS stylesheet in a separate stylesheet file named rtl.css.
+*/
+
+body {
+	direction: rtl;
+	unicode-bidi: embed;
+}
+
+.rtl .icon-preview,
+.rtl .inner-header,
+.rtl .menu-extras .menu-item,
+.rtl .inner-nav > li,
+.rtl .comment-avatar,
+.rtl .woocommerce-Reviews .comment .avatar,
+.rtl .woocommerce-Reviews .comment .comment-text,
+.rtl .widget-posts-image,
+.rtl .catalog-ordering .order,
+.rtl .float-left,
+.rtl .woocommerce .woocommerce-MyAccount-navigation,
+.rtl .woocommerce .woocommerce-MyAccount-content,
+.rtl .variations tr,
+.rtl .ved-megamenu-wrapper .ved-megamenu-bullet,
+.rtl .widget .product_list_widget img {
+    float: right;
+}
+
+.rtl .main-nav-toggle,
+.rtl .float-right {
+    float: left;
+}
+
+@media (min-width: 992px) {
+    /* Collapse main-nav */
+    .rtl .main-nav.collapse {
+	float: left;
+    }
+}
+
+.rtl .widget-content .btn-search, 
+.rtl .widget_product_search .widget-content button {
+	left: 15px;
+	right: auto;
+}
+
+.rtl .bottom-line::after {
+	margin: 20px 0 25px auto;
+}
+
+.rtl .pull-right {
+    float: left !important;
+}
+
+.rtl .pull-left {
+    float: right !important;
+}
+
+.rtl .menu-extras {
+	padding: 0 15px 0 0;
+	margin: 0 15px 0 0;
+	box-shadow: 1px 0 0 #f5f5f5;
+}
+
+.rtl #copyright {
+	text-align: left;
+}
+
+.rtl .comment-content {
+	margin: 0 90px 35px 0;
+}
+
+.rtl .comment-avatar::after {
+	right: 70px;
+}
+
+.rtl .comment-tools {
+	left: 0;
+}

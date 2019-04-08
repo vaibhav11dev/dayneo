@@ -1,0 +1,108 @@
+/*!
+Theme Name: master-theme
+Theme URI: http://www.themevedanta.com/daydream
+Author: ThemeVedanta
+Author URI: http://www.themevedanta.com
+Description: Daydream is multi purpose responsive WordPress theme with light weight and less plugins. Ready to use for any purpose such as business, corporate, agency, portfolio, app, news, blog, magazine, cleaning services, construction, designs, freelancer, wedding, restaurant and many more. Daydream has different demos ready with one click demo install supported so you can choose any of demo according to your niche. Daydream templates are built with super fast light weight Elementor page builder with drag and drop function so your website will not load heavily. We have added lots of options in theme options panel with Redux framework so you don’t need any coding knowledge.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: grid-layout, footer-widgets, blog, news, photography, buddypress, two-columns, left-sidebar, right-sidebar, full-width-template, sticky-post, threaded-comments, microformats, post-formats, flexible-header, featured-images, custom-background, custom-colors, custom-header, custom-menu, theme-options, translation-ready
+Text Domain: daydream
+*/
+
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+.bypostauthor {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
