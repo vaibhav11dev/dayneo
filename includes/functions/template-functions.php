@@ -5,34 +5,34 @@
  *
  * @since 1.0.0
  */
-function daydream_activate() {
+function dayneo_activate() {
 	add_option( 'ved_do_activation_redirect', true );
 }
 
-add_action( 'after_switch_theme', 'daydream_activate' );
+add_action( 'after_switch_theme', 'dayneo_activate' );
 
 /**
  * Redirect to options page
  *
  * @since 1.0.0
  */
-function daydream_redirect() {
+function dayneo_redirect() {
 	if ( get_option( 'ved_do_activation_redirect', false ) ) {
 		delete_option( 'ved_do_activation_redirect' );
 		if ( ! isset( $_GET[ 'activate-multi' ] ) ) {
-			wp_redirect( "admin.php?page=daydream-menu" );
+			wp_redirect( "admin.php?page=dayneo-menu" );
 		}
 	}
 }
 
-add_action( 'admin_init', 'daydream_redirect' );
+add_action( 'admin_init', 'dayneo_redirect' );
 
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package daydream
+ * @package dayneo
  */
-function daydream_after_setup() {
+function dayneo_after_setup() {
 
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
@@ -44,7 +44,7 @@ function daydream_after_setup() {
 		'gallery',
 		'caption',
 	) );
-	add_theme_support( 'custom-background', apply_filters( 'daydream_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'dayneo_custom_background_args', array(
 		'default-color'	 => 'ffffff',
 		'default-image'	 => '',
 	) ) );
@@ -74,12 +74,12 @@ function daydream_after_setup() {
 
 	add_editor_style( 'editor-style.css' );
 
-	$dd_width_px		 = daydream_get_option( 'dd_width_px', '1200' );
-	$dd_custom_width_px	 = daydream_get_option( 'dd_custom_width_px', '1200' );
+	$dd_width_px		 = dayneo_get_option( 'dd_width_px', '1200' );
+	$dd_custom_width_px	 = dayneo_get_option( 'dd_custom_width_px', '1200' );
 	if ( $dd_width_px != "custom" ) {
-		$dd_width_px	 = apply_filters( 'daydream_header_image_width', $dd_width_px );
-		//define( 'HEADER_IMAGE_WIDTH', apply_filters( 'daydream_header_image_width', $dd_width_px ) );
-		//define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'daydream_header_image_height', 170 ) );
+		$dd_width_px	 = apply_filters( 'dayneo_header_image_width', $dd_width_px );
+		//define( 'HEADER_IMAGE_WIDTH', apply_filters( 'dayneo_header_image_width', $dd_width_px ) );
+		//define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'dayneo_header_image_height', 170 ) );
 		//define( 'HEADER_TEXTCOLOR', '' );
 		//define( 'NO_HEADER_TEXT', true );
 		$args		 = array(
@@ -91,9 +91,9 @@ function daydream_after_setup() {
 		);
 		add_theme_support( 'custom-header', $args );
 	} elseif ( $dd_width_px == "custom" ) {
-		$dd_custom_width_px	 = apply_filters( 'daydream_header_image_width', $dd_custom_width_px );
-		//define( 'HEADER_IMAGE_WIDTH', apply_filters( 'daydream_header_image_width', $dd_width_px ) );
-		//define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'daydream_header_image_height', 170 ) );
+		$dd_custom_width_px	 = apply_filters( 'dayneo_header_image_width', $dd_custom_width_px );
+		//define( 'HEADER_IMAGE_WIDTH', apply_filters( 'dayneo_header_image_width', $dd_width_px ) );
+		//define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'dayneo_header_image_height', 170 ) );
 		//define( 'HEADER_TEXTCOLOR', '' );
 		//define( 'NO_HEADER_TEXT', true );
 		$args			 = array(
@@ -127,7 +127,7 @@ function daydream_after_setup() {
 		//remove_action( 'woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20 ); // Remove Duplicated Checkout Button
 	}
 
-	$dd_width_layout = daydream_get_option( 'dd_width_layout', 'fixed' );
+	$dd_width_layout = dayneo_get_option( 'dd_width_layout', 'fixed' );
 
 	if ( $dd_width_layout == "fixed" ) {
 		$defaults = array(
@@ -149,10 +149,10 @@ function daydream_after_setup() {
 		'video'
 	) );
 
-	load_theme_textdomain( 'daydream', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'dayneo', get_template_directory() . '/languages' );
 
-	register_nav_menu( 'primary-menu', __( 'Primary Menu', 'daydream' ) );
-	register_nav_menu( 'top-menu', __( 'Top Menu', 'daydream' ) );
+	register_nav_menu( 'primary-menu', __( 'Primary Menu', 'dayneo' ) );
+	register_nav_menu( 'top-menu', __( 'Top Menu', 'dayneo' ) );
 
 	$dd_container_width_px		 = (int)$dd_width_px - 30;
 	$dd_container_custom_width_px	 = (int)$dd_custom_width_px - 30;
@@ -166,7 +166,7 @@ function daydream_after_setup() {
 	}
 }
 
-add_action( 'after_setup_theme', 'daydream_after_setup' );
+add_action( 'after_setup_theme', 'dayneo_after_setup' );
 
 /**
  * Adds custom classes to the array of body classes.
@@ -174,7 +174,7 @@ add_action( 'after_setup_theme', 'daydream_after_setup' );
  * @param array $classes Classes for the body element.
  * @return array
  */
-function daydream_body_classes( $classes ) {
+function dayneo_body_classes( $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -188,25 +188,25 @@ function daydream_body_classes( $classes ) {
 	return $classes;
 }
 
-add_filter( 'body_class', 'daydream_body_classes' );
+add_filter( 'body_class', 'dayneo_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function daydream_pingback_header() {
+function dayneo_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 	}
 }
 
-add_action( 'wp_head', 'daydream_pingback_header' );
+add_action( 'wp_head', 'dayneo_pingback_header' );
 
 /**
  * bbPress Integration
  *
  * @since 1.0.0
  */
-function daydream_pretty( $content ) {
+function dayneo_pretty( $content ) {
 	if ( ! is_attachment() ) {
 		$content = preg_replace( "/<a/", "<a rel=\"prettyPhoto[postimages]\"", $content, 1 );
 	}
@@ -214,23 +214,23 @@ function daydream_pretty( $content ) {
 	return $content;
 }
 
-add_filter( 'wp_get_attachment_link', 'daydream_pretty' );
+add_filter( 'wp_get_attachment_link', 'dayneo_pretty' );
 
 //import demo data success message!
-add_action( 'admin_notices', 'daydream_importer_admin_notice' );
+add_action( 'admin_notices', 'dayneo_importer_admin_notice' );
 
-function daydream_importer_admin_notice() {
+function dayneo_importer_admin_notice() {
 	if ( isset( $_GET[ 'imported' ] ) && $_GET[ 'imported' ] == 'success' ) {
 		echo '<div id="setting-error-settings_updated" class="updated settings-error"><p>';
-		echo esc_html_e( 'Successfully imported demo data!', 'daydream' );
+		echo esc_html_e( 'Successfully imported demo data!', 'dayneo' );
 		echo "</p></div>";
 	}
 }
 
 // Custom RSS Link
-add_filter( 'feed_link', 'daydream_feed_link', 1, 2 );
+add_filter( 'feed_link', 'dayneo_feed_link', 1, 2 );
 
-function daydream_feed_link( $output, $feed ) {
+function dayneo_feed_link( $output, $feed ) {
 	if ( isset( $smof_data[ 'rss_link' ] ) && $smof_data[ 'rss_link' ] ) {
 		$feed_url = $smof_data[ 'rss_link' ];
 
@@ -250,41 +250,41 @@ function daydream_feed_link( $output, $feed ) {
 
 /* change in bbpress breadcrumb */
 
-function daydream_custom_bbp_breadcrumb() {
+function dayneo_custom_bbp_breadcrumb() {
 	$args[ 'sep' ] = ' / ';
 	return $args;
 }
 
-add_filter( 'bbp_before_get_breadcrumb_parse_args', 'daydream_custom_bbp_breadcrumb' );
+add_filter( 'bbp_before_get_breadcrumb_parse_args', 'dayneo_custom_bbp_breadcrumb' );
 
 /**
  * Layerslider API
  */
-function daydream_layerslider_ready() {
+function dayneo_layerslider_ready() {
 	if ( class_exists( 'LS_Sources' ) ) {
 		LS_Sources::addSkins( get_template_directory() . '/lib/ls-skins' );
 	}
 }
 
-add_action( 'layerslider_ready', 'daydream_layerslider_ready' );
+add_action( 'layerslider_ready', 'dayneo_layerslider_ready' );
 
-function daydream_admin_css() {
+function dayneo_admin_css() {
 	wp_enqueue_style( 'admin-shortcode-style', get_template_directory_uri() . '/admin/assets/css/admin_shortcodes.css' );
 }
 
-add_action( 'admin_head', 'daydream_admin_css' );
+add_action( 'admin_head', 'dayneo_admin_css' );
 
-function daydream_enqueue_comment_reply() {
+function dayneo_enqueue_comment_reply() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'daydream_enqueue_comment_reply' );
+add_action( 'wp_enqueue_scripts', 'dayneo_enqueue_comment_reply' );
 
 // Register default function when plugin not activated
 
-function daydream_plugins_loaded() {
+function dayneo_plugins_loaded() {
 	if ( ! function_exists( 'is_woocommerce' ) ) {
 
 		function is_woocommerce() {
@@ -315,11 +315,11 @@ function daydream_plugins_loaded() {
 	}
 }
 
-add_action( 'wp_head', 'daydream_plugins_loaded' );
+add_action( 'wp_head', 'dayneo_plugins_loaded' );
 
 /* Theme Activation Hook */
 
-function daydream_theme_activation() {
+function dayneo_theme_activation() {
 	global $pagenow;
 	if ( is_admin() && 'themes.php' == $pagenow && isset( $_GET[ 'activated' ] ) ) {
 		update_option( 'shop_catalog_image_size', array( 'width' => 500, 'height' => '', 0 ) );
@@ -328,14 +328,14 @@ function daydream_theme_activation() {
 	}
 }
 
-add_action( 'admin_init', 'daydream_theme_activation' );
+add_action( 'admin_init', 'dayneo_theme_activation' );
 
 //function remove_product_shortcode() {
 //	if ( class_exists( 'Woocommerce' ) ) {
 //		// First remove the shortcode
 //		remove_shortcode( 'product' );
 //		// Then recode it
-//		add_shortcode( 'product', 'daydream_woo_product' );
+//		add_shortcode( 'product', 'dayneo_woo_product' );
 //	}
 //}
 //
@@ -344,7 +344,7 @@ add_action( 'admin_init', 'daydream_theme_activation' );
 /**
  * Upload custom mimes
  */
-function daydream_custom_upload_mimes( $existing_mimes ) {
+function dayneo_custom_upload_mimes( $existing_mimes ) {
 	$existing_mimes[ 'otf' ]	 = 'application/x-font-otf';
 	$existing_mimes[ 'woff' ]	 = 'application/x-font-woff';
 	$existing_mimes[ 'ttf' ]	 = 'application/x-font-ttf';
@@ -353,17 +353,17 @@ function daydream_custom_upload_mimes( $existing_mimes ) {
 	return $existing_mimes;
 }
 
-add_filter( 'upload_mimes', 'daydream_custom_upload_mimes' );
+add_filter( 'upload_mimes', 'dayneo_custom_upload_mimes' );
 
 /**
  *  polylang plugin if active than filter custom post type  
  * 
  */
-function daydream_pll_get_post_types( $types ) {
-	return array_merge( $types, array( 'daydream_portfolio' => 'daydream_portfolio', 'slide' => 'slide' ) );
+function dayneo_pll_get_post_types( $types ) {
+	return array_merge( $types, array( 'dayneo_portfolio' => 'dayneo_portfolio', 'slide' => 'slide' ) );
 }
 
-add_filter( 'pll_get_post_types', 'daydream_pll_get_post_types' );
+add_filter( 'pll_get_post_types', 'dayneo_pll_get_post_types' );
 
 // Override the calculated image sources
 add_filter( 'wp_calculate_image_srcset', '__return_false', PHP_INT_MAX );

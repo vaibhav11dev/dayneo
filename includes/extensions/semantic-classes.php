@@ -5,7 +5,7 @@
  * that dynamically generate context sensitive classes and ids
  * to give unprecedented control over your layout options via CSS.
  * 
- * @package Daydream
+ * @package Dayneo
  * @subpackage Semantic_Markup
  */
 
@@ -27,7 +27,7 @@ function semantic_body($classes = array()) {
 
     //$classes = get_body_class();
     // Starts the semantic markup array
-    $sc = array('Daydream');
+    $sc = array('Dayneo');
 
     // Generic semantic classes for what type of content is displayed
     is_front_page() ? $classes[] = 'home' : null; // For the front page, if set

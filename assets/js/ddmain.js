@@ -183,7 +183,7 @@
 	    navigationText: ['<i class="icon-arrow-left icons"></i>', '<i class="icon-arrow-right icons"></i>']
 	});
 
-	//daydream portfolio
+	//dayneo portfolio
 	var f = $("#filters");
 	var $container = $("#works-grid");
 	/** @type {string} */
@@ -556,7 +556,7 @@
 //		complete: function () {
 //		},
 //		data: {
-//		    action: 'daydream_update_wishlist_count'
+//		    action: 'dayneo_update_wishlist_count'
 //		},
 //		success: function (data) {
 //		    $('.wishlistbtn a span').html(data);
@@ -714,7 +714,7 @@ if ($.fn.ved_position_megamenu) {
 }
 
 $.HandleElement = $.HandleElement || {};
-$.HandleElement.daydream_header_cart = function() {
+$.HandleElement.dayneo_header_cart = function() {
 	$("#open-cart, #cart-toggle").live("click", function () {
 	    return $("body").toggleClass("off-canvas-cart-open"), false;
 	});
@@ -728,7 +728,7 @@ $.HandleElement.daydream_header_cart = function() {
 };
 	// Init T4P PageBuilder element
 	$.HandleElement.init = function() {
-		$.HandleElement.daydream_header_cart();
+		$.HandleElement.dayneo_header_cart();
 	};
 	
 $(document).ready($.HandleElement.init);

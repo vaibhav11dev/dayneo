@@ -8,7 +8,7 @@
  * E.g., it puts together the home page when no home.php file exists.
  *
  *
- * @package daydream
+ * @package dayneo
  */
 
 get_header();
@@ -22,7 +22,7 @@ global $dd_options;
 
 	    <!-- SECONDARY-2 -->	    
 	    <?php
-	    if ( daydream_lets_get_sidebar_2() == true ):
+	    if ( dayneo_lets_get_sidebar_2() == true ):
 		    get_sidebar( '2' );
 	    endif;
 	    ?>
@@ -35,7 +35,7 @@ global $dd_options;
 	    }
 	    ?>
 	    <!-- PRIMARY -->
-            <div id="primary" class="<?php daydream_layout_class( $type = 1 );
+            <div id="primary" class="<?php dayneo_layout_class( $type = 1 );
 	    echo esc_attr($thumbnail);
 	    ?> post-content">
 		<?php get_template_part( 'template-parts/content', 'index' ); ?>
@@ -44,7 +44,7 @@ global $dd_options;
 
 	    <!-- SECONDARY-1 -->
 	    <?php
-	    if ( daydream_lets_get_sidebar() == true ) {
+	    if ( dayneo_lets_get_sidebar() == true ) {
 		    get_sidebar();
 	    }
 	    ?>

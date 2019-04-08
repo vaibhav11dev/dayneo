@@ -25,14 +25,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 <table class="shop_attributes table table-striped">
 	<?php if ( $display_dimensions && $product->has_weight() ) : ?>
 		<tr>
-			<th><?php esc_html_e( 'Weight', 'daydream' ) ?></th>
+			<th><?php esc_html_e( 'Weight', 'dayneo' ) ?></th>
 			<td class="product_weight"><?php echo esc_html( wc_format_weight( $product->get_weight() ) ); ?></td>
 		</tr>
 	<?php endif; ?>
 
 	<?php if ( $display_dimensions && $product->has_dimensions() ) : ?>
 		<tr>
-			<th><?php esc_html_e( 'Dimensions', 'daydream' ) ?></th>
+			<th><?php esc_html_e( 'Dimensions', 'dayneo' ) ?></th>
 			<td class="product_dimensions"><?php echo esc_html( wc_format_dimensions( $product->get_dimensions( false ) ) ); ?></td>
 		</tr>
 	<?php endif; ?>

@@ -2,14 +2,14 @@
 add_action( 'widgets_init', 'tweets_load_widgets' );
 
 function tweets_load_widgets() {
-	register_widget( 'Daydream_Tweets_Widget' );
+	register_widget( 'Dayneo_Tweets_Widget' );
 }
 
-class Daydream_Tweets_Widget extends WP_Widget {
+class Dayneo_Tweets_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'tweets-widget', __( 'daydream: Twitter', 'daydream' ), // Name
+		'tweets-widget', __( 'dayneo: Twitter', 'dayneo' ), // Name
 		       array( 'classname' => 'tweets', 'description' => '', ) // Args
 		);
 	}
@@ -243,7 +243,7 @@ class Daydream_Tweets_Widget extends WP_Widget {
 
 	public function ago( $time ) {
 		/* translators: time difference. */
-		return sprintf( _x( '%s ago', '%s = human-readable time difference', 'daydream' ), human_time_diff( $time, current_time( 'timestamp' ) ) );
+		return sprintf( _x( '%s ago', '%s = human-readable time difference', 'dayneo' ), human_time_diff( $time, current_time( 'timestamp' ) ) );
 	}
 
 	public function update( $new_instance, $old_instance ) {
@@ -267,37 +267,37 @@ class Daydream_Tweets_Widget extends WP_Widget {
 
 		<p><a href="http://dev.twitter.com/apps">Find or Create your Twitter App</a></p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" value="<?php echo esc_attr($instance[ 'title' ]); ?>" />
 		</p>
 		
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'consumer_key' )); ?>"><?php echo esc_html_e( 'Consumer Key', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'consumer_key' )); ?>"><?php echo esc_html_e( 'Consumer Key', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'consumer_key' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'consumer_key' )); ?>" value="<?php echo esc_attr($instance[ 'consumer_key' ]); ?>" />
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'consumer_secret' )); ?>"><?php echo esc_html_e( 'Consumer Secret', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'consumer_secret' )); ?>"><?php echo esc_html_e( 'Consumer Secret', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'consumer_secret' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'consumer_secret' )); ?>" value="<?php echo esc_attr($instance[ 'consumer_secret' ]); ?>" />
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'access_token' )); ?>"><?php echo esc_html_e( 'Access Token', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'access_token' )); ?>"><?php echo esc_html_e( 'Access Token', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'access_token' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'access_token' )); ?>" value="<?php echo esc_attr($instance[ 'access_token' ]); ?>" />
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'access_token_secret' )); ?>"><?php echo esc_html_e( 'Access Token Secret', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'access_token_secret' )); ?>"><?php echo esc_html_e( 'Access Token Secret', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'access_token_secret' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'access_token_secret' )); ?>" value="<?php echo esc_attr($instance[ 'access_token_secret' ]); ?>" />
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'twitter_id' )); ?>"><?php echo esc_html_e( 'Twitter Username', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'twitter_id' )); ?>"><?php echo esc_html_e( 'Twitter Username', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'twitter_id' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'twitter_id' )); ?>" value="<?php echo esc_attr($instance[ 'twitter_id' ]); ?>" />
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'count' )); ?>"><?php echo esc_html_e( 'Number of Tweets', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'count' )); ?>"><?php echo esc_html_e( 'Number of Tweets', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'count' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'count' )); ?>" value="<?php echo esc_attr($instance[ 'count' ]); ?>" />
 		</p>
 

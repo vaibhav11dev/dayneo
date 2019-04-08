@@ -2,7 +2,7 @@
 /**
  * Custom styles for theme meta-field
  *
- * @package Daydream
+ * @package Dayneo
  */
 ?>
 <style type='text/css'>
@@ -145,11 +145,11 @@
     display: none;
 }
 
-.daydream_img_selected {
+.dayneo_img_selected {
     border: 3px solid #aaa !important;
 }
 
-.daydream_img_border_radio {
+.dayneo_img_border_radio {
     border: 3px solid #dedede;
     margin: 10px 5px 5px 0;
     cursor: pointer;

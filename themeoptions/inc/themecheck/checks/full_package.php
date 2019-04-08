@@ -13,14 +13,14 @@
             if ( $redux ) {
 
                 $blacklist = array(
-                    '.tx'                    => __( 'Redux localization utilities', 'daydream' ),
-                    'bin'                    => __( 'Redux Resting Diles', 'daydream' ),
-                    'codestyles'             => __( 'Redux Code Styles', 'daydream' ),
-                    'tests'                  => __( 'Redux Unit Testing', 'daydream' ),
-                    'class.redux-plugin.php' => __( 'Redux Plugin File', 'daydream' ),
-                    'bootstrap_tests.php'    => __( 'Redux Boostrap Tests', 'daydream' ),
-                    '.travis.yml'            => __( 'CI Testing FIle', 'daydream' ),
-                    'phpunit.xml'            => __( 'PHP Unit Testing', 'daydream' ),
+                    '.tx'                    => __( 'Redux localization utilities', 'dayneo' ),
+                    'bin'                    => __( 'Redux Resting Diles', 'dayneo' ),
+                    'codestyles'             => __( 'Redux Code Styles', 'dayneo' ),
+                    'tests'                  => __( 'Redux Unit Testing', 'dayneo' ),
+                    'class.redux-plugin.php' => __( 'Redux Plugin File', 'dayneo' ),
+                    'bootstrap_tests.php'    => __( 'Redux Boostrap Tests', 'dayneo' ),
+                    '.travis.yml'            => __( 'CI Testing FIle', 'dayneo' ),
+                    'phpunit.xml'            => __( 'PHP Unit Testing', 'dayneo' ),
                 );
 
                 $errors = array();
@@ -33,7 +33,7 @@
                 }
 
                 if ( ! empty( $errors ) ) {
-                    $error = '<span class="tc-lead tc-required">REQUIRED</span> ' . __( 'It appears that you have embedded the full Redux package inside your theme. You need only embed the <strong>ReduxCore</strong> folder. Embedding anything else will get your rejected from theme submission. Suspected Redux package file(s):', 'daydream' );
+                    $error = '<span class="tc-lead tc-required">REQUIRED</span> ' . __( 'It appears that you have embedded the full Redux package inside your theme. You need only embed the <strong>ReduxCore</strong> folder. Embedding anything else will get your rejected from theme submission. Suspected Redux package file(s):', 'dayneo' );
                     $error .= '<ol>';
                     foreach ( $errors as $key => $e ) {
                         $error .= '<li><strong>' . $e . '</strong>: ' . $key . '</li>';

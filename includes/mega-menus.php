@@ -504,11 +504,11 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 			if ( ! empty( $item->_invalid ) ) {
 				$classes[]	 = 'menu-item-invalid';
 				/* translators: %s: title of menu item which is invalid */
-				$title		 = sprintf( __( '%s (Invalid)', 'daydream' ), $item->title );
+				$title		 = sprintf( __( '%s (Invalid)', 'dayneo' ), $item->title );
 			} elseif ( isset( $item->post_status ) && 'draft' == $item->post_status ) {
 				$classes[]	 = 'pending';
 				/* translators: %s: title of menu item in draft status */
-				$title		 = sprintf( __( '%s (Pending)', 'daydream' ), $item->title );
+				$title		 = sprintf( __( '%s (Pending)', 'dayneo' ), $item->title );
 			}
 
 			$title = ( ! isset( $item->label ) || '' == $item->label ) ? $title : $item->label;
@@ -520,7 +520,7 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 			<li id="menu-item-<?php echo esc_attr($item_id); ?>" class="<?php echo esc_attr(implode( ' ', $classes )); ?>">
 				<dl class="menu-item-bar">
 					<dt class="menu-item-handle">
-			                        <span class="item-title"><span class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span class="is-submenu" <?php echo esc_attr($submenu_text); ?>><?php esc_html_e( 'sub item', 'daydream' ); ?></span></span>
+			                        <span class="item-title"><span class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span class="is-submenu" <?php echo esc_attr($submenu_text); ?>><?php esc_html_e( 'sub item', 'dayneo' ); ?></span></span>
 			                        <span class="item-controls">
 							<span class="item-type"><?php echo esc_html( $item->type_label ); ?></span>
 							<span class="item-order hide-if-js">
@@ -533,7 +533,7 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 								), remove_query_arg( $removed_args, admin_url( 'nav-menus.php' ) )
 								), 'move-menu_item'
 								));
-								?>" class="item-move-up"><abbr title="<?php esc_attr_e( 'Move up', 'daydream' ); ?>">&#8593;</abbr></a>
+								?>" class="item-move-up"><abbr title="<?php esc_attr_e( 'Move up', 'dayneo' ); ?>">&#8593;</abbr></a>
 								|
 								<a href="<?php
 								echo esc_url(wp_nonce_url(
@@ -544,9 +544,9 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 								), remove_query_arg( $removed_args, admin_url( 'nav-menus.php' ) )
 								), 'move-menu_item'
 								));
-								?>" class="item-move-down"><abbr title="<?php esc_attr_e( 'Move down', 'daydream' ); ?>">&#8595;</abbr></a>
+								?>" class="item-move-down"><abbr title="<?php esc_attr_e( 'Move down', 'dayneo' ); ?>">&#8595;</abbr></a>
 							</span>
-							<a class="item-edit" id="edit-<?php echo esc_attr($item_id); ?>" title="<?php esc_attr_e( 'Edit Menu Item', 'daydream' ); ?>" href="<?php echo ( isset( $_GET[ 'edit-menu-item' ] ) && $item_id == $_GET[ 'edit-menu-item' ] ) ? esc_url(admin_url( 'nav-menus.php' )) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, esc_url(admin_url( 'nav-menus.php#menu-item-settings-' . $item_id )) ) ); ?>"><?php esc_html_e( 'Edit Menu Item', 'daydream' ); ?></a>
+							<a class="item-edit" id="edit-<?php echo esc_attr($item_id); ?>" title="<?php esc_attr_e( 'Edit Menu Item', 'dayneo' ); ?>" href="<?php echo ( isset( $_GET[ 'edit-menu-item' ] ) && $item_id == $_GET[ 'edit-menu-item' ] ) ? esc_url(admin_url( 'nav-menus.php' )) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, esc_url(admin_url( 'nav-menus.php#menu-item-settings-' . $item_id )) ) ); ?>"><?php esc_html_e( 'Edit Menu Item', 'dayneo' ); ?></a>
 			                        </span>
 					</dt>
 				</dl>
@@ -555,46 +555,46 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 					<?php if ( 'custom' == $item->type ) : ?>
 						<p class="field-url description description-wide">
 							<label for="edit-menu-item-url-<?php echo esc_attr($item_id); ?>">
-								<?php esc_html_e( 'URL', 'daydream' ); ?><br />
+								<?php esc_html_e( 'URL', 'dayneo' ); ?><br />
 				                                <input type="text" id="edit-menu-item-url-<?php echo esc_attr($item_id); ?>" class="widefat code edit-menu-item-url" name="menu-item-url[<?php echo esc_attr($item_id); ?>]" value="<?php echo esc_attr( $item->url ); ?>" />
 							</label>
 						</p>
 					<?php endif; ?>
 					<p class="description description-thin">
 			                        <label for="edit-menu-item-title-<?php echo esc_attr($item_id); ?>">
-							<?php esc_html_e( 'Navigation Label', 'daydream' ); ?><br />
+							<?php esc_html_e( 'Navigation Label', 'dayneo' ); ?><br />
 							<input type="text" id="edit-menu-item-title-<?php echo esc_attr($item_id); ?>" class="widefat edit-menu-item-title" name="menu-item-title[<?php echo esc_attr($item_id); ?>]" value="<?php echo esc_attr( $item->title ); ?>" />
 			                        </label>
 					</p>
 					<p class="description description-thin">
 			                        <label for="edit-menu-item-attr-title-<?php echo esc_attr($item_id); ?>">
-							<?php esc_html_e( 'Title Attribute', 'daydream' ); ?><br />
+							<?php esc_html_e( 'Title Attribute', 'dayneo' ); ?><br />
 							<input type="text" id="edit-menu-item-attr-title-<?php echo esc_attr($item_id); ?>" class="widefat edit-menu-item-attr-title" name="menu-item-attr-title[<?php echo esc_attr($item_id); ?>]" value="<?php echo esc_attr( $item->post_excerpt ); ?>" />
 			                        </label>
 					</p>
 					<p class="field-link-target description">
 			                        <label for="edit-menu-item-target-<?php echo esc_attr($item_id); ?>">
 							<input type="checkbox" id="edit-menu-item-target-<?php echo esc_attr($item_id); ?>" value="_blank" name="menu-item-target[<?php echo esc_attr($item_id); ?>]"<?php checked( $item->target, '_blank' ); ?> />
-							<?php esc_html_e( 'Open link in a new window/tab', 'daydream' ); ?>
+							<?php esc_html_e( 'Open link in a new window/tab', 'dayneo' ); ?>
 			                        </label>
 					</p>
 					<p class="field-css-classes description description-thin">
 			                        <label for="edit-menu-item-classes-<?php echo esc_attr($item_id); ?>">
-							<?php esc_html_e( 'CSS Classes (optional)', 'daydream' ); ?><br />
+							<?php esc_html_e( 'CSS Classes (optional)', 'dayneo' ); ?><br />
 							<input type="text" id="edit-menu-item-classes-<?php echo esc_attr($item_id); ?>" class="widefat code edit-menu-item-classes" name="menu-item-classes[<?php echo esc_attr($item_id); ?>]" value="<?php echo esc_attr( implode( ' ', $item->classes ) ); ?>" />
 			                        </label>
 					</p>
 					<p class="field-xfn description description-thin">
 			                        <label for="edit-menu-item-xfn-<?php echo esc_attr($item_id); ?>">
-							<?php esc_html_e( 'Link Relationship (XFN)', 'daydream' ); ?><br />
+							<?php esc_html_e( 'Link Relationship (XFN)', 'dayneo' ); ?><br />
 							<input type="text" id="edit-menu-item-xfn-<?php echo esc_attr($item_id); ?>" class="widefat code edit-menu-item-xfn" name="menu-item-xfn[<?php echo esc_attr($item_id); ?>]" value="<?php echo esc_attr( $item->xfn ); ?>" />
 			                        </label>
 					</p>
 					<p class="field-description description description-wide">
 			                        <label for="edit-menu-item-description-<?php echo esc_attr($item_id); ?>">
-							<?php esc_html_e( 'Description', 'daydream' ); ?><br />
+							<?php esc_html_e( 'Description', 'dayneo' ); ?><br />
 							<textarea id="edit-menu-item-description-<?php echo esc_attr($item_id); ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo esc_attr($item_id); ?>]"><?php echo esc_textarea( $item->description ); ?></textarea>
-							<span class="description"><?php esc_html_e( 'The description will be displayed in the menu if the current theme supports it.', 'daydream' ); ?></span>
+							<span class="description"><?php esc_html_e( 'The description will be displayed in the menu if the current theme supports it.', 'dayneo' ); ?></span>
 			                        </label>
 					</p>
 					<div class="clear"></div>
@@ -602,20 +602,20 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 			                        <p class="field-megamenu-status description description-wide">
 							<label for="edit-menu-item-megamenu-status-<?php echo esc_attr($item_id); ?>">
 								<input type="checkbox" id="edit-menu-item-megamenu-status-<?php echo esc_attr($item_id); ?>" class="widefat code edit-menu-item-megamenu-status" name="menu-item-ved-megamenu-status[<?php echo esc_attr($item_id); ?>]" value="enabled" <?php checked( $item->ved_megamenu_status, 'enabled' ); ?> />
-								<strong><?php esc_html_e( 'Enable ThemeVedanta Mega Menu', 'daydream' ); ?></strong>
+								<strong><?php esc_html_e( 'Enable ThemeVedanta Mega Menu', 'dayneo' ); ?></strong>
 							</label>
 			                        </p>
 			                        <p class="field-megamenu-width description description-wide">
 							<label for="edit-menu-item-megamenu-width-<?php echo esc_attr($item_id); ?>">
 								<input type="checkbox" id="edit-menu-item-megamenu-width-<?php echo esc_attr($item_id); ?>" class="widefat code edit-menu-item-megamenu-width" name="menu-item-ved-megamenu-width[<?php echo esc_attr($item_id); ?>]" value="fullwidth" <?php checked( $item->ved_megamenu_width, 'fullwidth' ); ?> />
-								<?php esc_html_e( 'Full Width Mega Menu', 'daydream' ); ?>
+								<?php esc_html_e( 'Full Width Mega Menu', 'dayneo' ); ?>
 							</label>
 			                        </p>
 			                        <p class="field-megamenu-columns description description-wide">
 							<label for="edit-menu-item-megamenu-columns-<?php echo esc_attr($item_id); ?>">
-								<?php esc_html_e( 'Mega Menu Number of Columns', 'daydream' ); ?>
+								<?php esc_html_e( 'Mega Menu Number of Columns', 'dayneo' ); ?>
 								<select id="edit-menu-item-megamenu-columns-<?php echo esc_attr($item_id); ?>" class="widefat code edit-menu-item-megamenu-columns" name="menu-item-ved-megamenu-columns[<?php echo esc_attr($item_id); ?>]">
-									<option value="auto" <?php selected( $item->ved_megamenu_columns, 'auto' ); ?>><?php esc_html_e( 'Auto', 'daydream' ); ?></option>
+									<option value="auto" <?php selected( $item->ved_megamenu_columns, 'auto' ); ?>><?php esc_html_e( 'Auto', 'dayneo' ); ?></option>
 									<option value="1" <?php selected( $item->ved_megamenu_columns, '1' ); ?>>1</option>
 									<option value="2" <?php selected( $item->ved_megamenu_columns, '2' ); ?>>2</option>
 									<option value="3" <?php selected( $item->ved_megamenu_columns, '3' ); ?>>3</option>
@@ -626,14 +626,14 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 			                        <p class="field-megamenu-title description description-wide">
 							<label for="edit-menu-item-megamenu-title-<?php echo esc_attr($item_id); ?>">
 								<input type="checkbox" id="edit-menu-item-megamenu-title-<?php echo esc_attr($item_id); ?>" class="widefat code edit-menu-item-megamenu-title" name="menu-item-ved-megamenu-title[<?php echo esc_attr($item_id); ?>]" value="disabled" <?php checked( $item->ved_megamenu_title, 'disabled' ); ?> />
-								<?php esc_html_e( 'Disable Mega Menu Column Title', 'daydream' ); ?>
+								<?php esc_html_e( 'Disable Mega Menu Column Title', 'dayneo' ); ?>
 							</label>
 			                        </p>
 			                        <p class="field-megamenu-widgetarea description description-wide">
 							<label for="edit-menu-item-megamenu-widgetarea-<?php echo esc_attr($item_id); ?>">
-								<?php esc_html_e( 'Mega Menu Widget Area', 'daydream' ); ?>
+								<?php esc_html_e( 'Mega Menu Widget Area', 'dayneo' ); ?>
 								<select id="edit-menu-item-megamenu-widgetarea-<?php echo esc_attr($item_id); ?>" class="widefat code edit-menu-item-megamenu-widgetarea" name="menu-item-ved-megamenu-widgetarea[<?php echo esc_attr($item_id); ?>]">
-									<option value="0"><?php esc_html_e( 'Select Widget Area', 'daydream' ); ?></option>
+									<option value="0"><?php esc_html_e( 'Select Widget Area', 'dayneo' ); ?></option>
 									<?php
 									if ( ! empty( $wp_registered_sidebars ) && is_array( $wp_registered_sidebars ) ):
 										foreach ( $wp_registered_sidebars as $sidebar ):
@@ -648,7 +648,7 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 			                        </p>
 			                        <p class="field-megamenu-icon description description-wide">
 							<label for="edit-menu-item-megamenu-icon-<?php echo esc_attr($item_id); ?>">
-								<?php esc_html_e( 'Mega Menu Icon (use full font awesome or glyphicon name)', 'daydream' ); ?>
+								<?php esc_html_e( 'Mega Menu Icon (use full font awesome or glyphicon name)', 'dayneo' ); ?>
 								<input type="text" id="edit-menu-item-megamenu-icon-<?php echo esc_attr($item_id); ?>" class="widefat code edit-menu-item-megamenu-icon" name="menu-item-ved-megamenu-icon[<?php echo esc_attr($item_id); ?>]" value="<?php echo esc_attr($item->ved_megamenu_icon); ?>" />
 							</label>
 			                        </p>
@@ -671,7 +671,7 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 							}
 							?>" 
 							   href="<?php echo esc_url($ved_upload_link) ?>">
-								   <?php esc_html_e( 'Set Thumbnail', 'daydream' ) ?>
+								   <?php esc_html_e( 'Set Thumbnail', 'dayneo' ) ?>
 							</a>
 							<a id="ved-media-remove-<?php echo esc_attr($item_id); ?>" data-media-id="<?php echo esc_attr($item_id); ?>" class="remove-ved-megamenu-thumbnail delete-custom-img <?php
 							if ( ! $ved_have_img ) {
@@ -679,7 +679,7 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 							}
 							?>" 
 							   href="#">
-								   <?php esc_html_e( 'Remove image', 'daydream' ) ?>
+								   <?php esc_html_e( 'Remove image', 'dayneo' ) ?>
 							</a>
 			                        </p>
 			                        <input id="edit-menu-item-megamenu-thumbnail-<?php echo esc_attr($item_id); ?>" class="ved-new-media-image widefat code edit-menu-item-megamenu-thumbnail" name="menu-item-ved-megamenu-thumbnail[<?php echo esc_attr($item_id); ?>]" type="hidden" value="<?php echo esc_attr($ved_img_id); ?>" />
@@ -687,19 +687,19 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 					</div><!-- .ved-mega-menu-options-->
 					<p class="field-move hide-if-no-js description description-wide">
 			                        <label>
-							<span><?php esc_html_e( 'Move', 'daydream' ); ?></span>
-							<a href="#" class="menus-move-up"><?php esc_html_e( 'Up one', 'daydream' ); ?></a>
-							<a href="#" class="menus-move-down"><?php esc_html_e( 'Down one', 'daydream' ); ?></a>
+							<span><?php esc_html_e( 'Move', 'dayneo' ); ?></span>
+							<a href="#" class="menus-move-up"><?php esc_html_e( 'Up one', 'dayneo' ); ?></a>
+							<a href="#" class="menus-move-down"><?php esc_html_e( 'Down one', 'dayneo' ); ?></a>
 							<a href="#" class="menus-move-left"></a>
 							<a href="#" class="menus-move-right"></a>
-							<a href="#" class="menus-move-top"><?php esc_html_e( 'To the top', 'daydream' ); ?></a>
+							<a href="#" class="menus-move-top"><?php esc_html_e( 'To the top', 'dayneo' ); ?></a>
 			                        </label>
 					</p>
 
 					<div class="menu-item-actions description-wide submitbox">
 						<?php if ( 'custom' != $item->type && $original_title !== false ) : ?>
 							<p class="link-to-original">
-								<?php printf( esc_html__( 'Original: %s', 'daydream' ), '<a href="' . esc_url( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
+								<?php printf( esc_html__( 'Original: %s', 'dayneo' ), '<a href="' . esc_url( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
 							</p>
 						<?php endif; ?>
 			                        <a class="item-delete submitdelete deletion" id="delete-<?php echo esc_attr($item_id); ?>" href="<?php
@@ -711,8 +711,8 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 						), admin_url( 'nav-menus.php' )
 						), 'delete-menu_item_' . $item_id
 						));
-						?>"><?php esc_html_e( 'Remove', 'daydream' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo esc_attr($item_id); ?>" href="<?php echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
-						?>#menu-item-settings-<?php echo esc_attr($item_id); ?>"><?php esc_html_e( 'Cancel', 'daydream' ); ?></a>
+						?>"><?php esc_html_e( 'Remove', 'dayneo' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo esc_attr($item_id); ?>" href="<?php echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
+						?>#menu-item-settings-<?php echo esc_attr($item_id); ?>"><?php esc_html_e( 'Cancel', 'dayneo' ); ?></a>
 					</div>
 
 					<input class="menu-item-data-db-id" type="hidden" name="menu-item-db-id[<?php echo esc_attr($item_id); ?>]" value="<?php echo esc_attr($item_id); ?>" />

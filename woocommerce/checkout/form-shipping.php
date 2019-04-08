@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<h5 id="text-title text-uppercase bottom-line ship-to-different-address">
 			<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-				<input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" <?php checked( apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 ), 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" /> <span><?php esc_html_e( 'Ship to a different address?', 'daydream' ); ?></span>
+				<input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" <?php checked( apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 ), 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" /> <span><?php esc_html_e( 'Ship to a different address?', 'dayneo' ); ?></span>
 			</label>
 		</h5>
 
@@ -60,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php if ( ! WC()->cart->needs_shipping() || wc_ship_to_billing_address_only() ) : ?>
 
-			<h5 class="text-title text-uppercase bottom-line"><?php esc_html_e( 'Additional information', 'daydream' ); ?></h5>
+			<h5 class="text-title text-uppercase bottom-line"><?php esc_html_e( 'Additional information', 'dayneo' ); ?></h5>
 
 		<?php endif; ?>
 

@@ -2,15 +2,15 @@
 add_action( 'widgets_init', 'facebook_like_load_widgets' );
 
 function facebook_like_load_widgets() {
-	register_widget( 'Daydream_Facebook_Like_Widget' );
+	register_widget( 'Dayneo_Facebook_Like_Widget' );
 }
 
-class Daydream_Facebook_Like_Widget extends WP_Widget {
+class Dayneo_Facebook_Like_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'facebook-like-widget', __( 'daydream: Facebook Like Box', 'daydream' ), // Name
-			      array( 'classname' => 'facebook-like', 'description' => __( 'Adds support for Facebook Like Box.', 'daydream' ), ) // Args
+		'facebook-like-widget', __( 'dayneo: Facebook Like Box', 'dayneo' ), // Name
+			      array( 'classname' => 'facebook-like', 'description' => __( 'Adds support for Facebook Like Box.', 'dayneo' ), ) // Args
 		);
 	}
 
@@ -81,41 +81,41 @@ class Daydream_Facebook_Like_Widget extends WP_Widget {
 		?>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" value="<?php echo esc_attr($instance[ 'title' ]); ?>" />
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'page_url' )); ?>"><?php echo esc_html_e( 'Facebook Page URL', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'page_url' )); ?>"><?php echo esc_html_e( 'Facebook Page URL', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'page_url' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'page_url' )); ?>" value="<?php echo esc_attr($instance[ 'page_url' ]); ?>" />
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'width' )); ?>"><?php echo esc_html_e( 'Width', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'width' )); ?>"><?php echo esc_html_e( 'Width', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'width' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'width' )); ?>" value="<?php echo esc_attr($instance[ 'width' ]); ?>" />
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'color_scheme' )); ?>"><?php echo esc_html_e( 'Color Scheme', 'daydream' ); ?></label> 
+		    <label for="<?php echo esc_attr($this->get_field_id( 'color_scheme' )); ?>"><?php echo esc_html_e( 'Color Scheme', 'dayneo' ); ?></label> 
 		    <select id="<?php echo esc_attr($this->get_field_id( 'color_scheme' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'color_scheme' )); ?>" class="widefat">
-			<option <?php if ( 'light' == $instance[ 'color_scheme' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'light', 'daydream' ); ?></option>
-			<option <?php if ( 'dark' == $instance[ 'color_scheme' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'dark', 'daydream' ); ?></option>
+			<option <?php if ( 'light' == $instance[ 'color_scheme' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'light', 'dayneo' ); ?></option>
+			<option <?php if ( 'dark' == $instance[ 'color_scheme' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'dark', 'dayneo' ); ?></option>
 		    </select>
 		</p>
 
 		<p>
 		    <input class="checkbox" type="checkbox" <?php checked( $instance[ 'show_faces' ], 'on' ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_faces' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_faces' )); ?>" /> 
-		    <label for="<?php echo esc_attr($this->get_field_id( 'show_faces' )); ?>"><?php echo esc_html_e( 'Show faces', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'show_faces' )); ?>"><?php echo esc_html_e( 'Show faces', 'dayneo' ); ?></label>
 		</p>
 
 		<p>
 		    <input class="checkbox" type="checkbox" <?php checked( $instance[ 'show_stream' ], 'on' ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_stream' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_stream' )); ?>" /> 
-		    <label for="<?php echo esc_attr($this->get_field_id( 'show_stream' )); ?>"><?php echo esc_html_e( 'Show stream', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'show_stream' )); ?>"><?php echo esc_html_e( 'Show stream', 'dayneo' ); ?></label>
 		</p>
 
 		<p>
 		    <input class="checkbox" type="checkbox" <?php checked( $instance[ 'show_header' ], 'on' ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_header' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_header' )); ?>" /> 
-		    <label for="<?php echo esc_attr($this->get_field_id( 'show_header' )); ?>"><?php echo esc_html_e( 'Show facebook header', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'show_header' )); ?>"><?php echo esc_html_e( 'Show facebook header', 'dayneo' ); ?></label>
 		</p>
 		<?php
 	}

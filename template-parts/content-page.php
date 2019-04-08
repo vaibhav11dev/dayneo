@@ -4,11 +4,11 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package daydream
+ * @package dayneo
  */
-$dd_pagetitlebar_layout		 = daydream_get_option( 'dd_pagetitlebar_layout', 1 );
-$daydream_enable_page_title	 = get_post_meta( get_the_ID(), 'daydream_enable_page_title', true );
-$dd_edit_post			 = daydream_get_option( 'dd_edit_post', '0' );
+$dd_pagetitlebar_layout		 = dayneo_get_option( 'dd_pagetitlebar_layout', 1 );
+$dayneo_enable_page_title	 = get_post_meta( get_the_ID(), 'dayneo_enable_page_title', true );
+$dd_edit_post			 = dayneo_get_option( 'dd_edit_post', '0' );
 ?>
 
 <div id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?>">
@@ -41,7 +41,7 @@ $dd_edit_post			 = daydream_get_option( 'dd_edit_post', '0' );
 					sprintf(
 					wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'daydream' ), array(
+					__( 'Edit <span class="screen-reader-text">%s</span>', 'dayneo' ), array(
 						'span' => array(
 							'class' => array(),
 						),
@@ -56,12 +56,12 @@ $dd_edit_post			 = daydream_get_option( 'dd_edit_post', '0' );
 			?>
 
 			<?php
-			$dd_share_this = daydream_get_option( 'dd_share_this', 'single' );
+			$dd_share_this = dayneo_get_option( 'dd_share_this', 'single' );
 			if ( $dd_share_this == 'all' || $dd_share_this == 'page' ) {
 				?>
 				<div class="col-sm-6">
 					<?php
-					daydream_sharethis();
+					dayneo_sharethis();
 					?>
 				</div>
 				<?php

@@ -79,7 +79,7 @@
             public function add_section() {
                 $this->parent->sections[] = array(
                     'id' => 'options-object',
-                    'title' => __( 'Options Object', 'daydream' ),
+                    'title' => __( 'Options Object', 'dayneo' ),
                     'heading' => '',
                     'icon' => 'el el-info-circle',
                     'customizer' => false,

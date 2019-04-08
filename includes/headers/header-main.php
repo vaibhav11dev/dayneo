@@ -3,7 +3,7 @@
  * Template part for displaying headerbar
  *
  *
- * @package daydream
+ * @package dayneo
  */
 global $post, $wp_query, $dd_options;
 
@@ -18,10 +18,10 @@ if ( $wp_query->is_posts_page ) {
     $post_id = isset( $post->ID ) ? $post->ID : '';
 }
 
-$dd_header_type       = daydream_get_option( 'dd_header_type', 'h1' );
-$daydream_header_type = get_post_meta( $post_id, 'daydream_header_type', true );
+$dd_header_type       = dayneo_get_option( 'dd_header_type', 'h1' );
+$dayneo_header_type = get_post_meta( $post_id, 'dayneo_header_type', true );
 if ( is_page() ) {
-    if ( ($daydream_header_type == 'h2') || ($daydream_header_type == 'default' && $dd_header_type == 'h2') ) {
+    if ( ($dayneo_header_type == 'h2') || ($dayneo_header_type == 'default' && $dd_header_type == 'h2') ) {
         $header_class = 'header-fixed header-transparent';
     } else {
         $header_class = 'js-stick';
@@ -41,16 +41,16 @@ if ( is_page() ) {
         <!-- YOUR LOGO HERE -->
         <div class="inner-header site-identity">
             <?php
-            $dd_header_logo               = daydream_get_option( 'dd_header_logo', '' );
-            $dd_header2_logo              = daydream_get_option( 'dd_header2_logo', '' );
-            $dd_header_logo_retina        = daydream_get_option( 'dd_header_logo_retina', '' );
-            $dd_header_logo_retina_width  = daydream_get_option( 'dd_header_logo_retina_width', '' );
-            $dd_header_logo_retina_height = daydream_get_option( 'dd_header_logo_retina_height', '' );
+            $dd_header_logo               = dayneo_get_option( 'dd_header_logo', '' );
+            $dd_header2_logo              = dayneo_get_option( 'dd_header2_logo', '' );
+            $dd_header_logo_retina        = dayneo_get_option( 'dd_header_logo_retina', '' );
+            $dd_header_logo_retina_width  = dayneo_get_option( 'dd_header_logo_retina_width', '' );
+            $dd_header_logo_retina_height = dayneo_get_option( 'dd_header_logo_retina_height', '' );
             if ( $dd_header_logo != '' || $dd_header2_logo != '' || $dd_header_logo_retina != '' ) {
                 ?>
                 <a class="inner-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                     <?php
-                    if ( $dd_header2_logo != '' && ( ($daydream_header_type == 'h2') || ($daydream_header_type == 'default' && $dd_header_type == 'h2') ) ):
+                    if ( $dd_header2_logo != '' && ( ($dayneo_header_type == 'h2') || ($dayneo_header_type == 'default' && $dd_header_type == 'h2') ) ):
                         ?>
                         <img class="normal-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo $dd_header2_logo ?>" width="200">
                         <?php
@@ -72,8 +72,8 @@ if ( is_page() ) {
                 </a>
                 <?php
             } else {
-                $dd_blog_title   = daydream_get_option( 'dd_blog_title', '0' );
-                $dd_blog_tagline = daydream_get_option( 'dd_blog_tagline', '0' );
+                $dd_blog_title   = dayneo_get_option( 'dd_blog_title', '0' );
+                $dd_blog_tagline = dayneo_get_option( 'dd_blog_tagline', '0' );
                 if ( $dd_blog_title == 1 ) {
                     ?>
                     <div id="blog-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ) ?></a></div> 
@@ -107,7 +107,7 @@ if ( is_page() ) {
 
                     <!-- SHOP CART -->
                     <?php
-                    $dd_woo_cart = daydream_get_option( 'dd_woo_cart', 1 );
+                    $dd_woo_cart = dayneo_get_option( 'dd_woo_cart', 1 );
                     if ( class_exists( 'Woocommerce' ) && $dd_woo_cart ) {
                         global $woocommerce;
                         ?>
@@ -126,7 +126,7 @@ if ( is_page() ) {
 
                     <!-- SEARCH -->
                     <?php
-                    $dd_searchbox = daydream_get_option( 'dd_searchbox', '1' );
+                    $dd_searchbox = dayneo_get_option( 'dd_searchbox', '1' );
                     if ( $dd_searchbox == "1" ) {
                         ?>
                         <div class="menu-item hidden-xxs">
@@ -147,11 +147,11 @@ if ( is_page() ) {
         <!-- MAIN MENU -->
         <?php
         if ( $dd_options[ 'dd_primary_menu' ] == 1 && has_nav_menu( 'primary-menu' ) ):
-            $dd_megamenu = daydream_get_option( 'dd_megamenu', '0' );
+            $dd_megamenu = dayneo_get_option( 'dd_megamenu', '0' );
             if ( $dd_megamenu == '1' ) {
                 wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav pull-right', 'container' => 'nav', 'container_class' => 'ved-main-megamenu ved-navbar-nav main-nav collapse clearfix', 'container_id' => 'custom-collapse', 'walker' => new VedCoreFrontendWalker() ) );
             } else {
-                wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav pull-right', 'container' => 'nav', 'container_class' => 'ved-main-simplemenu main-nav collapse clearfix', 'container_id' => 'custom-collapse', 'walker' => new Daydream_Walker_Nav_Menu() ) );
+                wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav pull-right', 'container' => 'nav', 'container_class' => 'ved-main-simplemenu main-nav collapse clearfix', 'container_id' => 'custom-collapse', 'walker' => new Dayneo_Walker_Nav_Menu() ) );
             }
         endif;
         ?>

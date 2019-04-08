@@ -14,21 +14,21 @@ get_header();
 
 	<!-- SECONDARY-2 -->	    
 	<?php
-	if ( daydream_lets_get_sidebar_2() == true ):
+	if ( dayneo_lets_get_sidebar_2() == true ):
 		get_sidebar( '2' );
 	endif;
 	?>
 	<!-- END SECONDARY-2 -->
 
 	<!-- PRIMARY -->
-	<div id="primary" class="<?php daydream_layout_class( $type = 1 ); ?> post-content">
+	<div id="primary" class="<?php dayneo_layout_class( $type = 1 ); ?> post-content">
 	    <?php get_template_part( 'template-parts/content', 'portfolio' ); ?>
 	</div>
 	<!-- END PRIMARY -->
 
 	<!-- SECONDARY-1 -->
 	<?php
-	if ( daydream_lets_get_sidebar() == true ) {
+	if ( dayneo_lets_get_sidebar() == true ) {
 		get_sidebar();
 	}
 	?>

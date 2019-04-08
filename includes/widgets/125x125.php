@@ -2,15 +2,15 @@
 add_action( 'widgets_init', 'ad_125_125_load_widgets' );
 
 function ad_125_125_load_widgets() {
-	register_widget( 'Daydream_Ad_125_125_Widget' );
+	register_widget( 'Dayneo_Ad_125_125_Widget' );
 }
 
-class Daydream_Ad_125_125_Widget extends WP_Widget {
+class Dayneo_Ad_125_125_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'ad_125_125-widget', __( 'daydream: 125x125 Ads', 'daydream' ), // Name
-			   array( 'classname' => 'ad_125_125', 'description' => __( 'Add 125x125 ads.', 'daydream' ), ) // Args
+		'ad_125_125-widget', __( 'dayneo: 125x125 Ads', 'dayneo' ), // Name
+			   array( 'classname' => 'ad_125_125', 'description' => __( 'Add 125x125 ads.', 'dayneo' ), ) // Args
 		);
 	}
 
@@ -58,38 +58,38 @@ class Daydream_Ad_125_125_Widget extends WP_Widget {
 		?>
 		<p><strong>Ad 1</strong></p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_img_1' )); ?>"><?php echo esc_html_e( 'Image URL Link', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_img_1' )); ?>"><?php echo esc_html_e( 'Image URL Link', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'ad_125_img_1' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'ad_125_img_1' )); ?>" value="<?php echo esc_attr($instance[ 'ad_125_img_1' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_link_1' )); ?>"><?php echo esc_html_e( 'Ad Link', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_link_1' )); ?>"><?php echo esc_html_e( 'Ad Link', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'ad_125_link_1' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'ad_125_link_1' )); ?>" value="<?php echo esc_attr($instance[ 'ad_125_link_1' ]); ?>" />
 		</p>
 		<p><strong>Ad 2</strong></p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_img_2' )); ?>"><?php echo esc_html_e( 'Image URL Link', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_img_2' )); ?>"><?php echo esc_html_e( 'Image URL Link', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'ad_125_img_2' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'ad_125_img_2' )); ?>" value="<?php echo esc_attr($instance[ 'ad_125_img_2' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_link_2' )); ?>"><?php echo esc_html_e( 'Ad Link', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_link_2' )); ?>"><?php echo esc_html_e( 'Ad Link', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'ad_125_link_2' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'ad_125_link_2' )); ?>" value="<?php echo esc_attr($instance[ 'ad_125_link_2' ]); ?>" />
 		</p>
 		<p><strong>Ad 3</strong></p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_img_3' )); ?>"><?php echo esc_html_e( 'Image URL Link', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_img_3' )); ?>"><?php echo esc_html_e( 'Image URL Link', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'ad_125_img_3' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'ad_125_img_3' )); ?>" value="<?php echo esc_attr($instance[ 'ad_125_img_3' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_link_3' )); ?>"><?php echo esc_html_e( 'Ad Link', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_link_3' )); ?>"><?php echo esc_html_e( 'Ad Link', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'ad_125_link_3' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'ad_125_link_3' )); ?>" value="<?php echo esc_attr($instance[ 'ad_125_link_3' ]); ?>" />
 		</p>
 		<p><strong>Ad 4</strong></p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_img_4' )); ?>"><?php echo esc_html_e( 'Image URL Link', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_img_4' )); ?>"><?php echo esc_html_e( 'Image URL Link', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'ad_125_img_4' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'ad_125_img_4' )); ?>" value="<?php echo esc_attr($instance[ 'ad_125_img_4' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_link_4' )); ?>"><?php echo esc_html_e( 'Ad Link', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'ad_125_link_4' )); ?>"><?php echo esc_html_e( 'Ad Link', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'ad_125_link_4' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'ad_125_link_4' )); ?>" value="<?php echo esc_attr($instance[ 'ad_125_link_4' ]); ?>" />
 		</p>
 		<?php

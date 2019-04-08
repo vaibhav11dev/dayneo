@@ -16,7 +16,7 @@
 		    </div>
 		</div>
 		<div class="col-sm-12">
-		    <input type="text" name="s" placeholder="<?php esc_attr_e( 'Type &amp; hit enter', 'daydream' ); ?>">
+		    <input type="text" name="s" placeholder="<?php esc_attr_e( 'Type &amp; hit enter', 'dayneo' ); ?>">
 		</div>
 	    </div>
     </div>

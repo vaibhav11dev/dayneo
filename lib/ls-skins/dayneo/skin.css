@@ -1,4 +1,4 @@
-/* LayerSlider daydream skin */
+/* LayerSlider dayneo skin */
 
 .fullwidthbanner-container {
     width: auto !important;
@@ -13,13 +13,13 @@
     z-index: 2;
 }
 
-.ls-daydream .ls-layer {
+.ls-dayneo .ls-layer {
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-.ls-daydream a.ls-nav-prev,
-.ls-daydream a.ls-nav-next {
+.ls-dayneo a.ls-nav-prev,
+.ls-dayneo a.ls-nav-next {
     background-color: rgba(0, 0, 0, 0.5)!important;
     background-repeat: no-repeat;
     display: none;
@@ -43,27 +43,27 @@
     transition: all 0.2s ease-in-out!important;
 }
 
-.no-rgba .ls-daydream .ls-nav-prev,
-.no-rgba .ls-daydream .ls-nav-next {
+.no-rgba .ls-dayneo .ls-nav-prev,
+.no-rgba .ls-dayneo .ls-nav-next {
     background-color: #ccc !important;
 }
 
-.ls-daydream .ls-nav-prev:hover,
-.ls-daydream .ls-nav-next:hover {
+.ls-dayneo .ls-nav-prev:hover,
+.ls-dayneo .ls-nav-next:hover {
     opacity: 1 !important;
 }
 
-.ls-daydream:hover .ls-nav-prev,
-.ls-daydream:hover .ls-nav-next {
+.ls-dayneo:hover .ls-nav-prev,
+.ls-dayneo:hover .ls-nav-next {
     display: block;
 }
 
-.ls-daydream .ls-nav-prev {
+.ls-dayneo .ls-nav-prev {
     left: 0 !important;
 }
 
-.ls-daydream .ls-nav-prev:before,
-.ls-daydream .ls-nav-next:before {
+.ls-dayneo .ls-nav-prev:before,
+.ls-dayneo .ls-nav-next:before {
     font-family: IcoMoon !important;
     content: '\e918';
     position: absolute;
@@ -80,11 +80,11 @@
     text-align: center;
 }
 
-.ls-daydream .ls-nav-next {
+.ls-dayneo .ls-nav-next {
     right: 0 !important;
 }
 
-.ls-daydream .ls-nav-next:before {
+.ls-dayneo .ls-nav-next:before {
     content: '\e919';
     right: 0;
     left: auto;
@@ -94,22 +94,22 @@
     clear: none !important;
 }
 
-.ls-daydream .ls-playvideo {
+.ls-dayneo .ls-playvideo {
     width: 50px;
     height: 50px;
     margin-left: -25px;
     margin-top: -25px;
 }
 
-.ls-daydream .ls-playvideo {
+.ls-dayneo .ls-playvideo {
     background-image: url("../../../../assets/images/skin.png");
 }
 
-.ls-daydream .ls-playvideo {
+.ls-dayneo .ls-playvideo {
     background-position: -300px -150px;
 }
 
-.ls-daydream .ls-playvideo:hover,
-.ls-daydream .ls-vpcontainer:hover .ls-playvideo {
+.ls-dayneo .ls-playvideo:hover,
+.ls-dayneo .ls-vpcontainer:hover .ls-playvideo {
     background-position: -375px -150px;
 }

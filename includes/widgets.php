@@ -12,7 +12,7 @@ $dd_footer_widget_col	 = (isset( $dd_options[ 'dd_footer_widget_col' ] )) ? $dd_
 
 if ( function_exists( 'register_sidebar' ) )
 	register_sidebar( array(
-		'name'		 => __( 'Sidebar 1', 'daydream' ),
+		'name'		 => __( 'Sidebar 1', 'dayneo' ),
 		'id'		 => 'sidebar-1',
 		'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 		'after_widget'	 => '</div></div>',
@@ -22,7 +22,7 @@ if ( function_exists( 'register_sidebar' ) )
 
 if ( function_exists( 'register_sidebar' ) )
 	register_sidebar( array(
-		'name'		 => __( 'Sidebar 2', 'daydream' ),
+		'name'		 => __( 'Sidebar 2', 'dayneo' ),
 		'id'		 => 'sidebar-2',
 		'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 		'after_widget'	 => '</div></div>',
@@ -30,10 +30,10 @@ if ( function_exists( 'register_sidebar' ) )
 		'after_title'	 => '</h6>',
 	) );
 
-function daydream_footer1() {
+function dayneo_footer1() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'Footer 1', 'daydream' ),
+			'name'		 => __( 'Footer 1', 'dayneo' ),
 			'id'		 => 'footer-1',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -42,10 +42,10 @@ function daydream_footer1() {
 		) );
 }
 
-function daydream_footer2() {
+function dayneo_footer2() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'Footer 2', 'daydream' ),
+			'name'		 => __( 'Footer 2', 'dayneo' ),
 			'id'		 => 'footer-2',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -54,10 +54,10 @@ function daydream_footer2() {
 		) );
 }
 
-function daydream_footer3() {
+function dayneo_footer3() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'Footer 3', 'daydream' ),
+			'name'		 => __( 'Footer 3', 'dayneo' ),
 			'id'		 => 'footer-3',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -66,10 +66,10 @@ function daydream_footer3() {
 		) );
 }
 
-function daydream_footer4() {
+function dayneo_footer4() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'Footer 4', 'daydream' ),
+			'name'		 => __( 'Footer 4', 'dayneo' ),
 			'id'		 => 'footer-4',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -81,22 +81,22 @@ function daydream_footer4() {
 // Footer widgets
 
 if ( ($dd_footer_widget_col == "one" ) ) {
-	daydream_footer1();
+	dayneo_footer1();
 }
 if ( ($dd_footer_widget_col == "two" ) ) {
-	daydream_footer1();
-	daydream_footer2();
+	dayneo_footer1();
+	dayneo_footer2();
 }
 if ( ($dd_footer_widget_col == "three" ) ) {
-	daydream_footer1();
-	daydream_footer2();
-	daydream_footer3();
+	dayneo_footer1();
+	dayneo_footer2();
+	dayneo_footer3();
 }
 if ( ($dd_footer_widget_col == "four" ) ) {
-	daydream_footer1();
-	daydream_footer2();
-	daydream_footer3();
-	daydream_footer4();
+	dayneo_footer1();
+	dayneo_footer2();
+	dayneo_footer3();
+	dayneo_footer4();
 }
 
 

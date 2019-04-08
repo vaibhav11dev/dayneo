@@ -43,7 +43,7 @@ class sidebar_generator {
 				$sidebar_class = sidebar_generator::name_to_class( $sidebar );
 				register_sidebar( array(
 				    'name' => $sidebar,
-				    'id' => 'daydream-custom-sidebar-' . strtolower( $sidebar_class ),
+				    'id' => 'dayneo-custom-sidebar-' . strtolower( $sidebar_class ),
 				    'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 				    'after_widget' => '</div></div>',
 				    'before_title' => '<div class="before-title"><div class="widget-title-background"></div><h3 class="widget-title">',
@@ -268,7 +268,7 @@ class sidebar_generator {
 
 		<input name="sbg_edit" type="hidden" value="sbg_edit" />
 
-		<p><?php esc_html_e( 'Please select the sidebar you would like to display on this page. <strong>Note:</strong> You must first create the sidebar under <strong>Appearance > Sidebars</strong>.', 'daydream' ); ?>
+		<p><?php esc_html_e( 'Please select the sidebar you would like to display on this page. <strong>Note:</strong> You must first create the sidebar under <strong>Appearance > Sidebars</strong>.', 'dayneo' ); ?>
 		</p>
 		<ul>
 		    <?php

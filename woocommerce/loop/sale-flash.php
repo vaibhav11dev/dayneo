@@ -25,7 +25,7 @@ global $post, $product;
 ?>
 <?php if ( $product->is_on_sale() ) : ?>
 
-	<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="label label-base onsale shop-page">' . esc_html__( 'Sale!', 'daydream' ) . '</span>', $post, $product ); ?>
+	<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="label label-base onsale shop-page">' . esc_html__( 'Sale!', 'dayneo' ) . '</span>', $post, $product ); ?>
 
 <?php endif;
 

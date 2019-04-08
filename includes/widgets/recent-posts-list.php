@@ -2,10 +2,10 @@
 add_action('widgets_init', 'recent_post_list_load_widgets');
 
 function recent_post_list_load_widgets() {
-    register_widget('Daydream_Recent_Post_List_Widget');
+    register_widget('Dayneo_Recent_Post_List_Widget');
 }
 
-class Daydream_Recent_Post_List_Widget extends WP_Widget {
+class Dayneo_Recent_Post_List_Widget extends WP_Widget {
 
 	/**
 	 * Sets up a new Recent Posts widget instance.
@@ -13,8 +13,8 @@ class Daydream_Recent_Post_List_Widget extends WP_Widget {
 	 */
 	public function __construct() {
 		parent::__construct(
-		'recent_works-widget', __('daydream: Blog List', 'daydream'), // Name
-                array('classname' => 'recent_post_list', 'description' => __('Display Latest Blog lists.', 'daydream'),) // Args
+		'recent_works-widget', __('dayneo: Blog List', 'dayneo'), // Name
+                array('classname' => 'recent_post_list', 'description' => __('Display Latest Blog lists.', 'dayneo'),) // Args
 		);
 	}
 
@@ -77,7 +77,7 @@ class Daydream_Recent_Post_List_Widget extends WP_Widget {
 						if ( $show_comment && !post_password_required() && ( comments_open() || get_comments_number() ) ) {
 							?> <div class="b_comment"><i class="fa fa-comment"> </i><?php
 							echo '<span class="comments-link">';
-							comments_popup_link( sprintf( esc_html__( ' Leave a comment<span class="screen-reader-text"> on %s</span>', 'daydream' ), get_the_title() ) );
+							comments_popup_link( sprintf( esc_html__( ' Leave a comment<span class="screen-reader-text"> on %s</span>', 'dayneo' ), get_the_title() ) );
 							echo '</span> </div>';
 						}
 						?><?php if ( $show_date ) { ?>
@@ -128,19 +128,19 @@ class Daydream_Recent_Post_List_Widget extends WP_Widget {
 
 		    $number = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
 		    ?>
-		    <p><label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php esc_html_e( 'Title:', 'daydream' ); ?></label>
+		    <p><label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php esc_html_e( 'Title:', 'dayneo' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
-		    <p><label for="<?php echo esc_attr($this->get_field_id( 'number' )); ?>"><?php esc_html_e( 'Number of posts to show:', 'daydream' ); ?></label>
+		    <p><label for="<?php echo esc_attr($this->get_field_id( 'number' )); ?>"><?php esc_html_e( 'Number of posts to show:', 'dayneo' ); ?></label>
 			<input class="tiny-text" id="<?php echo esc_attr($this->get_field_id( 'number' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'number' )); ?>" type="number" step="1" min="1" value="<?php echo esc_attr($number); ?>" size="3" /></p>
 
 		    <p><input class="checkbox" type="checkbox"<?php checked( $show_comment ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_comment' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_comment' )); ?>" />
-			<label for="<?php echo esc_attr($this->get_field_id( 'show_comment' )); ?>"><?php esc_html_e( 'Display Blog Comment?', 'daydream' ); ?></label></p>
+			<label for="<?php echo esc_attr($this->get_field_id( 'show_comment' )); ?>"><?php esc_html_e( 'Display Blog Comment?', 'dayneo' ); ?></label></p>
 
 		    <p><input class="checkbox" type="checkbox"<?php checked( $show_author ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_author' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_author' )); ?>" />
-			<label for="<?php echo esc_attr($this->get_field_id( 'show_author' )); ?>"><?php esc_html_e( 'Display Blog Author?', 'daydream' ); ?></label></p>
+			<label for="<?php echo esc_attr($this->get_field_id( 'show_author' )); ?>"><?php esc_html_e( 'Display Blog Author?', 'dayneo' ); ?></label></p>
 
 		    <p><input class="checkbox" type="checkbox"<?php checked( '$show_date' ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_date' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_date' )); ?>" />
-			<label for="<?php echo esc_attr($this->get_field_id( 'show_date' )); ?>"><?php esc_html_e( 'Display Blog Date?', 'daydream' ); ?></label></p>
+			<label for="<?php echo esc_attr($this->get_field_id( 'show_date' )); ?>"><?php esc_html_e( 'Display Blog Date?', 'dayneo' ); ?></label></p>
 
 		    <?php
 	    }

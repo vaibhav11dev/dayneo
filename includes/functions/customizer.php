@@ -1,8 +1,8 @@
 <?php
 /**
- * daydream Theme Customizer
+ * dayneo Theme Customizer
  *
- * @package daydream
+ * @package dayneo
  */
 
 /**
@@ -10,7 +10,7 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function daydream_customize_register( $wp_customize ) {
+function dayneo_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
@@ -18,22 +18,22 @@ function daydream_customize_register( $wp_customize ) {
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(
 			'selector'        => '.site-title a',
-			'render_callback' => 'daydream_customize_partial_blogname',
+			'render_callback' => 'dayneo_customize_partial_blogname',
 		) );
 		$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
 			'selector'        => '.site-description',
-			'render_callback' => 'daydream_customize_partial_blogdescription',
+			'render_callback' => 'dayneo_customize_partial_blogdescription',
 		) );
 	}
 }
-add_action( 'customize_register', 'daydream_customize_register' );
+add_action( 'customize_register', 'dayneo_customize_register' );
 
 /**
  * Render the site title for the selective refresh partial.
  *
  * @return void
  */
-function daydream_customize_partial_blogname() {
+function dayneo_customize_partial_blogname() {
 	bloginfo( 'name' );
 }
 
@@ -42,14 +42,14 @@ function daydream_customize_partial_blogname() {
  *
  * @return void
  */
-function daydream_customize_partial_blogdescription() {
+function dayneo_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function daydream_customize_preview_js() {
-	wp_enqueue_script( 'daydream-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '1.0.0', true );
+function dayneo_customize_preview_js() {
+	wp_enqueue_script( 'dayneo-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '1.0.0', true );
 }
-add_action( 'customize_preview_init', 'daydream_customize_preview_js' );
+add_action( 'customize_preview_init', 'dayneo_customize_preview_js' );

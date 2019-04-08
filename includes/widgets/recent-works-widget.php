@@ -2,15 +2,15 @@
 add_action('widgets_init', 'recent_works_load_widgets');
 
 function recent_works_load_widgets() {
-    register_widget('Daydream_Recent_Works_Widget');
+    register_widget('Dayneo_Recent_Works_Widget');
 }
 
-class Daydream_Recent_Works_Widget extends WP_Widget {
+class Dayneo_Recent_Works_Widget extends WP_Widget {
 
     public function __construct() {
         parent::__construct(
-                'recent_works-widget', __('daydream: Portfolio', 'daydream'), // Name
-                array('classname' => 'recent_works', 'description' => __('Recent works from the portfolio.', 'daydream'),) // Args
+                'recent_works-widget', __('dayneo: Portfolio', 'dayneo'), // Name
+                array('classname' => 'recent_works', 'description' => __('Recent works from the portfolio.', 'dayneo'),) // Args
         );
     }
 
@@ -28,7 +28,7 @@ class Daydream_Recent_Works_Widget extends WP_Widget {
         <div class="recent-works-items clearfix">
             <?php
             $args = array(
-                'post_type' => 'daydream_portfolio',
+                'post_type' => 'dayneo_portfolio',
                 'posts_per_page' => $number,
                 'has_password' => false
             );
@@ -39,10 +39,10 @@ class Daydream_Recent_Works_Widget extends WP_Widget {
                     if (has_post_thumbnail()):
 
                         $link_target = "";
-                        $url_check = get_post_meta(get_the_ID(), 'daydream_link_icon_url', true);
+                        $url_check = get_post_meta(get_the_ID(), 'dayneo_link_icon_url', true);
                         if (!empty($url_check)) {
                             $new_permalink = $url_check;
-                            if (get_post_meta(get_the_ID(), 'daydream_link_icon_target', true) == "yes") {
+                            if (get_post_meta(get_the_ID(), 'dayneo_link_icon_target', true) == "yes") {
                                 $link_target = ' target="_blank"';
                             }
                         } else {
@@ -78,12 +78,12 @@ class Daydream_Recent_Works_Widget extends WP_Widget {
         $instance = wp_parse_args((array) $instance, $defaults);
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php echo esc_html_e( 'Title', 'daydream' ); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php echo esc_html_e( 'Title', 'dayneo' ); ?></label>
             <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" value="<?php echo esc_attr($instance['title']); ?>" />
         </p>
 
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('number')); ?>"><?php echo esc_html_e( 'Number of items to show', 'daydream' ); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('number')); ?>"><?php echo esc_html_e( 'Number of items to show', 'dayneo' ); ?></label>
             <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id('number')); ?>" name="<?php echo esc_attr($this->get_field_name('number')); ?>" value="<?php echo esc_attr($instance['number']); ?>" />
         </p>
         <?php

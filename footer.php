@@ -5,26 +5,26 @@
  * Contains the closing of the .wrapper div and all content after.
  *
  *
- * @package daydream
+ * @package dayneo
  */
-$dd_footer_widget_col = daydream_get_option( 'dd_footer_widget_col', 'disable' );
+$dd_footer_widget_col = dayneo_get_option( 'dd_footer_widget_col', 'disable' );
 if ( ($dd_footer_widget_col != "") || ($dd_footer_widget_col != "disable") ) {
-	$daydream_footer_css = '';
+	$dayneo_footer_css = '';
 	if ( $dd_footer_widget_col == "one" ) {
-		$daydream_footer_css = 'col-sm-12';
+		$dayneo_footer_css = 'col-sm-12';
 	}
 	if ( $dd_footer_widget_col == "two" ) {
-		$daydream_footer_css = 'col-sm-6';
+		$dayneo_footer_css = 'col-sm-6';
 	}
 	if ( $dd_footer_widget_col == "three" ) {
-		$daydream_footer_css = 'col-sm-4';
+		$dayneo_footer_css = 'col-sm-4';
 	}
 	if ( $dd_footer_widget_col == "four" ) {
-		$daydream_footer_css = 'col-sm-3';
+		$dayneo_footer_css = 'col-sm-3';
 	}
 }
 
-$dd_footer_parallax	 = daydream_get_option( 'dd_footer_parallax', '' );
+$dd_footer_parallax	 = dayneo_get_option( 'dd_footer_parallax', '' );
 $foo_class		 = '';
 if ( $dd_footer_parallax == 1 ) {
 	$foo_class = 'bg-black-alfa-80';
@@ -36,7 +36,7 @@ if ( $dd_footer_parallax == 1 ) {
         <?php if ( ($dd_footer_widget_col != "disable" ) ) { ?>
             <div class="container">
                 <div class="row padd-50">
-                    <div class="<?php echo esc_attr($daydream_footer_css); ?>">
+                    <div class="<?php echo esc_attr($dayneo_footer_css); ?>">
                         <?php
                         if ( ! dynamic_sidebar( 'footer-1' ) ) :
                             //Do Nothing
@@ -44,7 +44,7 @@ if ( $dd_footer_parallax == 1 ) {
                         ?>
                     </div>
                     <?php if ( $dd_footer_widget_col != "one" ) { ?>
-                        <div class="<?php echo esc_attr($daydream_footer_css); ?>">
+                        <div class="<?php echo esc_attr($dayneo_footer_css); ?>">
                             <?php
                             if ( ! dynamic_sidebar( 'footer-2' ) ) :
                                 //Do Nothing
@@ -52,7 +52,7 @@ if ( $dd_footer_parallax == 1 ) {
                             ?>
                         </div>
                     <?php } if ( $dd_footer_widget_col != "one" && $dd_footer_widget_col != "two" ) { ?>
-                        <div class="<?php echo esc_attr($daydream_footer_css); ?>">
+                        <div class="<?php echo esc_attr($dayneo_footer_css); ?>">
                             <?php
                             if ( ! dynamic_sidebar( 'footer-3' ) ) :
                                 //Do Nothing
@@ -60,7 +60,7 @@ if ( $dd_footer_parallax == 1 ) {
                             ?>
                         </div>
                     <?php } if ( $dd_footer_widget_col != "one" && $dd_footer_widget_col != "two" && $dd_footer_widget_col != "three" ) { ?>
-                        <div class="<?php echo esc_attr($daydream_footer_css); ?>">
+                        <div class="<?php echo esc_attr($dayneo_footer_css); ?>">
                             <?php
                             if ( ! dynamic_sidebar( 'footer-4' ) ) :
                                 //Do Nothing
@@ -76,7 +76,7 @@ if ( $dd_footer_parallax == 1 ) {
                 <div class="row">
                     <div class="col-sm-12">
                         <?php
-                        $dd_footer_content = daydream_get_option( 'dd_footer_content', '' );
+                        $dd_footer_content = dayneo_get_option( 'dd_footer_content', '' );
                         echo wp_kses_post( $dd_footer_content );
                         ?>
                     </div>
@@ -92,7 +92,7 @@ if ( $dd_footer_parallax == 1 ) {
 
 <!-- SHOP CART -->
 <?php
-$dd_woocommerce_cart_link_main_nav = daydream_get_option( 'dd_woocommerce_cart_link_main_nav', '1' );
+$dd_woocommerce_cart_link_main_nav = dayneo_get_option( 'dd_woocommerce_cart_link_main_nav', '1' );
 if ( class_exists( 'Woocommerce' ) && $dd_woocommerce_cart_link_main_nav ) {
 	global $woocommerce;
 
@@ -111,7 +111,7 @@ if ( class_exists( 'Woocommerce' ) && $dd_woocommerce_cart_link_main_nav ) {
 				<div class="off-canvas-cart-content">
 					<div class="off-canvas-cart-content-wrap">
 
-						<?php esc_html_e( 'Your cart is currently empty.', 'daydream' ); ?>
+						<?php esc_html_e( 'Your cart is currently empty.', 'dayneo' ); ?>
 
 					</div>
 				</div>
@@ -169,7 +169,7 @@ if ( class_exists( 'Woocommerce' ) && $dd_woocommerce_cart_link_main_nav ) {
 					<div class="off-canvas-cart-info">
 						<div class="row">
 							<div class="col-xs-6">
-								<h4 class="m-0"><?php esc_html_e( 'Total:', 'daydream' ); ?></h4>
+								<h4 class="m-0"><?php esc_html_e( 'Total:', 'dayneo' ); ?></h4>
 							</div>
 							<div class="col-xs-6">
 								<h4 class="m-0 text-right"><?php echo wc_price( $woocommerce->cart->cart_contents_total ); ?></h4>
@@ -178,8 +178,8 @@ if ( class_exists( 'Woocommerce' ) && $dd_woocommerce_cart_link_main_nav ) {
 					</div>
 
 					<div class="off-canvas-cart-control">
-						<a href="<?php echo esc_url(get_permalink( get_option( 'woocommerce_checkout_page_id' ) )); ?>" class="btn btn-lg btn-block btn-outline btn-fade btn-round btn-dark"><?php esc_html_e( 'Checkout', 'daydream' ); ?></a>
-						<a href="<?php echo esc_url(get_permalink( get_option( 'woocommerce_cart_page_id' ) )); ?>" class="btn btn-lg btn-block btn-round btn-base"><?php esc_html_e( 'Edit Cart', 'daydream' ); ?></a>
+						<a href="<?php echo esc_url(get_permalink( get_option( 'woocommerce_checkout_page_id' ) )); ?>" class="btn btn-lg btn-block btn-outline btn-fade btn-round btn-dark"><?php esc_html_e( 'Checkout', 'dayneo' ); ?></a>
+						<a href="<?php echo esc_url(get_permalink( get_option( 'woocommerce_cart_page_id' ) )); ?>" class="btn btn-lg btn-block btn-round btn-base"><?php esc_html_e( 'Edit Cart', 'dayneo' ); ?></a>
 					</div>
 				</div>
 

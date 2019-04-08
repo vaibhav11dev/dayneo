@@ -1,4 +1,4 @@
-=== Daydream ===
+=== Dayneo ===
 
 Tags: grid-layout, footer-widgets, blog, news, photography, buddypress, two-columns, left-sidebar, right-sidebar, full-width-template, sticky-post, threaded-comments, microformats, post-formats, flexible-header, featured-images, custom-background, custom-colors, custom-header, custom-menu, theme-options, translation-ready
 Requires at least: WordPress 4.8
@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Daydream is multipurpose responsive WordPress theme with light weight. Ready to use for any purpose such as business, corporate, agency, app, news, blog, magazine, cleaning services, construction, designs, freelancer, restaurant and many more. Daydream templates are built with super fast light weight Elementor page builder with drag and drop function so your website will not load heavily. We have added lots of options in customizer panel so you don’t need any coding knowledge.
+Dayneo is multipurpose responsive WordPress theme with light weight. Ready to use for any purpose such as business, corporate, agency, app, news, blog, magazine, cleaning services, construction, designs, freelancer, restaurant and many more. Dayneo templates are built with super fast light weight Elementor page builder with drag and drop function so your website will not load heavily. We have added lots of options in customizer panel so you don’t need any coding knowledge.
 
 == Installation ==
 
@@ -20,8 +20,8 @@ Daydream is multipurpose responsive WordPress theme with light weight. Ready to 
 
 == Frequently Asked Questions ==
 
-= Is Daydream free to use? =
-Yes! `Daydream` core features are absolutely free.
+= Is Dayneo free to use? =
+Yes! `Dayneo` core features are absolutely free.
 
 == Changelog
 

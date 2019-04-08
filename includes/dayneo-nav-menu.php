@@ -1,8 +1,8 @@
 <?php
     /**
-     * daydream_Walker_Nav_Menu
+     * dayneo_Walker_Nav_Menu
      */
-    class Daydream_Walker_Nav_Menu extends Walker_Nav_Menu {
+    class Dayneo_Walker_Nav_Menu extends Walker_Nav_Menu {
 	    /**
 	     * @see   Walker::start_el()
 	     * @since 1.0.0
@@ -85,7 +85,7 @@
 		     * if there is a value in the attr_title property. If the attr_title
 		     * property is NOT null we apply it as the class name for the glyphicon.
 		     */
-		    if ( daydream_get_option( 'dd_main_menu_hover_effect', 'rollover' ) == 'disable' ) {
+		    if ( dayneo_get_option( 'dd_main_menu_hover_effect', 'rollover' ) == 'disable' ) {
 			    $item_output .= '<a' . $attributes . '>';
 		    } else {
 			    $item_output .= '<a' . $attributes . '><span data-hover="' . $item->title . '">';
@@ -93,7 +93,7 @@
 
 		    $item_output	 .= $args->link_before . apply_filters( 'the_title', $item->title_2, $item->ID ) . $args->link_after;
 		    $item_output	 .= ( $args->has_children && 0 === $depth ) ? ' <span class="arrow"></span>' : '';
-		    if ( daydream_get_option( 'dd_main_menu_hover_effect', 'rollover' ) == 'disable' ) {
+		    if ( dayneo_get_option( 'dd_main_menu_hover_effect', 'rollover' ) == 'disable' ) {
 			    $item_output .= '</a>';
 		    } else {
 			    $item_output .= '</span></a>';

@@ -21,9 +21,9 @@ get_header();
 
 			get_template_part( 'template-parts/content', 'page' );
 
-			$dd_share_this = daydream_get_option( 'dd_share_this', 'single' );
+			$dd_share_this = dayneo_get_option( 'dd_share_this', 'single' );
 			if ( $dd_share_this == 'all' || $dd_share_this == 'page' ) {
-				daydream_sharethis();
+				dayneo_sharethis();
 			}
 
 			//hide from static homepage, allowed in all normal pages. 

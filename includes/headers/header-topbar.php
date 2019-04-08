@@ -3,7 +3,7 @@
  * Template part for displaying header topbar
  *
  *
- * @package daydream
+ * @package dayneo
  */
 global $post, $wp_query, $dd_options;
 
@@ -19,10 +19,10 @@ if ( $wp_query->is_posts_page ) {
 }
 
 $topbar_class		 = '';
-$dd_header_type		 = daydream_get_option( 'dd_header_type', 'h1' );
-$daydream_header_type	 = get_post_meta( $post_id, 'daydream_header_type', true );
+$dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h1' );
+$dayneo_header_type	 = get_post_meta( $post_id, 'dayneo_header_type', true );
 if ( is_page() ) {
-	if ( ($daydream_header_type == 'h5') || ($daydream_header_type == 'default' && $dd_header_type == 'h5') ) {
+	if ( ($dayneo_header_type == 'h5') || ($dayneo_header_type == 'default' && $dd_header_type == 'h5') ) {
 		$topbar_class = 'top-bar-color';
 	}
 } else {

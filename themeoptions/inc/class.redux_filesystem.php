@@ -28,7 +28,7 @@
             public function __construct() {
                 $this->parent->admin_notices[] = array(
                     'type'    => 'error',
-                    'msg'     => '<strong>' . __( 'File Permission Issues', 'daydream' ) . '</strong><br/>' . sprintf( __( 'We were unable to modify required files. Please check your permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href="%s" target="_blank">outlined here</a>.', 'daydream' ), 'https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants' ),
+                    'msg'     => '<strong>' . __( 'File Permission Issues', 'dayneo' ) . '</strong><br/>' . sprintf( __( 'We were unable to modify required files. Please check your permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href="%s" target="_blank">outlined here</a>.', 'dayneo' ), 'https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants' ),
                     'id'      => 'redux-wp-login',
                     'dismiss' => false,
                 );
@@ -57,7 +57,7 @@
             public function ftp_form() {
                 if ( isset( $this->parent->ftp_form ) && ! empty( $this->parent->ftp_form ) ) {
                     echo '<div class="wrap"><div class="error"><p>';
-                    echo '<strong>' . __( 'File Permission Issues', 'daydream' ) . '</strong><br/>' . sprintf( __( 'We were unable to modify required files. Please ensure that <code>%1$1s</code> has the proper read-write permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href="%2$2s" target="_blank">outlined here</a>.', 'daydream' ), Redux_Helpers::cleanFilePath( trailingslashit( WP_CONTENT_DIR ) ) . '/uploads/', 'https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants' );
+                    echo '<strong>' . __( 'File Permission Issues', 'dayneo' ) . '</strong><br/>' . sprintf( __( 'We were unable to modify required files. Please ensure that <code>%1$1s</code> has the proper read-write permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href="%2$2s" target="_blank">outlined here</a>.', 'dayneo' ), Redux_Helpers::cleanFilePath( trailingslashit( WP_CONTENT_DIR ) ) . '/uploads/', 'https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants' );
                     echo '</p></div><h2></h2>' . '</div>';
                 }
             }
@@ -268,7 +268,7 @@
                     $this->killswitch              = true;
                     $this->parent->admin_notices[] = array(
                         'type'    => 'error',
-                        'msg'     => '<strong>' . __( 'File Permission Issues', 'daydream' ) . '</strong><br/>' . sprintf( __( 'We were unable to modify required files. Please ensure that <code>%1$1s</code> has the proper read-write permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href="%2$2s" target="_blank">outlined here</a>.', 'daydream' ), Redux_Helpers::cleanFilePath( trailingslashit( WP_CONTENT_DIR ) ) . '/uploads/', 'https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants' ),
+                        'msg'     => '<strong>' . __( 'File Permission Issues', 'dayneo' ) . '</strong><br/>' . sprintf( __( 'We were unable to modify required files. Please ensure that <code>%1$1s</code> has the proper read-write permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href="%2$2s" target="_blank">outlined here</a>.', 'dayneo' ), Redux_Helpers::cleanFilePath( trailingslashit( WP_CONTENT_DIR ) ) . '/uploads/', 'https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants' ),
                         'id'      => 'redux-wp-login',
                         'dismiss' => false,
                     );

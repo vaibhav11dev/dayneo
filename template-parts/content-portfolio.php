@@ -3,17 +3,17 @@
  * Template part for displaying posts
  *
  *
- * @package daydream
+ * @package dayneo
  */
 // The Query
 global $paged, $dd_options;
-$dd_portfolio_no_item_per_page	 = daydream_get_option( 'dd_portfolio_no_item_per_page', '10' );
+$dd_portfolio_no_item_per_page	 = dayneo_get_option( 'dd_portfolio_no_item_per_page', '10' );
 $args				 = array(
-    'post_type'	 => 'daydream_portfolio',
+    'post_type'	 => 'dayneo_portfolio',
     'paged'		 => $paged,
     'posts_per_page' => $dd_portfolio_no_item_per_page,
 );
-$pcats				 = get_post_meta( get_the_ID(), 'daydream_portfolio_category', true );
+$pcats				 = get_post_meta( get_the_ID(), 'dayneo_portfolio_category', true );
 if ( $pcats && $pcats[ 0 ] == 0 ) {
 	unset( $pcats[ 0 ] );
 }
@@ -30,13 +30,13 @@ $portfolio = new WP_Query( $args );
 if ( ! post_password_required( $portfolio->ID ) ):
 
 	$all_terms = get_terms( 'portfolio_category' );
-	if ( is_array( $all_terms ) && ! empty( $all_terms ) && get_post_meta( $portfolio->ID, 'daydream_portfolio_filters', true ) != 'no' ):
+	if ( is_array( $all_terms ) && ! empty( $all_terms ) && get_post_meta( $portfolio->ID, 'dayneo_portfolio_filters', true ) != 'no' ):
 		?>
 		<!-- PORTFOLIO FILTERS -->
 		<div class="row">
 		    <div class="col-sm-12">
 			<ul id="filters" class="portfolio-tabs filters">
-			    <li><a href="#" class="current" data-filter="*"><?php echo esc_html_e( 'All', 'daydream' ); ?></a></li>
+			    <li><a href="#" class="current" data-filter="*"><?php echo esc_html_e( 'All', 'dayneo' ); ?></a></li>
 			    <?php foreach ( $all_terms as $term ): ?>
                             <li><a data-filter=".<?php echo esc_attr($term->slug); ?>" href="#"><?php echo esc_html($term->name); ?></a></li>
 			    <?php endforeach; ?>
@@ -67,7 +67,7 @@ if ( ! post_password_required( $portfolio->ID ) ):
 				if ( has_post_thumbnail() ) {
 
 					if ( $pcats ) {
-						$permalink = daydream_addURLParameter( get_permalink(), 'portfolioID', $portfolio->ID );
+						$permalink = dayneo_addURLParameter( get_permalink(), 'portfolioID', $portfolio->ID );
 					} else {
 						$permalink = get_permalink();
 					}
@@ -116,6 +116,6 @@ if ( ! post_password_required( $portfolio->ID ) ):
 		
 	<?php
 
-	daydream_portfolio_pagination( $portfolio->max_num_pages, $range = 2 );
+	dayneo_portfolio_pagination( $portfolio->max_num_pages, $range = 2 );
 
 endif;

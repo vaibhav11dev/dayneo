@@ -1,16 +1,16 @@
 <?php
-add_action('widgets_init', 'daydream_tabs_load_widgets');
+add_action('widgets_init', 'dayneo_tabs_load_widgets');
 
-function daydream_tabs_load_widgets() {
-    register_widget('Daydream_Tabs_Widget');
+function dayneo_tabs_load_widgets() {
+    register_widget('Dayneo_Tabs_Widget');
 }
 
-class Daydream_Tabs_Widget extends WP_Widget {
+class Dayneo_Tabs_Widget extends WP_Widget {
 
     function __construct() {
         parent::__construct(
-                'daydream_tabs-widget', __('daydream: Tabs', 'daydream'), // Name
-                array('classname' => 'daydream_tabs', 'description' => __('Popular posts, recent post and comments.', 'daydream'),) // Args
+                'dayneo_tabs-widget', __('dayneo: Tabs', 'dayneo'), // Name
+                array('classname' => 'dayneo_tabs', 'description' => __('Popular posts, recent post and comments.', 'dayneo'),) // Args
         );
     }
 
@@ -38,17 +38,17 @@ class Daydream_Tabs_Widget extends WP_Widget {
             <div class="tabs-wrapper">
                 <ul id="tabs" class="tabset tabs">
                     <?php if ($show_popular_posts == 'true'): ?>
-                        <li><a href="#tab-popular"><?php esc_html_e('Popular', 'daydream'); ?></a></li>
+                        <li><a href="#tab-popular"><?php esc_html_e('Popular', 'dayneo'); ?></a></li>
                         <?php
                     endif;
                     if ($show_recent_posts == 'true'):
                         ?>
-                        <li><a href="#tab-recent"><?php esc_html_e('Recent', 'daydream'); ?></a></li>
+                        <li><a href="#tab-recent"><?php esc_html_e('Recent', 'dayneo'); ?></a></li>
                         <?php
                     endif;
                     if ($show_comments == 'true'):
                         ?>
-                        <li><a href="#tab-comments"><?php esc_html_e('Comments', 'daydream'); ?></a></li>
+                        <li><a href="#tab-comments"><?php esc_html_e('Comments', 'dayneo'); ?></a></li>
                     <?php endif; ?>
                 </ul>
                 <div class="tab-box tabs-container">
@@ -58,7 +58,7 @@ class Daydream_Tabs_Widget extends WP_Widget {
                             if ($orderby == 'Highest Comments') {
                                 $order_string = '&orderby=comment_count';
                             } else {
-                                $order_string = '&meta_key=daydream_post_views_count&orderby=meta_value_num';
+                                $order_string = '&meta_key=dayneo_post_views_count&orderby=meta_value_num';
                             }
                             $popular_posts = new WP_Query('showposts=' . $posts . $order_string . '&order=DESC');
                             if ($popular_posts->have_posts()):
@@ -134,10 +134,10 @@ class Daydream_Tabs_Widget extends WP_Widget {
                                             <?php echo get_avatar($comment, '50'); ?>
                                         </div>
                                         <div class="post-holder">
-                                            <a class="comment-text-side" href="<?php echo esc_url(get_permalink($comment->ID)); ?>#comment-<?php echo esc_attr($comment->comment_ID); ?>" title="<?php echo esc_attr(strip_tags($comment->comment_author)); ?> on <?php echo esc_attr($comment->post_title); ?>"><?php echo esc_attr(strip_tags($comment->comment_author)); ?><?php esc_html_e(' says', 'daydream'); ?></a>
+                                            <a class="comment-text-side" href="<?php echo esc_url(get_permalink($comment->ID)); ?>#comment-<?php echo esc_attr($comment->comment_ID); ?>" title="<?php echo esc_attr(strip_tags($comment->comment_author)); ?> on <?php echo esc_attr($comment->post_title); ?>"><?php echo esc_attr(strip_tags($comment->comment_author)); ?><?php esc_html_e(' says', 'dayneo'); ?></a>
 
                                             <div class="meta">
-                                                <?php echo daydream_truncate(strip_tags($comment->com_excerpt), 70); ?>
+                                                <?php echo dayneo_truncate(strip_tags($comment->com_excerpt), 70); ?>
                                             </div>
                                         </div>
                                     </li>
@@ -181,43 +181,43 @@ class Daydream_Tabs_Widget extends WP_Widget {
         $instance = wp_parse_args((array) $instance, $defaults);
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('orderby')); ?>"><?php esc_html_e('Popular Posts Order By', 'daydream'); ?>:</label>
+            <label for="<?php echo esc_attr($this->get_field_id('orderby')); ?>"><?php esc_html_e('Popular Posts Order By', 'dayneo'); ?>:</label>
             <select id="<?php echo esc_attr($this->get_field_id('orderby')); ?>" name="<?php echo esc_attr($this->get_field_name('orderby')); ?>" class="widefat" style="width:100%;">
                 <option <?php
                 if ('Highest Comments' == $instance['orderby']) {
                     echo 'selected="selected"';
                 }
-                ?>><?php esc_html_e('Highest Comments', 'daydream'); ?></option>
+                ?>><?php esc_html_e('Highest Comments', 'dayneo'); ?></option>
                 <option <?php
                 if ('Highest Views' == $instance['orderby']) {
                     echo 'selected="selected"';
                 }
-                ?>><?php esc_html_e('Highest Views', 'daydream'); ?></option>
+                ?>><?php esc_html_e('Highest Views', 'dayneo'); ?></option>
             </select>
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('posts')); ?>"><?php esc_html_e('Number of popular posts vaibhav', 'daydream'); ?>:</label>
+            <label for="<?php echo esc_attr($this->get_field_id('posts')); ?>"><?php esc_html_e('Number of popular posts vaibhav', 'dayneo'); ?>:</label>
             <input class="widefat" type="text" style="width: 30px;" id="<?php echo esc_attr($this->get_field_id('posts')); ?>" name="<?php echo esc_attr($this->get_field_name('posts')); ?>" value="<?php echo esc_attr($instance['posts']); ?>"/>
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('tags')); ?>"><?php esc_html_e('Number of recent posts', 'daydream'); ?>:</label>
+            <label for="<?php echo esc_attr($this->get_field_id('tags')); ?>"><?php esc_html_e('Number of recent posts', 'dayneo'); ?>:</label>
             <input class="widefat" type="text" style="width: 30px;" id="<?php echo esc_attr($this->get_field_id('tags')); ?>" name="<?php echo esc_attr($this->get_field_name('tags')); ?>" value="<?php echo esc_attr($instance['tags']); ?>"/>
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('comments')); ?>"><?php esc_html_e('Number of comments', 'daydream'); ?>:</label>
+            <label for="<?php echo esc_attr($this->get_field_id('comments')); ?>"><?php esc_html_e('Number of comments', 'dayneo'); ?>:</label>
             <input class="widefat" type="text" style="width: 30px;" id="<?php echo esc_attr($this->get_field_id('comments')); ?>" name="<?php echo esc_attr($this->get_field_name('comments')); ?>" value="<?php echo esc_attr($instance['comments']); ?>"/>
         </p>
         <p>
             <input class="checkbox" type="checkbox" <?php checked($instance['show_popular_posts'], 'on'); ?> id="<?php echo esc_attr($this->get_field_id('show_popular_posts')); ?>" name="<?php echo esc_attr($this->get_field_name('show_popular_posts')); ?>"/>
-            <label for="<?php echo esc_attr($this->get_field_id('show_popular_posts')); ?>"><?php esc_html_e('Show popular posts', 'daydream'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('show_popular_posts')); ?>"><?php esc_html_e('Show popular posts', 'dayneo'); ?></label>
         </p>
         <p>
             <input class="checkbox" type="checkbox" <?php checked($instance['show_recent_posts'], 'on'); ?> id="<?php echo esc_attr($this->get_field_id('show_recent_posts')); ?>" name="<?php echo esc_attr($this->get_field_name('show_recent_posts')); ?>"/>
-            <label for="<?php echo esc_attr($this->get_field_id('show_recent_posts')); ?>"><?php esc_html_e('Show recent posts', 'daydream'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('show_recent_posts')); ?>"><?php esc_html_e('Show recent posts', 'dayneo'); ?></label>
         </p>
         <p>
             <input class="checkbox" type="checkbox" <?php checked($instance['show_comments'], 'on'); ?> id="<?php echo esc_attr($this->get_field_id('show_comments')); ?>" name="<?php echo esc_attr($this->get_field_name('show_comments')); ?>"/>
-            <label for="<?php echo esc_attr($this->get_field_id('show_comments')); ?>"><?php esc_html_e('Show comments', 'daydream'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('show_comments')); ?>"><?php esc_html_e('Show comments', 'dayneo'); ?></label>
         </p>
         <?php
     }

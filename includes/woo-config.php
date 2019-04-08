@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param type $fragments
  * @return type $fragments
  */
-function daydream_woocommerce_header_add_to_cart_fragment1( $fragments ) {
+function dayneo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
 	global $woocommerce;
 
 	ob_start();
@@ -42,9 +42,9 @@ function daydream_woocommerce_header_add_to_cart_fragment1( $fragments ) {
 	return $fragments;
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'daydream_woocommerce_header_add_to_cart_fragment1', 9 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'dayneo_woocommerce_header_add_to_cart_fragment1', 9 );
 
-function daydream_woocommerce_header_add_to_cart_fragment2( $fragments ) {
+function dayneo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
 	global $woocommerce;
 
 	ob_start();
@@ -63,7 +63,7 @@ function daydream_woocommerce_header_add_to_cart_fragment2( $fragments ) {
 				<div class="off-canvas-cart-content">
 					<div class="off-canvas-cart-content-wrap">
 
-						<?php esc_html_e( 'Your cart is currently empty.', 'daydream' ); ?>
+						<?php esc_html_e( 'Your cart is currently empty.', 'dayneo' ); ?>
 
 					</div>
 				</div>
@@ -121,7 +121,7 @@ function daydream_woocommerce_header_add_to_cart_fragment2( $fragments ) {
 					<div class="off-canvas-cart-info">
 						<div class="row">
 							<div class="col-xs-6">
-								<h4 class="m-0"><?php esc_html_e( 'Total:', 'daydream' ); ?></h4>
+								<h4 class="m-0"><?php esc_html_e( 'Total:', 'dayneo' ); ?></h4>
 							</div>
 							<div class="col-xs-6">
 								<h4 class="m-0 text-right"><?php echo wc_price( $woocommerce->cart->cart_contents_total ); ?></h4>
@@ -130,8 +130,8 @@ function daydream_woocommerce_header_add_to_cart_fragment2( $fragments ) {
 					</div>
 
 					<div class="off-canvas-cart-control">
-						<a href="<?php echo esc_url(get_permalink( get_option( 'woocommerce_checkout_page_id' ) )); ?>" class="btn btn-lg btn-block btn-outline btn-fade btn-round btn-dark"><?php esc_html_e( 'Checkout', 'daydream' ); ?></a>
-						<a href="<?php echo esc_url(get_permalink( get_option( 'woocommerce_cart_page_id' ) )); ?>" class="btn btn-lg btn-block btn-round btn-base"><?php esc_html_e( 'Edit Cart', 'daydream' ); ?></a>
+						<a href="<?php echo esc_url(get_permalink( get_option( 'woocommerce_checkout_page_id' ) )); ?>" class="btn btn-lg btn-block btn-outline btn-fade btn-round btn-dark"><?php esc_html_e( 'Checkout', 'dayneo' ); ?></a>
+						<a href="<?php echo esc_url(get_permalink( get_option( 'woocommerce_cart_page_id' ) )); ?>" class="btn btn-lg btn-block btn-round btn-base"><?php esc_html_e( 'Edit Cart', 'dayneo' ); ?></a>
 					</div>
 				</div>
 
@@ -145,7 +145,7 @@ function daydream_woocommerce_header_add_to_cart_fragment2( $fragments ) {
 	return $fragments;
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'daydream_woocommerce_header_add_to_cart_fragment2', 10 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'dayneo_woocommerce_header_add_to_cart_fragment2', 10 );
 
 // Remove product in the cart using ajax
 function restora_ajax_product_remove()
@@ -201,11 +201,11 @@ add_filter( 'woocommerce_get_price_html', 'restora_woocommerce_price_html', 100,
  * 
  * @return boolean
  */
-function daydream_shop_title() {
+function dayneo_shop_title() {
 	return false;
 }
 
-add_filter( 'woocommerce_show_page_title', 'daydream_shop_title', 10 );
+add_filter( 'woocommerce_show_page_title', 'dayneo_shop_title', 10 );
 
 /**
  * WooCommerce(shop-page) - Remove shop page breadcrumb
@@ -220,7 +220,7 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 
  * 
  * @return boolean
  */
-function daydream_woocommerce_template_loop_product_title() {
+function dayneo_woocommerce_template_loop_product_title() {
 	global $product;
 
 	$link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
@@ -229,14 +229,14 @@ function daydream_woocommerce_template_loop_product_title() {
 }
 
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
-add_action( 'woocommerce_shop_loop_item_title', 'daydream_woocommerce_template_loop_product_title', 10 );
+add_action( 'woocommerce_shop_loop_item_title', 'dayneo_woocommerce_template_loop_product_title', 10 );
 
 /**
  * WooCommerce(shop-page) - Add view item button in shop page
  * 
  * @global type $product
  */
-function daydream_woocommerce_template_loop_view_item() {
+function dayneo_woocommerce_template_loop_view_item() {
 	global $product;
 
 	$link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
@@ -244,7 +244,7 @@ function daydream_woocommerce_template_loop_view_item() {
 	echo '<a href="' . esc_url( $link ) . '" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><i class="icon-eye icons"></i></a>';
 }
 
-add_action( 'woocommerce_after_shop_loop_item', 'daydream_woocommerce_template_loop_view_item', 11 );
+add_action( 'woocommerce_after_shop_loop_item', 'dayneo_woocommerce_template_loop_view_item', 11 );
 
 /**
  * WooCommerce(shop-page) - Add wishlist in shop page
@@ -253,7 +253,7 @@ add_action( 'woocommerce_after_shop_loop_item', 'daydream_woocommerce_template_l
  */
 if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_add_wishlist_on_loop' ) ) {
 
-	function daydream_yith_wcwl_add_wishlist_on_loop() {
+	function dayneo_yith_wcwl_add_wishlist_on_loop() {
 		?>
 		<div class="button wishlist">
 			<?php echo do_shortcode( '[yith_wcwl_add_to_wishlist]' ); ?>
@@ -261,7 +261,7 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_add_wishlist_on_loo
 		<?php
 	}
 
-	add_action( 'woocommerce_after_shop_loop_item', 'daydream_yith_wcwl_add_wishlist_on_loop', 12 );
+	add_action( 'woocommerce_after_shop_loop_item', 'dayneo_yith_wcwl_add_wishlist_on_loop', 12 );
 }
 
 /**
@@ -271,37 +271,37 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_add_wishlist_on_loo
  */
 //if ( function_exists( 'YITH_WCWL' ) ) {
 //
-//	function daydream_update_wishlist_count() {
+//	function dayneo_update_wishlist_count() {
 //		wp_send_json( YITH_WCWL()->count_products() );
 //	}
 //
 //}
-//add_action( 'wp_ajax_daydream_update_wishlist_count', 'daydream_update_wishlist_count' );
-//add_action( 'wp_ajax_nopriv_daydream_update_wishlist_count', 'daydream_update_wishlist_count' );
+//add_action( 'wp_ajax_dayneo_update_wishlist_count', 'dayneo_update_wishlist_count' );
+//add_action( 'wp_ajax_nopriv_dayneo_update_wishlist_count', 'dayneo_update_wishlist_count' );
 
 /**
  * WooCommerce(shop-page) - Add Custom product shorting filter in shop page
  * 
  * 
  */
-function daydream_woocommerce_ordering() {
-	$dd_woocommerce_daydream_ordering = daydream_get_option( 'dd_woocommerce_daydream_ordering', '0' );
+function dayneo_woocommerce_ordering() {
+	$dd_woocommerce_dayneo_ordering = dayneo_get_option( 'dd_woocommerce_dayneo_ordering', '0' );
 
 	// remove default shorting option
 	remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 	remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
-	if ( ! $dd_woocommerce_daydream_ordering ) {
-		add_action( 'woocommerce_before_shop_loop', 'daydream_woocommerce_catalog_ordering', 30 );
-		add_action( 'woocommerce_get_catalog_ordering_args', 'daydream_woocommerce_get_catalog_ordering_args', 20 );
-		add_filter( 'loop_shop_per_page', 'daydream_loop_shop_per_page' );
+	if ( ! $dd_woocommerce_dayneo_ordering ) {
+		add_action( 'woocommerce_before_shop_loop', 'dayneo_woocommerce_catalog_ordering', 30 );
+		add_action( 'woocommerce_get_catalog_ordering_args', 'dayneo_woocommerce_get_catalog_ordering_args', 20 );
+		add_filter( 'loop_shop_per_page', 'dayneo_loop_shop_per_page' );
 	}
 }
 
-add_action( 'init', 'daydream_woocommerce_ordering' );
+add_action( 'init', 'dayneo_woocommerce_ordering' );
 
-function daydream_woocommerce_catalog_ordering() {
+function dayneo_woocommerce_catalog_ordering() {
 
-	$dd_woo_items = daydream_get_option( 'dd_woo_items', '12' );
+	$dd_woo_items = dayneo_get_option( 'dd_woo_items', '12' );
 
 	if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
 
@@ -330,14 +330,14 @@ function daydream_woocommerce_catalog_ordering() {
 
 	$html	 .= '<ul class="form-control orderby order-dropdown">';
 	$html	 .= '<li>';
-	$html	 .= '<span class="current-li"><span class="current-li-content"><a>' . __( 'Sort by', 'daydream' ) . ' <strong>' . __( 'Default Order', 'daydream' ) . '</strong></a><i class="fa fa-angle-down"></i></span></span>';
+	$html	 .= '<span class="current-li"><span class="current-li-content"><a>' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a><i class="fa fa-angle-down"></i></span></span>';
 	$html	 .= '<ul>';
-	$html	 .= '<li class="' . (($pob == 'default') ? 'current' : '') . '"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_orderby', 'default' )) . '">' . __( 'Sort by', 'daydream' ) . ' <strong>' . __( 'Default Order', 'daydream' ) . '</strong></a></li>';
-	$html	 .= '<li class="' . (($pob == 'name') ? 'current' : '') . '"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_orderby', 'name' )) . '">' . __( 'Sort by', 'daydream' ) . ' <strong>' . __( 'Name', 'daydream' ) . '</strong></a></li>';
-	$html	 .= '<li class="' . (($pob == 'price') ? 'current' : '') . '"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_orderby', 'price' )) . '">' . __( 'Sort by', 'daydream' ) . ' <strong>' . __( 'Price', 'daydream' ) . '</strong></a></li>';
-	$html	 .= '<li class="' . (($pob == 'date') ? 'current' : '') . '"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_orderby', 'date' )) . '">' . __( 'Sort by', 'daydream' ) . ' <strong>' . __( 'Date', 'daydream' ) . '</strong></a></li>';
-	$html	 .= '<li class="' . (($pob == 'popularity') ? 'current' : '') . '"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_orderby', 'popularity' )) . '">' . __( 'Sort by', 'daydream' ) . ' <strong>' . __( 'Popularity', 'daydream' ) . '</strong></a></li>';
-	$html	 .= '<li class="' . (($pob == 'rating') ? 'current' : '') . '"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_orderby', 'rating' )) . '">' . __( 'Sort by', 'daydream' ) . ' <strong>' . __( 'Rating', 'daydream' ) . '</strong></a></li>';
+	$html	 .= '<li class="' . (($pob == 'default') ? 'current' : '') . '"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_orderby', 'default' )) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a></li>';
+	$html	 .= '<li class="' . (($pob == 'name') ? 'current' : '') . '"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_orderby', 'name' )) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Name', 'dayneo' ) . '</strong></a></li>';
+	$html	 .= '<li class="' . (($pob == 'price') ? 'current' : '') . '"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_orderby', 'price' )) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Price', 'dayneo' ) . '</strong></a></li>';
+	$html	 .= '<li class="' . (($pob == 'date') ? 'current' : '') . '"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_orderby', 'date' )) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Date', 'dayneo' ) . '</strong></a></li>';
+	$html	 .= '<li class="' . (($pob == 'popularity') ? 'current' : '') . '"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_orderby', 'popularity' )) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Popularity', 'dayneo' ) . '</strong></a></li>';
+	$html	 .= '<li class="' . (($pob == 'rating') ? 'current' : '') . '"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_orderby', 'rating' )) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Rating', 'dayneo' ) . '</strong></a></li>';
 	$html	 .= '</ul>';
 	$html	 .= '</li>';
 	$html	 .= '</ul>';
@@ -345,10 +345,10 @@ function daydream_woocommerce_catalog_ordering() {
 
 	$html .= '<ul class="order">';
 	if ( $po == 'desc' ):
-		$html .= '<li class="desc"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_order', 'asc' )) . '"><i class="icon icon-arrow-up"></i></a></li>';
+		$html .= '<li class="desc"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_order', 'asc' )) . '"><i class="icon icon-arrow-up"></i></a></li>';
 	endif;
 	if ( $po == 'asc' ):
-		$html .= '<li class="asc"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_order', 'desc' )) . '"><i class="icon icon-arrow-down"></i></a></li>';
+		$html .= '<li class="asc"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_order', 'desc' )) . '"><i class="icon icon-arrow-down"></i></a></li>';
 	endif;
 	$html .= '</ul>';
 
@@ -357,11 +357,11 @@ function daydream_woocommerce_catalog_ordering() {
 	$html	 .= '<div class="form-group col-sm-3 col-sm-offset-5">';
 	$html	 .= '<ul class="form-control sort-count order-dropdown">';
 	$html	 .= '<li>';
-	$html	 .= '<span class="current-li"><a>' . __( 'Show', 'daydream' ) . ' <strong>' . $per_page . ' ' . __( ' Products', 'daydream' ) . '</strong></a><i class="fa fa-angle-down"></i></span>';
+	$html	 .= '<span class="current-li"><a>' . __( 'Show', 'dayneo' ) . ' <strong>' . $per_page . ' ' . __( ' Products', 'dayneo' ) . '</strong></a><i class="fa fa-angle-down"></i></span>';
 	$html	 .= '<ul>';
-	$html	 .= '<li class="' . (($pc == $per_page) ? 'current' : '') . '"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_count', $per_page )) . '">' . __( 'Show', 'daydream' ) . ' <strong>' . $per_page . ' ' . __( 'Products', 'daydream' ) . '</strong></a></li>';
-	$html	 .= '<li class="' . (($pc == $per_page * 2) ? 'current' : '') . '"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_count', $per_page * 2 )) . '">' . __( 'Show', 'daydream' ) . ' <strong>' . ($per_page * 2) . ' ' . __( 'Products', 'daydream' ) . '</strong></a></li>';
-	$html	 .= '<li class="' . (($pc == $per_page * 3) ? 'current' : '') . '"><a href="' . esc_url(daydream_addURLParameter( $query_string, 'product_count', $per_page * 3 )) . '">' . __( 'Show', 'daydream' ) . ' <strong>' . ($per_page * 3) . ' ' . __( 'Products', 'daydream' ) . '</strong></a></li>';
+	$html	 .= '<li class="' . (($pc == $per_page) ? 'current' : '') . '"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_count', $per_page )) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . $per_page . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
+	$html	 .= '<li class="' . (($pc == $per_page * 2) ? 'current' : '') . '"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_count', $per_page * 2 )) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . ($per_page * 2) . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
+	$html	 .= '<li class="' . (($pc == $per_page * 3) ? 'current' : '') . '"><a href="' . esc_url(dayneo_addURLParameter( $query_string, 'product_count', $per_page * 3 )) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . ($per_page * 3) . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
 	$html	 .= '</ul>';
 	$html	 .= '</li>';
 	$html	 .= '</ul>';
@@ -372,7 +372,7 @@ function daydream_woocommerce_catalog_ordering() {
 	echo $html;
 }
 
-function daydream_woocommerce_get_catalog_ordering_args( $args ) {
+function dayneo_woocommerce_get_catalog_ordering_args( $args ) {
 	global $woocommerce;
 
 	if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
@@ -436,13 +436,13 @@ function daydream_woocommerce_get_catalog_ordering_args( $args ) {
 		$args[ 'order' ]	 = strtoupper( $args[ 'order' ] );
 		$args[ 'meta_key' ]	 = '';
 
-		add_filter( 'posts_clauses', 'daydream_order_by_rating_post_clauses' );
+		add_filter( 'posts_clauses', 'dayneo_order_by_rating_post_clauses' );
 	}
 
 	return $args;
 }
 
-function daydream_order_by_rating_post_clauses( $args ) {
+function dayneo_order_by_rating_post_clauses( $args ) {
 	global $wpdb;
 
 	$args[ 'fields' ] .= ", AVG( $wpdb->commentmeta.meta_value ) as average_rating ";
@@ -468,9 +468,9 @@ function daydream_order_by_rating_post_clauses( $args ) {
 	return $args;
 }
 
-function daydream_loop_shop_per_page() {
+function dayneo_loop_shop_per_page() {
 
-	$dd_woo_items = daydream_get_option( 'dd_woo_items', '12' );
+	$dd_woo_items = dayneo_get_option( 'dd_woo_items', '12' );
 
 	if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
 		parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
@@ -488,7 +488,7 @@ function daydream_loop_shop_per_page() {
 }
 
 /* bootstrap_input_classes hooks */
-function daydream_add_bootstrap_input_classes( $args, $key, $value = null ) {
+function dayneo_add_bootstrap_input_classes( $args, $key, $value = null ) {
 	
 	// Start field type switch case
 	switch ( $args[ 'type' ] ) {
@@ -537,7 +537,7 @@ function daydream_add_bootstrap_input_classes( $args, $key, $value = null ) {
 	return $args;
 }
 
-add_filter( 'woocommerce_form_field_args', 'daydream_add_bootstrap_input_classes', 10, 3 );
+add_filter( 'woocommerce_form_field_args', 'dayneo_add_bootstrap_input_classes', 10, 3 );
 
 // Hook in
 //add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
@@ -550,26 +550,26 @@ function custom_override_checkout_fields( $fields ) {
 
     /* begin order hooks */
     remove_action('woocommerce_view_order', 'woocommerce_order_details_table', 10);
-    add_action('woocommerce_view_order', 'daydream_woocommerce_view_order', 10);
+    add_action('woocommerce_view_order', 'dayneo_woocommerce_view_order', 10);
 
     remove_action('woocommerce_thankyou', 'woocommerce_order_details_table', 10);
-    add_action('woocommerce_thankyou', 'daydream_woocommerce_view_order', 10);
+    add_action('woocommerce_thankyou', 'dayneo_woocommerce_view_order', 10);
 
-    function daydream_woocommerce_view_order($order_id) {
+    function dayneo_woocommerce_view_order($order_id) {
         global $woocommerce;
 
         $order = wc_get_order( $order_id );
         $order_item_product = new WC_Order_Item_Product();
         ?>
-        <div class="daydream-order-details woocommerce-content-box table-responsive">
-            <h2><?php esc_html_e('Order Details', 'daydream'); ?></h2>
+        <div class="dayneo-order-details woocommerce-content-box table-responsive">
+            <h2><?php esc_html_e('Order Details', 'dayneo'); ?></h2>
             <table class="table cart-table order_details">
                 <thead>
                     <tr>
 			<th class="col-title"></th>
-                        <th class="col-title"><?php esc_html_e('Product', 'daydream'); ?></th>
-                        <th class="col-quantity"><?php esc_html_e('Quantity', 'daydream'); ?></th>
-                        <th class="col-subtotal"><?php esc_html_e('Total', 'daydream'); ?></th>
+                        <th class="col-title"><?php esc_html_e('Product', 'dayneo'); ?></th>
+                        <th class="col-quantity"><?php esc_html_e('Quantity', 'dayneo'); ?></th>
+                        <th class="col-subtotal"><?php esc_html_e('Total', 'dayneo'); ?></th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -627,7 +627,7 @@ function custom_override_checkout_fields( $fields ) {
                                             foreach ($download_files as $download_id => $file) {
                                                 $i++;
 
-                                                $links[] = '<small><a href="' . esc_url($file['download_url']) . '">' . sprintf(__('Download file%s', 'daydream'), ( count($download_files) > 1 ? ' ' . $i . ': ' : ': ')) . esc_html($file['name']) . '</a></small>';
+                                                $links[] = '<small><a href="' . esc_url($file['download_url']) . '">' . sprintf(__('Download file%s', 'dayneo'), ( count($download_files) > 1 ? ' ' . $i . ': ' : ': ')) . esc_html($file['name']) . '</a></small>';
                                             }
 
                                             echo '<br/>' . implode('<br/>', $links);
@@ -662,18 +662,18 @@ function custom_override_checkout_fields( $fields ) {
             <?php  do_action('woocommerce_order_details_after_order_table', $order); ?>
         </div>
 
-        <div class="daydream-customer-details woocommerce-content-box full-width">
+        <div class="dayneo-customer-details woocommerce-content-box full-width">
             <header>
-                <h2><?php esc_html_e('Customer details', 'daydream'); ?></h2>
+                <h2><?php esc_html_e('Customer details', 'dayneo'); ?></h2>
             </header>
             <dl class="customer_details">
                 <?php
                 if ($order->get_customer_note())
-                    echo '<dt>' . esc_html_e('Note:', 'daydream') . '</dt> <dd>' . esc_html($order->get_customer_note()) . '</dd>';
+                    echo '<dt>' . esc_html_e('Note:', 'dayneo') . '</dt> <dd>' . esc_html($order->get_customer_note()) . '</dd>';
                 if ($order->get_billing_email())
-                    echo '<dt>' . esc_html_e('Email:', 'daydream') . '</dt> <dd>' . esc_html($order->get_billing_email()) . '</dd>';
+                    echo '<dt>' . esc_html_e('Email:', 'dayneo') . '</dt> <dd>' . esc_html($order->get_billing_email()) . '</dd>';
                 if ($order->get_billing_phone())
-                    echo '<dt>' . esc_html_e('Telephone:', 'daydream') . '</dt> <dd>' . esc_html($order->get_billing_phone()) . '</dd>';
+                    echo '<dt>' . esc_html_e('Telephone:', 'dayneo') . '</dt> <dd>' . esc_html($order->get_billing_phone()) . '</dd>';
 
                 // Additional customer details hook
                 do_action('woocommerce_order_details_after_customer_details', $order);
@@ -689,12 +689,12 @@ function custom_override_checkout_fields( $fields ) {
                     <?php endif; ?>
 
                     <header class="title">
-                        <h3><?php esc_html_e('Billing Address', 'daydream'); ?></h3>
+                        <h3><?php esc_html_e('Billing Address', 'dayneo'); ?></h3>
                     </header>
                     <address><p>
                             <?php
                             if (!$order->get_formatted_billing_address())
-                                esc_html_e('N/A', 'daydream');
+                                esc_html_e('N/A', 'dayneo');
                             else
                                 echo esc_html($order->get_formatted_billing_address());
                             ?>
@@ -707,12 +707,12 @@ function custom_override_checkout_fields( $fields ) {
                     <div class="col-2">
 
                         <header class="title">
-                            <h3><?php esc_html_e('Shipping Address', 'daydream'); ?></h3>
+                            <h3><?php esc_html_e('Shipping Address', 'dayneo'); ?></h3>
                         </header>
                         <address><p>
                                 <?php
                                 if (!$order->get_formatted_shipping_address())
-                                    esc_html_e('N/A', 'daydream');
+                                    esc_html_e('N/A', 'dayneo');
                                 else
                                     echo esc_html($order->get_formatted_shipping_address());
                                 ?>

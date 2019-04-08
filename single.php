@@ -3,12 +3,12 @@
  * The template for displaying all single posts
  *
  *
- * @package daydream
+ * @package dayneo
  */
 get_header();
 
-$dd_similar_posts	 = daydream_get_option( 'dd_similar_posts', 'disable' );
-$dd_post_links		 = daydream_get_option( 'dd_post_links', 'after' );
+$dd_similar_posts	 = dayneo_get_option( 'dd_similar_posts', 'disable' );
+$dd_post_links		 = dayneo_get_option( 'dd_post_links', 'after' );
 ?>
 
 <!-- SINGLE BLOG -->
@@ -18,14 +18,14 @@ $dd_post_links		 = daydream_get_option( 'dd_post_links', 'after' );
 
 	    <!-- SECONDARY-2 -->	    
 	    <?php
-	    if ( daydream_lets_get_sidebar_2() == true ):
+	    if ( dayneo_lets_get_sidebar_2() == true ):
 		    get_sidebar( '2' );
 	    endif;
 	    ?>
 	    <!-- END SECONDARY-2 -->
 
 	    <!-- PRIMARY -->
-	    <div id="primary" class="<?php daydream_layout_class( $type = 1 ); ?> single-post">
+	    <div id="primary" class="<?php dayneo_layout_class( $type = 1 ); ?> single-post">
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -47,7 +47,7 @@ $dd_post_links		 = daydream_get_option( 'dd_post_links', 'after' );
 			if ( ($dd_similar_posts == "") || ($dd_similar_posts == "disable") ) {
 				//Do Nothing
 			} else {
-				daydream_similar_posts();
+				dayneo_similar_posts();
 			}
 			
 		endwhile; // End of the loop.
@@ -57,7 +57,7 @@ $dd_post_links		 = daydream_get_option( 'dd_post_links', 'after' );
 
 	    <!-- SECONDARY-1 -->
 	    <?php
-	    if ( daydream_lets_get_sidebar() == true ) {
+	    if ( dayneo_lets_get_sidebar() == true ) {
 		    get_sidebar();
 	    }
 	    ?>

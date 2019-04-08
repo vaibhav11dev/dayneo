@@ -26,11 +26,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="woocommerce-billing-fields">
 	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
-		<h5 class="text-title text-uppercase bottom-line"><?php esc_html_e( 'Billing &amp; Shipping', 'daydream' ); ?></h5>
+		<h5 class="text-title text-uppercase bottom-line"><?php esc_html_e( 'Billing &amp; Shipping', 'dayneo' ); ?></h5>
 
 	<?php else : ?>
 
-		<h5 class="text-title text-uppercase bottom-line"><?php esc_html_e( 'Billing details', 'daydream' ); ?></h5>
+		<h5 class="text-title text-uppercase bottom-line"><?php esc_html_e( 'Billing details', 'dayneo' ); ?></h5>
 
 	<?php endif; ?>
 
@@ -58,7 +58,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<p class="form-row form-row-wide create-account">
 				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ) ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account?', 'daydream' ); ?></span>
+					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ) ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account?', 'dayneo' ); ?></span>
 				</label>
 			</p>
 

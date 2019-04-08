@@ -86,9 +86,9 @@ jQuery(document).ready(function () {
 	);
 
 	/* Js - For Hero Header Type Page Metadata Options */
-	var theme_prefix = 'daydream_';
+	var theme_prefix = 'dayneo_';
 	var type = jQuery('#' + theme_prefix + 'hero_header_type').val();
-	var container = jQuery('#' + theme_prefix + 'hero_header_type').parents('#' + theme_prefix + 'daydream_page_options');
+	var container = jQuery('#' + theme_prefix + 'hero_header_type').parents('#' + theme_prefix + 'dayneo_page_options');
 
 	jQuery(container).find('.slider_note, .parallax_settings, .youtube_settings, .vimeo_settings, .self_video_settings, .herocontent_settings').hide();
 
@@ -111,7 +111,7 @@ jQuery(document).ready(function () {
 
 	jQuery('#' + theme_prefix + 'hero_header_type').change(function () {
 		var type = jQuery(this).val();
-		var container = jQuery(this).parents('#' + theme_prefix + 'daydream_page_options');
+		var container = jQuery(this).parents('#' + theme_prefix + 'dayneo_page_options');
 		jQuery(container).find('.slide1r_note, .parallax_settings, .youtube_settings, .vimeo_settings, .self_video_settings, .herocontent_settings').hide();
 
 		if (type == 'hero_parallax') {
@@ -135,7 +135,7 @@ jQuery(document).ready(function () {
 
 	/* Js - For Hero Header Height Page Metadata Options */
 	var type = jQuery('#' + theme_prefix + 'hero_height').val();
-	var container = jQuery('#' + theme_prefix + 'hero_height').parents('#' + theme_prefix + 'daydream_page_options');
+	var container = jQuery('#' + theme_prefix + 'hero_height').parents('#' + theme_prefix + 'dayneo_page_options');
 
 	jQuery(container).find('#' + theme_prefix + 'hero_height_custom').parents('.ved_metabox_field').hide();
 
@@ -145,7 +145,7 @@ jQuery(document).ready(function () {
 
 	jQuery('#' + theme_prefix + 'hero_height').change(function () {
 		var type = jQuery(this).val();
-		var container = jQuery(this).parents('#' + theme_prefix + 'daydream_page_options');
+		var container = jQuery(this).parents('#' + theme_prefix + 'dayneo_page_options');
 		jQuery(container).find('#' + theme_prefix + 'hero_height_custom').parents('.ved_metabox_field').hide();
 
 		if (type == 'custom') {
@@ -155,7 +155,7 @@ jQuery(document).ready(function () {
 
 	/* Js - For Page Title Bar Height Page Metadata Options */
 	var type = jQuery('#' + theme_prefix + 'page_title_bar_height').val();
-	var container = jQuery('#' + theme_prefix + 'page_title_bar_height').parents('#' + theme_prefix + 'daydream_page_options');
+	var container = jQuery('#' + theme_prefix + 'page_title_bar_height').parents('#' + theme_prefix + 'dayneo_page_options');
 
 	jQuery(container).find('#' + theme_prefix + 'page_title_bar_height_custom').parents('.ved_metabox_field').hide();
 
@@ -165,7 +165,7 @@ jQuery(document).ready(function () {
 
 	jQuery('#' + theme_prefix + 'page_title_bar_height').change(function () {
 		var type = jQuery(this).val();
-		var container = jQuery(this).parents('#' + theme_prefix + 'daydream_page_options');
+		var container = jQuery(this).parents('#' + theme_prefix + 'dayneo_page_options');
 		jQuery(container).find('#' + theme_prefix + 'page_title_bar_height_custom').parents('.ved_metabox_field').hide();
 
 		if (type == 'custom') {

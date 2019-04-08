@@ -3,11 +3,11 @@
  * Template part for displaying posts
  *
  *
- * @package daydream
+ * @package dayneo
  */
 // The Query
 global $dd_options;
-$dd_portfolio_no_item_per_page	 = daydream_get_option( 'dd_portfolio_no_item_per_page', '10' );
+$dd_portfolio_no_item_per_page	 = dayneo_get_option( 'dd_portfolio_no_item_per_page', '10' );
 
 if ( category_description() ):
 	?>
@@ -79,7 +79,7 @@ if ( category_description() ):
 
 <?php
 
-daydream_portfolio_pagination();
+dayneo_portfolio_pagination();
 
 /* Restore original Post Data */
 wp_reset_postdata();

@@ -1,15 +1,15 @@
 <?php
-add_action( 'widgets_init', 'daydream_contact_info_load_widgets' );
+add_action( 'widgets_init', 'dayneo_contact_info_load_widgets' );
 
-function daydream_contact_info_load_widgets() {
-	register_widget( 'Daydream_Contact_Info_Widget' );
+function dayneo_contact_info_load_widgets() {
+	register_widget( 'Dayneo_Contact_Info_Widget' );
 }
 
-class Daydream_Contact_Info_Widget extends WP_Widget {
+class Dayneo_Contact_Info_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'contact_info-widget', __( 'daydream: Get In Touch', 'daydream' ), // Name
+		'contact_info-widget', __( 'dayneo: Get In Touch', 'dayneo' ), // Name
 			     array( 'classname' => 'contact_info', 'description' => '', ) // Args
 		);
 	}
@@ -34,25 +34,25 @@ class Daydream_Contact_Info_Widget extends WP_Widget {
 
 		    if ( isset( $instance[ 'phone' ] ) && $instance[ 'phone' ] ) {
 			    ?>
-			    <p class="phone"><?php esc_html_e( 'Phone:', 'daydream' ); ?>&nbsp;<?php echo esc_html($instance[ 'phone' ]); ?></p>
+			    <p class="phone"><?php esc_html_e( 'Phone:', 'dayneo' ); ?>&nbsp;<?php echo esc_html($instance[ 'phone' ]); ?></p>
 			    <?php
 		    }
 
 		    if ( isset( $instance[ 'mobile' ] ) && $instance[ 'mobile' ] ) {
 			    ?>
-			    <p class="mobile"><?php esc_html_e( 'Mobile:', 'daydream' ); ?>&nbsp;<?php echo esc_html($instance[ 'mobile' ]); ?></p>
+			    <p class="mobile"><?php esc_html_e( 'Mobile:', 'dayneo' ); ?>&nbsp;<?php echo esc_html($instance[ 'mobile' ]); ?></p>
 			    <?php
 		    }
 
 		    if ( isset( $instance[ 'fax' ] ) && $instance[ 'fax' ] ) {
 			    ?>
-			    <p class="fax"><?php esc_html_e( 'Fax:', 'daydream' ); ?>&nbsp;<?php echo esc_html($instance[ 'fax' ]); ?></p>
+			    <p class="fax"><?php esc_html_e( 'Fax:', 'dayneo' ); ?>&nbsp;<?php echo esc_html($instance[ 'fax' ]); ?></p>
 			    <?php
 		    }
 
 		    if ( isset( $instance[ 'email' ] ) && $instance[ 'email' ] ) {
 			    ?>
-			    <p class="email"><?php esc_html_e( 'Email:', 'daydream' ); ?>&nbsp;<a href="mailto:<?php echo esc_url(antispambot( $instance[ 'email' ] ) ); ?>"><?php
+			    <p class="email"><?php esc_html_e( 'Email:', 'dayneo' ); ?>&nbsp;<a href="mailto:<?php echo esc_url(antispambot( $instance[ 'email' ] ) ); ?>"><?php
 				    if ( $instance[ 'emailtxt' ] ) {
 					    echo esc_html($instance[ 'emailtxt' ]);
 				    } else {
@@ -64,7 +64,7 @@ class Daydream_Contact_Info_Widget extends WP_Widget {
 
 		    if ( isset( $instance[ 'web' ] ) && $instance[ 'web' ] ) {
 			    ?>
-			    <p class="web"><?php esc_html_e( 'Web:', 'daydream' ); ?>&nbsp;<a href="<?php echo esc_url($instance[ 'web' ]); ?>"><?php
+			    <p class="web"><?php esc_html_e( 'Web:', 'dayneo' ); ?>&nbsp;<a href="<?php echo esc_url($instance[ 'web' ]); ?>"><?php
 				    if ( $instance[ 'webtxt' ] ) {
 					    echo esc_html($instance[ 'webtxt' ]);
 				    } else {
@@ -96,43 +96,43 @@ class Daydream_Contact_Info_Widget extends WP_Widget {
 	}
 
 	public function form( $instance ) {
-		$defaults	 = array( 'title' => esc_html__( 'Contact Us', 'daydream' ), 'address' => '', 'phone' => '', 'mobile' => '', 'fax' => '', 'email' => '', 'emailtxt' => '', 'web' => '', 'webtxt' => '' );
+		$defaults	 = array( 'title' => esc_html__( 'Contact Us', 'dayneo' ), 'address' => '', 'phone' => '', 'mobile' => '', 'fax' => '', 'email' => '', 'emailtxt' => '', 'web' => '', 'webtxt' => '' );
 		$instance	 = wp_parse_args( (array) $instance, $defaults );
 		?>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" value="<?php echo esc_attr($instance[ 'title' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'address' )); ?>"><?php echo esc_html_e( 'Address', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'address' )); ?>"><?php echo esc_html_e( 'Address', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'address' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'address' )); ?>" value="<?php echo esc_attr($instance[ 'address' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'phone' )); ?>"><?php echo esc_html_e( 'Phone', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'phone' )); ?>"><?php echo esc_html_e( 'Phone', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'phone' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'phone' )); ?>" value="<?php echo esc_attr($instance[ 'phone' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'mobile' )); ?>"><?php echo esc_html_e( 'Mobile', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'mobile' )); ?>"><?php echo esc_html_e( 'Mobile', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'mobile' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'mobile' )); ?>" value="<?php echo esc_attr($instance[ 'mobile' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'fax' )); ?>"><?php echo esc_html_e( 'Fax', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'fax' )); ?>"><?php echo esc_html_e( 'Fax', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'fax' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'fax' )); ?>" value="<?php echo esc_attr($instance[ 'fax' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'email' )); ?>"><?php echo esc_html_e( 'Email', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'email' )); ?>"><?php echo esc_html_e( 'Email', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'email' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'email' )); ?>" value="<?php echo esc_attr($instance[ 'email' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'emailtxt' )); ?>"><?php echo esc_html_e( 'Email Link Text', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'emailtxt' )); ?>"><?php echo esc_html_e( 'Email Link Text', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'emailtxt' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'emailtxt' )); ?>" value="<?php echo esc_attr($instance[ 'emailtxt' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'web' )); ?>"><?php echo esc_html_e( 'Website URL (with HTTP)', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'web' )); ?>"><?php echo esc_html_e( 'Website URL (with HTTP)', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'web' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'web' )); ?>" value="<?php echo esc_attr($instance[ 'web' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'webtxt' )); ?>"><?php echo esc_html_e( 'Website URL Text', 'daydream' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'webtxt' )); ?>"><?php echo esc_html_e( 'Website URL Text', 'dayneo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'webtxt' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'webtxt' )); ?>" value="<?php echo esc_attr($instance[ 'webtxt' ]); ?>" />
 		</p>
 		<?php

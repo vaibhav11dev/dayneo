@@ -3,7 +3,7 @@
  * Template part for displaying posts
  *
  *
- * @package daydream
+ * @package dayneo
  */
 // The Query
 global $dd_options;
@@ -31,7 +31,7 @@ if ( $wp_query->have_posts() ) :
 			}
 			?>
 					<!--  BLOG CONTENT  -->
-					<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo daydream_post_format(); ?>">
+					<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo dayneo_post_format(); ?>">
 
 
 			    <?php
@@ -42,7 +42,7 @@ if ( $wp_query->have_posts() ) :
 					    <?php
 				    }
 
-				    daydream_post_thumbnail();
+				    dayneo_post_thumbnail();
 
 				    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
 					    ?>
@@ -56,12 +56,12 @@ if ( $wp_query->have_posts() ) :
 
 							<div class="entry-meta entry-header">
 					    <?php
-					    daydream_post_heading();
+					    dayneo_post_heading();
 
 					    if ( $dd_options[ 'dd_header_meta' ] == 1 ) {
 						    ?>
 									    <ul class="post-meta">
-							<?php daydream_post_metadata(); ?> 
+							<?php dayneo_post_metadata(); ?> 
 									    </ul>
 						    <?php
 					    }
@@ -73,7 +73,7 @@ if ( $wp_query->have_posts() ) :
 							</div>
 
 							<div class="entry-meta entry-footer">
-					    <?php daydream_post_readmore(); ?>
+					    <?php dayneo_post_readmore(); ?>
 							</div>
 
 						    </div>

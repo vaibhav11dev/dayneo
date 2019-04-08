@@ -48,6 +48,6 @@ switch ( $template ) {
 		echo '</main></div>';
 		break;
 	default :
-		daydream_shop_wrapper_end();
+		dayneo_shop_wrapper_end();
 		break;
 }

@@ -3,7 +3,7 @@
  * Template part for displaying results in search pages
  *
  *
- * @package daydream
+ * @package dayneo
  */
 
 ?>
@@ -15,20 +15,20 @@
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php
-			daydream_posted_on();
-			daydream_posted_by();
+			dayneo_posted_on();
+			dayneo_posted_by();
 			?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php daydream_post_thumbnail(); ?>
+	<?php dayneo_post_thumbnail(); ?>
 
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-		<?php daydream_entry_footer(); ?>
+		<?php dayneo_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

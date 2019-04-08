@@ -5,18 +5,18 @@
  * This is the template that displays all of the <head> section and everything up until <div class="wrapper">
  *
  *
- * @package daydream
+ * @package dayneo
  */
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 	<head>
 		<?php
-		$dd_favicon		 = daydream_get_option( 'dd_favicon' );
-		$dd_iphone_icon		 = daydream_get_option( 'dd_iphone_icon' );
-		$dd_iphone_icon_retina	 = daydream_get_option( 'dd_iphone_icon_retina' );
-		$dd_ipad_icon		 = daydream_get_option( 'dd_ipad_icon' );
-		$dd_ipad_icon_retina	 = daydream_get_option( 'dd_ipad_icon_retina' );
+		$dd_favicon		 = dayneo_get_option( 'dd_favicon' );
+		$dd_iphone_icon		 = dayneo_get_option( 'dd_iphone_icon' );
+		$dd_iphone_icon_retina	 = dayneo_get_option( 'dd_iphone_icon_retina' );
+		$dd_ipad_icon		 = dayneo_get_option( 'dd_ipad_icon' );
+		$dd_ipad_icon_retina	 = dayneo_get_option( 'dd_ipad_icon_retina' );
 
 		if ( $dd_favicon[ 'url' ] ):
 			?>
@@ -64,7 +64,7 @@
 
 	<body <?php body_class(); ?>>
                 <?php
-                $dd_back_to_top = daydream_get_option( 'dd_back_to_top', 'right' );
+                $dd_back_to_top = dayneo_get_option( 'dd_back_to_top', 'right' );
                 if ( $dd_back_to_top == 1 ) {
                     ?>
                     <div class="back-to-top">
@@ -87,8 +87,8 @@
                     $post_id = isset( $post->ID ) ? $post->ID : '';
                 }
 
-		$dd_siteloader	 = daydream_get_option( 'dd_siteloader', 1 );
-		$dd_loaderfile	 = daydream_get_option( 'dd_loaderfile' );
+		$dd_siteloader	 = dayneo_get_option( 'dd_siteloader', 1 );
+		$dd_loaderfile	 = dayneo_get_option( 'dd_loaderfile' );
 		if ( $dd_siteloader == 1 ) {
 			?>
 			<!-- PRELOADER -->
@@ -100,14 +100,14 @@
 			<?php
 		}
 
-		$dd_header_type		 = daydream_get_option( 'dd_header_type', 'h1' );
-		$daydream_header_type	 = get_post_meta( $post_id, 'daydream_header_type', true );
-		if ( !$daydream_header_type ) {
-			$daydream_header_type = 'default';
+		$dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h1' );
+		$dayneo_header_type	 = get_post_meta( $post_id, 'dayneo_header_type', true );
+		if ( !$dayneo_header_type ) {
+			$dayneo_header_type = 'default';
 		}
 
 		if ( is_page() ) {
-			if ( (($daydream_header_type == 'h4') || ($daydream_header_type == 'default' && $dd_header_type == 'h4')) || (($daydream_header_type == 'h5') || ($daydream_header_type == 'default' && $dd_header_type == 'h5')) ) {
+			if ( (($dayneo_header_type == 'h4') || ($dayneo_header_type == 'default' && $dd_header_type == 'h4')) || (($dayneo_header_type == 'h5') || ($dayneo_header_type == 'default' && $dd_header_type == 'h5')) ) {
 				get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/header-main' );
 			}
@@ -119,7 +119,7 @@
 		}
 
 		if ( is_page() ) {
-			if ( (($daydream_header_type == 'h1') || ($daydream_header_type == 'default' && $dd_header_type == 'h1')) || (($daydream_header_type == 'h2') || ($daydream_header_type == 'default' && $dd_header_type == 'h2')) ) {
+			if ( (($dayneo_header_type == 'h1') || ($dayneo_header_type == 'default' && $dd_header_type == 'h1')) || (($dayneo_header_type == 'h2') || ($dayneo_header_type == 'default' && $dd_header_type == 'h2')) ) {
 				get_template_part( 'includes/headers/header-main' );
 			}
 		} else {
@@ -132,29 +132,29 @@
 		<div class="wrapper">
 
 			<?php
-			$daydream_hero_header_type = get_post_meta( $post_id, 'daydream_hero_header_type', true );
+			$dayneo_hero_header_type = get_post_meta( $post_id, 'dayneo_hero_header_type', true );
 
 			$param						 = array();
-			$param[ 'daydream_hero_type' ]			 = $daydream_hero_header_type;
-			$param[ 'daydream_hero_height' ]		 = get_post_meta( $post_id, 'daydream_hero_height', true );
-			$param[ 'daydream_hero_content_alignment' ]	 = get_post_meta( $post_id, 'daydream_hero_content_alignment', true );
-			$param[ 'daydream_hero_heading' ]		 = get_post_meta( $post_id, 'daydream_hero_heading', true );
-			$param[ 'daydream_hero_caption' ]		 = get_post_meta( $post_id, 'daydream_hero_caption', true );
-			$param[ 'daydream_hero_image_parallax' ]	 = get_post_meta( $post_id, 'daydream_hero_image_parallax', true );
-			$param[ 'daydream_hero_webm' ]			 = get_post_meta( $post_id, 'daydream_hero_webm', true );
-			$param[ 'daydream_hero_mp4' ]			 = get_post_meta( $post_id, 'daydream_hero_mp4', true );
-			$param[ 'daydream_hero_ogv' ]			 = get_post_meta( $post_id, 'daydream_hero_ogv', true );
-			$param[ 'daydream_hero_youtube_id' ]		 = get_post_meta( $post_id, 'daydream_hero_youtube_id', true );
-			$param[ 'daydream_hero_vimeo_id' ]		 = get_post_meta( $post_id, 'daydream_hero_vimeo_id', true );
+			$param[ 'dayneo_hero_type' ]			 = $dayneo_hero_header_type;
+			$param[ 'dayneo_hero_height' ]		 = get_post_meta( $post_id, 'dayneo_hero_height', true );
+			$param[ 'dayneo_hero_content_alignment' ]	 = get_post_meta( $post_id, 'dayneo_hero_content_alignment', true );
+			$param[ 'dayneo_hero_heading' ]		 = get_post_meta( $post_id, 'dayneo_hero_heading', true );
+			$param[ 'dayneo_hero_caption' ]		 = get_post_meta( $post_id, 'dayneo_hero_caption', true );
+			$param[ 'dayneo_hero_image_parallax' ]	 = get_post_meta( $post_id, 'dayneo_hero_image_parallax', true );
+			$param[ 'dayneo_hero_webm' ]			 = get_post_meta( $post_id, 'dayneo_hero_webm', true );
+			$param[ 'dayneo_hero_mp4' ]			 = get_post_meta( $post_id, 'dayneo_hero_mp4', true );
+			$param[ 'dayneo_hero_ogv' ]			 = get_post_meta( $post_id, 'dayneo_hero_ogv', true );
+			$param[ 'dayneo_hero_youtube_id' ]		 = get_post_meta( $post_id, 'dayneo_hero_youtube_id', true );
+			$param[ 'dayneo_hero_vimeo_id' ]		 = get_post_meta( $post_id, 'dayneo_hero_vimeo_id', true );
 
-			if ( $daydream_hero_header_type == 'hero_parallax' || $daydream_hero_header_type == 'hero_self_hosted_video' || $daydream_hero_header_type == 'hero_youtube' || $daydream_hero_header_type == 'hero_vimeo' ) {
-				daydream_heroheadertype( $param );
-			} elseif ( $daydream_hero_header_type == 'hero_slider' ) {
+			if ( $dayneo_hero_header_type == 'hero_parallax' || $dayneo_hero_header_type == 'hero_self_hosted_video' || $dayneo_hero_header_type == 'hero_youtube' || $dayneo_hero_header_type == 'hero_vimeo' ) {
+				dayneo_heroheadertype( $param );
+			} elseif ( $dayneo_hero_header_type == 'hero_slider' ) {
 				get_template_part( 'includes/heroheader/hero_allslider' );
 			}
 
 			if ( is_page() ) {
-				if ( ($daydream_header_type == 'h3') || ($daydream_header_type == 'default' && $dd_header_type == 'h3') ) {
+				if ( ($dayneo_header_type == 'h3') || ($dayneo_header_type == 'default' && $dd_header_type == 'h3') ) {
 					get_template_part( 'includes/headers/header-main' );
 				}
 			} else {
@@ -165,12 +165,12 @@
 			?>
 
 			<?php
-			$dd_pagetitlebar_layout		 = daydream_get_option( 'dd_pagetitlebar_layout', 1 );
-			$daydream_enable_page_title	 = get_post_meta( $post_id, 'daydream_enable_page_title', true );
+			$dd_pagetitlebar_layout		 = dayneo_get_option( 'dd_pagetitlebar_layout', 1 );
+			$dayneo_enable_page_title	 = get_post_meta( $post_id, 'dayneo_enable_page_title', true );
 			if ( is_home() || is_front_page() ) {
 				//Do Nothing
-			} elseif ( $daydream_enable_page_title == 'on' || ( $daydream_enable_page_title == 'default' && $dd_pagetitlebar_layout == 1 ) ) {
-				daydream_page_title_bar();
+			} elseif ( $dayneo_enable_page_title == 'on' || ( $dayneo_enable_page_title == 'default' && $dd_pagetitlebar_layout == 1 ) ) {
+				dayneo_page_title_bar();
 			}
 			?>
 	    

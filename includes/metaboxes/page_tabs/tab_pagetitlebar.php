@@ -1,40 +1,40 @@
 <div class="ved_metabox">
     <?php
-   $this->daydream_select( 'enable_page_title', __( 'Enable Page Title Bar', 'daydream' ), array(
-	'default'		 => __( 'Default', 'daydream' ),
-	'on'	 => __( 'On', 'daydream' ),
-	'off'		 => __( 'Off', 'daydream' ),
+   $this->dayneo_select( 'enable_page_title', __( 'Enable Page Title Bar', 'dayneo' ), array(
+	'default'		 => __( 'Default', 'dayneo' ),
+	'on'	 => __( 'On', 'dayneo' ),
+	'off'		 => __( 'Off', 'dayneo' ),
     ), ''
     );
     
-    $this->daydream_select( 'display_page_title', __( 'Page Title Bar', 'daydream' ), array(
-	'default'		 => __( 'Default', 'daydream' ),
-	'titlebar_breadcrumb'	 => __( 'Title + Breadcrumb', 'daydream' ),
-	'titlebar'		 => __( 'Only Title', 'daydream' ),
-	'breadcrumb'		 => __( 'Only Breadcrumb', 'daydream' ),
+    $this->dayneo_select( 'display_page_title', __( 'Page Title Bar', 'dayneo' ), array(
+	'default'		 => __( 'Default', 'dayneo' ),
+	'titlebar_breadcrumb'	 => __( 'Title + Breadcrumb', 'dayneo' ),
+	'titlebar'		 => __( 'Only Title', 'dayneo' ),
+	'breadcrumb'		 => __( 'Only Breadcrumb', 'dayneo' ),
     ), ''
     );
 
-    $this->daydream_text( 'page_title_bar_bg_color', __( 'Page Title Bar Background Color (Hex Code)', 'daydream' ), '' );
+    $this->dayneo_text( 'page_title_bar_bg_color', __( 'Page Title Bar Background Color (Hex Code)', 'dayneo' ), '' );
 
-    $this->daydream_upload( 'page_title_bar_bg', __( 'Page Title Bar Background', 'daydream' ) );
+    $this->dayneo_upload( 'page_title_bar_bg', __( 'Page Title Bar Background', 'dayneo' ) );
 
-    $this->daydream_select( 'page_title_bar_height', __( 'Page Title Bar Height', 'daydream' ), array(
-	'default'	 => __( 'Default', 'daydream' ),
-	'medium'	 => __( 'Medium', 'daydream' ),
-	'small'		 => __( 'Small', 'daydream' ),
-	'large'		 => __( 'Large', 'daydream' ),
-	'custom'	 => __( 'Custom', 'daydream' ),
+    $this->dayneo_select( 'page_title_bar_height', __( 'Page Title Bar Height', 'dayneo' ), array(
+	'default'	 => __( 'Default', 'dayneo' ),
+	'medium'	 => __( 'Medium', 'dayneo' ),
+	'small'		 => __( 'Small', 'dayneo' ),
+	'large'		 => __( 'Large', 'dayneo' ),
+	'custom'	 => __( 'Custom', 'dayneo' ),
     ), ''
     );
 
-    $this->daydream_text( 'page_title_bar_height_custom', 'Custom Height', "All Height in vh and don't add suffix vh. ex: 70"
+    $this->dayneo_text( 'page_title_bar_height_custom', 'Custom Height', "All Height in vh and don't add suffix vh. ex: 70"
     );
 
-    $this->daydream_select( 'page_title_bar_parallax_bg', __( 'Parallax Background Image', 'daydream' ), array(
-	'default'	 => __( 'Default', 'daydream' ),
-	'yes'		 => __( 'Show', 'daydream' ),
-	'no'		 => __( 'Hide', 'daydream' ),
+    $this->dayneo_select( 'page_title_bar_parallax_bg', __( 'Parallax Background Image', 'dayneo' ), array(
+	'default'	 => __( 'Default', 'dayneo' ),
+	'yes'		 => __( 'Show', 'dayneo' ),
+	'no'		 => __( 'Hide', 'dayneo' ),
     ), ''
     );
     ?>
