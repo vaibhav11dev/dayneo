@@ -219,7 +219,7 @@ function dayneo_post_metadata() {
 	if ( dayneo_get_terms( 'tags' ) && $dd_options[ 'dd_meta_tags' ] == 1 ) :
 		?>
 		<li class="meta-tags">
-			<?php echo esc_html(dayneo_get_terms( 'tags' )); ?>
+			<?php echo dayneo_get_terms( 'tags' ); ?>
 		</li>
 		<?php
 	endif;

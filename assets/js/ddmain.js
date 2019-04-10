@@ -726,9 +726,39 @@ $.HandleElement.dayneo_header_cart = function() {
 	});
 	
 };
+
+    /**
+     * Change product quantity
+     */
+    $.HandleElement.$body = $(document.body);
+    $.HandleElement.productQuantity = function () {
+        $.HandleElement.$body.on('click', '.quantity .increase, .quantity .decrease', function (e) {
+            e.preventDefault();
+
+            var $this = $(this),
+                $qty = $this.siblings('.qty'),
+                current = parseInt($qty.val(), 10),
+                min = parseInt($qty.attr('min'), 10),
+                max = parseInt($qty.attr('max'), 10);
+
+            min = min ? min : 1;
+            max = max ? max : current + 1;
+
+            if ($this.hasClass('decrease') && current > min) {
+                $qty.val(current - 1);
+                $qty.trigger('change');
+            }
+            if ($this.hasClass('increase') && current < max) {
+                $qty.val(current + 1);
+                $qty.trigger('change');
+            }
+        });
+    };
+    
 	// Init T4P PageBuilder element
 	$.HandleElement.init = function() {
 		$.HandleElement.dayneo_header_cart();
+		$.HandleElement.productQuantity();
 	};
 	
 $(document).ready($.HandleElement.init);
@@ -736,34 +766,34 @@ $(document).ready($.HandleElement.init);
 }(jQuery);
 
 /* Input['type=number'] JS*/
-jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
-jQuery('.quantity').each(function () {
-    var spinner = jQuery(this),
-            input = spinner.find('input[type="number"]'),
-            btnUp = spinner.find('.quantity-up'),
-            btnDown = spinner.find('.quantity-down'),
-            min = input.attr('min'),
-            max = input.attr('max');
-
-    btnUp.live("click", function() {
-        var oldValue = parseFloat(input.val());
-        var newVal = oldValue + 1;
-        spinner.find("input").val(newVal);
-        spinner.find("input").trigger("change");
-    });
-
-    btnDown.live("click", function() {
-        var oldValue = parseFloat(input.val());
-        if (oldValue <= min) {
-            var newVal = oldValue;
-        } else {
-            var newVal = oldValue - 1;
-        }
-        spinner.find("input").val(newVal);
-        spinner.find("input").trigger("change");
-    });
-
-});
+//jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
+//jQuery('.quantity').each(function () {
+//    var spinner = jQuery(this),
+//            input = spinner.find('input[type="number"]'),
+//            btnUp = spinner.find('.quantity-up'),
+//            btnDown = spinner.find('.quantity-down'),
+//            min = input.attr('min'),
+//            max = input.attr('max');
+//
+//    btnUp.live("click", function() {
+//        var oldValue = parseFloat(input.val());
+//        var newVal = oldValue + 1;
+//        spinner.find("input").val(newVal);
+//        spinner.find("input").trigger("change");
+//    });
+//
+//    btnDown.live("click", function() {
+//        var oldValue = parseFloat(input.val());
+//        if (oldValue <= min) {
+//            var newVal = oldValue;
+//        } else {
+//            var newVal = oldValue - 1;
+//        }
+//        spinner.find("input").val(newVal);
+//        spinner.find("input").trigger("change");
+//    });
+//
+//});
 
 // Ajax delete product in the cart
 jQuery(document).on('click', '.list-product a.remove', function (e)

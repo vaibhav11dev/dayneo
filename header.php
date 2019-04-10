@@ -105,6 +105,18 @@
 		if ( !$dayneo_header_type ) {
 			$dayneo_header_type = 'default';
 		}
+                
+                if ( is_page() ) {
+			if ( ($dayneo_header_type == 'h6') || ($dayneo_header_type == 'default' && $dd_header_type == 'h6') ) {
+				get_template_part( 'includes/headers/header-topbar' );
+				get_template_part( 'includes/headers/layout-1' );
+			}
+		} else {
+			if ( $dd_header_type == 'h6' ) {
+				get_template_part( 'includes/headers/header-topbar' );
+				get_template_part( 'includes/headers/layout-1' );
+			}
+		}
 
 		if ( is_page() ) {
 			if ( (($dayneo_header_type == 'h4') || ($dayneo_header_type == 'default' && $dd_header_type == 'h4')) || (($dayneo_header_type == 'h5') || ($dayneo_header_type == 'default' && $dd_header_type == 'h5')) ) {

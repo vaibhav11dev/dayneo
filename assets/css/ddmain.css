@@ -6965,7 +6965,7 @@ ul.nav-menu .ved-megamenu-menu .widget-content ul li .ved-megamenu-menu .widget-
 }
 
 /* Input['type=number'] Style*/
-.quantity {
+/*.quantity {
     position: relative;
 }
 
@@ -7033,4 +7033,34 @@ input[type=number] {
     bottom: 20px;
     right: -18px;
     height: 35%;
+}*/
+
+div.quantity .qty-box {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 0 20px;
+  transition: 0.5s;
+  position: relative;
+}
+div.quantity .qty-box:hover {
+  border-color: #000;
+}
+div.quantity .decrease,
+div.quantity .increase {
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+  transition: 0.5s;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+div.quantity .decrease:hover,
+div.quantity .increase:hover {
+  color: #000;
+}
+div.quantity .increase {
+  right: 10px;
+  left: auto;
 }

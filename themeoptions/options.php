@@ -495,6 +495,7 @@ Redux::setSection( $dd_options, array(
 				'h3'	 => DAYNEO_IMAGEFOLDER . '/header/header-3.png',
 				'h4'	 => DAYNEO_IMAGEFOLDER . '/header/header-4.png',
 				'h5'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
+				'h6'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
 			),
 			'title'		 => __( 'Choose Header Type', 'dayneo' ),
 			'default'	 => 'h1',
@@ -508,6 +509,29 @@ Redux::setSection( $dd_options, array(
 			'default'	 => '#000000',
 			'required'	 => array( array( "dd_header_type", '=', 'h5' ) ),
 		),
+                array(
+                    'id'       => 'menu_extras',
+                    'type'     => 'checkbox',
+                    'title'    => __('Menu Extras', 'dayneo'), 
+                    'options'  => array(
+                        'search' => 'Search',
+                        'compare' => 'Compare',
+                        'wishlist' => 'WishList',
+                        'cart' => 'Cart',
+                        'account' => 'Account',
+                        'department' => 'Department Menu',
+                        'hotline' => 'Hotline',
+                    ),
+                    'default' => array(
+                        'search' => '1',
+                        'compare' => '0',
+                        'wishlist' => '1',
+                        'cart' => '1',
+                        'account' => '1',
+                        'department' => '0',
+                        'hotline' => '0',
+                    )
+                ),
 	),
 )
 );
@@ -598,6 +622,69 @@ Redux::setSection( $dd_options, array(
 			'id'		 => 'dd_header_logo_retina_height',
 			'type'		 => 'text',
 			'title'		 => __( 'Standard Logo Height for Retina Logo', 'dayneo' ),
+		),
+	),
+)
+);
+
+Redux::setSection( $dd_options, array(
+	'id'		 => 'dd-header-subsec-search-content-tab',
+	'title'		 => __( 'Header Search Content', 'dayneo' ),
+	'subsection'	 => true,
+	'fields'	 => array(
+		array(
+			'subtitle'	 => __( '', 'dayneo' ),
+			'id'		 => 'search_content_type',
+			'type'		 => 'select',
+			'options'	 => array(
+				'all'	 => __( 'Search for everything', 'dayneo' ),
+				'product'	 => __( 'Search for products', 'dayneo' ),
+			),
+			'title'		 => __( 'Search Content Type', 'dayneo' ),
+			'default'	 => 'product',
+		),
+            array(
+			'subtitle'	 => __( '', 'dayneo' ),
+			'id'		 => 'custom_categories_text',
+			'type'		 => 'text',
+			'title'		 => __( 'Categories Text', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( '', 'dayneo' ),
+			'id'		 => 'custom_categories_depth',
+			'type'		 => 'text',
+			'title'		 => __( 'Categories Depth', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( 'Enter Category IDs to include. Divide every category by comma(,)', 'dayneo' ),
+			'id'		 => 'custom_categories_include',
+			'type'		 => 'text',
+			'title'		 => __( 'Categories Include', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( 'Enter Category IDs to exclude. Divide every category by comma(,)', 'dayneo' ),
+			'id'		 => 'custom_categories_exclude',
+			'type'		 => 'text',
+			'title'		 => __( 'Categories Exclude', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( '', 'dayneo' ),
+			'id'		 => 'custom_search_text',
+			'type'		 => 'text',
+			'title'		 => __( 'Search Text', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( '', 'dayneo' ),
+			'id'		 => 'custom_search_button',
+			'type'		 => 'text',
+			'title'		 => __( 'Button Text', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( '', 'dayneo' ),
+			'id'		 => 'header_ajax_search',
+			'type'		 => 'switch',
+			'title'		 => __( 'AJAX Search', 'dayneo' ),
+			'default'	 => '1',
 		),
 	),
 )

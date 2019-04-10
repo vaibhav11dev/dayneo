@@ -196,7 +196,7 @@ function dayneo_comment_meta( $meta_format = '%date% %reply%' ) {
  */
 function dayneo_comment_text() {
 	echo '<div class="comment-content">';
-	echo '<h5>' . esc_html(dayneo_comment_name()) . '</h5>';
+	echo '<h5>' . dayneo_comment_name() . '</h5>';
 	echo '<p>' . comment_text() . '</p>';
 	echo '</div>';
 }
@@ -353,13 +353,13 @@ function dayneo_custom_comment_form() {
 
 	$fields = array();
 
-	$fields['author'] = '<div class="comment-form-author form-group"><input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="' . esc_attr_e( 'Name*', 'dayneo' ) . '" ' . $aria_req . $html_req . ' aria-label="' . esc_attr__( 'Name', 'dayneo' ) . '"/></div>';
-	$fields['email']  = '<div class="comment-form-email form-group"><input id="email" class="form-control" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" placeholder="' . esc_attr_e( 'Email*', 'dayneo' ) . '" ' . $aria_req . $html_req . ' aria-label="' . esc_attr__( 'Email', 'dayneo' ) . '"/></div>';
-	$fields['url']    = '<div class="comment-form-url form-group"><input id="url" class="form-control" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" placeholder="' . esc_attr_e( 'Website', 'dayneo' ) . '" aria-label="' . esc_attr__( 'URL', 'dayneo' ) . '" /></div>';
+	$fields['author'] = '<div class="comment-form-author form-group"><input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="' . esc_attr__( 'Name*', 'dayneo' ) . '" ' . $aria_req . $html_req . ' aria-label="' . esc_attr__( 'Name', 'dayneo' ) . '"/></div>';
+	$fields['email']  = '<div class="comment-form-email form-group"><input id="email" class="form-control" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" placeholder="' . esc_attr__( 'Email*', 'dayneo' ) . '" ' . $aria_req . $html_req . ' aria-label="' . esc_attr__( 'Email', 'dayneo' ) . '"/></div>';
+	$fields['url']    = '<div class="comment-form-url form-group"><input id="url" class="form-control" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" placeholder="' . esc_attr__( 'Website', 'dayneo' ) . '" aria-label="' . esc_attr__( 'URL', 'dayneo' ) . '" /></div>';
 
 	$comments_args = array(
 		'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-		'comment_field'	 => '<div class="comment-form-comment form-group"><textarea id="comment" name="comment" placeholder="'.esc_attr_e( 'Comment', 'dayneo' ).'" class="form-control" rows="6" aria-required="true"></textarea></div>',
+		'comment_field'	 => '<div class="comment-form-comment form-group"><textarea id="comment" name="comment" placeholder="'.esc_attr__( 'Comment', 'dayneo' ).'" class="form-control" rows="6" aria-required="true"></textarea></div>',
 		'title_reply'          => esc_html__( 'Leave A Comment', 'dayneo' ),
 		'title_reply_to'       => esc_html__( 'Leave A Comment', 'dayneo' ),
 		/* translators: Opening and closing link tags. */
