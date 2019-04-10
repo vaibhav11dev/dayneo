@@ -34,6 +34,7 @@ global $dd_options;
 			wp_link_pages( array( 'before' => '<div id="page-links"><p>' . __( '<strong>Pages:</strong>', 'dayneo' ), 'after' => '</p></div>' ) );
 			?>	
 		</div>
+	    	<div class="clearfix"></div>
 	</div>
 
 	<div class="tags entry-meta entry-footer">

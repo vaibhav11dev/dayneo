@@ -136,7 +136,7 @@ if ( ! function_exists( 'dayneo_post_thumbnail' ) ) :
 			$dd_featured_images = dayneo_get_option( 'dd_featured_images', '1' );
 			if ( $dd_featured_images == "1" ) {
 				?>
-				<div class="post-preview">
+				<div class="post-preview banner-col">
 					<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
 						<?php
 						the_post_thumbnail( 'full', array(
@@ -166,7 +166,7 @@ function dayneo_excerpt_max_charlength( $limit ) {
 
 function dayneo_post_readmore() {
 	?>
-	<a href="<?php the_permalink() ?>" class="read-more btn btn-lg btn-link btn-base"><?php esc_html_e( 'Read more &raquo;', 'dayneo' ) ?></a>
+	<a href="<?php the_permalink() ?>" class="read-more"><?php esc_html_e( 'Read more ', 'dayneo' ) ?><i class="fa fa-angle-right"></i></a>
 	<?php
 }
 
@@ -191,30 +191,33 @@ function dayneo_post_format_icon() {
 function dayneo_post_metadata() {
 	global $authordata, $dd_options;
 
-	if ( $dd_options[ 'dd_meta_date' ] == 1 ) {
-		?>
-		<li class="published updated">
-			<a href="<?php the_permalink() ?>"><?php the_time( get_option( 'date_format' ) ); ?></a>
-		</li>
-		<?php
-	}
-
 	if ( $dd_options[ 'dd_meta_author' ] == 1 ) {
 		?>
 		<li class="author vcard">
 			<?php
-			esc_html_e( 'By ', 'dayneo' );
+			esc_html_e( 'Posted by ', 'dayneo' );
 
 			$dd_author_avatar = dayneo_get_option( 'dd_author_avatar', '0' );
 			if ( $dd_author_avatar == "1" ) {
 				echo get_avatar( get_the_author_meta( 'email' ), '30' );
 			}
 
-			printf( '<a class="url fn" href="' . esc_url(get_author_posts_url( $authordata->ID, $authordata->user_nicename )) . '" title="' . sprintf( 'View all posts by %s', 'dayneo', $authordata->display_name ) . '">' . get_the_author() . '</a>' )
+			printf( '<a class="url fn" href="' . esc_url(get_author_posts_url( $authordata->ID, $authordata->user_nicename )) . '" title="' . sprintf( 'View all posts by %s', 'dayneo', $authordata->display_name ) . '"><i class="fa fa-user"></i>' . get_the_author() . '</a>' )
 			?>
 		</li>
 		<?php
 	}
+	
+	if ( $dd_options[ 'dd_meta_date' ] == 1 ) {
+		?>
+		<li class="published updated">
+			<a href="<?php the_permalink() ?>"><i class="fa fa-calendar"></i><?php the_time( get_option( 'date_format' ) ); ?></a>
+		</li>
+		<?php
+	}
+
+
+	
 
 	if ( dayneo_get_terms( 'tags' ) && $dd_options[ 'dd_meta_tags' ] == 1 ) :
 		?>

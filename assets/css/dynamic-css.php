@@ -605,11 +605,19 @@ $dayneo_dynamic_css	 .= '
     color: #fff!important
 }
 
+a:hover, 
+a:focus,
+.post-meta>li>a:hover,
+.post-meta>li>a:focus
+{
+    color: ' . esc_attr($dd_primary_color) . ';
+}
+
 .divider-line:after,
 .alert-brand,
 .label-base,
-.btn.btn-base.btn-outline:focus,
-.btn.btn-base.btn-outline:hover,
+.btn.btn-base:hover,
+.btn.btn-base:focus,
 .nav-text-tabs>li>a:after,
 .owl-controls-brand .owl-page span,
 .owl-page span,
@@ -620,17 +628,16 @@ $dayneo_dynamic_css	 .= '
 .social-icons>li>a:hover,
 .tags a:focus,
 .tags a:hover,
-.divider-line::after {
+.divider-line::after
+{
     background: ' . esc_attr($dd_primary_color) . ';
 }
 
-a,
-ul,
-.widget .widget-content li,
 .btn.btn-base.btn-outline,
-.btn.btn-base.btn-link,
 .btn.btn-base.btn-fade:focus,
 .btn.btn-base.btn-fade:hover,
+.btn.btn-base.btn-link:hover,
+.btn.btn-base.btn-link:focus,
 .breadcrumb a:focus,
 .breadcrumb a:hover,
 .box-icon .icon-box-icon,
@@ -642,7 +649,8 @@ ul,
 .comment-tools a:hover,
 .star-rating,
 .icons-list a:focus,
-.icons-list a:hover {
+.icons-list a:hover,
+.widget .widget-content ul li a:hover {
     color: ' . esc_attr($dd_primary_color) . ';
 }
 
@@ -655,16 +663,12 @@ ul,
 }
 
 .progress-bar,
-.btn.btn-base,
 .bg-brand {
     background-color: ' . esc_attr($dd_primary_color) . ';
 }
 
-.form-control:focus,
-.btn.btn-base,
-.btn.btn-base.btn-outline,
-.btn.btn-base.btn-fade:focus,
-.btn.btn-base.btn-fade:hover {
+.form-control:focus
+{
     border-color: ' . esc_attr($dd_primary_color) . ';
 }
 
@@ -674,9 +678,14 @@ ul,
 }
 
 .pagination>.active>a,
+.pagination>.active>span{
+    background: ' . esc_attr($dd_secondry_color) . ';
+    border-color: ' . esc_attr($dd_secondry_color) . ';
+    color: #fff
+}
+
 .pagination>.active>a:focus,
 .pagination>.active>a:hover,
-.pagination>.active>span,
 .pagination>.active>span:focus,
 .pagination>.active>span:hover,
 .pagination>li>a:focus,
@@ -692,15 +701,14 @@ ul,
     color: #fff
 }
 
-a:focus,
-a:hover {
-    color: ' . esc_attr($dd_secondry_color) . ';
-}
+
+
 
 .color-brand-hvr {
     color: ' . esc_attr($dd_secondry_color) . ';
 }
 
+.btn.btn-base,
 .bg-brand-hvr {
     background-color: ' . esc_attr($dd_secondry_color) . ';
 }
