@@ -26,7 +26,7 @@ global $dd_options;
 	    <?php
 	    $thumbnail = '';
 	    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
-		    $thumbnail = ' post-thumbnail';
+		    $thumbnail = ' post-thumbnail ';
 	    }
 	    ?>
 	    <!-- PRIMARY -->

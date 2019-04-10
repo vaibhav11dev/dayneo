@@ -360,15 +360,15 @@ function dayneo_custom_comment_form() {
 	$comments_args = array(
 		'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
 		'comment_field'	 => '<div class="comment-form-comment form-group"><textarea id="comment" name="comment" placeholder="'.esc_attr_e( 'Comment', 'dayneo' ).'" class="form-control" rows="6" aria-required="true"></textarea></div>',
-		'title_reply'          => esc_html__( 'Leave A Comment', 'dayneo' ),
-		'title_reply_to'       => esc_html__( 'Leave A Comment', 'dayneo' ),
+		'title_reply'          => esc_html__( 'Leave A Reply', 'dayneo' ),
+		'title_reply_to'       => esc_html__( 'Leave A Reply', 'dayneo' ),
 		/* translators: Opening and closing link tags. */
 		'must_log_in'          => '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$slogged in%2$s to post a comment.', 'dayneo' ), '<a href="' . esc_url(wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )) . '">', '</a>' ) . '</p>',
 		/* translators: %1$s: The username. %2$s and %3$s: Opening and closing link tags. */
 		'comment_notes_before' => '',
 		'id_submit'            => 'comment-submit',
-		'class_submit'         => 'btn btn-round btn-lg btn-base',
-		'label_submit'         => esc_html__( 'Post Comment', 'dayneo' ),
+		'class_submit'         => 'btn btn-lg btn-base',
+		'label_submit'         => esc_html__( 'Submit', 'dayneo' ),
 	);
 
 	return comment_form( $comments_args );
