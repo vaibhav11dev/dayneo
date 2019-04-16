@@ -15,40 +15,101 @@
 if ( ! function_exists( 'martfury_extra_cart' ) ) :
 
     function martfury_extra_cart() {
-	$extras = martfury_menu_extras();
+                ?>
+    		<!-- SHOP CART -->
+                    <?php
+                    $dd_woo_cart = dayneo_get_option( 'dd_woo_cart', 1 );
+                    if ( class_exists( 'Woocommerce' ) && $dd_woo_cart ) {
+                        global $woocommerce;
+                        ?>
+                        <div class="cart-hover">
+                            <div class="menu-item header-ajax-cart">
+                                <div class="extras-cart">
+                                    <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
+                                        <i class="ti-shopping-cart"></i>
+                                        <span class="cart-badge"><?php echo $woocommerce->cart->cart_contents_count; ?></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <?php
+                            //Empty Cart
+                            if ( ! $woocommerce->cart->cart_contents_count ) {
+                                ?>
+                                <div class="sub-cart-menu ajax-cart-content">
+                                    <?php _e( 'Your cart is currently empty.', 'dayneo' ); ?>
+                                </div>
+                                <?php
+                            } else {
+                                ?>
+                                <div class="sub-cart-menu ajax-cart-content">
+                                    <div class="product-list-sec">
+                                        <div class="minicart-scroll">
+                                        <?php
+                                        foreach ( $woocommerce->cart->cart_contents as $cart_item ):
+                                            $cart_item_key = $cart_item[ 'key' ];
+                                            $_product      = apply_filters( 'woocommerce_cart_item_product', $cart_item[ 'data' ], $cart_item, $cart_item_key );
+                                            ?>
+                                            <!-- ITEM -->
 
-	if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
-	    return '';
-	}
+                                            <div class="list-product">
+                                                <div class="list-product-img">
+                                                    <a href="<?php echo get_permalink( $cart_item[ 'product_id' ] ); ?>">
+                                                        <?php
+                                                        $thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+                                                        echo $thumbnail;
+                                                        ?>
+                                                    </a>
+                                                </div>
+                                                <div class="list-product-detail">
+                                                    <a href="#">
+                                                        <?php echo $cart_item[ 'data' ]->get_name(); ?>
+                                                    </a>
+                                                    <p><?php echo $cart_item[ 'quantity' ]; ?> x <?php echo get_woocommerce_currency_symbol() . $cart_item[ 'data' ]->get_price(); ?></p>
+                                                </div>
+                                                <div class="del-food">
+                                                    <?php
+                                                    echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
+                                                    '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-cart_item_key="%s"><i class="fa fa-trash-o" aria-hidden="true"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), esc_html__( 'Remove this item', 'dayneo' ), esc_attr( $cart_item['product_id'] ), esc_attr( $cart_item_key )
+                                                    ), $cart_item_key );
+                                                    ?>
+                                                </div>
+                                            </div>
+                                            <!-- END ITEM -->
+                                        <?php endforeach; ?>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="subtotal-count"><?php _e( 'Subtotal:', 'dayneo' ); ?> 
+                                            <b class="content-subhead">
+                                                <?php echo wc_price( $woocommerce->cart->subtotal ); ?>
+                                            </b>
+                                        </div>
+                                        <div class="shipping-count"><?php _e( 'Shipping:', 'dayneo' ); ?> 
+                                            <b class="content-subhead">
+                                                <?php echo wc_price( $woocommerce->cart->shipping_total ); ?>
+                                            </b>
+                                        </div>
+                                        <div class="total-count"><?php _e( 'Total:', 'dayneo' ); ?> 
+                                            <b class="content-subhead">
+                                                <?php echo wc_price( $woocommerce->cart->total ); ?>
+                                            </b>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="cart-button">
+                                            <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn"><?php _e( 'View Cart', 'dayneo' ); ?></a>
+                                            <a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn"><?php _e( 'Checkout', 'dayneo' ); ?></a> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            ?>
 
-	if ( ! function_exists( 'woocommerce_mini_cart' ) ) {
-	    return '';
-	}
-	global $woocommerce;
-	ob_start();
-	woocommerce_mini_cart();
-	$mini_cart = ob_get_clean();
-
-	$mini_content = sprintf( '	<div class="widget_shopping_cart_content">%s</div>', $mini_cart );
-
-	printf(
-	'<li class="extra-menu-item menu-item-cart mini-cart woocommerce">
-			<a class="cart-contents" id="icon-cart-contents" href="%s">
-			    <div class="icon-wrap">
-				<span class="icon">			
-				<i class="flaticon-paper-bag"></i>
-				<span class="mini-item-counter">
-					%s
-				</span>
-				</span>
-			</div>
-			</a>
-			<div class="mini-cart-content">
-			<span class="tl-arrow-menu"></span>
-			%s
-			</div>
-		</li>', esc_url( wc_get_cart_url() ), intval( $woocommerce->cart->cart_contents_count ), $mini_content
-	);
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    <!-- END SHOP CART -->
+                    <?php
     }
 
 endif;

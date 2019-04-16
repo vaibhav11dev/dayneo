@@ -76,7 +76,7 @@ if ( empty( $extras ) || ! $extras[ 'department' ] ) {
 			    martfury_extra_hotline();
 			    martfury_extra_compare();
 			    martfury_extra_wislist();
-			    //martfury_extra_cart();
+			    martfury_extra_cart();
 			    ?>
 			</ul>		    
 		    </div>
