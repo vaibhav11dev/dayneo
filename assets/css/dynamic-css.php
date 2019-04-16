@@ -85,11 +85,11 @@ body {
 }
 
 // Body bg color when layout style is boxed
-$dayneo_dynamic_css .= '
-body {
-    background-color: #ecebe9;
-}
-';
+//$dayneo_dynamic_css .= '
+//body {
+//    background-color: #ecebe9;
+//}
+//';
 
 // General - Fullwidth - Fluid Template Left/Right Padding
 $dd_hundredp_padding		 = $dd_options[ 'dd_hundredp_padding' ];
