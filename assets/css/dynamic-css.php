@@ -650,7 +650,17 @@ a:focus,
 .star-rating,
 .icons-list a:focus,
 .icons-list a:hover,
-.widget .widget-content ul li a:hover {
+.widget .widget-content ul li a:hover,
+.inner-nav > li > a:hover,
+.inner-nav > li > a:focus,
+.inner-nav > li.submenu-open > a,
+.sub-menu li > a:hover,
+.sub-menu li > a:focus,
+.sub-menu li.submenu-open > a,
+.scroll-top:focus,
+.cart-hover .sub-cart-menu .list-product .list-product-detail a:hover,
+.shop-item-title .woocommerce-loop-product__title a:hover
+{
     color: ' . esc_attr($dd_primary_color) . ';
 }
 
@@ -662,14 +672,31 @@ a:focus,
     color: ' . esc_attr($dd_primary_color) . ';
 }
 
+.bg-brand,
 .progress-bar,
-.bg-brand {
+.products-search .search-submit,
+.products-cats-menu .cats-menu-title,
+.header-bar .hotline-content,
+.extras-menu .icon-wrap:hover .icon-box,
+.extras-menu .icon-wrap .icon-box .mini-item-counter
+{
     background-color: ' . esc_attr($dd_primary_color) . ';
 }
 
+.scroll-top:hover,
+.scroll-top:focus,
 .form-control:focus
 {
     border-color: ' . esc_attr($dd_primary_color) . ';
+}
+
+.vertical-megamenu .ved-megamenu-menu > .sub-menu,
+.cart-hover .sub-cart-menu,
+.related.products h2::after,
+.woocommerce-MyAccount-content h3::after,
+h3.widget-title::after
+{
+    border-bottom-color: ' . esc_attr($dd_primary_color) . ';
 }
 
 .owl-page.active span,

@@ -68,7 +68,7 @@ if ( is_product() && $woocommerce_loop['name'] == 'related' ) {
 		<div class="shop-item-tools">
 		    <div>
 			<div>
-				<span class="cart-loading"><i class="icon icon-refresh"></i></span>
+<!--				<span class="cart-loading"><i class="icon icon-refresh"></i></span>-->
 				<?php do_action( 'woocommerce_after_shop_loop_item' ) ?>
 			</div>
 		    </div>

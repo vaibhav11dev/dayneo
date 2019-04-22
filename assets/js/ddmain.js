@@ -715,11 +715,18 @@
 
 // For Onclick open cart on header area
     $(document).ready(function () {
+	$(".toggle-product-cats").hide();
         $(".cart-hover #open-cart").live('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
             $(".sub-cart-menu").slideToggle();
         });
+        $(".cats-menu-title .icon-menu").live('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(".toggle-product-cats").slideToggle();
+        });	
+	
     });
     $(document).on("click", function () {
         $(".sub-cart-menu").slideUp();

@@ -21,6 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <!-- START .product-description -->
-<div class="product-description m-b-30">
+<div class="product-description">
     <?php
-the_title( '<h2 class="product_title entry-title m-b-5">', '</h2>' );
+the_title( '<h2 class="product_title entry-title">', '</h2>' );

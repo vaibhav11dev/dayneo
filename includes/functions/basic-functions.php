@@ -1063,7 +1063,7 @@ function dayneo_page_title_bar() {
 								<?php
 								if ( $description ) {
 									?>
-									<div class="taxonomy-description"><?php echo esc_html($description); ?></div>
+									<div class="taxonomy-description"><?php echo $description; ?></div>
 									<?php
 								}
 							}

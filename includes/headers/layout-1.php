@@ -73,8 +73,8 @@ if ( empty( $extras ) || ! $extras[ 'department' ] ) {
 		    <div class="col-lg-4 col-md-3">
 			<ul class="extras-menu">
 			    <?php
-			    martfury_extra_hotline();
-			    martfury_extra_compare();
+			    //martfury_extra_hotline();
+			    //martfury_extra_compare();
 			    martfury_extra_wislist();
 			    martfury_extra_cart();
 			    ?>

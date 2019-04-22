@@ -118,56 +118,71 @@ Text Domain: dayneo
     background-color: #f5f5f5;
 }
 
+/* Header Styles */
+
+.header-main-wapper .header-row{
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
 /* Search Box Styles */
 
-.header-extras .product-extra-search{
-    position: relative;
-    border: 1px solid #e2e2e2;
-    background: #fff;
-}
-.products-search .search-wrapper{
-    float: left;
-    width: calc(100% - 200px);
-}
-.products-search .product-cat{
-    display: inline-block;
-}
-.products-search .search-field{
-    height: 42px;
+.header-extras .product-extra-search {
     width: 100%;
-    border: 0;
-    outline: none;
-    padding: 0 0 0 15px;
+    border: 1px solid #e2e2e2;
+}
+.product-extra-search .products-search {
+    width: 100%;
+}
+.products-search .psearch-content {
+    display: flex;
+    width: 100%;
 }
 .products-search .product-cat-dd{
     height: 42px;
-    width: 156px;
+    width: 152px;
     border: 0;
-    border-left: 1px solid #e2e2e2;
     outline: none;
     padding: 0 15px;
     font-size: 13px;
     color: #666;   
+    border-left: 1px solid #e2e2e2;
+    border-radius: 0px;
+    cursor: pointer;
 }
-.products-search .search-submit{
-    position: absolute;
-    right: 0;
-    width: 44px;
+.products-search .search-wrapper {
+    width: 100%;
+    display: flex;
+}
+.products-search .search-field {
+    float: left;
     height: 42px;
-    top: 0;
-    border: medium none;
-    text-align: center;
-    display: block;
-    color: #222;
-    background: #fcc12c;
+    line-height: 42px;
+    font-size: 13px;
+    color: #333;
+    border: none;
+    padding: 0 0 0 15px;
+    width: 100%;
+}
+.products-search .search-submit {
+    float: right;
+    width: 70px;
+    height: 42px;
     padding: 0;
     margin: 0;
+    border: none;
+    color: #000;    
+    font-size: 22px;
+    line-height: 42px;
+    background-color: #fcb800;
+    white-space: nowrap;
     outline: none;
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     -ms-transition: all .3s;
     -o-transition: all .3s;
-    transition: all .3s;
+    transition: all .3s;    
 }
 .products-search .search-submit:hover{
     background-color: #222;
@@ -180,11 +195,13 @@ Text Domain: dayneo
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    align-items: center;
 }
-.extras-menu li{
-    display: inline-block;
+.extras-menu > li > a{
+    display: block;
 }
-.extras-menu .icon-wrap .icon{
+.extras-menu .icon-wrap .icon-box{
     width: 52px;
     height: 52px;
     border-radius: 50%;
@@ -192,7 +209,7 @@ Text Domain: dayneo
     background-color: #f5f5f5;
     position: relative;
     line-height: 52px;
-    margin-right: 10px;
+    margin-right: 20px;
     color: #222;
     font-size: 24px;
     text-align: center;
@@ -203,14 +220,14 @@ Text Domain: dayneo
     -o-transition: all .3s;
     transition: all .3s;
 }
-.extras-menu .icon-wrap:hover .icon{
+.extras-menu .icon-wrap:hover .icon-box{
     background-color: #fcc12c;
 }
-.extras-menu .icon-wrap:hover .icon .mini-item-counter{
+.extras-menu .icon-wrap:hover .icon-box .mini-item-counter{
     background-color: #222;
     color: #fff;
 }
-.extras-menu .icon-wrap .icon .mini-item-counter{
+.extras-menu .icon-wrap .icon-box .mini-item-counter{
     width: 15px;
     height: 15px;
     position: absolute;
@@ -232,41 +249,32 @@ Text Domain: dayneo
     transition: all .3s;
 }
 
-/* Mini Shopping Cart Styles*/
-.mini-cart-content{
-    display: inline-block;
-    background: #fff;
-    border: 1px solid #e2e2e2;
-    border-bottom: 2px solid #fcc12c;
-    padding: 8px 0;
-    /*position: absolute;*/
-    /*right: 0;*/
-    /*top: 100%;*/
-    width: 290px;
-    z-index: 12;
-    /*display: none;*/
-    -webkit-transition: -webkit-transform 0.5s ease 0s;    
-    -moz-transition: -moz-transform 0.5s ease 0s;
-    -ms-transition: -ms-transform 0.5s ease 0s;
-    -o-transition: -ms-transform 0.5s ease 0s;
-    transition: transform 0.5s ease 0s;
-}
+/* Vertical Category Menu Styles */
 
 .main-menu .products-cats-menu{
-    padding: 5px;
-    border: 1px solid #e2e2e2;
-    margin-bottom: 30px;
+    position: relative;
 }
+.products-cats-menu .toggle-product-cats{
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    padding: 0 5px;
+    display: block;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(226, 226, 226);
+} 
 .header-bar .widget{
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
-
 .primary-nav .inner-nav > li > a{
     line-height: 50px;
     color: #fff;
 }
 .primary-nav .inner-nav > li:first-child > a{
-    padding-left: 0px;
+    padding-left: 0;
 }
 .main-menu .header-row .col-header-menu{
     background-color: #333;
@@ -278,10 +286,10 @@ Text Domain: dayneo
     background-color: #fcc12c;
 }
 .header-bar .hotline-content label{
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
-/* Ved Mega Menu Styles */
+/* Vertical Mega Menu Styles */
 
 .products-cats-menu .cats-menu-title{
     color: #222;
@@ -291,34 +299,33 @@ Text Domain: dayneo
     font-weight: 500;
     padding: 0 15px;
     position: relative;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     background-color: #fcc12c;
 }
 .products-cats-menu .cats-menu-title i{
     font-size: 18px;
     line-height: 50px;
     float: right;
-/*    display: inline-block;
-    vertical-align: middle;*/
+    cursor: pointer;
 }
-.products-cats-menu .main-nav .inner-nav li{
+.vertical-megamenu > .inner-nav > li{
     float: none;
     padding: 0 15px;
 }
-.products-cats-menu .main-nav .inner-nav li:not(:last-child){
+.vertical-megamenu > .inner-nav > li:not(:last-child){
     border-bottom: 1px solid #e2e2e2;
 }
-.products-cats-menu .main-nav .inner-nav li a{
+.vertical-megamenu > .inner-nav > li > a{
     line-height: 45px;
     display: block;
     font-size: 14px;
     font-weight: 400;
     color: #666;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 0;
+    padding-right: 0;
     position: relative;
 }
-.products-cats-menu .main-nav .inner-nav li.menu-item-has-children a:before{
+.vertical-megamenu > .inner-nav > li.menu-item-has-children > a:before{
     content: "\f105";
     font-family: "FontAwesome";
     font-size: 16px;
@@ -328,4 +335,104 @@ Text Domain: dayneo
     top: 0;
     width: 20px;
     text-align: center;
+}
+.vertical-megamenu .ved-megamenu-menu > .sub-menu{
+    left: 100%;
+    top: 0;
+    background: #fff;
+    display: block;
+    border: 1px solid #e2e2e2;
+    border-bottom: 2px solid #fcc12c;
+    -webkit-transform: translate(20px,0);
+    -moz-transform: translate(20px,0);
+    -o-transform: translate(20px,0);
+    -ms-transform: translate(20px,0);
+    transform: translate(20px,0);    
+    -moz-transition: opacity 0.5s ease 0s,-moz-transform 0.5s ease 0s;
+    -webkit-transition: opacity 0.5s ease 0s,-webkit-transform 0.5s ease 0s;
+    -ms-transition: opacity 0.5s ease 0s,-ms-transform 0.5s ease 0s;    
+    transition: opacity 0.5s ease 0s,transform 0.5s ease 0s;
+}
+
+.vertical-megamenu .submenu-open > .sub-menu {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translate(0,0);
+    -moz-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+}
+.vertical-megamenu .ved-megamenu-wrapper.col-span-1,
+.vertical-megamenu .ved-megamenu-wrapper.col-span-2,
+.vertical-megamenu .ved-megamenu-wrapper.col-span-3{
+    margin-left: 0;
+}
+.vertical-megamenu .ved-megamenu-wrapper.columns-3{
+    width: 300%;
+}
+.vertical-megamenu .sub-menu li a{
+    display: block;
+    line-height: 35px;
+    padding: 0;
+    color: #666;
+}
+.vertical-megamenu .ved-megamenu-menu .sub-menu .sub-menu{
+    background: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    -webkit-transform: translate(0, 0);
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: translate(0, 0);
+}
+.vertical-megamenu .ved-megamenu-wrapper{
+    width: 100%;
+}
+.vertical-megamenu .ved-megamenu-wrapper .ved-megamenu{
+    padding: 15px;
+}
+.vertical-megamenu .ved-megamenu-wrapper .ved-megamenu > li{
+    padding: 0 15px;
+}
+.vertical-megamenu .ved-megamenu-wrapper .ved-megamenu-title{
+    padding: 0;
+}
+.nav .vertical-megamenu .ved-megamenu-wrapper .ved-megamenu-title a{
+    border-bottom: 1px solid #e2e2e2;
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    margin-bottom: 5px;
+    text-transform: uppercase;    
+}
+.vertical-megamenu .ved-megamenu-wrapper .ved-megamenu > li:not(:last-child){
+    border: transparent;
+}
+.nav .ved-navbar-nav.vertical-megamenu .ved-megamenu-wrapper .ved-megamenu-holder .ved-megamenu .ved-megamenu-submenu{
+    float: left;
+}
+.vertical-megamenu .sub-menu li > a:hover{
+    background: none;
+}
+
+/* Single Product Page Styles */
+.single-product .summary .product-description .product_title{
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-transform: none;
+    font-weight: 400;
+}
+
+.single-product .summary .woo-product-price .text-title{
+    font-family: Poppins;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.single-product .woocommerce-grouped-product-list-item__quantity{
+    padding-left: 0;
 }

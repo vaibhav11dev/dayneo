@@ -68,7 +68,7 @@
                 if ( $dd_back_to_top == 1 ) {
                     ?>
                     <div class="back-to-top">
-                        <a href="#top" class="scroll-top"><i class="fa fa-long-arrow-up"></i></a>
+                        <a href="#top" class="scroll-top"><i class="ti-arrow-up"></i></a>
                     </div>
                     <?php
                 }

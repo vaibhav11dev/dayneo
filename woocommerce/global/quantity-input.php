@@ -15,38 +15,39 @@
  * @package       WooCommerce/Templates
  * @version       3.4.0
  */
-
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+    exit;
 }
 
 if ( $max_value && $min_value === $max_value ) {
-	?>
-	<div class="quantity hidden">
-		<input type="hidden" id="<?php echo esc_attr( $input_id ); ?>" class="qty" name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $min_value ); ?>" />
-	</div>
-	<?php
+    ?>
+    <div class="quantity hidden">
+        <input type="hidden" id="<?php echo esc_attr( $input_id ); ?>" class="qty" name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $min_value ); ?>" />
+    </div>
+    <?php
 } else {
-	?>
-	<div class="quantity">
-		<label class="label" for="<?php echo esc_attr( $input_id ); ?>"><?php esc_html_e( 'Quantity', 'martfury' ); ?></label>
-		<div class="qty-box">
-			<span class="decrease icon_minus-06">-</span>
-			<input
-				type="number"
-				id="<?php echo esc_attr( $input_id ); ?>"
-				class="input-text qty text"
-				step="<?php echo esc_attr( $step ); ?>"
-				min="<?php echo esc_attr( $min_value ); ?>"
-				max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>"
-				name="<?php echo esc_attr( $input_name ); ?>"
-				value="<?php echo esc_attr( $input_value ); ?>"
-				title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'martfury' ); ?>"
-				size="4"
-				pattern="<?php echo esc_attr( $pattern ); ?>"
-				inputmode="<?php echo esc_attr( $inputmode ); ?>" />
-			<span class="increase icon_plus">+</span>
-		</div>
-	</div>
-	<?php
+    ?>
+    <div class="quantity">
+        <label class="label" for="<?php echo esc_attr( $input_id ); ?>"><?php esc_html_e( 'Quantity', 'martfury' ); ?></label>
+        <div class="qty-box">
+    	<span class="decrease"><i class="fa fa-angle-down " aria-hidden="true"></i>
+    	</span>
+    	<input
+    	    type="number"
+    	    id="<?php echo esc_attr( $input_id ); ?>"
+    	    class="input-text qty text"
+    	    step="<?php echo esc_attr( $step ); ?>"
+    	    min="<?php echo esc_attr( $min_value ); ?>"
+    	    max="<?php echo esc_attr( 0 < $max_value ? $max_value : ''  ); ?>"
+    	    name="<?php echo esc_attr( $input_name ); ?>"
+    	    value="<?php echo esc_attr( $input_value ); ?>"
+    	    title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'martfury' ); ?>"
+    	    size="4"
+    	    pattern="<?php echo esc_attr( $pattern ); ?>"
+    	    inputmode="<?php echo esc_attr( $inputmode ); ?>" />
+    	<span class="increase"><i class="fa fa-angle-up" aria-hidden="true"></i>
+    	</span>
+        </div>
+    </div>
+    <?php
 }

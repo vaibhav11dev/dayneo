@@ -21,9 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 ?>
-<div class="m-b-30 woo-product-price">
+<div class="woo-product-price">
     <h2 class="text-title">
 	<?php echo wp_kses_post($product->get_price_html()); ?>
     </h2>
 </div>
-<hr class="m-t-30 m-b-30">
