@@ -11,7 +11,7 @@
 <div id="redux-sticky">
     <div id="info_bar">
 
-        <a href="javascript:void(0);" class="expand_options<?php echo esc_attr(( $this->parent->args['open_expanded'] ) ? ' expanded' : ''); ?>"<?php echo $this->parent->args['hide_expand'] ? ' style="display: none;"' : '' ?>>
+        <a href="javascript:void(0);" class="fa fa-bars expand_options<?php echo esc_attr(( $this->parent->args['open_expanded'] ) ? ' expanded' : ''); ?>"<?php echo $this->parent->args['hide_expand'] ? ' style="display: none;"' : '' ?>>
             <?php esc_attr_e( 'Expand', 'dayneo' ); ?>
         </a>
 

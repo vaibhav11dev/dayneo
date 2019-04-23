@@ -59,10 +59,10 @@ jQuery(document).ready(function () {
 	);
 
 	/* jquery auto-install section */
-	jQuery('.demo_layout_wrap.select_demo div.bgframe').live('click', function () {
+	jQuery('.demo_layout_wrap.select_demo div.bgframe.demo').live('click', function () {
 		var tlayout = jQuery(this);
-		jQuery('.demo_layout_wrap div.bgframe').each(function () {
-			jQuery(this).find('.scroll_image').removeClass('selected');
+		jQuery('.demo_layout_wrap div.bgframe.demo').each(function () {
+			jQuery(this).find('.scroll_image.demo').removeClass('selected');
 			jQuery(this).removeClass('selected');
 		}
 		);
@@ -74,7 +74,7 @@ jQuery(document).ready(function () {
 		jQuery('.demo_install_button').find('a.install_demo').attr('data-href', install_path);
 	}
 	);
-	if (jQuery('.demo_layout_wrap a.bgframe').hasClass('selected')) {
+	if (jQuery('.demo_layout_wrap a.bgframe.demo').hasClass('selected')) {
 		jQuery('.demo_install_button').find('a.install_demo').removeClass('disabled');
 	} else {
 		jQuery('.demo_install_button').find('a.install_demo').addClass('disabled');
@@ -172,4 +172,12 @@ jQuery(document).ready(function () {
 			jQuery(container).find('#' + theme_prefix + 'page_title_bar_height_custom').parents('.ved_metabox_field').show();
 		}
 	});
+
+	//mobile sidebar
+	if (jQuery(window).width() < 768) {
+		setTimeout(function(){ 
+	   		jQuery(".expand_options").trigger( "click" );
+	   	}, 300);
+	}
+	
 });

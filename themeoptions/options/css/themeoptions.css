@@ -378,7 +378,7 @@
 }
 
 .select2-results .select2-highlighted {
-    background: #1abcb0;
+    background: #dc324f;
     color: #fff
 }
 
@@ -1113,7 +1113,7 @@ html[dir=rtl] .select2-search-choice-close {
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: #1abcb0;
+    background-color: #dc324f;
     color: #fff
 }
 
@@ -1431,4 +1431,10 @@ html[dir=rtl] .select2-search-choice-close {
 
 .select2-container .select2-choice {
     height: auto
+}
+
+@media screen and (max-width: 767px){
+.select2-container {
+    min-width: 100%;
+}
 }

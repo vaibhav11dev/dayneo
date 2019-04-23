@@ -11,11 +11,15 @@
 <!-- Header Block -->
 <?php $this->get_template( 'header.tpl.php' ); ?>
 
+<div class="container">
+<div class="box">
+
 <!-- Intro Text -->
 <?php if ( isset( $this->parent->args['intro_text'] ) ) { ?>
     <div id="redux-intro-text"><?php echo wp_kses_post( $this->parent->args['intro_text'] ); ?></div>
 <?php } ?>
 
+<div class="content-wrap-main">
 <?php $this->get_template( 'menu_container.tpl.php' ); ?>
 
 <div class="redux-main">
@@ -96,4 +100,8 @@
 <?php $this->get_template( 'footer.tpl.php' ); ?>
 <div id="redux-sticky-padder" style="display: none;">&nbsp;</div>
 </div>
+</div>
 <div class="clear"></div>
+
+</div>
+</div>

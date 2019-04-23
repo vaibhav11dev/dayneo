@@ -14,7 +14,7 @@
 }
 
 .theme_content {
-    float: left;
+    padding: 50px 0;
     position: relative;
     width: 100%;
 }
@@ -39,20 +39,24 @@
 }
 
 .about-wrap .bgframe.selected {
-    border: 5px solid #1abcb0;
+    border: 5px solid #dc324f;
 }
 
 .bgframe {
     background-size: 100% auto;
     display: block;
     float: left;
-    height: 300px;
     max-height: 100%;
     position: relative;
 }
-
+.install_demo_title {
+    margin-top: 0;
+}
+.bgframe.comingsoon,.bgframe .img_hover a{
+    cursor: not-allowed;
+}
 .bgframe:hover span.scroll_image {
-    background-position: center bottom;
+    /*background-position: center bottom;*/
 }
 
 .bgframe span.scroll_image {
@@ -60,12 +64,39 @@
     background-repeat: no-repeat;
     background-size: 100% auto;
     top: 0;
-    height: 300px;
-    position: absolute;
+    height: 250px;
+    display: block;    
     transition: all 5s ease-out 0s;
     width: 100%;
 }
-
+.img_hover {
+    display: block;
+    height: 50px;
+    background-color: #f5f5f5f5;
+    padding: 10px 15px;    
+    box-sizing: border-box;
+    border-top: 1px solid #e5e5e5;    
+}
+.img_hover span{
+    line-height: 30px
+}
+.img_hover > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+.img_hover a{
+    float: right;
+    padding: 8px 15px;
+    color: #fff;
+    background-color: #19222e;
+    text-decoration: none;
+    line-height: 1;
+    border-radius: 3px; 
+    transition: all .3s;       
+}
+.img_hover a:hover{
+    background-color: #dc324f
+}
 .button.secondary.upload_image {
     margin-top: 10px;
 }
@@ -196,34 +227,25 @@ button.accordion:hover {
     cursor: pointer;
 }
 
-.theme_info_left {
-    float: left;
-    margin-right: 4%;
-    width: 39%;
-}
-
 .theme_info_right {
-    border: 1px solid #dddddd;
     box-sizing: border-box;
-    float: left;
     max-height: 600px;
-    max-width: 57%;
     overflow: hidden;
 }
 
 .theme_info {
-    margin: 50px 0;
+    margin: 30px 0 0;
 }
 
 .theme_info .button,
 .start_install .install_demo {
 	line-height: 30px;
-	padding: 0 12px;
-	height: 30px;
-	background: #1abcb0;
+    padding: 5px 15px;
+    height: auto;
+	background: #dc324f;
 	color: #fff;
 	border: none;
-	border-radius: 0;
+	border-radius: 4px;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	text-shadow: none;
@@ -232,12 +254,17 @@ button.accordion:hover {
 	-ms-transition: .1s linear all;
 	-o-transition: .1s linear all;
 	transition: .1s linear all;
+    display: inline-block;    
 }
 
 .theme_info .button:hover,
-.start_install .install_demo:hover {
-	background-color: #16a096;
+.start_install .install_demo:hover{
+	background-color: #19222e;
 	color: #fff;
+}
+.theme_info .button:focus,
+.start_install .install_demo:focus{
+    background: #dc324f;
 }
 
 .about-wrap .point-releases {
@@ -296,8 +323,6 @@ button.accordion:hover {
 /* Style for install demo content */
 
 .demo_layout_wrap {
-    padding-bottom: 30px;
-    float: left;
     width: 100%;
 }
 
@@ -311,56 +336,15 @@ button.accordion:hover {
     position: relative;
     max-height: 400px;
     overflow: hidden;
-}
-
-.img_hover {
-    background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    right: 0;
-    opacity: 0;
-    top: 0;
-    transition: all 03s;
-    cursor: pointer;
-    -webkit-transition: all 0.5s;
-}
-
-.bgframe:hover .img_hover {
-    opacity: 1;
-    -webkit-transition: all 0.5s;
-}
-
-.img_hover>span {
-    left: 0;
-    position: absolute;
-    right: 0;
-    text-align: center;
-    top: 47%;
-    vertical-align: middle;
-}
-
-.img_hover>span>a {
-    padding: 10px;
-    text-decoration: none;
-    background: #fff;
-    z-index: 999;
-}
-
-.img_hover>span>a:focus {
-    outline: none;
+    cursor: pointer;  
+    box-sizing: border-box;      
 }
 
 .demo_install_button {
-    display: inline-block;
     width: 100%;
 }
-
-.about-wrap h2.install_demo_title {
-    font-size: 22px;
-    margin-bottom: 12px;
-    margin-top: 15px;
-    text-align: left;
+.about-wrap .demo_install_button{
+    max-width: none;
 }
 
 .demo_install_button .start_install a {
@@ -381,7 +365,13 @@ button.accordion:hover {
     pointer-events: none;
     opacity: 0.4;
 }
-
+.demo_install_button .start_install .select_demo_msg{
+    padding: 10px;
+    background-color: #fcf8e3;
+    border: 1px solid #faebcc;
+    text-transform: capitalize;
+    margin-left: 15px
+}
 .the_plugin .plugin_area {
     margin: 10px 0px;
     width: 29.8% !important;
@@ -453,10 +443,24 @@ button.accordion:hover {
 
 .about-wrap .wp-badge {
     height: 90px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    padding-top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-color: transparent;
+    margin-top: 0;
 }
 
 .about-wrap.wrap {
-    max-width: 1200px;
+    max-width:none;
+    box-sizing: border-box;  
+    margin: 0;      
 }
 
 .widefat.cat_in {
@@ -482,7 +486,6 @@ button.accordion:hover {
 }
 
 .start_install {
-    float: left;
     margin-top: 30px;
     width: 100%;
 }
@@ -526,4 +529,186 @@ button.accordion:hover {
         box-sizing: border-box;
         width: 50%;
     }
+}
+
+@media screen and (max-width:479px) {
+.demodiv {
+    float: none;
+    width: 100%;
+}
+.bgframe{
+    float: none;
+}
+}    
+
+/*custom*/
+.def-bg {
+    background-color: #dc324f;
+    color: #fff;
+}
+.about-wrap h3 {
+    margin-top: 0
+}
+.about-wrap.wrap .container,.about-wrap.wrap + .container{
+    max-width: 1200px;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+.about-wrap h1 {
+    margin: 0 200px 0 0;
+    color: #fff;
+}    
+#wpcontent {
+    padding-left: 0;
+}
+.about-wrap.wrap .head-contain{
+    padding: 0 15px 0 30px;    
+}
+.nav-tab-wrapper{
+    border-bottom: none;
+}
+.about-wrap .nav-tab {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    margin-left: 0;
+    margin-right: 30px;
+    padding-bottom: 12px;
+    border-bottom: 5px solid transparent;
+}
+.about-wrap .nav-tab.nav-tab-active{
+    border-color: #fff
+}
+.col-sm-6,.col-sm-4 {
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+.box {
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,.05);
+    margin-top: 30px;    
+}
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.row:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.text-center {
+    text-align: center;
+}
+.box.feature-box{
+    padding: 0
+}
+.feature-box > div {
+    padding: 20px 30px;    
+}
+.feature-icon {
+    margin-bottom: 15px;
+}
+.feature-box .feature-footer{
+    border-top: 1px solid #e2e2e2
+}
+.feature-box .theme_info{
+    margin-top: 0;
+}
+.feature-box .feature-footer{
+    height: 80px;
+    box-sizing: border-box;
+}
+.feature-footer ul {
+    padding: 0;
+    margin: 0;
+    display: table;
+    margin: 0 auto;
+}
+
+.feature-footer ul li {
+    float: left;
+    margin: 0 5px;
+}
+
+.feature-footer ul li a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    padding: 0 5px;
+    transition: all .3s;    
+}
+.feature-footer ul li.facebook a{
+    color: #3b5998
+}
+.feature-footer ul li.twitter a{
+    color: #00acee
+}
+.feature-footer ul li.instagram a{
+    color: #E1306C
+}
+.feature-footer ul li a:hover{
+    color: #dc324f
+}
+.dayneo_page_dayneo_demos .about-wrap > .container{
+        width: 100%;
+    max-width: none;
+}
+
+@media screen and (max-width: 767px){
+.wrap.about-wrap .nav-tab-wrapper{
+    display: flex;
+    overflow-x: auto;
+}
+.about-wrap h1 {
+    margin: 0;
+    font-size: 28px;    
+}
+.about-wrap .wp-badge {
+    height: 60px;    
+    transform: none;
+    position: static;
+    width: 140px;
+    margin-bottom: 0;    
+}
+.theme_info_right{
+    margin-top: 40px
+}
+.theme_content {
+    padding-bottom: 10px;
+}
+.auto-fold #wpcontent {
+    padding-left: 0;
+}
+.about-wrap.wrap + .container {
+    padding: 0;
+}
+.dayneo_page_ved-settings .about-wrap.wrap + .container {
+        padding: 0 15px;
+}
+.about-wrap .nav-tab {
+        margin-right: 20px;
+    font-size: 14px;
+}
+.box {
+    padding: 20px;
+}    
+}
+@media screen and (min-width: 768px){
+.col-sm-6 {
+    width: 50%;
+    float: left;
+}
+.col-sm-4 {
+    width: 33.33%;
+    float: left;
+}
+.wrap.about-wrap > .container,.about-wrap.wrap + .container{
+    padding-left: 30px;
+    padding-right:30px;
+}
 }
