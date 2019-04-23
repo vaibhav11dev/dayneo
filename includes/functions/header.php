@@ -354,9 +354,9 @@ if ( ! function_exists( 'dayneo_extra_department' ) ) :
         }
 
         $dep_text = '<i class="icon-menu"><span class="s-space"></span></i>';
-        $c_link   = '';
-        if ( ! empty( $c_link ) ) {
-            $dep_text .= '<a href="' . esc_url( $c_link ) . '" class="text">' . 'custom department text' . '</a>';
+        $dep_tit = dayneo_get_option( 'dd_vmenu_title' );
+        if ( ! empty( $dep_tit ) ) {
+            $dep_text .= '<span class="text">' . $dep_tit . '</span>';
         } else {
             $dep_text .= '<span class="text">' . 'Categories' . '</span>';
         }

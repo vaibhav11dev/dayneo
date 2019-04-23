@@ -121,9 +121,12 @@ Text Domain: dayneo
 /* Header Styles */
 
 .header-main-wapper .header-row{
-    display: flex;
     align-items: center;
     padding: 20px 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
 }
 
 /* Search Box Styles */
@@ -153,6 +156,9 @@ Text Domain: dayneo
 }
 .products-search .search-wrapper {
     width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
 }
 .products-search .search-field {
@@ -188,6 +194,9 @@ Text Domain: dayneo
     background-color: #222;
     color: #fff;
 }
+.header-row .product-cat .product-cat-label {
+    display: none;
+}
 
 /* Wishlist icon, Cart icon, Hotline icon, Compare icon Styles */
 
@@ -195,6 +204,9 @@ Text Domain: dayneo
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     align-items: center;
 }
@@ -260,7 +272,6 @@ Text Domain: dayneo
     top: 100%;
     left: 0;
     z-index: 999;
-    padding: 0 5px;
     display: block;
     cursor: pointer;
     background-color: rgb(255, 255, 255);
@@ -273,17 +284,11 @@ Text Domain: dayneo
     line-height: 50px;
     color: #fff;
 }
-.primary-nav .inner-nav > li:first-child > a{
-    padding-left: 0;
-}
-.main-menu .header-row .col-header-menu{
-    background-color: #333;
-}
 
 /* Vertical Mega Menu Styles */
 
 .products-cats-menu .cats-menu-title{
-    color: #222;
+    color: #fff;
     font-size: 16px;
     height: 50px;
     line-height: 50px;
@@ -292,6 +297,7 @@ Text Domain: dayneo
     position: relative;
     margin-bottom: 0;
     background-color: #fcc12c;
+    cursor: pointer;    
 }
 .products-cats-menu .cats-menu-title i{
     font-size: 18px;
@@ -327,7 +333,7 @@ Text Domain: dayneo
     width: 20px;
     text-align: center;
 }
-.vertical-megamenu .ved-megamenu-menu > .sub-menu{
+.vertical-megamenu > ul > .has-submenu > .sub-menu{
     left: 100%;
     top: 0;
     background: #fff;
@@ -345,7 +351,7 @@ Text Domain: dayneo
     transition: opacity 0.5s ease 0s,transform 0.5s ease 0s;
 }
 
-.vertical-megamenu .submenu-open > .sub-menu {
+.vertical-megamenu > ul > .has-submenu.submenu-open > .sub-menu {
     visibility: visible;
     opacity: 1;
     -webkit-transform: translate(0,0);

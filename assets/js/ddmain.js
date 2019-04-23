@@ -721,10 +721,10 @@
             e.stopPropagation();
             $(".sub-cart-menu").slideToggle();
         });
-        $(".cats-menu-title .icon-menu").live('click', function (e) {
+        $(".cats-menu-title").live('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            $(".toggle-product-cats").slideToggle();
+            $(".toggle-product-cats").first().stop(true, true).slideToggle();
         });	
 	
     });

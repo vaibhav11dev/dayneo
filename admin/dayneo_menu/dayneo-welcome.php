@@ -33,7 +33,7 @@ $dayneo_theme = wp_get_theme();
         <div class="col-sm-4">
             <div class="box feature-box text-center">
                 <div class="feature-body">
-                    <div class="feature-icon"><img src="<?php echo esc_url(get_template_directory_uri() . '/admin/assets/images/support.jpg'); ?>"></div>
+                    <div class="feature-icon"><img src="<?php echo esc_url(get_template_directory_uri() . '/admin/assets/images/support.png'); ?>"></div>
                     <h3>Support</h3>
                     <p>Email us with any questions or inquiries. We would be happy to answer your questions and set up a meeting with you.</p>
                 </div>
@@ -43,7 +43,7 @@ $dayneo_theme = wp_get_theme();
         <div class="col-sm-4">
             <div class="box feature-box text-center">
                 <div class="feature-body">
-                    <div class="feature-icon"><img src="<?php echo esc_url(get_template_directory_uri() . '/admin/assets/images/support.jpg'); ?>"></div>
+                    <div class="feature-icon"><img src="<?php echo esc_url(get_template_directory_uri() . '/admin/assets/images/documention.png'); ?>"></div>
                     <h3>Documention</h3>
                     <p>We understand that using WordPress or a new theme can be daunting. That's why we've created a collection of docs to help you.</p>
                 </div>
@@ -53,7 +53,7 @@ $dayneo_theme = wp_get_theme();
         <div class="col-sm-4">
             <div class="box feature-box text-center">
                 <div class="feature-body">
-                    <div class="feature-icon"><img src="<?php echo esc_url(get_template_directory_uri() . '/admin/assets/images/support.jpg'); ?>"></div>
+                    <div class="feature-icon"><img src="<?php echo esc_url(get_template_directory_uri() . '/admin/assets/images/info.png'); ?>"></div>
                     <h3>Contact Us</h3>
                     <p>Innovatory themes is on social media! Follow us on Facebook, Twitter and Instagram to keep up to date with the latest happenings.</p>
                 </div>

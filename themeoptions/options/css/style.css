@@ -152,7 +152,8 @@
 }
 
 .wp-core-ui #redux_save,
-.wp-core-ui .redux-container .button-primary {
+.wp-core-ui .redux-container .button-primary,
+.wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover {
     line-height: 30px;
     padding: 5px 15px;
     height: auto;
@@ -169,7 +170,11 @@
     -o-transition: .1s linear all;
     transition: .1s linear all
 }
-
+.wp-core-ui .button-primary-disabled, .wp-core-ui .button-primary.disabled, .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary[disabled]{
+    background-color: #dc324f !important;
+    opacity: .8;
+    color: #fff !important;
+}
 .wp-core-ui #redux_save:focus,
 .wp-core-ui #redux_save:hover,
 .wp-core-ui .redux-container .button-primary:focus,

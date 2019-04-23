@@ -392,11 +392,6 @@ $dd_form_text_color		 = $dd_options[ 'dd_form_text_color' ];
 $dd_form_border_color		 = $dd_options[ 'dd_form_border_color' ];
 
 $dayneo_dynamic_css .= '
-.inner-nav > li > a:hover, 
-.inner-nav > li > a:focus, 
-.inner-nav > li.submenu-open > a {
-	color: ' . esc_attr($dd_main_menu_hover_font_color) . ';
-}
 .sub-menu li > a:hover, 
 .sub-menu li > a:focus, 
 .sub-menu li.submenu-open > a {
@@ -651,9 +646,8 @@ a:focus,
 .icons-list a:focus,
 .icons-list a:hover,
 .widget .widget-content ul li a:hover,
-.inner-nav > li > a:hover,
+.vertical-megamenu .inner-nav > li:hover > a,
 .inner-nav > li > a:focus,
-.inner-nav > li.submenu-open > a,
 .sub-menu li > a:hover,
 .sub-menu li > a:focus,
 .sub-menu li.submenu-open > a,
@@ -675,7 +669,7 @@ a:focus,
 .bg-brand,
 .progress-bar,
 .products-search .search-submit,
-.products-cats-menu .cats-menu-title,
+.main-menu,
 .extras-menu .icon-wrap:hover .icon-box,
 .extras-menu .icon-wrap .icon-box .mini-item-counter
 {
@@ -735,7 +729,9 @@ h3.widget-title::after
 }
 
 .btn.btn-base,
-.bg-brand-hvr {
+.bg-brand-hvr,
+.products-cats-menu .cats-menu-title,
+.ved-main-megamenu .inner-nav > li:hover > a {
     background-color: ' . esc_attr($dd_secondry_color) . ';
 }
 ';
