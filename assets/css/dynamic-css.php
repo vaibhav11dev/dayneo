@@ -676,7 +676,6 @@ a:focus,
 .progress-bar,
 .products-search .search-submit,
 .products-cats-menu .cats-menu-title,
-.header-bar .hotline-content,
 .extras-menu .icon-wrap:hover .icon-box,
 .extras-menu .icon-wrap .icon-box .mini-item-counter
 {

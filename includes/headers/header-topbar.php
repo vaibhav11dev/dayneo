@@ -36,7 +36,7 @@ if ( is_page() ) {
     <div class="container">
 	<div class="row">
 
-	    <?php if ( $dd_options[ 'dd_header_left_content' ] != 'empty' || $dd_options[ 'dd_header_right_content' ] != 'empty' ): ?>  
+	    <?php if ( $dd_options[ 'dd_header_left_content' ] != 'empty' ): ?>  
 		    <div class="col-md-6 hidden-sm hidden-xs">
 			<?php
 			if ( $dd_options[ 'dd_header_left_content' ] == 'contact_info' ) {
@@ -48,19 +48,16 @@ if ( is_page() ) {
 			}
 			?>
 		    </div>
+             <?php endif; ?>
 		    <div class="col-md-6 col-sm-12 text-right">
 			<?php
-			if ( $dd_options[ 'dd_header_right_content' ] == 'contact_info' ) {
-				get_template_part( 'includes/headers/header-info' );
-			} elseif ( $dd_options[ 'dd_header_right_content' ] == 'social_links' ) {
-				get_template_part( 'includes/headers/header-social' );
-			} elseif ( $dd_options[ 'dd_header_right_content' ] == 'navigation' ) {
-				get_template_part( 'includes/headers/header-topmenu' );
-			}
+                            get_template_part( 'includes/headers/header-wishlist' );
+                            get_template_part( 'includes/headers/header-yith-compare' );
+                            get_template_part( 'includes/headers/header-currency' );
+                            get_template_part( 'includes/headers/header-my-account' );
 			?>
 		    </div>
-	    <?php endif; ?>
-
+	   
 	</div>
     </div>
 </div>

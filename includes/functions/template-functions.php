@@ -153,6 +153,7 @@ function dayneo_after_setup() {
 
 	register_nav_menu( 'primary-menu', __( 'Primary Menu', 'dayneo' ) );
 	register_nav_menu( 'top-menu', __( 'Top Menu', 'dayneo' ) );
+	register_nav_menu( 'department-menu', __( 'Department Menu', 'dayneo' ) );
 
 	$dd_container_width_px		 = (int)$dd_width_px - 30;
 	$dd_container_custom_width_px	 = (int)$dd_custom_width_px - 30;

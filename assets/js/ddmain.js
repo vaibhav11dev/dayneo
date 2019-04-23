@@ -749,11 +749,14 @@
         return /^\d*$/.test(value);
     });
 
+
+    $.HandleElement = $.HandleElement || {};
+    $.HandleElement.$body = $(document.body);
+    $.HandleElement.$window = $(window),
+    $.HandleElement.$header = $('.header-main');
     /**
      * Change product quantity
      */
-    $.HandleElement = $.HandleElement || {};
-    $.HandleElement.$body = $(document.body);
     $.HandleElement.productQuantity = function () {
         $.HandleElement.$body.on('click', '.quantity .increase, .quantity .decrease', function (e) {
             e.preventDefault();
@@ -777,8 +780,152 @@
             }
         });
     };
+    /**
+     * Product instance search
+     */
+    $.HandleElement.instanceSearch = function () {
+
+        if (dayneoData.ajax_search != '1') {
+            return;
+        }
+
+        var xhr = null,
+            searchCache = {},
+            $form = $.HandleElement.$header.find('.products-search');
+
+        $form.on('keyup', '.search-field', function (e) {
+            var valid = false;
+
+            if (typeof e.which == 'undefined') {
+                valid = true;
+            } else if (typeof e.which == 'number' && e.which > 0) {
+                valid = !e.ctrlKey && !e.metaKey && !e.altKey;
+            }
+
+            if (!valid) {
+                return;
+            }
+
+            if (xhr) {
+                xhr.abort();
+            }
+
+            var $currentForm = $(this).closest('.products-search'),
+                $search = $currentForm.find('input.search-field');
+
+            if ($search.val().length < 2) {
+                $currentForm.removeClass('searching searched actived found-products found-no-product invalid-length');
+            }
+
+            search($currentForm);
+        }).on('change', '#product_cat', function () {
+            if (xhr) {
+                xhr.abort();
+            }
+
+            var $currentForm = $(this).closest('.products-search');
+
+            search($currentForm);
+        }).on('focusout', '.search-field', function () {
+            var $currentForm = $(this).closest('.products-search'),
+                $search = $currentForm.find('input.search-field');
+            if ($search.val().length < 2) {
+                $currentForm.removeClass('searching searched actived found-products found-no-product invalid-length');
+            }
+        });
+
+
+        $(document).on('click', function (e) {
+            if (!$form.hasClass('actived')) {
+                return;
+            }
+            var target = e.target;
+
+            if ($(target).closest('.products-search').length < 1) {
+                $form.removeClass('searching searched actived found-products found-no-product invalid-length');
+            }
+        });
+
+
+        /**
+         * Private function for search
+         */
+        function search($currentForm) {
+            var $search = $currentForm.find('input.search-field'),
+                keyword = $search.val(),
+                cat = 0,
+                $results = $('.ajax-search-results');
+
+            if ($currentForm.find('#product_cat').length > 0) {
+                cat = $currentForm.find('#product_cat').val();
+            }
+
+
+            if (keyword.length < 2) {
+                $currentForm.removeClass('searching found-products found-no-product').addClass('invalid-length');
+                return;
+            }
+
+            $currentForm.removeClass('found-products found-no-product').addClass('searching');
+
+            var keycat = keyword + cat;
+
+            if (keycat in searchCache) {
+                var result = searchCache[keycat];
+
+                $currentForm.removeClass('searching');
+
+                $currentForm.addClass('found-products');
+
+                $results.html(result.products);
+
+                $(document.body).trigger('dayneo_ajax_search_request_success', [$results]);
+
+                $currentForm.removeClass('invalid-length');
+
+                $currentForm.addClass('searched actived');
+            } else {
+                xhr = $.ajax({
+                    url: dayneoData.ajax_url,
+                    dataType: 'json',
+                    method: 'post',
+                    data: {
+                        action: 'dayneo_search_products',
+                        nonce: dayneoData.nonce,
+                        term: keyword,
+                        cat: cat,
+                        search_type: dayneoData.search_content_type
+                    },
+                    success: function (response) {
+                        var $products = response.data;
+
+                        $currentForm.removeClass('searching');
+
+
+                        $currentForm.addClass('found-products');
+
+                        $results.html($products);
+
+                        $currentForm.removeClass('invalid-length');
+
+                        $(document.body).trigger('dayneo_ajax_search_request_success', [$results]);
+
+                        // Cache
+                        searchCache[keycat] = {
+                            found: true,
+                            products: $products
+                        };
+
+
+                        $currentForm.addClass('searched actived');
+                    }
+                });
+            }
+        }
+    };
     $.HandleElement.init = function () {
         $.HandleElement.productQuantity();
+        $.HandleElement.instanceSearch();
     };
     $(document).ready($.HandleElement.init);
 

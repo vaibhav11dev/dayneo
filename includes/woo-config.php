@@ -36,6 +36,7 @@ function dayneo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
 			<?php echo $woocommerce->cart->cart_contents_count; ?>
     		</span>
     	    </span>
+            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e('Shopping Cart', 'dayneo') ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>
     	</div>
         </a>
 
@@ -717,3 +718,167 @@ function dayneo_woocommerce_view_order( $order_id ) {
 }
 
 /* end order hooks */
+
+	/**
+	 * Search products
+	 *
+	 * @since 1.0
+	 */
+	function instance_search_result() {
+		if ( apply_filters( 'dayneo_check_ajax_referer', true ) ) {
+			check_ajax_referer( '_dayneo_nonce', 'nonce' );
+		}
+		$response = array();
+
+		if ( isset( $_POST['search_type'] ) && $_POST['search_type'] == 'all' ) {
+			$response = instance_search_every_things_result();
+		} else {
+			$response = instance_search_products_result();
+		}
+
+		if ( empty( $response ) ) {
+			$response[] = sprintf( '<li>%s</li>', esc_html__( 'Nothing found', 'dayneo' ) );
+		}
+
+		$output = sprintf( '<ul>%s</ul>', implode( ' ', $response ) );
+
+		wp_send_json_success( $output );
+		die();
+	}
+
+	function instance_search_products_result() {
+		$response = array();
+		$args_sku = array(
+			'post_type'        => 'product',
+			'posts_per_page'   => 30,
+			'meta_query'       => array(
+				array(
+					'key'     => '_sku',
+					'value'   => trim( $_POST['term'] ),
+					'compare' => 'like',
+				),
+			),
+			'suppress_filters' => 0,
+		);
+
+		$args_variation_sku = array(
+			'post_type'        => 'product_variation',
+			'posts_per_page'   => 30,
+			'meta_query'       => array(
+				array(
+					'key'     => '_sku',
+					'value'   => trim( $_POST['term'] ),
+					'compare' => 'like',
+				),
+			),
+			'suppress_filters' => 0,
+		);
+
+		$args = array(
+			'post_type'        => 'product',
+			'posts_per_page'   => 30,
+			's'                => trim( $_POST['term'] ),
+			'suppress_filters' => 0,
+		);
+
+		if ( function_exists( 'wc_get_product_visibility_term_ids' ) ) {
+			$product_visibility_term_ids = wc_get_product_visibility_term_ids();
+			$args['tax_query'][]         = array(
+				'taxonomy' => 'product_visibility',
+				'field'    => 'term_taxonomy_id',
+				'terms'    => $product_visibility_term_ids['exclude-from-search'],
+				'operator' => 'NOT IN',
+			);
+		}
+		if ( isset( $_POST['cat'] ) && $_POST['cat'] != '0' ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'product_cat',
+				'field'    => 'slug',
+				'terms'    => $_POST['cat'],
+			);
+
+			$args_sku['tax_query'] = array(
+				array(
+					'taxonomy' => 'product_cat',
+					'field'    => 'slug',
+					'terms'    => $_POST['cat'],
+				),
+
+			);
+		}
+
+		$products_sku           = get_posts( $args_sku );
+		$products_s             = get_posts( $args );
+		$products_variation_sku = get_posts( $args_variation_sku );
+
+		$products    = array_merge( $products_sku, $products_s, $products_variation_sku );
+		$product_ids = array();
+		foreach ( $products as $product ) {
+			$id = $product->ID;
+			if ( ! in_array( $id, $product_ids ) ) {
+				$product_ids[] = $id;
+
+				$productw   = wc_get_product( $id );
+				$response[] = sprintf(
+					'<li>' .
+					'<a class="image-item" href="%s">' .
+					'%s' .
+					'</a>' .
+					'<div class="content-item">' .
+					'<a class="title-item" href="%s">' .
+					'%s' .
+					'</a>' .
+					'<div class="rating-item">%s</div>' .
+					'<div class="price-item">%s</div>' .
+					'</div>' .
+					'</li>',
+					esc_url( $productw->get_permalink() ),
+					$productw->get_image( 'shop_thumbnail' ),
+					esc_url( $productw->get_permalink() ),
+					$productw->get_title(),
+					wc_get_rating_html( $productw->get_average_rating() ),
+					$productw->get_price_html()
+				);
+			}
+		}
+
+		return $response;
+	}
+
+	function instance_search_every_things_result() {
+		$response = array();
+		$args     = array(
+			'post_type'        => 'any',
+			'posts_per_page'   => 30,
+			's'                => trim( $_POST['term'] ),
+			'suppress_filters' => 0,
+		);
+
+		$posts    = get_posts( $args );
+		$post_ids = array();
+		foreach ( $posts as $post ) {
+			$id = $post->ID;
+			if ( ! in_array( $id, $post_ids ) ) {
+				$post_ids[] = $id;
+				$response[] = sprintf(
+					'<li>' .
+					'<a class="image-item" href="%s">' .
+					'%s' .
+					'</a>' .
+					'<div class="content-item">' .
+					'<a class="title-item" href="%s">' .
+					'%s' .
+					'</a>' .
+					'</li>',
+					esc_url( get_the_permalink( $id ) ),
+					get_the_post_thumbnail( $id ),
+					esc_url( get_the_permalink( $id ) ),
+					$post->post_title
+				);
+			}
+		}
+
+		return $response;
+	}
+add_action( 'wp_ajax_dayneo_search_products', 'instance_search_result' );
+add_action( 'wp_ajax_nopriv_dayneo_search_products', 'instance_search_result' );

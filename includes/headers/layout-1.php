@@ -1,7 +1,7 @@
 <?php
 $css_header_menu = 'col-md-9 col-sm-9';
 $show_department = true;
-$extras		 = martfury_menu_extras();
+$extras		 = dayneo_menu_extras();
 if ( empty( $extras ) || ! $extras[ 'department' ] ) {
     $show_department = false;
     $css_header_menu = 'col-md-12 col-sm-12';
@@ -68,15 +68,12 @@ if ( empty( $extras ) || ! $extras[ 'department' ] ) {
 
 		    </div>
 		    <div class="header-extras col-lg-5 col-md-6 col-sm-6 col-xs-6">
-			<?php martfury_extra_search(); ?>
+			<?php dayneo_extra_search(); ?>
 		    </div>
 		    <div class="col-lg-4 col-md-3">
 			<ul class="extras-menu">
 			    <?php
-			    //martfury_extra_hotline();
-			    //martfury_extra_compare();
-			    martfury_extra_wislist();
-			    martfury_extra_cart();
+			    dayneo_extra_cart();
 			    ?>
 			</ul>		    
 		    </div>
@@ -91,16 +88,16 @@ if ( empty( $extras ) || ! $extras[ 'department' ] ) {
 	    <div class="header-row">
 		<?php if ( $show_department ) : ?>
     		<div class="col-md-3 col-sm-3 i-product-cats mr-extra-department">
-			<?php martfury_extra_department(); ?>
+			<?php dayneo_extra_department(); ?>
     		</div>
 		<?php endif; ?>
 		<div class="<?php echo esc_attr( $css_header_menu ); ?> mr-header-menu">
 		    <div class="col-header-menu">
 			<div class="col-md-8">
-			    <?php martfury_header_menu(); ?>
+			    <?php dayneo_header_menu(); ?>
 			</div>
 			<div class="col-md-4">
-			    <?php martfury_header_bar(); ?>
+			    <?php dayneo_header_bar(); ?>
 			</div>
 			<div class="clearfix"></div>
 		    </div>
@@ -115,7 +112,7 @@ if ( empty( $extras ) || ! $extras[ 'department' ] ) {
             <a class="mf-toggle-menu" id="mf-toggle-menu" href="#">
                 <i class="icon-menu"></i>
             </a>
-	    <?php martfury_extra_search( false ); ?>
+	    <?php dayneo_extra_search( false ); ?>
         </div>
     </div>
 </div>

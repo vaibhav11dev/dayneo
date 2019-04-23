@@ -30,6 +30,18 @@ if ( function_exists( 'register_sidebar' ) )
 		'after_title'	 => '</h6>',
 	) );
 
+function dayneo_headerbar() {
+	if ( function_exists( 'register_sidebar' ) )
+		register_sidebar( array(
+			'name'		 => __( 'Header Bar', 'dayneo' ),
+			'id'		 => 'headerbar',
+			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
+			'after_widget'	 => '</div></div>',
+			'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+			'after_title'	 => '</h6>',
+		) );
+}
+
 function dayneo_footer1() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
@@ -79,24 +91,11 @@ function dayneo_footer4() {
 }
 
 // Footer widgets
+dayneo_headerbar();
+dayneo_footer1();
+dayneo_footer2();
+dayneo_footer3();
+dayneo_footer4();
 
-if ( ($dd_footer_widget_col == "one" ) ) {
-	dayneo_footer1();
-}
-if ( ($dd_footer_widget_col == "two" ) ) {
-	dayneo_footer1();
-	dayneo_footer2();
-}
-if ( ($dd_footer_widget_col == "three" ) ) {
-	dayneo_footer1();
-	dayneo_footer2();
-	dayneo_footer3();
-}
-if ( ($dd_footer_widget_col == "four" ) ) {
-	dayneo_footer1();
-	dayneo_footer2();
-	dayneo_footer3();
-	dayneo_footer4();
-}
 
 

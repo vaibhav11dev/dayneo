@@ -279,15 +279,6 @@ Text Domain: dayneo
 .main-menu .header-row .col-header-menu{
     background-color: #333;
 }
-.header-bar .hotline-content{
-    line-height: 50px;
-    display: block;
-    text-align: center;
-    background-color: #fcc12c;
-}
-.header-bar .hotline-content label{
-    margin-bottom: 0;
-}
 
 /* Vertical Mega Menu Styles */
 

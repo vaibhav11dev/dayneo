@@ -520,7 +520,7 @@ Redux::setSection( $dd_options, array(
                         'cart' => 'Cart',
                         'account' => 'Account',
                         'department' => 'Department Menu',
-                        'hotline' => 'Hotline',
+                        'headerbar' => 'Header Bar',
                     ),
                     'default' => array(
                         'search' => '1',
@@ -529,8 +529,9 @@ Redux::setSection( $dd_options, array(
                         'cart' => '1',
                         'account' => '1',
                         'department' => '0',
-                        'hotline' => '0',
-                    )
+                        'headerbar' => '0',
+                    ),
+                    'required'	 => array( array( "dd_header_type", '=', 'h6' ) ),
                 ),
 	),
 )
@@ -554,19 +555,19 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'Header Top Left Content', 'dayneo' ),
 			'default'	 => 'contact_info',
 		),
-		array(
-			'subtitle'	 => __( 'Select which content displays in the top right area of the header.', 'dayneo' ),
-			'id'		 => 'dd_header_right_content',
-			'type'		 => 'select',
-			'options'	 => array(
-				'contact_info'	 => __( 'Contact Info', 'dayneo' ),
-				'social_links'	 => __( 'Social Links', 'dayneo' ),
-				'navigation'	 => __( 'Navigation', 'dayneo' ),
-				'empty'		 => __( 'Leave Empty', 'dayneo' ),
-			),
-			'title'		 => __( 'Header Top Right Content', 'dayneo' ),
-			'default'	 => 'navigation',
-		),
+//		array(
+//			'subtitle'	 => __( 'Select which content displays in the top right area of the header.', 'dayneo' ),
+//			'id'		 => 'dd_header_right_content',
+//			'type'		 => 'select',
+//			'options'	 => array(
+//				'contact_info'	 => __( 'Contact Info', 'dayneo' ),
+//				'social_links'	 => __( 'Social Links', 'dayneo' ),
+//				'navigation'	 => __( 'Navigation', 'dayneo' ),
+//				'empty'		 => __( 'Leave Empty', 'dayneo' ),
+//			),
+//			'title'		 => __( 'Header Top Right Content', 'dayneo' ),
+//			'default'	 => 'navigation',
+//		),
 		array(
 			'subtitle'	 => __( 'Phone number will display in the Contact Info section of your top header.', 'dayneo' ),
 			'id'		 => 'dd_header_number',
