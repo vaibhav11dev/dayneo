@@ -45,6 +45,8 @@ if ( is_page() ) {
 				get_template_part( 'includes/headers/header-social' );
 			} elseif ( $dd_options[ 'dd_header_left_content' ] == 'navigation' ) {
 				get_template_part( 'includes/headers/header-topmenu' );
+			} elseif ( $dd_options[ 'dd_header_left_content' ] == 'content_text' ) {
+				get_template_part( 'includes/headers/header-content' );
 			}
 			?>
 		    </div>
@@ -52,7 +54,6 @@ if ( is_page() ) {
 		    <div class="col-md-6 col-sm-12 text-right">
 			<?php
                             get_template_part( 'includes/headers/header-wishlist' );
-                            get_template_part( 'includes/headers/header-yith-compare' );
                             get_template_part( 'includes/headers/header-currency' );
                             get_template_part( 'includes/headers/header-my-account' );
 			?>

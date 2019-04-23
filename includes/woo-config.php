@@ -251,21 +251,6 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_add_wishlist_on_loo
 }
 
 /**
- * WooCommerce(header) - Yith wishlist ajax update count
- * 
- * 
- */
-//if ( function_exists( 'YITH_WCWL' ) ) {
-//
-//	function dayneo_update_wishlist_count() {
-//		wp_send_json( YITH_WCWL()->count_products() );
-//	}
-//
-//}
-//add_action( 'wp_ajax_dayneo_update_wishlist_count', 'dayneo_update_wishlist_count' );
-//add_action( 'wp_ajax_nopriv_dayneo_update_wishlist_count', 'dayneo_update_wishlist_count' );
-
-/**
  * WooCommerce(shop-page) - Add Custom product shorting filter in shop page
  * 
  * 
@@ -882,3 +867,25 @@ function dayneo_woocommerce_view_order( $order_id ) {
 	}
 add_action( 'wp_ajax_dayneo_search_products', 'instance_search_result' );
 add_action( 'wp_ajax_nopriv_dayneo_search_products', 'instance_search_result' );
+
+	/**
+	 * Ajaxify update count wishlist
+	 *
+	 * @since 1.0
+	 *
+	 * @param array $fragments
+	 *
+	 * @return array
+	 */
+
+	function update_wishlist_count() {
+		if ( ! function_exists( 'YITH_WCWL' ) ) {
+			return;
+		}
+
+		wp_send_json( YITH_WCWL()->count_products() );
+
+	}
+
+add_action( 'wp_ajax_update_wishlist_count', 'update_wishlist_count' );
+add_action( 'wp_ajax_nopriv_update_wishlist_count', 'update_wishlist_count' );

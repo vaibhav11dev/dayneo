@@ -548,25 +548,6 @@
             useCSS: true
         });
 
-        /* added wishlist update count in header menu */
-//	var update_wishlist_count = function () {
-//	    $.ajax({
-//		beforeSend: function () {
-//		},
-//		complete: function () {
-//		},
-//		data: {
-//		    action: 'dayneo_update_wishlist_count'
-//		},
-//		success: function (data) {
-//		    $('.wishlistbtn a span').html(data);
-//		},
-//		url: screenReaderText.ajaxurl
-//	    });
-//	};
-//	$('body').on('added_to_wishlist removed_from_wishlist added_to_cart', update_wishlist_count);
-
-
         // JS - Custom product shorting filter in shop page
         $('.catalog-ordering .orderby .current-li a').html($('.catalog-ordering .orderby ul li.current a').html());
         $('.catalog-ordering .sort-count .current-li a').html($('.catalog-ordering .sort-count ul li.current a').html());
@@ -753,7 +734,7 @@
     $.HandleElement = $.HandleElement || {};
     $.HandleElement.$body = $(document.body);
     $.HandleElement.$window = $(window),
-    $.HandleElement.$header = $('.header-main');
+
     /**
      * Change product quantity
      */
@@ -791,7 +772,8 @@
 
         var xhr = null,
             searchCache = {},
-            $form = $.HandleElement.$header.find('.products-search');
+            $form = $('.header-main').find('.products-search');
+            $('.search-limit').hide();
 
         $form.on('keyup', '.search-field', function (e) {
             var valid = false;
@@ -856,17 +838,21 @@
                 cat = 0,
                 $results = $('.ajax-search-results');
 
-            if ($currentForm.find('#product_cat').length > 0) {
+            if ($currentForm.find('#product_cat').length > 0) { 
                 cat = $currentForm.find('#product_cat').val();
             }
 
 
-            if (keyword.length < 2) {
+            if (keyword.length < 3) {
                 $currentForm.removeClass('searching found-products found-no-product').addClass('invalid-length');
+                $results.fadeOut();
+                $('.search-limit').fadeIn();
                 return;
             }
 
             $currentForm.removeClass('found-products found-no-product').addClass('searching');
+            $results.fadeIn();
+            $('.search-limit').fadeOut();
 
             var keycat = keyword + cat;
 
@@ -923,9 +909,37 @@
             }
         }
     };
+    
+    $.HandleElement.addWishlist = function () {
+        $('ul.products li.product .yith-wcwl-add-button').on('click', 'a', function () {
+            $(this).addClass('loading');
+        });
+
+        $.HandleElement.$body.on('added_to_wishlist', function () {
+            $('ul.products li.product .yith-wcwl-add-button a').removeClass('loading');
+        });
+
+        // update wishlist count
+        $.HandleElement.$body.on('added_to_wishlist removed_from_wishlist cart_page_refreshed', function () {
+            $.ajax({
+                url: dayneoData.ajax_url,
+                dataType: 'json',
+                method: 'post',
+                data: {
+                    action: 'update_wishlist_count'
+                },
+                success: function (data) {
+                    $('.top-bar').find('.menu-item-wishlist .mini-item-counter').html(data);
+                }
+            });
+        });
+
+    };
+    
     $.HandleElement.init = function () {
         $.HandleElement.productQuantity();
         $.HandleElement.instanceSearch();
+        $.HandleElement.addWishlist();
     };
     $(document).ready($.HandleElement.init);
 

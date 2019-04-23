@@ -127,47 +127,6 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
 endif;
 
 /**
- * Get Menu extra wishlist
- *
- * @since  1.0.0
- *
- *
- * @return string
- */
-if ( ! function_exists( 'dayneo_extra_wislist' ) ) :
-
-    function dayneo_extra_wislist() {
-        $extras = dayneo_menu_extras();
-
-        if ( empty( $extras ) || ! $extras[ 'wishlist' ] ) {
-            return '';
-        }
-
-        if ( ! function_exists( 'YITH_WCWL' ) ) {
-            return '';
-        }
-
-        $count = YITH_WCWL()->count_products();
-
-        printf(
-        '<li class="extra-menu-item menu-item-wishlist menu-item-yith">    			    
-			<a class="yith-contents" id="icon-wishlist-contents" href="%s">
-			    <div class="icon-wrap">
-				<span class="icon-box">
-				    <i class="flaticon-heart" rel="tooltip"></i>				
-				    <span class="mini-item-counter">
-					    %s
-				    </span>
-				</span>
-			    </div>
-			</a>
-			</li>', esc_url( get_permalink( get_option( 'yith_wcwl_wishlist_page_id' ) ) ), intval( $count )
-        );
-    }
-
-endif;
-
-/**
  * Get Menu extra search
  *
  * @since  1.0.0
@@ -269,7 +228,8 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
                 </form>
                 %s
 		</div>
-                <div class="ajax-search-results woocommerce"></div>', esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, esc_attr( $item_class ), esc_html( $cats_text ), $cat, wp_kses( $button_text, wp_kses_allowed_html( 'post' ) ), implode( ' ', $words_html )
+                <div class="ajax-search-results woocommerce"></div>
+                <div class="search-limit"><p class="limit">Number of characters at least are 3</p></div>', esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, esc_attr( $item_class ), esc_html( $cats_text ), $cat, wp_kses( $button_text, wp_kses_allowed_html( 'post' ) ), implode( ' ', $words_html )
         );
 
         echo $items;
