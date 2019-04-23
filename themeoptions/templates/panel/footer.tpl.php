@@ -19,35 +19,7 @@
                 $skip_icons = true;
             }
 ?>
-            <div id="redux-share">
-<?php 
-                foreach ( $this->parent->args['share_icons'] as $link ) {
-                    if ($skip_icons) {
-                        continue;
-                    }
-                    
-                    // SHIM, use URL now
-                    if ( isset( $link['link'] ) && ! empty( $link['link'] ) ) {
-                        $link['url'] = $link['link'];
-                        unset( $link['link'] );
-                    }
-?>
-                    <a href="<?php echo esc_url( $link['url'] ) ?>" title="<?php echo esc_attr( $link['title'] ); ?>" target="_blank">
-                        <?php if ( isset( $link['icon'] ) && ! empty( $link['icon'] ) ) : ?>
-                            <i class="<?php
-                                if ( strpos( $link['icon'], 'el-icon' ) !== false && strpos( $link['icon'], 'el ' ) === false ) {
-                                    $link['icon'] = 'el ' . $link['icon'];
-                                }
-                                echo esc_attr( $link['icon'] );
-                            ?>"></i>
-                        <?php else : ?>
-                            <img src="<?php echo esc_url( $link['img'] ); ?>"/>
-                        <?php endif; ?>
 
-                    </a>
-                <?php } ?>
-
-            </div>
         <?php } ?>
 
         <div class="redux-action_bar">

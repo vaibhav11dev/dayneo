@@ -159,7 +159,22 @@ if ( ! class_exists( 'ReduxFramework_media' ) ) {
             echo '<input type="hidden" class="upload-id ' . $this->field['class'] . '" name="' . $this->field['name'] . $this->field['name_suffix'] . '[id]" id="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][id]" value="' . $this->value['id'] . '" />';
             echo '<input type="hidden" class="upload-height" name="' . $this->field['name'] . $this->field['name_suffix'] . '[height]" id="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][height]" value="' . $this->value['height'] . '" />';
             echo '<input type="hidden" class="upload-width" name="' . $this->field['name'] . $this->field['name_suffix'] . '[width]" id="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][width]" value="' . $this->value['width'] . '" />';
-            echo '<input type="hidden" class="upload-thumbnail" name="' . $this->field['name'] . $this->field['name_suffix'] . '[thumbnail]" id="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][thumbnail]" value="' . $this->value['thumbnail'] . '" />';
+            echo '<input type="hidden" class="upload-thumbnail" name="' . $this->field['name'] . $this->field['name_suffix'] . '[thumbnail]" id="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][thumbnail]" value="' . $this->value['thumbnail'] . '" />';            
+
+            //Upload controls DIV
+            echo '<div class="upload_button_div">';
+
+            //If the user has WP3.5+ show upload/remove button
+            echo '<span class="button media_upload_button" id="' . $this->field['id'] . '-media">' . __( 'Upload', 'dayneo' ) . '</span>';
+
+            $hide = '';
+            if ( empty( $this->value['url'] ) || $this->value['url'] == '' ) {
+                $hide = ' hide';
+            }
+
+            echo '<span class="button remove-image' . $hide . '" id="reset_' . $this->field['id'] . '" rel="' . $this->field['id'] . '">' . __( 'Remove', 'dayneo' ) . '</span>';
+
+            echo '</div>';
 
             //Preview
             $hide = '';
@@ -189,21 +204,6 @@ if ( ! class_exists( 'ReduxFramework_media' ) ) {
             echo '<a class="of-uploaded-image" href="' . $this->value['url'] . '" target="_blank">';
             echo '<img class="redux-option-image" id="image_' . $this->field['id'] . '" src="' . $this->value['thumbnail'] . '" alt="" target="_blank" rel="external" />';
             echo '</a>';
-            echo '</div>';
-
-            //Upload controls DIV
-            echo '<div class="upload_button_div">';
-
-            //If the user has WP3.5+ show upload/remove button
-            echo '<span class="button media_upload_button" id="' . $this->field['id'] . '-media">' . __( 'Upload', 'dayneo' ) . '</span>';
-
-            $hide = '';
-            if ( empty( $this->value['url'] ) || $this->value['url'] == '' ) {
-                $hide = ' hide';
-            }
-
-            echo '<span class="button remove-image' . $hide . '" id="reset_' . $this->field['id'] . '" rel="' . $this->field['id'] . '">' . __( 'Remove', 'dayneo' ) . '</span>';
-
             echo '</div>';
         }
 

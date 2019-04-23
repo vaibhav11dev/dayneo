@@ -9,17 +9,46 @@
      */
 
 ?>
-<div id="redux-header">
-    <?php if ( ! empty( $this->parent->args['display_name'] ) ) { ?>
-        <div class="display_header">
+<div id="redux-header" class="about-wrap wrap">
 
-            <h2><?php echo wp_kses_post( $this->parent->args['display_name'] ); ?></h2>
+ <?php   global $submenu;
 
-            <?php if ( ! empty( $this->parent->args['display_version'] ) ) { ?>
-                <span><?php echo wp_kses_post( $this->parent->args['display_version'] ); ?></span>
-            <?php } ?>
+if (isset($submenu['dayneo-menu'])) {
+    $menu_items = $submenu['dayneo-menu'];
+}
 
+if (is_array($menu_items)) {
+    settings_errors();
+    ?>
+    
+    <div class="def-bg">
+      <div class="container head-contain">        
+        <div class="theme_content">
+          <h1><?php esc_html_e('Welcome to Dayneo Theme', 'dayneo'); ?></h1>
+          <?php $dayneo_theme = wp_get_theme(); ?>
+            <p><?php printf(esc_html__('Version %s', 'dayneo'), $dayneo_theme->get('Version')); ?></p>
+            <div class="wp-badge" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/admin/assets/images/dark-logo.png');box-shadow: none;"></div>
         </div>
+        <div class="nav-tab-wrapper">
+            <?php
+            foreach ($menu_items as $menu_item) {
+                ?>
+                <a href="?page=<?php echo esc_attr($menu_item[2]) ?>" class="nav-tab <?php
+                   if (isset($_GET['page']) and $_GET['page'] == $menu_item[2]) {
+                       echo 'nav-tab-active';
+                   }
+                   ?>"><?php echo esc_attr($menu_item[0]) ?></a>
+                   <?php
+               }
+               ?>
+            <span class="clear"></span>
+        </div>
+      </div></div>
+        <?php
+    }
+
+        if ( ! empty( $this->parent->args['display_name'] ) ) { ?>
+        
     <?php } ?>
 
     <div class="clear"></div>
