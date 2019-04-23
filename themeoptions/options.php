@@ -540,7 +540,7 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'Vertical Menu Title', 'dayneo' ),
 			'default'	 => 'Shop By Category',
 		),
-	),
+		),
 )
 );
 
@@ -557,6 +557,7 @@ Redux::setSection( $dd_options, array(
 				'contact_info'	 => __( 'Contact Info', 'dayneo' ),
 				'social_links'	 => __( 'Social Links', 'dayneo' ),
 				'navigation'	 => __( 'Navigation', 'dayneo' ),
+				'content_text'	 => __( 'Content Text', 'dayneo' ),
 				'empty'		 => __( 'Leave Empty', 'dayneo' ),
 			),
 			'title'		 => __( 'Header Top Left Content', 'dayneo' ),
@@ -588,6 +589,13 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'text',
 			'title'		 => __( 'Header Email Address', 'dayneo' ),
 			'default'	 => 'contact@example.com',
+		),
+                array(
+			'subtitle'	 => __( 'Text will display in the Content Text section of your top header.', 'dayneo' ),
+			'id'		 => 'dd_content_text',
+			'type'		 => 'text',
+			'title'		 => __( 'Content Text', 'dayneo' ),
+			'default'	 => 'Welcome to website',
 		),
 	),
 )

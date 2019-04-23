@@ -1,10 +1,10 @@
 <?php
 $items = '';
+$account      = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
+$account_link = $account;
 if ( is_user_logged_in() ) {
     $user_id = get_current_user_id();
-
-    $account      = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
-    $account_link = $account;
+    
     $author       = get_user_by( 'id', $user_id );
 
     $logged_type = esc_html__( 'My Account', 'dayneo' );
