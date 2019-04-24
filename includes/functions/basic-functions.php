@@ -150,7 +150,7 @@ function dayneo_similar_posts() {
 
 		$my_query = new wp_query( $args );
 		if ( $my_query->have_posts() ) {
-			echo '<div class="similar-posts"><h5 class="text-title text-uppercase bottom-line">' . esc_html_e( 'Similar posts', 'dayneo' ) . '</h5>';
+			echo '<div class="similar-posts"><h5 class="text-title text-uppercase bottom-line">' . esc_html__( 'Similar posts', 'dayneo' ) . '</h5>';
 			echo '<div class="row multi-columns-row post-columns">';
 			while ( $my_query->have_posts() ) {
 				$my_query->the_post();
@@ -1305,7 +1305,7 @@ function dayneo_breadcrumb() {
 		}
 
 		if ( is_home() ) {
-			echo '<li>' . esc_html_e( 'Blog', 'dayneo' ) . '</li>';
+			echo '<li>' . esc_html__( 'Blog', 'dayneo' ) . '</li>';
 		}
 		if ( is_page() && ! is_front_page() ) {
 			$parents	 = array();

@@ -223,7 +223,7 @@ add_action( 'admin_notices', 'dayneo_importer_admin_notice' );
 function dayneo_importer_admin_notice() {
 	if ( isset( $_GET[ 'imported' ] ) && $_GET[ 'imported' ] == 'success' ) {
 		echo '<div id="setting-error-settings_updated" class="updated settings-error"><p>';
-		echo esc_html_e( 'Successfully imported demo data!', 'dayneo' );
+		echo esc_html__( 'Successfully imported demo data!', 'dayneo' );
 		echo "</p></div>";
 	}
 }

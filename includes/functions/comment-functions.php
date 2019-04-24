@@ -208,7 +208,7 @@ function dayneo_comment_text() {
 function dayneo_comment_moderation() {
 	global $comment;
 	if ( $comment->comment_approved == '0' )
-		echo '<p class="comment-unapproved moderation alert">' . esc_html_e( 'Your comment is awaiting moderation', 'dayneo' ) . '</p>';
+		echo '<p class="comment-unapproved moderation alert">' . esc_html__( 'Your comment is awaiting moderation', 'dayneo' ) . '</p>';
 }
 
 /**
@@ -286,7 +286,7 @@ function dayneo_pings_callback( $comment, $args, $depth ) {
 	$when			 = apply_filters( 'dayneo_pings_callback_when', (string) ' at ' );
 
 	if ( $comment->comment_approved == '0' )
-		echo '<p class="ping-unapproved moderation alert">' . esc_html_e( 'Your trackback is awaiting moderation.', 'dayneo' ) . '</p>';
+		echo '<p class="ping-unapproved moderation alert">' . esc_html__( 'Your trackback is awaiting moderation.', 'dayneo' ) . '</p>';
 	?>
 
 	<!--BEING .pings-->

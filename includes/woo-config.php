@@ -29,15 +29,15 @@ function dayneo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
     ?>
     <div class="menu-item header-ajax-cart">
         <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
-    	<div class="icon-wrap">
-    	    <span class="icon-box">
-    		<i class="flaticon-paper-bag"></i>
-    		<span class="mini-item-counter">
-			<?php echo $woocommerce->cart->cart_contents_count; ?>
-    		</span>
-    	    </span>
-            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e('Shopping Cart', 'dayneo') ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>
-    	</div>
+            <div class="icon-wrap">
+                <span class="icon-box">
+                    <i class="flaticon-paper-bag"></i>
+                    <span class="mini-item-counter">
+                        <?php echo $woocommerce->cart->cart_contents_count; ?>
+                    </span>
+                </span>
+                <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shopping Cart', 'dayneo' ) ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>
+            </div>
         </a>
 
     </div>
@@ -52,71 +52,71 @@ function dayneo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
     global $woocommerce;
     ob_start();
     if ( ! $woocommerce->cart->cart_contents_count ) {
-	?>
-	<div class="sub-cart-menu ajax-cart-content">
-	    <span class="empty-cart"></span>
-	    <p class="empty-cart-text"><?php _e( 'Your cart is currently empty.', 'dayneo' ); ?></p>
-	</div>
-	<?php
+        ?>
+        <div class="sub-cart-menu ajax-cart-content">
+            <span class="empty-cart"></span>
+            <p class="empty-cart-text"><?php _e( 'Your cart is currently empty.', 'dayneo' ); ?></p>
+        </div>
+        <?php
     } else {
-	?>
-	<div class="sub-cart-menu ajax-cart-content">
-	    <div class="minicart-scroll">
-		<?php
-		foreach ( $woocommerce->cart->cart_contents as $cart_item ):
-		    $cart_item_key	 = $cart_item[ 'key' ];
-		    $_product	 = apply_filters( 'woocommerce_cart_item_product', $cart_item[ 'data' ], $cart_item, $cart_item_key );
-		    ?>
-	    	<!-- ITEM -->
-	    	<div class="list-product">
-	    	    <div class="list-product-img">
-	    		<a href="<?php echo get_permalink( $cart_item[ 'product_id' ] ); ?>"> 
-				<?php
-				$thumbnail	 = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
-				echo $thumbnail;
-				?>
-	    		</a>
-	    	    </div>
-	    	    <div class="list-product-detail"> 
-	    		<a href="#">
-				<?php echo $cart_item[ 'data' ]->get_name(); ?>
-	    		</a>
-	    		<p><span class="quantity"><?php echo $cart_item[ 'quantity' ]; ?> x </span><span class="price"><?php echo get_woocommerce_currency_symbol() . $cart_item[ 'data' ]->get_price(); ?></span></p>
-	    	    </div>
-	    	    <div class="del-minicart">
-			    <?php
-			    echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
-			    '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-cart_item_key="%s"><i class="fa fa-trash-o" aria-hidden="true"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), esc_html__( 'Remove this item', 'dayneo' ), esc_attr( $cart_item[ 'product_id' ] ), esc_attr( $cart_item_key )
-			    ), $cart_item_key );
-			    ?>
-	    	    </div>
-	    	</div>
-	    	<!-- END ITEM -->
-		<?php endforeach; ?>
-	    </div>
-	    <div class="hr"></div>
-	    <div class="subtotal-count"><?php _e( 'Subtotal:', 'dayneo' ); ?> 
-		<b class="content-subhead">
-		    <?php echo wc_price( $woocommerce->cart->subtotal ); ?>
-		</b>
-	    </div>
-	    <div class="shipping-count"><?php _e( 'Shipping:', 'dayneo' ); ?> 
-		<b class="content-subhead">
-		    <?php echo wc_price( $woocommerce->cart->shiping_total ); ?>
-		</b>
-	    </div>
-	    <div class="total-count"><?php _e( 'Total:', 'dayneo' ); ?> 
-		<b class="content-subhead">
-		    <?php echo wc_price( $woocommerce->cart->total ); ?>
-		</b>
-	    </div>
-	    <div class="clearfix"></div>
-	    <div class="cart-button"> 
-		<a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'View Cart', 'dayneo' ); ?></a>
-		<a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'Checkout', 'dayneo' ); ?></a> 
-	    </div>
-	</div>
-	<?php
+        ?>
+        <div class="sub-cart-menu ajax-cart-content">
+            <div class="minicart-scroll">
+                <?php
+                foreach ( $woocommerce->cart->cart_contents as $cart_item ):
+                    $cart_item_key = $cart_item[ 'key' ];
+                    $_product      = apply_filters( 'woocommerce_cart_item_product', $cart_item[ 'data' ], $cart_item, $cart_item_key );
+                    ?>
+                    <!-- ITEM -->
+                    <div class="list-product">
+                        <div class="list-product-img">
+                            <a href="<?php echo get_permalink( $cart_item[ 'product_id' ] ); ?>"> 
+                                <?php
+                                $thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+                                echo $thumbnail;
+                                ?>
+                            </a>
+                        </div>
+                        <div class="list-product-detail"> 
+                            <a href="<?php echo get_permalink( $cart_item[ 'product_id' ] ); ?>">
+                                <?php echo $cart_item[ 'data' ]->get_name(); ?>
+                            </a>
+                            <p><span class="quantity"><?php echo $cart_item[ 'quantity' ]; ?> x </span><span class="price"><?php echo get_woocommerce_currency_symbol() . $cart_item[ 'data' ]->get_price(); ?></span></p>
+                        </div>
+                        <div class="del-minicart">
+                            <?php
+                            echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
+                            '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-cart_item_key="%s"><i class="fa fa-trash-o" aria-hidden="true"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), esc_html__( 'Remove this item', 'dayneo' ), esc_attr( $cart_item[ 'product_id' ] ), esc_attr( $cart_item_key )
+                            ), $cart_item_key );
+                            ?>
+                        </div>
+                    </div>
+                    <!-- END ITEM -->
+                <?php endforeach; ?>
+            </div>
+            <div class="hr"></div>
+            <div class="subtotal-count"><?php _e( 'Subtotal:', 'dayneo' ); ?> 
+                <b class="content-subhead">
+                    <?php echo wc_price( $woocommerce->cart->subtotal ); ?>
+                </b>
+            </div>
+            <div class="shipping-count"><?php _e( 'Shipping:', 'dayneo' ); ?> 
+                <b class="content-subhead">
+                    <?php echo wc_price( $woocommerce->cart->shiping_total ); ?>
+                </b>
+            </div>
+            <div class="total-count"><?php _e( 'Total:', 'dayneo' ); ?> 
+                <b class="content-subhead">
+                    <?php echo wc_price( $woocommerce->cart->total ); ?>
+                </b>
+            </div>
+            <div class="clearfix"></div>
+            <div class="cart-button"> 
+                <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'View Cart', 'dayneo' ); ?></a>
+                <a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'Checkout', 'dayneo' ); ?></a> 
+            </div>
+        </div>
+        <?php
     }
     $fragments[ '.ajax-cart-content' ] = ob_get_clean();
     return $fragments;
@@ -130,9 +130,9 @@ function dayneo_ajax_product_remove() {
     ob_start();
 
     foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-	if ( $cart_item[ 'product_id' ] == $_POST[ 'product_id' ] && $cart_item_key == $_POST[ 'cart_item_key' ] ) {
-	    WC()->cart->remove_cart_item( $cart_item_key );
-	}
+        if ( $cart_item[ 'product_id' ] == $_POST[ 'product_id' ] && $cart_item_key == $_POST[ 'cart_item_key' ] ) {
+            WC()->cart->remove_cart_item( $cart_item_key );
+        }
     }
 
     WC()->cart->calculate_totals();
@@ -144,11 +144,11 @@ function dayneo_ajax_product_remove() {
 
     // Fragments and mini cart are returned
     $data = array(
-	'fragments'	 => apply_filters( 'woocommerce_add_to_cart_fragments', array(
-	    'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>'
-	)
-	),
-	'cart_hash'	 => apply_filters( 'woocommerce_add_to_cart_hash', WC()->cart->get_cart_for_session() ? md5( json_encode( WC()->cart->get_cart_for_session() ) ) : '', WC()->cart->get_cart_for_session() )
+        'fragments' => apply_filters( 'woocommerce_add_to_cart_fragments', array(
+            'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>'
+        )
+        ),
+        'cart_hash' => apply_filters( 'woocommerce_add_to_cart_hash', WC()->cart->get_cart_for_session() ? md5( json_encode( WC()->cart->get_cart_for_session() ) ) : '', WC()->cart->get_cart_for_session() )
     );
 
     wp_send_json( $data );
@@ -218,21 +218,6 @@ remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_pr
 add_action( 'woocommerce_shop_loop_item_title', 'dayneo_woocommerce_template_loop_product_title', 10 );
 
 /**
- * WooCommerce(shop-page) - Add view item button in shop page
- * 
- * @global type $product
- */
-function dayneo_woocommerce_template_loop_view_item() {
-    global $product;
-
-    $link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
-
-    echo '<a href="' . esc_url( $link ) . '" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><i class="ti-eye"></i></a>';
-}
-
-add_action( 'woocommerce_after_shop_loop_item', 'dayneo_woocommerce_template_loop_view_item', 11 );
-
-/**
  * WooCommerce(shop-page) - Add wishlist in shop page
  * 
  * 
@@ -240,11 +225,7 @@ add_action( 'woocommerce_after_shop_loop_item', 'dayneo_woocommerce_template_loo
 if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_add_wishlist_on_loop' ) ) {
 
     function dayneo_yith_wcwl_add_wishlist_on_loop() {
-	?>
-	<div class="button wishlist">
-	    <?php echo do_shortcode( '[yith_wcwl_add_to_wishlist]' ); ?>
-	</div> 
-	<?php
+        echo do_shortcode( '[yith_wcwl_add_to_wishlist]' );
     }
 
     add_action( 'woocommerce_after_shop_loop_item', 'dayneo_yith_wcwl_add_wishlist_on_loop', 12 );
@@ -262,9 +243,9 @@ function dayneo_woocommerce_ordering() {
     remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
     remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
     if ( ! $dd_woocommerce_dayneo_ordering ) {
-	add_action( 'woocommerce_before_shop_loop', 'dayneo_woocommerce_catalog_ordering', 30 );
-	add_action( 'woocommerce_get_catalog_ordering_args', 'dayneo_woocommerce_get_catalog_ordering_args', 20 );
-	add_filter( 'loop_shop_per_page', 'dayneo_loop_shop_per_page' );
+        add_action( 'woocommerce_before_shop_loop', 'dayneo_woocommerce_catalog_ordering', 30 );
+        add_action( 'woocommerce_get_catalog_ordering_args', 'dayneo_woocommerce_get_catalog_ordering_args', 20 );
+        add_filter( 'loop_shop_per_page', 'dayneo_loop_shop_per_page' );
     }
 }
 
@@ -276,68 +257,73 @@ function dayneo_woocommerce_catalog_ordering() {
 
     if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
 
-	parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
+        parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
 
-	$query_string = '?' . $_SERVER[ 'QUERY_STRING' ];
+        $query_string = '?' . $_SERVER[ 'QUERY_STRING' ];
     } else {
-	$query_string = '';
+        $query_string = '';
     }
 
     // replace it with theme option
     if ( $dd_woo_items ) {
-	$per_page = $dd_woo_items;
+        $per_page = $dd_woo_items;
     } else {
-	$per_page = 12;
+        $per_page = 12;
     }
 
-    $pob	 = ! empty( $params[ 'product_orderby' ] ) ? $params[ 'product_orderby' ] : 'default';
-    $po	 = ! empty( $params[ 'product_order' ] ) ? $params[ 'product_order' ] : 'asc';
-    $pc	 = ! empty( $params[ 'product_count' ] ) ? $params[ 'product_count' ] : $per_page;
+    $pob = ! empty( $params[ 'product_orderby' ] ) ? $params[ 'product_orderby' ] : 'default';
+    $po  = ! empty( $params[ 'product_order' ] ) ? $params[ 'product_order' ] : 'asc';
+    $pc  = ! empty( $params[ 'product_count' ] ) ? $params[ 'product_count' ] : $per_page;
 
-    $html	 = '';
-    $html	 .= '<div class="catalog-ordering row">';
+    $html = '';
+    $html .= '<div class="catalog-ordering row">';
 
     $html .= '<div class="orderby-order-container form-group col-sm-4">';
 
-    $html	 .= '<ul class="form-control orderby order-dropdown">';
-    $html	 .= '<li>';
-    $html	 .= '<span class="current-li"><span class="current-li-content"><a>' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a><i class="fa fa-angle-down"></i></span></span>';
-    $html	 .= '<ul>';
-    $html	 .= '<li class="' . (($pob == 'default') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'default' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a></li>';
-    $html	 .= '<li class="' . (($pob == 'name') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'name' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Name', 'dayneo' ) . '</strong></a></li>';
-    $html	 .= '<li class="' . (($pob == 'price') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'price' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Price', 'dayneo' ) . '</strong></a></li>';
-    $html	 .= '<li class="' . (($pob == 'date') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'date' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Date', 'dayneo' ) . '</strong></a></li>';
-    $html	 .= '<li class="' . (($pob == 'popularity') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'popularity' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Popularity', 'dayneo' ) . '</strong></a></li>';
-    $html	 .= '<li class="' . (($pob == 'rating') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'rating' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Rating', 'dayneo' ) . '</strong></a></li>';
-    $html	 .= '</ul>';
-    $html	 .= '</li>';
-    $html	 .= '</ul>';
+    $html .= '<ul class="form-control orderby order-dropdown">';
+    $html .= '<li>';
+    $html .= '<span class="current-li"><span class="current-li-content"><a>' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a><i class="fa fa-angle-down"></i></span></span>';
+    $html .= '<ul>';
+    $html .= '<li class="' . (($pob == 'default') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'default' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'name') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'name' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Name', 'dayneo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'price') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'price' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Price', 'dayneo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'date') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'date' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Date', 'dayneo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'popularity') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'popularity' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Popularity', 'dayneo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'rating') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'rating' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Rating', 'dayneo' ) . '</strong></a></li>';
+    $html .= '</ul>';
+    $html .= '</li>';
+    $html .= '</ul>';
 
 
     $html .= '<ul class="order">';
     if ( $po == 'desc' ):
-	$html .= '<li class="desc"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_order', 'asc' ) ) . '"><i class="icon icon-arrow-up"></i></a></li>';
+        $html .= '<li class="desc"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_order', 'asc' ) ) . '"><i class="icon icon-arrow-up"></i></a></li>';
     endif;
     if ( $po == 'asc' ):
-	$html .= '<li class="asc"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_order', 'desc' ) ) . '"><i class="icon icon-arrow-down"></i></a></li>';
+        $html .= '<li class="asc"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_order', 'desc' ) ) . '"><i class="icon icon-arrow-down"></i></a></li>';
     endif;
     $html .= '</ul>';
 
     $html .= '</div>';
 
-    $html	 .= '<div class="form-group col-sm-3 col-sm-offset-5">';
-    $html	 .= '<ul class="form-control sort-count order-dropdown">';
-    $html	 .= '<li>';
-    $html	 .= '<span class="current-li"><a>' . __( 'Show', 'dayneo' ) . ' <strong>' . $per_page . ' ' . __( ' Products', 'dayneo' ) . '</strong></a><i class="fa fa-angle-down"></i></span>';
-    $html	 .= '<ul>';
-    $html	 .= '<li class="' . (($pc == $per_page) ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_count', $per_page ) ) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . $per_page . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
-    $html	 .= '<li class="' . (($pc == $per_page * 2) ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_count', $per_page * 2 ) ) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . ($per_page * 2) . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
-    $html	 .= '<li class="' . (($pc == $per_page * 3) ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_count', $per_page * 3 ) ) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . ($per_page * 3) . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
-    $html	 .= '</ul>';
-    $html	 .= '</li>';
-    $html	 .= '</ul>';
-    $html	 .= '</div>';
-    $html	 .= '</div>';
+    $html .= '<div class="form-group col-sm-4 col-sm-offset-4">';
+    $html .= '<ul class="form-control sort-count order-dropdown">';
+    $html .= '<li>';
+    $html .= '<span class="current-li"><a>' . __( 'Show', 'dayneo' ) . ' <strong>' . $per_page . ' ' . __( ' Products', 'dayneo' ) . '</strong></a><i class="fa fa-angle-down"></i></span>';
+    $html .= '<ul>';
+    $html .= '<li class="' . (($pc == $per_page) ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_count', $per_page ) ) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . $per_page . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pc == $per_page * 2) ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_count', $per_page * 2 ) ) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . ($per_page * 2) . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pc == $per_page * 3) ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_count', $per_page * 3 ) ) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . ($per_page * 3) . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
+    $html .= '</ul>';
+    $html .= '</li>';
+    $html .= '</ul>';
+    $html .= '<div class="shop-view">';
+    $html .= '<span>View</span>';
+    $html .= '<a href="#" class="grid-view dd-shop-view current" data-view="grid"><i class="fa fa-th"></i></a>';
+    $html .= '<a href="#" class="list-view dd-shop-view" data-view="list"><i class="fa fa-list"></i></a>';
+    $html .= '</div>';
+    $html .= '</div>';
+    $html .= '</div>';
 
     echo $html;
 }
@@ -347,66 +333,66 @@ function dayneo_woocommerce_get_catalog_ordering_args( $args ) {
 
     if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
 
-	parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
+        parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
     }
 
-    $pob	 = ! empty( $params[ 'product_orderby' ] ) ? $params[ 'product_orderby' ] : 'default';
-    $po	 = ! empty( $params[ 'product_order' ] ) ? $params[ 'product_order' ] : 'asc';
+    $pob = ! empty( $params[ 'product_orderby' ] ) ? $params[ 'product_orderby' ] : 'default';
+    $po  = ! empty( $params[ 'product_order' ] ) ? $params[ 'product_order' ] : 'asc';
 
     switch ( $pob ) {
-	case 'date':
-	    $orderby	 = 'date';
-	    $order		 = 'asc';
-	    $meta_key	 = '';
-	    break;
-	case 'price':
-	    $orderby	 = 'meta_value_num';
-	    $order		 = 'asc';
-	    $meta_key	 = '_price';
-	    break;
-	case 'popularity':
-	    $orderby	 = 'meta_value_num';
-	    $order		 = 'asc';
-	    $meta_key	 = 'total_sales';
-	    break;
-	case 'rating':
-	    $orderby	 = 'meta_value_num';
-	    $order		 = 'asc';
-	    $meta_key	 = 'average_rating';
-	    break;
-	case 'name':
-	    $orderby	 = 'title';
-	    $order		 = 'asc';
-	    $meta_key	 = '';
-	    break;
-	case 'default':
-	    return $args;
-	    break;
+        case 'date':
+            $orderby  = 'date';
+            $order    = 'asc';
+            $meta_key = '';
+            break;
+        case 'price':
+            $orderby  = 'meta_value_num';
+            $order    = 'asc';
+            $meta_key = '_price';
+            break;
+        case 'popularity':
+            $orderby  = 'meta_value_num';
+            $order    = 'asc';
+            $meta_key = 'total_sales';
+            break;
+        case 'rating':
+            $orderby  = 'meta_value_num';
+            $order    = 'asc';
+            $meta_key = 'average_rating';
+            break;
+        case 'name':
+            $orderby  = 'title';
+            $order    = 'asc';
+            $meta_key = '';
+            break;
+        case 'default':
+            return $args;
+            break;
     }
 
     switch ( $po ) {
-	case 'desc':
-	    $order	 = 'desc';
-	    break;
-	case 'asc':
-	    $order	 = 'asc';
-	    break;
-	default:
-	    $order	 = 'asc';
-	    break;
+        case 'desc':
+            $order = 'desc';
+            break;
+        case 'asc':
+            $order = 'asc';
+            break;
+        default:
+            $order = 'asc';
+            break;
     }
 
-    $args[ 'orderby' ]	 = $orderby;
-    $args[ 'order' ]	 = $order;
-    $args[ 'meta_key' ]	 = $meta_key;
+    $args[ 'orderby' ]  = $orderby;
+    $args[ 'order' ]    = $order;
+    $args[ 'meta_key' ] = $meta_key;
 
     if ( $pob == 'rating' ) {
-	$args[ 'orderby' ]	 = 'menu_order title';
-	$args[ 'order' ]	 = $po == 'desc' ? 'desc' : 'asc';
-	$args[ 'order' ]	 = strtoupper( $args[ 'order' ] );
-	$args[ 'meta_key' ]	 = '';
+        $args[ 'orderby' ]  = 'menu_order title';
+        $args[ 'order' ]    = $po == 'desc' ? 'desc' : 'asc';
+        $args[ 'order' ]    = strtoupper( $args[ 'order' ] );
+        $args[ 'meta_key' ] = '';
 
-	add_filter( 'posts_clauses', 'dayneo_order_by_rating_post_clauses' );
+        add_filter( 'posts_clauses', 'dayneo_order_by_rating_post_clauses' );
     }
 
     return $args;
@@ -425,11 +411,11 @@ function dayneo_order_by_rating_post_clauses( $args ) {
 	";
 
     if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
-	parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
+        parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
     }
 
-    $order	 = ! empty( $params[ 'product_order' ] ) ? $params[ 'product_order' ] : 'desc';
-    $order	 = strtoupper( $order );
+    $order = ! empty( $params[ 'product_order' ] ) ? $params[ 'product_order' ] : 'desc';
+    $order = strtoupper( $order );
 
     $args[ 'orderby' ] = "sum_of_comments_approved DESC, average_rating {$order}, $wpdb->posts.post_date DESC";
 
@@ -443,13 +429,13 @@ function dayneo_loop_shop_per_page() {
     $dd_woo_items = dayneo_get_option( 'dd_woo_items', '12' );
 
     if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
-	parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
+        parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
     }
 
     if ( $dd_woo_items ) {
-	$per_page = $dd_woo_items;
+        $per_page = $dd_woo_items;
     } else {
-	$per_page = 12;
+        $per_page = 12;
     }
 
     $pc = ! empty( $params[ 'product_count' ] ) ? $params[ 'product_count' ] : $per_page;
@@ -463,47 +449,47 @@ function dayneo_add_bootstrap_input_classes( $args, $key, $value = null ) {
 
     // Start field type switch case
     switch ( $args[ 'type' ] ) {
-	case "select" : /* Targets all select input type elements, except the country and state select input types */
-	    $args[ 'class' ][]		 = 'form-group'; // Add a class to the field's html element wrapper - woocommerce input types (fields) are often wrapped within a <p></p> tag
-	    $args[ 'input_class' ]		 = array( 'form-control' ); // Add a class to the form input itself
-	    //$args['custom_attributes']['data-plugin'] = 'select2';
-	    $args[ 'label_class' ]		 = array( 'control-label' );
-	    $args[ 'custom_attributes' ]	 = array( 'data-plugin' => 'select2', 'data-allow-clear' => 'true', 'aria-hidden' => 'true', ); // Add custom data attributes to the form input itself
-	    break;
-	case 'country' : /* By default WooCommerce will populate a select with the country names - $args defined for this specific input type targets only the country select element */
-	    $args[ 'class' ][]		 = 'form-group single-country';
-	    $args[ 'label_class' ]		 = array( 'control-label' );
-	    break;
-	case "state" : /* By default WooCommerce will populate a select with state names - $args defined for this specific input type targets only the country select element */
-	    $args[ 'class' ][]		 = 'form-group'; // Add class to the field's html element wrapper
-	    $args[ 'input_class' ]		 = array( 'form-control' ); // add class to the form input itself
-	    //$args['custom_attributes']['data-plugin'] = 'select2';
-	    $args[ 'label_class' ]		 = array( 'control-label' );
-	    $args[ 'custom_attributes' ]	 = array( 'data-plugin' => 'select2', 'data-allow-clear' => 'true', 'aria-hidden' => 'true', );
-	    break;
-	case "password" :
-	case "text" :
-	case "email" :
-	case "tel" :
-	case "number" :
-	    $args[ 'class' ][]		 = 'form-group';
-	    //$args['input_class'][] = 'form-control input-lg'; // will return an array of classes, the same as bellow
-	    $args[ 'input_class' ]		 = array( 'form-control' );
-	    $args[ 'label_class' ]		 = array( 'control-label' );
-	    break;
-	case 'textarea' :
-	    $args[ 'input_class' ]		 = array( 'form-control' );
-	    $args[ 'label_class' ]		 = array( 'control-label' );
-	    break;
-	case 'checkbox' :
-	    break;
-	case 'radio' :
-	    break;
-	default :
-	    $args[ 'class' ][]		 = 'form-group';
-	    $args[ 'input_class' ]		 = array( 'form-control' );
-	    $args[ 'label_class' ]		 = array( 'control-label' );
-	    break;
+        case "select" : /* Targets all select input type elements, except the country and state select input types */
+            $args[ 'class' ][]           = 'form-group'; // Add a class to the field's html element wrapper - woocommerce input types (fields) are often wrapped within a <p></p> tag
+            $args[ 'input_class' ]       = array( 'form-control' ); // Add a class to the form input itself
+            //$args['custom_attributes']['data-plugin'] = 'select2';
+            $args[ 'label_class' ]       = array( 'control-label' );
+            $args[ 'custom_attributes' ] = array( 'data-plugin' => 'select2', 'data-allow-clear' => 'true', 'aria-hidden' => 'true', ); // Add custom data attributes to the form input itself
+            break;
+        case 'country' : /* By default WooCommerce will populate a select with the country names - $args defined for this specific input type targets only the country select element */
+            $args[ 'class' ][]           = 'form-group single-country';
+            $args[ 'label_class' ]       = array( 'control-label' );
+            break;
+        case "state" : /* By default WooCommerce will populate a select with state names - $args defined for this specific input type targets only the country select element */
+            $args[ 'class' ][]           = 'form-group'; // Add class to the field's html element wrapper
+            $args[ 'input_class' ]       = array( 'form-control' ); // add class to the form input itself
+            //$args['custom_attributes']['data-plugin'] = 'select2';
+            $args[ 'label_class' ]       = array( 'control-label' );
+            $args[ 'custom_attributes' ] = array( 'data-plugin' => 'select2', 'data-allow-clear' => 'true', 'aria-hidden' => 'true', );
+            break;
+        case "password" :
+        case "text" :
+        case "email" :
+        case "tel" :
+        case "number" :
+            $args[ 'class' ][]           = 'form-group';
+            //$args['input_class'][] = 'form-control input-lg'; // will return an array of classes, the same as bellow
+            $args[ 'input_class' ]       = array( 'form-control' );
+            $args[ 'label_class' ]       = array( 'control-label' );
+            break;
+        case 'textarea' :
+            $args[ 'input_class' ]       = array( 'form-control' );
+            $args[ 'label_class' ]       = array( 'control-label' );
+            break;
+        case 'checkbox' :
+            break;
+        case 'radio' :
+            break;
+        default :
+            $args[ 'class' ][]           = 'form-group';
+            $args[ 'input_class' ]       = array( 'form-control' );
+            $args[ 'label_class' ]       = array( 'control-label' );
+            break;
     }
     return $args;
 }
@@ -514,8 +500,8 @@ add_filter( 'woocommerce_form_field_args', 'dayneo_add_bootstrap_input_classes',
 //add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
 // Our hooked in function - $fields is passed via the filter!
 function custom_override_checkout_fields( $fields ) {
-    $fields[ 'billing' ][ 'billing_first_name' ][ 'input_class' ]	 = array( 'form-row-first' );
-    $fields[ 'billing' ][ 'billing_last_name' ][ 'input_class' ]	 = array( 'form-row-last' );
+    $fields[ 'billing' ][ 'billing_first_name' ][ 'input_class' ] = array( 'form-row-first' );
+    $fields[ 'billing' ][ 'billing_last_name' ][ 'input_class' ]  = array( 'form-row-last' );
     return $fields;
 }
 
@@ -529,171 +515,171 @@ add_action( 'woocommerce_thankyou', 'dayneo_woocommerce_view_order', 10 );
 function dayneo_woocommerce_view_order( $order_id ) {
     global $woocommerce;
 
-    $order			 = wc_get_order( $order_id );
-    $order_item_product	 = new WC_Order_Item_Product();
+    $order              = wc_get_order( $order_id );
+    $order_item_product = new WC_Order_Item_Product();
     ?>
     <div class="dayneo-order-details woocommerce-content-box table-responsive">
         <h2><?php esc_html_e( 'Order Details', 'dayneo' ); ?></h2>
         <table class="table cart-table order_details">
-    	<thead>
-    	    <tr>
-    		<th class="col-title"></th>
-    		<th class="col-title"><?php esc_html_e( 'Product', 'dayneo' ); ?></th>
-    		<th class="col-quantity"><?php esc_html_e( 'Quantity', 'dayneo' ); ?></th>
-    		<th class="col-subtotal"><?php esc_html_e( 'Total', 'dayneo' ); ?></th>
-    	    </tr>
-    	</thead>
-    	<tfoot>
-		<?php
-		if ( $totals			 = $order->get_order_item_totals() )
-		    foreach ( $totals as $total ) :
-			?>
-	    	    <tr>
-	    		<td class="filler-td">&nbsp;</td>
-	    		<td class="filler-td">&nbsp;</td>
-	    		<th scope="row"><?php echo esc_html( $total[ 'label' ] ); ?></th>
-	    		<td class="product-total"><?php echo esc_html( total[ 'value' ] ); ?></td>
-	    	    </tr>
-			<?php
-		    endforeach;
-		?>
-    	</tfoot>
-    	<tbody>
-		<?php
-		if ( sizeof( $order->get_items() ) > 0 ) {
+            <thead>
+                <tr>
+                    <th class="col-title"></th>
+                    <th class="col-title"><?php esc_html_e( 'Product', 'dayneo' ); ?></th>
+                    <th class="col-quantity"><?php esc_html_e( 'Quantity', 'dayneo' ); ?></th>
+                    <th class="col-subtotal"><?php esc_html_e( 'Total', 'dayneo' ); ?></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <?php
+                if ( $totals             = $order->get_order_item_totals() )
+                    foreach ( $totals as $total ) :
+                        ?>
+                        <tr>
+                            <td class="filler-td">&nbsp;</td>
+                            <td class="filler-td">&nbsp;</td>
+                            <th scope="row"><?php echo esc_html( $total[ 'label' ] ); ?></th>
+                            <td class="product-total"><?php echo esc_html( total[ 'value' ] ); ?></td>
+                        </tr>
+                        <?php
+                    endforeach;
+                ?>
+            </tfoot>
+            <tbody>
+                <?php
+                if ( sizeof( $order->get_items() ) > 0 ) {
 
-		    foreach ( $order->get_items() as $item ) {
-			$_product	 = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $item ), $item );
-			$product	 = apply_filters( 'woocommerce_order_item_product', $item->get_product(), $item );
-			?>
-	    	    <tr class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'order_item', $item, $order ) ); ?>">
-	    		<td class="col-thumbnail">
-				<?php
-				$cart_item	 = '';
-				$cart_item_key	 = '';
-				$thumbnail	 = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+                    foreach ( $order->get_items() as $item ) {
+                        $_product      = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $item ), $item );
+                        $product       = apply_filters( 'woocommerce_order_item_product', $item->get_product(), $item );
+                        ?>
+                        <tr class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'order_item', $item, $order ) ); ?>">
+                            <td class="col-thumbnail">
+                                <?php
+                                $cart_item     = '';
+                                $cart_item_key = '';
+                                $thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 
-				if ( ! $_product->is_visible() )
-				    echo $thumbnail;
-				else
-				    printf( '<a href="%s">%s</a>', esc_url( $_product->get_permalink() ), $thumbnail );
-				?>
-	    		</td>
-	    		<td class="col-title">
+                                if ( ! $_product->is_visible() )
+                                    echo $thumbnail;
+                                else
+                                    printf( '<a href="%s">%s</a>', esc_url( $_product->get_permalink() ), $thumbnail );
+                                ?>
+                            </td>
+                            <td class="col-title">
 
-				<?php
-				if ( $_product && ! $_product->is_visible() )
-				    echo apply_filters( 'woocommerce_order_item_name', $item[ 'name' ], $item );
-				else
-				    echo apply_filters( 'woocommerce_order_item_name', sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $item[ 'product_id' ] ) ), $item[ 'name' ] ), $item );
+                                <?php
+                                if ( $_product && ! $_product->is_visible() )
+                                    echo apply_filters( 'woocommerce_order_item_name', $item[ 'name' ], $item );
+                                else
+                                    echo apply_filters( 'woocommerce_order_item_name', sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $item[ 'product_id' ] ) ), $item[ 'name' ] ), $item );
 
-				wc_display_item_meta( $item );
+                                wc_display_item_meta( $item );
 
-				if ( $_product && $_product->exists() && $_product->is_downloadable() && $order->is_download_permitted() ) {
+                                if ( $_product && $_product->exists() && $_product->is_downloadable() && $order->is_download_permitted() ) {
 
-				    $download_files	 = $order_item_product->get_item_downloads();
-				    $i		 = 0;
-				    $links		 = array();
+                                    $download_files = $order_item_product->get_item_downloads();
+                                    $i              = 0;
+                                    $links          = array();
 
-				    foreach ( $download_files as $download_id => $file ) {
-					$i ++;
+                                    foreach ( $download_files as $download_id => $file ) {
+                                        $i ++;
 
-					$links[] = '<small><a href="' . esc_url( $file[ 'download_url' ] ) . '">' . sprintf( __( 'Download file%s', 'dayneo' ), ( count( $download_files ) > 1 ? ' ' . $i . ': ' : ': ' ) ) . esc_html( $file[ 'name' ] ) . '</a></small>';
-				    }
+                                        $links[] = '<small><a href="' . esc_url( $file[ 'download_url' ] ) . '">' . sprintf( __( 'Download file%s', 'dayneo' ), ( count( $download_files ) > 1 ? ' ' . $i . ': ' : ': ' ) ) . esc_html( $file[ 'name' ] ) . '</a></small>';
+                                    }
 
-				    echo '<br/>' . implode( '<br/>', $links );
-				}
-				?>
-	    		</td>
-	    		<td class="col-quantity">
-				<?php echo apply_filters( 'woocommerce_order_item_quantity_html', $item[ 'qty' ], $item ); ?>
-	    		</td>
-	    		<td class="col-subtotal">
-				<?php echo esc_html( $order->get_formatted_line_subtotal( $item ) ); ?>
-	    		</td>
-	    	    </tr>
-			<?php
-			$show_purchase_note	 = $order->has_status( apply_filters( 'woocommerce_purchase_note_order_statuses', array( 'completed', 'processing' ) ) );
-			$purchase_note		 = $product ? $product->get_purchase_note() : '';
-			if ( $show_purchase_note && $purchase_note ) {
-			    ?>
-			    <tr class="product-purchase-note">
-				<td colspan="3"><?php echo wpautop( do_shortcode( wp_kses_post( $purchase_note ) ) ); ?></td>
-			    </tr>
-			    <?php
-			}
-		    }
-		}
+                                    echo '<br/>' . implode( '<br/>', $links );
+                                }
+                                ?>
+                            </td>
+                            <td class="col-quantity">
+                                <?php echo apply_filters( 'woocommerce_order_item_quantity_html', $item[ 'qty' ], $item ); ?>
+                            </td>
+                            <td class="col-subtotal">
+                                <?php echo esc_html( $order->get_formatted_line_subtotal( $item ) ); ?>
+                            </td>
+                        </tr>
+                        <?php
+                        $show_purchase_note = $order->has_status( apply_filters( 'woocommerce_purchase_note_order_statuses', array( 'completed', 'processing' ) ) );
+                        $purchase_note      = $product ? $product->get_purchase_note() : '';
+                        if ( $show_purchase_note && $purchase_note ) {
+                            ?>
+                            <tr class="product-purchase-note">
+                                <td colspan="3"><?php echo wpautop( do_shortcode( wp_kses_post( $purchase_note ) ) ); ?></td>
+                            </tr>
+                            <?php
+                        }
+                    }
+                }
 
-		do_action( 'woocommerce_order_items_table', $order );
-		?>
-    	</tbody>
+                do_action( 'woocommerce_order_items_table', $order );
+                ?>
+            </tbody>
         </table>
 
-	<?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
+        <?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
     </div>
 
     <div class="dayneo-customer-details woocommerce-content-box full-width">
         <header>
-    	<h2><?php esc_html_e( 'Customer details', 'dayneo' ); ?></h2>
+            <h2><?php esc_html_e( 'Customer details', 'dayneo' ); ?></h2>
         </header>
         <dl class="customer_details">
-	    <?php
-	    if ( $order->get_customer_note() )
-		echo '<dt>' . esc_html_e( 'Note:', 'dayneo' ) . '</dt> <dd>' . esc_html( $order->get_customer_note() ) . '</dd>';
-	    if ( $order->get_billing_email() )
-		echo '<dt>' . esc_html_e( 'Email:', 'dayneo' ) . '</dt> <dd>' . esc_html( $order->get_billing_email() ) . '</dd>';
-	    if ( $order->get_billing_phone() )
-		echo '<dt>' . esc_html_e( 'Telephone:', 'dayneo' ) . '</dt> <dd>' . esc_html( $order->get_billing_phone() ) . '</dd>';
+            <?php
+            if ( $order->get_customer_note() )
+                echo '<dt>' . esc_html__( 'Note:', 'dayneo' ) . '</dt> <dd>' . esc_html( $order->get_customer_note() ) . '</dd>';
+            if ( $order->get_billing_email() )
+                echo '<dt>' . esc_html__( 'Email:', 'dayneo' ) . '</dt> <dd>' . esc_html( $order->get_billing_email() ) . '</dd>';
+            if ( $order->get_billing_phone() )
+                echo '<dt>' . esc_html__( 'Telephone:', 'dayneo' ) . '</dt> <dd>' . esc_html( $order->get_billing_phone() ) . '</dd>';
 
-	    // Additional customer details hook
-	    do_action( 'woocommerce_order_details_after_customer_details', $order );
-	    ?>
+            // Additional customer details hook
+            do_action( 'woocommerce_order_details_after_customer_details', $order );
+            ?>
         </dl>
 
-	<?php if ( get_option( 'woocommerce_ship_to_billing_address_only' ) === 'no' && get_option( 'woocommerce_calc_shipping' ) !== 'no' ) : ?>
+        <?php if ( get_option( 'woocommerce_ship_to_billing_address_only' ) === 'no' && get_option( 'woocommerce_calc_shipping' ) !== 'no' ) : ?>
 
-	    <div class="col2-set addresses">
+            <div class="col2-set addresses">
 
-		<div class="col-1">
+                <div class="col-1">
 
-		<?php endif; ?>
+                <?php endif; ?>
 
-    	    <header class="title">
-    		<h3><?php esc_html_e( 'Billing Address', 'dayneo' ); ?></h3>
-    	    </header>
-    	    <address><p>
-			<?php
-			if ( ! $order->get_formatted_billing_address() )
-			    esc_html_e( 'N/A', 'dayneo' );
-			else
-			    echo esc_html( $order->get_formatted_billing_address() );
-			?>
-    		</p></address>
+                <header class="title">
+                    <h3><?php esc_html_e( 'Billing Address', 'dayneo' ); ?></h3>
+                </header>
+                <address><p>
+                        <?php
+                        if ( ! $order->get_formatted_billing_address() )
+                            esc_html_e( 'N/A', 'dayneo' );
+                        else
+                            echo esc_html( $order->get_formatted_billing_address() );
+                        ?>
+                    </p></address>
 
-		<?php if ( get_option( 'woocommerce_ship_to_billing_address_only' ) === 'no' && get_option( 'woocommerce_calc_shipping' ) !== 'no' ) : ?>
+                <?php if ( get_option( 'woocommerce_ship_to_billing_address_only' ) === 'no' && get_option( 'woocommerce_calc_shipping' ) !== 'no' ) : ?>
 
-		</div><!-- /.col-1 -->
+                </div><!-- /.col-1 -->
 
-		<div class="col-2">
+                <div class="col-2">
 
-		    <header class="title">
-			<h3><?php esc_html_e( 'Shipping Address', 'dayneo' ); ?></h3>
-		    </header>
-		    <address><p>
-			    <?php
-			    if ( ! $order->get_formatted_shipping_address() )
-				esc_html_e( 'N/A', 'dayneo' );
-			    else
-				echo esc_html( $order->get_formatted_shipping_address() );
-			    ?>
-			</p></address>
+                    <header class="title">
+                        <h3><?php esc_html_e( 'Shipping Address', 'dayneo' ); ?></h3>
+                    </header>
+                    <address><p>
+                            <?php
+                            if ( ! $order->get_formatted_shipping_address() )
+                                esc_html_e( 'N/A', 'dayneo' );
+                            else
+                                echo esc_html( $order->get_formatted_shipping_address() );
+                            ?>
+                        </p></address>
 
-		</div><!-- /.col-2 -->
+                </div><!-- /.col-2 -->
 
-	    </div><!-- /.col2-set -->
+            </div><!-- /.col2-set -->
 
-	<?php endif; ?>
+        <?php endif; ?>
 
         <div class="clear"></div>
 
@@ -704,188 +690,176 @@ function dayneo_woocommerce_view_order( $order_id ) {
 
 /* end order hooks */
 
-	/**
-	 * Search products
-	 *
-	 * @since 1.0
-	 */
-	function instance_search_result() {
-		if ( apply_filters( 'dayneo_check_ajax_referer', true ) ) {
-			check_ajax_referer( '_dayneo_nonce', 'nonce' );
-		}
-		$response = array();
+/**
+ * Search products
+ *
+ * @since 1.0
+ */
+function instance_search_result() {
+    if ( apply_filters( 'dayneo_check_ajax_referer', true ) ) {
+        check_ajax_referer( '_dayneo_nonce', 'nonce' );
+    }
+    $response = array();
 
-		if ( isset( $_POST['search_type'] ) && $_POST['search_type'] == 'all' ) {
-			$response = instance_search_every_things_result();
-		} else {
-			$response = instance_search_products_result();
-		}
+    if ( isset( $_POST[ 'search_type' ] ) && $_POST[ 'search_type' ] == 'all' ) {
+        $response = instance_search_every_things_result();
+    } else {
+        $response = instance_search_products_result();
+    }
 
-		if ( empty( $response ) ) {
-			$response[] = sprintf( '<li>%s</li>', esc_html__( 'Nothing found', 'dayneo' ) );
-		}
+    if ( empty( $response ) ) {
+        $response[] = sprintf( '<li>%s</li>', esc_html__( 'Nothing found', 'dayneo' ) );
+    }
 
-		$output = sprintf( '<ul>%s</ul>', implode( ' ', $response ) );
+    $output = sprintf( '<ul>%s</ul>', implode( ' ', $response ) );
 
-		wp_send_json_success( $output );
-		die();
-	}
+    wp_send_json_success( $output );
+    die();
+}
 
-	function instance_search_products_result() {
-		$response = array();
-		$args_sku = array(
-			'post_type'        => 'product',
-			'posts_per_page'   => 30,
-			'meta_query'       => array(
-				array(
-					'key'     => '_sku',
-					'value'   => trim( $_POST['term'] ),
-					'compare' => 'like',
-				),
-			),
-			'suppress_filters' => 0,
-		);
+function instance_search_products_result() {
+    $response = array();
+    $args_sku = array(
+        'post_type'        => 'product',
+        'posts_per_page'   => 30,
+        'meta_query'       => array(
+            array(
+                'key'     => '_sku',
+                'value'   => trim( $_POST[ 'term' ] ),
+                'compare' => 'like',
+            ),
+        ),
+        'suppress_filters' => 0,
+    );
 
-		$args_variation_sku = array(
-			'post_type'        => 'product_variation',
-			'posts_per_page'   => 30,
-			'meta_query'       => array(
-				array(
-					'key'     => '_sku',
-					'value'   => trim( $_POST['term'] ),
-					'compare' => 'like',
-				),
-			),
-			'suppress_filters' => 0,
-		);
+    $args_variation_sku = array(
+        'post_type'        => 'product_variation',
+        'posts_per_page'   => 30,
+        'meta_query'       => array(
+            array(
+                'key'     => '_sku',
+                'value'   => trim( $_POST[ 'term' ] ),
+                'compare' => 'like',
+            ),
+        ),
+        'suppress_filters' => 0,
+    );
 
-		$args = array(
-			'post_type'        => 'product',
-			'posts_per_page'   => 30,
-			's'                => trim( $_POST['term'] ),
-			'suppress_filters' => 0,
-		);
+    $args = array(
+        'post_type'        => 'product',
+        'posts_per_page'   => 30,
+        's'                => trim( $_POST[ 'term' ] ),
+        'suppress_filters' => 0,
+    );
 
-		if ( function_exists( 'wc_get_product_visibility_term_ids' ) ) {
-			$product_visibility_term_ids = wc_get_product_visibility_term_ids();
-			$args['tax_query'][]         = array(
-				'taxonomy' => 'product_visibility',
-				'field'    => 'term_taxonomy_id',
-				'terms'    => $product_visibility_term_ids['exclude-from-search'],
-				'operator' => 'NOT IN',
-			);
-		}
-		if ( isset( $_POST['cat'] ) && $_POST['cat'] != '0' ) {
-			$args['tax_query'][] = array(
-				'taxonomy' => 'product_cat',
-				'field'    => 'slug',
-				'terms'    => $_POST['cat'],
-			);
+    if ( function_exists( 'wc_get_product_visibility_term_ids' ) ) {
+        $product_visibility_term_ids = wc_get_product_visibility_term_ids();
+        $args[ 'tax_query' ][]         = array(
+            'taxonomy' => 'product_visibility',
+            'field'    => 'term_taxonomy_id',
+            'terms'    => $product_visibility_term_ids[ 'exclude-from-search' ],
+            'operator' => 'NOT IN',
+        );
+    }
+    if ( isset( $_POST[ 'cat' ] ) && $_POST[ 'cat' ] != '0' ) {
+        $args[ 'tax_query' ][] = array(
+            'taxonomy' => 'product_cat',
+            'field'    => 'slug',
+            'terms'    => $_POST[ 'cat' ],
+        );
 
-			$args_sku['tax_query'] = array(
-				array(
-					'taxonomy' => 'product_cat',
-					'field'    => 'slug',
-					'terms'    => $_POST['cat'],
-				),
+        $args_sku[ 'tax_query' ] = array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug',
+                'terms'    => $_POST[ 'cat' ],
+            ),
+        );
+    }
 
-			);
-		}
+    $products_sku           = get_posts( $args_sku );
+    $products_s             = get_posts( $args );
+    $products_variation_sku = get_posts( $args_variation_sku );
 
-		$products_sku           = get_posts( $args_sku );
-		$products_s             = get_posts( $args );
-		$products_variation_sku = get_posts( $args_variation_sku );
+    $products    = array_merge( $products_sku, $products_s, $products_variation_sku );
+    $product_ids = array();
+    foreach ( $products as $product ) {
+        $id = $product->ID;
+        if ( ! in_array( $id, $product_ids ) ) {
+            $product_ids[] = $id;
 
-		$products    = array_merge( $products_sku, $products_s, $products_variation_sku );
-		$product_ids = array();
-		foreach ( $products as $product ) {
-			$id = $product->ID;
-			if ( ! in_array( $id, $product_ids ) ) {
-				$product_ids[] = $id;
+            $productw   = wc_get_product( $id );
+            $response[] = sprintf(
+            '<li>' .
+            '<a class="image-item" href="%s">' .
+            '%s' .
+            '</a>' .
+            '<div class="content-item">' .
+            '<a class="title-item" href="%s">' .
+            '%s' .
+            '</a>' .
+            '<div class="rating-item">%s</div>' .
+            '<div class="price-item">%s</div>' .
+            '</div>' .
+            '</li>', esc_url( $productw->get_permalink() ), $productw->get_image( 'shop_thumbnail' ), esc_url( $productw->get_permalink() ), $productw->get_title(), wc_get_rating_html( $productw->get_average_rating() ), $productw->get_price_html()
+            );
+        }
+    }
 
-				$productw   = wc_get_product( $id );
-				$response[] = sprintf(
-					'<li>' .
-					'<a class="image-item" href="%s">' .
-					'%s' .
-					'</a>' .
-					'<div class="content-item">' .
-					'<a class="title-item" href="%s">' .
-					'%s' .
-					'</a>' .
-					'<div class="rating-item">%s</div>' .
-					'<div class="price-item">%s</div>' .
-					'</div>' .
-					'</li>',
-					esc_url( $productw->get_permalink() ),
-					$productw->get_image( 'shop_thumbnail' ),
-					esc_url( $productw->get_permalink() ),
-					$productw->get_title(),
-					wc_get_rating_html( $productw->get_average_rating() ),
-					$productw->get_price_html()
-				);
-			}
-		}
+    return $response;
+}
 
-		return $response;
-	}
+function instance_search_every_things_result() {
+    $response = array();
+    $args     = array(
+        'post_type'        => 'any',
+        'posts_per_page'   => 30,
+        's'                => trim( $_POST[ 'term' ] ),
+        'suppress_filters' => 0,
+    );
 
-	function instance_search_every_things_result() {
-		$response = array();
-		$args     = array(
-			'post_type'        => 'any',
-			'posts_per_page'   => 30,
-			's'                => trim( $_POST['term'] ),
-			'suppress_filters' => 0,
-		);
+    $posts    = get_posts( $args );
+    $post_ids = array();
+    foreach ( $posts as $post ) {
+        $id = $post->ID;
+        if ( ! in_array( $id, $post_ids ) ) {
+            $post_ids[] = $id;
+            $response[] = sprintf(
+            '<li>' .
+            '<a class="image-item" href="%s">' .
+            '%s' .
+            '</a>' .
+            '<div class="content-item">' .
+            '<a class="title-item" href="%s">' .
+            '%s' .
+            '</a>' .
+            '</li>', esc_url( get_the_permalink( $id ) ), get_the_post_thumbnail( $id ), esc_url( get_the_permalink( $id ) ), $post->post_title
+            );
+        }
+    }
 
-		$posts    = get_posts( $args );
-		$post_ids = array();
-		foreach ( $posts as $post ) {
-			$id = $post->ID;
-			if ( ! in_array( $id, $post_ids ) ) {
-				$post_ids[] = $id;
-				$response[] = sprintf(
-					'<li>' .
-					'<a class="image-item" href="%s">' .
-					'%s' .
-					'</a>' .
-					'<div class="content-item">' .
-					'<a class="title-item" href="%s">' .
-					'%s' .
-					'</a>' .
-					'</li>',
-					esc_url( get_the_permalink( $id ) ),
-					get_the_post_thumbnail( $id ),
-					esc_url( get_the_permalink( $id ) ),
-					$post->post_title
-				);
-			}
-		}
+    return $response;
+}
 
-		return $response;
-	}
 add_action( 'wp_ajax_dayneo_search_products', 'instance_search_result' );
 add_action( 'wp_ajax_nopriv_dayneo_search_products', 'instance_search_result' );
 
-	/**
-	 * Ajaxify update count wishlist
-	 *
-	 * @since 1.0
-	 *
-	 * @param array $fragments
-	 *
-	 * @return array
-	 */
+/**
+ * Ajaxify update count wishlist
+ *
+ * @since 1.0
+ *
+ * @param array $fragments
+ *
+ * @return array
+ */
+function update_wishlist_count() {
+    if ( ! function_exists( 'YITH_WCWL' ) ) {
+        return;
+    }
 
-	function update_wishlist_count() {
-		if ( ! function_exists( 'YITH_WCWL' ) ) {
-			return;
-		}
-
-		wp_send_json( YITH_WCWL()->count_products() );
-
-	}
+    wp_send_json( YITH_WCWL()->count_products() );
+}
 
 add_action( 'wp_ajax_update_wishlist_count', 'update_wishlist_count' );
 add_action( 'wp_ajax_nopriv_update_wishlist_count', 'update_wishlist_count' );

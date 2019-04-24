@@ -67,35 +67,37 @@ add_action( 'wp_enqueue_scripts', 'dayneo_scripts' );
  * Enqueue admin scripts and styles.
  */
 function dayneo_adminscripts( $hook ) {
-	wp_enqueue_script( 'adminjs', get_template_directory_uri() . '/admin/assets/js/admin_script.js', array( 'jquery' ), '' );
+        if (  $hook == 'toplevel_page_dayneo-menu' || $hook == 'dayneo_page_dayneo_demos' || $hook == 'appearance_page_dayneo_options' || $hook == 'dayneo_page_ved-settings' ) {
+                wp_enqueue_script( 'adminjs', get_template_directory_uri() . '/admin/assets/js/admin_script.js', array( 'jquery' ), '' );
 
-	wp_enqueue_style( 'admincss', get_template_directory_uri() . '/admin/assets/css/admin_css.css', '', '' );
+                wp_enqueue_style( 'admincss', get_template_directory_uri() . '/admin/assets/css/admin_css.css', '', '' );
 
-	wp_localize_script( 'adminjs', 'js_strings', array(
-		'ajaxurl'		 => admin_url( 'admin-ajax.php' ),
-		'select_demo_notice'	 => __( 'select demo', 'dayneo' ),
-	) );
+                wp_localize_script( 'adminjs', 'js_strings', array(
+                        'ajaxurl'		 => admin_url( 'admin-ajax.php' ),
+                        'select_demo_notice'	 => __( 'select demo', 'dayneo' ),
+                ) );
 
-	wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
+                wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
 
-	wp_enqueue_style( 'jquery-ui-datepicker' );
+                wp_enqueue_style( 'jquery-ui-datepicker' );
 
-	wp_enqueue_script( 'jquery-ui-dialog' );
+                wp_enqueue_script( 'jquery-ui-dialog' );
 
-	wp_enqueue_style( 'font-awesomecss', get_template_directory_uri() . '/assets/css/font-awesome.min.css', '', '4.7.0' );
+                wp_enqueue_style( 'font-awesomecss', get_template_directory_uri() . '/assets/css/font-awesome.min.css', '', '4.7.0' );
 
-	wp_enqueue_style( 'themeoptions', get_template_directory_uri() . '/themeoptions/options/css/themeoptions.css', false, 398 );
+                wp_enqueue_style( 'themeoptions', get_template_directory_uri() . '/themeoptions/options/css/themeoptions.css', false, 398 );
 
-	wp_enqueue_script( 'theme-options-menu-mod', get_template_directory_uri() . '/themeoptions/options/js/theme-options-menu-mod.js', '', '', true );
+                wp_enqueue_script( 'theme-options-menu-mod', get_template_directory_uri() . '/themeoptions/options/js/theme-options-menu-mod.js', '', '', true );
+        }
 
 	/*
 	 * mega menu icon picker 
 	 */
-	if ( $hook == 'nav-menus.php' || $hook == 'appearance_page_dd_options_options' ) {
-		wp_enqueue_script( 'iconpicker', get_template_directory_uri() . '/assets/iconpicker/fontawesome-iconpicker.js', array(), '', true, 'all' );
-
-		wp_enqueue_style( 'colorpickercss', get_template_directory_uri() . '/assets/iconpicker/fontawesome-iconpicker.css', array(), '', 'all' );
-	}
+//	if ( $hook == 'nav-menus.php' || $hook == 'appearance_page_dayneo_options' ) {
+//		wp_enqueue_script( 'iconpicker', get_template_directory_uri() . '/assets/iconpicker/fontawesome-iconpicker.js', array(), '', true, 'all' );
+//
+//		wp_enqueue_style( 'colorpickercss', get_template_directory_uri() . '/assets/iconpicker/fontawesome-iconpicker.css', array(), '', 'all' );
+//	}
 }
 
 add_action( 'admin_enqueue_scripts', 'dayneo_adminscripts' );

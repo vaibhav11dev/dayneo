@@ -72,7 +72,7 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
                                             </a>
                                         </div>
                                         <div class="list-product-detail">
-                                            <a href="#">
+                                            <a href="<?php echo get_permalink( $cart_item[ 'product_id' ] ); ?>">
                                                 <?php echo $cart_item[ 'data' ]->get_name(); ?>
                                             </a>
                                             <p><span class="quantity"><?php echo $cart_item[ 'quantity' ]; ?> x </span><span class="price"><?php echo get_woocommerce_currency_symbol() . $cart_item[ 'data' ]->get_price(); ?></span></p>

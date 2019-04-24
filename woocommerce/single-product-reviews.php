@@ -68,9 +68,9 @@ if ( ! comments_open() ) {
 		    'comment_notes_after'	 => '',
 		    'fields'		 => array(
 			'author' => '<div class="row"><div class="col-sm-6"><div class="form-group comment-form-author">' . '<label for="author" class="sr-only">' . esc_html__( 'Name', 'dayneo' ) . ' <span class="required">*</span></label> ' .
-			'<input class="form-control" placeholder="' . esc_attr_e( 'Name', 'dayneo' ) . ' " id="author" name="author" type="text" value="' . esc_attr( $commenter[ 'comment_author' ] ) . '" size="30" aria-required="true" required /></div></div>',
+			'<input class="form-control" placeholder="' . esc_attr__( 'Name', 'dayneo' ) . ' " id="author" name="author" type="text" value="' . esc_attr( $commenter[ 'comment_author' ] ) . '" size="30" aria-required="true" required /></div></div>',
 			'email'	 => '<div class="col-sm-6"><div class="form-group comment-form-email"><label for="email" class="sr-only">' . esc_html__( 'Email', 'dayneo' ) . ' <span class="required">*</span></label> ' .
-			'<input placeholder="' . esc_attr_e( 'Email', 'dayneo' ) . '" class="form-control" id="email" name="email" type="email" value="' . esc_attr( $commenter[ 'comment_author_email' ] ) . '" size="30" aria-required="true" required /></div></div></div>',
+			'<input placeholder="' . esc_attr__( 'Email', 'dayneo' ) . '" class="form-control" id="email" name="email" type="email" value="' . esc_attr( $commenter[ 'comment_author_email' ] ) . '" size="30" aria-required="true" required /></div></div></div>',
 		    ),
 		    'label_submit'		 => __( 'Submit Review', 'dayneo' ),
 		    'logged_in_as'		 => '',
@@ -92,7 +92,7 @@ if ( ! comments_open() ) {
 						</select></div></div></div>';
 		}
 
-		$comment_form[ 'comment_field' ] .= '<div class="row"><div class="col-sm-12"><div class="comment-form-comment form-group"><textarea class="form-control" placeholder="' . esc_attr_e( 'Your review*', 'dayneo' ) . '" id="comment" name="comment" cols="45" rows="8" aria-required="true" required></textarea></div></div></div>';
+		$comment_form[ 'comment_field' ] .= '<div class="row"><div class="col-sm-12"><div class="comment-form-comment form-group"><textarea class="form-control" placeholder="' . esc_attr__( 'Your review*', 'dayneo' ) . '" id="comment" name="comment" cols="45" rows="8" aria-required="true" required></textarea></div></div></div>';
 
 
 		comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ) );

@@ -90,8 +90,34 @@ function dayneo_footer4() {
 		) );
 }
 
+function dayneo_beforefooter() {
+	if ( function_exists( 'register_sidebar' ) )
+		register_sidebar( array(
+			'name'		 => __( 'Before Footer', 'dayneo' ),
+			'id'		 => 'before-footer',
+			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
+			'after_widget'	 => '</div></div>',
+			'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+			'after_title'	 => '</h6>',
+		) );
+}
+
+function dayneo_afterfooter() {
+	if ( function_exists( 'register_sidebar' ) )
+		register_sidebar( array(
+			'name'		 => __( 'After Footer', 'dayneo' ),
+			'id'		 => 'after-footer',
+			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
+			'after_widget'	 => '</div></div>',
+			'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+			'after_title'	 => '</h6>',
+		) );
+}
+
 // Footer widgets
 dayneo_headerbar();
+dayneo_beforefooter();
+dayneo_afterfooter();
 dayneo_footer1();
 dayneo_footer2();
 dayneo_footer3();

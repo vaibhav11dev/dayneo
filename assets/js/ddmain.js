@@ -910,6 +910,9 @@
         }
     };
     
+    /**
+     * Add wishlist
+     */
     $.HandleElement.addWishlist = function () {
         $('ul.products li.product .yith-wcwl-add-button').on('click', 'a', function () {
             $(this).addClass('loading');
@@ -936,10 +939,33 @@
 
     };
     
+        /**
+     * Shop view toggle
+     */
+    $.HandleElement.shopView = function () {
+
+        $.HandleElement.$body.on('click', '.dd-shop-view', function (e) {
+            e.preventDefault();
+            var $el = $(this),
+                view = $el.data('view');
+
+            if ($el.hasClass('current')) {
+                return;
+            }
+
+            $.HandleElement.$body.find('.dd-shop-view').removeClass('current');
+            $el.addClass('current');
+            $.HandleElement.$body.removeClass('shop-view-grid shop-view-list').addClass('shop-view-' + view);
+
+            document.cookie = 'shop_view=' + view + ';domain=' + window.location.host + ';path=/';
+        });
+    };
+    
     $.HandleElement.init = function () {
         $.HandleElement.productQuantity();
         $.HandleElement.instanceSearch();
         $.HandleElement.addWishlist();
+        $.HandleElement.shopView();
     };
     $(document).ready($.HandleElement.init);
 
