@@ -30,14 +30,16 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
             <li class="cart-hover">
                 <div class="menu-item header-ajax-cart">
                     <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
-                        <div class="icon-wrap">
-                            <span class="icon-box">
-                                <i class="flaticon-paper-bag"></i>
-                                <span class="mini-item-counter">
-                                    <?php echo $woocommerce->cart->cart_contents_count; ?>
+                        <div class="icon-wrap-circle">
+                            <div class="icon-wrap">
+                                <span class="icon-box">
+                                    <i class="flaticon-paper-bag"></i>
+                                    <span class="mini-item-counter">
+                                        <?php echo $woocommerce->cart->cart_contents_count; ?>
+                                    </span>
                                 </span>
-                            </span>
-                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shopping Cart', 'dayneo' ) ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>
+                            </div>                            
+                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shopping Cart', 'dayneo' ) ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>                    
                         </div>
                     </a>
                 </div>
@@ -213,9 +215,13 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
         if ( $lang ) {
             $post_type_html .= '<input type="hidden" name="lang" value="' . $lang . '"/>';
         }
-
+        if(isset($button_text) && $button_text){ 
+            $search_icon = wp_kses( $button_text, wp_kses_allowed_html( 'post' ) );
+        } else {
+            $search_icon = "<i class='flaticon-search'></i>";
+        }
         $items .= sprintf(
-        '<div class="product-extra-search">
+        '<div class="top-search-wrap"><div class="product-extra-search">
                 <form class="products-search" method="get" action="%s">
                     <div class="psearch-content">
 			<div class="search-wrapper">
@@ -223,13 +229,13 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
                             %s
                             
                         </div>
-                        <div class="product-cat"><div class="product-cat-label %s">%s</div> %s</div>			    <button type="submit" class="search-submit flaticon-search">%s</button>
+                        <div class="product-cat"><div class="product-cat-label %s">%s</div> %s</div>			    <button type="submit" class="search-submit">%s</button>
                     </div>
                 </form>
                 %s
 		</div>
                 <div class="ajax-search-results woocommerce"></div>
-                <div class="search-limit"><p class="limit">Number of characters at least are 3</p></div>', esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, esc_attr( $item_class ), esc_html( $cats_text ), $cat, wp_kses( $button_text, wp_kses_allowed_html( 'post' ) ), implode( ' ', $words_html )
+                <div class="search-limit"><p class="limit">Number of characters at least are 3</p></div></div>', esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, esc_attr( $item_class ), esc_html( $cats_text ), $cat, $search_icon, implode( ' ', $words_html )
         );
 
         echo $items;

@@ -92,10 +92,7 @@
 		if ( $dd_siteloader == 1 ) {
 			?>
 			<!-- PRELOADER -->
-			<div class="page-loader">
-				<div class="loader"><img src="<?php echo esc_url($dd_loaderfile[ 'url' ]); ?>" alt="siteloader" >
-				</div>
-			</div>
+			<div class="page-loader"><img src="<?php echo esc_url($dd_loaderfile[ 'url' ]); ?>" alt="siteloader" ></div>
 			<!-- END PRELOADER -->
 			<?php
 		}

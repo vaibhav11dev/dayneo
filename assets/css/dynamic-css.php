@@ -668,7 +668,7 @@ a:focus,
 
 .bg-brand,
 .progress-bar,
-.products-search .search-submit,
+.products-search .search-submit:hover,
 .main-menu,
 .extras-menu .icon-wrap:hover .icon-box,
 .extras-menu .icon-wrap .icon-box .mini-item-counter
@@ -731,7 +731,8 @@ h3.widget-title::after
 .btn.btn-base,
 .bg-brand-hvr,
 .products-cats-menu .cats-menu-title,
-.ved-main-megamenu .inner-nav > li:hover > a {
+.ved-main-megamenu .inner-nav > li:hover > a,
+.products-search .search-submit {
     background-color: ' . esc_attr($dd_secondry_color) . ';
 }
 ';
