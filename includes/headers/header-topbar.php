@@ -51,7 +51,7 @@ if ( is_page() ) {
 			?>
 		    </div>
              <?php endif; ?>
-		    <div class="col-md-6 col-sm-12 text-right">
+		    <div class="col-md-6 col-sm-12 text-right top-bar-right">
 			<?php
                             get_template_part( 'includes/headers/header-wishlist' );
                             get_template_part( 'includes/headers/header-currency' );

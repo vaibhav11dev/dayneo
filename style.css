@@ -115,14 +115,47 @@ Text Domain: dayneo
 
 .top-bar{
     margin: 0;
-    background-color: #f5f5f5;
+    border-bottom: 1px solid #e2e2e2;
+}
+.top-bar p{
+    margin:0;
+}
+.top-bar-right {
+    display: flex;
+    justify-content: flex-end;
+}
+.top-bar-right > * {
+    float: left;
+    margin-left: 20px;    
+}
+.top-bar-right .dropdown-menu{
+    left:auto;
+    right: 0
+}
+.top-bar-right .dropdown-menu li a{
+    padding: 5px 15px;
+    display: block; 
+    line-height: 2;       
+}
+.dropdown .expand-more:after {
+    content: "\f107";
+    font-family: FontAwesome;
+    margin-left: 5px;
+}
+
+@media screen and (min-width: 1051px){
+.top-bar p, .top-bar-right .dropdown > .expand-more,#_desktop_wishtlistTop .yith-contents{
+    line-height: 40px;
+    font-weight: 400;
+    display: block;
+}
 }
 
 /* Header Styles */
 
 .header-main-wapper .header-row{
     align-items: center;
-    padding: 20px 0;
+    height: 100px;    
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -134,6 +167,34 @@ Text Domain: dayneo
 .header-extras .product-extra-search {
     width: 100%;
     border: 1px solid #e2e2e2;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    padding-right: 70px;
+}
+.top-search-wrap {
+    position: relative;
+}
+.top-search-wrap .ajax-search-results,.top-search-wrap .search-limit{
+    background: #fff none repeat scroll 0 0;
+    display: none;
+    left: 0;
+    max-height: 400px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 999;
+    border: 1px solid #e2e2e2;
+    overflow-y: auto;
+}
+.top-search-wrap .search-limit{
+    padding:15px;
+    text-align: center;
+}
+.top-search-wrap .search-limit p{
+    margin: 0
 }
 .product-extra-search .products-search {
     width: 100%;
@@ -173,15 +234,16 @@ Text Domain: dayneo
 }
 .products-search .search-submit {
     float: right;
+    height: 100%;
     width: 70px;
-    height: 42px;
+    font-size: 22px;
+    color: #fff;
     padding: 0;
     margin: 0;
     border: none;
-    color: #000;    
-    font-size: 22px;
-    line-height: 42px;
-    background-color: #fcb800;
+    position: absolute;
+    right: 0;
+    top: 0;
     white-space: nowrap;
     outline: none;
     -webkit-transition: all .3s;

@@ -63,7 +63,9 @@ ins {
 .relative {
     position: relative;
 }
-
+input:focus, button:focus, select:focus, textarea:focus{
+    outline: none;
+}
 
 /* Hide search icon on iPhone 5/6 portrait */
 
@@ -1775,11 +1777,9 @@ body.off-canvas-cart-open:after {
     right: 0;
     left: 0;
     z-index: 9998;
-}
-
-.loader {
-    text-align: center;
-    margin: 15% 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*------------------------------------------------------------------
@@ -1787,30 +1787,20 @@ body.off-canvas-cart-open:after {
 */
 
 .dropdown-menu {
-    background-color: #222222;
-    border: 0;
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
     border-radius: 0;
     box-shadow: none;
-    min-width: 180px;
-    font-size: 12px;
-    padding: 10px 0;
+    min-width: 160px;
+    font-size: 13px;
+    padding:0;
     z-index: 1031;
+    margin: 0;    
 }
 
 .dropdown-menu .divider {
     background: #363636;
     margin: 10px 0;
-}
-
-.dropdown-menu li > a {
-    background: none !important;
-    padding: 10px 24px 10px 20px;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.dropdown-menu li > a:hover,
-.dropdown-menu li > a:focus {
-    color: #ffffff;
 }
 
 .dropdown-menu .open > a,
@@ -2824,7 +2814,7 @@ body.off-canvas-cart-open:after {
 .inner-brand {
     display: table-cell;
     vertical-align: middle;
-    height: 86px;
+    height: 70px;
     font-weight: 700;
     font-size: 18px;
     color: #000000;
@@ -7436,7 +7426,7 @@ input[type=number] {
 .cart-hover {
     position: relative;
 }
-.cart-hover .icon-wrap{
+.nav-right .icon-wrap-circle{
     display: flex;
     cursor: pointer;
     align-items: center;

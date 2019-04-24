@@ -29,15 +29,15 @@ function dayneo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
     ?>
     <div class="menu-item header-ajax-cart">
         <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
-            <div class="icon-wrap">
-                <span class="icon-box">
-                    <i class="flaticon-paper-bag"></i>
-                    <span class="mini-item-counter">
-                        <?php echo $woocommerce->cart->cart_contents_count; ?>
-                    </span>
-                </span>
-                <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shopping Cart', 'dayneo' ) ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>
+    	<div class="icon-wrap-circle">
+    		<div class="icon-wrap">
+	    	    <span class="icon-box">
+	    			<i class="flaticon-paper-bag"></i>
+	    			<span class="mini-item-counter"><?php echo $woocommerce->cart->cart_contents_count; ?></span>
+	    	    </span>
             </div>
+            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e('Shopping Cart', 'dayneo') ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>
+    	</div>
         </a>
 
     </div>

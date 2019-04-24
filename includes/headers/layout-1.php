@@ -67,10 +67,10 @@ if ( empty( $extras ) || ! $extras[ 'department' ] ) {
 			</div>
 
 		    </div>
-		    <div class="header-extras col-lg-5 col-md-6 col-sm-6 col-xs-6">
+		    <div class="header-extras col-lg-6 col-md-6 col-sm-6 col-xs-6">
 			<?php dayneo_extra_search(); ?>
 		    </div>
-		    <div class="col-lg-4 col-md-3">
+		    <div class="col-lg-3 col-md-3">
 			<ul class="extras-menu">
 			    <?php
 			    dayneo_extra_cart();

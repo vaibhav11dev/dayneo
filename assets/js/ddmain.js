@@ -849,7 +849,9 @@
                 $('.search-limit').fadeIn();
                 return;
             }
-
+            jQuery(document).click(function (event) {
+                jQuery('.search-limit,.ajax-search-results').fadeOut();
+            });
             $currentForm.removeClass('found-products found-no-product').addClass('searching');
             $results.fadeIn();
             $('.search-limit').fadeOut();
@@ -1011,4 +1013,13 @@ jQuery(document).on('click', '.list-product a.remove', function (e)
             }
         }
     });
+});
+
+//dropdown smooth
+jQuery('.dropdown').on('show.bs.dropdown', function(e){
+  jQuery(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
+});
+
+jQuery('.dropdown').on('hide.bs.dropdown', function(e){
+  jQuery(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
 });

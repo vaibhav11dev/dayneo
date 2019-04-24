@@ -10,16 +10,13 @@ if ( is_user_logged_in() ) {
     $logged_type = esc_html__( 'My Account', 'dayneo' );
 
     $items .= sprintf(
-    '<div class="extra-menu-item menu-item-account logined">
-				<a href="%s">%s</a>
-				<ul>
-					<li>%s</li>
-					
-					<li class="logout">
-						<a href="%s">%s</a>
-					</li>
+    '<div id="_desktop_user_info" class="extra-menu-item menu-item-account dropdown logined">
+				<a href="javascript:void(0)" class="expand-more" data-toggle="dropdown">%s</a>
+				<ul class="dropdown-menu">
+					<li><a href="%s">%s</a></li>					
+					<li class="logout"><a href="%s">%s</a></li>
 				</ul>
-			</div>', esc_url( $account_link ), $logged_type, esc_html__( 'Hello,', 'dayneo' ) . ' ' . $author->display_name . '!', esc_url( wp_logout_url( $account ) ), esc_html__( 'Logout', 'dayneo' )
+			</div>', $logged_type, esc_url( $account_link ) , esc_html__( 'Hello,', 'dayneo' ) . ' ' . $author->display_name . '!', esc_url( wp_logout_url( $account ) ), esc_html__( 'Logout', 'dayneo' )
     );
 } else {
 
