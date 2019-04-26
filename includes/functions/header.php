@@ -27,7 +27,8 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
         if ( class_exists( 'Woocommerce' ) && $dd_woo_cart ) {
             global $woocommerce;
             ?>
-            <li id="_desktop_cart" class="cart-hover">
+            <div id="_desktop_cart">
+            <div class="cart-hover">
                 <div class="menu-item header-ajax-cart">
                     <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
                         <div class="icon-wrap-circle">
@@ -117,7 +118,8 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
                 }
                 ?>
 
-            </li>
+            </div>
+            </div>
 
             <?php
         }
@@ -221,7 +223,7 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
             $search_icon = "<i class='flaticon-search'></i>";
         }
         $items .= sprintf(
-        '<div class="top-search-wrap"><div class="product-extra-search">
+        '<div id="_desktop_search"><div class="top-search-wrap"><div class="product-extra-search">
                 <form class="products-search" method="get" action="%s">
                     <div class="psearch-content">
 			<div class="search-wrapper">
@@ -235,7 +237,7 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
                 %s
 		</div>
                 <div class="ajax-search-results woocommerce"></div>
-                <div class="search-limit"><p class="limit">Number of characters at least are 3</p></div></div>', esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, esc_attr( $item_class ), esc_html( $cats_text ), $cat, $search_icon, implode( ' ', $words_html )
+                <div class="search-limit"><p class="limit">Number of characters at least are 3</p></div></div></div>', esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, esc_attr( $item_class ), esc_html( $cats_text ), $cat, $search_icon, implode( ' ', $words_html )
         );
 
         echo $items;
@@ -260,7 +262,7 @@ if ( ! function_exists( 'dayneo_header_menu' ) ) :
         ?>
         <div class="primary-nav nav">
             <?php
-            wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav', 'container' => 'nav', 'container_class' => 'ved-main-megamenu ved-navbar-nav main-nav collapse clearfix', 'container_id' => 'custom-collapse', 'walker' => new VedCoreFrontendWalker() ) );
+            wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav', 'container' => 'nav', 'container_class' => 'ved-main-megamenu ved-navbar-nav main-nav collapse clearfix', 'container_id' => '_desktop_menu', 'walker' => new VedCoreFrontendWalker() ) );
             ?>
         </div>
         <?php
@@ -349,7 +351,7 @@ if ( ! function_exists( 'dayneo_extra_department' ) ) :
             <h2 class="cats-menu-title"><?php echo wp_kses( $dep_text, wp_kses_allowed_html( 'post' ) ); ?></h2>
 
             <div class="toggle-product-cats nav" <?php echo esc_attr( $cat_style ); ?>>
-                <?php wp_nav_menu( array( 'theme_location' => 'department-menu', 'menu_class' => 'inner-nav', 'container' => 'nav', 'container_class' => 'ved-navbar-nav main-nav vertical-megamenu collapse clearfix', 'container_id' => 'custom-collapse', 'walker' => new VedCoreFrontendWalker() ) ); ?>
+                <?php wp_nav_menu( array( 'theme_location' => 'department-menu', 'menu_class' => 'inner-nav', 'container' => 'nav', 'container_class' => 'ved-navbar-nav main-nav vertical-megamenu collapse clearfix', 'container_id' => '_desktop_vmenu', 'walker' => new VedCoreFrontendWalker() ) ); ?>
             </div>
         </div>
         <?php

@@ -165,7 +165,7 @@ Text Domain: dayneo
 
 /* Search Box Styles */
 
-.header-extras .product-extra-search {
+.top-search-wrap .product-extra-search {
     width: 100%;
     border: 1px solid #e2e2e2;
     position: relative;
@@ -305,7 +305,7 @@ Text Domain: dayneo
     background-color: #222;
     color: #fff;
 }
-.header-row .product-cat .product-cat-label {
+.top-search-wrap .product-cat .product-cat-label {
     display: none;
 }
 
@@ -349,7 +349,7 @@ Text Domain: dayneo
     background-color: #222;
     color: #fff;
 }
-.extras-menu .icon-wrap .icon-box .mini-item-counter{
+.header-ajax-cart .icon-box .mini-item-counter{
     width: 15px;
     height: 15px;
     position: absolute;
@@ -368,6 +368,7 @@ Text Domain: dayneo
     -ms-transition: all .3s;
     -o-transition: all .3s;
     transition: all .3s;
+    color: #fff;    
 }
 
 /* Vertical Category Menu Styles */

@@ -1030,7 +1030,7 @@ jQuery('.dropdown').on('hide.bs.dropdown', function (e) {
 /*=============Universal script for moving elements in DOM============*/
 !function ($) {
     var windowWidth = $(window).innerWidth();
-    var windowMinWidth = 768;
+    var windowMinWidth = 1051;
     var windowResponsiveMobile = windowWidth < windowMinWidth;
 
     function swapChildren(obj1, obj2)
@@ -1114,7 +1114,7 @@ function accordion(status)
     }
 }
 
-//blog image popup
+/*=============blog image popup============*/
 jQuery('.post-columns').magnificPopup({
     delegate: '.grouped_elements', // child items selector, by clicking on it popup will open
     type: 'image',
@@ -1122,4 +1122,43 @@ jQuery('.post-columns').magnificPopup({
         enabled:true
     }
   // other options
+});
+
+/*=============Mobile header============*/
+jQuery(document).ready(function(){
+    jQuery("#menu-icon").on("click", function() {
+        jQuery("html").addClass('sidebar-open'), jQuery('#header').addClass('toggle')
+    })
+    jQuery(".close-sidebar").click(function() {
+        jQuery("html").removeClass('sidebar-open');
+        jQuery('#header').removeClass('toggle');
+    });
+    setTimeout(function(){  
+        jQuery(".sidebar-overlay").click(function() {
+            jQuery("html").removeClass('sidebar-open');
+            jQuery('#header').removeClass('toggle');
+        });   
+    }, 300);
+    jQuery("#header .inner-nav .has-submenu > a").append("<span class='icon-drop-mobile'></span>");
+    jQuery(document).on('click', '#header .inner-nav .icon-drop-mobile', function () {
+        jQuery(this).parent().next().first().stop(true, true).slideToggle();
+    });
+    vegamenuposition();
+});
+function vegamenuposition(){
+    if(jQuery(document).width()<=1050){
+        jQuery("#mobile_top_menu_wrapper .menu-vertical .menu-tit").click(function(){
+            jQuery("#mobile_top_menu_wrapper #_mobile_menu").slideUp();
+            jQuery(this).next().slideDown();
+        });
+        jQuery("#mobile_top_menu_wrapper .menu-horizontal .menu-tit").click(function(){
+            jQuery(this).next().slideDown();
+            jQuery("#mobile_top_menu_wrapper #_mobile_vmenu").slideUp();
+        });
+    }
+}
+
+/*=============Slide Toggle============*/
+jQuery(".slidetoggle-init").click(function(){
+  jQuery(this).parent().find(".slidetoggle-menu").slideToggle();
 });
