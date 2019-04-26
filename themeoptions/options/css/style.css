@@ -1636,9 +1636,7 @@ pre {
     width: calc(100% - 50px);
     left: 50px;    
 }
-.redux-sidebar .hasSubSections .extraIconSubsections{
-    position: absolute;
-    right: 0;
+.redux-container.open .redux-sidebar .hasSubSections .extraIconSubsections{
     display: none;    
 }
 .redux-container.open .redux-sidebar .subsection .redux-group-tab-link-a span.group_title{

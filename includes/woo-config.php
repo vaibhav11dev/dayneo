@@ -790,18 +790,19 @@ function instance_search_products_result() {
 
             $productw   = wc_get_product( $id );
             $response[] = sprintf(
-            '<li>' .
-            '<a class="image-item" href="%s">' .
-            '%s' .
-            '</a>' .
+            '<li class="product-search-list">' .
+            '<a href="%s">' .
+            '<div class="image">' .
+            '%s' . 
+            '</div>' .           
             '<div class="content-item">' .
-            '<a class="title-item" href="%s">' .
+            '<h5 class="product-name">' .
             '%s' .
-            '</a>' .
-            '<div class="rating-item">%s</div>' .
+            '</h5>' .
             '<div class="price-item">%s</div>' .
             '</div>' .
-            '</li>', esc_url( $productw->get_permalink() ), $productw->get_image( 'shop_thumbnail' ), esc_url( $productw->get_permalink() ), $productw->get_title(), wc_get_rating_html( $productw->get_average_rating() ), $productw->get_price_html()
+            '</a>' .
+            '</li>', esc_url( $productw->get_permalink() ), $productw->get_image( 'shop_thumbnail' ), $productw->get_title(), $productw->get_price_html()
             );
         }
     }

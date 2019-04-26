@@ -28,31 +28,33 @@ class Dayneo_Contact_Info_Widget extends WP_Widget {
 		    <?php
 		    if ( isset( $instance[ 'address' ] ) && $instance[ 'address' ] ) {
 			    ?>
-			    <p class="address"><?php echo esc_html($instance[ 'address' ]); ?></p>
+			    <p class="address"><i class="ti-location-pin"></i><?php echo esc_html($instance[ 'address' ]); ?></p>
 			    <?php
 		    }
 
 		    if ( isset( $instance[ 'phone' ] ) && $instance[ 'phone' ] ) {
 			    ?>
-			    <p class="phone"><?php esc_html_e( 'Phone:', 'dayneo' ); ?>&nbsp;<?php echo esc_html($instance[ 'phone' ]); ?></p>
+			    <p class="phone"><i class="ti-mobile"></i><?php echo esc_html($instance[ 'phone' ]); ?></p>
 			    <?php
 		    }
 
 		    if ( isset( $instance[ 'mobile' ] ) && $instance[ 'mobile' ] ) {
 			    ?>
-			    <p class="mobile"><?php esc_html_e( 'Mobile:', 'dayneo' ); ?>&nbsp;<?php echo esc_html($instance[ 'mobile' ]); ?></p>
+			    <p class="mobile"><i class="ti-mobile"></i><?php echo esc_html($instance[ 'mobile' ]); ?></p>
 			    <?php
 		    }
 
 		    if ( isset( $instance[ 'fax' ] ) && $instance[ 'fax' ] ) {
 			    ?>
-			    <p class="fax"><?php esc_html_e( 'Fax:', 'dayneo' ); ?>&nbsp;<?php echo esc_html($instance[ 'fax' ]); ?></p>
+			    <p class="fax"><i class="ti-printer"></i><?php echo esc_html($instance[ 'fax' ]); ?></p>
 			    <?php
 		    }
 
 		    if ( isset( $instance[ 'email' ] ) && $instance[ 'email' ] ) {
 			    ?>
-			    <p class="email"><?php esc_html_e( 'Email:', 'dayneo' ); ?>&nbsp;<a href="mailto:<?php echo esc_url(antispambot( $instance[ 'email' ] ) ); ?>"><?php
+			    <p class="email"><a href="mailto:<?php echo esc_url(antispambot( $instance[ 'email' ] ) ); ?>">
+			    	<i class="ti-email"></i>
+			    	<?php
 				    if ( $instance[ 'emailtxt' ] ) {
 					    echo esc_html($instance[ 'emailtxt' ]);
 				    } else {
@@ -64,7 +66,7 @@ class Dayneo_Contact_Info_Widget extends WP_Widget {
 
 		    if ( isset( $instance[ 'web' ] ) && $instance[ 'web' ] ) {
 			    ?>
-			    <p class="web"><?php esc_html_e( 'Web:', 'dayneo' ); ?>&nbsp;<a href="<?php echo esc_url($instance[ 'web' ]); ?>"><?php
+			    <p class="web"><a href="<?php echo esc_url($instance[ 'web' ]); ?>"><?php
 				    if ( $instance[ 'webtxt' ] ) {
 					    echo esc_html($instance[ 'webtxt' ]);
 				    } else {

@@ -112,7 +112,9 @@ if ( empty( $extras ) || ! $extras[ 'department' ] ) {
 
         </div>
     </div>
+    <div class="mobile-search-bar">
+    	<div class="container">
+    		<div id="_mobile_search" class="mobile-search"></div>
+    	</div>
+    </div>
 </div>
-
-
-

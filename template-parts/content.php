@@ -34,42 +34,29 @@ global $dd_options;
 			wp_link_pages( array( 'before' => '<div id="page-links"><p>' . __( '<strong>Pages:</strong>', 'dayneo' ), 'after' => '</p></div>' ) );
 			?>	
 		</div>
-	    	<div class="clearfix"></div>
-	</div>
+    	<div class="clearfix"></div>
 
-	<div class="tags entry-meta entry-footer">
-		<div class="row">
+	    <div class="tags entry-meta entry-footer">				
 
-			<?php
-			if ( dayneo_get_terms( 'cats' ) ) {
-				?>
-				<div class="col-sm-6">
-					<div class="entry-categories"> <?php echo dayneo_get_terms( 'cats', ' ' ); ?></div>
-				</div>
 				<?php
-			}
-			?>							
-
-
-
-			<?php
-			$dd_share_this = dayneo_get_option( 'dd_share_this', 'single' );
-			if ( ($dd_share_this == "") || ($dd_share_this == "single") || ($dd_share_this == "all") ) {
-				?>
-				<div class="col-sm-6">
-					<?php
-					dayneo_sharethis();
+				$dd_share_this = dayneo_get_option( 'dd_share_this', 'single' );
+				if ( ($dd_share_this == "") || ($dd_share_this == "single") || ($dd_share_this == "all") ) {
 					?>
-				</div>
-				<?php
-			} else {
-				?> 
-				<div class="col-sm-6">
-					<div class="m-b-40"></div> 
-				</div>
-			<?php } ?>
+					<div class="share-wrap">
+						<?php
+						dayneo_sharethis();
+						?>
+					</div>
+					<?php
+				} else {
+					?> 
+					<div class="share-wrap">
+						<div class="m-b-40"></div> 
+					</div>
+				<?php } ?>
 
 		</div>
+
 	</div>
 
 </article>

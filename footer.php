@@ -11,16 +11,16 @@ $dd_footer_widget_col = dayneo_get_option( 'dd_footer_widget_col', 'disable' );
 if ( ($dd_footer_widget_col != "") || ($dd_footer_widget_col != "disable") ) {
     $dayneo_footer_css = '';
     if ( $dd_footer_widget_col == "one" ) {
-        $dayneo_footer_css = 'col-sm-12';
+        $dayneo_footer_css = 'col-md-12';
     }
     if ( $dd_footer_widget_col == "two" ) {
-        $dayneo_footer_css = 'col-sm-6';
+        $dayneo_footer_css = 'col-md-6';
     }
     if ( $dd_footer_widget_col == "three" ) {
-        $dayneo_footer_css = 'col-sm-4';
+        $dayneo_footer_css = 'col-md-4';
     }
     if ( $dd_footer_widget_col == "four" ) {
-        $dayneo_footer_css = 'col-sm-3';
+        $dayneo_footer_css = 'col-md-3';
     }
 }
 
@@ -42,7 +42,7 @@ if ( $dd_footer_parallax == 1 ) {
                     endif;
                     ?>
                 </div>
-                <div class="row padd-50">
+                <div class="footer-center row">
                     <div class="<?php echo esc_attr( $dayneo_footer_css ); ?>">
                         <?php
                         if ( is_active_sidebar( 'footer-1' ) ) :
@@ -86,7 +86,7 @@ if ( $dd_footer_parallax == 1 ) {
             </div><!-- .container -->
         <?php } ?>
         <div class="copyright">	
-            <div class="container-fluid"><!-- .container fluid -->
+            <div class="container"><!-- .container fluid -->
                 <div class="row">
                     <div class="col-sm-12">
                         <?php

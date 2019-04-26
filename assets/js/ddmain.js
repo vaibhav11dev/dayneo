@@ -700,7 +700,7 @@
         $(".cart-hover #open-cart").live('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            $(".sub-cart-menu").slideToggle();
+            $(".sub-cart-menu").first().stop(true, true).slideToggle();
         });
         $(".cats-menu-title").live('click', function (e) {
             e.preventDefault();
@@ -1024,9 +1024,54 @@ jQuery('.dropdown').on('hide.bs.dropdown', function(e){
   jQuery(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
 });
 
-jQuery('#_mobile_logo').each(function() {
-//    console.log('dd');
-//        var text = jQuery(this).html();
-//        jQuery(this).clone().appendTo(jQuery('#_mobile_logo'));
-        jQuery(this).replaceWith(jQuery('#_desktop_logo').children());
+//replace desktop with mobile content
+function mobilecontent(){
+    if (jQuery(window).width() < 1051) {
+        // var logo = jQuery("#_desktop_logo").html();
+        // jQuery(logo).appendTo("#_mobile_logo");
+    }
+    else {
+        //jQuery("#_mobile_logo").appendTo("#_desktop_logo");
+    }
+}
+jQuery(document).ready(function() { mobilecontent(); });
+jQuery(window).resize(function() { mobilecontent(); });
+
+
+/*=============Init Accordian============*/
+var responsiveflag = false;
+
+jQuery(document).ready(function () {
+    responsiveResize();
+    jQuery(window).resize(responsiveResize);
 });
+function responsiveResize()
+{
+    if (jQuery(window).width() <= 991 && responsiveflag == false)
+    {
+        accordion('enable');
+        responsiveflag = true;
+    }
+    else if (jQuery(window).width() >= 992)
+    {
+        accordion('disable');
+        responsiveflag = false;
+    }
+}
+function accordion(status)
+{
+    if(status == 'enable')
+    {
+        var accordion_selector = '.footer-center .widget_nav_menu .text-title,.footer-center .contact_info .text-title,.sidebar .widget-content .text-title';
+
+        jQuery(accordion_selector).on('click', function(e){
+            jQuery(this).toggleClass('active').next().stop().slideToggle('medium');
+            e.preventDefault();
+        });
+        jQuery(accordion_selector).next().slideUp('fast');
+    }
+    else
+    {
+        jQuery('.footer-center .widget_nav_menu .text-title,.footer-center .contact_info .text-title,.sidebar .widget-content .text-title').removeClass('active').off().next().removeAttr('style').slideDown('fast');
+    }
+}

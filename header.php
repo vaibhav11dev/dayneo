@@ -104,15 +104,19 @@
 		}
                 
                 if ( is_page() ) {
-			if ( ($dayneo_header_type == 'h6') || ($dayneo_header_type == 'default' && $dd_header_type == 'h6') ) {
-				get_template_part( 'includes/headers/header-topbar' );
-				get_template_part( 'includes/headers/layout-1' );
-			}
+			if ( ($dayneo_header_type == 'h6') || ($dayneo_header_type == 'default' && $dd_header_type == 'h6') ) { ?>
+				<div id="header" class="header-wrap">
+				<?php	get_template_part( 'includes/headers/header-topbar' );
+				get_template_part( 'includes/headers/layout-1' ); ?>
+				</div>
+			<?php	}
 		} else {
-			if ( $dd_header_type == 'h6' ) {
-				get_template_part( 'includes/headers/header-topbar' );
-				get_template_part( 'includes/headers/layout-1' );
-			}
+			if ( $dd_header_type == 'h6' ) {?>
+				<div id="header" class="header-wrap">
+				<?php get_template_part( 'includes/headers/header-topbar' );
+				get_template_part( 'includes/headers/layout-1' );?>
+				</div>
+			<?php }
 		}
 
 		if ( is_page() ) {

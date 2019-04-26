@@ -150,32 +150,28 @@ function dayneo_similar_posts() {
 
 		$my_query = new wp_query( $args );
 		if ( $my_query->have_posts() ) {
-			echo '<div class="similar-posts"><h5 class="text-title text-uppercase bottom-line">' . esc_html__( 'Similar posts', 'dayneo' ) . '</h5>';
-			echo '<div class="row multi-columns-row post-columns">';
+			echo '<div class="similar-posts"><div class="sec-head-style"><h3 class="text-title text-uppercase page-heading">' . esc_html__( 'Similar posts', 'dayneo' ) . '</h3></div>';
+			echo '<div class="row"><div class="multi-columns-row post-columns">';
 			while ( $my_query->have_posts() ) {
 				$my_query->the_post();
 				?>
-				<div class="col-sm-3 col-md-3 col-lg-3">
+				<div class="col-sm-12">
 					<!--  BLOG CONTENT  -->
 					<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo dayneo_post_format(); ?>">
-						<?php
-						dayneo_post_thumbnail();
-						?>
-
+						<div class="post_thumbnail">
+							<?php
+							dayneo_post_thumbnail('medium');
+							?>
+							<span class="blogicons">
+                                <a title="Click to view Full Image" href="<?php echo get_the_post_thumbnail_url(get_the_ID(),'full') ?>" rel="blog_group" class="icon grouped_elements zoom ti-search"></a> 
+                                <a title="Click to view Read More" href="<?php the_permalink(); ?>" class="icon readmore ti-link"></a>
+                            </span>
+							<p class="meta_date"> <span class="day_date"><?php the_time('j') ?></span><span class="day_month"><?php the_time('M') ?></span></p>
+						</div>
 						<div class="post-content">
 
 							<div class="entry-meta entry-header">
-								<?php dayneo_post_heading() ?>
-
-								<ul class="post-meta">
-									<li class="author vcard">
-										<?php
-										esc_html_e( 'By ', 'dayneo' );
-
-										printf( '<a class="url fn" href="' . esc_url(get_author_posts_url( $authordata->ID, $authordata->user_nicename )) . '" title="' . sprintf( 'View all posts by %s', 'dayneo', $authordata->display_name ) . '">' . get_the_author() . '</a>' )
-										?>
-									</li>
-								</ul>
+								<?php the_title( '<h2 class="post-title">' . dayneo_post_format_icon() . '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
 							</div>
 
 							<div class="entry-content">
@@ -200,8 +196,24 @@ function dayneo_similar_posts() {
 				<!-- END BLOG CONTENT -->
 				<?php
 			}
-			echo '</div></div>';
-		}
+			echo '</div></div></div>'; ?>
+			<script>
+				jQuery(document).ready(function($){
+					var rtl1=false;if($("body").hasClass("rtl")){rtl1=true;}
+					$('.similar-posts .post-columns').owlCarousel({
+						pagination:false,
+						navigation:true,
+						rewind:true,
+						items:3,
+						navigationText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+						autoplay:2000,
+						itemsDesktop : [1199,2],
+				      	itemsDesktopSmall : [992,2],
+				      	itemsMobile : [599,1]
+					});
+				});
+			</script>
+		<?php }
 	}
 	$post = $orig_post;
 	wp_reset_query();
@@ -1619,19 +1631,19 @@ function dayneo_sidebar_class() {
 			//do nothing
 			break;
 		case "2cl":
-			$sidebar_css	 = 'col-sm-6 col-md-' . $dd_opt1_width_sidebar1 . '';
+			$sidebar_css	 = 'col-md-' . $dd_opt1_width_sidebar1 . '';
 			break;
 		case "2cr":
-			$sidebar_css	 = 'col-sm-6 col-md-' . $dd_opt1_width_sidebar1 . '';
+			$sidebar_css	 = 'col-md-' . $dd_opt1_width_sidebar1 . '';
 			break;
 		case "3cm":
-			$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
+			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
 			break;
 		case "3cl":
-			$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
+			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
 			break;
 		case "3cr":
-			$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-left';
+			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-left';
 			break;
 	endswitch;
 
