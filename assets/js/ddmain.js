@@ -696,7 +696,7 @@
 
 // For Onclick open cart on header area
     $(document).ready(function () {
-	$(".toggle-product-cats").hide();
+        $(".toggle-product-cats").hide();
         $(".cart-hover #open-cart").live('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -706,8 +706,8 @@
             e.preventDefault();
             e.stopPropagation();
             $(".toggle-product-cats").first().stop(true, true).slideToggle();
-        });	
-	
+        });
+
     });
     $(document).on("click", function () {
         $(".sub-cart-menu").slideUp();
@@ -734,33 +734,32 @@
     $.HandleElement = $.HandleElement || {};
     $.HandleElement.$body = $(document.body);
     $.HandleElement.$window = $(window),
+            /**
+             * Change product quantity
+             */
+            $.HandleElement.productQuantity = function () {
+                $.HandleElement.$body.on('click', '.quantity .increase, .quantity .decrease', function (e) {
+                    e.preventDefault();
 
-    /**
-     * Change product quantity
-     */
-    $.HandleElement.productQuantity = function () {
-        $.HandleElement.$body.on('click', '.quantity .increase, .quantity .decrease', function (e) {
-            e.preventDefault();
+                    var $this = $(this),
+                            $qty = $this.siblings('.qty'),
+                            current = parseInt($qty.val(), 10),
+                            min = parseInt($qty.attr('min'), 10),
+                            max = parseInt($qty.attr('max'), 10);
 
-            var $this = $(this),
-                    $qty = $this.siblings('.qty'),
-                    current = parseInt($qty.val(), 10),
-                    min = parseInt($qty.attr('min'), 10),
-                    max = parseInt($qty.attr('max'), 10);
+                    min = min ? min : 1;
+                    max = max ? max : current + 1;
 
-            min = min ? min : 1;
-            max = max ? max : current + 1;
-
-            if ($this.hasClass('decrease') && current > min) {
-                $qty.val(current - 1);
-                $qty.trigger('change');
-            }
-            if ($this.hasClass('increase') && current < max) {
-                $qty.val(current + 1);
-                $qty.trigger('change');
-            }
-        });
-    };
+                    if ($this.hasClass('decrease') && current > min) {
+                        $qty.val(current - 1);
+                        $qty.trigger('change');
+                    }
+                    if ($this.hasClass('increase') && current < max) {
+                        $qty.val(current + 1);
+                        $qty.trigger('change');
+                    }
+                });
+            };
     /**
      * Product instance search
      */
@@ -771,9 +770,9 @@
         }
 
         var xhr = null,
-            searchCache = {},
-            $form = $('.header-main').find('.products-search');
-            $('.search-limit').hide();
+                searchCache = {},
+                $form = $('.header-main').find('.products-search');
+        $('.search-limit').hide();
 
         $form.on('keyup', '.search-field', function (e) {
             var valid = false;
@@ -793,7 +792,7 @@
             }
 
             var $currentForm = $(this).closest('.products-search'),
-                $search = $currentForm.find('input.search-field');
+                    $search = $currentForm.find('input.search-field');
 
             if ($search.val().length < 2) {
                 $currentForm.removeClass('searching searched actived found-products found-no-product invalid-length');
@@ -810,7 +809,7 @@
             search($currentForm);
         }).on('focusout', '.search-field', function () {
             var $currentForm = $(this).closest('.products-search'),
-                $search = $currentForm.find('input.search-field');
+                    $search = $currentForm.find('input.search-field');
             if ($search.val().length < 2) {
                 $currentForm.removeClass('searching searched actived found-products found-no-product invalid-length');
             }
@@ -834,11 +833,11 @@
          */
         function search($currentForm) {
             var $search = $currentForm.find('input.search-field'),
-                keyword = $search.val(),
-                cat = 0,
-                $results = $('.ajax-search-results');
+                    keyword = $search.val(),
+                    cat = 0,
+                    $results = $('.ajax-search-results');
 
-            if ($currentForm.find('#product_cat').length > 0) { 
+            if ($currentForm.find('#product_cat').length > 0) {
                 cat = $currentForm.find('#product_cat').val();
             }
 
@@ -911,7 +910,7 @@
             }
         }
     };
-    
+
     /**
      * Add wishlist
      */
@@ -940,8 +939,8 @@
         });
 
     };
-    
-        /**
+
+    /**
      * Shop view toggle
      */
     $.HandleElement.shopView = function () {
@@ -949,7 +948,7 @@
         $.HandleElement.$body.on('click', '.dd-shop-view', function (e) {
             e.preventDefault();
             var $el = $(this),
-                view = $el.data('view');
+                    view = $el.data('view');
 
             if ($el.hasClass('current')) {
                 return;
@@ -962,7 +961,7 @@
             document.cookie = 'shop_view=' + view + ';domain=' + window.location.host + ';path=/';
         });
     };
-    
+
     $.HandleElement.init = function () {
         $.HandleElement.productQuantity();
         $.HandleElement.instanceSearch();
@@ -1016,27 +1015,65 @@ jQuery(document).on('click', '.list-product a.remove', function (e)
 });
 
 //dropdown smooth
-jQuery('.dropdown').on('show.bs.dropdown', function(e){
-  jQuery(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
+jQuery('.dropdown').on('show.bs.dropdown', function (e) {
+    jQuery(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
 });
 
-jQuery('.dropdown').on('hide.bs.dropdown', function(e){
-  jQuery(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+jQuery('.dropdown').on('hide.bs.dropdown', function (e) {
+    jQuery(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
 });
 
-//replace desktop with mobile content
-function mobilecontent(){
-    if (jQuery(window).width() < 1051) {
-        // var logo = jQuery("#_desktop_logo").html();
-        // jQuery(logo).appendTo("#_mobile_logo");
-    }
-    else {
-        //jQuery("#_mobile_logo").appendTo("#_desktop_logo");
-    }
-}
-jQuery(document).ready(function() { mobilecontent(); });
-jQuery(window).resize(function() { mobilecontent(); });
 
+/*=============Universal script for moving elements in DOM============*/
+!function ($) {
+    var windowWidth = $(window).innerWidth();
+    var windowMinWidth = 768;
+    var windowResponsiveMobile = windowWidth < windowMinWidth;
+
+    function swapChildren(obj1, obj2)
+    {
+        var temp = obj2.children().detach();
+        obj2.empty().append(obj1.children().detach());
+        obj1.append(temp);
+    }
+
+    function toggleMobileStyles()
+    {
+        if (windowResponsiveMobile) {
+            $("[id^='_desktop_']").each(function (idx, el) {
+                var target = $('#' + el.id.replace('_desktop_', '_mobile_'));
+                if (target.length) {
+                    swapChildren($(el), target);
+                }
+            });
+        } else {
+            $("[id^='_mobile_']").each(function (idx, el) {
+                var target = $('#' + el.id.replace('_mobile_', '_desktop_'));
+                if (target.length) {
+                    swapChildren($(el), target);
+                }
+            });
+        }
+    }
+
+    $(window).on('resize', function () {
+        var _cw = windowWidth;
+        var _mw = windowMinWidth;
+        var _w = $(window).innerWidth();
+        var _toggle = (_cw >= _mw && _w < _mw) || (_cw < _mw && _w >= _mw);
+        windowWidth = _w;
+        windowResponsiveMobile = windowWidth < windowMinWidth;
+        if (_toggle) {
+            toggleMobileStyles();
+        }
+    });
+
+    $(document).ready(function () {
+        if (windowResponsiveMobile) {
+            toggleMobileStyles();
+        }
+    });
+}(jQuery);
 
 /*=============Init Accordian============*/
 var responsiveflag = false;
@@ -1051,8 +1088,7 @@ function responsiveResize()
     {
         accordion('enable');
         responsiveflag = true;
-    }
-    else if (jQuery(window).width() >= 992)
+    } else if (jQuery(window).width() >= 992)
     {
         accordion('disable');
         responsiveflag = false;
@@ -1060,17 +1096,16 @@ function responsiveResize()
 }
 function accordion(status)
 {
-    if(status == 'enable')
+    if (status == 'enable')
     {
         var accordion_selector = '.footer-center .widget_nav_menu .text-title,.footer-center .contact_info .text-title,.sidebar .widget-content .text-title';
 
-        jQuery(accordion_selector).on('click', function(e){
+        jQuery(accordion_selector).on('click', function (e) {
             jQuery(this).toggleClass('active').next().stop().slideToggle('medium');
             e.preventDefault();
         });
         jQuery(accordion_selector).next().slideUp('fast');
-    }
-    else
+    } else
     {
         jQuery('.footer-center .widget_nav_menu .text-title,.footer-center .contact_info .text-title,.sidebar .widget-content .text-title').removeClass('active').off().next().removeAttr('style').slideDown('fast');
     }
