@@ -1101,6 +1101,15 @@ Redux::setSection( $dd_options, array(
 			'default'	 => 0,
 			'title'		 => __( 'Enable Post Author Avatar', 'dayneo' ),
 		),
+                array(
+			'subtitle'	 => __( 'Choose enable button if you want to display post meta categories', 'dayneo' ),
+			'id'		 => 'dd_meta_cats',
+			'type'		 => 'switch',
+			'on'		 => __( 'Enabled', 'dayneo' ),
+			'off'		 => __( 'Disabled', 'dayneo' ),
+			'default'	 => 0,
+			'title'		 => __( 'Post Meta Categories', 'dayneo' ),
+		),
 		array(
 			'subtitle'	 => __( 'Choose enable button if you want to display post meta tags', 'dayneo' ),
 			'id'		 => 'dd_meta_tags',
@@ -1143,6 +1152,31 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'Display Similar Posts', 'dayneo' ),
 			'default'	 => 'disable',
 		),
+                array(
+			'subtitle'	 => __( 'Choose enable button if you want to display <strong>Similar posts</strong> in slider', 'dayneo' ),
+			'id'		 => 'dd_similar_posts_carousel',
+			'type'		 => 'switch',
+			'on'		 => __( 'Enabled', 'dayneo' ),
+			'off'		 => __( 'Disabled', 'dayneo' ),
+			'default'	 => 0,
+			'title'		 => __( 'Display Similar Posts Carousel', 'dayneo' ),
+		),
+                array(
+			'subtitle'	 => __( 'Choose number of similar posts', 'dayneo' ),
+			'id'		 => 'dd_similar_posts_number',
+			'type'		 => 'select',
+			'options'	 => array(
+				'3'	 => __( 'Three', 'dayneo' ),
+				'4'	 => __( 'Four', 'dayneo' ),
+				'5'	 => __( 'Five', 'dayneo' ),
+				'6'	 => __( 'Six', 'dayneo' ),
+				'7'	 => __( 'Seven', 'dayneo' ),
+				'8'	 => __( 'Eight', 'dayneo' ),
+			),
+			'title'		 => __( 'No of Similar Posts', 'dayneo' ),
+			'default'	 => '3',
+		),
+            
 	),
 )
 );

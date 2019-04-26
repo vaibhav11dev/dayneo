@@ -5,30 +5,29 @@
  *
  * @package dayneo
  */
-
 ?>
 
-<div id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?>">
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+<div class="col-sm-4 col-md-4 col-lg-4">
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php
-			dayneo_posted_on();
-			dayneo_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+    <article id="post-<?php esc_attr( the_ID() ); ?>" class="<?php esc_attr( semantic_entries() ); ?>">
+        <?php dayneo_post_thumbnail(); ?>
 
-	<?php dayneo_post_thumbnail(); ?>
+        <div class="post-content">
 
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
+            <div class="entry-meta entry-header">
+                <?php dayneo_post_heading(); ?>
+            </div>
 
-	<footer class="entry-footer">
-		<?php dayneo_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+            <div class="entry-content">
+                <?php the_excerpt(); ?>
+            </div>
+
+            <div class="entry-meta entry-footer">
+                <?php dayneo_post_readmore(); ?>
+            </div>
+
+        </div>
+    </article>
+
+</div>			
+

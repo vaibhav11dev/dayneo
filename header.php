@@ -76,13 +76,13 @@
 		<?php
 		global $post, $wp_query, $dd_options;
 
-		$post_id = '';
+                $post_id = '';
                 if ( $wp_query->is_posts_page ) {
                     $post_id = get_option( 'page_for_posts' );
                 } elseif ( is_buddypress() ) {
-                    $post_id = restora_bp_get_id();
+                    $post_id = dayneo_bp_get_id();
                 } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
-                    $post_id = wc_get_page_id('shop');
+                    $post_id = wc_get_page_id( 'shop' );
                 } else {
                     $post_id = isset( $post->ID ) ? $post->ID : '';
                 }
@@ -180,10 +180,14 @@
 			<?php
 			$dd_pagetitlebar_layout		 = dayneo_get_option( 'dd_pagetitlebar_layout', 1 );
 			$dayneo_enable_page_title	 = get_post_meta( $post_id, 'dayneo_enable_page_title', true );
-			if ( is_home() || is_front_page() ) {
-				//Do Nothing
-			} elseif ( $dayneo_enable_page_title == 'on' || ( $dayneo_enable_page_title == 'default' && $dd_pagetitlebar_layout == 1 ) ) {
-				dayneo_page_title_bar();
-			}
-			?>
+                        if ( is_home() || is_front_page() ) {
+                            //Do Nothing
+                        } elseif ( (is_search() || is_404() || is_archive() || ( class_exists( 'Woocommerce' ) && is_product() )) && $dd_pagetitlebar_layout == 1 ) {
+                            if ( class_exists( 'Woocommerce' ) ) {
+                                if ( ! is_shop() )
+                                    dayneo_page_title_bar();
+                            } else {
+                                dayneo_page_title_bar();
+                            }
+                        }
 	    

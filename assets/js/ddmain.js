@@ -1010,6 +1010,9 @@ jQuery(document).on('click', '.list-product a.remove', function (e)
                     jQuery(key).replaceWith(value);
                 });
             }
+            
+            // Update cart
+            jQuery( document.body ).trigger( 'wc_update_cart' );
         }
     });
 });

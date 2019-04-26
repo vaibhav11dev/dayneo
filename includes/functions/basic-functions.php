@@ -120,12 +120,17 @@ function dayneo_tinyurl( $url ) {
  * @global string $post
  */
 function dayneo_similar_posts() {
-	global $authordata, $dd_options;
-
 	$post			 = '';
 	$orig_post		 = $post;
 	global $post;
 	$dd_similar_posts	 = dayneo_get_option( 'dd_similar_posts', 'disable' );
+	$dd_similar_posts_carousel	 = dayneo_get_option( 'dd_similar_posts_carousel', 0 );
+	$dd_similar_posts_number	 = dayneo_get_option( 'dd_similar_posts_number', '3' );
+
+        $css_similar_posts = 'col-sm-4';
+        if( $dd_similar_posts_carousel == 1 ) {
+            $css_similar_posts = 'col-sm-12';
+        }
 
 	if ( $dd_similar_posts == "category" ) {
 		$matchby = get_the_category( $post->ID );
@@ -144,7 +149,7 @@ function dayneo_similar_posts() {
 		$args = array(
 			$matchin . '__in'	 => $matchby_ids,
 			'post__not_in'		 => array( $post->ID ),
-			'showposts'		 => 4, // Number of related posts that will be shown.
+			'showposts'		 => $dd_similar_posts_number, // Number of related posts that will be shown.
 			'ignore_sticky_posts'	 => 1
 		);
 
@@ -155,19 +160,24 @@ function dayneo_similar_posts() {
 			while ( $my_query->have_posts() ) {
 				$my_query->the_post();
 				?>
-				<div class="col-sm-12">
+                                <div class="<?php echo esc_attr($css_similar_posts); ?>">
 					<!--  BLOG CONTENT  -->
 					<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo dayneo_post_format(); ?>">
-						<div class="post_thumbnail">
+                                            <?php
+                                            $dd_featured_images = dayneo_get_option( 'dd_featured_images', '1' );
+                                            if ( has_post_thumbnail() && $dd_featured_images == "1" ) {	
+                                            ?>
+                                            <div class="post_thumbnail">
 							<?php
 							dayneo_post_thumbnail('medium');
 							?>
-							<span class="blogicons">
-                                <a href="<?php echo get_the_post_thumbnail_url(get_the_ID(),'full') ?>" rel="blog_group" class="icon grouped_elements zoom ti-search"></a> 
-                                <a title="Click to view Read More" href="<?php the_permalink(); ?>" class="icon readmore ti-link"></a>
-                            </span>
+                                                        <span class="blogicons">
+                                                            <a href="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(),'full')); ?>" rel="blog_group" class="icon grouped_elements zoom ti-search"></a> 
+                                                            <a title="Click to view Read More" href="<?php the_permalink(); ?>" class="icon readmore ti-link"></a>
+                                                        </span>
 							<p class="meta_date"> <span class="day_date"><?php the_time('j') ?></span><span class="day_month"><?php the_time('M') ?></span></p>
 						</div>
+                                                <?php } ?>
 						<div class="post-content">
 
 							<div class="entry-meta entry-header">
@@ -188,7 +198,11 @@ function dayneo_similar_posts() {
 				<!-- END BLOG CONTENT -->
 				<?php
 			}
-			echo '</div></div></div>'; ?>
+			echo '</div></div></div>'; 
+                        
+                        
+                        if( $dd_similar_posts_carousel == 1 ) {
+                        ?>
 			<script>
 				jQuery(document).ready(function($){
 					var rtl1=false;if($("body").hasClass("rtl")){rtl1=true;}
@@ -205,8 +219,10 @@ function dayneo_similar_posts() {
 					});
 				});
 			</script>
-		<?php }
-	}
+		<?php 
+                        }
+                }
+        }
 	$post = $orig_post;
 	wp_reset_query();
 }
@@ -1124,13 +1140,25 @@ function dayneo_titlebar_bg_class() {
 		$titlebar_bg .= ' module-md';
 	} elseif ( $dayneo_page_title_bar_height == 'custom' || ( $dayneo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'custom' ) ) {
 		$titlebar_bg .= ' titlebar-custom';
-	}
+	} elseif ( is_search() || is_404() || is_archive() || ( class_exists( 'Woocommerce' ) && is_product() ) ) {
+            if ( $dd_pagetitlebar_height == 'small' ) {
+                $titlebar_bg .= ' module-xs';
+            } elseif ( $dd_pagetitlebar_height == 'medium' ) {
+                $titlebar_bg .= ' module-sm';
+            } elseif ( $dd_pagetitlebar_height == 'large' ) {
+                $titlebar_bg .= ' module-md';
+            } elseif ( $dd_pagetitlebar_height == 'custom' ) {
+                $titlebar_bg .= ' titlebar-custom';
+            }
+        }
 
 	$dd_pagetitlebar_background_parallax	 = dayneo_get_option( 'dd_pagetitlebar_background_parallax', 0 );
 	$dayneo_page_title_bar_parallax_bg	 = get_post_meta( $post_id, 'dayneo_page_title_bar_parallax_bg', true );
-	if ( $dayneo_page_title_bar_parallax_bg == 'yes' || ( $dayneo_page_title_bar_parallax_bg == 'default' && $dd_pagetitlebar_background_parallax == 1 ) ) {
-		$titlebar_bg .= ' bg-parallax';
-	}
+        if ( $dayneo_page_title_bar_parallax_bg == 'yes' || ( $dayneo_page_title_bar_parallax_bg == 'default' && $dd_pagetitlebar_background_parallax == 1 ) ) {
+            $titlebar_bg .= ' bg-parallax';
+        } elseif ( (is_search() || is_404() || is_archive() || ( class_exists( 'Woocommerce' ) && is_product() )) && $dd_pagetitlebar_background_parallax == 1 ) {
+            $titlebar_bg .= ' bg-parallax';
+        }
 
 	$dd_pagetitlebar_background	 = dayneo_get_option( 'dd_pagetitlebar_background', '' );
 	$dayneo_page_title_bar_bg	 = get_post_meta( get_the_ID(), 'dayneo_page_title_bar_bg', true );
