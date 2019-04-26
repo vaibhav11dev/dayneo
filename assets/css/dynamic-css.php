@@ -675,7 +675,9 @@ a:focus,
 .extras-menu .icon-wrap:hover .icon-box,
 .extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box .mini-item-counter,
 .extras-menu .icon-wrap .icon-box,
-.footer .copyright,.owl-carousel .owl-buttons>*:hover,.post-columns .post .post_thumbnail .meta_date,.post-columns .post .post_thumbnail .blogicons a.icon:hover
+.footer .copyright,.owl-carousel .owl-buttons>*:hover,.post-columns .post .post_thumbnail .meta_date,.post-columns .post .post_thumbnail .blogicons a.icon:hover,
+#_mobile_cart .icon-box .mini-item-counter,
+.mobile-search-bar
 {
     background-color: ' . esc_attr($dd_primary_color) . ';
 }

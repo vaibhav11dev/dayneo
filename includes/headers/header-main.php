@@ -149,9 +149,9 @@ if ( is_page() ) {
         if ( $dd_options[ 'dd_primary_menu' ] == 1 && has_nav_menu( 'primary-menu' ) ):
             $dd_megamenu = dayneo_get_option( 'dd_megamenu', '0' );
             if ( $dd_megamenu == '1' ) {
-                wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav pull-right', 'container' => 'nav', 'container_class' => 'ved-main-megamenu ved-navbar-nav main-nav collapse clearfix', 'container_id' => 'custom-collapse', 'walker' => new VedCoreFrontendWalker() ) );
+                wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav pull-right', 'container' => 'nav', 'container_class' => 'ved-main-megamenu ved-navbar-nav main-nav collapse clearfix', 'container_id' => '_desktop_menu', 'walker' => new VedCoreFrontendWalker() ) );
             } else {
-                wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav pull-right', 'container' => 'nav', 'container_class' => 'ved-main-simplemenu main-nav collapse clearfix', 'container_id' => 'custom-collapse', 'walker' => new Dayneo_Walker_Nav_Menu() ) );
+                wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav pull-right', 'container' => 'nav', 'container_class' => 'ved-main-simplemenu main-nav collapse clearfix', 'container_id' => '_desktop_menu', 'walker' => new Dayneo_Walker_Nav_Menu() ) );
             }
         endif;
         ?>

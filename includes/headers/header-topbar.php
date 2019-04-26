@@ -32,7 +32,7 @@ if ( is_page() ) {
 }
 ?>
 <!-- TOP BAR -->
-<div class="top-bar <?php echo esc_attr($topbar_class); ?>">
+<div class="hidden-md-down top-bar <?php echo esc_attr($topbar_class); ?>">
     <div class="container">
 	<div class="row">
 
