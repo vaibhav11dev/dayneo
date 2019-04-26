@@ -22,7 +22,8 @@ if ( class_exists( 'Woocommerce' ) ) {
 
     <?php
     /* Widgetized Area */
-    if ( dynamic_sidebar( 'sidebar-2' ) ) :
-    endif; /* (!function_exists('dynamic_sidebar') */
+    if ( is_active_sidebar( 'sidebar-2' ) ) :
+        dynamic_sidebar( 'sidebar-2' );
+    endif;
     ?>
 </div>

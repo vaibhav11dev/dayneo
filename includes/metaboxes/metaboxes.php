@@ -36,7 +36,7 @@ class dayneo_ThemeFrameworkMetaboxes {
         $this->dayneo_add_meta_box('dayneo_page_options', 'Page Options', 'page');
         $this->dayneo_add_meta_box('dayneo_portfolio_options', 'Portfolio Options', 'dayneo_portfolio');
         $this->dayneo_add_meta_box('dayneo_woocommerce_options', 'Product Options', 'product');
-        $this->dayneo_add_meta_box('slide_options', 'Slide Options', 'slide');
+        $this->dayneo_add_meta_box('dayneo_slide_options', 'Slide Options', 'slide');
     }
 
     public function dayneo_add_meta_box($id, $label, $post_type) {
@@ -77,7 +77,7 @@ class dayneo_ThemeFrameworkMetaboxes {
         include_once 'woocommerce_options.php';
     }
 
-    public function slide_options() {
+    public function dayneo_slide_options() {
         get_template_part('includes/metaboxes/style');
         include_once 'slide_options.php';
     }
@@ -296,9 +296,9 @@ class dayneo_ThemeFrameworkMetaboxes {
             if ($tab_name == 'page' &&
                     $post_type == 'product'
             ) {
-                printf('<li%s><a href="%s">%s</a></li>', esc_attr($class_active), esc_url($tab_name), esc_html($tabs_names[$post_type]));
+                printf('<li%s><a href="%s">%s</a></li>', $class_active, esc_attr($tab_name), esc_html($tabs_names[$post_type]));
             } else {
-                printf('<li%s><a href="%s"><i class="%s"></i>%s</a></li>', esc_attr($class_active), esc_url($tab_name), esc_attr($tabs_icons[$tab_name]), esc_html($tabs_names[$tab_name]));
+                printf('<li%s><a href="%s"><i class="%s"></i>%s</a></li>', $class_active, esc_attr($tab_name), esc_attr($tabs_icons[$tab_name]), esc_html($tabs_names[$tab_name]));
             }
         }
 

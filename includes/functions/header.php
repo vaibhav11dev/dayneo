@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom functions for header-6.
+ * Basic functions for header-6.
  *
  * @package Dayneo
  */
@@ -15,11 +15,6 @@
 if ( ! function_exists( 'dayneo_extra_cart' ) ) :
 
     function dayneo_extra_cart() {
-        $extras = dayneo_menu_extras();
-
-        if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
-            return;
-        }
         ?>
         <!-- SHOP CART -->
         <?php
@@ -139,12 +134,7 @@ endif;
 if ( ! function_exists( 'dayneo_extra_search' ) ) :
 
     function dayneo_extra_search( $show_cat = true ) {
-        $extras = dayneo_menu_extras();
         $items  = '';
-
-        if ( empty( $extras ) || ! $extras[ 'search' ] ) {
-            return $items;
-        }
 
         $cats_text   = dayneo_get_option( 'custom_categories_text' );
         $search_text = dayneo_get_option( 'custom_search_text' );
@@ -279,17 +269,11 @@ endif;
 if ( ! function_exists( 'dayneo_header_bar' ) ) :
 
     function dayneo_header_bar() {
-        $extras = dayneo_menu_extras();
-
-        if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
-            return;
-        }
         ?>
         <div class="header-bar topbar">
             <?php
-            $sidebar = 'headerbar';
-            if ( is_active_sidebar( $sidebar ) ) {
-                dynamic_sidebar( $sidebar );
+            if ( is_active_sidebar( 'headerbar' ) ) {
+                dynamic_sidebar( 'headerbar' );
             }
             ?>
         </div>
@@ -309,12 +293,6 @@ endif;
 if ( ! function_exists( 'dayneo_extra_department' ) ) :
 
     function dayneo_extra_department( $dep_close = false, $id = '' ) {
-        $extras = dayneo_menu_extras();
-
-        if ( empty( $extras ) || ! $extras[ 'department' ] ) {
-            return;
-        }
-
         if ( ! has_nav_menu( 'department-menu' ) ) {
             return;
         }

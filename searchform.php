@@ -7,18 +7,17 @@
 ?>
 
 <!-- SEARCHFORM -->
-<form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="header-search-form">
-    <div class="search-form-inner">
-	    <div class="row">
-		<div class="search-btn">
-		    <div class="header-search-form-clouse">
-			<a href="#" class="form-close-btn">&#10005;</a>
-		    </div>
-		</div>
-		<div class="col-sm-12">
-		    <input type="text" name="s" placeholder="<?php esc_attr_e( 'Type &amp; hit enter', 'dayneo' ); ?>">
-		</div>
-	    </div>
+<form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="custom-search-form">
+    <div class="row">
+
+        <div class="col-md-8 form-group widget-search">
+            <input id="search-text" type="text" name="s" class="form-control input-lg input-search" placeholder="<?php _e( 'Type Your Search', 'daydream' ); ?>" value="">
+        </div>
+
+        <div class="col-md-4 form-group widget-search">
+            <button id="search-button" type="submit" class="btn btn-round btn-block btn-base btn-search"><?php _e( 'Submit', 'daydream' ); ?></button>
+        </div>
+
     </div>
 </form>
 <!-- END SEARCHFORM -->

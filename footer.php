@@ -37,40 +37,40 @@ if ( $dd_footer_parallax == 1 ) {
             <div class="container">
                 <div class="before-footer">
                     <?php
-                    if ( ! dynamic_sidebar( 'before-footer' ) ) :
-                    //Do Nothing
+                    if ( is_active_sidebar( 'before-footer' ) ) :
+                        dynamic_sidebar( 'before-footer' );
                     endif;
                     ?>
                 </div>
                 <div class="row padd-50">
                     <div class="<?php echo esc_attr( $dayneo_footer_css ); ?>">
                         <?php
-                        if ( ! dynamic_sidebar( 'footer-1' ) ) :
-                        //Do Nothing
+                        if ( is_active_sidebar( 'footer-1' ) ) :
+                            dynamic_sidebar( 'footer-1' );
                         endif;
                         ?>
                     </div>
                     <?php if ( $dd_footer_widget_col != "one" ) { ?>
                         <div class="<?php echo esc_attr( $dayneo_footer_css ); ?>">
                             <?php
-                            if ( ! dynamic_sidebar( 'footer-2' ) ) :
-                            //Do Nothing
+                            if ( is_active_sidebar( 'footer-2' ) ) :
+                                dynamic_sidebar( 'footer-2' );
                             endif;
                             ?>
                         </div>
                     <?php } if ( $dd_footer_widget_col != "one" && $dd_footer_widget_col != "two" ) { ?>
                         <div class="<?php echo esc_attr( $dayneo_footer_css ); ?>">
                             <?php
-                            if ( ! dynamic_sidebar( 'footer-3' ) ) :
-                            //Do Nothing
+                            if ( is_active_sidebar( 'footer-3' ) ) :
+                                dynamic_sidebar( 'footer-3' );
                             endif;
                             ?>
                         </div>
                     <?php } if ( $dd_footer_widget_col != "one" && $dd_footer_widget_col != "two" && $dd_footer_widget_col != "three" ) { ?>
                         <div class="<?php echo esc_attr( $dayneo_footer_css ); ?>">
                             <?php
-                            if ( ! dynamic_sidebar( 'footer-4' ) ) :
-                            //Do Nothing
+                            if ( is_active_sidebar( 'footer-4' ) ) :
+                                dynamic_sidebar( 'footer-4' );
                             endif;
                             ?>
                         </div>
@@ -78,8 +78,8 @@ if ( $dd_footer_parallax == 1 ) {
                 </div><!-- .row -->
                 <div class="after-footer">
                     <?php
-                    if ( ! dynamic_sidebar( 'after-footer' ) ) :
-                    //Do Nothing
+                    if ( is_active_sidebar( 'after-footer' ) ) :
+                        dynamic_sidebar( 'after-footer' );
                     endif;
                     ?>
                 </div>

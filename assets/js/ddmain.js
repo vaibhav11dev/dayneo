@@ -114,9 +114,9 @@
             }
         });
         $(".off-canvas-cart-wrapper").css("margin-right", "-" + walkontableCalculateScrollbarWidth() + "px");
-        $("#modal-search, .form-close-btn").on("click", function () {
-            return $(".header-search-form").toggleClass("opened"), false;
-        });
+//        $("#modal-search, .form-close-btn").on("click", function () {
+//            return $(".header-search-form").toggleClass("opened"), false;
+//        });
         $(".parallax").jarallax({
             speed: .7
         });
@@ -1022,4 +1022,11 @@ jQuery('.dropdown').on('show.bs.dropdown', function(e){
 
 jQuery('.dropdown').on('hide.bs.dropdown', function(e){
   jQuery(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+});
+
+jQuery('#_mobile_logo').each(function() {
+//    console.log('dd');
+//        var text = jQuery(this).html();
+//        jQuery(this).clone().appendTo(jQuery('#_mobile_logo'));
+        jQuery(this).replaceWith(jQuery('#_desktop_logo').children());
 });

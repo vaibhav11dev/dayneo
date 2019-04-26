@@ -28,7 +28,6 @@ get_header();
 
 		    <p><a href="<?php echo esc_url(home_url('/')); ?>" class="btn btn-lg btn-link btn-base"><?php esc_html_e( 'Back Home &raquo;', 'dayneo' ); ?></a></p>
 
-                    <button id="modal-search" type="button" name="search" class="btn btn-base">Search</button>
                     <?php get_search_form(); ?>
 		</div>
 

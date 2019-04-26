@@ -531,7 +531,6 @@ Redux::setSection( $dd_options, array(
                 'department' => '0',
                 'headerbar' => '0',
             ),
-            'required'	 => array( array( "dd_header_type", '=', 'h6' ) ),
         ),
         array(
 			'subtitle'	 => __( '', 'dayneo' ),
@@ -2231,24 +2230,6 @@ Redux::setSection( $dd_options, array(
 			'on'		 => __( 'Yes', 'dayneo' ),
 			'off'		 => __( 'No', 'dayneo' ),
 			'title'		 => __( 'Add rel="nofollow" to social links', 'dayneo' ),
-		),
-	),
-)
-);
-
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-custom-css-main-tab',
-	'icon'		 => 'fa fa-css3',
-	'icon_class'	 => 'icon-large',
-	'title'		 => __( 'Custom CSS', 'dayneo' ),
-	'desc'		 => "Enter your CSS code in the field below. Do not include any tags or HTML in the field. Custom CSS entered here will override the theme CSS. In some cases, the !important tag may be needed. Don't URL encode image or svg paths. Contents of this field will be auto encoded.",
-	'fields'	 => array(
-		array(
-			'id'		 => 'dd_css_content',
-			'type'		 => 'ace_editor',
-			'mode'		 => 'css',
-			'theme'		 => 'monokai',
-			'full_width'	 => true,
 		),
 	),
 )
