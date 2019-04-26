@@ -226,7 +226,7 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 						$title_enhance = '<span class="ved-megamenu-icon"><img src="' . esc_url($this->menu_megamenu_thumbnail) . '"></span>';
 					} elseif ( ! empty( $this->menu_megamenu_icon ) ) {
 						$title_enhance = '<span class="ved-megamenu-icon"><i class="fa ' . esc_attr(get_post_meta( $item->ID, '_menu_item_ved_megamenu_icon', true )) . '"></i></span>';
-					} elseif ( $this->menu_megamenu_title == 'disabled' ) {
+					} elseif ( $this->menu_megamenu_title == 'disabled' &&  $this->menu_megamenu_icon ) {
 						$title_enhance = '<span class="ved-megamenu-bullet"></span>';
 					}
 
@@ -274,7 +274,7 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 					$item_output .= '<a ' . $attributes . '><span class="ved-megamenu-icon"><img src="' . esc_url($this->menu_megamenu_thumbnail) . '"></span>';
 				} elseif ( ! empty( $this->menu_megamenu_icon ) && $this->menu_megamenu_status == "enabled" ) {
 					$item_output .= '<a ' . $attributes . '><span class="ved-megamenu-icon text-menu-icon"><i class="fa ' . get_post_meta( $item->ID, '_menu_item_ved_megamenu_icon', true ) . '"></i></span>';
-				} elseif ( $depth !== 0 && $this->menu_megamenu_status == "enabled" ) {
+				} elseif ( $depth !== 0 && $this->menu_megamenu_status == "enabled" && $this->menu_megamenu_icon) {
 					$item_output .= '<a ' . $attributes . '><span class="ved-megamenu-bullet"></span>';
 				} else {
 					$item_output .= '<a ' . $attributes . '>';

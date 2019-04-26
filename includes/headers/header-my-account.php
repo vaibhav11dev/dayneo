@@ -30,13 +30,13 @@ if ( is_user_logged_in() ) {
     }
 
     $items .= sprintf(
-    '<div class="extra-menu-item menu-item-account">
-        <a href="%s">%s</a>
-        <ul>
-				<li><a href="%s" id="menu-extra-login">%s</a></li>
-				<li>%s</li>
-                                </ul>
-                </div>', esc_url( $account_link ), esc_html__( 'My Account', 'dayneo' ), esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ), esc_html__( 'Log in', 'dayneo' ), $register
+    '<div class="extra-menu-item menu-item-account dropdown">
+        <a href="%s" class="expand-more" data-toggle="dropdown">%s</a>
+        <ul class="dropdown-menu">
+			<li><a href="%s" id="menu-extra-login">%s</a></li>
+			<li>%s</li>
+        </ul>
+    </div>', esc_url( $account_link ), esc_html__( 'My Account', 'dayneo' ), esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ), esc_html__( 'Log in', 'dayneo' ), $register
     );
 }
 echo $items;

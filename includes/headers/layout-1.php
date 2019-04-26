@@ -14,7 +14,7 @@ if ( empty( $extras ) || ! $extras[ 'department' ] ) {
             <div class="row">
 		<div class="header-row">
 		    <div class="header-logo col-lg-3 col-md-3 col-sm-6 col-xs-6">
-			<div class="d-logo">
+			<div id="_desktop_logo" class="d-logo">
 			    <!-- YOUR LOGO HERE -->
 			    <div class="inner-header site-identity">
 				<?php
@@ -67,7 +67,7 @@ if ( empty( $extras ) || ! $extras[ 'department' ] ) {
 			</div>
 
 		    </div>
-		    <div class="header-extras col-lg-6 col-md-6 col-sm-6 col-xs-6">
+		    <div id="_desktop_search" class="header-extras col-lg-6 col-md-6 col-sm-6 col-xs-6">
 			<?php dayneo_extra_search(); ?>
 		    </div>
 		    <div class="col-lg-3 col-md-3">
@@ -85,37 +85,40 @@ if ( empty( $extras ) || ! $extras[ 'department' ] ) {
 <div class="main-menu hidden-md hidden-xs hidden-sm">
     <div class="container">
         <div class="row">
-	    <div class="header-row">
-		<?php if ( $show_department ) : ?>
-    		<div class="col-md-3 col-sm-3 i-product-cats mr-extra-department">
-			<?php dayneo_extra_department(); ?>
-    		</div>
-		<?php endif; ?>
-		<div class="<?php echo esc_attr( $css_header_menu ); ?> mr-header-menu">
-		    <div class="col-header-menu">
-			<div class="col-md-8">
-			    <?php dayneo_header_menu(); ?>
-			</div>
-			<div class="col-md-4">
-			    <?php dayneo_header_bar(); ?>
-			</div>
-			<div class="clearfix"></div>
+		    <div class="menu-row">
+			<?php if ( $show_department ) : ?>
+	    		<div class="col-md-3 col-sm-3 i-product-cats mr-extra-department">
+				<?php dayneo_extra_department(); ?>
+	    		</div>
+			<?php endif; ?>
+				<div class="<?php echo esc_attr( $css_header_menu ); ?> mr-header-menu">
+				    <div class="col-header-menu">
+					<div class="col-md-8">
+					    <?php dayneo_header_menu(); ?>
+					</div>
+					<div class="col-md-4">
+					    <?php dayneo_header_bar(); ?>
+					</div>
+					<div class="clearfix"></div>
+				    </div>
+				</div>
 		    </div>
-		</div>
-	    </div>
         </div>
     </div>
 </div>
 <div class="mobile-menu hidden-lg">
     <div class="container">
-        <div class="mobile-menu-row">
-            <a class="mf-toggle-menu" id="mf-toggle-menu" href="#">
-                <i class="icon-menu"></i>
-            </a>
-	    <?php dayneo_extra_search( false ); ?>
-        </div>
+    	<div class="row">
+	        <div class="mobile-logo-bar">
+	            <div id="menu-icon"><i class="ti-menu" aria-hidden="true"></i></div>
+	            <div class="top-logo" id="_mobile_logo"></div>
+	            <div id="_mobile_cart"></div>
+	        </div>
+    	</div>
+    </div>
+    <div class="mobile-search-bar">
+    	<div class="container">
+    		<div id="_mobile_search" class="mobile-search"></div>
+    	</div>
     </div>
 </div>
-
-
-

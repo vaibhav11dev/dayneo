@@ -216,12 +216,20 @@ function dayneo_post_metadata() {
 		<?php
 	}
 
+	if ( dayneo_get_terms( 'cats' ) ) { ?>
 
+	<li class="meta-tags">
+		<i class="fa fa-folder"></i>
+		<?php echo dayneo_get_terms( 'cats', ' ' ); ?>
+	</li>
+
+	<?php 
+	}
 	
-
 	if ( dayneo_get_terms( 'tags' ) && $dd_options[ 'dd_meta_tags' ] == 1 ) :
 		?>
 		<li class="meta-tags">
+			<i class="fa fa-tags"></i>
 			<?php echo dayneo_get_terms( 'tags' ); ?>
 		</li>
 		<?php

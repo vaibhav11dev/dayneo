@@ -603,7 +603,8 @@ $dayneo_dynamic_css	 .= '
 a:hover, 
 a:focus,
 .post-meta>li>a:hover,
-.post-meta>li>a:focus
+.post-meta>li>a:focus,
+.top-bar-right .dropdown > .expand-more:hover, #_desktop_wishtlistTop .yith-contents:hover
 {
     color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -647,13 +648,14 @@ a:focus,
 .icons-list a:hover,
 .widget .widget-content ul li a:hover,
 .vertical-megamenu .inner-nav > li:hover > a,
-.inner-nav > li > a:focus,
 .sub-menu li > a:hover,
 .sub-menu li > a:focus,
 .sub-menu li.submenu-open > a,
 .scroll-top:focus,
 .cart-hover .sub-cart-menu .list-product .list-product-detail a:hover,
-.shop-item-title .woocommerce-loop-product__title a:hover
+.shop-item-title .woocommerce-loop-product__title a:hover,
+.footer-center .widget_nav_menu .menu > li > a:before,
+.post .entry-meta .read-more:hover,.navigation-links a:hover
 {
     color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -671,25 +673,19 @@ a:focus,
 .products-search .search-submit:hover,
 .main-menu,
 .extras-menu .icon-wrap:hover .icon-box,
-.extras-menu .icon-wrap .icon-box .mini-item-counter
+.extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box .mini-item-counter,
+.extras-menu .icon-wrap .icon-box,
+.footer .copyright,.owl-carousel .owl-buttons>*:hover,.post-columns .post .post_thumbnail .meta_date
 {
     background-color: ' . esc_attr($dd_primary_color) . ';
 }
 
 .scroll-top:hover,
 .scroll-top:focus,
-.form-control:focus
+.form-control:focus,
+.header-row .extras-menu .icon-wrap-circle .icon-wrap,.owl-carousel .owl-buttons>*:hover
 {
     border-color: ' . esc_attr($dd_primary_color) . ';
-}
-
-.vertical-megamenu .ved-megamenu-menu > .sub-menu,
-.cart-hover .sub-cart-menu,
-.related.products h2::after,
-.woocommerce-MyAccount-content h3::after,
-h3.widget-title::after
-{
-    border-bottom-color: ' . esc_attr($dd_primary_color) . ';
 }
 
 .owl-page.active span,
@@ -721,9 +717,6 @@ h3.widget-title::after
     color: #fff
 }
 
-
-
-
 .color-brand-hvr {
     color: ' . esc_attr($dd_secondry_color) . ';
 }
@@ -732,7 +725,14 @@ h3.widget-title::after
 .bg-brand-hvr,
 .products-cats-menu .cats-menu-title,
 .ved-main-megamenu .inner-nav > li:hover > a,
-.products-search .search-submit {
+.products-search .search-submit,
+.extras-menu .icon-wrap .icon-box .mini-item-counter,
+.extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box {
     background-color: ' . esc_attr($dd_secondry_color) . ';
+}
+
+.header-row .extras-menu .icon-wrap-circle:hover .icon-wrap
+{
+	border-color: ' . esc_attr($dd_secondry_color) . ';
 }
 ';

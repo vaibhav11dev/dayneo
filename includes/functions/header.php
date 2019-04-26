@@ -27,7 +27,7 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
         if ( class_exists( 'Woocommerce' ) && $dd_woo_cart ) {
             global $woocommerce;
             ?>
-            <li class="cart-hover">
+            <li id="_desktop_cart" class="cart-hover">
                 <div class="menu-item header-ajax-cart">
                     <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
                         <div class="icon-wrap-circle">
