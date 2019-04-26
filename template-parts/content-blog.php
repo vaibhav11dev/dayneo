@@ -38,7 +38,7 @@ if ( $wp_query->have_posts() ) :
 			    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
 				    ?>
 							    <div class="row">
-								<div class="col-sm-5">
+								<div class="col-sm-5 img-col">
 					    <?php
 				    }
 
@@ -47,7 +47,7 @@ if ( $wp_query->have_posts() ) :
 				    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
 					    ?>
 								</div>
-								<div class="col-sm-7">
+								<div class="col-sm-7 text-col">
 					    <?php
 				    }
 				    ?>

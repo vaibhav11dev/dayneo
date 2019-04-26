@@ -1075,3 +1075,13 @@ function accordion(status)
         jQuery('.footer-center .widget_nav_menu .text-title,.footer-center .contact_info .text-title,.sidebar .widget-content .text-title').removeClass('active').off().next().removeAttr('style').slideDown('fast');
     }
 }
+
+//blog image popup
+jQuery('.post-columns').magnificPopup({
+    delegate: '.grouped_elements', // child items selector, by clicking on it popup will open
+    type: 'image',
+    gallery: {
+        enabled:true
+    }
+  // other options
+});

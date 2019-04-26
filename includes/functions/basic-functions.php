@@ -163,7 +163,7 @@ function dayneo_similar_posts() {
 							dayneo_post_thumbnail('medium');
 							?>
 							<span class="blogicons">
-                                <a title="Click to view Full Image" href="<?php echo get_the_post_thumbnail_url(get_the_ID(),'full') ?>" rel="blog_group" class="icon grouped_elements zoom ti-search"></a> 
+                                <a href="<?php echo get_the_post_thumbnail_url(get_the_ID(),'full') ?>" rel="blog_group" class="icon grouped_elements zoom ti-search"></a> 
                                 <a title="Click to view Read More" href="<?php the_permalink(); ?>" class="icon readmore ti-link"></a>
                             </span>
 							<p class="meta_date"> <span class="day_date"><?php the_time('j') ?></span><span class="day_month"><?php the_time('M') ?></span></p>
@@ -182,16 +182,8 @@ function dayneo_similar_posts() {
 								<?php dayneo_post_readmore(); ?>
 							</div>
 
-						</div>
-						<?php
-						if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
-							?>
-					</div>
-					</div>
-					<?php
-				}
-				?>
-				</article>
+						</div>						
+					</article>
 				</div>
 				<!-- END BLOG CONTENT -->
 				<?php
