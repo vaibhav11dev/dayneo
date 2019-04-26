@@ -675,9 +675,18 @@ a:focus,
 .extras-menu .icon-wrap:hover .icon-box,
 .extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box .mini-item-counter,
 .extras-menu .icon-wrap .icon-box,
-.footer .copyright,.owl-carousel .owl-buttons>*:hover,.post-columns .post .post_thumbnail .meta_date
+.footer .copyright,.owl-carousel .owl-buttons>*:hover,.post-columns .post .post_thumbnail .meta_date,.post-columns .post .post_thumbnail .blogicons a.icon:hover
 {
     background-color: ' . esc_attr($dd_primary_color) . ';
+}
+
+.post-columns .post .post_thumbnail .post-thumbnail:after{
+	background: -moz-linear-gradient(top,rgba(255,255,255,0) 0%, '. esc_attr($dd_primary_color) .' 100%);
+    background: -webkit-gradient(left top,left bottom,color-stop(0%,rgba(255,255,255,0)),color-stop(100%,'. esc_attr($dd_primary_color) .'));
+    background: -webkit-linear-gradient(top,rgba(255,255,255,0) 0%, '. esc_attr($dd_primary_color) .' 100%);
+    background: -o-linear-gradient(top,rgba(255,255,255,0) 0%,'. esc_attr($dd_primary_color) .' 100%);
+    background: -ms-linear-gradient(top,rgba(255,255,255,0) 10%,'. esc_attr($dd_primary_color) .' 100%);
+    background: linear-gradient(rgba(0,0,0,0) 0%,'. esc_attr($dd_primary_color) .' 100%);
 }
 
 .scroll-top:hover,

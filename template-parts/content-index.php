@@ -31,14 +31,14 @@ if ( have_posts() ) :
 			    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
 				    ?>
 				    <div class="row">
-					<div class="col-sm-5">
+					<div class="col-sm-5 img-col">
 					    <?php
 				    }
 				    dayneo_post_thumbnail();
 				    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
 					    ?>
 					</div>
-					<div class="col-sm-7">
+					<div class="col-sm-7 text-col">
 					    <?php
 				    }
 				    ?>
