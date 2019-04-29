@@ -30,7 +30,7 @@ $tabs = apply_filters( 'woocommerce_product_tabs', array() );
 if ( ! empty( $tabs ) ) :
     ?>
     <div class="row">
-        <div class="col-sm-12 m-t-70">
+        <div class="col-sm-12 m-t-30">
     	<div class="woocommerce-tabs wc-tabs-wrapper">
     	    <ul class="tabs wc-tabs nav-text-tabs" role="tablist">
 		    <?php foreach ( $tabs as $key => $tab ) : ?>

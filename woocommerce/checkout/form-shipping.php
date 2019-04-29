@@ -60,8 +60,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php if ( ! WC()->cart->needs_shipping() || wc_ship_to_billing_address_only() ) : ?>
 
-			<h5 class="text-title text-uppercase bottom-line"><?php esc_html_e( 'Additional information', 'dayneo' ); ?></h5>
-
 		<?php endif; ?>
 
 		<div class="woocommerce-additional-fields__field-wrapper">

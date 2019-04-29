@@ -21,4 +21,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="row multi-columns-row products">
+<div class="row"><div class="multi-columns-row products">

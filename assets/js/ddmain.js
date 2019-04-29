@@ -105,7 +105,7 @@
         $(".parallax").jarallax({
             speed: .7
         });
-        $(".product-slider .item").zoom();
+        $(".product-slider .slider-for .slider-item-for").zoom();
         $(".images-carousel").each(function () {
             $(this).owlCarousel($.extend({
                 stopOnHover: true,
@@ -154,6 +154,35 @@
             singleItem: true,
             transitionStyle: "backSlide",
             navigationText: ['<i class="icon-arrow-left icons"></i>', '<i class="icon-arrow-right icons"></i>']
+        });
+        //Related Products
+        $('.related.products .products').owlCarousel({
+            pagination:false,
+            navigation:true,
+            rewind:true,
+            items:4,
+            navigationText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+            autoplay:2000,
+            itemsDesktop : [1200,4],
+            itemsDesktopSmall : [1199,3],
+            itemsTablet : [991,3],
+            itemsMobile : [767,2]
+        });
+
+        //Product Slider
+        $('.slider-for').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          fade: true,
+          asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          arrows: true,
+          focusOnSelect: true
         });
 
         //dayneo portfolio
