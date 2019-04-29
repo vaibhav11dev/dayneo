@@ -65,6 +65,10 @@ if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {
                 echo '</a>';
                 ?>
 
+                <div class="shop-item-tools product-grid-meta-options">
+                    <?php do_action( 'woocommerce_after_shop_loop_item' ) ?>
+                </div>
+
             </div>
             <div class="shop-item-title">
                 <?php
@@ -88,13 +92,8 @@ if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {
                     <p><?php echo $product->short_description; ?></p>
                 </div>
 
-                <div class="shop-item-tools">
-                    <div>
-                        <div>
-                            <span class="cart-loading"><i class="icon icon-refresh"></i></span>
-                                <?php do_action( 'woocommerce_after_shop_loop_item' ) ?>
-                        </div>
-                    </div>
+                <div class="shop-item-tools product-list-meta-options">
+                    <?php do_action( 'woocommerce_after_shop_loop_item' ) ?>
                 </div>
 
             </div>

@@ -32,7 +32,7 @@ if ( $attachment_count > 0 ) {
 ?>
 
 <!-- PRODUCT SLIDER -->
-<div class="col-sm-7">
+<div class="col-sm-6">
 	<div class="product-slider <?php echo esc_attr($slider_class); ?>">
 		<?php
 		if ( has_post_thumbnail() ) {

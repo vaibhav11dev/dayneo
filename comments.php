@@ -25,7 +25,7 @@ if ( post_password_required() ) {
 		} else {
 			// If comments are open, but there are no comments.
 			if ( comments_open() ) {
-				echo '<h5 class="comment-title text-title text-uppercase bottom-line">';
+				echo '<h5 class="comment-title text-title text-uppercase">';
 				esc_html__( 'No Comments Yet', 'dayneo' );
 				echo '</h5>';
 			}
