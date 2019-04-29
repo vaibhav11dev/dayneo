@@ -167,7 +167,7 @@ if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
         <div class="slidetoggle mobile-sidebar-meta mb-30">
             <h4 class="menu-tit slidetoggle-init"><i class="ti-settings"></i> Settings</h4>
             <div class="slidetoggle-menu">
-                <div id="_mobile_wishtlistTop" class="col-xs-6"></div>
+                <div id="_mobile_wishtlistTop" class="col-xs-6 meta-menu-wrap"></div>
                 <div class="clearfix"></div>
             </div>
         </div>

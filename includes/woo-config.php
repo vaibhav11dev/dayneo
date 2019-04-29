@@ -252,6 +252,8 @@ function dayneo_woocommerce_ordering() {
 add_action( 'init', 'dayneo_woocommerce_ordering' );
 
 function dayneo_woocommerce_catalog_ordering() {
+    global $wp_query;
+    $total    = $wp_query->found_posts;
 
     $dd_woo_items = dayneo_get_option( 'dd_woo_items', '12' );
 
@@ -276,14 +278,21 @@ function dayneo_woocommerce_catalog_ordering() {
     $pc  = ! empty( $params[ 'product_count' ] ) ? $params[ 'product_count' ] : $per_page;
 
     $html = '';
-    $html .= '<div class="catalog-ordering row">';
+    $html .= '<div class="catalog-ordering row">';        
+    $html .= '<div class="orderby-order-container form-group col-md-5">';
+    $html .= '<div class="shop-view GridList">';
+    $html .= '<a href="#" class="grid-view dd-shop-view current pull-left" data-view="grid"></a>';
+    $html .= '<a href="#" class="list-view dd-shop-view pull-left" data-view="list"></a>';
+    $html .= '</div>';
+    $html .= '<p>There are '.$total.' products</p>';
+    $html .= '<div class="clearfix"></div>';
+    $html .= '</div>';
 
-    $html .= '<div class="orderby-order-container form-group col-sm-4">';
-
-    $html .= '<ul class="form-control orderby order-dropdown">';
-    $html .= '<li>';
-    $html .= '<span class="current-li"><span class="current-li-content"><a>' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a><i class="fa fa-angle-down"></i></span></span>';
-    $html .= '<ul>';
+    $html .= '<div class="form-group col-md-7">';    
+    $html .= '<ul class="form-control orderby order-dropdown pull-right">';
+    $html .= '<li class="dropdown">';
+    $html .= '<span data-toggle="dropdown" class="current-li"><span class="current-li-content"><a>' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a><i class="fa fa-angle-down"></i></span></span>';
+    $html .= '<ul class="dropdown-menu">';
     $html .= '<li class="' . (($pob == 'default') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'default' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a></li>';
     $html .= '<li class="' . (($pob == 'name') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'name' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Name', 'dayneo' ) . '</strong></a></li>';
     $html .= '<li class="' . (($pob == 'price') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'price' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Price', 'dayneo' ) . '</strong></a></li>';
@@ -292,37 +301,12 @@ function dayneo_woocommerce_catalog_ordering() {
     $html .= '<li class="' . (($pob == 'rating') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'rating' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Rating', 'dayneo' ) . '</strong></a></li>';
     $html .= '</ul>';
     $html .= '</li>';
-    $html .= '</ul>';
-
-
-    $html .= '<ul class="order">';
-    if ( $po == 'desc' ):
-        $html .= '<li class="desc"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_order', 'asc' ) ) . '"><i class="icon icon-arrow-up"></i></a></li>';
-    endif;
-    if ( $po == 'asc' ):
-        $html .= '<li class="asc"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_order', 'desc' ) ) . '"><i class="icon icon-arrow-down"></i></a></li>';
-    endif;
-    $html .= '</ul>';
-
+    $html .= '</ul>'; 
+    $html .= '<span class=" hidden-sm-down sort-by pull-right">Sort by:</span>';
+    $html .= '<div class="col-sm-3 col-xs-4 hidden-lg-up text-left filter-button"><button id="pro_filter_toggler" class="btn btn-base">Filter</button></div> ';
+    $html .= '<div class="clearfix"></div>';
     $html .= '</div>';
-
-    $html .= '<div class="form-group col-sm-4 col-sm-offset-4">';
-    $html .= '<ul class="form-control sort-count order-dropdown">';
-    $html .= '<li>';
-    $html .= '<span class="current-li"><a>' . __( 'Show', 'dayneo' ) . ' <strong>' . $per_page . ' ' . __( ' Products', 'dayneo' ) . '</strong></a><i class="fa fa-angle-down"></i></span>';
-    $html .= '<ul>';
-    $html .= '<li class="' . (($pc == $per_page) ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_count', $per_page ) ) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . $per_page . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pc == $per_page * 2) ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_count', $per_page * 2 ) ) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . ($per_page * 2) . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pc == $per_page * 3) ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_count', $per_page * 3 ) ) . '">' . __( 'Show', 'dayneo' ) . ' <strong>' . ($per_page * 3) . ' ' . __( 'Products', 'dayneo' ) . '</strong></a></li>';
-    $html .= '</ul>';
-    $html .= '</li>';
-    $html .= '</ul>';
-    $html .= '<div class="shop-view">';
-    $html .= '<span>View</span>';
-    $html .= '<a href="#" class="grid-view dd-shop-view current" data-view="grid"><i class="fa fa-th"></i></a>';
-    $html .= '<a href="#" class="list-view dd-shop-view" data-view="list"><i class="fa fa-list"></i></a>';
-    $html .= '</div>';
-    $html .= '</div>';
+    $html .= '<div class="products-found col-sm-12 hidden-lg-up">Showing 1-'.$pc.' of '.$total.' item(s)</div>';
     $html .= '</div>';
 
     echo $html;
@@ -864,3 +848,78 @@ function update_wishlist_count() {
 
 add_action( 'wp_ajax_update_wishlist_count', 'update_wishlist_count' );
 add_action( 'wp_ajax_nopriv_update_wishlist_count', 'update_wishlist_count' );
+
+
+/**
+ * 
+ * Show WooCommerce Taxonomy
+ * 
+ */
+function dayneo_woocommerce_taxonomy_archive() {
+    if ( is_product_taxonomy() && 0 === absint( get_query_var( 'paged' ) ) ) {
+        $cat = get_queried_object();
+        if ( $cat && ! empty( $cat->name ) ) {
+            echo'<h1 class="h1">' . esc_html( $cat->name ) . '</h1>';
+        }
+        if ( $cat && ! empty( $cat->term_id ) ) {
+            $thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
+            $image        = wp_get_attachment_url( $thumbnail_id );
+            echo '<img class="cat-img" src=' . esc_url( $image ) . ' alt="" />';
+        }
+        if ( $cat && ! empty( $cat->description ) ) {
+            echo '<div class="term-description">' . wc_format_content( $cat->description ) . '</div>'; // WPCS: XSS ok.
+        }
+    }
+}
+
+remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
+add_action( 'woocommerce_archive_description', 'dayneo_woocommerce_taxonomy_archive', 10 );
+
+
+/**
+ * 
+ * Single Product Next/Prev
+ * 
+ */
+function dd_product_navigation()
+{       
+        global $post;
+        $current_url = get_permalink( $post->ID );  
+
+        // Get the previous and next product links
+        $next_link = get_permalink(get_adjacent_post(false,'',true));
+                $previous_link = get_permalink(get_adjacent_post(false,'',false)); 
+
+        // Create the two links provided the product exists
+                if ( $next_link != $current_url ) {
+                        $next_id = get_adjacent_post(false,'',true)->ID;
+
+                        $next_btn = "<a href='" .esc_url( $next_link ). "'><i class='fa fa-angle-right' aria-hidden='true'></i></a>";
+
+                        if ( $next_id ) {
+                            $next_img_link = wp_get_attachment_image_src( get_post_thumbnail_id( $next_id ), 'single-post-thumbnail' );
+                            $next_img = "<a href='" .esc_url( $next_link ). "'><img class='img-responsive' src='".esc_url($next_img_link[0])."'></a>";
+                        }
+                }
+
+                if ( $previous_link != $current_url ) {
+                        $previous_id = get_adjacent_post(false,'',false)->ID;
+
+                        $previous_btn = "<a href='" . esc_url($previous_link) . "'><i class='fa fa-angle-left' aria-hidden='true'></i></a>";
+
+                        if ( $previous_id ) {
+                            $previous_img_link = wp_get_attachment_image_src( get_post_thumbnail_id( $previous_id ), 'single-post-thumbnail' );
+                            $previous_img = "<a href='" . esc_url($previous_link) . "'><img class='img-responsive' src='".esc_url($previous_img_link[0])."'></a>";
+                        }
+                }
+            
+        // Create HTML Output
+        $output  = '<div class="innovatoryNextPrev pull-right">'; 
+                $output .= '<div class="itPrev_product nextPrevProduct pull-left"> ' . $previous_btn . '<div class="innovatoryContent">' . $previous_img . '</div></div>';
+                $output .= '<div class="itNext_product nextPrevProduct pull-left">' . $next_btn .'<div class="innovatoryContent">' . $next_img . '</div></div>';
+        $output .= '</div>';
+        
+        // Display the final output
+        echo wp_kses_post($output);
+}
+add_action( 'woocommerce_single_product_summary', 'dd_product_navigation', 4 );

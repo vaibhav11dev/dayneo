@@ -28,7 +28,7 @@ if ( $total <= 1 ) {
 }
 ?>
 <!-- PAGINATION -->
-<div class="row">
+<div class="row product-pagination-wrap">
     <div class="col-sm-12">
 	<nav class="woocommerce-pagination">
 	    <?php

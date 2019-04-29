@@ -16,7 +16,7 @@ if ( function_exists( 'register_sidebar' ) )
 		'id'		 => 'sidebar-1',
 		'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 		'after_widget'	 => '</div></div>',
-		'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+		'before_title'	 => '<h6 class="text-title text-uppercase">',
 		'after_title'	 => '</h6>',
 	) );
 
@@ -26,7 +26,7 @@ if ( function_exists( 'register_sidebar' ) )
 		'id'		 => 'sidebar-2',
 		'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 		'after_widget'	 => '</div></div>',
-		'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+		'before_title'	 => '<h6 class="text-title text-uppercase">',
 		'after_title'	 => '</h6>',
 	) );
 
@@ -37,7 +37,7 @@ function dayneo_headerbar() {
 			'id'		 => 'headerbar',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
-			'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+			'before_title'	 => '<h6 class="text-title text-uppercase">',
 			'after_title'	 => '</h6>',
 		) );
 }
@@ -49,7 +49,7 @@ function dayneo_footer1() {
 			'id'		 => 'footer-1',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
-			'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+			'before_title'	 => '<h6 class="text-title text-uppercase">',
 			'after_title'	 => '</h6>',
 		) );
 }
@@ -61,7 +61,7 @@ function dayneo_footer2() {
 			'id'		 => 'footer-2',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
-			'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+			'before_title'	 => '<h6 class="text-title text-uppercase">',
 			'after_title'	 => '</h6>',
 		) );
 }
@@ -73,7 +73,7 @@ function dayneo_footer3() {
 			'id'		 => 'footer-3',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
-			'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+			'before_title'	 => '<h6 class="text-title text-uppercase">',
 			'after_title'	 => '</h6>',
 		) );
 }
@@ -85,7 +85,7 @@ function dayneo_footer4() {
 			'id'		 => 'footer-4',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
-			'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+			'before_title'	 => '<h6 class="text-title text-uppercase">',
 			'after_title'	 => '</h6>',
 		) );
 }
@@ -97,7 +97,7 @@ function dayneo_beforefooter() {
 			'id'		 => 'before-footer',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
-			'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+			'before_title'	 => '<h6 class="text-title text-uppercase">',
 			'after_title'	 => '</h6>',
 		) );
 }
@@ -109,7 +109,7 @@ function dayneo_afterfooter() {
 			'id'		 => 'after-footer',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
-			'before_title'	 => '<h6 class="text-title text-uppercase bottom-line">',
+			'before_title'	 => '<h6 class="text-title text-uppercase">',
 			'after_title'	 => '</h6>',
 		) );
 }
@@ -122,6 +122,3 @@ dayneo_footer1();
 dayneo_footer2();
 dayneo_footer3();
 dayneo_footer4();
-
-
-

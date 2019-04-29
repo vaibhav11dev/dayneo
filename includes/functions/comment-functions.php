@@ -52,7 +52,7 @@ function dayneo_discussion_title( $type = NULL, $echo = true ) {
 
 	// Available filter: dayneo_discussion_title_tag
 	$tag	 = apply_filters( 'dayneo_discussion_title_tag', (string) 'h5' );
-	$class	 = 'text-title text-uppercase bottom-line';
+	$class	 = 'text-title text-uppercase';
 
 	if ( $number ) {
 		$discussion_title = '<' . $tag . ' class="' . esc_attr($type . '-title ' . $class) . '">' . $number . '</' . $tag . '>';

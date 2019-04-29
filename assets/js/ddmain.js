@@ -525,20 +525,6 @@
         $('.catalog-ordering .orderby .current-li a').html($('.catalog-ordering .orderby ul li.current a').html());
         $('.catalog-ordering .sort-count .current-li a').html($('.catalog-ordering .sort-count ul li.current a').html());
 
-        //Shop page - When product add in cart show loader and indicate product add succesfull.
-        $('a.add_to_cart_button').click(function (e) {
-            var link = this;
-            $(link).closest('.product').find('.cart-loading').find('i').hide().removeClass('icon-check').addClass('icon-refresh').fadeIn();
-            $(this).closest('.product').find('.cart-loading').css('display', 'block');
-            $(this).closest('.product').find('.cart-loading').fadeIn();
-            setTimeout(function () {
-                $(link).closest('.product').find('.cart-loading').find('i').hide().removeClass('icon-refresh').addClass('icon-check').fadeIn();
-                setTimeout(function () {
-                    $(link).closest('.product').find('.cart-loading').fadeOut();
-                }, 2500);
-            }, 2500);
-        });
-
     });
 
     $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function (event) {
@@ -1134,4 +1120,17 @@ function vegamenuposition(){
 /*=============Slide Toggle============*/
 jQuery(".slidetoggle-init").click(function(){
   jQuery(this).parent().find(".slidetoggle-menu").slideToggle();
+});
+
+/*=============Mobile Filter Toggle============*/
+jQuery("body").on("click", "#pro_filter_toggler", function() {
+    jQuery("body").toggleClass("filter-open");
+})
+
+/*=============Compare Color Box Open============*/
+jQuery(document).bind('cbox_open', function(){
+  jQuery("body").addClass("colorbox-open");
+});
+jQuery(document).bind('cbox_closed', function(){
+  jQuery("body").removeClass("colorbox-open");
 });

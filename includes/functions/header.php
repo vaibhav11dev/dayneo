@@ -231,7 +231,7 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
                             %s
                             
                         </div>
-                        <div class="product-cat"><div class="product-cat-label %s">%s</div> %s</div>			    <button type="submit" class="search-submit">%s</button>
+                        <div class="product-cat hidden-sm-down"><div class="product-cat-label %s">%s</div> %s</div>			    <button type="submit" class="search-submit">%s</button>
                     </div>
                 </form>
                 %s

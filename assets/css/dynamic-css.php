@@ -643,7 +643,6 @@ a:focus,
 .career-tags,
 .comment-tools a:focus,
 .comment-tools a:hover,
-.star-rating,
 .icons-list a:focus,
 .icons-list a:hover,
 .widget .widget-content ul li a:hover,
@@ -655,13 +654,10 @@ a:focus,
 .cart-hover .sub-cart-menu .list-product .list-product-detail a:hover,
 .shop-item-title .woocommerce-loop-product__title a:hover,
 .footer-center .widget_nav_menu .menu > li > a:before,
-.post .entry-meta .read-more:hover,.navigation-links a:hover
+.post .entry-meta .read-more:hover,.navigation-links a:hover,
+.woocommerce div.product div.summary .yith-wcwl-add-to-wishlist a:hover, .woocommerce div.product div.summary .compare:hover
 {
     color: ' . esc_attr($dd_primary_color) . ';
-}
-
-.bottom-line:after {
-    border-bottom: 2px solid ' . esc_attr($dd_primary_color) . ';
 }
 
 .color-brand {
@@ -677,7 +673,11 @@ a:focus,
 .extras-menu .icon-wrap .icon-box,
 .footer .copyright,.owl-carousel .owl-buttons>*:hover,.post-columns .post .post_thumbnail .meta_date,.post-columns .post .post_thumbnail .blogicons a.icon:hover,
 #_mobile_cart .icon-box .mini-item-counter,
-.mobile-search-bar
+.mobile-search-bar,.widget_shopping_cart .woocommerce-mini-cart__buttons .button:hover,
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range,
+.woocommerce .widget_price_filter .price_slider_amount .button:hover,
+.shop-item-tools a:hover, .button.wishlist .yith-wcwl-add-button a.add_to_wishlist:hover,
+.product .onsale
 {
     background-color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -694,7 +694,17 @@ a:focus,
 .scroll-top:hover,
 .scroll-top:focus,
 .form-control:focus,
-.header-row .extras-menu .icon-wrap-circle .icon-wrap,.owl-carousel .owl-buttons>*:hover
+.header-row .extras-menu .icon-wrap-circle .icon-wrap,.owl-carousel .owl-buttons>*:hover,
+.woocommerce .widget_price_filter .price_slider_amount .button:hover,
+.widget.woocommerce .tagcloud a:hover,
+.woocommerce .woocommerce-Input:focus,
+.quantity .input-text:focus,
+.wpcf7-text:focus,
+.wpcf7-number:focus,
+.wpcf7-date:focus,
+.wpcf7-textarea:focus,
+.wpcf7-select:focus,
+.mc4wp-form-fields .input-wrapper input:focus
 {
     border-color: ' . esc_attr($dd_primary_color) . ';
 }
