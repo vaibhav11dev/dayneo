@@ -1345,13 +1345,21 @@ Redux::setSection( $dd_options, array(
 			'default'	 => '2',
 		),
 		array(
-			'subtitle'	 => __( 'Select the sidebar that will be added to the shop page.', 'dayneo' ),
-			'id'		 => 'dd_shop_sidebar',
+			'subtitle'	 => __( 'Select the sidebar that will display on the shop archive/category pages.', 'dayneo' ),
+			'id'		 => 'dd_shop_archive_sidebar',
 			'type'		 => 'select',
 			'options'	 => $sidebar_options,
-			'title'		 => __( 'Shop Sidebar', 'dayneo' ),
+			'title'		 => __( 'Shop Archive/Category Sidebar', 'dayneo' ),
 			'default'	 => 'None',
 		),
+                array(
+                        'subtitle'	 => __( 'Select the sidebar that will display on the shop product pages.', 'dayneo' ),
+                        'id'		 => 'dd_shop_product_sidebar',
+                        'type'		 => 'select',
+                        'options'	 => $sidebar_options,
+                        'title'		 => __( 'Shop Product Sidebar', 'dayneo' ),
+                        'default'	 => 'None',
+                ),
 	),
 )
 );

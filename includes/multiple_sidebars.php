@@ -327,7 +327,7 @@ class sidebar_generator {
 	 * called by the action get_sidebar. this is what places this into the theme
 	 */
 	public static function get_sidebar( $name = "0" ) {
-		if ( !is_singular() ) {
+		if ( !is_singular() && ( class_exists( 'Woocommerce' ) && !is_shop() ) ) {
 			if ( $name != "0" ) {
 				dynamic_sidebar( $name );
 			} else {
@@ -338,8 +338,14 @@ class sidebar_generator {
 		wp_reset_query();
 		global $wp_query;
 		$post = $wp_query->get_queried_object();
-		$selected_sidebar = get_post_meta( $post->ID, 'sbg_selected_sidebar', true );
-		$selected_sidebar_replacement = get_post_meta( $post->ID, 'sbg_selected_sidebar_replacement', true );
+                $post_id = '';
+                if ( class_exists( 'Woocommerce' ) && is_shop() ) {
+                    $post_id = wc_get_page_id('shop');
+                } else {
+                    $post_id = isset( $post->ID ) ? $post->ID : '';
+                }
+		$selected_sidebar = get_post_meta( $post_id, 'sbg_selected_sidebar', true );
+		$selected_sidebar_replacement = get_post_meta( $post_id, 'sbg_selected_sidebar_replacement', true );
 		$did_sidebar = false;
 		//this page uses a generated sidebar
 		if ( $selected_sidebar != '' && $selected_sidebar != "0" ) {

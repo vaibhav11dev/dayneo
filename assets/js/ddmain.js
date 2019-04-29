@@ -67,21 +67,6 @@
         /**
          * @return {undefined}
          */
-        function init() {
-            $(".owl-controls .owl-page").append('<a class="item-link" href="#"/>');
-            var $items = $(".owl-controls .item-link");
-            $.each(this.owl.userItems, function (item_index) {
-                $($items[item_index]).css({
-                    background: "url(" + $(this).find("img").attr("src") + ") center center no-repeat",
-                    "-webkit-background-size": "cover",
-                    "-moz-background-size": "cover",
-                    "-o-background-size": "cover",
-                    "background-size": "cover"
-                }).click(function () {
-                    return $carousel.trigger("owl.goTo", item_index), false;
-                });
-            });
-        }
         var i;
         var n = $(".header");
         $(".module-hero");
@@ -121,18 +106,6 @@
             speed: .7
         });
         $(".product-slider .item").zoom();
-        var $carousel;
-        $carousel = $(".product-slider");
-        $carousel.owlCarousel({
-            navigation: false,
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            singleItem: true,
-            afterInit: init,
-            afterUpdate: init,
-            touchDrag: false,
-            mouseDrag: false
-        });
         $(".images-carousel").each(function () {
             $(this).owlCarousel($.extend({
                 stopOnHover: true,

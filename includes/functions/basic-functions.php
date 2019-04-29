@@ -665,6 +665,30 @@ function dayneo_portfolio_share() {
 	<?php
 }
 
+/**
+ * 
+ * Dayneo product share
+ * 
+ * @global string $post
+ */
+function dayneo_product_share() {
+	global $post;
+	$image_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
+	if ( empty( $image_url ) ) {
+		$image_url = get_template_directory_uri() . '/assets/images/no-thumbnail.jpg';
+	}
+	?>
+	<ul class="social-icons social-icons-simple">
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Twitter', 'dayneo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr($post->post_title); ?>+&raquo;+<?php echo esc_url( dayneo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a></li>
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Facebook', 'dayneo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-facebook"></i></a></li>
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'dayneo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
+		<li> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'dayneo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr($image_url); ?>&description=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-pinterest"></i></a></li>			
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share by Email', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/email?linkurl=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-envelope-o"></i></a></li>
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="icon-action-redo icons"></i></a></li>
+	</ul>
+	<?php
+}
+
 // -> START All Slider Functions Here
 
 /**
@@ -1081,11 +1105,6 @@ function dayneo_page_title_bar() {
 								</h3>
 
 								<?php
-								if ( $description ) {
-									?>
-									<div class="taxonomy-description"><?php echo $description; ?></div>
-									<?php
-								}
 							}
 							?>
 						</div>
@@ -1466,7 +1485,7 @@ function dayneo_layout_class( $type = 1 ) {
 			break;
 	endswitch;
 
-	if ( (is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress()) && ($dayneo_sidebar_position && $dayneo_sidebar_position != 'default') ):
+	if ( ( is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress() || ( class_exists( 'Woocommerce' ) && is_shop() ) ) && ($dayneo_sidebar_position && $dayneo_sidebar_position != 'default') ):
 
 		if ( ($type == 1 && $dayneo_sidebar_position == '1c') || ($type == 2 && $dayneo_sidebar_position == '1c') ) {
 			$layout_css = 'col-md-12 full-width';
@@ -1495,20 +1514,11 @@ function dayneo_layout_class( $type = 1 ) {
 
 	endif;
 
-	if ( $type == 1 ) {
-		if ( class_exists( 'Woocommerce' ) ):
-			$shop_sidebar = dayneo_get_option( 'dd_shop_sidebar', 'None' );
-			if ( is_cart() || is_checkout() || is_account_page() || (get_option( 'woocommerce_thanks_page_id' ) && is_page( get_option( 'woocommerce_thanks_page_id' ) )) ) {
-				$layout_css = 'col-md-12 full-width';
-			} elseif ( is_shop() ) {
-				if ($shop_sidebar != '0') {
-					$layout_css	= 'col-md-9 col-sm-12 float-left';
-				} else {
-					$layout_css	= 'col-md-12 full-width';
-				}
-			}
-		endif;
-	}
+        if ( class_exists( 'Woocommerce' ) ):
+                if ( is_cart() || is_checkout() || is_account_page() || (get_option( 'woocommerce_thanks_page_id' ) && is_page( get_option( 'woocommerce_thanks_page_id' ) )) ) {
+                        $layout_css = 'col-md-12 full-width';
+                }
+        endif;
 
 	if ( is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress() ) {
 		$layout_css .= ' col-single';
@@ -1550,7 +1560,7 @@ function dayneo_lets_get_sidebar() {
 		$get_sidebar = true;
 	}
 
-	if ( (is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress()) && ($dayneo_sidebar_position && $dayneo_sidebar_position != 'default') ):
+	if ( (is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress() || ( class_exists( 'Woocommerce' ) && is_shop() )) && ($dayneo_sidebar_position && $dayneo_sidebar_position != 'default') ):
 
 		if ( $dayneo_sidebar_position != '1c' ) {
 			$get_sidebar = true;
@@ -1560,12 +1570,12 @@ function dayneo_lets_get_sidebar() {
 
 	endif;
 
-	if ( class_exists( 'Woocommerce' ) ):
-		$shop_sidebar = dayneo_get_option( 'dd_shop_sidebar', 'None' );
-		if ( is_shop() && $shop_sidebar != '0' ) {
-			$get_sidebar = true;
-		}
-	endif;
+//	if ( class_exists( 'Woocommerce' ) ):
+//		$shop_sidebar = dayneo_get_option( 'dd_shop_sidebar', 'None' );
+//		if ( is_shop() && $shop_sidebar != '0' ) {
+//			$get_sidebar = true;
+//		}
+//	endif;
 
 	return $get_sidebar;
 }
@@ -1691,12 +1701,12 @@ function dayneo_sidebar_class() {
 		endswitch;
 	endif;
 
-	if ( class_exists( 'Woocommerce' ) ):
-		$shop_sidebar = dayneo_get_option( 'dd_shop_sidebar', 'None' );
-		if ( is_shop() && $shop_sidebar != '0' ) {
-			$sidebar_css	 = 'col-sm-12 col-md-3';
-		}
-	endif;
+//	if ( class_exists( 'Woocommerce' ) ):
+//		$shop_sidebar = dayneo_get_option( 'dd_shop_sidebar', 'None' );
+//		if ( is_shop() && $shop_sidebar != '0' ) {
+//			$sidebar_css	 = 'col-sm-12 col-md-3';
+//		}
+//	endif;
 
 	echo esc_attr($sidebar_css);
 }

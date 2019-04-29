@@ -25,37 +25,42 @@ if ( class_exists( 'Woocommerce' ) ) {
     if ( is_single() || is_page() || is_404() || is_search() || is_buddypress() ) {
         if ( is_bbpress() ) {
             if ( dayneo_get_option( 'dd_bbpress_global_sidebar', '0' ) == 1 ) {
-                $sidebar = dayneo_get_option( 'dd_bbbress_sidebar', 'None' );
-                generated_dynamic_sidebar( $sidebar );
+                $dd_bbbress_sidebar = dayneo_get_option( 'dd_bbbress_sidebar', 'None' );
+                generated_dynamic_sidebar( $dd_bbbress_sidebar );
             } else {
                 generated_dynamic_sidebar();
             }
-        } elseif ( ! is_product() ) {
+        } elseif ( is_product() ) {
+            $dd_shop_product_sidebar = dayneo_get_option( 'dd_shop_product_sidebar', 'None' );
+            generated_dynamic_sidebar($dd_shop_product_sidebar);
+        } else {
             generated_dynamic_sidebar();
         }
     } elseif ( is_archive() || is_author() ) {
         if ( is_bbpress() ) {
             if ( dayneo_get_option( 'dd_bbpress_global_sidebar', '0' ) == 1 ) {
-                $sidebar = dayneo_get_option( 'dd_bbbress_sidebar', 'None' );
-                generated_dynamic_sidebar( $sidebar );
+                $dd_bbbress_sidebar = dayneo_get_option( 'dd_bbbress_sidebar', 'None' );
+                generated_dynamic_sidebar( $dd_bbbress_sidebar );
             } else {
                 generated_dynamic_sidebar();
             }
-        } elseif ( is_shop() ) {
-            $shop_sidebar = dayneo_get_option( 'dd_shop_sidebar', 'None' );
-            if ( $shop_sidebar != '0' && is_active_sidebar( $shop_sidebar ) ) {
-                generated_dynamic_sidebar( $shop_sidebar );
-            }
+        } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
+                generated_dynamic_sidebar( );
         } else {
             $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
             if ( $term ) {
-                $portfolio_tax = $term->taxonomy;
-                if ( $portfolio_tax == 'portfolio_category' || $portfolio_tax == 'portfolio_skills' || $portfolio_tax == 'portfolio_tags' ) {
+                $taxonomy = $term->taxonomy;
+                if ( $taxonomy == 'portfolio_category' || $taxonomy == 'portfolio_skills' || $taxonomy == 'portfolio_tags' ) {
                     $dd_portfolio_sidebar = dayneo_get_option( 'dd_portfolio_sidebar', 'None' );
                     if ( $dd_portfolio_sidebar != '0' && is_active_sidebar( $dd_portfolio_sidebar ) ) {
                         generated_dynamic_sidebar( $dd_portfolio_sidebar );
                     }
-                }
+            } elseif ( $taxonomy == 'product_cat' || $taxonomy == 'product_tag' ) {
+                    $dd_shop_archive_sidebar = dayneo_get_option( 'dd_shop_archive_sidebar', 'None' );
+                    if ( $dd_shop_archive_sidebar != '0' && is_active_sidebar( $dd_shop_archive_sidebar ) ) {
+                        generated_dynamic_sidebar( $dd_shop_archive_sidebar );
+                    }
+            }
             } else {
                 $blog_archive_sidebar = dayneo_get_option( 'dd_blog_archive_sidebar', 'None' );
                 if ( $blog_archive_sidebar != '0' && is_active_sidebar( $blog_archive_sidebar ) ) {

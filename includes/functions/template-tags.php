@@ -134,6 +134,7 @@ if ( ! function_exists( 'dayneo_post_thumbnail' ) ) :
             }
         } else {
             $dd_featured_images = dayneo_get_option( 'dd_featured_images', '1' );
+            $dd_blog_style = dayneo_get_option( 'dd_blog_style' );
             if ( $dd_featured_images == "1" ) {
                 ?>
                 <div class="post_thumbnail">
@@ -148,13 +149,14 @@ if ( ! function_exists( 'dayneo_post_thumbnail' ) ) :
                             ?>
                         </a>
                     </div>
-                    <span class="blogicons">
-                        <a href="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" rel="blog_group" class="icon grouped_elements zoom ti-search"></a> 
-                        <a title="Click to view Read More" href="<?php the_permalink(); ?>" class="icon readmore ti-link"></a>
-                    </span>
                     <?php
-                    $dd_featured_images = dayneo_get_option( 'dd_blog_style' );
-                    if ( $dd_featured_images == 'grid' ) {
+                    if ( $dd_blog_style == 'grid' ) {
+                        ?>
+                        <span class="blogicons">
+                            <a href="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" rel="blog_group" class="icon grouped_elements zoom ti-search"></a> 
+                            <a title="Click to view Read More" href="<?php the_permalink(); ?>" class="icon readmore ti-link"></a>
+                        </span>
+                        <?php
                         dayneo_girdpost_metadate();
                     }
                     ?>
