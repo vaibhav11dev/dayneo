@@ -890,7 +890,8 @@ function dd_product_navigation()
         $next_link = get_permalink(get_adjacent_post(false,'',true));
                 $previous_link = get_permalink(get_adjacent_post(false,'',false)); 
 
-        // Create the two links provided the product exists
+                $next_btn = '';
+                $next_img = '';
                 if ( $next_link != $current_url ) {
                         $next_id = get_adjacent_post(false,'',true)->ID;
 
@@ -902,6 +903,8 @@ function dd_product_navigation()
                         }
                 }
 
+                $previous_btn = '';
+                $previous_img = '';
                 if ( $previous_link != $current_url ) {
                         $previous_id = get_adjacent_post(false,'',false)->ID;
 
@@ -915,8 +918,12 @@ function dd_product_navigation()
             
         // Create HTML Output
         $output  = '<div class="innovatoryNextPrev pull-right">'; 
+        if ( $previous_btn || $previous_img ) {
                 $output .= '<div class="itPrev_product nextPrevProduct pull-left"> ' . $previous_btn . '<div class="innovatoryContent">' . $previous_img . '</div></div>';
+        }
+        if ($next_btn || $next_img) {
                 $output .= '<div class="itNext_product nextPrevProduct pull-left">' . $next_btn .'<div class="innovatoryContent">' . $next_img . '</div></div>';
+        }
         $output .= '</div>';
         
         // Display the final output

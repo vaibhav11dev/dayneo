@@ -6,7 +6,9 @@ get_template_part( 'includes/widgets/125x125' );
 get_template_part( 'includes/widgets/social_links' );
 get_template_part( 'includes/widgets/contact_info' );
 get_template_part( 'includes/widgets/recent-works-widget' );
-
+if ( function_exists( 'WC' ) ) {
+    get_template_part( 'includes/widgets/product-carousel-widget' );
+}
 $dd_options		 = get_option( 'dd_options' );
 $dd_footer_widget_col	 = (isset( $dd_options[ 'dd_footer_widget_col' ] )) ? $dd_options[ 'dd_footer_widget_col' ] : 'disable';
 
