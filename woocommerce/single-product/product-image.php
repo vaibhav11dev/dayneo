@@ -39,11 +39,13 @@ if ( $attachment_count > 0 ) {
 
             $image_title = esc_attr( get_the_title( get_post_thumbnail_id() ) );
             $image_link  = wp_get_attachment_url( get_post_thumbnail_id() );
-            $image       = get_the_post_thumbnail( $post->ID, apply_filters( 'single_product_large_thumbnail_size', 'shop_single' ), array(
+            $image1       = get_the_post_thumbnail( $post->ID, apply_filters( 'single_product_large_thumbnail_size', 'shop_single' ), array(
+                'title' => $image_title
+            ) );
+            $image2       = get_the_post_thumbnail( $post->ID, apply_filters( 'single_product_large_thumbnail_size', 'shop_single' ), array(
                 'title' => $image_title
             ) );
 
-            echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<div class="item">%s</div>', $image ), $post->ID );
 
             /**
              * From product-thumbnails.php
@@ -55,6 +57,9 @@ if ( $attachment_count > 0 ) {
             ?>
             <div class="slider slider-for">
                 <?php
+
+                echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<div class="slider-item-for">%s</div>', $image1 ), $post->ID );
+
                 foreach ( $attachment_ids as $attachment_id ) {
 
                     $classes[] = 'image-' . $attachment_id;
@@ -78,6 +83,9 @@ if ( $attachment_count > 0 ) {
             </div>
             <div class="slider slider-nav">
                 <?php
+
+                echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<div class="slider-item-nav">%s</div>', $image2 ), $post->ID );
+
                 foreach ( $attachment_ids as $attachment_id ) {
 
                     $classes[] = 'image-' . $attachment_id;

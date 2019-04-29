@@ -20,4 +20,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-</div><!-- .row -->
+</div></div><!-- .row -->

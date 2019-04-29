@@ -40,7 +40,7 @@ if ( $rating_count > 0 ) :
 		    echo '';
 	    }
 	    ?>
-	    <?php if ( comments_open() ) : ?><a href="#reviews" class="woocommerce-review-link text-xs" rel="nofollow"><?php printf( _n( '%s customer review', '%s customer reviews', $review_count, 'dayneo' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); ?></a><?php endif ?>
+	    <?php if ( comments_open() ) : ?><a href="#reviews" class="woocommerce-review-link text-xs" rel="nofollow">(<?php printf( _n( '%s customer review', '%s customer reviews', $review_count, 'dayneo' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); ?>)</a><?php endif ?>
 	</div>
 
 <?php endif; ?>

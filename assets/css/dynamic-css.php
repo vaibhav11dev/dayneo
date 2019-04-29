@@ -613,18 +613,18 @@ a:focus,
 .alert-brand,
 .label-base,
 .btn.btn-base:hover,
-.btn.btn-base:focus,
 .nav-text-tabs>li>a:after,
 .owl-controls-brand .owl-page span,
 .owl-page span,
 .cart-badge,
 .post.format-quote,
 .post.format-quote blockquote,
-.social-icons>li>a:focus,
 .social-icons>li>a:hover,
 .tags a:focus,
 .tags a:hover,
-.divider-line::after
+.divider-line::after,
+.button.wc-backward:hover,
+.button.wc-forward
 {
     background: ' . esc_attr($dd_primary_color) . ';
 }
@@ -655,7 +655,9 @@ a:focus,
 .shop-item-title .woocommerce-loop-product__title a:hover,
 .footer-center .widget_nav_menu .menu > li > a:before,
 .post .entry-meta .read-more:hover,.navigation-links a:hover,
-.woocommerce div.product div.summary .yith-wcwl-add-to-wishlist a:hover, .woocommerce div.product div.summary .compare:hover
+.woocommerce div.product div.summary .yith-wcwl-add-to-wishlist a:hover, .woocommerce div.product div.summary .compare:hover,
+.innovatoryNextPrev .nextPrevProduct a.button,
+.cart-table .product-name a:hover
 {
     color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -677,7 +679,9 @@ a:focus,
 .woocommerce .widget_price_filter .ui-slider .ui-slider-range,
 .woocommerce .widget_price_filter .price_slider_amount .button:hover,
 .shop-item-tools a:hover, .button.wishlist .yith-wcwl-add-button a.add_to_wishlist:hover,
-.product .onsale
+.product .onsale,
+.single-product .product .single_add_to_cart_button:hover, #review_form .submit:hover, .woocommerce-address-fields .button:hover, .woocommerce-form-coupon .button:hover, .woocommerce .woocommerce-Button:hover, .widget_product_search .widget-content button:hover, .wpcf7-submit:hover,
+.woocommerce div.product .product-slider .slick-arrow:hover
 {
     background-color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -704,7 +708,9 @@ a:focus,
 .wpcf7-date:focus,
 .wpcf7-textarea:focus,
 .wpcf7-select:focus,
-.mc4wp-form-fields .input-wrapper input:focus
+.mc4wp-form-fields .input-wrapper input:focus,
+.product-slider .slider-nav .slider-item-nav.slick-current img,
+.woocommerce div.product .product-slider .slick-arrow:hover
 {
     border-color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -742,7 +748,6 @@ a:focus,
     color: ' . esc_attr($dd_secondry_color) . ';
 }
 
-.btn.btn-base,
 .bg-brand-hvr,
 .products-cats-menu .cats-menu-title,
 .ved-main-megamenu .inner-nav > li:hover > a,

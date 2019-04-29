@@ -176,7 +176,7 @@ add_filter( 'woocommerce_get_price_html', 'dayneo_woocommerce_price_html', 100, 
  * @return $args
  */
 function dayneo_related_products_args( $args ) {
-    $args[ 'posts_per_page' ] = 3; // number of related products
+    $args[ 'posts_per_page' ] = 5; // number of related products
     return $args;
 }
 
@@ -894,7 +894,7 @@ function dd_product_navigation()
                 if ( $next_link != $current_url ) {
                         $next_id = get_adjacent_post(false,'',true)->ID;
 
-                        $next_btn = "<a href='" .esc_url( $next_link ). "'><i class='fa fa-angle-right' aria-hidden='true'></i></a>";
+                        $next_btn = "<a class='button button_next' href='" .esc_url( $next_link ). "'><i class='fa fa-angle-right' aria-hidden='true'></i></a>";
 
                         if ( $next_id ) {
                             $next_img_link = wp_get_attachment_image_src( get_post_thumbnail_id( $next_id ), 'single-post-thumbnail' );
@@ -905,7 +905,7 @@ function dd_product_navigation()
                 if ( $previous_link != $current_url ) {
                         $previous_id = get_adjacent_post(false,'',false)->ID;
 
-                        $previous_btn = "<a href='" . esc_url($previous_link) . "'><i class='fa fa-angle-left' aria-hidden='true'></i></a>";
+                        $previous_btn = "<a class='button button_prev' href='" . esc_url($previous_link) . "'><i class='fa fa-angle-left' aria-hidden='true'></i></a>";
 
                         if ( $previous_id ) {
                             $previous_img_link = wp_get_attachment_image_src( get_post_thumbnail_id( $previous_id ), 'single-post-thumbnail' );
@@ -923,3 +923,30 @@ function dd_product_navigation()
         echo wp_kses_post($output);
 }
 add_action( 'woocommerce_single_product_summary', 'dd_product_navigation', 4 );
+
+/**
+ * 
+ * Dayneo product share
+ * 
+ * @global string $post
+ */
+function dayneo_product_share() {
+    global $post;
+    $image_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
+    if ( empty( $image_url ) ) {
+        $image_url = get_template_directory_uri() . '/assets/images/no-thumbnail.jpg';
+    }
+    ?>
+    <div class="innovatorySocial-sharing">
+    <span class="labeTitle pull-left">Share</span>
+    <ul class="social-icons social-icons-simple pull-left">
+        <li class="innovatoryfacebook"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Facebook', 'dayneo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-facebook"></i></a></li>
+        <li class="innovatorytwitter"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Twitter', 'dayneo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr($post->post_title); ?>+&raquo;+<?php echo esc_url( dayneo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a></li>        
+        <li class="innovatorygoogleplus"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'dayneo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
+        <li class="innovatorypinterest"> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'dayneo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr($image_url); ?>&description=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-pinterest"></i></a></li>                  
+        <li class="innovatorymore"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="ti-plus"></i></a></li>
+    </ul>
+    <div class="clearfix"></div>
+    </div>
+    <?php
+}

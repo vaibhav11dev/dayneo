@@ -24,6 +24,7 @@ wc_print_notices();
 do_action( 'woocommerce_before_cart' );
 ?>
 
+<div class="row">
 <div class="col-lg-8">
     <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -57,7 +58,7 @@ do_action( 'woocommerce_before_cart' );
 					<?php
 					// @codingStandardsIgnoreLine
 					echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
-					'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><i class="icon-trash icons"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), __( 'Remove this item', 'dayneo' ), esc_attr( $product_id ), esc_attr( $_product->get_sku() )
+					'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><i class="fa fa-trash"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), __( 'Remove this item', 'dayneo' ), esc_attr( $product_id ), esc_attr( $_product->get_sku() )
 					), $cart_item_key );
 					?>
 				    </td>
@@ -136,7 +137,7 @@ do_action( 'woocommerce_before_cart' );
     			<input type="text" name="coupon_code" class="form-control input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'dayneo' ); ?>" />
     		    </div>
     		    <div class="col-sm-3">
-    			<input type="submit" class="button btn btn-block btn-round btn-dark m-t-xs-20" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'dayneo' ); ?>" />
+    			<input type="submit" class="button btn btn-block btn-round btn-dark m-t-xs-20 btn-base" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'dayneo' ); ?>" />
     		    </div>
 			<?php do_action( 'woocommerce_cart_coupon' ); ?>
     		</div>
@@ -181,5 +182,6 @@ do_action( 'woocommerce_before_cart' );
         </div>  
 
     </div>
+</div>
 </div>
 <?php do_action( 'woocommerce_after_cart' ); ?>

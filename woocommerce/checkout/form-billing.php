@@ -26,11 +26,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="woocommerce-billing-fields">
 	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
-		<h5 class="text-title text-uppercase bottom-line"><?php esc_html_e( 'Billing &amp; Shipping', 'dayneo' ); ?></h5>
+		<h5 class="text-title bottom-line"><?php esc_html_e( 'Billing &amp; Shipping', 'dayneo' ); ?></h5>
 
 	<?php else : ?>
 
-		<h5 class="text-title text-uppercase bottom-line"><?php esc_html_e( 'Billing details', 'dayneo' ); ?></h5>
+		<h5 class="text-title bottom-line"><?php esc_html_e( 'Billing details', 'dayneo' ); ?></h5>
 
 	<?php endif; ?>
 
