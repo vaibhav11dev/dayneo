@@ -88,11 +88,27 @@ if ( $dd_footer_parallax == 1 ) {
         <div class="copyright">	
             <div class="container"><!-- .container fluid -->
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-xs-12 col-lg-5 footer-pay-p">
                         <?php
                         $dd_footer_content = dayneo_get_option( 'dd_footer_content', '' );
                         echo wp_kses_post( $dd_footer_content );
                         ?>
+                    </div>
+                    <div class="col-xs-12 col-lg-7 text-center">
+
+                        <div id="paiement_logos" class="payment_logos_images">
+                            <p class="payment-p"><?php echo esc_html_e( 'Payment acceptable on', 'dayneo' ); ?></p>
+                            <?php
+                            for ( $i = 1; $i <= 6; $i ++  ) {
+                                $dd_footer_payment_icon = dayneo_get_option( 'dd_footer_payment_icon' . $i );
+                                $dd_footer_payment_link = dayneo_get_option( 'dd_footer_payment_link' . $i );
+                                if ( $dd_footer_payment_link ) :
+                                    echo '<a href="' . esc_url( $dd_footer_payment_link ) . '"><img src="' . esc_url( $dd_footer_payment_icon['url'] ) . '" alt="payment_icon" width="40" height="25"></a>';
+                                endif;
+                            }
+                            ?>
+                        </div>
+
                     </div>
                 </div><!-- .row -->
             </div>

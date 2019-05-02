@@ -1,7 +1,7 @@
 <?php
-add_action( 'widgets_init', 'flickr_load_widgets' );
+add_action( 'widgets_init', 'dayneo_flickr_widgets' );
 
-function flickr_load_widgets() {
+function dayneo_flickr_widgets() {
 	register_widget( 'Dayneo_Flickr_Widget' );
 }
 
@@ -9,7 +9,7 @@ class Dayneo_Flickr_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'flickr-widget', __( 'dayneo: Flickr', 'dayneo' ), // Name
+		'flickr-widget', __( 'Dayneo: Flickr', 'dayneo' ), // Name
 		       array( 'classname' => 'flickr', 'description' => __( 'The most recent photos from flickr.', 'dayneo' ), ) // Args		
 		);
 	}

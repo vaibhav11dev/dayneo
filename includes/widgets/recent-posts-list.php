@@ -1,7 +1,7 @@
 <?php
-add_action('widgets_init', 'recent_post_list_load_widgets');
+add_action('widgets_init', 'dayneo_recent_post_list_widgets');
 
-function recent_post_list_load_widgets() {
+function dayneo_recent_post_list_widgets() {
     register_widget('Dayneo_Recent_Post_List_Widget');
 }
 
@@ -13,7 +13,7 @@ class Dayneo_Recent_Post_List_Widget extends WP_Widget {
 	 */
 	public function __construct() {
 		parent::__construct(
-		'recent_works-widget', __('dayneo: Blog List', 'dayneo'), // Name
+		'recent_works-widget', __('Dayneo: Blog List', 'dayneo'), // Name
                 array('classname' => 'recent_post_list', 'description' => __('Display Latest Blog lists.', 'dayneo'),) // Args
 		);
 	}

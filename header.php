@@ -62,6 +62,7 @@
 		<?php wp_head(); ?>
 	</head>
 
+        <?php //$shop_view = isset( $_COOKIE['shop_view'] ) ? $_COOKIE['shop_view'] : ''; ?>
 	<body <?php body_class(); ?>>
                 <?php
                 $dd_back_to_top = dayneo_get_option( 'dd_back_to_top', 'right' );

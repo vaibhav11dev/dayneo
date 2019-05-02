@@ -1,7 +1,7 @@
 <?php
-add_action('widgets_init', 'dayneo_tabs_load_widgets');
+add_action('widgets_init', 'dayneo_tabs_widgets');
 
-function dayneo_tabs_load_widgets() {
+function dayneo_tabs_widgets() {
     register_widget('Dayneo_Tabs_Widget');
 }
 
@@ -9,7 +9,7 @@ class Dayneo_Tabs_Widget extends WP_Widget {
 
     function __construct() {
         parent::__construct(
-                'dayneo_tabs-widget', __('dayneo: Tabs', 'dayneo'), // Name
+                'dayneo_tabs-widget', __('Dayneo: Tabs', 'dayneo'), // Name
                 array('classname' => 'dayneo_tabs', 'description' => __('Popular posts, recent post and comments.', 'dayneo'),) // Args
         );
     }

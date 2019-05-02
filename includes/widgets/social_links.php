@@ -1,7 +1,7 @@
 <?php
-add_action( 'widgets_init', 'social_links_load_widgets' );
+add_action( 'widgets_init', 'dayneo_social_links_widgets' );
 
-function social_links_load_widgets() {
+function dayneo_social_links_widgets() {
 	register_widget( 'Dayneo_Social_Links_Widget' );
 }
 
@@ -9,7 +9,7 @@ class Dayneo_Social_Links_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'social_links-widget', __( 'dayneo: Social Links', 'dayneo' ), // Name
+		'social_links-widget', __( 'Dayneo: Social Links', 'dayneo' ), // Name
 			     array( 'classname' => 'social_links', 'description' => '', ) // Args
 		);
 	}

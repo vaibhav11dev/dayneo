@@ -1,7 +1,7 @@
 <?php
-add_action( 'widgets_init', 'dayneo_contact_info_load_widgets' );
+add_action( 'widgets_init', 'dayneo_contact_info_widgets' );
 
-function dayneo_contact_info_load_widgets() {
+function dayneo_contact_info_widgets() {
 	register_widget( 'Dayneo_Contact_Info_Widget' );
 }
 
@@ -9,7 +9,7 @@ class Dayneo_Contact_Info_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'contact_info-widget', __( 'dayneo: Get In Touch', 'dayneo' ), // Name
+		'contact_info-widget', __( 'Dayneo: Get In Touch', 'dayneo' ), // Name
 			     array( 'classname' => 'contact_info', 'description' => '', ) // Args
 		);
 	}

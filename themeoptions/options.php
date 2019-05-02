@@ -865,6 +865,93 @@ Redux::setSection( $dd_options, array(
 )
 );
 
+Redux::setSection( $dd_options, array(
+	'id'		 => 'dd-payment-footer-tab',
+	'title'		 => __( 'Footer Payment Icon', 'dayneo' ),
+	'subsection'	 => true,
+	'fields'	 => array(
+		array(
+			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_icon1',
+			'type'		 => 'media',
+			'title'		 => __( 'Footer Payment Icon One', 'dayneo' ),
+			'url'		 => true,
+		),
+                array(
+			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_link1',
+			'type'		 => 'text',
+			'title'		 => __( 'Payment Icon One Link', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_icon2',
+			'type'		 => 'media',
+			'title'		 => __( 'Footer Payment Icon Two', 'dayneo' ),
+			'url'		 => true,
+		),
+                array(
+			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_link2',
+			'type'		 => 'text',
+			'title'		 => __( 'Payment Icon Two Link', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_icon3',
+			'type'		 => 'media',
+			'title'		 => __( 'Footer Payment Icon Three', 'dayneo' ),
+			'url'		 => true,
+		),
+                array(
+			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_link3',
+			'type'		 => 'text',
+			'title'		 => __( 'Payment Icon Three Link', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_icon4',
+			'type'		 => 'media',
+			'title'		 => __( 'Footer Payment Icon Four', 'dayneo' ),
+			'url'		 => true,
+		),
+                array(
+			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_link4',
+			'type'		 => 'text',
+			'title'		 => __( 'Payment Icon Four Link', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_icon5',
+			'type'		 => 'media',
+			'title'		 => __( 'Footer Payment Icon Five', 'dayneo' ),
+			'url'		 => true,
+		),
+                array(
+			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_link5',
+			'type'		 => 'text',
+			'title'		 => __( 'Payment Icon Five Link', 'dayneo' ),
+		),
+            array(
+			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_icon6',
+			'type'		 => 'media',
+			'title'		 => __( 'Footer Payment Icon Six', 'dayneo' ),
+			'url'		 => true,
+		),
+                array(
+			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
+			'id'		 => 'dd_footer_payment_link6',
+			'type'		 => 'text',
+			'title'		 => __( 'Payment Icon Six Link', 'dayneo' ),
+		),
+		
+	),
+)
+);
 
 Redux::setSection( $dd_options, array(
 	'id'	 => 'dd-pagetitlebar-tab',

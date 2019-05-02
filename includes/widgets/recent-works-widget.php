@@ -1,7 +1,7 @@
 <?php
-add_action('widgets_init', 'recent_works_load_widgets');
+add_action('widgets_init', 'dayneo_recent_works_widgets');
 
-function recent_works_load_widgets() {
+function dayneo_recent_works_widgets() {
     register_widget('Dayneo_Recent_Works_Widget');
 }
 
@@ -9,7 +9,7 @@ class Dayneo_Recent_Works_Widget extends WP_Widget {
 
     public function __construct() {
         parent::__construct(
-                'recent_works-widget', __('dayneo: Portfolio', 'dayneo'), // Name
+                'recent_works-widget', __('Dayneo: Portfolio', 'dayneo'), // Name
                 array('classname' => 'recent_works', 'description' => __('Recent works from the portfolio.', 'dayneo'),) // Args
         );
     }

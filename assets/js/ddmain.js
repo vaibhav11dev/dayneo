@@ -936,7 +936,7 @@
         $.HandleElement.$body.on('click', '.dd-shop-view', function (e) {
             e.preventDefault();
             var $el = $(this),
-                    view = $el.data('view');
+            view = $el.data('view');
 
             if ($el.hasClass('current')) {
                 return;
@@ -946,7 +946,7 @@
             $el.addClass('current');
             $.HandleElement.$body.removeClass('shop-view-grid shop-view-list').addClass('shop-view-' + view);
 
-            document.cookie = 'shop_view=' + view + ';domain=' + window.location.host + ';path=/';
+            document.cookie = 'shop_view=shop-view-' + view;
         });
     };
 

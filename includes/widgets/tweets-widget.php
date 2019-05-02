@@ -1,7 +1,7 @@
 <?php
-add_action( 'widgets_init', 'tweets_load_widgets' );
+add_action( 'widgets_init', 'dayneo_tweets_widgets' );
 
-function tweets_load_widgets() {
+function dayneo_tweets_widgets() {
 	register_widget( 'Dayneo_Tweets_Widget' );
 }
 
@@ -9,7 +9,7 @@ class Dayneo_Tweets_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'tweets-widget', __( 'dayneo: Twitter', 'dayneo' ), // Name
+		'tweets-widget', __( 'Dayneo: Twitter', 'dayneo' ), // Name
 		       array( 'classname' => 'tweets', 'description' => '', ) // Args
 		);
 	}

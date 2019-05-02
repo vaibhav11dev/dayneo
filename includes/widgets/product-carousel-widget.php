@@ -21,7 +21,7 @@ class Dayneo_Product_Carousel_Widget extends WC_Widget {
      */
     public function __construct() {
         $this->widget_cssclass    = 'woocommerce widget_product_carousel';
-        $this->widget_description = esc_html__( "A list of your store's products.", 'dayneo' );
+        $this->widget_description = esc_html__( "A slider of your store's products.", 'dayneo' );
         $this->widget_id          = 'dd_woo_product_carousel';
         $this->widget_name        = esc_html__( 'Dayneo - Product Carousel', 'dayneo' );
         $this->settings           = array(

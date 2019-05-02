@@ -21,12 +21,12 @@ if ( is_user_logged_in() ) {
         <div class="user-info-wrap hidden-lg-up logined">
             <i class="fa fa-user-circle user-icon" aria-hidden="true"></i>
             <div class="user-info-btn">
-                <a class="account" href="#" title="View my customer account" rel="nofollow">test test</a>
-                <p class="cust-mail">admin@mail.com</p>
-                <a class="logout" href="#"><i class="fa fa-sign-out"></i></a>
+                <a class="account" href="%s" title="View my customer account" rel="nofollow">%s</a>
+                <p class="cust-mail">%s</p>
+                <a class="logout" href="%s"><i class="fa fa-sign-out"></i></a>
             </div>
         </div>
-    </div>', $logged_type, esc_url( $account_link ) , esc_html__( 'Hello,', 'dayneo' ) . ' ' . $author->display_name . '!', esc_url( wp_logout_url( $account ) ), esc_html__( 'Logout', 'dayneo' )
+    </div>', $logged_type, esc_url( $account_link ) , esc_html__( 'Hello,', 'dayneo' ) . ' ' . $author->display_name . '!', esc_url( wp_logout_url( $account ) ), esc_html__( 'Logout', 'dayneo' ), esc_url( $account_link ), esc_html($author->display_name), esc_html($author->user_email), esc_url( wp_logout_url( $account ) )
     );
 } else {
 
@@ -51,11 +51,11 @@ if ( is_user_logged_in() ) {
         <div class="user-info-wrap hidden-lg-up">
             <i class="fa fa-user-circle user-icon" aria-hidden="true"></i>
             <div class="user-info-btn">
-              <a href="#" title="Log in to your customer account" rel="nofollow">Login</a>
-              <a class="register" href="#">Register</a>
+              <a href="%s" title="Log in to your customer account" rel="nofollow">Login</a>
+              <a class="register" href="%s">Register</a>
           </div>
         </div>
-    </div>', esc_url( $account_link ), esc_html__( 'My Account', 'dayneo' ), esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ), esc_html__( 'Log in', 'dayneo' ), $register
+    </div>', esc_url( $account_link ), esc_html__( 'My Account', 'dayneo' ), esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ), esc_html__( 'Log in', 'dayneo' ), $register, esc_url( $account_link ), esc_url( $account_link )
     );
 }
 echo $items;

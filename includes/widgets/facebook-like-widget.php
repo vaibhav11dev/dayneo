@@ -1,7 +1,7 @@
 <?php
-add_action( 'widgets_init', 'facebook_like_load_widgets' );
+add_action( 'widgets_init', 'dayneo_facebook_like_widgets' );
 
-function facebook_like_load_widgets() {
+function dayneo_facebook_like_widgets() {
 	register_widget( 'Dayneo_Facebook_Like_Widget' );
 }
 
@@ -9,7 +9,7 @@ class Dayneo_Facebook_Like_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'facebook-like-widget', __( 'dayneo: Facebook Like Box', 'dayneo' ), // Name
+		'facebook-like-widget', __( 'Dayneo: Facebook Like Box', 'dayneo' ), // Name
 			      array( 'classname' => 'facebook-like', 'description' => __( 'Adds support for Facebook Like Box.', 'dayneo' ), ) // Args
 		);
 	}

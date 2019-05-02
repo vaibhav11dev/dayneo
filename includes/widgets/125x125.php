@@ -1,7 +1,7 @@
 <?php
-add_action( 'widgets_init', 'ad_125_125_load_widgets' );
+add_action( 'widgets_init', 'dayneo_ad_125_125_widgets' );
 
-function ad_125_125_load_widgets() {
+function dayneo_ad_125_125_widgets() {
 	register_widget( 'Dayneo_Ad_125_125_Widget' );
 }
 
@@ -9,7 +9,7 @@ class Dayneo_Ad_125_125_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'ad_125_125-widget', __( 'dayneo: 125x125 Ads', 'dayneo' ), // Name
+		'ad_125_125-widget', __( 'Dayneo: 125x125 Ads', 'dayneo' ), // Name
 			   array( 'classname' => 'ad_125_125', 'description' => __( 'Add 125x125 ads.', 'dayneo' ), ) // Args
 		);
 	}
