@@ -114,5 +114,9 @@ if ( $attachment_count > 0 ) {
         }
         ?>
     </div>
+    <script>
+        //product slider
+        sld();
+    </script>
 </div>
 <!-- END PRODUCT SLIDER -->

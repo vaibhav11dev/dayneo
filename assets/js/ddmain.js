@@ -169,21 +169,85 @@
             itemsMobile : [767,2]
         });
 
-        //Product Slider
-        $('.slider-for').slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: true,
-          fade: true,
-          asNavFor: '.slider-nav'
+        //widget_product_carousel
+        $('.widget_product_carousel .product_list_widget').owlCarousel({
+            pagination:false,
+            navigation:false,
+            rewind:true,
+            items:1,
+            autoPlay:5000,
+            itemsDesktop : [1200,1],
+            itemsDesktopSmall : [1199,1],
+            itemsTablet : [991,1],
+            itemsMobile : [767,1]
+        });        
+
+        //Mega menu More Dropdown
+        $(document).ready(function(){
+            if ($(document).width() >= 1340){
+                if (dayneoData.headerbar_on == '1') {
+                    var number_blocks =5;
+                }else{
+                    var number_blocks =7;
+                }
+              var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+              var moremenu = count_block.slice(number_blocks, count_block.length);
+              moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+              $('.view_menu').prepend('<a href="#"><span>More</span></a>');
+            }
+            if (($(document).width() >= 1051) && ($(document).width() <= 1339)){
+              var number_blocks = 6;
+              var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+              var moremenu = count_block.slice(number_blocks, count_block.length);
+              moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+              $('.view_menu').prepend('<a href="#"><span>More</span></a>');
+            };
         });
-        $('.slider-nav').slick({
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          asNavFor: '.slider-for',
-          arrows: true,
-          focusOnSelect: true
+
+        //Vegamenu More Dropdown
+        if(jQuery(window).width() >= 1340){
+            var max_elem = 8;   
+        }else if(jQuery(window).width() >= 1200){
+            var max_elem = 8;   
+        }else if(jQuery(window).width() >= 1051){
+            var max_elem = 6;   
+        }else if(jQuery(window).width() >= 992){
+            var max_elem = 5;   
+        }else{
+              
+        }
+        var menu = $('.vertical-megamenu .inner-nav > .menu-item');
+        if (menu.length > max_elem) {
+            $('.vertical-megamenu .inner-nav').append('<li class="menu-item"><a class="more-menu">More Categories<i class="ti-plus"></i></a></li>');
+        }
+        $('.vertical-megamenu .inner-nav > .menu-item .more-menu').click(function() {
+            if ($(this).hasClass('active')) {
+                menu.each(function(j) {
+                    if (j >= max_elem) {
+                        $(this).slideUp(500);
+                    }
+                });
+                $(this).removeClass('active');
+              
+                $('.vertical-megamenu .inner-nav > .menu-item .more-menu').html('More Categories<i class="ti-plus"></i>');
+            } else {
+                menu.each(function(j) {
+                    if (j >= max_elem) {
+                        $(this).slideDown(500);
+                    }
+                });
+                $(this).addClass('active');
+                $('.vertical-megamenu .inner-nav > .menu-item .more-menu').html('Less Categories<i class="ti-minus"></i>');
+            }
         });
+        menu.each(function(j) {
+            if (j >= max_elem) {
+                $(this).css('display', 'none');
+            }
+        });
+
+        //Wishlist Table Responsive
+        jQuery(".cart.wishlist_table").wrap("<div class='table-responsive'>");
 
         //dayneo portfolio
         var f = $("#filters");
@@ -1162,4 +1226,25 @@ jQuery(document).bind('cbox_open', function(){
 });
 jQuery(document).bind('cbox_closed', function(){
   jQuery("body").removeClass("colorbox-open");
+});
+
+/*=============Product Slider============*/
+function sld(){
+    jQuery('.slider-for').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      fade: true,
+      asNavFor: '.slider-nav'
+    });
+    jQuery('.slider-nav').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      asNavFor: '.slider-for',
+      arrows: true,
+      focusOnSelect: true
+    });
+};
+jQuery(document).ready(function(){
+    sld();
 });

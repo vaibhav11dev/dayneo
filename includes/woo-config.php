@@ -502,8 +502,9 @@ function dayneo_woocommerce_view_order( $order_id ) {
     $order              = wc_get_order( $order_id );
     $order_item_product = new WC_Order_Item_Product();
     ?>
-    <div class="dayneo-order-details woocommerce-content-box table-responsive">
-        <h2><?php esc_html_e( 'Order Details', 'dayneo' ); ?></h2>
+    <div class="dayneo-order-details woocommerce-content-box">
+        <div class="sec-head-style"><h3 class="text-title"><?php esc_html_e( 'Order Details', 'dayneo' ); ?></h3></div>
+        <div class="table-responsive">
         <table class="table cart-table order_details">
             <thead>
                 <tr>
@@ -522,7 +523,7 @@ function dayneo_woocommerce_view_order( $order_id ) {
                             <td class="filler-td">&nbsp;</td>
                             <td class="filler-td">&nbsp;</td>
                             <th scope="row"><?php echo esc_html( $total[ 'label' ] ); ?></th>
-                            <td class="product-total"><?php echo esc_html( total[ 'value' ] ); ?></td>
+                            <td class="product-total"><?php echo $total[ 'value' ]; ?></td>
                         </tr>
                         <?php
                     endforeach;
@@ -579,7 +580,7 @@ function dayneo_woocommerce_view_order( $order_id ) {
                                 <?php echo apply_filters( 'woocommerce_order_item_quantity_html', $item[ 'qty' ], $item ); ?>
                             </td>
                             <td class="col-subtotal">
-                                <?php echo esc_html( $order->get_formatted_line_subtotal( $item ) ); ?>
+                                <?php echo $order->get_formatted_line_subtotal( $item ); ?>
                             </td>
                         </tr>
                         <?php
@@ -599,75 +600,12 @@ function dayneo_woocommerce_view_order( $order_id ) {
                 ?>
             </tbody>
         </table>
+        </div>
 
         <?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
     </div>
 
-    <div class="dayneo-customer-details woocommerce-content-box full-width">
-        <header>
-            <h2><?php esc_html_e( 'Customer details', 'dayneo' ); ?></h2>
-        </header>
-        <dl class="customer_details">
-            <?php
-            if ( $order->get_customer_note() )
-                echo '<dt>' . esc_html__( 'Note:', 'dayneo' ) . '</dt> <dd>' . esc_html( $order->get_customer_note() ) . '</dd>';
-            if ( $order->get_billing_email() )
-                echo '<dt>' . esc_html__( 'Email:', 'dayneo' ) . '</dt> <dd>' . esc_html( $order->get_billing_email() ) . '</dd>';
-            if ( $order->get_billing_phone() )
-                echo '<dt>' . esc_html__( 'Telephone:', 'dayneo' ) . '</dt> <dd>' . esc_html( $order->get_billing_phone() ) . '</dd>';
-
-            // Additional customer details hook
-            do_action( 'woocommerce_order_details_after_customer_details', $order );
-            ?>
-        </dl>
-
-        <?php if ( get_option( 'woocommerce_ship_to_billing_address_only' ) === 'no' && get_option( 'woocommerce_calc_shipping' ) !== 'no' ) : ?>
-
-            <div class="col2-set addresses">
-
-                <div class="col-1">
-
-                <?php endif; ?>
-
-                <header class="title">
-                    <h3><?php esc_html_e( 'Billing Address', 'dayneo' ); ?></h3>
-                </header>
-                <address><p>
-                        <?php
-                        if ( ! $order->get_formatted_billing_address() )
-                            esc_html_e( 'N/A', 'dayneo' );
-                        else
-                            echo esc_html( $order->get_formatted_billing_address() );
-                        ?>
-                    </p></address>
-
-                <?php if ( get_option( 'woocommerce_ship_to_billing_address_only' ) === 'no' && get_option( 'woocommerce_calc_shipping' ) !== 'no' ) : ?>
-
-                </div><!-- /.col-1 -->
-
-                <div class="col-2">
-
-                    <header class="title">
-                        <h3><?php esc_html_e( 'Shipping Address', 'dayneo' ); ?></h3>
-                    </header>
-                    <address><p>
-                            <?php
-                            if ( ! $order->get_formatted_shipping_address() )
-                                esc_html_e( 'N/A', 'dayneo' );
-                            else
-                                echo esc_html( $order->get_formatted_shipping_address() );
-                            ?>
-                        </p></address>
-
-                </div><!-- /.col-2 -->
-
-            </div><!-- /.col2-set -->
-
-        <?php endif; ?>
-
-        <div class="clear"></div>
-
-    </div>
+    
 
     <?php
 }
