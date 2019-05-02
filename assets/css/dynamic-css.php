@@ -624,7 +624,8 @@ a:focus,
 .tags a:hover,
 .divider-line::after,
 .button.wc-backward:hover,
-.button.wc-forward
+.button.wc-forward,
+.wishlist_table .product-add-to-cart .button:hover
 {
     background: ' . esc_attr($dd_primary_color) . ';
 }
@@ -657,7 +658,8 @@ a:focus,
 .post .entry-meta .read-more:hover,.navigation-links a:hover,
 .woocommerce div.product div.summary .yith-wcwl-add-to-wishlist a:hover, .woocommerce div.product div.summary .compare:hover,
 .innovatoryNextPrev .nextPrevProduct a.button,
-.cart-table .product-name a:hover
+.cart-table .product-name a:hover,
+.woocommerce-account .woocommerce-MyAccount-navigation ul li.is-active a, .woocommerce-account .woocommerce-MyAccount-navigation ul li:hover a
 {
     color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -681,7 +683,8 @@ a:focus,
 .shop-item-tools a:hover, .button.wishlist .yith-wcwl-add-button a.add_to_wishlist:hover,
 .product .onsale,
 .single-product .product .single_add_to_cart_button:hover, #review_form .submit:hover, .woocommerce-address-fields .button:hover, .woocommerce-form-coupon .button:hover, .woocommerce .woocommerce-Button:hover, .widget_product_search .widget-content button:hover, .wpcf7-submit:hover,
-.woocommerce div.product .product-slider .slick-arrow:hover
+.woocommerce div.product .product-slider .slick-arrow:hover,
+.woocommerce-account .woocommerce-MyAccount-navigation ul li.is-active:before, .woocommerce-account .woocommerce-MyAccount-navigation ul li:hover:before
 {
     background-color: ' . esc_attr($dd_primary_color) . ';
 }
