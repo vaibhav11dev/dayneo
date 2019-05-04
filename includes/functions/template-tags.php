@@ -148,18 +148,7 @@ if ( ! function_exists( 'dayneo_post_thumbnail' ) ) :
                             ) );
                             ?>
                         </a>
-                    </div>
-                    <?php
-                    if ( $dd_blog_style == 'grid' ) {
-                        ?>
-                        <span class="blogicons">
-                            <a href="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" rel="blog_group" class="icon grouped_elements zoom ti-search"></a> 
-                            <a title="Click to view Read More" href="<?php the_permalink(); ?>" class="icon readmore ti-link"></a>
-                        </span>
-                        <?php
-                        dayneo_girdpost_metadate();
-                    }
-                    ?>
+                    </div>                   
                 </div>
 
                 <?php
@@ -223,7 +212,7 @@ function dayneo_post_metadata() {
         <?php
     }
 
-    if ( $dd_options[ 'dd_meta_date' ] == 1 && $dd_options[ 'dd_blog_style' ] != 'grid' ) {
+    if ( $dd_options[ 'dd_meta_date' ] == 1 ) {
         ?>
         <li class="published updated">
             <a href="<?php the_permalink() ?>"><i class="fa fa-calendar"></i><?php the_time( get_option( 'date_format' ) ); ?></a>
@@ -256,15 +245,6 @@ function dayneo_post_metadata() {
         <li class="comment-count">
         <?php comments_popup_link( __( 'Leave a Comment', 'dayneo' ), __( '1 Comment', 'dayneo' ), __( '% Comments', 'dayneo' ) ); ?>
         </li>
-        <?php
-    }
-}
-
-function dayneo_girdpost_metadate() {
-    $dd_meta_date = dayneo_get_option( 'dd_meta_date' );
-    if ( $dd_meta_date == 1 ) {
-        ?>
-        <p class="meta_date"> <span class="day_date"><?php the_time( 'j' ) ?></span><span class="day_month"><?php the_time( 'M' ) ?></span></p>
         <?php
     }
 }
