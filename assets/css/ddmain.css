@@ -49,12 +49,12 @@ ins {
 }
 
 ::-moz-selection {
-    background: #27CBC0;
+    background: #3ab54a;
     color: #fff !important;
 }
 
 ::-webkit-selection {
-    background: #27CBC0;
+    background: #3ab54a;
     color: #fff !important;
 }
 
@@ -63,7 +63,7 @@ ins {
 }
 
 ::selection {
-    background: #27CBC0;
+    background: #3ab54a;
     color: #fff !important;
 }
 
@@ -95,7 +95,7 @@ p {
 */
 
 a {
-    /*color: #27CBC0;*/
+    /*color: #3ab54a;*/
     color: #666;
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
@@ -105,7 +105,7 @@ a:hover,
 a:focus {
     outline: 0;
     text-decoration: none;
-    color: #1fa098;
+    color: #3ab54a;
 }
 
 h1 a,
@@ -214,7 +214,7 @@ h6,
 
 .divider-line:after {
     display: block;
-    background: #27CBC0;
+    background: #3ab54a;
     content: " ";
     margin: 20px auto 20px 0;
     opacity: 0.6;
@@ -380,11 +380,11 @@ hr {
 }
 
 .color-brand {
-    color: #27CBC0;
+    color: #3ab54a;
 }
 
 .color-brand-hvr {
-    color: #1fa098;
+    color: #3ab54a;
 }
 
 .color-facebook {
@@ -627,7 +627,7 @@ hr {
 }
 
 .alert-brand {
-    background: #27CBC0;
+    background: #3ab54a;
     color: #17756f;
 }
 
@@ -650,7 +650,7 @@ hr {
 
 .progress-bar {
     position: relative;
-    background-color: #27CBC0;
+    background-color: #3ab54a;
     border-radius: 28px;
     box-shadow: none;
     color: #333333;
@@ -701,7 +701,7 @@ hr {
 }
 
 .label-base {
-    background: #27CBC0;
+    background: #3ab54a;
 }
 
 /*------------------------------------------------------------------
@@ -728,7 +728,7 @@ hr {
 }
 
 .form-control:focus {
-    border-color: #27CBC0;
+    border-color: #3ab54a;
     box-shadow: none;
 }
 
@@ -997,7 +997,7 @@ table th {
 
 .btn.btn-base.btn-outline:hover,
 .btn.btn-base.btn-outline:focus {
-    background: #27CBC0;
+    background: #3ab54a;
     color: #fff;
 }
 
@@ -1006,7 +1006,7 @@ table th {
     border: 0;
     padding: 0;
     color: #222;
-    /*color: #27CBC0;*/
+    /*color: #3ab54a;*/
 }
 
 .btn.btn-base.btn-link:hover,
@@ -1025,8 +1025,8 @@ table th {
 .btn.btn-base.btn-fade:hover,
 .btn.btn-base.btn-fade:focus {
     background: transparent;
-    border-color: #27cbc0;
-    color: #27cbc0;
+    border-color: #3ab54a;
+    color: #3ab54a;
 }
 
 .btn.btn-gray {
@@ -1506,7 +1506,7 @@ table th {
 
 .breadcrumb a:hover,
 .breadcrumb a:focus {
-    color: #27CBC0;
+    color: #3ab54a;
 }
 
 .breadcrumb > li + li:before {
@@ -1533,7 +1533,7 @@ table th {
 .box-icon-left .icon-box-icon,
 .box-icon-right .icon-box-icon {
     font-size: 34px;
-    color: #27CBC0;
+    color: #3ab54a;
     margin: 0 0 10px;
 }
 
@@ -2386,7 +2386,7 @@ table th {
     position: absolute;
     width: 100%;
     height: 2px;
-    background: #27CBC0;
+    background: #3ab54a;
     bottom: 10px;
     opacity: 0;
     -webkit-transition: all 0.3s ease;
@@ -2646,12 +2646,12 @@ table th {
 }
 
 .owl-controls-brand .owl-page span {
-    background: #27CBC0;
+    background: #3ab54a;
 }
 
 .owl-controls-brand .owl-page.active span {
     background: transparent;
-    box-shadow: 0px 0px 0px 3px #27cbc0;
+    box-shadow: 0px 0px 0px 3px #3ab54a;
 }
 
 @media (max-width: 767px) {
@@ -2692,15 +2692,15 @@ table th {
 .pagination > li > a:focus,
 .pagination > li > span:hover,
 .pagination > li > span:focus {
-    background: #27CBC0;
-    border-color: #27CBC0;
+    background: #3ab54a;
+    border-color: #3ab54a;
     color: #ffffff;
 }
 
 .pagination > .active > a,
 .pagination > .active > span {
-    background: #27CBC0;
-    border-color: #27CBC0;
+    background: #3ab54a;
+    border-color: #3ab54a;
     color: #ffffff;
 }
 
@@ -2708,8 +2708,8 @@ table th {
 .pagination > .active > a:focus,
 .pagination > .active > span:hover,
 .pagination > .active > span:focus {
-    background: #27CBC0;
-    border-color: #27CBC0;
+    background: #3ab54a;
+    border-color: #3ab54a;
     color: #ffffff;
 }
 
@@ -2734,8 +2734,8 @@ table th {
 .pager li > a:focus,
 .pager li > span:hover,
 .pager li > span:focus {
-    background: #27CBC0;
-    border-color: #27CBC0;
+    background: #3ab54a;
+    border-color: #3ab54a;
     color: #ffffff;
 }
 
@@ -3026,12 +3026,12 @@ table th {
 }
 
 .owl-page span {
-    background: #27CBC0;
+    background: #3ab54a;
 }
 
 .owl-page.active span {
     background: transparent;
-    box-shadow: 0px 0px 0px 3px #27cbc0;
+    box-shadow: 0px 0px 0px 3px #3ab54a;
 }
 
 @media screen and (min-width: 768px){
@@ -3346,7 +3346,7 @@ table th {
 
 .cart-badge {
     position: absolute;
-    background: #27CBC0;
+    background: #3ab54a;
     border-radius: 100%;
     height: 14px;
     width: 14px;
@@ -4127,11 +4127,11 @@ table th {
 }
 
 .bg-brand {
-    background-color: #27CBC0;
+    background-color: #3ab54a;
 }
 
 .bg-brand-hvr {
-    background-color: #1fa098;
+    background-color: #3ab54a;
 }
 
 .bg-facebook {
@@ -5025,7 +5025,7 @@ table th {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 12px;
-    color: #27CBC0;
+    color: #3ab54a;
     list-style: none;
     padding: 0;
 }
@@ -5589,7 +5589,7 @@ table th {
 
 .tags a:hover,
 .tags a:focus {
-    background: #27CBC0;
+    background: #3ab54a;
     color: #ffffff;
 }
 
@@ -5675,7 +5675,7 @@ table th {
 
 .comment-tools a:hover,
 .comment-tools a:focus {
-    color: #27CBC0;
+    color: #3ab54a;
 }
 
 @media (min-width: 768px) {
@@ -6716,7 +6716,7 @@ body.colorbox-open {
 
 .icons-list a:hover,
 .icons-list a:focus {
-    color: #27CBC0;
+    color: #3ab54a;
 }
 
 .icons-list a > .fa,
@@ -7097,14 +7097,14 @@ body .footer {
     text-decoration: none;
 }
 .widget .widget-content li {
-    /*color: #27CBC0;*/
+    /*color: #3ab54a;*/
     color: #666;
 }
 .widget_products .widget-content li{
     color: #222222;
 }
 .widget .widget-content ul li a:hover {
-    color: #1fa098;
+    color: #3ab54a;
     text-decoration: none;
     padding-left: 5px;
 }
@@ -7821,8 +7821,8 @@ table td {
 .widget_product_search .widget-content button,
 .wpcf7-submit {
     /*    border-radius: 2px;
-	background-color: #27CBC0;
-	border-color: #27CBC0;
+	background-color: #3ab54a;
+	border-color: #3ab54a;
 	color: #fff;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -7869,7 +7869,7 @@ table td {
 .wpcf7-textarea:focus,
 .wpcf7-select:focus,
 .mc4wp-form-fields .input-wrapper input:focus {
-    border-color: #27CBC0;
+    border-color: #3ab54a;
     box-shadow: none;
 }
 
@@ -8767,7 +8767,7 @@ ul.nav-menu .ved-megamenu-menu .widget-content ul li .ved-megamenu-menu .widget-
 
 .widget_nav_menu .sub-menu {
     list-style-type: disclosure-closed;
-    color: #1fa098;
+    color: #3ab54a;
     margin-left: 15px;
     padding: 0;
 }

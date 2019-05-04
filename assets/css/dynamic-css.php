@@ -582,8 +582,8 @@ ul.nav-menu li li.current-menu-ancestor .ved-megamenu-title a {
   [Main Color Scheme Style]
  */
 
-$dd_primary_color	 = dayneo_get_option( 'dd_primary_color', '#27CBC0' );
-$dd_secondry_color	 = dayneo_get_option( 'dd_secondry_color', '#1fa098' );
+$dd_primary_color	 = dayneo_get_option( 'dd_primary_color', '#3ab54a' );
+$dd_secondry_color	 = dayneo_get_option( 'dd_secondry_color', '#3ab54a' );
 $dayneo_dynamic_css	 .= '
 ::-moz-selection {
     background: ' . esc_attr($dd_primary_color) . ';

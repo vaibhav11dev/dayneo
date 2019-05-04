@@ -29,12 +29,13 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 $dd_woocommerce_layout = $dd_options[ 'dd_woocommerce_layout' ];
 $woo_product_layout    = (12 / $dd_woocommerce_layout);
 
+$shop_col_class = '';
 if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {
     $shop_col_class = 'col-sm-6 col-md-3 col-lg-3';
 } elseif ( $woocommerce_loop[ 'is_shortcode' ] == 'yes' ) {
     $woo_product_layout = (12 / $woocommerce_loop[ 'columns' ]);
     $shop_col_class     = 'col-sm-4 col-md-4 col-lg-' . $woo_product_layout . '';
-} else {
+} elseif ( is_shop() ) {
     $shop_col_class = 'col-sm-4 col-md-4 col-lg-' . $woo_product_layout . '';
 }
 ?>

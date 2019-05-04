@@ -4,9 +4,9 @@ var ColorPalettes = {
     colorpalettesFieldName: 'dd_color_palettes',
     colorpalettesValue: {
         'color_palette_1': [
-            {fieldType: 'color', fieldName: 'dd_primary_color', fieldValue: '#27CBC0'},
-            {fieldType: 'color', fieldName: 'dd_secondry_color', fieldValue: '#1fa098'},
-            {fieldType: 'color', fieldName: 'dd_portfolio_hover_color', fieldValue: '#1fa098'},
+            {fieldType: 'color', fieldName: 'dd_primary_color', fieldValue: '#3ab54a'},
+            {fieldType: 'color', fieldName: 'dd_secondry_color', fieldValue: '#3ab54a'},
+            {fieldType: 'color', fieldName: 'dd_portfolio_hover_color', fieldValue: '#3ab54a'},
 	],
         'color_palette_2': [
             {fieldType: 'color', fieldName: 'dd_primary_color', fieldValue: '#3498db'},

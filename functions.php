@@ -28,6 +28,7 @@ function dayneo_scripts() {
     wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
     wp_enqueue_style( 'flexslider', get_template_directory_uri() . '/assets/css/flexslider.css' );
     wp_enqueue_style( 'animate', get_template_directory_uri() . '/assets/css/animate.min.css' );
+    wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/slick/slick.css' );
 
     //Theme Core CSS
     wp_enqueue_style( 'ddgeneral', get_template_directory_uri() . '/assets/css/ddgeneral.css' );
@@ -51,6 +52,7 @@ function dayneo_scripts() {
     wp_enqueue_script( 'ddcore', get_template_directory_uri() . '/assets/js/ddcore.min.js', array( 'jquery' ), DAYNEO_VERSION, true );
     wp_enqueue_script( 'ddmain', get_template_directory_uri() . '/assets/js/ddmain.js', array( 'jquery' ), DAYNEO_VERSION, true );
     wp_enqueue_script( 'dayneo-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/assets/slick/slick.min.js', array( 'jquery' ), '1.0', true );
 
 $menu_extras = dayneo_get_option( 'menu_extras' );
     wp_localize_script( 'ddmain', 'dayneoData', array(

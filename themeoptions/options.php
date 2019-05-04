@@ -1342,7 +1342,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => __( 'Portfolio Hover Color', 'dayneo' ),
-			'default'	 => '#1fa098',
+			'default'	 => '#3ab54a',
 		),
 		array(
 			'subtitle'	 => __( 'Select the sidebar that will be added to the archive/category portfolio pages.', 'dayneo' ),
@@ -1831,8 +1831,8 @@ Redux::setSection( $dd_options, array(
 			'default'	 => 'color_palette_1',
 			'palettes'	 => array(
 				'color_palette_1'	 => array(
-					'#27CBC0',
-					'#1fa098',
+					'#3ab54a',
+					'#3ab54a',
 					'#222222',
 					'#777777',
 				),
@@ -1868,7 +1868,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => __( 'Primary Color', 'dayneo' ),
-			'default'	 => '#27CBC0',
+			'default'	 => '#3ab54a',
 		),
 		array(
 			'subtitle'	 => __( 'Secondry color of site', 'dayneo' ),
@@ -1876,7 +1876,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => __( 'Secondry Color', 'dayneo' ),
-			'default'	 => '#1fa098',
+			'default'	 => '#3ab54a',
 		),		
 	),
 )
