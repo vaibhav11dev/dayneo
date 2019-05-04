@@ -163,21 +163,14 @@ function dayneo_similar_posts() {
                                 <div class="<?php echo esc_attr($css_similar_posts); ?>">
 					<!--  BLOG CONTENT  -->
 					<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo dayneo_post_format(); ?>">
-                                            <?php
-                                            $dd_featured_images = dayneo_get_option( 'dd_featured_images', '1' );
-                                            if ( has_post_thumbnail() && $dd_featured_images == "1" ) {	
-                                            ?>
-                                            <div class="post_thumbnail">
-							<?php
-							dayneo_post_thumbnail('medium');
-							?>
-                                                        <span class="blogicons">
-                                                            <a href="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(),'full')); ?>" rel="blog_group" class="icon grouped_elements zoom ti-search"></a> 
-                                                            <a title="Click to view Read More" href="<?php the_permalink(); ?>" class="icon readmore ti-link"></a>
-                                                        </span>
-							<p class="meta_date"> <span class="day_date"><?php the_time('j') ?></span><span class="day_month"><?php the_time('M') ?></span></p>
+                        <?php
+                        $dd_featured_images = dayneo_get_option( 'dd_featured_images', '1' );
+                        if ( has_post_thumbnail() && $dd_featured_images == "1" ) {	
+                        ?>
+                        <div class="post_thumbnail">
+							<?php dayneo_post_thumbnail('medium'); ?>
 						</div>
-                                                <?php } ?>
+                        <?php } ?>
 						<div class="post-content">
 
 							<div class="entry-meta entry-header">

@@ -15,7 +15,7 @@ global $dd_options;
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 				<div class="row">
-					<div class="col-sm-12">
+					<div class="col-md-8">
 
 						<?php
 						if ( has_post_thumbnail() && ( get_post_meta( $post->ID, 'dayneo_po_featured_image', true ) == 'yes' || (get_post_meta( $post->ID, 'dayneo_po_featured_image', true ) == 'default' && $dd_options[ 'dd_portfolio_featured_image' ]) ) ):
@@ -28,12 +28,10 @@ global $dd_options;
 						endif;
 						?>   
 
+						<div class="portfolio-content mt-30"><?php the_content(); ?></div>
+
 					</div>
-				</div><!-- .row -->
-
-				<div class="row m-t-50">
-
-					<div class="col-sm-4">
+					<div class="col-md-4">
 						<ul class="portfolio-info">
 							<?php
 							if ( get_the_term_list( $post->ID, 'portfolio_category', '', ',&nbsp', '' ) ):
@@ -104,13 +102,6 @@ global $dd_options;
 							?>
 						</ul>
 					</div>
-
-					<!-- CONTENT -->
-					<div class="col-sm-8">
-						<?php the_content(); ?>
-					</div>
-					<!-- END CONTENT -->
-
 				</div><!-- .row -->
 
 			</div>
@@ -220,11 +211,13 @@ if ( get_post_meta( $post->ID, 'dayneo_po_related_posts', true ) == 'yes' ||
 	if ( $projects->have_posts() ):
 		?>
 		<!-- RECENT PROJECTS -->
-		<section class="module p-0">
+		<section class="module divider-top portfolio-related">
+			<div class="container">
 			<div class="works-grid-wrapper">
 
 				<!-- WORKS GRID -->
-				<div id="works-grid" class="works-grid works-grid-4">
+				<div class="sec-head-style"><h3 class="text-title text-uppercase page-heading">Similar Portfolio</h3></div>
+				<div id="works-grid" class="works-grid works-grid-4 works-grid-gutter">
 					<?php
 					while ( $projects->have_posts() ): $projects->the_post();
 
@@ -270,6 +263,7 @@ if ( get_post_meta( $post->ID, 'dayneo_po_related_posts', true ) == 'yes' ||
 				</div>
 				<!-- END WORKS GRID -->
 
+			</div>
 			</div>
 		</section>
 		<!-- END RECENT PROJECTS -->

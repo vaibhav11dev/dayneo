@@ -87,14 +87,14 @@ if ( $dd_footer_parallax == 1 ) {
         <?php } ?>
         <div class="copyright">	
             <div class="container"><!-- .container fluid -->
-                <div class="row">
-                    <div class="col-xs-12 col-lg-5 footer-pay-p">
+                <div class="row footer-payment">
+                    <div class="col-xs-12 col-md-5 footer-pay-p">
                         <?php
                         $dd_footer_content = dayneo_get_option( 'dd_footer_content', '' );
                         echo wp_kses_post( $dd_footer_content );
                         ?>
                     </div>
-                    <div class="col-xs-12 col-lg-7 text-center">
+                    <div class="col-xs-12 col-md-7 text-center">
 
                         <div id="paiement_logos" class="payment_logos_images">
                             <p class="payment-p"><?php echo esc_html_e( 'Payment acceptable on', 'dayneo' ); ?></p>

@@ -1166,16 +1166,6 @@ function accordion(status)
     }
 }
 
-/*=============blog image popup============*/
-jQuery('.post-columns').magnificPopup({
-    delegate: '.grouped_elements', // child items selector, by clicking on it popup will open
-    type: 'image',
-    gallery: {
-        enabled:true
-    }
-  // other options
-});
-
 /*=============Mobile header============*/
 jQuery(document).ready(function(){
     jQuery("#menu-icon").on("click", function() {
@@ -1248,3 +1238,12 @@ function sld(){
 jQuery(document).ready(function(){
     sld();
 });
+
+/*Product Action Button Wrap Div*/
+jQuery(".shop-item .shop-item-photo .shop-item-tools .yith-wcqv-button").wrap("<div class='action-btn quick-view-warp'>");
+jQuery(".shop-item .shop-item-photo .shop-item-tools .compare").wrap("<div class='action-btn compare-warp'>");
+
+//contact form 7 on submit hide message
+document.addEventListener( 'wpcf7submit', function( event ) {
+    setTimeout(function(){  jQuery(".wpcf7-response-output").slideUp(); }, 3000);
+}, false );
