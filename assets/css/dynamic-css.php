@@ -197,6 +197,10 @@ if ( $dayneo_page_title_bar_height == 'custom' && $dayneo_page_title_bar_height_
 ';
 }
 
+$dayneo_enable_page_title	 = get_post_meta( $post_id, 'dayneo_enable_page_title', true );
+if (empty($dayneo_enable_page_title)) {
+    $dayneo_enable_page_title = 'default';
+}
 $dd_pagetitlebar_background_color	 = dayneo_get_option( 'dd_pagetitlebar_background_color', '' );
 $dayneo_page_title_bar_bg_color	 = get_post_meta( $post_id, 'dayneo_page_title_bar_bg_color', true );
 // 1.2 Page Title Bar Background Color
@@ -206,7 +210,7 @@ if ( $dayneo_page_title_bar_bg_color ) {
 	background-color: ' . esc_attr($dayneo_page_title_bar_bg_color) . ';
 }
 ';
-} elseif ( $dd_pagetitlebar_background_color ) {
+} elseif ( $dayneo_enable_page_title == 'default' && $dd_pagetitlebar_background_color ) {
 	$dayneo_dynamic_css .= '
 .titlebar-bg {
 	background-color: ' . esc_attr($dd_pagetitlebar_background_color) . ';
@@ -223,7 +227,7 @@ if ( $dayneo_page_title_bar_bg ) {
 	background-image: url("' . esc_url(wp_get_attachment_url( $dayneo_page_title_bar_bg )) . '");
 }
 ';
-} elseif ( isset( $dd_pagetitlebar_background[ 'url' ] ) && $dd_pagetitlebar_background[ 'url' ] ) {
+} elseif ( $dayneo_enable_page_title == 'default' && isset( $dd_pagetitlebar_background[ 'url' ] ) && $dd_pagetitlebar_background[ 'url' ] ) {
 	$dayneo_dynamic_css .= '
 .titlebar-bg {
 	background-image: url("' . esc_url($dd_pagetitlebar_background[ 'url' ]) . '");

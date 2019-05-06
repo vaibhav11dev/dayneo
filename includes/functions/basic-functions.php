@@ -1120,6 +1120,9 @@ function dayneo_titlebar_bg_class() {
 
 	$dd_pagetitlebar_height		 = dayneo_get_option( 'dd_pagetitlebar_height', 'medium' );
 	$dayneo_page_title_bar_height	 = get_post_meta( $post_id, 'dayneo_page_title_bar_height', true );
+        if (empty($dayneo_page_title_bar_height)) {
+            $dayneo_page_title_bar_height = 'default';
+        }
 	if ( $dayneo_page_title_bar_height == 'small' || ( $dayneo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'small' ) ) {
 		$titlebar_bg .= ' module-xs';
 	} elseif ( $dayneo_page_title_bar_height == 'medium' || ( $dayneo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'medium' ) ) {
@@ -1128,20 +1131,13 @@ function dayneo_titlebar_bg_class() {
 		$titlebar_bg .= ' module-md';
 	} elseif ( $dayneo_page_title_bar_height == 'custom' || ( $dayneo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'custom' ) ) {
 		$titlebar_bg .= ' titlebar-custom';
-	} elseif ( is_search() || is_404() || is_archive() || ( class_exists( 'Woocommerce' ) && is_product() ) ) {
-            if ( $dd_pagetitlebar_height == 'small' ) {
-                $titlebar_bg .= ' module-xs';
-            } elseif ( $dd_pagetitlebar_height == 'medium' ) {
-                $titlebar_bg .= ' module-sm';
-            } elseif ( $dd_pagetitlebar_height == 'large' ) {
-                $titlebar_bg .= ' module-md';
-            } elseif ( $dd_pagetitlebar_height == 'custom' ) {
-                $titlebar_bg .= ' titlebar-custom';
-            }
-        }
+	}
 
 	$dd_pagetitlebar_background_parallax	 = dayneo_get_option( 'dd_pagetitlebar_background_parallax', 0 );
 	$dayneo_page_title_bar_parallax_bg	 = get_post_meta( $post_id, 'dayneo_page_title_bar_parallax_bg', true );
+        if (empty($dayneo_page_title_bar_parallax_bg)) {
+            $dayneo_page_title_bar_parallax_bg = 'default';
+        }
         if ( $dayneo_page_title_bar_parallax_bg == 'yes' || ( $dayneo_page_title_bar_parallax_bg == 'default' && $dd_pagetitlebar_background_parallax == 1 ) ) {
             $titlebar_bg .= ' bg-parallax';
         } elseif ( (is_search() || is_404() || is_archive() || ( class_exists( 'Woocommerce' ) && is_product() )) && $dd_pagetitlebar_background_parallax == 1 ) {
@@ -1229,15 +1225,18 @@ function dayneo_titlebar_title_check() {
 
 	$dd_display_pagetitlebar	 = dayneo_get_option( 'dd_display_pagetitlebar', 'titlebar_breadcrumb' );
 	$dayneo_display_page_title	 = get_post_meta( $post_id, 'dayneo_display_page_title', true );
+        if (empty($dayneo_display_page_title)) {
+            $dayneo_display_page_title = 'default';
+        }
 	if ( is_search() || is_404() || is_archive() || is_bbpress() || is_product() ) {
 		if ( $dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "titlebar" ) {
 			$get_titlebar = true;
 		}
 	} elseif ( is_single() || is_page() || is_buddypress() || is_home() ) {
-		if ( $dayneo_display_page_title == "default" && ($dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "titlebar") ) {
+		if ( $dayneo_display_page_title == 'default' && ($dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "titlebar") ) {
 			$get_titlebar = true;
 		}
-		if ( $dayneo_display_page_title != "default" && ($dayneo_display_page_title == 'titlebar' || $dayneo_display_page_title == 'titlebar_breadcrumb') ) {
+		if ( $dayneo_display_page_title != 'default' && ($dayneo_display_page_title == 'titlebar' || $dayneo_display_page_title == 'titlebar_breadcrumb') ) {
 			$get_titlebar = true;
 		}
 	} else {
@@ -1272,16 +1271,18 @@ function dayneo_titlebar_breadcrumb_check() {
 	$get_titlebar			 = false;
 	$dd_display_pagetitlebar	 = dayneo_get_option( 'dd_display_pagetitlebar', 'titlebar_breadcrumb' );
 	$dayneo_display_page_title	 = get_post_meta( $post_id, 'dayneo_display_page_title', true );
-
+        if (empty($dayneo_display_page_title)) {
+            $dayneo_display_page_title = 'default';
+        }
 	if ( is_search() || is_404() || is_archive() || is_bbpress() || is_product() ) {
-		if ( $dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "titlebar" ) {
+		if ( $dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "breadcrumb" ) {
 			$get_titlebar = true;
 		}
 	} elseif ( is_single() || is_page() || is_buddypress() || is_home() ) {
-		if ( $dayneo_display_page_title == "default" && ($dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "breadcrumb") ) {
+		if ( $dayneo_display_page_title == 'default' && ($dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "breadcrumb") ) {
 			$get_titlebar = true;
 		}
-		if ( $dayneo_display_page_title != "default" && ($dayneo_display_page_title == 'breadcrumb' || $dayneo_display_page_title == 'titlebar_breadcrumb') ) {
+		if ( $dayneo_display_page_title != 'default' && ($dayneo_display_page_title == 'breadcrumb' || $dayneo_display_page_title == 'titlebar_breadcrumb') ) {
 			$get_titlebar = true;
 		}
 	} else {
@@ -1344,18 +1345,15 @@ function dayneo_breadcrumb() {
 			echo '<li>' . esc_html(get_the_title()) . '</li>';
 		}
 		if ( is_single() && ! is_attachment() ) {
+                        $post_type	 = get_post_type( $post->ID );
 			$cat_1_line	 = '';
-			$categories_1	 = get_the_category( $post->ID );
-			if ( $categories_1 ):
-				foreach ( $categories_1 as $cat_1 ):
-					$cat_1_ids[] = $cat_1->term_id;
-				endforeach;
-				$cat_1_line = implode( ',', $cat_1_ids );
-			endif;
-			$categories = get_categories( array(
-				'include'	 => $cat_1_line,
-				'orderby'	 => 'id'
-			) );
+
+                        if ( $post_type == 'dayneo_portfolio') {
+                            $categories	 = get_the_terms( $post->ID, 'portfolio_category' );
+                        } else {
+                            $categories	 = get_the_category( $post->ID );
+                        }
+
 			if ( $categories ) :
 				foreach ( $categories as $cat ) :
 					$cats[] = '<li><a href="' . esc_url(get_category_link( $cat->term_id )) . '" title="' . $cat->name . '">' . $cat->name . '</a></li>';

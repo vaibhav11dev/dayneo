@@ -181,14 +181,12 @@
 			<?php
 			$dd_pagetitlebar_layout		 = dayneo_get_option( 'dd_pagetitlebar_layout', 1 );
 			$dayneo_enable_page_title	 = get_post_meta( $post_id, 'dayneo_enable_page_title', true );
+                        if (empty($dayneo_enable_page_title)) {
+                            $dayneo_enable_page_title = 'default';
+                        }
                         if ( is_home() || is_front_page() ) {
                             //Do Nothing
-                        } elseif ( (is_search() || is_404() || is_archive() || ( class_exists( 'Woocommerce' ) && is_product() )) && $dd_pagetitlebar_layout == 1 ) {
-                            if ( class_exists( 'Woocommerce' ) ) {
-                                if ( ! is_shop() )
-                                    dayneo_page_title_bar();
-                            } else {
-                                dayneo_page_title_bar();
-                            }
+                        } elseif ( $dayneo_enable_page_title == 'on' || ( $dayneo_enable_page_title == 'default' && $dd_pagetitlebar_layout == 1 ) ) {
+                            dayneo_page_title_bar();
                         }
 	    
