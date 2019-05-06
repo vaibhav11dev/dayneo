@@ -994,7 +994,7 @@ function dayneo_shop_wrapper_end() {
 
 				<!-- SECONDARY-1 -->
 				<?php
-				if ( dayneo_lets_get_sidebar() == true ) {
+				if ( dayneo_lets_get_sidebar() == true || is_archive() ) {
 					get_sidebar();
 				}
 				?>
@@ -1484,6 +1484,8 @@ function dayneo_layout_class( $type = 1 ) {
         if ( class_exists( 'Woocommerce' ) ):
                 if ( is_cart() || is_checkout() || is_account_page() || (get_option( 'woocommerce_thanks_page_id' ) && is_page( get_option( 'woocommerce_thanks_page_id' ) )) ) {
                         $layout_css = 'col-md-12 full-width';
+                } elseif (is_archive() && $dd_layout == '1c' && !is_category()) {
+                        $layout_css	 = 'col-md-9 float-right col-single';
                 }
         endif;
 
@@ -1668,12 +1670,11 @@ function dayneo_sidebar_class() {
 		endswitch;
 	endif;
 
-//	if ( class_exists( 'Woocommerce' ) ):
-//		$shop_sidebar = dayneo_get_option( 'dd_shop_sidebar', 'None' );
-//		if ( is_shop() && $shop_sidebar != '0' ) {
-//			$sidebar_css	 = 'col-sm-12 col-md-3';
-//		}
-//	endif;
+	if ( class_exists( 'Woocommerce' ) ):
+		if (is_archive() && $dd_layout == '1c' && !is_category()) {
+                        $sidebar_css	 = 'col-md-3';
+                }
+	endif;
 
 	echo esc_attr($sidebar_css);
 }

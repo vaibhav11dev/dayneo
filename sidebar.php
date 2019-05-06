@@ -30,9 +30,6 @@ if ( class_exists( 'Woocommerce' ) ) {
             } else {
                 generated_dynamic_sidebar();
             }
-        } elseif ( is_product() ) {
-            $dd_shop_product_sidebar = dayneo_get_option( 'dd_shop_product_sidebar', 'None' );
-            generated_dynamic_sidebar($dd_shop_product_sidebar);
         } else {
             generated_dynamic_sidebar();
         }
