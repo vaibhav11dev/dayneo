@@ -4,7 +4,7 @@
      * Js - Site Loader
      */
     $(window).load(function () {
-        $(".page-loader").delay(350).fadeOut("slow");
+        $(".page-loader").fadeOut("slow");
     });
 
     $(document).ready(function () {
@@ -31,40 +31,6 @@
             }
         }
         /**
-         * @return {?}
-         */
-        function walkontableCalculateScrollbarWidth() {
-            /** @type {!Element} */
-            var text = document.createElement("p");
-            /** @type {string} */
-            text.style.width = "100%";
-            /** @type {string} */
-            text.style.height = "200px";
-            /** @type {!Element} */
-            var el = document.createElement("div");
-            /** @type {string} */
-            el.style.position = "absolute";
-            /** @type {string} */
-            el.style.top = "0px";
-            /** @type {string} */
-            el.style.left = "0px";
-            /** @type {string} */
-            el.style.visibility = "hidden";
-            /** @type {string} */
-            el.style.width = "200px";
-            /** @type {string} */
-            el.style.height = "150px";
-            /** @type {string} */
-            el.style.overflow = "hidden";
-            el.appendChild(text);
-            document.body.appendChild(el);
-            var b = text.offsetWidth;
-            /** @type {string} */
-            el.style.overflow = "scroll";
-            var w = text.offsetWidth;
-            return b == w && (w = el.clientWidth), document.body.removeChild(el), b - w;
-        }
-        /**
          * @return {undefined}
          */
         var i;
@@ -78,12 +44,8 @@
             setColorMenu();
             setBacktoTop();
         });
-        $(".js-stick").stick_in_parent();
         $(".nav-icon-toggle").on("click", function () {
             $(this).toggleClass("open");
-        });
-        $(".onepage-nav").singlePageNav({
-            currentClass: "active"
         });
         $(document).on("click", ".main-nav.in", function (jEvent) {
             if ($(jEvent.target).is("a") && !$(jEvent.target).parent().hasClass("has-submenu")) {
@@ -98,7 +60,6 @@
                 $(this).css("background-image", "url(" + $(this).attr("data-background") + ")");
             }
         });
-        $(".off-canvas-cart-wrapper").css("margin-right", "-" + walkontableCalculateScrollbarWidth() + "px");
 //        $("#modal-search, .form-close-btn").on("click", function () {
 //            return $(".header-search-form").toggleClass("opened"), false;
 //        });
@@ -359,191 +320,7 @@
             mobile: false
         });
         wow.init();
-        /** @type {!RegExp} */
-        var _digitExpr = /\[[^(\]\[)]*\]/g;
-        var elem = $("#map");
-        /** @type {boolean} */
-        var val = Math.max($(window).width(), window.innerWidth) > 736;
-        if (elem.length > 0) {
-            var value;
-            var pipelets = elem[0].getAttribute("data-addresses").match(_digitExpr);
-            var c = elem.data("info").match(_digitExpr);
-            var newIcon = elem.data("icon");
-            var zoom = elem.data("zoom");
-            /** @type {!Array} */
-            var items = [];
-            pipelets.forEach(function (key, a) {
-                /** @type {string} */
-                var result = "{";
-                if (result = result + ('"latLng":' + key), 0 == a && (value = JSON.parse(key)), null != c && c[a]) {
-                    var retryLinkHref = c[a].replace(/\[|\]/g, "");
-                    /** @type {string} */
-                    result = result + (', "data":"' + retryLinkHref + '"');
-                }
-                /** @type {string} */
-                result = result + "}";
-                items.push(JSON.parse(result));
-            });
-            var options = {
-                scrollwheel: false,
-                styles: [{
-                        featureType: "water",
-                        elementType: "geometry",
-                        stylers: [{
-                                color: "#e9e9e9"
-                            }, {
-                                lightness: 17
-                            }]
-                    }, {
-                        featureType: "landscape",
-                        elementType: "geometry",
-                        stylers: [{
-                                color: "#f5f5f5"
-                            }, {
-                                lightness: 20
-                            }]
-                    }, {
-                        featureType: "road.highway",
-                        elementType: "geometry.fill",
-                        stylers: [{
-                                color: "#ffffff"
-                            }, {
-                                lightness: 17
-                            }]
-                    }, {
-                        featureType: "road.highway",
-                        elementType: "geometry.stroke",
-                        stylers: [{
-                                color: "#ffffff"
-                            }, {
-                                lightness: 29
-                            }, {
-                                weight: .2
-                            }]
-                    }, {
-                        featureType: "road.arterial",
-                        elementType: "geometry",
-                        stylers: [{
-                                color: "#ffffff"
-                            }, {
-                                lightness: 18
-                            }]
-                    }, {
-                        featureType: "road.local",
-                        elementType: "geometry",
-                        stylers: [{
-                                color: "#ffffff"
-                            }, {
-                                lightness: 16
-                            }]
-                    }, {
-                        featureType: "poi",
-                        elementType: "geometry",
-                        stylers: [{
-                                color: "#f5f5f5"
-                            }, {
-                                lightness: 21
-                            }]
-                    }, {
-                        featureType: "poi.park",
-                        elementType: "geometry",
-                        stylers: [{
-                                color: "#dedede"
-                            }, {
-                                lightness: 21
-                            }]
-                    }, {
-                        elementType: "labels.text.stroke",
-                        stylers: [{
-                                visibility: "on"
-                            }, {
-                                color: "#ffffff"
-                            }, {
-                                lightness: 16
-                            }]
-                    }, {
-                        elementType: "labels.text.fill",
-                        stylers: [{
-                                saturation: 36
-                            }, {
-                                color: "#333333"
-                            }, {
-                                lightness: 40
-                            }]
-                    }, {
-                        elementType: "labels.icon",
-                        stylers: [{
-                                visibility: "off"
-                            }]
-                    }, {
-                        featureType: "transit",
-                        elementType: "geometry",
-                        stylers: [{
-                                color: "#f2f2f2"
-                            }, {
-                                lightness: 19
-                            }]
-                    }, {
-                        featureType: "administrative",
-                        elementType: "geometry.fill",
-                        stylers: [{
-                                color: "#fefefe"
-                            }, {
-                                lightness: 20
-                            }]
-                    }, {
-                        featureType: "administrative",
-                        elementType: "geometry.stroke",
-                        stylers: [{
-                                color: "#fefefe"
-                            }, {
-                                lightness: 17
-                            }, {
-                                weight: 1.2
-                            }]
-                    }]
-            };
-            options.center = value;
-            options.zoom = zoom;
-            /** @type {boolean} */
-            options.draggable = val;
-            var button = {};
-            button.icon = newIcon;
-            elem.gmap3({
-                map: {
-                    options: options
-                },
-                marker: {
-                    values: items,
-                    options: button,
-                    events: {
-                        click: function (name, on, event) {
-                            if (event.data) {
-                                var context = $(this).gmap3("get");
-                                var tracker = $(this).gmap3({
-                                    get: {
-                                        name: "infowindow"
-                                    }
-                                });
-                                if (tracker) {
-                                    tracker.open(context, name);
-                                    tracker.setContent(event.data);
-                                } else {
-                                    $(this).gmap3({
-                                        infowindow: {
-                                            anchor: name,
-                                            options: {
-                                                content: event.data
-                                            }
-                                        }
-                                    });
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
+        
         $(function () {
             $('[data-toggle="tooltip"]').tooltip({
                 trigger: "hover"
@@ -562,19 +339,7 @@
                 scrollTop: 0
             }, "slow"), false;
         });
-        var _takingTooLongTimeout;
-        /** @type {!HTMLBodyElement} */
-        var accountForm = document.body;
-        window.addEventListener("scroll", function () {
-            clearTimeout(_takingTooLongTimeout);
-            if (!accountForm.classList.contains("disable-hover")) {
-                accountForm.classList.add("disable-hover");
-            }
-            /** @type {number} */
-            _takingTooLongTimeout = setTimeout(function () {
-                accountForm.classList.remove("disable-hover");
-            }, 100);
-        }, false);
+        
 
         /**
          * https://github.com/woocommerce/FlexSlider
@@ -620,31 +385,9 @@
 
     });
 
-    $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function (event) {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                event.preventDefault();
-                $('html, body').animate({
-                    scrollTop: target.offset().top
-                }, 600, function () {
-                    var $target = $(target);
-                    $target.focus();
-                    if ($target.is(":focus")) {
-                        return false;
-                    } else {
-                        $target.attr('tabindex', '-1');
-                        $target.focus();
-                    }
-                    ;
-                });
-            }
-        }
-    });
+    
 
     // position mega menu correctly
-
     $.fn.ved_position_megamenu = function (variables) {
 
         var reference_elem = '';
@@ -747,8 +490,7 @@
     }
 
 // For Onclick open cart on header area
-    $(document).ready(function () {
-        $(".toggle-product-cats").hide();
+    $(document).ready(function () {       
         $(".cart-hover #open-cart").live('click', function (e) {
             e.preventDefault();
             e.stopPropagation();

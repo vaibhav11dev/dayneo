@@ -31,7 +31,6 @@ function dayneo_scripts() {
     wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/slick/slick.css' );
 
     //Theme Core CSS
-    wp_enqueue_style( 'ddgeneral', get_template_directory_uri() . '/assets/css/ddgeneral.css' );
     wp_enqueue_style( 'ddmain', get_template_directory_uri() . '/assets/css/ddmain.css' );
     wp_enqueue_style( 'ddmedia', get_template_directory_uri() . '/assets/css/ddmedia.css' );
     wp_enqueue_style( 'dynamic-style', get_template_directory_uri() . '/assets/css/dynamic.css' );
