@@ -35,7 +35,7 @@ if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {
 } elseif ( $woocommerce_loop[ 'is_shortcode' ] == 'yes' ) {
     $woo_product_layout = (12 / $woocommerce_loop[ 'columns' ]);
     $shop_col_class     = 'col-sm-4 col-md-4 col-lg-' . $woo_product_layout . '';
-} elseif ( is_shop() ) {
+} else {
     $shop_col_class = 'col-sm-4 col-md-4 col-lg-' . $woo_product_layout . '';
 }
 ?>

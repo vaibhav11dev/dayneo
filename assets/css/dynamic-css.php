@@ -631,7 +631,7 @@ a:focus,
 .main-slider .ved-image-slider .owl-buttons > div,
 .main-slider .ved-image-slider .owl-pagination > div:hover,
 .owl-pagination > div.active,
-.category-carousel .item .categoryName:after
+.ved-woo-cats-slider .item .categoryName:after
 {
     background: ' . esc_attr($dd_primary_color) . ';
 }
@@ -665,14 +665,15 @@ a:focus,
 .innovatoryNextPrev .nextPrevProduct a.button,
 .cart-table .product-name a:hover,
 .woocommerce-account .woocommerce-MyAccount-navigation ul li.is-active a, .woocommerce-account .woocommerce-MyAccount-navigation ul li:hover a,
-.category-carousel .item .sub-cat li a:hover,
-.category-carousel .item .categoryName a:hover,
+.ved-woo-cats-slider .item .sub-cat li a:hover,
+.ved-woo-cats-slider .item .categoryName a:hover,
 .service-sec .service-box .elementor-image-box-img,
 .widget.woocommerce .widget-content ul li a:hover + .count,
 .ved-testimonial-user,
 .slick-dots li.slick-active button:before,
 .contact-info-wrap .contact-info-box .elementor-icon,
-.portfolio-info .social-icons li a:hover
+.portfolio-info .social-icons li a:hover,
+.wc_payment_method a:hover
 {
     color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -707,7 +708,8 @@ body .elementor-button:hover,
 .sec-head-style:before,.wishlist-title:before,
 .sec-head-style h3:before, .sec-head-style h3:after, .wishlist-title h2:before, .wishlist-title h2:after,
 .scroll-top:hover,
-.ved-price-list .featured-highlight .highlight-box
+.ved-price-list .featured-highlight .highlight-box,
+.wishlist_table .product-name .yith-wcqv-button:hover
 {
     background-color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -738,10 +740,6 @@ body .elementor-button:hover,
 .woocommerce div.product .product-slider .slick-arrow:hover,
 .main-slider .ved-image-slider .owl-buttons > div,
 .contact-info-wrap .contact-info-box:hover .elementor-icon,
-.woocommerce-message,
-.woocommerce-error,
-.woocommerce-notice,
-.woocommerce-info,
 .scroll-top:hover:before,
 .ved-price-list .featured-highlight
 {
@@ -834,7 +832,8 @@ body .elementor-button:hover,
 .extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box,
 .main-slider .ved-image-slider .owl-buttons > div:hover,
 .service-sec .service-box:hover .elementor-image-box-img,
-.ved-woo-product-tab .ved-nav-tab li.active a,.ved-woo-product-tab .ved-nav-tab li a:hover {
+.ved-woo-product-tab .ved-nav-tab li.active a,.ved-woo-product-tab .ved-nav-tab li a:hover,
+.footer .social-icons > li > a {
     background-color: ' . esc_attr($dd_secondry_color) . ';
 }
 
