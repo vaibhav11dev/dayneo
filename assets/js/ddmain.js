@@ -206,7 +206,7 @@
         });
 
         //Wishlist Table Responsive
-        jQuery(".cart.wishlist_table").wrap("<div class='table-responsive'>");
+        jQuery(".cart.wishlist_table").wrap("<div class='table-responsive custom-width'>");
 
         //dayneo portfolio
         var f = $("#filters");
@@ -1138,5 +1138,12 @@ document.addEventListener( 'wpcf7submit', function( event ) {
 
 //mailchimp on submit hide message
 jQuery(document).ready(function(){
-    setTimeout(function(){  jQuery(".mc4wp-response").fadeOut(); }, 3000);
+    setTimeout(function(){  jQuery(".mc4wp-response").fadeOut(); }, 5000);
 });    
+
+//Popup Init
+setTimeout(function(){
+    jQuery("#innovatoryPopupnewsletter").modal({
+        show: true
+    });
+}, 5000); 
