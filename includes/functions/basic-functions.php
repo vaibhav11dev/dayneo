@@ -1758,3 +1758,32 @@ function dayneo_sidebar2_class() {
 }
 
 // -> END Dayneo General Layout Functions
+
+/**
+ * Adds quick view modal to footer
+ */
+if ( ! function_exists( 'martfury_quick_view_modal' ) ) :
+	function martfury_quick_view_modal() {
+		if ( is_page_template( 'template-coming-soon-page.php' ) || is_404() ) {
+			return;
+		}
+		?>
+
+        <div id="mf-quick-view-modal" class="mf-quick-view-modal martfury-modal woocommerce" tabindex="-1">
+            <div class="mf-modal-overlay"></div>
+            <div class="modal-content">
+                <a href="#" class="close-modal">
+                    <i class="icon-cross"></i>
+                </a>
+                <div class="product-modal-content">
+                </div>
+            </div>
+            <div class="mf-loading"></div>
+        </div>
+
+		<?php
+	}
+
+endif;
+
+add_action( 'wp_footer', 'martfury_quick_view_modal' );

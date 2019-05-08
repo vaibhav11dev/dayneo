@@ -756,12 +756,157 @@
             document.cookie = 'shop_view=shop-view-' + view;
         });
     };
+    
+        /**
+     * Toggle product quick view
+     */
+    $.HandleElement.productQuickView = function () {
+        var $modal = $('#mf-quick-view-modal'),
+            $product = $modal.find('.product-modal-content');
+
+        $.HandleElement.$body.on('click', '.mf-product-quick-view', function (e) {
+            e.preventDefault();
+
+            var $a = $(this),
+                id = $a.data('id');
+
+            $product.hide().html('');
+            $modal.addClass('loading').removeClass('loaded');
+            $.HandleElement.openModal($modal);
+
+            $.ajax({
+                url: dayneoData.ajax_url,
+                dataType: 'json',
+                method: 'post',
+                data: {
+                    action: 'martfury_product_quick_view',
+                    nonce: dayneoData.nonce,
+                    product_id: id
+                },
+                success: function (response) {
+                    $product.show().append(response.data);
+                    $modal.removeClass('loading').addClass('loaded');
+                    var $gallery = $product.find('.woocommerce-product-gallery'),
+                        $variation = $('.variations_form'),
+                        $buttons = $product.find('form.cart .actions-button'),
+                        $buy_now = $buttons.find('.buy_now_button');
+                    $gallery.removeAttr('style');
+                    $gallery.find('img.lazy').lazyload().trigger('appear');
+                    $gallery.imagesLoaded(function () {
+                        $gallery.find('.woocommerce-product-gallery__wrapper').not('.slick-initialized').slick({
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite: false,
+                            prevArrow: '<span class="icon-chevron-left slick-prev-arrow"></span>',
+                            nextArrow: '<span class="icon-chevron-right slick-next-arrow"></span>'
+                        });
+                    });
+
+                    if ($buy_now.length > 0) {
+                        $buttons.prepend($buy_now);
+                    }
+
+                    $gallery.find('.woocommerce-product-gallery__image').on('click', function (e) {
+                        e.preventDefault();
+                    });
+
+                    if (typeof wc_add_to_cart_variation_params !== 'undefined') {
+                        $variation.each(function () {
+                            $(this).wc_variation_form();
+                        });
+                    }
+
+                    if (typeof $.fn.tawcvs_variation_swatches_form !== 'undefined') {
+                        $variation.tawcvs_variation_swatches_form();
+                    }
+
+                    $.HandleElement.productVatiation();
+                    if (typeof tawcvs !== 'undefined') {
+                        if (tawcvs.tooltip === 'yes') {
+                            $variation.find('.swatch').tooltip({
+                                classes: {'ui-tooltip': '$.HandleElement-tooltip'},
+                                tooltipClass: '$.HandleElement-tooltip qv-tool-tip',
+                                position: {my: 'center bottom', at: 'center top-13'},
+                                create: function () {
+                                    $('.ui-helper-hidden-accessible').remove();
+                                }
+                            });
+                        }
+                    }
+
+                    $product.find('.compare').tooltip({
+                        content: function () {
+                            return $(this).html();
+                        },
+                        classes: {'ui-tooltip': '$.HandleElement-tooltip'},
+                        tooltipClass: '$.HandleElement-tooltip qv-tooltip',
+                        position: {my: 'center bottom', at: 'center top-13'},
+                        create: function () {
+                            $('.ui-helper-hidden-accessible').remove();
+                        }
+                    });
+
+                    $product.find('[data-rel=tooltip]').tooltip({
+                        classes: {'ui-tooltip': '$.HandleElement-tooltip'},
+                        tooltipClass: '$.HandleElement-tooltip qv-tooltip',
+                        position: {my: 'center bottom', at: 'center top-13'},
+                        create: function () {
+                            $('.ui-helper-hidden-accessible').remove();
+                        }
+                    });
+
+                    $.HandleElement.buyNow();
+                }
+            });
+        });
+
+        $modal.on('click', '.close-modal, .mf-modal-overlay', function (e) {
+            e.preventDefault();
+            $.HandleElement.closeModal($modal);
+        })
+
+    };
+    
+        /**
+     * Open modal
+     *
+     * @param $modal
+     */
+    $.HandleElement.openModal = function ($modal) {
+        $modal.fadeIn();
+        $modal.addClass('open');
+    };
+
+    /**
+     * Close modal
+     */
+    $.HandleElement.closeModal = function ($modal) {
+        $modal.fadeOut(function () {
+            $(this).removeClass('open');
+        });
+    };
+    
+    /**
+     * Shop view toggle
+     */
+    $.HandleElement.addtocartMsg = function () {
+
+        $.HandleElement.$body.on('added_to_cart', function (e, fragments, cart_hash, $button) {
+            $button = typeof $button === 'undefined' ? false : $button;
+
+            if ( $button ) {
+                    $button.after( "<p>Product successfully added to your cart.</p>" );
+            }
+        });
+    };
 
     $.HandleElement.init = function () {
         $.HandleElement.productQuantity();
         $.HandleElement.instanceSearch();
         $.HandleElement.addWishlist();
         $.HandleElement.shopView();
+        $.HandleElement.addtocartMsg();
+        $.HandleElement.productQuickView();
     };
     $(document).ready($.HandleElement.init);
 
@@ -978,7 +1123,7 @@ function sld(){
       focusOnSelect: true
     });
 };
-jQuery(document).ready(function(){
+jQuery( window ).load(function() {
     sld();
 });
 

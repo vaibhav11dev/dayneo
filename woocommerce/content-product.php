@@ -64,10 +64,19 @@ if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {
                 echo '<a href="' . esc_url( $link ) . '" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">';
                 do_action( 'woocommerce_before_shop_loop_item_title' );
                 echo '</a>';
+                
+                
                 ?>
 
                 <div class="shop-item-tools product-grid-meta-options">
-                    <?php do_action( 'woocommerce_after_shop_loop_item' ) ?>
+                    <?php 
+                    do_action( 'woocommerce_after_shop_loop_item' );
+                    ?>
+                    <div class="action-btn quick-view-warp">
+                        <?php
+                        echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button mf-product-quick-view"></a>';
+                        ?>
+                    </div>
                 </div>
 
             </div>

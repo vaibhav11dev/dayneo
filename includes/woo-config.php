@@ -895,3 +895,78 @@ function dayneo_product_share() {
     </div>
     <?php
 }
+
+
+add_action( 'wp_ajax_martfury_product_quick_view', 'product_quick_view' );
+add_action( 'wp_ajax_nopriv_martfury_product_quick_view', 'product_quick_view' );
+                
+                	/**
+	 *product_quick_view
+	 */
+	function product_quick_view() {
+//		if ( apply_filters( 'martfury_check_ajax_referer', true ) ) {
+//			check_ajax_referer( '_martfury_nonce', 'nonce' );
+//		}
+		ob_start();
+		if ( isset( $_POST['product_id'] ) && ! empty( $_POST['product_id'] ) ) {
+			$product_id      = $_POST['product_id'];
+			$original_post   = $GLOBALS['post'];
+			$GLOBALS['post'] = get_post( $product_id ); // WPCS: override ok.
+			setup_postdata( $GLOBALS['post'] );
+			wc_get_template_part( 'content', 'product-quick-view' );
+			$GLOBALS['post'] = $original_post; // WPCS: override ok.
+
+		}
+		$output = ob_get_clean();
+		wp_send_json_success( $output );
+		die();
+	}
+        
+        // QuicKview
+        add_action( 'martfury_single_product_summary', 'get_product_quick_view_header', 5 );
+		
+                
+                	/**
+	 * Add single product header
+	 */
+	function get_product_quick_view_header() {
+		global $product;
+
+		?>
+
+        <div class="mf-entry-product-header">
+            <div class="entry-left">
+				<?php
+				echo sprintf( '<h2 class="product_title"><a href="%s">%s</a></h2>', esc_url( $product->get_permalink() ), $product->get_title() );
+				?>
+
+                <ul class="entry-meta">
+					<?php
+
+					$this->single_product_brand();
+
+					if ( function_exists( 'woocommerce_template_single_rating' ) && $product->get_rating_count() ) {
+						echo '<li>';
+						woocommerce_template_single_rating();
+						echo '</li>';
+					}
+					?>
+
+                </ul>
+            </div>
+        </div>
+		<?php
+	}
+        
+        
+			// Image
+			add_action( 'yith_wcqv_product_image', 'woocommerce_show_product_sale_flash', 10 );
+			add_action( 'yith_wcqv_product_image', 'woocommerce_show_product_images', 20 );
+
+			// Summary
+			add_action( 'yith_wcqv_product_summary', 'woocommerce_template_single_title', 5 );
+			add_action( 'yith_wcqv_product_summary', 'woocommerce_template_single_rating', 10 );
+			add_action( 'yith_wcqv_product_summary', 'woocommerce_template_single_price', 15 );
+			add_action( 'yith_wcqv_product_summary', 'woocommerce_template_single_excerpt', 20 );
+			add_action( 'yith_wcqv_product_summary', 'woocommerce_template_single_add_to_cart', 25 );
+			add_action( 'yith_wcqv_product_summary', 'woocommerce_template_single_meta', 30 );
