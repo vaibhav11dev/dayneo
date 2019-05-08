@@ -242,7 +242,7 @@ class Dayneo_Product_Carousel_Widget extends WC_Widget {
                 
                 for ( $j = 0; $j < $number; $j ++  ) {
                     $products->the_post();
-                    wc_get_template( 'content-widget-product.php', array( 'show_rating' => false ) );
+                    wc_get_template( 'content-widget-product.php', array( 'show_rating' => true ) );
                 }
                 
                 echo '</ul>';

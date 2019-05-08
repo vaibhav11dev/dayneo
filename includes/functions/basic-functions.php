@@ -481,7 +481,9 @@ function dayneo_paginate_links() {
 
 	global $wp_query;
 	$current = max( 1, absint( get_query_var( 'paged' ) ) );
-
+        $total_post = $wp_query->found_posts;
+        $post = $wp_query->post_count;
+        
 	$pagination = paginate_links( array(
 		'base'		 => str_replace( PHP_INT_MAX, '%#%', esc_url( get_pagenum_link( PHP_INT_MAX ) ) ),
 		'format'	 => '?paged=%#%',
@@ -494,6 +496,7 @@ function dayneo_paginate_links() {
 
 	if ( ! empty( $pagination ) ) {
 		?>
+                <div class="results"><?php printf(esc_html__('Showing 1-%s of %s post(s)', 'dayneo'), $post, $total_post); ?></div>       
 		<ul class="pagination">
 			<?php foreach ( $pagination as $key => $page_link ) { ?>
 				<li class="paginated_link <?php

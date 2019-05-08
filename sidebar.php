@@ -52,12 +52,12 @@ if ( class_exists( 'Woocommerce' ) ) {
                     if ( $dd_portfolio_sidebar != '0' && is_active_sidebar( $dd_portfolio_sidebar ) ) {
                         generated_dynamic_sidebar( $dd_portfolio_sidebar );
                     }
-            } elseif ( $taxonomy == 'product_cat' || $taxonomy == 'product_tag' ) {
+                } else {
                     $dd_shop_archive_sidebar = dayneo_get_option( 'dd_shop_archive_sidebar', 'None' );
                     if ( $dd_shop_archive_sidebar != '0' && is_active_sidebar( $dd_shop_archive_sidebar ) ) {
                         generated_dynamic_sidebar( $dd_shop_archive_sidebar );
                     }
-            }
+                }
             } else {
                 $blog_archive_sidebar = dayneo_get_option( 'dd_blog_archive_sidebar', 'None' );
                 if ( $blog_archive_sidebar != '0' && is_active_sidebar( $blog_archive_sidebar ) ) {
