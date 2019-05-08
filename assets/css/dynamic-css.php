@@ -800,7 +800,8 @@ body .elementor-button:hover,
 }
 
 .pagination>.active>a,
-.pagination>.active>span{
+.pagination>.active>span,
+.pagination>.active:hover>span{
     background: ' . esc_attr($dd_secondry_color) . ';
     border-color: ' . esc_attr($dd_secondry_color) . ';
     color: #fff
