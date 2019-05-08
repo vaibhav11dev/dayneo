@@ -48,11 +48,7 @@ if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
                                     ?>
                                     <a class="inner-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                                         <?php
-                                        if ( $dd_header2_logo != '' && ( ($dayneo_header_type == 'h2') || ($dayneo_header_type == 'default' && $dd_header_type == 'h2') ) ):
-                                            ?>
-                                            <img class="normal-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo $dd_header2_logo ?>" width="200">
-                                            <?php
-                                        elseif ( $dd_header_logo != '' ):
+                                       if ( $dd_header_logo != '' ):
                                             ?>
                                             <img class="normal-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo $dd_header_logo ?>" width="200">
                                             <?php

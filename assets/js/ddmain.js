@@ -13,9 +13,9 @@
          */
         function setBacktoTop() {
             if ($(window).scrollTop() > 100) {
-                $(".back-to-top").removeClass("hide");
+                $(".back-to-top").addClass("open");
             } else {
-                $(".back-to-top").addClass("hide");
+                $(".back-to-top").removeClass("open");
             }
         }
         /**
@@ -172,8 +172,6 @@
             var max_elem = 8;   
         }else if(jQuery(window).width() >= 1051){
             var max_elem = 6;   
-        }else if(jQuery(window).width() >= 992){
-            var max_elem = 5;   
         }else{
               
         }
@@ -640,9 +638,12 @@
                 $currentForm.removeClass('searching found-products found-no-product').addClass('invalid-length');
                 $results.fadeOut();
                 $('.search-limit').fadeIn();
+                jQuery(document).click(function () {
+                    jQuery('.search-limit,.ajax-search-results').fadeOut();
+                });
                 return;
             }
-            jQuery(document).click(function (event) {
+            jQuery(document).click(function () {
                 jQuery('.search-limit,.ajax-search-results').fadeOut();
             });
             $currentForm.removeClass('found-products found-no-product').addClass('searching');
@@ -877,7 +878,7 @@ var responsiveflag = false;
 
 jQuery(document).ready(function () {
     responsiveResize();
-    jQuery(window).resize(responsiveResize);
+    //jQuery(window).resize(responsiveResize);
 });
 function responsiveResize()
 {
@@ -987,5 +988,10 @@ jQuery(".shop-item .shop-item-photo .shop-item-tools .compare").wrap("<div class
 
 //contact form 7 on submit hide message
 document.addEventListener( 'wpcf7submit', function( event ) {
-    setTimeout(function(){  jQuery(".wpcf7-response-output").slideUp(); }, 3000);
+    setTimeout(function(){  jQuery(".wpcf7-response-output").fadeOut(); }, 3000);
 }, false );
+
+//mailchimp on submit hide message
+jQuery(document).ready(function(){
+    setTimeout(function(){  jQuery(".mc4wp-response").fadeOut(); }, 3000);
+});    
