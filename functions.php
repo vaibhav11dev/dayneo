@@ -120,7 +120,7 @@ require_once( DAYNEO_PHP_INCLUDE . 'functions/template-functions.php');
  * Functions which enhance the basic theme functionality. 
  */
 require_once( DAYNEO_PHP_INCLUDE . 'functions/basic-functions.php');
-require_once( DAYNEO_PHP_INCLUDE . 'functions/header.php');
+require_once( DAYNEO_PHP_INCLUDE . 'functions/header-functions.php');
 
 //  ThemeVedanta Mega Menu
 require_once( DAYNEO_PHP_INCLUDE . 'mega-menu-framework.php' );

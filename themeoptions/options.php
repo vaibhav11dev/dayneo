@@ -426,6 +426,55 @@ Redux::setSection( $dd_options, array(
 )
 );
 
+Redux::setSection( $dd_options, array(
+	'id'		 => 'dd-general-subsec-popup-tab',
+	'title'		 => __( 'Newslatter Popup', 'dayneo' ),
+	'subsection'	 => true,
+	'fields'	 => array(
+		array(
+			'subtitle'	 => __( 'Choose Enable button if you want to display newslatter popup in site', 'dayneo' ),
+			'id'		 => 'dd_popup',
+			'type'		 => 'switch',
+			'on'		 => __( 'Enabled', 'dayneo' ),
+			'off'		 => __( 'Disabled', 'dayneo' ),
+			'default'	 => 1,
+			'title'		 => __( 'Enable Newslatter Popup', 'dayneo' ),
+		),
+		array(
+			'subtitle'	 => __( 'Upload background image will display in the newslatter popup.', 'dayneo' ),
+			'id'		 => 'dd_popup_bg',
+			'type'		 => 'media',
+			'title'		 => __( 'Newslatter Popup Background', 'dayneo' ),
+			'url'		 => true,
+			'default'	 => array(
+				'url' => DAYNEO_DEFAULT . 'newslater-bg.jpg'
+			),
+		),
+            array(
+			'subtitle'	 => __( 'Add heading will display in the newslatter popup.', 'dayneo' ),
+			'id'		 => 'dd_popup_heading',
+			'type'		 => 'text',
+			'title'		 => __( 'Newslatter Popup Heading', 'dayneo' ),
+			'default'	 => 'Newsletter',
+		),
+            array(
+			'subtitle'	 => __( 'Add content will display in the newslatter popup.', 'dayneo' ),
+			'id'		 => 'dd_popup_content',
+			'type'		 => 'text',
+			'title'		 => __( 'Newslatter Popup Content', 'dayneo' ),
+			'default'	 => 'Sign up here to get 20% off on your next purchase, special offers and other discount information.',
+		),
+            array(
+			'subtitle'	 => __( 'Add form shortcode will display in the newslatter popup.', 'dayneo' ),
+			'id'		 => 'dd_popup_form',
+			'type'		 => 'text',
+			'title'		 => __( 'Newslatter Popup Form Shortcode', 'dayneo' ),
+		),
+            
+	),
+)
+);
+
 // Header Main Sections
 Redux::setSection( $dd_options, array(
 	'id'	 => 'dd-header-main-tab',
@@ -490,15 +539,12 @@ Redux::setSection( $dd_options, array(
 			'compiler'	 => true,
 			'type'		 => 'image_select',
 			'options'	 => array(
-				'h1'	 => DAYNEO_IMAGEFOLDER . '/header/header-1.png',
-				'h2'	 => DAYNEO_IMAGEFOLDER . '/header/header-2.png',
-				'h3'	 => DAYNEO_IMAGEFOLDER . '/header/header-3.png',
-				'h4'	 => DAYNEO_IMAGEFOLDER . '/header/header-4.png',
-				'h5'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
 				'h6'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
+				'h7'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
+				'h8'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
 			),
 			'title'		 => __( 'Choose Header Type', 'dayneo' ),
-			'default'	 => 'h1',
+			'default'	 => 'h6',
 		),
 		array(
 			'subtitle'	 => __( 'Control the background color of topbar header.', 'dayneo' ),
@@ -508,6 +554,15 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'Top Bar Color', 'dayneo' ),
 			'default'	 => '#000000',
 			'required'	 => array( array( "dd_header_type", '=', 'h5' ) ),
+		),
+            array(
+			'subtitle'	 => __( 'Control the background color of header.', 'dayneo' ),
+			'id'		 => 'dd_bg_header',
+			'compiler'	 => true,
+			'type'		 => 'color',
+			'title'		 => __( 'Header Background Color', 'dayneo' ),
+			'default'	 => '#000000',
+			'required'	 => array( array( "dd_header_type", '=', 'h7' ) ),
 		),
         array(
             'id'       => 'menu_extras',
@@ -2322,13 +2377,6 @@ Redux::setSection( $dd_options, array(
 	'title'	 => __( 'Extra', 'dayneo' ),
 	'icon'	 => 'fa  fa-gears icon-large',
 	'fields' => array(
-		array(
-			'subtitle'	 => __( 'Choose enable button if you want to display the theme\'s mega menu.', 'dayneo' ),
-			'id'		 => 'dd_megamenu',
-			'type'		 => 'switch',
-			'title'		 => __( 'Enable Mega Menu', 'dayneo' ),
-			'default'	 => '0',
-		),
 		array(
 			'subtitle'	 => __( 'Choose enable button if you want to display Back to Top button.', 'dayneo' ),
 			'id'		 => 'dd_back_to_top',

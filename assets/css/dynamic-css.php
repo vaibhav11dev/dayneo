@@ -84,13 +84,6 @@ body {
 ';
 }
 
-// Body bg color when layout style is boxed
-//$dayneo_dynamic_css .= '
-//body {
-//    background-color: #ecebe9;
-//}
-//';
-
 // General - Fullwidth - Fluid Template Left/Right Padding
 $dd_hundredp_padding		 = $dd_options[ 'dd_hundredp_padding' ];
 $dayneo_hundredp_padding	 = get_post_meta( $post_id, 'dayneo_hundredp_padding', true );
@@ -172,6 +165,15 @@ $dayneo_dynamic_css		 .= '
 	height: ' . esc_attr($dayneo_hero_height_custom) . 'vh;
 }
 ';
+
+//Header Background Color (H7)
+if ( isset( $dd_options[ 'dd_bg_header' ] ) && $dd_options[ 'dd_header_type' ] == 'h7'  ) {
+	$dayneo_dynamic_css .= '
+	#header {
+		background: ' . esc_attr($dd_options[ 'dd_bg_header' ]) . ';
+	}
+';
+}
 
 
 /* -----------------------------------------------------------------
@@ -512,7 +514,6 @@ if ( $dd_width_px != "custom" ) {
 ';
 }
 
-if ( $dd_options[ 'dd_megamenu' ] == '1' ) {
 	$dayneo_dynamic_css .= '
  .ved-megamenu-wrapper .ved-megamenu-title {
     font-family: ' . esc_attr($dd_menu_font[ 'font-family' ]) . ';
@@ -580,7 +581,6 @@ ul.nav-menu li li.current-menu-ancestor .ved-megamenu-title a {
     color: ' . esc_attr($dd_main_menu_hover_font_color) . ';
 }
 ';
-}
 
 /* -----------------------------------------------------------------
   [Main Color Scheme Style]

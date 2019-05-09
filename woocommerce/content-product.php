@@ -70,13 +70,8 @@ if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {
 
                 <div class="shop-item-tools product-grid-meta-options">
                     <?php 
-                    do_action( 'woocommerce_after_shop_loop_item' );
+                        do_action( 'woocommerce_after_shop_loop_item' );
                     ?>
-                    <div class="action-btn quick-view-warp">
-                        <?php
-                        echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button mf-product-quick-view"></a>';
-                        ?>
-                    </div>
                 </div>
 
             </div>

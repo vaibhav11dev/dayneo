@@ -1,6 +1,6 @@
 <?php
 /**
- * Basic functions for header-6.
+ * Basic functions for header layout.
  *
  * @package Dayneo
  */
@@ -24,6 +24,7 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
         <!-- SHOP CART -->
         <?php
         $dd_woo_cart = dayneo_get_option( 'dd_woo_cart', 1 );
+        $dd_header_type       = dayneo_get_option( 'dd_header_type', 'h6' );
         if ( class_exists( 'Woocommerce' ) && $dd_woo_cart ) {
             global $woocommerce;
             ?>
@@ -31,6 +32,14 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
             <div class="cart-hover">
                 <div class="menu-item header-ajax-cart">
                     <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
+                        <?php if ($dd_header_type == 'h8') { ?>
+                        <div class="icon-wrap">
+                                <span class="icon-box">
+                                    <i class="flaticon-paper-bag"></i>
+                                </span>
+                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Item(s)', 'dayneo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
+                        </div>
+                        <?php } else { ?>
                         <div class="icon-wrap-circle">
                             <div class="icon-wrap">
                                 <span class="icon-box">
@@ -39,9 +48,10 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
                                         <?php echo $woocommerce->cart->cart_contents_count; ?>
                                     </span>
                                 </span>
-                            </div>                            
+                            </div> 
                             <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shopping Cart', 'dayneo' ) ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>                    
                         </div>
+                        <?php } ?>
                     </a>
                 </div>
                 <?php

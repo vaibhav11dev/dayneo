@@ -98,49 +98,58 @@
 			<?php
 		}
 
-		$dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h1' );
+		$dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h6' );
 		$dayneo_header_type	 = get_post_meta( $post_id, 'dayneo_header_type', true );
 		if ( !$dayneo_header_type ) {
 			$dayneo_header_type = 'default';
 		}
                 
+                switch ( $dd_header_type ) {
+                    case 'h6':
+                        $header_class = 'header-6';
+                        break;
+
+                    case 'h7':
+                        $header_class = 'header-7';
+                        break;
+                    
+                    case 'h8':
+                        $header_class = 'header-8';
+                        break;
+                }
+                
                 if ( is_page() ) {
-			if ( ($dayneo_header_type == 'h6') || ($dayneo_header_type == 'default' && $dd_header_type == 'h6') ) { ?>
+			if ( (($dayneo_header_type == 'h6') || ($dayneo_header_type == 'default' && $dd_header_type == 'h6')) || (($dayneo_header_type == 'h7') || ($dayneo_header_type == 'default' && $dd_header_type == 'h7')) ) { ?>
 				<div id="header" class="header-wrap">
 				<?php	get_template_part( 'includes/headers/header-topbar' );
-				get_template_part( 'includes/headers/layout-1' ); ?>
+				get_template_part( 'includes/headers/layout-1' );?>
 				</div>
 			<?php	}
 		} else {
-			if ( $dd_header_type == 'h6' ) {?>
-				<div id="header" class="header-wrap">
+			if ( $dd_header_type == 'h6' || $dd_header_type == 'h7' ) { ?>
+                        <div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-1' );?>
 				</div>
 			<?php }
 		}
-
-		if ( is_page() ) {
-			if ( (($dayneo_header_type == 'h4') || ($dayneo_header_type == 'default' && $dd_header_type == 'h4')) || (($dayneo_header_type == 'h5') || ($dayneo_header_type == 'default' && $dd_header_type == 'h5')) ) {
-				get_template_part( 'includes/headers/header-topbar' );
-				get_template_part( 'includes/headers/header-main' );
-			}
+                
+                if ( is_page() ) {
+			if ( ($dayneo_header_type == 'h8') || ($dayneo_header_type == 'default' && $dd_header_type == 'h8') ) { ?>
+				<div id="header" class="header-wrap">
+				<?php	get_template_part( 'includes/headers/header-topbar' );
+				get_template_part( 'includes/headers/layout-2' );?>
+				</div>
+			<?php	}
 		} else {
-			if ( $dd_header_type == 'h4' || $dd_header_type == 'h5' ) {
-				get_template_part( 'includes/headers/header-topbar' );
-				get_template_part( 'includes/headers/header-main' );
-			}
+			if ( $dd_header_type == 'h8' ) { ?>
+                        <div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
+				<?php get_template_part( 'includes/headers/header-topbar' );
+				get_template_part( 'includes/headers/layout-2' );?>
+				</div>
+			<?php }
 		}
 
-		if ( is_page() ) {
-			if ( (($dayneo_header_type == 'h1') || ($dayneo_header_type == 'default' && $dd_header_type == 'h1')) || (($dayneo_header_type == 'h2') || ($dayneo_header_type == 'default' && $dd_header_type == 'h2')) ) {
-				get_template_part( 'includes/headers/header-main' );
-			}
-		} else {
-			if ( $dd_header_type == 'h1' || $dd_header_type == 'h2' ) {
-				get_template_part( 'includes/headers/header-main' );
-			}
-		}
 		?>
 		<!-- WRAPPER -->
 		<div class="wrapper">
@@ -165,16 +174,6 @@
 				dayneo_heroheadertype( $param );
 			} elseif ( $dayneo_hero_header_type == 'hero_slider' ) {
 				get_template_part( 'includes/heroheader/hero_allslider' );
-			}
-
-			if ( is_page() ) {
-				if ( ($dayneo_header_type == 'h3') || ($dayneo_header_type == 'default' && $dd_header_type == 'h3') ) {
-					get_template_part( 'includes/headers/header-main' );
-				}
-			} else {
-				if ( $dd_header_type == 'h3' ) {
-					get_template_part( 'includes/headers/header-main' );
-				}
 			}
 			?>
 

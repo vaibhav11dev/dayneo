@@ -18,7 +18,7 @@ if ( $wp_query->is_posts_page ) {
     $post_id = isset( $post->ID ) ? $post->ID : '';
 }
 
-$dd_header_type       = dayneo_get_option( 'dd_header_type', 'h1' );
+$dd_header_type       = dayneo_get_option( 'dd_header_type', 'h6' );
 $dayneo_header_type = get_post_meta( $post_id, 'dayneo_header_type', true );
 if ( is_page() ) {
     if ( ($dayneo_header_type == 'h2') || ($dayneo_header_type == 'default' && $dd_header_type == 'h2') ) {
@@ -147,12 +147,7 @@ if ( is_page() ) {
         <!-- MAIN MENU -->
         <?php
         if ( $dd_options[ 'dd_primary_menu' ] == 1 && has_nav_menu( 'primary-menu' ) ):
-            $dd_megamenu = dayneo_get_option( 'dd_megamenu', '0' );
-            if ( $dd_megamenu == '1' ) {
                 wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav pull-right', 'container' => 'nav', 'container_class' => 'ved-main-megamenu ved-navbar-nav main-nav collapse clearfix', 'container_id' => '_desktop_menu', 'walker' => new VedCoreFrontendWalker() ) );
-            } else {
-                wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav pull-right', 'container' => 'nav', 'container_class' => 'ved-main-simplemenu main-nav collapse clearfix', 'container_id' => '_desktop_menu', 'walker' => new Dayneo_Walker_Nav_Menu() ) );
-            }
         endif;
         ?>
 

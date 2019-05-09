@@ -19,7 +19,7 @@ if ( $wp_query->is_posts_page ) {
 }
 
 $topbar_class		 = '';
-$dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h1' );
+$dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h6' );
 $dayneo_header_type	 = get_post_meta( $post_id, 'dayneo_header_type', true );
 if ( is_page() ) {
 	if ( ($dayneo_header_type == 'h5') || ($dayneo_header_type == 'default' && $dd_header_type == 'h5') ) {
