@@ -1767,22 +1767,18 @@ if ( ! function_exists( 'martfury_quick_view_modal' ) ) :
 		if ( is_page_template( 'template-coming-soon-page.php' ) || is_404() ) {
 			return;
 		}
-		?>
+?>
 
-        <div id="mf-quick-view-modal" class="mf-quick-view-modal martfury-modal woocommerce" tabindex="-1">
-            <div class="mf-modal-overlay"></div>
-            <div class="modal-content">
-                <a href="#" class="close-modal">
-                    <i class="icon-cross"></i>
-                </a>
-                <div class="product-modal-content">
-                </div>
-            </div>
-            <div class="mf-loading"></div>
-        </div>
+<div id="it-quick-view-modal" class="it-quick-view-modal single-product woocommerce modal fade" tabindex="-1">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close" aria-hidden="true"></i></button>
+        <div class="product-modal-content"></div>
+    </div>
+    <div class="it-loading"></div>
+</div>
 
-		<?php
-	}
+<?php
+}
 
 endif;
 

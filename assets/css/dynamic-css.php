@@ -679,7 +679,8 @@ a:focus,
 .contact-info-wrap .contact-info-box .elementor-icon,
 .portfolio-info .social-icons li a:hover,
 .wc_payment_method a:hover,
-.footer a:hover
+.footer a:hover,
+.it-quick-view-modal .modal-content .close:hover
 {
     color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -752,6 +753,9 @@ body .elementor-button:hover,
 .check-fancy input[type=checkbox] + label:before
 {
     border-color: ' . esc_attr($dd_primary_color) . ';
+}
+.it-quick-view-modal .it-loading:before{
+	border-color: ' . esc_attr($dd_primary_color) . ' ' . esc_attr($dd_primary_color) . ' ' . esc_attr($dd_primary_color) . ' transparent;
 }
 
 /*box-shadow*/

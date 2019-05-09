@@ -93,7 +93,8 @@ function dayneo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
                             <a href="<?php echo get_permalink( $cart_item[ 'product_id' ] ); ?>">
                                 <?php echo $cart_item[ 'data' ]->get_name(); ?>
                             </a>
-                            <p><span class="quantity"><?php echo $cart_item[ 'quantity' ]; ?> x </span><span class="price"><?php echo get_woocommerce_currency_symbol() . $cart_item[ 'data' ]->get_price(); ?></span></p>
+                            <p class="quantity-line"><span class="quantity">Qty:</span><b><?php echo $cart_item[ 'quantity' ]; ?></b></p>
+                            <p class="price-line"><span class="price"><?php echo get_woocommerce_currency_symbol() . $cart_item[ 'data' ]->get_price(); ?></span></p>
                         </div>
                         <div class="del-minicart">
                             <?php

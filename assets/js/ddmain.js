@@ -761,18 +761,18 @@
      * Toggle product quick view
      */
     $.HandleElement.productQuickView = function () {
-        var $modal = $('#mf-quick-view-modal'),
+        var $modal = $('#it-quick-view-modal'),
             $product = $modal.find('.product-modal-content');
 
-        $.HandleElement.$body.on('click', '.mf-product-quick-view', function (e) {
+        $.HandleElement.$body.on('click', '.it-product-quick-view', function (e) {
             e.preventDefault();
 
             var $a = $(this),
                 id = $a.data('id');
 
-            $product.hide().html('');
+            $product.html('');
             $modal.addClass('loading').removeClass('loaded');
-            $.HandleElement.openModal($modal);
+            $modal.modal({ show: true }); 
 
             $.ajax({
                 url: dayneoData.ajax_url,
@@ -784,106 +784,43 @@
                     product_id: id
                 },
                 success: function (response) {
-                    $product.show().append(response.data);
-                    $modal.removeClass('loading').addClass('loaded');
-                    var $gallery = $product.find('.woocommerce-product-gallery'),
-                        $variation = $('.variations_form'),
-                        $buttons = $product.find('form.cart .actions-button'),
-                        $buy_now = $buttons.find('.buy_now_button');
-                    $gallery.removeAttr('style');
-                    $gallery.find('img.lazy').lazyload().trigger('appear');
-                    $gallery.imagesLoaded(function () {
-                        $gallery.find('.woocommerce-product-gallery__wrapper').not('.slick-initialized').slick({
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            infinite: false,
-                            prevArrow: '<span class="icon-chevron-left slick-prev-arrow"></span>',
-                            nextArrow: '<span class="icon-chevron-right slick-next-arrow"></span>'
-                        });
+                    $product.append(response.data);
+                    $modal.removeClass('loading').addClass('loaded'); 
+                    $('#it-quick-view-modal .slider-for').slick({
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                      arrows: true,
+                      fade: true,
+                      asNavFor: '.slider-nav'
                     });
-
-                    if ($buy_now.length > 0) {
-                        $buttons.prepend($buy_now);
-                    }
-
-                    $gallery.find('.woocommerce-product-gallery__image').on('click', function (e) {
-                        e.preventDefault();
+                    $('#it-quick-view-modal .slider-nav').slick({
+                      slidesToShow: 4,
+                      slidesToScroll: 1,
+                      asNavFor: '.slider-for',
+                      arrows: true,
+                      focusOnSelect: true
                     });
-
-                    if (typeof wc_add_to_cart_variation_params !== 'undefined') {
-                        $variation.each(function () {
-                            $(this).wc_variation_form();
-                        });
-                    }
-
-                    if (typeof $.fn.tawcvs_variation_swatches_form !== 'undefined') {
-                        $variation.tawcvs_variation_swatches_form();
-                    }
-
-                    $.HandleElement.productVatiation();
-                    if (typeof tawcvs !== 'undefined') {
-                        if (tawcvs.tooltip === 'yes') {
-                            $variation.find('.swatch').tooltip({
-                                classes: {'ui-tooltip': '$.HandleElement-tooltip'},
-                                tooltipClass: '$.HandleElement-tooltip qv-tool-tip',
-                                position: {my: 'center bottom', at: 'center top-13'},
-                                create: function () {
-                                    $('.ui-helper-hidden-accessible').remove();
-                                }
-                            });
-                        }
-                    }
-
-                    $product.find('.compare').tooltip({
-                        content: function () {
-                            return $(this).html();
-                        },
-                        classes: {'ui-tooltip': '$.HandleElement-tooltip'},
-                        tooltipClass: '$.HandleElement-tooltip qv-tooltip',
-                        position: {my: 'center bottom', at: 'center top-13'},
-                        create: function () {
-                            $('.ui-helper-hidden-accessible').remove();
-                        }
-                    });
-
-                    $product.find('[data-rel=tooltip]').tooltip({
-                        classes: {'ui-tooltip': '$.HandleElement-tooltip'},
-                        tooltipClass: '$.HandleElement-tooltip qv-tooltip',
-                        position: {my: 'center bottom', at: 'center top-13'},
-                        create: function () {
-                            $('.ui-helper-hidden-accessible').remove();
-                        }
-                    });
-
-                    $.HandleElement.buyNow();
+                    $('#it-quick-view-modal .slider-for,#it-quick-view-modal .slider-nav').resize();
                 }
             });
         });
 
-        $modal.on('click', '.close-modal, .mf-modal-overlay', function (e) {
-            e.preventDefault();
-            $.HandleElement.closeModal($modal);
-        })
-
     };
     
-        /**
+    /**
      * Open modal
      *
      * @param $modal
      */
     $.HandleElement.openModal = function ($modal) {
-        $modal.fadeIn();
-        $modal.addClass('open');
+        //$modal.modal({ show: true });
     };
 
     /**
      * Close modal
      */
-    $.HandleElement.closeModal = function ($modal) {
-        $modal.fadeOut(function () {
-            $(this).removeClass('open');
-        });
+    $.HandleElement.closeModal = function ($modal) {        
+        //$modal.modal('hide');
     };
     
     /**
@@ -895,8 +832,10 @@
             $button = typeof $button === 'undefined' ? false : $button;
 
             if ( $button ) {
-                    $button.after( "<p>Product successfully added to your cart.</p>" );
+                $("body").append( "<div class='cart-alert'><p>Product successfully added to your cart.</p></div>" ).fadeIn();
+                setTimeout(function(){  jQuery(".cart-alert").fadeOut(); }, 3000);
             }
+
         });
     };
 
@@ -1107,7 +1046,7 @@ jQuery(document).bind('cbox_closed', function(){
 });
 
 /*=============Product Slider============*/
-function sld(){
+jQuery(document).ready(function(){
     jQuery('.slider-for').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -1122,9 +1061,6 @@ function sld(){
       arrows: true,
       focusOnSelect: true
     });
-};
-jQuery( window ).load(function() {
-    sld();
 });
 
 /*Product Action Button Wrap Div*/
@@ -1140,10 +1076,3 @@ document.addEventListener( 'wpcf7submit', function( event ) {
 jQuery(document).ready(function(){
     setTimeout(function(){  jQuery(".mc4wp-response").fadeOut(); }, 5000);
 });    
-
-//Popup Init
-setTimeout(function(){
-    jQuery("#innovatoryPopupnewsletter").modal({
-        show: true
-    });
-}, 5000); 
