@@ -74,7 +74,7 @@ if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {
                     ?>
                     <div class="action-btn quick-view-warp">
                         <?php
-                        echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button mf-product-quick-view"></a>';
+                        echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button it-product-quick-view"></a>';
                         ?>
                     </div>
                 </div>
