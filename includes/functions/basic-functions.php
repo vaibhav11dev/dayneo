@@ -1760,26 +1760,85 @@ function dayneo_sidebar2_class() {
 // -> END Dayneo General Layout Functions
 
 /**
- * Adds quick view modal to footer
+ * Adds quick view modal on the footer
  */
-if ( ! function_exists( 'martfury_quick_view_modal' ) ) :
-	function martfury_quick_view_modal() {
-		if ( is_page_template( 'template-coming-soon-page.php' ) || is_404() ) {
-			return;
-		}
-?>
-
-<div id="it-quick-view-modal" class="it-quick-view-modal single-product woocommerce modal fade" tabindex="-1">
-    <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close" aria-hidden="true"></i></button>
-        <div class="product-modal-content"></div>
+if ( ! function_exists( 'dayneo_quick_view_modal' ) ) :
+    function dayneo_quick_view_modal() {
+            if ( is_page_template( 'template-coming-soon-page.php' ) || is_404() ) {
+                    return;
+            }
+    ?>
+    <!-- START QUICK VIEW MODAL -->
+    <div id="dd-quick-view-modal" class="dd-quick-view-modal single-product woocommerce modal fade" tabindex="-1">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close" aria-hidden="true"></i></button>
+            <div class="product-modal-content"></div>
+        </div>
+        <div class="dd-loading"></div>
     </div>
-    <div class="it-loading"></div>
-</div>
-
-<?php
-}
-
+    <!-- START QUICK VIEW MODAL -->
+    <?php
+    }
 endif;
 
-add_action( 'wp_footer', 'martfury_quick_view_modal' );
+add_action( 'wp_footer', 'dayneo_quick_view_modal' );
+
+/**
+ * Add newsletter popup on the footer
+ *
+ * @since 1.0.0
+ */
+if ( ! function_exists( 'dayneo_newsletter_popup' ) ) :
+	function dayneo_newsletter_popup() {
+		if ( ! dayneo_get_option( 'dd_popup' ) ) {
+			return;
+		}
+
+		$dd_newletter = '';
+		if ( isset( $_COOKIE['dd_newletter'] ) ) {
+			$dd_newletter = $_COOKIE['dd_newletter'];
+		}
+
+		if ( ! empty( $dd_newletter ) ) {
+			return;
+		}
+
+		$output = array();
+                
+                if ( $title = dayneo_get_option( 'dd_popup_heading' ) ) {
+			$output[] = sprintf( '<div class="newsletter_title"><h3 class="h3">%s</h3></div>', esc_html($title) );
+		}
+
+		if ( $desc = dayneo_get_option( 'dd_popup_content' ) ) {
+			$output[] = sprintf( '<div class="ddContent">%s</div>', esc_html($desc) );
+		}
+
+		if ( $form = dayneo_get_option( 'dd_popup_form' ) ) {
+			$output[] = sprintf( '<div class="form-wrap">%s</div>', do_shortcode($form) );
+		}
+
+                if ( $dd_popup_bg = dayneo_get_option( 'dd_popup_bg', '' ) ) {
+                        $image = $dd_popup_bg['url'];
+                } ?>
+                <!-- START NEWSLETTER POPUP -->
+                <div id="ddPopupnewsletter" class="modal fade" tabindex="-1" role="dialog">  
+                    <div class="ddPopupnewsletter-i" role="document">    
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close" aria-hidden="true"></i></button>
+                        <div class="itpopupnewsletter" style="background-image: url(<?php echo esc_url($image); ?>);">
+                            <div id="newsletter_block_popup" class="block">     
+                                <div class="block_content">             
+                                    <?php echo implode( '', $output ) ?>                                      
+                                </div>          
+                                <div class="newsletter_block_popup-bottom check-fancy m-t-15">
+                                    <a href="#" class="newsletter_show_again"><?php echo esc_html_e( 'Don\'t show this popup again', 'dayneo' ); ?></a>         
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END NEWSLETTER POPUP -->
+		<?php
+	}
+endif;
+
+add_action( 'wp_footer', 'dayneo_newsletter_popup' );

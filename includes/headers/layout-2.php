@@ -15,15 +15,15 @@ $show_headerbar  = true;
 if ( empty( $extras ) || ! $extras[ 'search' ] ) {
     $show_search = false;
 }
-if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
-    $show_cart = false;
+if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
+    $show_headerbar = false;
 }
 if ( empty( $extras ) || ! $extras[ 'department' ] ) {
     $show_department = false;
     $css_header_menu = 'col-md-12 col-sm-12';
 }
-if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
-    $show_headerbar         = false;
+if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
+    $show_cart         = false;
     $css_header_primarymenu = 'col-md-12 col-sm-12';
 }
 ?>
@@ -114,7 +114,7 @@ if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
                             <?php dayneo_header_menu(); ?>
                         </div>
                         <?php if ( $show_cart ) : ?>
-                        <div class="col-lg-3 col-md-3">
+                        <div class="col-lg-4 col-md-4">
                             <div class="extras-menu">
                                 <?php
                                 dayneo_extra_cart();

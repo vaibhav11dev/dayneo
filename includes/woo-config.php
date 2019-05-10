@@ -231,20 +231,6 @@ remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_pr
 add_action( 'woocommerce_shop_loop_item_title', 'dayneo_woocommerce_template_loop_product_title', 10 );
 
 /**
- * WooCommerce(shop-page) - Add wishlist in shop page
- * 
- * 
- */
-//if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_add_wishlist_on_loop' ) ) {
-//
-//    function dayneo_yith_wcwl_add_wishlist_on_loop() {
-//        echo do_shortcode( '[yith_wcwl_add_to_wishlist]' );
-//    }
-//
-//    add_action( 'woocommerce_after_shop_loop_item', 'dayneo_yith_wcwl_add_wishlist_on_loop', 12 );
-//}
-
-/**
  * WooCommerce(shop-page) - Add Custom product shorting filter in shop page
  * 
  * 
@@ -865,12 +851,12 @@ function dd_product_navigation() {
     }
 
     // Create HTML Output
-    $output = '<div class="innovatoryNextPrev pull-right">';
+    $output = '<div class="ddNextPrev pull-right">';
     if ( $previous_btn || $previous_img ) {
-        $output .= '<div class="itPrev_product nextPrevProduct pull-left"> ' . $previous_btn . '<div class="innovatoryContent">' . $previous_img . '</div></div>';
+        $output .= '<div class="itPrev_product nextPrevProduct pull-left"> ' . $previous_btn . '<div class="ddContent">' . $previous_img . '</div></div>';
     }
     if ( $next_btn || $next_img ) {
-        $output .= '<div class="itNext_product nextPrevProduct pull-left">' . $next_btn . '<div class="innovatoryContent">' . $next_img . '</div></div>';
+        $output .= '<div class="itNext_product nextPrevProduct pull-left">' . $next_btn . '<div class="ddContent">' . $next_img . '</div></div>';
     }
     $output .= '</div>';
 
@@ -893,29 +879,29 @@ function dayneo_product_share() {
         $image_url = get_template_directory_uri() . '/assets/images/no-thumbnail.jpg';
     }
     ?>
-    <div class="innovatorySocial-sharing">
+    <div class="ddSocial-sharing">
         <span class="labeTitle pull-left">Share</span>
         <ul class="social-icons social-icons-simple pull-left">
-            <li class="innovatoryfacebook"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Facebook', 'dayneo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-facebook"></i></a></li>
-            <li class="innovatorytwitter"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Twitter', 'dayneo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr( $post->post_title ); ?>+&raquo;+<?php echo esc_url( dayneo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a></li>        
-            <li class="innovatorygoogleplus"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'dayneo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
-            <li class="innovatorypinterest"> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'dayneo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr( $image_url ); ?>&description=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-pinterest"></i></a></li>                  
-            <li class="innovatorymore"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="ti-plus"></i></a></li>
+            <li class="ddfacebook"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Facebook', 'dayneo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-facebook"></i></a></li>
+            <li class="ddtwitter"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Twitter', 'dayneo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr( $post->post_title ); ?>+&raquo;+<?php echo esc_url( dayneo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a></li>        
+            <li class="ddgoogleplus"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'dayneo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
+            <li class="ddpinterest"> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'dayneo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr( $image_url ); ?>&description=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-pinterest"></i></a></li>                  
+            <li class="ddmore"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="ti-plus"></i></a></li>
         </ul>
         <div class="clearfix"></div>
     </div>
     <?php
 }
 
-add_action( 'wp_ajax_martfury_product_quick_view', 'product_quick_view' );
-add_action( 'wp_ajax_nopriv_martfury_product_quick_view', 'product_quick_view' );
+add_action( 'wp_ajax_dayneo_product_quick_view', 'product_quick_view' );
+add_action( 'wp_ajax_nopriv_dayneo_product_quick_view', 'product_quick_view' );
 
 /**
  * product_quick_view
  */
 function product_quick_view() {
-//		if ( apply_filters( 'martfury_check_ajax_referer', true ) ) {
-//			check_ajax_referer( '_martfury_nonce', 'nonce' );
+//		if ( apply_filters( 'dayneo_check_ajax_referer', true ) ) {
+//			check_ajax_referer( '_dayneo_nonce', 'nonce' );
 //		}
     ob_start();
     if ( isset( $_POST[ 'product_id' ] ) && ! empty( $_POST[ 'product_id' ] ) ) {
@@ -932,7 +918,7 @@ function product_quick_view() {
 }
 
 // QuicKview
-add_action( 'martfury_single_product_summary', 'get_product_quick_view_header', 5 );
+add_action( 'dayneo_single_product_summary', 'get_product_quick_view_header', 5 );
 
 /**
  * Add single product header
@@ -941,7 +927,7 @@ function get_product_quick_view_header() {
     global $product;
     ?>
 
-    <div class="mf-entry-product-header">
+    <div class="dd-entry-product-header">
         <div class="entry-left">
     <?php
     echo sprintf( '<h2 class="product_title"><a href="%s">%s</a></h2>', esc_url( $product->get_permalink() ), $product->get_title() );
@@ -992,7 +978,7 @@ function get_product_quick_view_header() {
 
                 echo '<div class="action-btn quick-view-warp">';
 
-                echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button mf-product-quick-view"></a>';
+                echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button dd-product-quick-view"></a>';
 
                 echo '</div>';
 
@@ -1017,7 +1003,7 @@ function get_product_quick_view_header() {
                     return;
                 }
 
-                $button_text = get_option( 'yith_woocompare_button_text', esc_html__( 'Compare', 'martfury' ) );
+                $button_text = get_option( 'yith_woocompare_button_text', esc_html__( 'Compare', 'dayneo' ) );
                 $product_id  = $product->get_id();
                 $url_args    = array(
                     'action' => 'yith-woocompare-add-product',
@@ -1037,7 +1023,7 @@ function get_product_quick_view_header() {
                 if ( in_array( $product_id, $the_list ) ) {
                     $css_class          .= ' added';
                     $url_args[ 'action' ] = 'yith-woocompare-view-table';
-                    $button_text        = apply_filters( 'yith_woocompare_compare_added_label', esc_html__( 'Added', 'martfury' ) );
+                    $button_text        = apply_filters( 'yith_woocompare_compare_added_label', esc_html__( 'Added', 'dayneo' ) );
                 }
 
                 $url = esc_url_raw( add_query_arg( $url_args, site_url() ) );

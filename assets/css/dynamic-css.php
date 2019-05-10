@@ -636,7 +636,7 @@ a:focus,
 .main-slider .ved-image-slider .owl-pagination > div:hover,
 .owl-pagination > div.active,
 .ved-woo-cats-slider .item .categoryName:after,
-.innovatoryPopupnewsletter-i .close
+.ddPopupnewsletter-i .close
 {
     background: ' . esc_attr($dd_primary_color) . ';
 }
@@ -667,7 +667,7 @@ a:focus,
 .footer-center .widget_nav_menu .menu > li > a:before,
 .post .entry-meta .read-more:hover,.navigation-links a:hover,
 .woocommerce div.product div.summary .yith-wcwl-add-to-wishlist a:hover, .woocommerce div.product div.summary .compare:hover,
-.innovatoryNextPrev .nextPrevProduct a.button,
+.ddNextPrev .nextPrevProduct a.button,
 .cart-table .product-name a:hover,
 .woocommerce-account .woocommerce-MyAccount-navigation ul li.is-active a, .woocommerce-account .woocommerce-MyAccount-navigation ul li:hover a,
 .ved-woo-cats-slider .item .sub-cat li a:hover,
@@ -680,7 +680,7 @@ a:focus,
 .portfolio-info .social-icons li a:hover,
 .wc_payment_method a:hover,
 .footer a:hover,
-.it-quick-view-modal .modal-content .close:hover
+.dd-quick-view-modal .modal-content .close:hover
 {
     color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -754,7 +754,7 @@ body .elementor-button:hover,
 {
     border-color: ' . esc_attr($dd_primary_color) . ';
 }
-.it-quick-view-modal .it-loading:before{
+.dd-quick-view-modal .dd-loading:before{
 	border-color: ' . esc_attr($dd_primary_color) . ' ' . esc_attr($dd_primary_color) . ' ' . esc_attr($dd_primary_color) . ' transparent;
 }
 

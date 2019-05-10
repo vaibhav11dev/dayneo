@@ -120,44 +120,6 @@ if ( $dd_footer_parallax == 1 ) {
 </div>
 <!-- END WRAPPER -->
 
-<?php 
-$dd_popup = dayneo_get_option( 'dd_popup', 1 );
-$dd_popup_bg = dayneo_get_option( 'dd_popup_bg', '' );
-$dd_popup_heading = dayneo_get_option( 'dd_popup_heading', '' );
-$dd_popup_content = dayneo_get_option( 'dd_popup_content', '' );
-$dd_popup_form = dayneo_get_option( 'dd_popup_form', '' );
-
-if ($dd_popup) {
-?>
-<!--Popup-->
-<div id="innovatoryPopupnewsletter" class="modal fade" tabindex="-1" role="dialog">  
-    <div class="innovatoryPopupnewsletter-i" role="document">    
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close" aria-hidden="true"></i></button>
-        <div class="itpopupnewsletter" style="background-image: url(<?php echo esc_url($dd_popup_bg['url']); ?>);">
-            <div id="newsletter_block_popup" class="block">     
-                <div class="block_content">             
-                    <form method="post">                                    
-                        <div class="newsletter_title">                      
-                            <h3 class="h3"><?php echo esc_html($dd_popup_heading); ?></h3>                  
-                        </div>                                                  
-                        <div class="innovatoryContent"><?php echo esc_html($dd_popup_content); ?></div>
-                        <div class="form-wrap">
-                            <input class="inputNew" id="itnewsletter-input" type="text" name="email" placeholder="Enter your mail...">
-                            <div class="btn btn-base">Subscribe!</div>
-                            <div class="itAlert"></div>
-                        </div>   
-                    </form>     
-                </div>          
-                <div class="newsletter_block_popup-bottom check-fancy m-t-15">
-                    <input id="newsletter_show_again" type="checkbox" class="hidden">
-                    <label class="innovatory_newsletter_dont_show_again" for="newsletter_show_again">Do not show this popup again</label>           
-                </div>
-            </div>
-        </div>
-    </div><!-- /.modal-dialog -->
-</div>
-<?php } ?>
-
 <?php
 wp_footer();
 ?>

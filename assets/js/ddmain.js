@@ -736,7 +736,7 @@
     };
 
     /**
-     * Shop view toggle
+     * Shop view toggle (Shop Layout)
      */
     $.HandleElement.shopView = function () {
 
@@ -757,14 +757,14 @@
         });
     };
     
-        /**
+    /**
      * Toggle product quick view
      */
     $.HandleElement.productQuickView = function () {
-        var $modal = $('#it-quick-view-modal'),
+        var $modal = $('#dd-quick-view-modal'),
             $product = $modal.find('.product-modal-content');
 
-        $.HandleElement.$body.on('click', '.it-product-quick-view', function (e) {
+        $.HandleElement.$body.on('click', '.dd-product-quick-view', function (e) {
             e.preventDefault();
 
             var $a = $(this),
@@ -779,52 +779,36 @@
                 dataType: 'json',
                 method: 'post',
                 data: {
-                    action: 'martfury_product_quick_view',
+                    action: 'dayneo_product_quick_view',
                     nonce: dayneoData.nonce,
                     product_id: id
                 },
                 success: function (response) {
                     $product.append(response.data);
                     $modal.removeClass('loading').addClass('loaded'); 
-                    $('#it-quick-view-modal .slider-for').slick({
+                    $('#dd-quick-view-modal .slider-for').slick({
                       slidesToShow: 1,
                       slidesToScroll: 1,
                       arrows: true,
                       fade: true,
                       asNavFor: '.slider-nav'
                     });
-                    $('#it-quick-view-modal .slider-nav').slick({
+                    $('#dd-quick-view-modal .slider-nav').slick({
                       slidesToShow: 4,
                       slidesToScroll: 1,
                       asNavFor: '.slider-for',
                       arrows: true,
                       focusOnSelect: true
                     });
-                    $('#it-quick-view-modal .slider-for,#it-quick-view-modal .slider-nav').resize();
+                    $('#dd-quick-view-modal .slider-for,#dd-quick-view-modal .slider-nav').resize();
                 }
             });
         });
 
     };
-    
-    /**
-     * Open modal
-     *
-     * @param $modal
-     */
-    $.HandleElement.openModal = function ($modal) {
-        //$modal.modal({ show: true });
-    };
 
     /**
-     * Close modal
-     */
-    $.HandleElement.closeModal = function ($modal) {        
-        //$modal.modal('hide');
-    };
-    
-    /**
-     * Shop view toggle
+     * Show the message on add to cart
      */
     $.HandleElement.addtocartMsg = function () {
 
@@ -839,13 +823,52 @@
         });
     };
 
+    /**
+     * Newsletter popup
+     */
+    $.HandleElement.newLetterPopup = function () {
+        var $modal = $('#ddPopupnewsletter'),
+            days = 15;
+    
+        if ($modal.length < 1) {
+            return;
+        }
+
+        $.HandleElement.$window.on('load', function () {
+            setTimeout(function(){
+                $modal.modal({
+                    show: true
+                });
+            }, 5000);
+        });
+
+        $modal.on('click', '.newsletter_show_again', function (e) {
+            e.preventDefault();
+            closeNewsLetter(days);
+        });
+
+        $modal.find('.mc4wp-form').submit(function () {
+            closeNewsLetter(days);
+        });
+
+        function closeNewsLetter(days) {
+            var date = new Date(),
+                value = date.getTime();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            document.cookie = 'dd_newletter=' + value + ';expires=' + date.toGMTString() + ';path=/';
+        }
+    };
+
     $.HandleElement.init = function () {
         $.HandleElement.productQuantity();
         $.HandleElement.instanceSearch();
         $.HandleElement.addWishlist();
         $.HandleElement.shopView();
-        $.HandleElement.addtocartMsg();
         $.HandleElement.productQuickView();
+        $.HandleElement.addtocartMsg();
+        $.HandleElement.newLetterPopup();
     };
     $(document).ready($.HandleElement.init);
 
