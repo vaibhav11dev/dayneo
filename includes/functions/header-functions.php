@@ -36,8 +36,9 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
                         <div class="icon-wrap">
                                 <span class="icon-box">
                                     <i class="flaticon-paper-bag"></i>
+                                    <span class="mini-item-counter hidden-lg-up"><?php echo $woocommerce->cart->cart_contents_count; ?></span>
                                 </span>
-                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Item(s)', 'dayneo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
+                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'dayneo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
                         </div>
                         <?php } else { ?>
                         <div class="icon-wrap-circle">
@@ -298,7 +299,7 @@ if ( ! function_exists( 'dayneo_header_bar' ) ) :
             return;
         }
         ?>
-        <div class="header-bar topbar">
+        <div class="header-bar">
             <?php
             if ( is_active_sidebar( 'headerbar' ) ) {
                 dynamic_sidebar( 'headerbar' );

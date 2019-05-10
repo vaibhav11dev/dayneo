@@ -106,21 +106,21 @@
                 
                 switch ( $dd_header_type ) {
                     case 'h6':
-                        $header_class = 'header-6';
+                        $header_class = 'header-1';
                         break;
 
                     case 'h7':
-                        $header_class = 'header-7';
+                        $header_class = 'header-2';
                         break;
                     
                     case 'h8':
-                        $header_class = 'header-8';
+                        $header_class = 'header-3';
                         break;
                 }
                 
                 if ( is_page() ) {
 			if ( (($dayneo_header_type == 'h6') || ($dayneo_header_type == 'default' && $dd_header_type == 'h6')) || (($dayneo_header_type == 'h7') || ($dayneo_header_type == 'default' && $dd_header_type == 'h7')) ) { ?>
-				<div id="header" class="header-wrap">
+				<div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php	get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-1' );?>
 				</div>
@@ -136,7 +136,7 @@
                 
                 if ( is_page() ) {
 			if ( ($dayneo_header_type == 'h8') || ($dayneo_header_type == 'default' && $dd_header_type == 'h8') ) { ?>
-				<div id="header" class="header-wrap">
+				<div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php	get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-2' );?>
 				</div>
