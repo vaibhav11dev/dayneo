@@ -833,6 +833,7 @@
 
             if ( $button ) {
                 $("body").append( "<div class='cart-alert'><p>Product successfully added to your cart.</p></div>" ).fadeIn();
+                $(".cart-alert").addClass("loaded");
                 setTimeout(function(){  jQuery(".cart-alert").fadeOut(); }, 3000);
             }
 
@@ -1064,12 +1065,11 @@ jQuery(document).ready(function(){
 });
 
 /*Product Action Button Wrap Div*/
-jQuery(".shop-item .shop-item-photo .shop-item-tools .yith-wcqv-button").wrap("<div class='action-btn quick-view-warp'>");
 jQuery(".shop-item .shop-item-photo .shop-item-tools .compare").wrap("<div class='action-btn compare-warp'>");
 
 //contact form 7 on submit hide message
-document.addEventListener( 'wpcf7submit', function( event ) {
-    setTimeout(function(){  jQuery(".wpcf7-response-output").fadeOut(); }, 3000);
+document.addEventListener( 'wpcf7submit', function( event ) {   
+    setTimeout(function(){  jQuery(".wpcf7-response-output").fadeOut();jQuery(".wpcf7-response-output").removeClass("loaded"); }, 3000);
 }, false );
 
 //mailchimp on submit hide message

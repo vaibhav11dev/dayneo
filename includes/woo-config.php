@@ -17,6 +17,13 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 10 );
 
 /**
+ * For remove Sale flashes in single-product pages.
+ *
+ * @see woocommerce_show_product_sale_flash()
+ */
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
+
+/**
  * WooCommerce(header) - Update number of items and total in cart after Ajax
  * 
  * @global type $woocommerce
@@ -34,8 +41,9 @@ function dayneo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
                 <div class="icon-wrap">
                     <span class="icon-box">
                         <i class="flaticon-paper-bag"></i>
+                        <span class="mini-item-counter hidden-lg-up"><?php echo $woocommerce->cart->cart_contents_count; ?></span>
                     </span>
-                    <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Item(s)', 'dayneo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
+                    <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'dayneo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
                 </div>
             <?php } else { ?>
                 <div class="icon-wrap-circle">
@@ -965,7 +973,6 @@ function get_product_quick_view_header() {
             }
 
             // Image
-            add_action( 'yith_wcqv_product_image', 'woocommerce_show_product_sale_flash', 10 );
             add_action( 'yith_wcqv_product_image', 'woocommerce_show_product_images', 20 );
 
             // Summary
@@ -992,7 +999,7 @@ function get_product_quick_view_header() {
 
                 echo '<div class="action-btn quick-view-warp">';
 
-                echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button mf-product-quick-view"></a>';
+                echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button it-product-quick-view"></a>';
 
                 echo '</div>';
 

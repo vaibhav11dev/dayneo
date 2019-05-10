@@ -555,13 +555,22 @@ Redux::setSection( $dd_options, array(
 			'default'	 => '#000000',
 			'required'	 => array( array( "dd_header_type", '=', 'h5' ) ),
 		),
-            array(
+        array(
 			'subtitle'	 => __( 'Control the background color of header.', 'dayneo' ),
 			'id'		 => 'dd_bg_header',
 			'compiler'	 => true,
 			'type'		 => 'color',
 			'title'		 => __( 'Header Background Color', 'dayneo' ),
 			'default'	 => '#000000',
+			'required'	 => array( array( "dd_header_type", '=', 'h7' ) ),
+		),
+		array(
+			'subtitle'	 => __( 'Control the Text color of header.', 'dayneo' ),
+			'id'		 => 'dd_text_header',
+			'compiler'	 => true,
+			'type'		 => 'color',
+			'title'		 => __( 'Header Text Color', 'dayneo' ),
+			'default'	 => '#ffffff',
 			'required'	 => array( array( "dd_header_type", '=', 'h7' ) ),
 		),
         array(

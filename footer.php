@@ -142,9 +142,7 @@ if ($dd_popup) {
                         </div>                                                  
                         <div class="innovatoryContent"><?php echo esc_html($dd_popup_content); ?></div>
                         <div class="form-wrap">
-                            <input class="inputNew" id="itnewsletter-input" type="text" name="email" placeholder="Enter your mail...">
-                            <div class="btn btn-base">Subscribe!</div>
-                            <div class="itAlert"></div>
+                            <?php echo do_shortcode($dd_popup_form); ?>
                         </div>   
                     </form>     
                 </div>          

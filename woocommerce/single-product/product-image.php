@@ -35,6 +35,11 @@ if ( $attachment_count > 0 ) {
 <div class="col-sm-6">
     <div class="product-slider <?php echo esc_attr( $slider_class ); ?>">
         <?php
+        if ( $product->is_on_sale() ) :
+            echo '<span class="onsale single-product">'.esc_html__( 'Sale!', 'restora' ).'</span>';
+        endif;
+        ?>
+        <?php
         if ( has_post_thumbnail() ) {
 
             $image_title = esc_attr( get_the_title( get_post_thumbnail_id() ) );
