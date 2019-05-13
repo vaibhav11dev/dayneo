@@ -98,35 +98,35 @@
 			<?php
 		}
 
-		$dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h6' );
+		$dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h1' );
 		$dayneo_header_type	 = get_post_meta( $post_id, 'dayneo_header_type', true );
 		if ( !$dayneo_header_type ) {
 			$dayneo_header_type = 'default';
 		}
                 
                 switch ( $dd_header_type ) {
-                    case 'h6':
+                    case 'h1':
                         $header_class = 'header-1';
                         break;
 
-                    case 'h7':
+                    case 'h2':
                         $header_class = 'header-2';
                         break;
                     
-                    case 'h8':
+                    case 'h3':
                         $header_class = 'header-3';
                         break;
                 }
                 
                 if ( is_page() ) {
-			if ( (($dayneo_header_type == 'h6') || ($dayneo_header_type == 'default' && $dd_header_type == 'h6')) || (($dayneo_header_type == 'h7') || ($dayneo_header_type == 'default' && $dd_header_type == 'h7')) ) { ?>
+			if ( (($dayneo_header_type == 'h1') || ($dayneo_header_type == 'default' && $dd_header_type == 'h1')) || (($dayneo_header_type == 'h2') || ($dayneo_header_type == 'default' && $dd_header_type == 'h2')) ) { ?>
 				<div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php	get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-1' );?>
 				</div>
 			<?php	}
 		} else {
-			if ( $dd_header_type == 'h6' || $dd_header_type == 'h7' ) { ?>
+			if ( $dd_header_type == 'h1' || $dd_header_type == 'h2' ) { ?>
                         <div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-1' );?>
@@ -135,14 +135,14 @@
 		}
                 
                 if ( is_page() ) {
-			if ( ($dayneo_header_type == 'h8') || ($dayneo_header_type == 'default' && $dd_header_type == 'h8') ) { ?>
+			if ( ($dayneo_header_type == 'h3') || ($dayneo_header_type == 'default' && $dd_header_type == 'h3') ) { ?>
 				<div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php	get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-2' );?>
 				</div>
 			<?php	}
 		} else {
-			if ( $dd_header_type == 'h8' ) { ?>
+			if ( $dd_header_type == 'h3' ) { ?>
                         <div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-2' );?>

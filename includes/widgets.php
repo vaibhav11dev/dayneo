@@ -1,12 +1,12 @@
 <?php
-get_template_part( 'includes/widgets/tweets-widget' );
-get_template_part( 'includes/widgets/flickr-widget' );
-get_template_part( 'includes/widgets/facebook-like-widget' );
 get_template_part( 'includes/widgets/125x125' );
-get_template_part( 'includes/widgets/social_links' );
 get_template_part( 'includes/widgets/contact_info' );
+get_template_part( 'includes/widgets/facebook-like-widget' );
+get_template_part( 'includes/widgets/flickr-widget' );
+get_template_part( 'includes/widgets/recent-posts-widget' );
 get_template_part( 'includes/widgets/recent-works-widget' );
-get_template_part( 'includes/widgets/testimonial-widget' );
+get_template_part( 'includes/widgets/social_links' );
+get_template_part( 'includes/widgets/tweets-widget' );
 if ( function_exists( 'WC' ) ) {
     get_template_part( 'includes/widgets/product-carousel-widget' );
 }

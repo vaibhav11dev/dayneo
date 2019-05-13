@@ -23,16 +23,15 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
         ?>
         <!-- SHOP CART -->
         <?php
-        $dd_woo_cart = dayneo_get_option( 'dd_woo_cart', 1 );
-        $dd_header_type       = dayneo_get_option( 'dd_header_type', 'h6' );
-        if ( class_exists( 'Woocommerce' ) && $dd_woo_cart ) {
+        $dd_header_type       = dayneo_get_option( 'dd_header_type', 'h1' );
+        if ( class_exists( 'Woocommerce' ) ) {
             global $woocommerce;
             ?>
             <div id="_desktop_cart">
             <div class="cart-hover">
                 <div class="menu-item header-ajax-cart">
                     <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
-                        <?php if ($dd_header_type == 'h8') { ?>
+                        <?php if ($dd_header_type == 'h3') { ?>
                         <div class="icon-wrap">
                                 <span class="icon-box">
                                     <i class="flaticon-paper-bag"></i>

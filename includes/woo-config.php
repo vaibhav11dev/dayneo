@@ -32,12 +32,12 @@ remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_pr
  */
 function dayneo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
     global $woocommerce;
-    $dd_header_type = dayneo_get_option( 'dd_header_type', 'h6' );
+    $dd_header_type = dayneo_get_option( 'dd_header_type', 'h1' );
     ob_start();
     ?>
     <div class="menu-item header-ajax-cart">
         <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
-            <?php if ( $dd_header_type == 'h8' ) { ?>
+            <?php if ( $dd_header_type == 'h3' ) { ?>
                 <div class="icon-wrap">
                     <span class="icon-box">
                         <i class="flaticon-paper-bag"></i>

@@ -5,8 +5,6 @@
 	'h1'		 => __( 'Header1', 'dayneo' ),
 	'h2'		 => __( 'Header2', 'dayneo' ),
 	'h3'		 => __( 'Header3', 'dayneo' ),
-	'h4'		 => __( 'Header4', 'dayneo' ),
-	'h5'		 => __( 'Header5', 'dayneo' ),
     ), ''
     );
 

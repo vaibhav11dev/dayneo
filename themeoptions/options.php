@@ -230,7 +230,7 @@ Redux::setSection( $dd_options, array(
 				'3cl'	 => DAYNEO_IMAGEPATH . '3cl.png',
 			),
 			'title'		 => __( 'Select layout', 'dayneo' ),
-			'default'	 => '2cl',
+			'default'	 => '2cr',
 		),
 		array(
 			'subtitle'	 => __( '<strong>Boxed version</strong> automatically enables custom background', 'dayneo' ),
@@ -257,7 +257,7 @@ Redux::setSection( $dd_options, array(
 				'custom' => __( 'Custom', 'dayneo' ),
 			),
 			'title'		 => __( 'Layout Width', 'dayneo' ),
-			'default'	 => '1200',
+			'default'	 => 'custom',
 		),
 		array(
 			'title'		 => __( 'Custom Layout Width', 'dayneo' ),
@@ -265,7 +265,7 @@ Redux::setSection( $dd_options, array(
 			'id'		 => "dd_custom_width_px",
 			'type'		 => "text",
 			'required'	 => array( array( "dd_width_px", '=', 'custom' ) ),
-			'default'	 => '',
+			'default'	 => '1340',
 		),
 		array(
 			'subtitle'	 => __( 'Select the left and right padding for the Fullwidth-Fluid main content area. Enter value in px. ex: 20px', 'dayneo' ),
@@ -283,8 +283,8 @@ Redux::setSection( $dd_options, array(
 			'left'		 => false,
 			'right'		 => false,
 			'default'	 => array(
-				'padding-top'	 => '140',
-				'padding-bottom' => '140',
+				'padding-top'	 => '30',
+				'padding-bottom' => '30',
 				'units'		 => 'px',
 			),
 		),
@@ -489,62 +489,17 @@ Redux::setSection( $dd_options, array(
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
-			'subtitle'	 => __( 'Choose Enable button if you want to display searchbox in Header', 'dayneo' ),
-			'id'		 => 'dd_searchbox',
-			'type'		 => 'switch',
-			'on'		 => __( 'Enabled', 'dayneo' ),
-			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
-			'title'		 => __( 'Enable Searchbox', 'dayneo' ),
-		),
-		array(
-			'subtitle'	 => __( 'Choose Enable button if you want to display cart in Header', 'dayneo' ),
-			'id'		 => 'dd_woo_cart',
-			'type'		 => 'switch',
-			'on'		 => __( 'Enabled', 'dayneo' ),
-			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
-			'title'		 => __( 'Enable Cart', 'dayneo' ),
-		),
-		array(
-			'subtitle'	 => __( 'Choose Enable button if you want to display menu in Header', 'dayneo' ),
-			'id'		 => 'dd_primary_menu',
-			'type'		 => 'switch',
-			'on'		 => __( 'Enabled', 'dayneo' ),
-			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
-			'title'		 => __( 'Enable Menu', 'dayneo' ),
-		),
-		array(
-			'subtitle'	 => __( 'Choose Enable button if you want to display mobile menu', 'dayneo' ),
-			'id'		 => 'dd_mobile_menu',
-			'type'		 => 'switch',
-			'on'		 => __( 'Enabled', 'dayneo' ),
-			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
-			'title'		 => __( 'Enable Mobile Menu', 'dayneo' ),
-		),
-		array(
-			'subtitle'	 => __( 'Choose Enable button if you want to display Sticky Header', 'dayneo' ),
-			'id'		 => 'dd_sticky_header',
-			'type'		 => 'switch',
-			'on'		 => __( 'Enabled', 'dayneo' ),
-			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
-			'title'		 => __( 'Enable Sticky Header', 'dayneo' ),
-		),
-		array(
 			'subtitle'	 => __( 'Choose your Header Type', 'dayneo' ),
 			'id'		 => 'dd_header_type',
 			'compiler'	 => true,
 			'type'		 => 'image_select',
 			'options'	 => array(
-				'h6'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
-				'h7'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
-				'h8'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
+				'h1'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
+				'h2'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
+				'h3'	 => DAYNEO_IMAGEFOLDER . '/header/header-5.png',
 			),
 			'title'		 => __( 'Choose Header Type', 'dayneo' ),
-			'default'	 => 'h6',
+			'default'	 => 'h1',
 		),
 		array(
 			'subtitle'	 => __( 'Control the background color of topbar header.', 'dayneo' ),
@@ -562,7 +517,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'title'		 => __( 'Header Background Color', 'dayneo' ),
 			'default'	 => '#000000',
-			'required'	 => array( array( "dd_header_type", '=', 'h7' ) ),
+			'required'	 => array( array( "dd_header_type", '=', 'h2' ) ),
 		),
 		array(
 			'subtitle'	 => __( 'Control the Text color of header.', 'dayneo' ),
@@ -571,7 +526,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'title'		 => __( 'Header Text Color', 'dayneo' ),
 			'default'	 => '#ffffff',
-			'required'	 => array( array( "dd_header_type", '=', 'h7' ) ),
+			'required'	 => array( array( "dd_header_type", '=', 'h2' ) ),
 		),
         array(
             'id'       => 'menu_extras',
@@ -620,19 +575,6 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'Header Top Left Content', 'dayneo' ),
 			'default'	 => 'contact_info',
 		),
-//		array(
-//			'subtitle'	 => __( 'Select which content displays in the top right area of the header.', 'dayneo' ),
-//			'id'		 => 'dd_header_right_content',
-//			'type'		 => 'select',
-//			'options'	 => array(
-//				'contact_info'	 => __( 'Contact Info', 'dayneo' ),
-//				'social_links'	 => __( 'Social Links', 'dayneo' ),
-//				'navigation'	 => __( 'Navigation', 'dayneo' ),
-//				'empty'		 => __( 'Leave Empty', 'dayneo' ),
-//			),
-//			'title'		 => __( 'Header Top Right Content', 'dayneo' ),
-//			'default'	 => 'navigation',
-//		),
 		array(
 			'subtitle'	 => __( 'Phone number will display in the Contact Info section of your top header.', 'dayneo' ),
 			'id'		 => 'dd_header_number',
@@ -670,13 +612,6 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'Custom Logo', 'dayneo' ),
 			'url'		 => true,
 		),
-                array(
-                    'subtitle' => __( 'Upload a logo for your transparent header, Apply only header-2', 'dayneo' ),
-                    'id'       => 'dd_header2_logo',
-                    'type'     => 'media',
-                    'title'    => __( 'Custom Logo(For Header-2)', 'dayneo' ),
-                    'url'      => true,
-                ),
 		array(
 			'subtitle'	 => __( 'Select an image file for the retina version of the custom logo. It should be exactly 2x the size of main logo.', 'dayneo' ),
 			'id'		 => 'dd_header_logo_retina',
@@ -940,12 +875,16 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'media',
 			'title'		 => __( 'Footer Payment Icon One', 'dayneo' ),
 			'url'		 => true,
+                        'default'	 => array(
+				'url' => DAYNEO_DEFAULT . 'visa.png'
+			),
 		),
                 array(
 			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
 			'id'		 => 'dd_footer_payment_link1',
 			'type'		 => 'text',
 			'title'		 => __( 'Payment Icon One Link', 'dayneo' ),
+                    'default'	 => '#',
 		),
             array(
 			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
@@ -953,12 +892,16 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'media',
 			'title'		 => __( 'Footer Payment Icon Two', 'dayneo' ),
 			'url'		 => true,
+                'default'	 => array(
+				'url' => DAYNEO_DEFAULT . 'mastercard.png'
+			),
 		),
                 array(
 			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
 			'id'		 => 'dd_footer_payment_link2',
 			'type'		 => 'text',
 			'title'		 => __( 'Payment Icon Two Link', 'dayneo' ),
+                    'default'	 => '#',
 		),
             array(
 			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
@@ -966,12 +909,16 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'media',
 			'title'		 => __( 'Footer Payment Icon Three', 'dayneo' ),
 			'url'		 => true,
+                'default'	 => array(
+				'url' => DAYNEO_DEFAULT . 'paypal.png'
+			),
 		),
                 array(
 			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
 			'id'		 => 'dd_footer_payment_link3',
 			'type'		 => 'text',
 			'title'		 => __( 'Payment Icon Three Link', 'dayneo' ),
+                    'default'	 => '#',
 		),
             array(
 			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
@@ -979,12 +926,16 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'media',
 			'title'		 => __( 'Footer Payment Icon Four', 'dayneo' ),
 			'url'		 => true,
+                'default'	 => array(
+				'url' => DAYNEO_DEFAULT . 'american_express.png'
+			),
 		),
                 array(
 			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
 			'id'		 => 'dd_footer_payment_link4',
 			'type'		 => 'text',
 			'title'		 => __( 'Payment Icon Four Link', 'dayneo' ),
+                    'default'	 => '#',
 		),
             array(
 			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
@@ -992,12 +943,16 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'media',
 			'title'		 => __( 'Footer Payment Icon Five', 'dayneo' ),
 			'url'		 => true,
+                'default'	 => array(
+				'url' => DAYNEO_DEFAULT . 'discover.png'
+			),
 		),
                 array(
 			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
 			'id'		 => 'dd_footer_payment_link5',
 			'type'		 => 'text',
 			'title'		 => __( 'Payment Icon Five Link', 'dayneo' ),
+                    'default'	 => '#',
 		),
             array(
 			'subtitle'	 => __( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'dayneo' ),
@@ -1005,12 +960,16 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'media',
 			'title'		 => __( 'Footer Payment Icon Six', 'dayneo' ),
 			'url'		 => true,
+                'default'	 => array(
+				'url' => DAYNEO_DEFAULT . 'diners.png'
+			),
 		),
                 array(
 			'subtitle'	 => __( 'Add a footer payment link for your theme', 'dayneo' ),
 			'id'		 => 'dd_footer_payment_link6',
 			'type'		 => 'text',
 			'title'		 => __( 'Payment Icon Six Link', 'dayneo' ),
+                    'default'	 => '#',
 		),
 		
 	),

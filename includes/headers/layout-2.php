@@ -40,11 +40,10 @@ if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
                             <div class="inner-header site-identity">
                                 <?php
                                 $dd_header_logo               = dayneo_get_option( 'dd_header_logo', '' );
-                                $dd_header2_logo              = dayneo_get_option( 'dd_header2_logo', '' );
                                 $dd_header_logo_retina        = dayneo_get_option( 'dd_header_logo_retina', '' );
                                 $dd_header_logo_retina_width  = dayneo_get_option( 'dd_header_logo_retina_width', '' );
                                 $dd_header_logo_retina_height = dayneo_get_option( 'dd_header_logo_retina_height', '' );
-                                if ( $dd_header_logo != '' || $dd_header2_logo != '' || $dd_header_logo_retina != '' ) {
+                                if ( $dd_header_logo != '' || $dd_header_logo_retina != '' ) {
                                     ?>
                                     <a class="inner-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                                         <?php

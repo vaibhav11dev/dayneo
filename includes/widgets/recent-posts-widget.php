@@ -1,7 +1,7 @@
 <?php
-add_action('widgets_init', 'dayneo_recent_post_list_widgets');
+add_action('widgets_init', 'dayneo_recent_post_widget_widgets');
 
-function dayneo_recent_post_list_widgets() {
+function dayneo_recent_post_widget_widgets() {
     register_widget('Dayneo_Recent_Post_List_Widget');
 }
 
@@ -13,8 +13,8 @@ class Dayneo_Recent_Post_List_Widget extends WP_Widget {
 	 */
 	public function __construct() {
 		parent::__construct(
-		'recent_works-widget', __('Dayneo: Blog List', 'dayneo'), // Name
-                array('classname' => 'recent_post_list', 'description' => __('Display Latest Blog lists.', 'dayneo'),) // Args
+		'recent_post-widget', __('Dayneo: Blog List', 'dayneo'), // Name
+                array('classname' => 'recent_post_widget', 'description' => __('Display Latest Blog lists.', 'dayneo'),) // Args
 		);
 	}
 
@@ -66,9 +66,23 @@ class Dayneo_Recent_Post_List_Widget extends WP_Widget {
 			?>
 			<div class="Blog_wrap_list clearfix">
 			<?php while ( $r->have_posts() ) : $r->the_post(); ?>
-				    <div class="blog_list">			
+				    <div class="blog_list">
+                    
+                                        <?php
+					if( has_post_thumbnail() ){ ?>
+					<div class="col-md-3 padding_0"><?php
+						the_post_thumbnail(); ?>
+						</div>
+						<?php
+					}
+					if( has_post_thumbnail() ){ 
+					$class = 'col-md-9 padding_right_0';
+					}else{
+					$class = 'col-md-12 padding_0';
+					}
+                                            ?>
 
-					<div class="col-md-12 padding_0">
+					<div class="<?php echo esc_attr($class); ?>">
 					    <h3><a href="<?php the_permalink(); ?>"><?php echo esc_html(get_the_title()); ?></a></h3>
 					    <div class="blogmeta">
 						<?php if ( $show_author ) {
@@ -139,7 +153,7 @@ class Dayneo_Recent_Post_List_Widget extends WP_Widget {
 		    <p><input class="checkbox" type="checkbox"<?php checked( $show_author ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_author' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_author' )); ?>" />
 			<label for="<?php echo esc_attr($this->get_field_id( 'show_author' )); ?>"><?php esc_html_e( 'Display Blog Author?', 'dayneo' ); ?></label></p>
 
-		    <p><input class="checkbox" type="checkbox"<?php checked( '$show_date' ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_date' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_date' )); ?>" />
+		    <p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_date' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_date' )); ?>" />
 			<label for="<?php echo esc_attr($this->get_field_id( 'show_date' )); ?>"><?php esc_html_e( 'Display Blog Date?', 'dayneo' ); ?></label></p>
 
 		    <?php

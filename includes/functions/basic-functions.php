@@ -740,7 +740,7 @@ function dayneo_tvslider( $term ) {
 	if ( $query->have_posts() ) {
 		?>
 		<!-- SLIDER -->
-		<div id="home" class="flexslider fullheight color-white">
+		<div id="home" class="flexslider tvslider fullheight color-white">
 			<ul class="slides">
 				<?php
 				while ( $query->have_posts() ): $query->the_post();
@@ -789,8 +789,10 @@ function dayneo_tvslider( $term ) {
 					}
 
 					//Alignment Style
+                                        $align = '';
 					if ( isset( $metadata[ 'dayneo_content_alignment' ] ) && $metadata[ 'dayneo_content_alignment' ] ) {
-						$align = $metadata[ 'dayneo_content_alignment' ];
+						$align = 'text-'.$metadata[ 'dayneo_content_alignment' ][ 0 ];
+                                                
 					}
 					?>
 
@@ -803,17 +805,17 @@ function dayneo_tvslider( $term ) {
 								<div class="container">
 
 									<div class="row">
-										<div class="col-sm-12 text-<?php echo esc_attr($align[ 0 ]); ?>">
+										<div class="col-sm-12 <?php echo esc_attr($align); ?>">
 
 											<?php
 											if ( isset( $metadata[ 'dayneo_heading' ][ 0 ] ) && $metadata[ 'dayneo_heading' ][ 0 ] ) {
 												?>
-												<h1 class="text-title text-uppercase m-b-50 m-t-70"><?php echo esc_attr($metadata[ 'dayneo_heading' ][ 0 ]); ?></h1>
+												<h1 class="text-title slide-heading text-uppercase m-b-50 m-t-70"><?php echo esc_attr($metadata[ 'dayneo_heading' ][ 0 ]); ?></h1>
 												<?php
 											}
 											if ( isset( $metadata[ 'dayneo_caption' ][ 0 ] ) && $metadata[ 'dayneo_caption' ][ 0 ] ) {
 												?>
-												<p><?php echo esc_attr($metadata[ 'dayneo_caption' ][ 0 ]); ?></p>
+                                                                                                <p class="slide-caption"><?php echo esc_attr($metadata[ 'dayneo_caption' ][ 0 ]); ?></p>
 												<?php
 											}
 											if ( (isset( $metadata[ 'dayneo_button1_link' ][ 0 ] ) && $metadata[ 'dayneo_button1_link' ][ 0 ]) || (isset( $metadata[ 'dayneo_button2_link' ][ 0 ] ) && $metadata[ 'dayneo_button2_link' ][ 0 ]) ) {
@@ -928,6 +930,7 @@ function dayneo_heroheadertype( $param ) {
 	}
 
 	// Alighnment Style
+        $align = '';
 	if ( isset( $param[ 'dayneo_hero_content_alignment' ] ) && $param[ 'dayneo_hero_content_alignment' ] ) {
 		$align = $param[ 'dayneo_hero_content_alignment' ];
 	}
@@ -1112,7 +1115,7 @@ function dayneo_titlebar_bg_class() {
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = restora_bp_get_id();
+            $post_id = dayneo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1217,7 +1220,7 @@ function dayneo_titlebar_title_check() {
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = restora_bp_get_id();
+            $post_id = dayneo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1257,7 +1260,7 @@ function dayneo_titlebar_breadcrumb_check() {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( function_exists( 'is_buddypress' ) ) {
                 if ( is_buddypress() ) {
-                    $post_id = restora_bp_get_id();
+                    $post_id = dayneo_bp_get_id();
                 } else {
                     $post_id = isset( $post->ID ) ? $post->ID : '';
                 }
@@ -1419,7 +1422,7 @@ function dayneo_layout_class( $type = 1 ) {
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = restora_bp_get_id();
+            $post_id = dayneo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1516,7 +1519,7 @@ function dayneo_lets_get_sidebar() {
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = restora_bp_get_id();
+            $post_id = dayneo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1569,7 +1572,7 @@ function dayneo_lets_get_sidebar_2() {
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = restora_bp_get_id();
+            $post_id = dayneo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1615,7 +1618,7 @@ function dayneo_sidebar_class() {
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = restora_bp_get_id();
+            $post_id = dayneo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1697,7 +1700,7 @@ function dayneo_sidebar2_class() {
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = restora_bp_get_id();
+            $post_id = dayneo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {

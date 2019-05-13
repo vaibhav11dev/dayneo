@@ -8,7 +8,7 @@ if ( $wp_query->is_posts_page ) {
     $post_id = get_option( 'page_for_posts' );
 } elseif ( function_exists( 'is_buddypress' ) ) {
         if ( is_buddypress() ) {
-            $post_id = restora_bp_get_id();
+            $post_id = dayneo_bp_get_id();
         } else {
             $post_id = isset( $post->ID ) ? $post->ID : '';
         }
@@ -141,14 +141,6 @@ if ( is_user_logged_in() ) {
 ';
 }
 
-if ( $dd_options[ 'dd_sticky_header' ] == 0 ) {
-	$dayneo_dynamic_css .= '
-	.is_stuck {
-		display: none;
-	}
-';
-}
-
 //Header Topbar Color
 if ( isset( $dd_options[ 'dd_topbar_color' ] ) ) {
 	$dayneo_dynamic_css .= '
@@ -167,7 +159,7 @@ $dayneo_dynamic_css		 .= '
 ';
 
 //Header Background Color (H7)
-if ( isset( $dd_options[ 'dd_bg_header' ] ) && $dd_options[ 'dd_header_type' ] == 'h7'  ) {
+if ( isset( $dd_options[ 'dd_bg_header' ] ) && $dd_options[ 'dd_header_type' ] == 'h2'  ) {
 	$dayneo_dynamic_css .= '
 	#header {
 		background: ' . esc_attr($dd_options[ 'dd_bg_header' ]) . ';
@@ -183,6 +175,9 @@ $dd_pagetitlebar_height			 = dayneo_get_option( 'dd_pagetitlebar_height', 'mediu
 $dayneo_page_title_bar_height		 = get_post_meta( $post_id, 'dayneo_page_title_bar_height', true );
 $dd_pagetitlebar_custom			 = dayneo_get_option( 'dd_pagetitlebar_custom', '' );
 $dayneo_page_title_bar_height_custom	 = get_post_meta( $post_id, 'dayneo_page_title_bar_height_custom', true );
+if ( !$dayneo_page_title_bar_height ) {
+        $dayneo_page_title_bar_height = 'default';
+}
 
 // 1.1 Page Title Bar Custom Height
 if ( $dayneo_page_title_bar_height == 'custom' && $dayneo_page_title_bar_height_custom ) {
