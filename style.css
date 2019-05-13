@@ -10,13 +10,3 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: grid-layout, footer-widgets, blog, news, photography, buddypress, two-columns, left-sidebar, right-sidebar, full-width-template, sticky-post, threaded-comments, microformats, post-formats, flexible-header, featured-images, custom-background, custom-colors, custom-header, custom-menu, theme-options, translation-ready
 Text Domain: dayneo
 */
-
-.newsletter_show_again:before {
-    position: absolute;
-    left: 60%;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #000;
-    content: "";
-    border-radius: 3px;
-}

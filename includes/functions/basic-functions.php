@@ -656,7 +656,7 @@ function dayneo_portfolio_share() {
 		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'dayneo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
 		<li> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'dayneo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr($image_url); ?>&description=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-pinterest"></i></a></li>			
 		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share by Email', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/email?linkurl=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-envelope-o"></i></a></li>
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="icon-action-redo icons"></i></a></li>
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="icon-action-redo icons ti-plus"></i></a></li>
 	</ul>
 	<?php
 }

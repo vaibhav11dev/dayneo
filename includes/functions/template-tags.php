@@ -313,7 +313,7 @@ function dayneo_sharethis() {
         <?php } if ( $dd_options[ 'dd_sharing_email' ] == 1 ) { ?>
             <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" title="" data-original-title="<?php esc_html_e( 'Share on Email', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/email?linkurl=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-envelope-o"></i></a>
             <?php } if ( $dd_options[ 'dd_sharing_more_options' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" title="" data-original-title="<?php esc_html_e( 'More options', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="icon-action-redo icons"></i></a>
+            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" title="" data-original-title="<?php esc_html_e( 'More options', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="icon-action-redo icons ti-plus"></i></a>
     <?php } ?>
     </div>
     <?php

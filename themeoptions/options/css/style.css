@@ -1692,3 +1692,8 @@ pre {
     padding: 0
 }
 }
+@media screen and (max-width: 1360px){
+.redux-main .button, .redux-main .button-secondary {
+    padding: 5px 12px;
+}    
+}
