@@ -9,8 +9,9 @@ get_header();
 ?>
 
 <!-- PORTFOLIO -->
-<section class="module-xs">
+<section class="p-tb-content">
     <div class="container">
+    	<div class="row">
 
 	<!-- SECONDARY-2 -->	    
 	<?php
@@ -33,7 +34,7 @@ get_header();
 	}
 	?>
 	<!-- END SECONDARY-1 -->
-
+	</div>
     </div>
 </section>
 <!-- END PORTFOLIO -->

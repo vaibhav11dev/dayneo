@@ -403,7 +403,8 @@ $dayneo_dynamic_css .= '
 .sub-menu li.submenu-open > a {
 	color: ' . esc_attr($dd_sub_menu_hover_font_color) . ';
 }
-.form-control {
+.form-control,.form-control, input[type=text],.woocommerce-input-wrapper .select2-selection,
+.woocommerce .woocommerce-Input, .woocommerce-form-coupon .input-text, .widget_product_search .widget-content .search-field, .wpcf7-text, .wpcf7-number, .wpcf7-date, .wpcf7-textarea, .wpcf7-select, .mc4wp-form-fields .input-wrapper input,select {
 	background-color: ' . esc_attr($dd_form_bg_color) . ';
 	color: ' . esc_attr($dd_form_text_color) . ';
 	border-color: ' . esc_attr($dd_form_border_color) . ';
@@ -458,6 +459,10 @@ $dayneo_dynamic_css	 .= '
 	padding-bottom: ' . esc_attr($dd_main_menu_padding[ 'padding-bottom' ]) . ';
 	padding-left: ' . esc_attr($dd_main_menu_padding[ 'padding-left' ]) . ';
 }
+.products-cats-menu .cats-menu-title{
+	padding-top: ' . esc_attr($dd_main_menu_padding[ 'padding-top' ]) . ';
+	padding-bottom: ' . esc_attr($dd_main_menu_padding[ 'padding-bottom' ]) . ';
+}
 ';
 
 /* -----------------------------------------------------------------
@@ -465,7 +470,7 @@ $dayneo_dynamic_css	 .= '
  */
 
 
-$dd_megamenu_title_size	 = dayneo_get_option( 'dd_megamenu_title_size', '13px' );
+$dd_megamenu_title_size	 = dayneo_get_option( 'dd_megamenu_title_size', '15px' );
 $dd_menu_font		 = dayneo_get_option( 'dd_menu_font' );
 $dd_widget_content_font	 = dayneo_get_option( 'dd_widget_content_font' );
 
@@ -520,8 +525,11 @@ if ( $dd_width_px != "custom" ) {
     font-size: ' . esc_attr($dd_megamenu_title_size) . ';
     text-transform: ' . esc_attr($dd_menu_text_transform) . ';
 }
-
- .ved-megamenu-wrapper .ved-megamenu-bullet,
+.vertical-megamenu .ved-megamenu-menu.has-submenu .ved-megamenu-wrapper .ved-megamenu-title a{
+	font-size: ' . esc_attr($dd_megamenu_title_size) . ';
+	text-transform: ' . esc_attr($dd_menu_text_transform) . ';
+}
+.ved-megamenu-wrapper .ved-megamenu-bullet,
 .ved-megamenu-bullet {
     border-left: 3px solid ' . esc_attr($dd_menu_font[ 'color' ]) . ';
 }
@@ -577,7 +585,8 @@ ul.nav-menu li li:hover .ved-megamenu-title a,
 ul.nav-menu li li.current-menu-item .ved-megamenu-title, 
 ul.nav-menu li li.current-menu-item .ved-megamenu-title a, 
 ul.nav-menu li li.current-menu-ancestor .ved-megamenu-title,
-ul.nav-menu li li.current-menu-ancestor .ved-megamenu-title a {
+ul.nav-menu li li.current-menu-ancestor .ved-megamenu-title a,
+.inner-nav > li > a:hover, .inner-nav > li > a:focus, .ved-main-megamenu .inner-nav > li.submenu-open > a {
     color: ' . esc_attr($dd_main_menu_hover_font_color) . ';
 }
 ';
@@ -659,12 +668,11 @@ a:focus,
 .icons-list a:hover,
 .widget .widget-content ul li a:hover,
 .vertical-megamenu .inner-nav > li:hover > a,
-.sub-menu li > a:hover,
-.sub-menu li > a:focus,
-.sub-menu li.submenu-open > a,
 .cart-hover .sub-cart-menu .list-product .list-product-detail a:hover,
 .shop-item-title .woocommerce-loop-product__title a:hover,
 .footer-center .widget_nav_menu .menu > li > a:before,
+.footer-center .widget_nav_menu .sub-menu > li > a:before,
+.footer-center .widget_nav_menu ul.sub-menu:not(.menu) > li > a:hover,
 .post .entry-meta .read-more:hover,.navigation-links a:hover,
 .woocommerce div.product div.summary .yith-wcwl-add-to-wishlist a:hover, .woocommerce div.product div.summary .compare:hover,
 .ddNextPrev .nextPrevProduct a.button,
@@ -717,7 +725,9 @@ body .elementor-button:hover,
 .scroll-top:hover,
 .ved-price-list .featured-highlight .highlight-box,
 .wishlist_table .product-name .yith-wcqv-button:hover,
-.check-fancy input[type=checkbox]:checked + label:before
+.check-fancy input[type=checkbox]:checked + label:before,
+.newsletter_show_again.checked:before,
+.sidebar .yith-woocompare-widget a.compare
 {
     background-color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -747,10 +757,11 @@ body .elementor-button:hover,
 .product-slider .slider-nav .slider-item-nav.slick-current img,
 .woocommerce div.product .product-slider .slick-arrow:hover,
 .main-slider .ved-image-slider .owl-buttons > div,
-.contact-info-wrap .contact-info-box:hover .elementor-icon,
 .scroll-top:hover:before,
 .ved-price-list .featured-highlight,
-.check-fancy input[type=checkbox] + label:before
+.check-fancy input[type=checkbox] + label:before,
+.newsletter_show_again:before,
+.contact-info-wrap .contact-info-box .elementor-icon
 {
     border-color: ' . esc_attr($dd_primary_color) . ';
 }

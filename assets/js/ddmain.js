@@ -845,7 +845,13 @@
 
         $modal.on('click', '.newsletter_show_again', function (e) {
             e.preventDefault();
-            closeNewsLetter(days);
+            $(this).toggleClass("checked");
+            var check = $(this).hasClass("checked");
+            if(check){                
+                closeNewsLetter(days);
+            } else {
+                closeNewsLetter(0);
+            }
         });
 
         $modal.find('.mc4wp-form').submit(function () {

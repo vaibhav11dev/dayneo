@@ -332,7 +332,7 @@ if ( ! function_exists( 'dayneo_extra_department' ) ) :
             return;
         }
 
-        $dep_text = '<i class="icon-menu"><span class="s-space"></span></i>';
+        $dep_text = '<i class="icon-menu ti-menu"></i>';
         $dep_tit = dayneo_get_option( 'dd_vmenu_title' );
         if ( ! empty( $dep_tit ) ) {
             $dep_text .= '<span class="text">' . $dep_tit . '</span>';
