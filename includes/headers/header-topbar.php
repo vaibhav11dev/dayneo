@@ -30,6 +30,12 @@ if ( is_page() ) {
 		$topbar_class = 'top-bar-color';
 	}
 }
+
+if ( $dd_options[ 'dd_header_left_content' ] != 'empty' ) {
+	$topbar_right_col = 'col-md-6';
+} else {
+	$topbar_right_col = 'col-md-12';
+}
 ?>
 <!-- TOP BAR -->
 <div class="hidden-md-down top-bar <?php echo esc_attr($topbar_class); ?>">
@@ -50,14 +56,14 @@ if ( is_page() ) {
 			}
 			?>
 		    </div>
-             <?php endif; ?>
-		    <div class="col-md-6 col-sm-12 text-right top-bar-right">
+        <?php endif; ?>
+	    <div class="<?php echo esc_attr($topbar_right_col); ?> col-sm-12 text-right top-bar-right">
 			<?php
-                            get_template_part( 'includes/headers/header-wishlist' );
-                            get_template_part( 'includes/headers/header-currency' );
-                            get_template_part( 'includes/headers/header-my-account' );
+                get_template_part( 'includes/headers/header-wishlist' );
+                get_template_part( 'includes/headers/header-currency' );
+                get_template_part( 'includes/headers/header-my-account' );
 			?>
-		    </div>
+	    </div>
 	   
 	</div>
     </div>

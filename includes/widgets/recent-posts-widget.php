@@ -70,20 +70,20 @@ class Dayneo_Recent_Post_List_Widget extends WP_Widget {
                     
                                         <?php
 					if( has_post_thumbnail() ){ ?>
-					<div class="col-md-3 padding_0"><?php
-						the_post_thumbnail(); ?>
+					<div class="item-thumb padding_0"><?php
+						the_post_thumbnail( 'thumbnail' ); ?>
 						</div>
 						<?php
 					}
 					if( has_post_thumbnail() ){ 
-					$class = 'col-md-9 padding_right_0';
+					$class = 'item-detail padding_right_0';
 					}else{
-					$class = 'col-md-12 padding_0';
+					$class = 'item-detail padding_0';
 					}
                                             ?>
 
 					<div class="<?php echo esc_attr($class); ?>">
-					    <h3><a href="<?php the_permalink(); ?>"><?php echo esc_html(get_the_title()); ?></a></h3>
+					    <h3 class="post_tit"><a href="<?php the_permalink(); ?>"><?php echo esc_html(get_the_title()); ?></a></h3>
 					    <div class="blogmeta">
 						<?php if ( $show_author ) {
 							?><div class="b_author"><i class="fa fa-user"> </i> <?php echo get_the_author(); ?>
@@ -95,7 +95,7 @@ class Dayneo_Recent_Post_List_Widget extends WP_Widget {
 							echo '</span> </div>';
 						}
 						?><?php if ( $show_date ) { ?>
-							    <div class="b_date"><i class="fa fa-calendar"> </i> <?php echo get_the_date(); ?></div>	<?php
+							    <div class="b_date"><?php echo get_the_date(); ?></div>	<?php
 				}
 				?>                                			
 						</div>

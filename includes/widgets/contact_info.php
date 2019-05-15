@@ -66,7 +66,9 @@ class Dayneo_Contact_Info_Widget extends WP_Widget {
 
 		    if ( isset( $instance[ 'web' ] ) && $instance[ 'web' ] ) {
 			    ?>
-			    <p class="web"><a href="<?php echo esc_url($instance[ 'web' ]); ?>"><?php
+			    <p class="web"><a href="<?php echo esc_url($instance[ 'web' ]); ?>">
+			    	<i class="fa fa-globe"></i>
+			    	<?php
 				    if ( $instance[ 'webtxt' ] ) {
 					    echo esc_html($instance[ 'webtxt' ]);
 				    } else {
