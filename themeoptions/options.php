@@ -1462,20 +1462,7 @@ Redux::setSection( $dd_options, array(
 			'options'	 => $sidebar_options,
 			'title'		 => __( 'Shop Archive/Category Sidebar', 'dayneo' ),
 			'default'	 => 'Siderbar 1',
-		),
-                array(
-			'subtitle'	 => __( 'Select the product style that will display on the single product pages.', 'dayneo' ),
-			'id'		 => 'dd_product_style',
-			'compiler'	 => true,
-			'type'		 => 'select',
-			'options'	 => array(
-				'one'		 => __( 'Style One', 'dayneo' ),
-				'two'		 => __( 'Style Two', 'dayneo' ),
-				'three'		 => __( 'Style Three', 'dayneo' ),
-			),
-			'title'		 => __( 'Single Product Style', 'dayneo' ),
-			'default'	 => 'one',
-		),
+		),         
 	),
 )
 );

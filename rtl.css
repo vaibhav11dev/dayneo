@@ -88,15 +88,15 @@ div.wpcf7-response-output, .mc4wp-response .mc4wp-alert, #yith-wcwl-popup-messag
 .recent_post_widget .blog_list .item-detail {
     padding-right: 15px;
 }
+.scroll-top{
+    left: 30px;
+    right: auto;
+}
 
 .owl-carousel { direction: ltr; }
 .owl-carousel .owl-item { direction: rtl; }
 
 /*Custom*/
-.newsletter_show_again:before {
-    margin-left: 8px;
-    margin-right: 0;
-}
 .top-bar-right .dropdown-menu {
     left: 0;
     right: auto;
