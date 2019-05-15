@@ -264,7 +264,7 @@ if ( ! empty( $dd_main_pattern ) && $dd_main_pattern != 'none' && in_array( $dd_
 	$dd_footer_image		 = dayneo_get_option( 'dd_footer_image', 'cover' );
 	$dd_footer_background_repeat	 = dayneo_get_option( 'dd_footer_image_background_repeat', 'no-repeat' );
 	$dd_footer_background_position	 = dayneo_get_option( 'dd_footer_image_background_position', 'center top' );
-	if ( $dd_footer_image_src[ 'url' ] ) {
+	if ( isset($dd_footer_image_src[ 'url' ]) && $dd_footer_image_src[ 'url' ] ) {
 		$dayneo_dynamic_css .= '
 .footer {
 	background-image: url("' . esc_url( $dd_footer_image_src[ 'url' ] ) . '");
@@ -337,7 +337,10 @@ $dd_custom_font_woff	 = dayneo_get_option( 'dd_custom_font_woff' );
 $dd_custom_font_ttf	 = dayneo_get_option( 'dd_custom_font_ttf' );
 $dd_custom_font_svg	 = dayneo_get_option( 'dd_custom_font_svg' );
 $dd_custom_font_eot	 = dayneo_get_option( 'dd_custom_font_eot' );
-if ( (isset( $dd_custom_font_woff[ 'url' ] ) != "") && ( $dd_custom_font_svg[ 'url' ] != "") && ($dd_custom_font_eot[ 'url' ] != "" ) && ($dd_custom_font_ttf[ 'url' ] != "" ) ) {
+if ( isset( $dd_custom_font_woff[ 'url' ] ) && $dd_custom_font_woff[ 'url' ] 
+    && isset($dd_custom_font_svg[ 'url' ]) && $dd_custom_font_svg[ 'url' ] 
+    && isset($dd_custom_font_eot[ 'url' ]) && $dd_custom_font_eot[ 'url' ] 
+    && isset($dd_custom_font_ttf[ 'url' ]) && $dd_custom_font_ttf[ 'url' ] ) {
 	$dayneo_dynamic_css .= '
 @font-face {
     font-family: "CustomFont";

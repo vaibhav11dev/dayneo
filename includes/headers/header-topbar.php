@@ -21,16 +21,6 @@ if ( $wp_query->is_posts_page ) {
 $topbar_class		 = '';
 $dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h1' );
 $dayneo_header_type	 = get_post_meta( $post_id, 'dayneo_header_type', true );
-if ( is_page() ) {
-	if ( ($dayneo_header_type == 'h5') || ($dayneo_header_type == 'default' && $dd_header_type == 'h5') ) {
-		$topbar_class = 'top-bar-color';
-	}
-} else {
-	if ( $dd_header_type == 'h5' ) {
-		$topbar_class = 'top-bar-color';
-	}
-}
-
 if ( $dd_options[ 'dd_header_left_content' ] != 'empty' ) {
 	$topbar_right_col = 'col-md-6';
 } else {
@@ -38,7 +28,7 @@ if ( $dd_options[ 'dd_header_left_content' ] != 'empty' ) {
 }
 ?>
 <!-- TOP BAR -->
-<div class="hidden-md-down top-bar <?php echo esc_attr($topbar_class); ?>">
+<div class="hidden-md-down top-bar top-bar-color">
     <div class="container">
 	<div class="row">
 

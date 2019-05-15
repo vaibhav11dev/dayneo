@@ -6,7 +6,6 @@ get_template_part( 'includes/widgets/flickr-widget' );
 get_template_part( 'includes/widgets/recent-posts-widget' );
 get_template_part( 'includes/widgets/recent-works-widget' );
 get_template_part( 'includes/widgets/social_links' );
-get_template_part( 'includes/widgets/tweets-widget' );
 if ( function_exists( 'WC' ) ) {
     get_template_part( 'includes/widgets/product-carousel-widget' );
 }

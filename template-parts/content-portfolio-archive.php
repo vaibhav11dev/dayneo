@@ -38,8 +38,17 @@ if ( category_description() ):
 		while ( have_posts() ): the_post();
 
 			if ( has_post_thumbnail() ) {
+				$icon_url_check = get_post_meta( $post->ID, 'dayneo_link_icon_url', true );
+                                if ( ! empty( $icon_url_check ) ) {
+                                    $permalink = $icon_url_check;
+                                } else {
+                                    $permalink = get_permalink( $post->ID );
+                                }
 
-				
+                                $link_target = '';
+                                if ( get_post_meta( $post->ID, 'dayneo_link_icon_target', true ) == "yes" ) {
+                                    $link_target = ' target=_blank';
+                                }
 
 				$item_classes	 = '';
 				$item_cats	 = get_the_terms( $post->ID, 'portfolio_category' );
@@ -59,7 +68,7 @@ if ( category_description() ):
 						<span class="work-category"><?php echo esc_attr($item_classes); ?></span>
 					    </div>
 					</div>
-					<a href="<?php esc_url(the_permalink()); ?>" class="work-link"></a>
+					<a href="<?php echo esc_url($permalink); ?>" <?php echo esc_attr( $link_target ); ?> class="work-link"></a>
 				    </div>
 				</article>
 				<!-- END PORTFOLIO ITEM -->

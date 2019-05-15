@@ -1064,6 +1064,10 @@ jQuery(document).bind('cbox_closed', function(){
 });
 
 /*=============Product Slider============*/
+var slick_vertical = 'false';
+if ( dayneoData.product_style == 'two' || dayneoData.product_style == 'three' ) {
+    slick_vertical = 'true';
+}
 jQuery(document).ready(function(){
     if (!jQuery('body').hasClass("rtl")) {
         jQuery('.slider-for').slick({
@@ -1078,7 +1082,8 @@ jQuery(document).ready(function(){
           slidesToScroll: 1,
           asNavFor: '.slider-for',
           arrows: true,
-          focusOnSelect: true
+          focusOnSelect: true,
+          vertical: slick_vertical
         });
     } else {         
         jQuery(".slider-for,.slider-nav").attr("dir","rtl");
@@ -1096,7 +1101,8 @@ jQuery(document).ready(function(){
           asNavFor: '.slider-for',
           arrows: true,
           rtl: true,
-          focusOnSelect: true
+          focusOnSelect: true,
+          vertical: slick_vertical
         });
     }
 });

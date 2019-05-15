@@ -91,7 +91,7 @@ class Dayneo_Flickr_Widget extends WP_Widget {
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'screen_name' )); ?>"><?php echo esc_html_e( 'Flickr ID(<a href="http://idgettr.com/">Get your flickr ID</a>)', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'screen_name' )); ?>"><?php echo esc_html_e( 'Flickr ID', 'dayneo' ); ?>(<a href="http://idgettr.com/">Get your flickr ID</a>)</label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'screen_name' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'screen_name' )); ?>" value="<?php echo esc_attr($instance[ 'screen_name' ]); ?>" />
 		</p>
 
@@ -102,7 +102,7 @@ class Dayneo_Flickr_Widget extends WP_Widget {
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'api' )); ?>"><?php echo esc_html_e( 'API key (Use default or get your own from <a href="http://www.flickr.com/services/apps/create/apply">Flickr APP Garden</a>)', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'api' )); ?>"><?php echo esc_html_e( 'API key', 'dayneo' ); ?>(Use default or get your own from <a href="http://www.flickr.com/services/apps/create/apply">Flickr APP Garden</a>)</label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'api' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'api' )); ?>" value="<?php echo esc_attr($instance[ 'api' ]); ?>" />
 		</p>
 

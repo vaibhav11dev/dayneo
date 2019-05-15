@@ -186,7 +186,7 @@ if ( get_post_meta( $post->ID, 'dayneo_po_related_posts', true ) == 'yes' ||
                         while ( $projects->have_posts() ): $projects->the_post();
 
                             if ( has_post_thumbnail() ):
-                                $icon_url_check = get_post_meta( get_the_ID(), 'dayneo_link_icon_url', true );
+                                $icon_url_check = get_post_meta( $post->ID, 'dayneo_link_icon_url', true );
                                 if ( ! empty( $icon_url_check ) ) {
                                     $icon_permalink = $icon_url_check;
                                 } else {
@@ -194,8 +194,8 @@ if ( get_post_meta( $post->ID, 'dayneo_po_related_posts', true ) == 'yes' ||
                                 }
 
                                 $link_target = '';
-                                if ( get_post_meta( get_the_ID(), 'dayneo_link_icon_target', true ) == "yes" ) {
-                                    $link_target = ' target="_blank"';
+                                if ( get_post_meta( $post->ID, 'dayneo_link_icon_target', true ) == "yes" ) {
+                                    $link_target = ' target=_blank';
                                 }
 
                                 $item_classes = '';

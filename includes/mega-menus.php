@@ -75,6 +75,11 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 		 * @var string $menu_megamenu_thumbnail does the item have a thumbnail?
 		 */
 		private $menu_megamenu_thumbnail = '';
+                
+                /**
+		 * @var string $menu_megamenu_banner does the item have a banner?
+		 */
+		private $menu_megamenu_banner = '';
 
 		/**
 		 * @see Walker::start_lvl()
@@ -179,9 +184,14 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 			$this->menu_megamenu_title	 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_title', true );
 			$this->menu_megamenu_widgetarea	 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_widgetarea', true );
 			$this->menu_megamenu_icon	 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_icon', true );
-			$ved_img_id			 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_thumbnail', true );
+			//For MegaMenu thumbnail
+                        $ved_img_id			 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_thumbnail', true );
 			$ved_img_src			 = wp_get_attachment_image_src( $ved_img_id, 'full' );
 			$this->menu_megamenu_thumbnail	 = $ved_img_src[ 0 ];
+                        //For MegaMenu banner
+                        $ved_banner_img_id			 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_banner', true );
+			$ved_banner_img_src			 = wp_get_attachment_image_src( $ved_banner_img_id, 'full' );
+			$this->menu_megamenu_banner	 = $ved_banner_img_src[ 0 ];
 			/* we are inside a mega menu */
 			if ( $depth === 1 && $this->menu_megamenu_status == "enabled" ) {
 
@@ -232,7 +242,9 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 
 					$heading = sprintf( '%s%s%s%s', $link, $title_enhance, $title, $link_closing );
 
-					if ( $this->menu_megamenu_title != 'disabled' ) {
+					if ( ! empty( $this->menu_megamenu_banner ) ) {
+						$item_output .= $link.'<img src="' . esc_url($this->menu_megamenu_banner) . '">'.$link_closing;
+					} elseif ( $this->menu_megamenu_title != 'disabled' ) {
 						$item_output .= "<h3 class='ved-megamenu-title'>" . $heading . "</h3>";
 					} else {
 						$item_output .= $heading;
@@ -659,13 +671,13 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 						$ved_img_src	 = wp_get_attachment_image_src( $ved_img_id, 'full' );
 						$ved_have_img	 = is_array( $ved_img_src );
 						?>
-			                        <div id="custom-img-container-<?php echo esc_attr($item_id); ?>" class="custom-img-container">
+			                        <div id="thumbnail-custom-img-container-<?php echo esc_attr($item_id); ?>" class="custom-img-container">
 							<?php if ( $ved_have_img ) : ?>
 				                                <img src="<?php echo esc_url($ved_img_src[ 0 ]); ?>" class="ved-megamenu-thumbnail-image" style="width:30px; height:30px; display: inline;" />
 							<?php endif; ?>
 			                        </div>
 			                        <p class="field-megamenu-thumbnail description description-wide hide-if-no-js">
-							<a id="ved-media-upload-<?php echo esc_attr($item_id); ?>" data-media-id="<?php echo esc_attr($item_id); ?>" class="ved-open-media button button-primary ved-megamenu-upload-thumbnail upload-custom-img <?php
+							<a id="ved-media-thumbnail-upload-<?php echo esc_attr($item_id); ?>" data-media-id="<?php echo esc_attr($item_id); ?>" class="ved-open-media button button-primary ved-megamenu-upload-thumbnail upload-custom-img <?php
 							if ( $ved_have_img ) {
 								echo 'hidden';
 							}
@@ -673,7 +685,7 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 							   href="<?php echo esc_url($ved_upload_link) ?>">
 								   <?php esc_html_e( 'Set Thumbnail', 'dayneo' ) ?>
 							</a>
-							<a id="ved-media-remove-<?php echo esc_attr($item_id); ?>" data-media-id="<?php echo esc_attr($item_id); ?>" class="remove-ved-megamenu-thumbnail delete-custom-img <?php
+							<a id="ved-media-thumbnail-remove-<?php echo esc_attr($item_id); ?>" data-media-id="<?php echo esc_attr($item_id); ?>" class="remove-ved-megamenu-thumbnail delete-custom-img <?php
 							if ( ! $ved_have_img ) {
 								echo 'hidden';
 							}
@@ -684,6 +696,39 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 			                        </p>
 			                        <input id="edit-menu-item-megamenu-thumbnail-<?php echo esc_attr($item_id); ?>" class="ved-new-media-image widefat code edit-menu-item-megamenu-thumbnail" name="menu-item-ved-megamenu-thumbnail[<?php echo esc_attr($item_id); ?>]" type="hidden" value="<?php echo esc_attr($ved_img_id); ?>" />
 
+                                                <!--set MegaMenu Banner-->
+						<?php
+						$ved_banner_upload_link = esc_url( get_upload_iframe_src( 'image', $item_id ) );
+						$ved_banner_img_id	 = get_post_meta( $item_id, '_menu_item_ved_megamenu_banner', true );
+						$ved_banner_img_src	 = wp_get_attachment_image_src( $ved_banner_img_id, 'full' );
+						$ved_have_banner_img	 = is_array( $ved_banner_img_src );
+						?>
+			                        <div id="banner-custom-img-container-<?php echo esc_attr($item_id); ?>" class="custom-img-container">
+							<?php if ( $ved_have_banner_img ) : ?>
+				                                <img src="<?php echo esc_url($ved_banner_img_src[ 0 ]); ?>" class="ved-megamenu-banner-image" style="width:30px; height:30px; display: inline;" />
+							<?php endif; ?>
+			                        </div>
+			                        <p class="field-megamenu-banner description description-wide hide-if-no-js">
+							<a id="ved-media-banner-upload-<?php echo esc_attr($item_id); ?>" data-media-id="<?php echo esc_attr($item_id); ?>" class="ved-open-media button button-primary ved-megamenu-upload-banner upload-custom-img <?php
+							if ( $ved_have_banner_img ) {
+								echo 'hidden';
+							}
+							?>" 
+							   href="<?php echo esc_url($ved_banner_upload_link) ?>">
+								   <?php esc_html_e( 'Set Banner', 'dayneo' ) ?>
+							</a>
+							<a id="ved-media-banner-remove-<?php echo esc_attr($item_id); ?>" data-media-id="<?php echo esc_attr($item_id); ?>" class="remove-ved-megamenu-banner delete-custom-img <?php
+							if ( ! $ved_have_banner_img ) {
+								echo 'hidden';
+							}
+							?>" 
+							   href="#">
+								   <?php esc_html_e( 'Remove image', 'dayneo' ) ?>
+							</a>
+			                        </p>
+			                        <input id="edit-menu-item-megamenu-banner-<?php echo esc_attr($item_id); ?>" class="ved-new-media-image widefat code edit-menu-item-megamenu-banner" name="menu-item-ved-megamenu-banner[<?php echo esc_attr($item_id); ?>]" type="hidden" value="<?php echo esc_attr($ved_banner_img_id); ?>" />
+
+                                                
 					</div><!-- .ved-mega-menu-options-->
 					<p class="field-move hide-if-no-js description description-wide">
 			                        <label>
@@ -771,7 +816,7 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 			 */
 			function save_custom_fields( $menu_id, $menu_item_db_id, $args ) {
 
-				$field_name_suffix = array( 'status', 'width', 'columns', 'title', 'widgetarea', 'icon', 'thumbnail' );
+				$field_name_suffix = array( 'status', 'width', 'columns', 'title', 'widgetarea', 'icon', 'thumbnail', 'banner' );
 
 				foreach ( $field_name_suffix as $key ) {
 					if ( ! isset( $_REQUEST[ 'menu-item-ved-megamenu-' . $key ][ $menu_item_db_id ] ) ) {
@@ -797,6 +842,7 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 					$menu_item->ved_megamenu_widgetarea	 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_widgetarea', true );
 					$menu_item->ved_megamenu_icon		 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_icon', true );
 					$menu_item->ved_megamenu_thumbnail	 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_thumbnail', true );
+					$menu_item->ved_megamenu_banner	 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_banner', true );
 				}
 				return $menu_item;
 			}
@@ -813,7 +859,7 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 			jQuery(document).ready(function ($) {
 
 				var frame;
-				jQuery('.upload-custom-img').on('click', function (event) {
+				jQuery('.ved-megamenu-upload-thumbnail').on('click', function (event) {
 
 					event.preventDefault();
 					var item_id = jQuery(this).attr('data-media-id');
@@ -833,27 +879,70 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 
 						var attachment = frame.state().get('selection').first().toJSON();
 
-						jQuery('#custom-img-container-' + item_id).append('<img src="' + attachment.url + '" alt="' + attachment.name + '" class="ved-megamenu-thumbnail-image" style="width:30px; height:30px; display:inline;"/>');
+						jQuery('#thumbnail-custom-img-container-' + item_id).append('<img src="' + attachment.url + '" alt="' + attachment.name + '" class="ved-megamenu-thumbnail-image" style="width:30px; height:30px; display:inline;"/>');
 
 						jQuery('#edit-menu-item-megamenu-thumbnail-' + item_id).val(attachment.id);
-						jQuery('#ved-media-upload-' + item_id).addClass('hidden');
-						jQuery('#ved-media-remove-' + item_id).removeClass('hidden');
+						jQuery('#ved-media-thumbnail-upload-' + item_id).addClass('hidden');
+						jQuery('#ved-media-thumbnail-remove-' + item_id).removeClass('hidden');
+					});
+
+					frame.open();
+				});
+                                
+                                jQuery('.ved-megamenu-upload-banner').on('click', function (event) {
+
+					event.preventDefault();
+					var item_id = jQuery(this).attr('data-media-id');
+
+					frame = wp.media({
+						title: 'Select or Upload Media Of Your mega menu thumbnail',
+						button: {
+							text: 'Use this image'
+						},
+						multiple: false,
+						//item_id: jQuery(this).attr('data-media-id')
+					});
+
+					frame.on('select', function () {
+
+						//item_id = frame.options.item_id;
+
+						var attachment = frame.state().get('selection').first().toJSON();
+
+						jQuery('#banner-custom-img-container-' + item_id).append('<img src="' + attachment.url + '" alt="' + attachment.name + '" class="ved-megamenu-banner-image" style="width:30px; height:30px; display:inline;"/>');
+
+						jQuery('#edit-menu-item-megamenu-banner-' + item_id).val(attachment.id);
+						jQuery('#ved-media-banner-upload-' + item_id).addClass('hidden');
+						jQuery('#ved-media-banner-remove-' + item_id).removeClass('hidden');
 					});
 
 					frame.open();
 				});
 
-				jQuery('.delete-custom-img').on('click', function (event) {
+				jQuery('.remove-ved-megamenu-thumbnail').on('click', function (event) {
 
 					event.preventDefault();
 					var item_id = jQuery(this).attr('data-media-id');
-					jQuery('#custom-img-container-' + item_id).html('');
+					jQuery('#thumbnail-custom-img-container-' + item_id).html('');
 
 					jQuery('#edit-menu-item-megamenu-thumbnail-' + item_id).val('');
 
-					jQuery('#ved-media-upload-' + item_id).removeClass('hidden');
+					jQuery('#ved-media-thumbnail-upload-' + item_id).removeClass('hidden');
 
-					jQuery('#ved-media-remove-' + item_id).addClass('hidden');
+					jQuery('#ved-media-thumbnail-remove-' + item_id).addClass('hidden');
+				});
+                                
+                                jQuery('.remove-ved-megamenu-banner').on('click', function (event) {
+
+					event.preventDefault();
+					var item_id = jQuery(this).attr('data-media-id');
+					jQuery('#banner-custom-img-container-' + item_id).html('');
+
+					jQuery('#edit-menu-item-megamenu-banner-' + item_id).val('');
+
+					jQuery('#ved-media-banner-upload-' + item_id).removeClass('hidden');
+
+					jQuery('#ved-media-banner-remove-' + item_id).addClass('hidden');
 				});
 
 			});
