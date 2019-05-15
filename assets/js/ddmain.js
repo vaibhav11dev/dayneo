@@ -146,7 +146,7 @@
         //Mega menu More Dropdown
         $(document).ready(function(){
             if ($(document).width() >= 1340){
-                if (dayneoData.headerbar_on == '1') {
+                if ((dayneoData.headerbar_on == '1' && dayneoData.headertype == 'h1') || (dayneoData.headercart_on == '1' && dayneoData.headertype == 'h3')) {
                     var number_blocks =5;
                 }else{
                     var number_blocks =7;
@@ -280,38 +280,6 @@
         $(".lightbox").magnificPopup({
             type: "image"
         });
-
-//	$(".gallery").each(function () {
-//	    $(this).magnificPopup({
-//		delegate: "a",
-//		type: "image",
-//		gallery: {
-//		    enabled: true,
-//		    navigateByImgClick: true,
-//		    preload: [0, 1]
-//		},
-//		image: {
-//		    titleSrc: "title",
-//		    tError: "The image could not be loaded."
-//		},
-//		zoom: {
-//		    enabled: true,
-//		    duration: 300
-//		}
-//	    });
-//	});
-//	
-//	$(window).on("resize", function () {
-//	    $(".gallery").imagesLoaded(function () {
-//		$(".gallery").isotope({
-//		    layoutMode: "fitRows",
-//		    itemSelector: ".gallery-item"
-//		});
-//	    });
-//	}).resize();
-//	$(".video-pop-up").magnificPopup({
-//	    type: "iframe"
-//	});
 
         $("body").fitVids();
         var wow = new WOW({
@@ -786,20 +754,40 @@
                 success: function (response) {
                     $product.append(response.data);
                     $modal.removeClass('loading').addClass('loaded'); 
-                    $('#dd-quick-view-modal .slider-for').slick({
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                      arrows: true,
-                      fade: true,
-                      asNavFor: '.slider-nav'
-                    });
-                    $('#dd-quick-view-modal .slider-nav').slick({
-                      slidesToShow: 4,
-                      slidesToScroll: 1,
-                      asNavFor: '.slider-for',
-                      arrows: true,
-                      focusOnSelect: true
-                    });
+                    if (!jQuery('body').hasClass("rtl")) {
+                        $('#dd-quick-view-modal .slider-for').slick({
+                          slidesToShow: 1,
+                          slidesToScroll: 1,
+                          arrows: true,
+                          fade: true,
+                          asNavFor: '.slider-nav'
+                        });
+                        $('#dd-quick-view-modal .slider-nav').slick({
+                          slidesToShow: 4,
+                          slidesToScroll: 1,
+                          asNavFor: '.slider-for',
+                          arrows: true,
+                          focusOnSelect: true
+                        });
+                    } else {         
+                        jQuery("#dd-quick-view-modal .slider-nav,#dd-quick-view-modal .slider-for").attr("dir","rtl");
+                        $('#dd-quick-view-modal .slider-for').slick({
+                          slidesToShow: 1,
+                          slidesToScroll: 1,
+                          arrows: true,
+                          fade: true,
+                          rtl: true,
+                          asNavFor: '.slider-nav'
+                        });
+                        $('#dd-quick-view-modal .slider-nav').slick({
+                          slidesToShow: 4,
+                          slidesToScroll: 1,
+                          asNavFor: '.slider-for',
+                          arrows: true,
+                          rtl: true,
+                          focusOnSelect: true
+                        });
+                    }
                     $('#dd-quick-view-modal .slider-for,#dd-quick-view-modal .slider-nav').resize();
                 }
             });
@@ -1077,20 +1065,40 @@ jQuery(document).bind('cbox_closed', function(){
 
 /*=============Product Slider============*/
 jQuery(document).ready(function(){
-    jQuery('.slider-for').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: true,
-      fade: true,
-      asNavFor: '.slider-nav'
-    });
-    jQuery('.slider-nav').slick({
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      asNavFor: '.slider-for',
-      arrows: true,
-      focusOnSelect: true
-    });
+    if (!jQuery('body').hasClass("rtl")) {
+        jQuery('.slider-for').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          fade: true,
+          asNavFor: '.slider-nav'
+        });
+        jQuery('.slider-nav').slick({
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          arrows: true,
+          focusOnSelect: true
+        });
+    } else {         
+        jQuery(".slider-for,.slider-nav").attr("dir","rtl");
+        jQuery('.slider-for').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          fade: true,
+          rtl: true,
+          asNavFor: '.slider-nav'
+        });
+        jQuery('.slider-nav').slick({
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          arrows: true,
+          rtl: true,
+          focusOnSelect: true
+        });
+    }
 });
 
 /*Product Action Button Wrap Div*/

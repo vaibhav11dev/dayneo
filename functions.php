@@ -54,12 +54,15 @@ function dayneo_scripts() {
     wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/assets/slick/slick.min.js', array( 'jquery' ), '1.0', true );
 
 $menu_extras = dayneo_get_option( 'menu_extras' );
+$header_type = dayneo_get_option( 'dd_header_type' );
     wp_localize_script( 'ddmain', 'dayneoData', array(
         'ajax_url'            => admin_url( 'admin-ajax.php' ),
         'nonce'               => wp_create_nonce( '_dayneo_nonce' ),
         'search_content_type' => dayneo_get_option( 'search_content_type' ),
         'ajax_search'         => intval( dayneo_get_option( 'header_ajax_search' ) ),
         'headerbar_on' => $menu_extras[ 'headerbar' ], 
+        'headercart_on' => $menu_extras[ 'cart' ],
+        'headertype' => $header_type,
     ) );
 }
 

@@ -233,22 +233,29 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
         } else {
             $search_icon = "<i class='flaticon-search'></i>";
         }
+
+        $search_content_type = dayneo_get_option('search_content_type');
+        if($search_content_type == 'all'){ 
+            $search_results = '<div class="ajax-search-results search-content-all woocommerce"></div>';
+        } else {
+            $search_results = '<div class="ajax-search-results woocommerce"></div>';
+        }
         $items .= sprintf(
         '<div id="_desktop_search"><div class="top-search-wrap"><div class="product-extra-search">
                 <form class="products-search" method="get" action="%s">
                     <div class="psearch-content">
-			<div class="search-wrapper">
+			            <div class="search-wrapper">
                             <input type="text" name="s"  class="search-field" autocomplete="off" placeholder="%s">
-                            %s
-                            
+                            %s                            
                         </div>
-                        <div class="product-cat hidden-sm-down"><div class="product-cat-label %s">%s</div> %s</div>			    <button type="submit" class="search-submit">%s</button>
+                        <div class="product-cat hidden-sm-down"><div class="product-cat-label %s">%s</div> %s</div>
+                        <button type="submit" class="search-submit">%s</button>
                     </div>
                 </form>
                 %s
 		</div>
-                <div class="ajax-search-results woocommerce"></div>
-                <div class="search-limit"><p class="limit">Number of characters at least are 3</p></div></div></div>', esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, esc_attr( $item_class ), esc_html( $cats_text ), $cat, $search_icon, implode( ' ', $words_html )
+                %s
+                <div class="search-limit"><p class="limit">Number of characters at least are 3</p></div></div></div>', esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, esc_attr( $item_class ), esc_html( $cats_text ), $cat, $search_icon, implode( ' ', $words_html ), $search_results
         );
 
         echo $items;

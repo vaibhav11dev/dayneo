@@ -21,6 +21,11 @@ if ( $wp_query->is_posts_page ) {
 $topbar_class		 = '';
 $dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h1' );
 $dayneo_header_type	 = get_post_meta( $post_id, 'dayneo_header_type', true );
+if ( $dd_options[ 'dd_header_left_content' ] != 'empty' ) {
+	$topbar_right_col = 'col-md-6';
+} else {
+	$topbar_right_col = 'col-md-12';
+}
 ?>
 <!-- TOP BAR -->
 <div class="hidden-md-down top-bar top-bar-color">
@@ -41,14 +46,14 @@ $dayneo_header_type	 = get_post_meta( $post_id, 'dayneo_header_type', true );
 			}
 			?>
 		    </div>
-             <?php endif; ?>
-		    <div class="col-md-6 col-sm-12 text-right top-bar-right">
+        <?php endif; ?>
+	    <div class="<?php echo esc_attr($topbar_right_col); ?> col-sm-12 text-right top-bar-right">
 			<?php
-                            get_template_part( 'includes/headers/header-wishlist' );
-                            get_template_part( 'includes/headers/header-currency' );
-                            get_template_part( 'includes/headers/header-my-account' );
+                get_template_part( 'includes/headers/header-wishlist' );
+                get_template_part( 'includes/headers/header-currency' );
+                get_template_part( 'includes/headers/header-my-account' );
 			?>
-		    </div>
+	    </div>
 	   
 	</div>
     </div>

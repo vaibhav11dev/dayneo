@@ -158,7 +158,7 @@ $dayneo_dynamic_css		 .= '
 }
 ';
 
-//Header Background Color (H7)
+//Header Background Color (H2)
 if ( isset( $dd_options[ 'dd_bg_header' ] ) && $dd_options[ 'dd_header_type' ] == 'h2'  ) {
 	$dayneo_dynamic_css .= '
 	#header {
@@ -167,6 +167,15 @@ if ( isset( $dd_options[ 'dd_bg_header' ] ) && $dd_options[ 'dd_header_type' ] =
 ';
 }
 
+//Header Text Color (H2)
+if ( isset( $dd_options[ 'dd_text_header' ] ) && $dd_options[ 'dd_header_type' ] == 'h2'  ) {
+	$dayneo_dynamic_css .= '
+	.top-bar p, .top-bar-right .dropdown > .expand-more, #_desktop_wishtlistTop .yith-contents,.cart-hover .cart-content-right > span,
+	.cart-hover .cart-content-right .nav-total {
+		color: ' . esc_attr($dd_options[ 'dd_text_header' ]) . ';
+	}
+';
+}
 
 /* -----------------------------------------------------------------
   [Page Title Bar Style]
@@ -223,11 +232,17 @@ if ( $dayneo_page_title_bar_bg ) {
 .titlebar-bg {
 	background-image: url("' . esc_url(wp_get_attachment_url( $dayneo_page_title_bar_bg )) . '");
 }
+.titlebar-bg *{
+	color:#fff
+}
 ';
 } elseif ( $dayneo_enable_page_title == 'default' && isset( $dd_pagetitlebar_background[ 'url' ] ) && $dd_pagetitlebar_background[ 'url' ] ) {
 	$dayneo_dynamic_css .= '
 .titlebar-bg {
 	background-image: url("' . esc_url($dd_pagetitlebar_background[ 'url' ]) . '");
+}
+.titlebar-bg *{
+	color:#fff
 }
 ';
 }
@@ -401,7 +416,8 @@ $dayneo_dynamic_css .= '
 .sub-menu li.submenu-open > a {
 	color: ' . esc_attr($dd_sub_menu_hover_font_color) . ';
 }
-.form-control,.form-control, input[type=text],.woocommerce-input-wrapper .select2-selection,
+.form-control,.form-control, input[type=text],.woocommerce-input-wrapper .select2-selection,.select2-selection,
+.select2-container--default .select2-selection--single,
 .woocommerce .woocommerce-Input, .woocommerce-form-coupon .input-text, .widget_product_search .widget-content .search-field, .wpcf7-text, .wpcf7-number, .wpcf7-date, .wpcf7-textarea, .wpcf7-select, .mc4wp-form-fields .input-wrapper input,select {
 	background-color: ' . esc_attr($dd_form_bg_color) . ';
 	color: ' . esc_attr($dd_form_text_color) . ';
@@ -572,12 +588,6 @@ ul.nav-menu .ved-megamenu-menu li:hover .widget-content ul {
     display: block;
 }
 
-.ved-megamenu-wrapper.col-span-1,
-.ved-megamenu-wrapper.col-span-2,
-.ved-megamenu-wrapper.col-span-3 {
-    margin-left: -' . esc_attr($dd_main_menu_padding[ 'padding-left' ]) . ';
-}
-
 ul.nav-menu li li:hover .ved-megamenu-title,
 ul.nav-menu li li:hover .ved-megamenu-title a,
 ul.nav-menu li li.current-menu-item .ved-megamenu-title, 
@@ -625,6 +635,7 @@ a:focus,
 .alert-brand,
 .label-base,
 .btn.btn-base:hover,
+button[type=submit]:hover,
 .ved-read-more-button:hover,
 .nav-text-tabs>li>a:after,
 .owl-controls-brand .owl-page span,
@@ -643,7 +654,8 @@ a:focus,
 .main-slider .ved-image-slider .owl-pagination > div:hover,
 .owl-pagination > div.active,
 .ved-woo-cats-slider .item .categoryName:after,
-.ddPopupnewsletter-i .close
+.ddPopupnewsletter-i .close,
+.header-3 .extras-menu
 {
     background: ' . esc_attr($dd_primary_color) . ';
 }
@@ -686,7 +698,9 @@ a:focus,
 .portfolio-info .social-icons li a:hover,
 .wc_payment_method a:hover,
 .footer a:hover,
-.dd-quick-view-modal .modal-content .close:hover
+.dd-quick-view-modal .modal-content .close:hover,
+.header-2 .ved-main-megamenu .inner-nav > li:hover > a,
+.page-search article .entry-meta .read-more:hover
 {
     color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -699,6 +713,8 @@ a:focus,
 .progress-bar,
 .products-search .search-submit:hover,
 .main-menu,
+.products-cats-menu .cats-menu-title,
+.header-1 .main-menu,
 .extras-menu .icon-wrap:hover .icon-box,
 .extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box .mini-item-counter,
 .extras-menu .icon-wrap .icon-box,
@@ -723,9 +739,14 @@ body .elementor-button:hover,
 .scroll-top:hover,
 .ved-price-list .featured-highlight .highlight-box,
 .wishlist_table .product-name .yith-wcqv-button:hover,
-.check-fancy input[type=checkbox]:checked + label:before,
-.newsletter_show_again.checked:before,
-.sidebar .yith-woocompare-widget a.compare
+.sidebar .yith-woocompare-widget a.compare,
+input[type="radio"] + label:after, input[type="radio"] + span:after,
+button[type=submit]:hover,
+.vedanta-slider .slides .owl-buttons > div,
+.header-2 .extras-menu .icon-wrap .icon-box .mini-item-counter,
+.header-2 .extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box,
+.header-2 .products-search .search-submit,
+.header-3 #_desktop_cart
 {
     background-color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -740,7 +761,7 @@ body .elementor-button:hover,
 }
 
 .scroll-top:hover,
-.form-control:focus,
+.form-control:focus,input[type=text]:focus,
 .header-row .extras-menu .icon-wrap-circle .icon-wrap,.owl-carousel .owl-buttons>*:hover,
 .woocommerce .widget_price_filter .price_slider_amount .button:hover,
 .widget.woocommerce .tagcloud a:hover,
@@ -757,63 +778,13 @@ body .elementor-button:hover,
 .main-slider .ved-image-slider .owl-buttons > div,
 .scroll-top:hover:before,
 .ved-price-list .featured-highlight,
-.check-fancy input[type=checkbox] + label:before,
+.contact-info-wrap .contact-info-box .elementor-icon,
+input[type="radio"] + label:before, input[type="radio"] + span:before, input[type="checkbox"] + label:before, input[type="checkbox"] + span:before,
 .newsletter_show_again:before,
-.contact-info-wrap .contact-info-box .elementor-icon
+.vedanta-slider .slides .owl-buttons > div,
+.header-3 .products-cats-menu .toggle-product-cats
 {
     border-color: ' . esc_attr($dd_primary_color) . ';
-}
-.dd-quick-view-modal .dd-loading:before{
-	border-color: ' . esc_attr($dd_primary_color) . ' ' . esc_attr($dd_primary_color) . ' ' . esc_attr($dd_primary_color) . ' transparent;
-}
-
-/*box-shadow*/
-@-webkit-keyframes sonarEffect {
-    0% {
-        opacity: 0.3;
-    }
-    40% {
-        opacity: 0.5;
-        box-shadow: 0 0 0 2px rgba(255,150,0,0.1), 0 0 10px 10px '. esc_attr($dd_primary_color) .', 0 0 0 10px rgba(255,150,0,0.5);
-    }
-    100% {
-        box-shadow: 0 0 0 2px rgba(255,150,0,0.1), 0 0 10px 10px '. esc_attr($dd_primary_color) .', 0 0 0 10px rgba(255,150,0,0.5);
-        -webkit-transform: scale(1.5);
-        opacity: 0;
-    }
-}
-@-moz-keyframes sonarEffect {
-    0% {
-        opacity: 0.3;
-    }
-    40% {
-        opacity: 0.5;
-        box-shadow: 0 0 0 2px rgba(255,150,0,0.1), 0 0 10px 10px '. esc_attr($dd_primary_color) .', 0 0 0 10px rgba(255,150,0,0.5);
-    }
-    100% {
-        box-shadow: 0 0 0 2px rgba(255,150,0,0.1), 0 0 10px 10px '. esc_attr($dd_primary_color) .', 0 0 0 10px rgba(255,150,0,0.5);
-        -moz-transform: scale(1.5);
-        opacity: 0;
-    }
-}
-@keyframes sonarEffect {
-    0% {
-        opacity: 0.3;
-    }
-    40% {
-        opacity: 0.5;
-        box-shadow: 0 0 0 2px rgba(255,150,0,0.1), 0 0 10px 10px '. esc_attr($dd_primary_color) .', 0 0 0 10px rgba(255,150,0,0.5);
-    }
-    100% {
-        box-shadow: 0 0 0 2px rgba(255,150,0,0.1), 0 0 10px 10px '. esc_attr($dd_primary_color) .', 0 0 0 10px rgba(255,150,0,0.5);
-        transform: scale(1.5);
-        opacity: 0;
-    }
-}
-
-.owl-page.active span,
-.owl-controls-brand .owl-page.active span {
-    box-shadow: 0 0 0 3px ' . esc_attr($dd_primary_color) . ';
 }
 
 .pagination>.active>a,
@@ -847,6 +818,8 @@ body .elementor-button:hover,
 }
 
 .bg-brand-hvr,
+.main-menu,
+.header-1 .products-cats-menu .cats-menu-title,
 .products-cats-menu .cats-menu-title,
 .ved-main-megamenu .inner-nav > li:hover > a,
 .products-search .search-submit,
@@ -855,12 +828,14 @@ body .elementor-button:hover,
 .main-slider .ved-image-slider .owl-buttons > div:hover,
 .service-sec .service-box:hover .elementor-image-box-img,
 .ved-woo-product-tab .ved-nav-tab li.active a,.ved-woo-product-tab .ved-nav-tab li a:hover,
-.footer .social-icons > li > a {
+.footer .social-icons > li > a ,
+.vedanta-slider .slides .owl-buttons > div:hover{
     background-color: ' . esc_attr($dd_secondry_color) . ';
 }
 
 .header-row .extras-menu .icon-wrap-circle:hover .icon-wrap,
-.main-slider .ved-image-slider .owl-buttons > div:hover{
+.main-slider .ved-image-slider .owl-buttons > div:hover,
+.vedanta-slider .slides .owl-buttons > div:hover{
 	border-color: ' . esc_attr($dd_secondry_color) . ';
 }
 ';

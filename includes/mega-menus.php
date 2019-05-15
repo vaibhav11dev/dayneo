@@ -126,7 +126,7 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 					$col_span = " col-span-12";
 				}
 
-				$output = str_replace( "{first_level}", "<ul class='ved-megamenu-wrapper columns-" . esc_attr($this->total_num_of_columns . $col_span ) . " container sub-menu'>", $output );
+				$output = str_replace( "{first_level}", "<ul class='ved-megamenu-wrapper columns-" . esc_attr($this->total_num_of_columns . $col_span ) . "  sub-menu'>", $output );
 				if ( $this->total_num_of_columns > $this->max_num_of_columns ) {
 					$output = str_replace( "{megamenu_border}", "ved-megamenu-border", $output );
 				} else {

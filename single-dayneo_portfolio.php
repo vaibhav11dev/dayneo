@@ -141,7 +141,7 @@ $dd_portfolio_pagination = dayneo_get_option( 'dd_portfolio_pagination', '1' );
 if ( $dd_portfolio_pagination == 1 ):
     ?>
     <!-- START PAGINATION -->
-    <section class="module-xs divider-top">
+    <section class="module-xs divider-top portfolio-pagination">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">

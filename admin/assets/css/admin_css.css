@@ -560,6 +560,7 @@ button.accordion:hover {
 }    
 #wpcontent {
     padding-left: 0;
+    padding-right: 0;    
 }
 .about-wrap.wrap .head-contain{
     padding: 0 15px 0 30px;    
