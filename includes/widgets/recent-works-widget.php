@@ -43,13 +43,13 @@ class Dayneo_Recent_Works_Widget extends WP_Widget {
                         if (!empty($url_check)) {
                             $new_permalink = $url_check;
                             if (get_post_meta(get_the_ID(), 'dayneo_link_icon_target', true) == "yes") {
-                                $link_target = ' target="_blank"';
+                                $link_target = ' target=_blank';
                             }
                         } else {
                             $new_permalink = get_permalink();
                         }
                         ?>
-            <a class="dd-recent-work" href="<?php echo esc_url($new_permalink); ?>"<?php echo esc_attr($link_target); ?> title="<?php the_title(); ?>">
+                        <a class="dd-recent-work" href="<?php echo esc_url($new_permalink); ?>"<?php echo esc_attr($link_target); ?> title="<?php the_title(); ?>">
                             <?php the_post_thumbnail('recent-works-thumbnail'); ?>
                         </a>
                         <?php

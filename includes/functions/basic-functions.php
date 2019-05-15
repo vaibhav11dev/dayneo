@@ -168,7 +168,9 @@ function dayneo_similar_posts() {
                         if ( has_post_thumbnail() && $dd_featured_images == "1" ) {	
                         ?>
                         <div class="post_thumbnail">
+                            <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
 							<?php dayneo_post_thumbnail('medium'); ?>
+                                </a>
 						</div>
                         <?php } ?>
 						<div class="post-content">
@@ -776,15 +778,17 @@ function dayneo_tvslider( $term ) {
 					// Self Hosted Video Background Type
 					$self_hosted_video = '';
 					if ( isset( $metadata[ 'dayneo_mp4' ][ 0 ] ) && $metadata[ 'dayneo_mp4' ][ 0 ] ) {
-						$self_hosted_video .= 'mp4:' . wp_get_attachment_url( $metadata[ 'dayneo_mp4' ][ 0 ] ) . '';
-					} elseif ( isset( $metadata[ 'dayneo_webm' ][ 0 ] ) && $metadata[ 'dayneo_webm' ][ 0 ] ) {
-						$self_hosted_video .= ',webm:' . wp_get_attachment_url( $metadata[ 'dayneo_webm' ][ 0 ] ) . '';
-					} elseif ( isset( $metadata[ 'dayneo_ogv' ][ 0 ] ) && $metadata[ 'dayneo_ogv' ][ 0 ] ) {
-						$self_hosted_video .= ',ogv:' . wp_get_attachment_url( $metadata[ 'dayneo_ogv' ][ 0 ] ) . '';
+						$self_hosted_video .= 'mp4:' . esc_url(wp_get_attachment_url( $metadata[ 'dayneo_mp4' ][ 0 ] )) . '';
+					} 
+                                        if ( isset( $metadata[ 'dayneo_webm' ][ 0 ] ) && $metadata[ 'dayneo_webm' ][ 0 ] ) {
+						$self_hosted_video .= ',webm:' . esc_url(wp_get_attachment_url( $metadata[ 'dayneo_webm' ][ 0 ] )) . '';
+					} 
+                                        if ( isset( $metadata[ 'dayneo_ogv' ][ 0 ] ) && $metadata[ 'dayneo_ogv' ][ 0 ] ) {
+						$self_hosted_video .= ',ogv:' . esc_url(wp_get_attachment_url( $metadata[ 'dayneo_ogv' ][ 0 ] )). '';
 					}
 
 					if ( isset( $metadata[ 'dayneo_type' ][ 0 ] ) && $metadata[ 'dayneo_type' ][ 0 ] == 'self-hosted-video' && $self_hosted_video ) {
-						$background_type = 'data-jarallax-video="' . esc_url($self_hosted_video) . '"';
+						$background_type = 'data-jarallax-video="' . $self_hosted_video . '"';
 						$parallax_class	 = 'parallax';
 					}
 
@@ -917,15 +921,17 @@ function dayneo_heroheadertype( $param ) {
 	// Self Hosted Video Background Type
 	$self_hosted_video = '';
 	if ( isset( $param[ 'dayneo_hero_mp4' ] ) && $param[ 'dayneo_hero_mp4' ] ) {
-		$self_hosted_video .= 'mp4:' . wp_get_attachment_url( $param[ 'dayneo_hero_mp4' ] ) . '';
-	} elseif ( isset( $param[ 'dayneo_hero_webm' ] ) && $param[ 'dayneo_hero_webm' ] ) {
-		$self_hosted_video .= ',webm:' . wp_get_attachment_url( $param[ 'dayneo_hero_webm' ] ) . '';
-	} elseif ( isset( $param[ 'dayneo_hero_ogv' ] ) && $param[ 'dayneo_hero_ogv' ] ) {
-		$self_hosted_video .= ',ogv:' . wp_get_attachment_url( $param[ 'dayneo_hero_ogv' ] ) . '';
+		$self_hosted_video .= 'mp4:' . esc_attr(wp_get_attachment_url( $param[ 'dayneo_hero_mp4' ] )) . '';
+	} 
+        if ( isset( $param[ 'dayneo_hero_webm' ] ) && $param[ 'dayneo_hero_webm' ] ) {
+		$self_hosted_video .= ',webm:' . esc_attr(wp_get_attachment_url( $param[ 'dayneo_hero_webm' ] )) . '';
+	} 
+        if ( isset( $param[ 'dayneo_hero_ogv' ] ) && $param[ 'dayneo_hero_ogv' ] ) {
+		$self_hosted_video .= ',ogv:' . esc_attr(wp_get_attachment_url( $param[ 'dayneo_hero_ogv' ] )) . '';
 	}
 
 	if ( isset( $param[ 'dayneo_hero_type' ] ) && $param[ 'dayneo_hero_type' ] == 'hero_self_hosted_video' && $self_hosted_video ) {
-		$background_type = 'data-jarallax-video="' . esc_attr($self_hosted_video) . '"';
+		$background_type = 'data-jarallax-video="' . $self_hosted_video . '"';
 		$parallax_class	 = 'parallax';
 	}
 
@@ -1152,7 +1158,7 @@ function dayneo_titlebar_bg_class() {
 
 	$dd_pagetitlebar_background	 = dayneo_get_option( 'dd_pagetitlebar_background', '' );
 	$dayneo_page_title_bar_bg	 = get_post_meta( get_the_ID(), 'dayneo_page_title_bar_bg', true );
-	if ( $dd_pagetitlebar_background[ 'url' ] || $dayneo_page_title_bar_bg ) {
+	if ( (isset($dd_pagetitlebar_background[ 'url' ] ) && $dd_pagetitlebar_background[ 'url' ]) || $dayneo_page_title_bar_bg ) {
 		$titlebar_bg .= ' bg-black-alfa-30';
 	}
 

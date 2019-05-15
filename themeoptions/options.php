@@ -192,8 +192,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'Enable Site Loader', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Upload custom loader.', 'dayneo' ),
@@ -284,7 +284,7 @@ Redux::setSection( $dd_options, array(
 			'right'		 => false,
 			'default'	 => array(
 				'padding-top'	 => '30',
-				'padding-bottom' => '30',
+				'padding-bottom' => '40',
 				'units'		 => 'px',
 			),
 		),
@@ -437,8 +437,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'Enable Newslatter Popup', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Upload background image will display in the newslatter popup.', 'dayneo' ),
@@ -507,8 +507,7 @@ Redux::setSection( $dd_options, array(
 			'compiler'	 => true,
 			'type'		 => 'color',
 			'title'		 => __( 'Top Bar Color', 'dayneo' ),
-			'default'	 => '#000000',
-			'required'	 => array( array( "dd_header_type", '=', 'h5' ) ),
+			'default'	 => '#ffffff',
 		),
         array(
 			'subtitle'	 => __( 'Control the background color of header.', 'dayneo' ),
@@ -580,7 +579,7 @@ Redux::setSection( $dd_options, array(
 			'id'		 => 'dd_header_number',
 			'type'		 => 'text',
 			'title'		 => __( 'Header Phone Number', 'dayneo' ),
-			'default'	 => '+49 7890 123 456',
+			'default'	 => '+01 7890 123 456',
 		),
 		array(
 			'subtitle'	 => __( 'Email address will display in the Contact Info section of your top header.', 'dayneo' ),
@@ -656,6 +655,7 @@ Redux::setSection( $dd_options, array(
 			'id'		 => 'custom_categories_text',
 			'type'		 => 'text',
 			'title'		 => __( 'Categories Text', 'dayneo' ),
+                        'default'	 => 'All Categories',
 		),
             array(
 			'subtitle'	 => __( '', 'dayneo' ),
@@ -680,6 +680,7 @@ Redux::setSection( $dd_options, array(
 			'id'		 => 'custom_search_text',
 			'type'		 => 'text',
 			'title'		 => __( 'Search Text', 'dayneo' ),
+                        'default'	 => 'Search entire store...',
 		),
             array(
 			'subtitle'	 => __( '', 'dayneo' ),
@@ -988,8 +989,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'Page Title Bar', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Choose the display option to show the page title', 'dayneo' ),
@@ -1018,10 +1019,10 @@ Redux::setSection( $dd_options, array(
 				'titlebar_center'	 => DAYNEO_IMAGEFOLDER . '/titlebarlayout/titlebar_center.png',
 				'titlebar_right'	 => DAYNEO_IMAGEFOLDER . '/titlebarlayout/titlebar_right.png',
 			),
+                        'default'	 => 'titlebar_left',
 			'required'	 => array(
 				array( 'dd_pagetitlebar_layout', '=', '1' )
 			),
-			'default'	 => 'titlebar_center',
 		),
 		array(
 			'subtitle'	 => __( 'Select the height for your pagetitle bar', 'dayneo' ),
@@ -1035,7 +1036,7 @@ Redux::setSection( $dd_options, array(
 				'custom' => __( 'Custom', 'dayneo' ),
 			),
 			'title'		 => __( 'Page Title Bar Height', 'dayneo' ),
-			'default'	 => 'medium',
+			'default'	 => 'small',
 			'required'	 => array(
 				array( 'dd_pagetitlebar_layout', '=', '1' )
 			),
@@ -1121,7 +1122,7 @@ Redux::setSection( $dd_options, array(
 				'4'	 => DAYNEO_IMAGEPATH . 'four-posts.png',
 			),
 			'title'		 => __( 'Blog Grid layout', 'dayneo' ),
-			'default'	 => '2',
+			'default'	 => '3',
 			'required'	 => array(
 				array( 'dd_blog_style', '=', 'grid' )
 			),
@@ -1132,7 +1133,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'select',
 			'options'	 => $sidebar_options,
 			'title'		 => __( 'Blog Archive/Category Sidebar', 'dayneo' ),
-			'default'	 => 'None',
+			'default'	 => 'Sidebar 1',
 		),
 		array(
 			'subtitle'	 => __( 'Choose placement of the \'Share This\' buttons', 'dayneo' ),
@@ -1157,7 +1158,7 @@ Redux::setSection( $dd_options, array(
 				'number_pagination'	 => __( 'Number Pagination', 'dayneo' ),
 			),
 			'title'		 => __( 'Pagination Type', 'dayneo' ),
-			'default'	 => 'pagination',
+			'default'	 => 'number_pagination',
 		),
 		array(
 			'subtitle'	 => __( 'Choose Enable button if you want to display edit post link', 'dayneo' ),
@@ -1181,8 +1182,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 0,
 			'title'		 => __( 'Post Meta Header', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Choose enable button if you want to display post meta date', 'dayneo' ),
@@ -1190,8 +1191,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 0,
 			'title'		 => __( 'Post Meta Date', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Choose enable button if you want to display post meta author', 'dayneo' ),
@@ -1199,8 +1200,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 0,
 			'title'		 => __( 'Post Meta Author', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Choose Enable button if you want to display post author avatar', 'dayneo' ),
@@ -1208,8 +1209,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 0,
 			'title'		 => __( 'Enable Post Author Avatar', 'dayneo' ),
+                        'default'	 => 0,
 		),
                 array(
 			'subtitle'	 => __( 'Choose enable button if you want to display post meta categories', 'dayneo' ),
@@ -1217,8 +1218,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 0,
 			'title'		 => __( 'Post Meta Categories', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Choose enable button if you want to display post meta tags', 'dayneo' ),
@@ -1226,8 +1227,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 0,
 			'title'		 => __( 'Post Meta Tags', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Choose enable button if you want to display post meta comments', 'dayneo' ),
@@ -1235,8 +1236,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 0,
 			'title'		 => __( 'Post Meta Comments', 'dayneo' ),
+                        'default'	 => 0,
 		),
 		array(
 			'subtitle'	 => __( 'Choose the position of the <strong>Previous/Next Post</strong> links', 'dayneo' ),
@@ -1260,7 +1261,7 @@ Redux::setSection( $dd_options, array(
 				'tag'		 => __( 'Match by tags', 'dayneo' ),
 			),
 			'title'		 => __( 'Display Similar Posts', 'dayneo' ),
-			'default'	 => 'disable',
+			'default'	 => 'category',
 		),
                 array(
 			'subtitle'	 => __( 'Choose enable button if you want to display <strong>Similar posts</strong> in slider', 'dayneo' ),
@@ -1268,8 +1269,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 0,
 			'title'		 => __( 'Display Similar Posts Carousel', 'dayneo' ),
+                        'default'	 => 1,
 		),
                 array(
 			'subtitle'	 => __( 'Choose number of similar posts', 'dayneo' ),
@@ -1284,7 +1285,7 @@ Redux::setSection( $dd_options, array(
 				'8'	 => __( 'Eight', 'dayneo' ),
 			),
 			'title'		 => __( 'No of Similar Posts', 'dayneo' ),
-			'default'	 => '3',
+			'default'	 => '4',
 		),
             
 	),
@@ -1308,8 +1309,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'Enable Featured Image on Single Blog Posts', 'dayneo' ),
+                        'default'	 => 1,
 		),
 	),
 )
@@ -1357,7 +1358,7 @@ Redux::setSection( $dd_options, array(
 				'4'	 => DAYNEO_IMAGEPATH . 'four-posts.png',
 			),
 			'title'		 => __( 'Portfolio Grid Layout', 'dayneo' ),
-			'default'	 => '2',
+			'default'	 => '3',
 		),
 		array(
 			'subtitle'	 => __( 'Custom hover color of portfolio works', 'dayneo' ),
@@ -1373,7 +1374,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'select',
 			'options'	 => $sidebar_options,
 			'title'		 => __( 'Portfolio Archive/Category Sidebar', 'dayneo' ),
-			'default'	 => 'None',
+			'default'	 => 'Sidebar 1',
 		),
 	),
 )
@@ -1396,7 +1397,7 @@ Redux::setSection( $dd_options, array(
 			'id'		 => 'dd_portfolio_author',
 			'type'		 => 'switch',
 			'title'		 => __( 'Show Author', 'dayneo' ),
-			'default'	 => '0',
+			'default'	 => '1',
 		),
 		array(
 			'subtitle'	 => __( 'Choose Enable button if you want to display the social sharing box.', 'dayneo' ),
@@ -1452,7 +1453,7 @@ Redux::setSection( $dd_options, array(
 				'4'	 => DAYNEO_IMAGEPATH . 'four-posts.png',
 			),
 			'title'		 => __( 'Product Grid layout', 'dayneo' ),
-			'default'	 => '2',
+			'default'	 => '4',
 		),
 		array(
 			'subtitle'	 => __( 'Select the sidebar that will display on the shop archive/category pages.', 'dayneo' ),
@@ -1460,7 +1461,20 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'select',
 			'options'	 => $sidebar_options,
 			'title'		 => __( 'Shop Archive/Category Sidebar', 'dayneo' ),
-			'default'	 => 'None',
+			'default'	 => 'Siderbar 1',
+		),
+                array(
+			'subtitle'	 => __( 'Select the product style that will display on the single product pages.', 'dayneo' ),
+			'id'		 => 'dd_product_style',
+			'compiler'	 => true,
+			'type'		 => 'select',
+			'options'	 => array(
+				'one'		 => __( 'Style One', 'dayneo' ),
+				'two'		 => __( 'Style Two', 'dayneo' ),
+				'three'		 => __( 'Style Three', 'dayneo' ),
+			),
+			'title'		 => __( 'Single Product Style', 'dayneo' ),
+			'default'	 => 'one',
 		),
 	),
 )
@@ -1532,10 +1546,10 @@ Redux::setSection( $dd_options, array(
 			'text-align'	 => false,
 			'line-height'	 => false,
 			'default'	 => array(
-				'font-size'	 => '23px',
+				'font-size'	 => '20px',
 				'color'		 => '#222222',
-				'font-family'	 => 'Open Sans',
-				'font-weight'	 => '700',
+				'font-family'	 => 'Poppins',
+				'font-weight'	 => '600',
 			),
 		),
 		array(
@@ -1547,7 +1561,7 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'Blog Tagline Font', 'dayneo' ),
 			'default'	 => array(
 				'font-size'	 => '14px',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'color'		 => '#777777',
 				'font-weight'	 => '400',
 			),
@@ -1571,7 +1585,7 @@ Redux::setSection( $dd_options, array(
             'default'     => array(
                 'font-size'   => '58px',
                 'color'       => '#ffffff',
-                'font-family' => 'Pacifico',
+                'font-family' => 'Poppins',
                 'font-weight' => '400',
             ),
         ),
@@ -1584,7 +1598,7 @@ Redux::setSection( $dd_options, array(
             'title'       => __( 'Slider Caption Font', 'dayneo' ),
             'default'     => array(
                 'font-size'   => '20px',
-                'font-family' => 'Pacifico',
+                'font-family' => 'Poppins',
                 'color'       => '#ffffff',
                 'font-weight' => '400',
             ),
@@ -1606,10 +1620,10 @@ Redux::setSection( $dd_options, array(
 			'line-height'	 => false,
 			'title'		 => __( 'Main Menu Font', 'dayneo' ),
 			'default'	 => array(
-				'font-size'	 => '11px',
-				'color'		 => '#999',
-				'font-family'	 => 'Open Sans',
-				'font-weight'	 => '400',
+				'font-size'	 => '16px',
+				'color'		 => '#999999',
+				'font-family'	 => 'Poppins',
+				'font-weight'	 => '300',
 			),
 		),
 		array(
@@ -1620,9 +1634,9 @@ Redux::setSection( $dd_options, array(
 			'line-height'	 => false,
 			'title'		 => __( 'Top Menu Font', 'dayneo' ),
 			'default'	 => array(
-				'font-size'	 => '12px',
+				'font-size'	 => '16px',
 				'color'		 => '#777777',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'font-weight'	 => '400',
 			),
 		),
@@ -1644,9 +1658,9 @@ Redux::setSection( $dd_options, array(
 			'line-height'	 => false,
 			'title'		 => __( 'Post Title Font', 'dayneo' ),
 			'default'	 => array(
-				'font-size'	 => '23px',
+				'font-size'	 => '20px',
 				'color'		 => '#222222',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'font-weight'	 => '600',
 			),
 		),
@@ -1660,7 +1674,7 @@ Redux::setSection( $dd_options, array(
 			'default'	 => array(
 				'font-size'	 => '14px',
 				'color'		 => '#777777',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'font-weight'	 => '400',
 			),
 		),
@@ -1681,10 +1695,10 @@ Redux::setSection( $dd_options, array(
 			'line-height'	 => false,
 			'title'		 => __( 'Widget Title Font', 'dayneo' ),
 			'default'	 => array(
-				'font-size'	 => '12px',
+				'font-size'	 => '16px',
 				'color'		 => '#222222',
-				'font-family'	 => 'Montserrat',
-				'font-weight'	 => '700',
+				'font-family'	 => 'Poppins',
+				'font-weight'	 => '600',
 			),
 		),
 		array(
@@ -1696,7 +1710,7 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'Widget Content Font', 'dayneo' ),
 			'default'	 => array(
 				'font-size'	 => '14px',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'color'		 => '#777777',
 				'font-weight'	 => '400',
 			),
@@ -1709,10 +1723,10 @@ Redux::setSection( $dd_options, array(
 			'line-height'	 => false,
 			'title'		 => __( 'Footer Widget Title Font', 'dayneo' ),
 			'default'	 => array(
-				'font-size'	 => '12px',
-				'color'		 => '#ffffff',
-				'font-family'	 => 'Montserrat',
-				'font-weight'	 => '700',
+				'font-size'	 => '18px',
+				'color'		 => '#222222',
+				'font-family'	 => 'Poppins',
+				'font-weight'	 => '600',
 			),
 		),
 		array(
@@ -1724,7 +1738,7 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'Footer Widget Content Font', 'dayneo' ),
 			'default'	 => array(
 				'font-size'	 => '14px',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'color'		 => '#ffffff',
 				'font-weight'	 => '400',
 			),
@@ -1748,7 +1762,7 @@ Redux::setSection( $dd_options, array(
 			'default'	 => array(
 				'font-size'	 => '32px',
 				'color'		 => '#222222',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'font-weight'	 => '600',
 			),
 		),
@@ -1761,7 +1775,7 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'H2 Font', 'dayneo' ),
 			'default'	 => array(
 				'font-size'	 => '26px',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'color'		 => '#222222',
 				'font-weight'	 => '600',
 			),
@@ -1774,8 +1788,8 @@ Redux::setSection( $dd_options, array(
 			'line-height'	 => false,
 			'title'		 => __( 'H3 Font', 'dayneo' ),
 			'default'	 => array(
-				'font-size'	 => '18px',
-				'font-family'	 => 'Open Sans',
+				'font-size'	 => '20px',
+				'font-family'	 => 'Poppins',
 				'color'		 => '#222222',
 				'font-weight'	 => '600',
 			),
@@ -1789,7 +1803,7 @@ Redux::setSection( $dd_options, array(
 			'line-height'	 => false,
 			'default'	 => array(
 				'font-size'	 => '16px',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'color'		 => '#222222',
 				'font-weight'	 => '600',
 			),
@@ -1803,7 +1817,7 @@ Redux::setSection( $dd_options, array(
 			'line-height'	 => false,
 			'default'	 => array(
 				'font-size'	 => '14px',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'color'		 => '#222222',
 				'font-weight'	 => '600',
 			),
@@ -1817,7 +1831,7 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'H6 Font', 'dayneo' ),
 			'default'	 => array(
 				'font-size'	 => '12px',
-				'font-family'	 => 'Open Sans',
+				'font-family'	 => 'Poppins',
 				'color'		 => '#222222',
 				'font-weight'	 => '600',
 			),
@@ -1891,7 +1905,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => __( 'Secondry Color', 'dayneo' ),
-			'default'	 => '#3ab54a',
+			'default'	 => '#0c3e3e',
 		),		
 	),
 )
@@ -1907,7 +1921,7 @@ Redux::setSection( $dd_options, array(
 			'id'		 => 'dd_megamenu_title_size',
 			'type'		 => 'text',
 			'title'		 => __( 'Mega Menu Column Title Size', 'dayneo' ),
-			'default'	 => '13px',
+			'default'	 => '15px',
 		),
 		array(
 			'subtitle'	 => __( 'Set padding between menu items.', 'dayneo' ),
@@ -1916,9 +1930,9 @@ Redux::setSection( $dd_options, array(
 			'units'		 => array( 'px', 'em' ),
 			'title'		 => __( 'Padding Between Menu Items', 'dayneo' ),
 			'default'	 => array(
-				'padding-top'	 => '33',
+				'padding-top'	 => '0',
 				'padding-right' => '15',
-				'padding-bottom' => '33',
+				'padding-bottom' => '0',
 				'padding-left' => '15',
 				'units'		 => 'px',
 			),
@@ -1935,7 +1949,7 @@ Redux::setSection( $dd_options, array(
 				'uppercase'	 => __( 'UPPERCASE', 'dayneo' ),
 			),
 			'title'		 => __( 'Set the main menu text transform', 'dayneo' ),
-			'default'	 => 'uppercase',
+			'default'	 => 'none',
 		),
 		array(
 			'subtitle'	 => __( 'Main menu hover font color', 'dayneo' ),
@@ -1943,7 +1957,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => __( 'Menu Hover Font Color', 'dayneo' ),
-			'default'	 => '#222222',
+			'default'	 => '#ffffff',
 		),
 		array(
 			'subtitle'	 => __( 'Sub menu hover font color', 'dayneo' ),
@@ -1951,7 +1965,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => __( 'Submenu Hover Font Color', 'dayneo' ),
-			'default'	 => '#ffffff',
+			'default'	 => '#3ab54a',
 		),
 	),
 )
@@ -1967,21 +1981,21 @@ Redux::setSection( $dd_options, array(
 			'id'		 => 'dd_form_bg_color',
 			'type'		 => 'color',
 			'title'		 => __( 'Form Background Color', 'dayneo' ),
-			'default'	 => '#fff',
+			'default'	 => '#ffffff',
 		),
 		array(
 			'subtitle'	 => __( 'Controls the text color for forms.', 'dayneo' ),
 			'id'		 => 'dd_form_text_color',
 			'type'		 => 'color',
 			'title'		 => __( 'Form Text Color', 'dayneo' ),
-			'default'	 => '#999999',
+			'default'	 => '#222222',
 		),
 		array(
 			'subtitle'	 => __( 'Controls the border color of form fields.', 'dayneo' ),
 			'id'		 => 'dd_form_border_color',
 			'type'		 => 'color',
 			'title'		 => __( 'Form Border Color', 'dayneo' ),
-			'default'	 => '#eee',
+			'default'	 => '#e2e2e2',
 		),
 	),
 )
@@ -1998,7 +2012,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => __( 'Social Sharing Box Custom Icons Color', 'dayneo' ),
-			'default'	 => '#777777',
+			'default'	 => '#222222',
 		),
 		array(
 			'subtitle'	 => __( 'Select a custom social icon box color.', 'dayneo' ),
@@ -2006,14 +2020,14 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => __( 'Social Sharing Box Icons Custom Box Color', 'dayneo' ),
-			'default'	 => '#f8f8f8',
+			'default'	 => '#f5f5f5',
 		),
 		array(
 			'subtitle'	 => __( 'Box radius for the social icons. In pixels, ex: 4px.', 'dayneo' ),
 			'id'		 => 'dd_sharing_box_radius',
 			'type'		 => 'text',
 			'title'		 => __( 'Social Sharing Box Icons Boxed Radius', 'dayneo' ),
-			'default'	 => '2px',
+			'default'	 => '50%',
 		),
 		array(
 			'subtitle'	 => __( 'Controls the tooltip position of the social icons in the sharing box.', 'dayneo' ),
@@ -2027,7 +2041,7 @@ Redux::setSection( $dd_options, array(
 				'none'	 => __( 'None', 'dayneo' ),
 			),
 			'title'		 => __( 'Social Sharing Box Icons Tooltip Position', 'dayneo' ),
-			'default'	 => 'top',
+			'default'	 => 'none',
 		),
 		array(
 			'subtitle'	 => __( 'Show the facebook sharing icon in blog posts.', 'dayneo' ),
@@ -2035,8 +2049,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'Facebook', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Show the twitter sharing icon in blog posts.', 'dayneo' ),
@@ -2044,8 +2058,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'Twitter', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Show the linkedin sharing icon in blog posts.', 'dayneo' ),
@@ -2053,8 +2067,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'LinkedIn', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Show the g+ sharing icon in blog posts.', 'dayneo' ),
@@ -2062,8 +2076,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'Google Plus', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Show the pinterest sharing icon in blog posts.', 'dayneo' ),
@@ -2071,8 +2085,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'Pinterest', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Show the email sharing icon in blog posts.', 'dayneo' ),
@@ -2080,8 +2094,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'Email', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Show the more options button in blog posts.', 'dayneo' ),
@@ -2089,8 +2103,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'More Options Button', 'dayneo' ),
+                        'default'	 => 1,
 		),
 	),
 )
@@ -2107,7 +2121,7 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => __( 'Social Icons Color', 'dayneo' ),
-			'default'	 => '#777777',
+			'default'	 => '#ffffff',
 		),
 		array(
 			'subtitle'	 => __( 'Choose yes option if you want to display icon in boxed', 'dayneo' ),
@@ -2157,8 +2171,8 @@ Redux::setSection( $dd_options, array(
 				'left'	 => __( 'Left', 'dayneo' ),
 				'none'	 => __( 'None', 'dayneo' ),
 			),
-			'title'		 => __( 'Social Sharing Box Icons Tooltip Position', 'dayneo' ),
-			'default'	 => 'top',
+			'title'		 => __( 'Social Box Icons Tooltip Position', 'dayneo' ),
+			'default'	 => 'none',
 		),
 		array(
 			'id'		 => 'dd_social_link_facebook',
@@ -2351,8 +2365,8 @@ Redux::setSection( $dd_options, array(
 			'type'		 => 'switch',
 			'on'		 => __( 'Enabled', 'dayneo' ),
 			'off'		 => __( 'Disabled', 'dayneo' ),
-			'default'	 => 1,
 			'title'		 => __( 'Back to Top button', 'dayneo' ),
+                        'default'	 => 1,
 		),
 		array(
 			'subtitle'	 => __( 'Choose Enable button if you want to add rel="nofollow" attribute to social sharing box and social links.', 'dayneo' ),

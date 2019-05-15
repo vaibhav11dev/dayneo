@@ -123,7 +123,7 @@ function dayneo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
             </div>
             <div class="shipping-count"><?php _e( 'Shipping:', 'dayneo' ); ?> 
                 <b class="content-subhead">
-                    <?php echo wc_price( $woocommerce->cart->shiping_total ); ?>
+                    <?php echo wc_price( $woocommerce->cart->shipping_total ); ?>
                 </b>
             </div>
             <div class="total-count"><?php _e( 'Total:', 'dayneo' ); ?> 
@@ -507,7 +507,11 @@ function dayneo_woocommerce_view_order( $order_id ) {
     global $woocommerce;
 
     $order              = wc_get_order( $order_id );
-    $order_item_product = new WC_Order_Item_Product();
+    $downloads             = $order->get_downloadable_items();
+    $show_downloads        = $order->has_downloadable_item() && $order->is_download_permitted();
+    if ( $show_downloads ) {
+            wc_get_template( 'order/order-downloads.php', array( 'downloads' => $downloads, 'show_title' => true ) );
+    }
     ?>
     <div class="dayneo-order-details woocommerce-content-box">
         <div class="sec-head-style"><h3 class="text-title"><?php esc_html_e( 'Order Details', 'dayneo' ); ?></h3></div>
@@ -566,21 +570,6 @@ function dayneo_woocommerce_view_order( $order_id ) {
                                         echo apply_filters( 'woocommerce_order_item_name', sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $item[ 'product_id' ] ) ), $item[ 'name' ] ), $item );
 
                                     wc_display_item_meta( $item );
-
-                                    if ( $_product && $_product->exists() && $_product->is_downloadable() && $order->is_download_permitted() ) {
-
-                                        $download_files = $order_item_product->get_item_downloads();
-                                        $i              = 0;
-                                        $links          = array();
-
-                                        foreach ( $download_files as $download_id => $file ) {
-                                            $i ++;
-
-                                            $links[] = '<small><a href="' . esc_url( $file[ 'download_url' ] ) . '">' . sprintf( __( 'Download file%s', 'dayneo' ), ( count( $download_files ) > 1 ? ' ' . $i . ': ' : ': ' ) ) . esc_html( $file[ 'name' ] ) . '</a></small>';
-                                        }
-
-                                        echo '<br/>' . implode( '<br/>', $links );
-                                    }
                                     ?>
                                 </td>
                                 <td class="col-quantity">

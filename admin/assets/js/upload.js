@@ -1,4 +1,4 @@
-/* Add Mega Menu set-thumbnail js */
+/* Upload Media on page/post options */
 jQuery(document).ready(function ($) {
 
     var frame;

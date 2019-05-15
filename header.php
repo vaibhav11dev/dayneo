@@ -18,42 +18,38 @@
 		$dd_ipad_icon		 = dayneo_get_option( 'dd_ipad_icon' );
 		$dd_ipad_icon_retina	 = dayneo_get_option( 'dd_ipad_icon_retina' );
 
-		if ( $dd_favicon[ 'url' ] ):
-			?>
-			<!-- Favicon -->
-			<!-- Firefox, Chrome, Safari, IE 11+ and Opera. -->
-			<link rel="shortcut icon" href="<?php echo esc_url($dd_favicon[ 'url' ]); ?>" type="image/x-icon" />
-			<?php
-		endif;
-
-		if ( $dd_iphone_icon[ 'url' ] ):
-			?>
-			<!-- For iPhone -->
-			<link rel="apple-touch-icon-precomposed" href="<?php echo esc_url($dd_iphone_icon[ 'url' ]); ?>">
-			<?php
-		endif;
-
-		if ( $dd_iphone_icon_retina[ 'url' ] ):
-			?>
-			<!-- For iPhone 4 Retina display -->
-			<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo esc_url($dd_iphone_icon_retina[ 'url' ]); ?>">
-			<?php
-		endif;
-
-		if ( $dd_ipad_icon[ 'url' ] ):
-			?>
-			<!-- For iPad -->
-			<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo esc_url($dd_ipad_icon[ 'url' ]); ?>">
-			<?php
-		endif;
-
-		if ( $dd_ipad_icon_retina[ 'url' ] ):
-			?>
-			<!-- For iPad Retina display -->
-			<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo esc_url($dd_ipad_icon_retina[ 'url' ]); ?>">
-			<?php
-		endif;
-		?>
+                if ( isset($dd_favicon[ 'url' ]) && $dd_favicon[ 'url' ] ):
+                    ?>
+                    <!-- Favicon -->
+                    <!-- Firefox, Chrome, Safari, IE 11+ and Opera. -->
+                    <link rel="shortcut icon" href="<?php echo esc_url($dd_favicon[ 'url' ]); ?>" type="image/x-icon" />
+                    <?php
+                endif;
+                if ( isset($dd_iphone_icon[ 'url' ]) && $dd_iphone_icon[ 'url' ] ):
+                    ?>
+                    <!-- For iPhone -->
+                    <link rel="apple-touch-icon-precomposed" href="<?php echo esc_url($dd_iphone_icon[ 'url' ]); ?>">
+                    <?php
+                endif;
+                if ( isset($dd_iphone_icon_retina[ 'url' ]) && $dd_iphone_icon_retina[ 'url' ] ):
+                    ?>
+                    <!-- For iPhone 4 Retina display -->
+                    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo esc_url($dd_iphone_icon_retina[ 'url' ]); ?>">
+                    <?php
+                endif;
+                if ( isset($dd_ipad_icon[ 'url' ]) && $dd_ipad_icon[ 'url' ] ):
+                    ?>
+                    <!-- For iPad -->
+                    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo esc_url($dd_ipad_icon[ 'url' ]); ?>">
+                    <?php
+                endif;
+                if ( isset($dd_ipad_icon_retina[ 'url' ]) && $dd_ipad_icon_retina[ 'url' ] ):
+                    ?>
+                    <!-- For iPad Retina display -->
+                    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo esc_url($dd_ipad_icon_retina[ 'url' ]); ?>">
+                    <?php
+                endif;
+                ?>
 
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,7 +86,7 @@
 
 		$dd_siteloader	 = dayneo_get_option( 'dd_siteloader', 1 );
 		$dd_loaderfile	 = dayneo_get_option( 'dd_loaderfile' );
-		if ( $dd_siteloader == 1 ) {
+		if ( $dd_siteloader == 1 && isset($dd_loaderfile) && $dd_loaderfile ) {
 			?>
 			<!-- PRELOADER -->
 			<div class="page-loader"><img src="<?php echo esc_url($dd_loaderfile[ 'url' ]); ?>" alt="siteloader" ></div>

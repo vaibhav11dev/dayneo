@@ -153,9 +153,15 @@ jQuery(document).ready(function () {
 		}
 	});
 
-	/* Js - For Page Title Bar Height Page Metadata Options */
+	/* Js - For Page/Post Title Bar Height Page/Post Metadata Options */
+        var post_type = '';
+        if ( jQuery('body').hasClass('post-type-post') ) {
+            post_type = 'dayneo_post_options';
+        } else {
+            post_type = 'dayneo_page_options';
+        }
 	var type = jQuery('#' + theme_prefix + 'page_title_bar_height').val();
-	var container = jQuery('#' + theme_prefix + 'page_title_bar_height').parents('#' + theme_prefix + 'dayneo_page_options');
+	var container = jQuery('#' + theme_prefix + 'page_title_bar_height').parents('#' + theme_prefix + post_type);
 
 	jQuery(container).find('#' + theme_prefix + 'page_title_bar_height_custom').parents('.ved_metabox_field').hide();
 
@@ -165,7 +171,7 @@ jQuery(document).ready(function () {
 
 	jQuery('#' + theme_prefix + 'page_title_bar_height').change(function () {
 		var type = jQuery(this).val();
-		var container = jQuery(this).parents('#' + theme_prefix + 'dayneo_page_options');
+		var container = jQuery(this).parents('#' + theme_prefix + post_type);
 		jQuery(container).find('#' + theme_prefix + 'page_title_bar_height_custom').parents('.ved_metabox_field').hide();
 
 		if (type == 'custom') {

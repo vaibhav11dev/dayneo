@@ -30,7 +30,7 @@ $portfolio = new WP_Query( $args );
 if ( ! post_password_required( $portfolio->ID ) ):
 
 	$all_terms = get_terms( 'portfolio_category' );
-	if ( is_array( $all_terms ) && ! empty( $all_terms ) && get_post_meta( $portfolio->ID, 'dayneo_portfolio_filters', true ) != 'no' ):
+	if ( is_array( $all_terms ) && ! empty( $all_terms ) && get_post_meta( $post->ID, 'dayneo_portfolio_filters', true ) != 'no' ):
 		?>
 		<!-- PORTFOLIO FILTERS -->
 		<div class="row">
@@ -65,12 +65,17 @@ if ( ! post_password_required( $portfolio->ID ) ):
 			while ( $portfolio->have_posts() ): $portfolio->the_post();
 
 				if ( has_post_thumbnail() ) {
-
-					if ( $pcats ) {
-						$permalink = dayneo_addURLParameter( get_permalink(), 'portfolioID', $portfolio->ID );
-					} else {
-						$permalink = get_permalink();
-					}
+                                        $icon_url_check = get_post_meta( $post->ID, 'dayneo_link_icon_url', true );
+                                        if ( ! empty( $icon_url_check ) ) {
+                                            $permalink = $icon_url_check;
+                                        } else {
+                                            $permalink = get_permalink( $post->ID );
+                                        }
+                                        
+                                        $link_target = '';
+                                        if ( get_post_meta( $post->ID, 'dayneo_link_icon_target', true ) == "yes" ) {
+                                            $link_target = ' target=_blank';
+                                        }
 
 					$item_classes	 = '';
 					$item_cats	 = get_the_terms( $portfolio->ID, 'portfolio_category' );
@@ -90,7 +95,7 @@ if ( ! post_password_required( $portfolio->ID ) ):
 							<span class="work-category"><?php echo esc_attr($item_classes); ?></span>
 						    </div>
 						</div>
-						<a href="<?php echo esc_url($permalink); ?>" class="work-link"></a>
+						<a href="<?php echo esc_url($permalink); ?>" <?php echo esc_attr($link_target); ?> class="work-link"></a>
 					    </div>
 					</article>
 					<!-- END PORTFOLIO ITEM -->
