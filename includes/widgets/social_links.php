@@ -1,15 +1,15 @@
 <?php
-add_action( 'widgets_init', 'dayneo_social_links_widgets' );
+add_action( 'widgets_init', 'bigbo_social_links_widgets' );
 
-function dayneo_social_links_widgets() {
-	register_widget( 'Dayneo_Social_Links_Widget' );
+function bigbo_social_links_widgets() {
+	register_widget( 'Bigbo_Social_Links_Widget' );
 }
 
-class Dayneo_Social_Links_Widget extends WP_Widget {
+class Bigbo_Social_Links_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'social_links-widget', __( 'Dayneo: Social Links', 'dayneo' ), // Name
+		'social_links-widget', __( 'Bigbo: Social Links', 'bigbo' ), // Name
 			     array( 'classname' => 'social_links', 'description' => '', ) // Args
 		);
 	}
@@ -31,7 +31,7 @@ class Dayneo_Social_Links_Widget extends WP_Widget {
 			$instance[ 'linktarget' ] = '';
 		}
 
-		$dd_nofollow_social_links	 = dayneo_get_option( 'dd_nofollow_social_links', '0' );
+		$dd_nofollow_social_links	 = bigbo_get_option( 'dd_nofollow_social_links', '0' );
 		$nofollow			 = '';
 		if ( $dd_nofollow_social_links ) {
 			$nofollow = 'rel="nofollow"';
@@ -135,155 +135,155 @@ class Dayneo_Social_Links_Widget extends WP_Widget {
 		$instance	 = wp_parse_args( (array) $instance, $defaults );
 		?>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" value="<?php echo esc_attr($instance[ 'title' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'linktarget' )); ?>"><?php echo esc_html_e( 'Link Target', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'linktarget' )); ?>"><?php echo esc_html_e( 'Link Target', 'bigbo' ); ?></label>
 			<select id="<?php echo esc_attr($this->get_field_id( 'linktarget' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'linktarget' )); ?>" class="widefat" style="width:100%;">
-				<option <?php if ( '_blank' == $instance[ 'linktarget' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( '_blank', 'dayneo' ); ?></option>
-				<option <?php if ( '_self' == $instance[ 'linktarget' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( '_self', 'dayneo' ); ?></option>
+				<option <?php if ( '_blank' == $instance[ 'linktarget' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( '_blank', 'bigbo' ); ?></option>
+				<option <?php if ( '_self' == $instance[ 'linktarget' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( '_self', 'bigbo' ); ?></option>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'icon_color' )); ?>"><?php echo esc_html_e( 'Icons Color Hex Code', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'icon_color' )); ?>"><?php echo esc_html_e( 'Icons Color Hex Code', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'icon_color' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'icon_color' )); ?>" value="<?php echo esc_attr($instance[ 'icon_color' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'boxed_icon' )); ?>"><?php echo esc_html_e( 'Icons Boxed', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'boxed_icon' )); ?>"><?php echo esc_html_e( 'Icons Boxed', 'bigbo' ); ?></label>
 			<select id="<?php echo esc_attr($this->get_field_id( 'boxed_icon' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'boxed_icon' )); ?>" class="widefat" style="width:100%;">
-				<option <?php if ( 'No' == $instance[ 'boxed_icon' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'No', 'dayneo' ); ?></option>
-				<option <?php if ( 'Yes' == $instance[ 'boxed_icon' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'Yes', 'dayneo' ); ?></option>
+				<option <?php if ( 'No' == $instance[ 'boxed_icon' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'No', 'bigbo' ); ?></option>
+				<option <?php if ( 'Yes' == $instance[ 'boxed_icon' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'Yes', 'bigbo' ); ?></option>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'boxed_color' )); ?>"><?php echo esc_html_e( 'Boxed Icons Background Color Hex Code', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'boxed_color' )); ?>"><?php echo esc_html_e( 'Boxed Icons Background Color Hex Code', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'boxed_color' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'boxed_color' )); ?>" value="<?php echo esc_attr($instance[ 'boxed_color' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'boxed_icon_radius' )); ?>"><?php echo esc_html_e( 'Boxed Icons Radius', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'boxed_icon_radius' )); ?>"><?php echo esc_html_e( 'Boxed Icons Radius', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'boxed_icon_radius' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'boxed_icon_radius' )); ?>" value="<?php echo esc_attr($instance[ 'boxed_icon_radius' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'tooltip_pos' )); ?>"><?php echo esc_html_e( 'Tooltip Position', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'tooltip_pos' )); ?>"><?php echo esc_html_e( 'Tooltip Position', 'bigbo' ); ?></label>
 			<select id="<?php echo esc_attr($this->get_field_id( 'tooltip_pos' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'tooltip_pos' )); ?>" class="widefat" style="width:100%;">
-				<option <?php if ( 'Top' == $instance[ 'tooltip_pos' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'Top', 'dayneo' ); ?></option>
-				<option <?php if ( 'Right' == $instance[ 'tooltip_pos' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'Right', 'dayneo' ); ?></option>
-				<option <?php if ( 'Bottom' == $instance[ 'tooltip_pos' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'Bottom', 'dayneo' ); ?></option>
-				<option <?php if ( 'Left' == $instance[ 'tooltip_pos' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'Left', 'dayneo' ); ?></option>
-				<option <?php if ( 'None' == $instance[ 'tooltip_pos' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'None', 'dayneo' ); ?></option>
+				<option <?php if ( 'Top' == $instance[ 'tooltip_pos' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'Top', 'bigbo' ); ?></option>
+				<option <?php if ( 'Right' == $instance[ 'tooltip_pos' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'Right', 'bigbo' ); ?></option>
+				<option <?php if ( 'Bottom' == $instance[ 'tooltip_pos' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'Bottom', 'bigbo' ); ?></option>
+				<option <?php if ( 'Left' == $instance[ 'tooltip_pos' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'Left', 'bigbo' ); ?></option>
+				<option <?php if ( 'None' == $instance[ 'tooltip_pos' ] ) echo 'selected="selected"'; ?>><?php echo esc_html_e( 'None', 'bigbo' ); ?></option>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'facebook_link' )); ?>"><?php echo esc_html_e( 'Facebook Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'facebook_link' )); ?>"><?php echo esc_html_e( 'Facebook Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'facebook_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'facebook_link' )); ?>" value="<?php echo esc_attr($instance[ 'facebook_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'twitter_link' )); ?>"><?php echo esc_html_e( 'Twitter Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'twitter_link' )); ?>"><?php echo esc_html_e( 'Twitter Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'twitter_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'twitter_link' )); ?>" value="<?php echo esc_attr($instance[ 'twitter_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'google-plus_link' )); ?>"><?php echo esc_html_e( 'Google Plus Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'google-plus_link' )); ?>"><?php echo esc_html_e( 'Google Plus Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'google-plus_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'google-plus_link' )); ?>" value="<?php echo esc_attr($instance[ 'google-plus_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'dribbble_link' )); ?>"><?php echo esc_html_e( 'Dribbble Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'dribbble_link' )); ?>"><?php echo esc_html_e( 'Dribbble Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'dribbble_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'dribbble_link' )); ?>" value="<?php echo esc_attr($instance[ 'dribbble_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'linkedin_link' )); ?>"><?php echo esc_html_e( 'LinkedIn Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'linkedin_link' )); ?>"><?php echo esc_html_e( 'LinkedIn Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'linkedin_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'linkedin_link' )); ?>" value="<?php echo esc_attr($instance[ 'linkedin_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'tumblr_link' )); ?>"><?php echo esc_html_e( 'Tumblr Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'tumblr_link' )); ?>"><?php echo esc_html_e( 'Tumblr Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'tumblr_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'tumblr_link' )); ?>" value="<?php echo esc_attr($instance[ 'tumblr_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'reddit_link' )); ?>"><?php echo esc_html_e( 'Reddit Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'reddit_link' )); ?>"><?php echo esc_html_e( 'Reddit Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'reddit_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'reddit_link' )); ?>" value="<?php echo esc_attr($instance[ 'reddit_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'yahoo_link' )); ?>"><?php echo esc_html_e( 'Yahoo Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'yahoo_link' )); ?>"><?php echo esc_html_e( 'Yahoo Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'yahoo_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'yahoo_link' )); ?>" value="<?php echo esc_attr($instance[ 'yahoo_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'deviantart_link' )); ?>"><?php echo esc_html_e( 'Deviantart Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'deviantart_link' )); ?>"><?php echo esc_html_e( 'Deviantart Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'deviantart_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'deviantart_link' )); ?>" value="<?php echo esc_attr($instance[ 'deviantart_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'vimeo_link' )); ?>"><?php echo esc_html_e( 'Vimeo Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'vimeo_link' )); ?>"><?php echo esc_html_e( 'Vimeo Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'vimeo_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'vimeo_link' )); ?>" value="<?php echo esc_attr($instance[ 'vimeo_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'youtube_link' )); ?>"><?php echo esc_html_e( 'Youtube Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'youtube_link' )); ?>"><?php echo esc_html_e( 'Youtube Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'youtube_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'youtube_link' )); ?>" value="<?php echo esc_attr($instance[ 'youtube_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'pinterest_link' )); ?>"><?php echo esc_html_e( 'Pinterest Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'pinterest_link' )); ?>"><?php echo esc_html_e( 'Pinterest Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'pinterest_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'pinterest_link' )); ?>" value="<?php echo esc_attr($instance[ 'pinterest_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'digg_link' )); ?>"><?php echo esc_html_e( 'Digg Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'digg_link' )); ?>"><?php echo esc_html_e( 'Digg Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'digg_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'digg_link' )); ?>" value="<?php echo esc_attr($instance[ 'digg_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'flickr_link' )); ?>"><?php echo esc_html_e( 'Flickr Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'flickr_link' )); ?>"><?php echo esc_html_e( 'Flickr Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'flickr_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'flickr_link' )); ?>" value="<?php echo esc_attr($instance[ 'flickr_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'skype_link' )); ?>"><?php echo esc_html_e( 'Skype Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'skype_link' )); ?>"><?php echo esc_html_e( 'Skype Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'skype_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'skype_link' )); ?>" value="<?php echo esc_attr($instance[ 'skype_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'instagram_link' )); ?>"><?php echo esc_html_e( 'Instagram Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'instagram_link' )); ?>"><?php echo esc_html_e( 'Instagram Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'instagram_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'instagram_link' )); ?>" value="<?php echo esc_attr($instance[ 'instagram_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'vk_link' )); ?>"><?php echo esc_html_e( 'VK Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'vk_link' )); ?>"><?php echo esc_html_e( 'VK Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'vk_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'vk_link' )); ?>" value="<?php echo esc_attr($instance[ 'vk_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'paypal_link' )); ?>"><?php echo esc_html_e( 'PayPal Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'paypal_link' )); ?>"><?php echo esc_html_e( 'PayPal Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'paypal_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'paypal_link' )); ?>" value="<?php echo esc_attr($instance[ 'paypal_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'dropbox_link' )); ?>"><?php echo esc_html_e( 'Dropbox Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'dropbox_link' )); ?>"><?php echo esc_html_e( 'Dropbox Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'dropbox_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'dropbox_link' )); ?>" value="<?php echo esc_attr($instance[ 'dropbox_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'soundcloud_link' )); ?>"><?php echo esc_html_e( 'Soundcloud Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'soundcloud_link' )); ?>"><?php echo esc_html_e( 'Soundcloud Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'soundcloud_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'soundcloud_link' )); ?>" value="<?php echo esc_attr($instance[ 'soundcloud_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'foursquare_link' )); ?>"><?php echo esc_html_e( 'Foursquare Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'foursquare_link' )); ?>"><?php echo esc_html_e( 'Foursquare Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'foursquare_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'foursquare_link' )); ?>" value="<?php echo esc_attr($instance[ 'foursquare_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'vine_link' )); ?>"><?php echo esc_html_e( 'Vine Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'vine_link' )); ?>"><?php echo esc_html_e( 'Vine Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'vine_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'vine_link' )); ?>" value="<?php echo esc_attr($instance[ 'vine_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'wordpress_link' )); ?>"><?php echo esc_html_e( 'WordPress Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'wordpress_link' )); ?>"><?php echo esc_html_e( 'WordPress Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'wordpress_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'wordpress_link' )); ?>" value="<?php echo esc_attr($instance[ 'wordpress_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'behance_link' )); ?>"><?php echo esc_html_e( 'Behance Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'behance_link' )); ?>"><?php echo esc_html_e( 'Behance Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'behance_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'behance_link' )); ?>" value="<?php echo esc_attr($instance[ 'behance_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'stumbleupon_link' )); ?>"><?php echo esc_html_e( 'Stumbleupo Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'stumbleupon_link' )); ?>"><?php echo esc_html_e( 'Stumbleupo Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'stumbleupon_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'stumbleupon_link' )); ?>" value="<?php echo esc_attr($instance[ 'stumbleupon_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'github_link' )); ?>"><?php echo esc_html_e( 'Github Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'github_link' )); ?>"><?php echo esc_html_e( 'Github Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'github_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'github_link' )); ?>" value="<?php echo esc_attr($instance[ 'github_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'lastfm_link' )); ?>"><?php echo esc_html_e( 'Lastfm Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'lastfm_link' )); ?>"><?php echo esc_html_e( 'Lastfm Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'lastfm_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'lastfm_link' )); ?>" value="<?php echo esc_attr($instance[ 'lastfm_link' ]); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr($this->get_field_id( 'rss_link' )); ?>"><?php echo esc_html_e( 'RSS Link', 'dayneo' ); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id( 'rss_link' )); ?>"><?php echo esc_html_e( 'RSS Link', 'bigbo' ); ?></label>
 			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'rss_link' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'rss_link' )); ?>" value="<?php echo esc_attr($instance[ 'rss_link' ]); ?>" />
 		</p>
 		<?php

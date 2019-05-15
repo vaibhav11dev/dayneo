@@ -5,8 +5,8 @@ if (!defined('ABSPATH')) {
 
 global $submenu;
 
-if (isset($submenu['dayneo-menu'])) {
-    $menu_items = $submenu['dayneo-menu'];
+if (isset($submenu['bigbo-menu'])) {
+    $menu_items = $submenu['bigbo-menu'];
 }
 
 if (is_array($menu_items)) {
@@ -16,9 +16,9 @@ if (is_array($menu_items)) {
       <div class="def-bg">
       <div class="container head-contain">        
         <div class="theme_content">
-          <h1><?php esc_html_e('Welcome to Dayneo Theme', 'dayneo'); ?></h1>
-          <?php $dayneo_theme = wp_get_theme(); ?>
-            <p><?php printf(esc_html__('Version %s', 'dayneo'), $dayneo_theme->get('Version')); ?></p>
+          <h1><?php esc_html_e('Welcome to Bigbo Theme', 'bigbo'); ?></h1>
+          <?php $bigbo_theme = wp_get_theme(); ?>
+            <p><?php printf(esc_html__('Version %s', 'bigbo'), $bigbo_theme->get('Version')); ?></p>
             <div class="wp-badge" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/admin/assets/images/dark-logo.png');box-shadow: none;"></div>
         </div>
         <div class="nav-tab-wrapper">

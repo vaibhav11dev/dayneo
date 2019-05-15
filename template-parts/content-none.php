@@ -3,13 +3,13 @@
  * Template part for displaying a message that posts cannot be found
  *
  *
- * @package dayneo
+ * @package bigbo
  */
 
 ?>
 
 <section class="no-results not-found">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'dayneo' ); ?></h1>
+		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'bigbo' ); ?></h1>
 
 	<div class="page-content">
 		<?php
@@ -18,7 +18,7 @@
 			printf(
 				'<p>' . wp_kses(
 					/* translators: 1: link to WP admin new post page. */
-					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'dayneo' ),
+					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'bigbo' ),
 					array(
 						'a' => array(
 							'href' => array(),
@@ -31,14 +31,14 @@
 		elseif ( is_search() ) :
 			?>
 
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'dayneo' ); ?></p>
+			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'bigbo' ); ?></p>
                         <?php
                         get_search_form();
 
 		else :
 			?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'dayneo' ); ?></p>
+			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'bigbo' ); ?></p>
                         <?php
                         get_search_form();
 

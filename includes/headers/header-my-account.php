@@ -7,7 +7,7 @@ if ( is_user_logged_in() ) {
     
     $author       = get_user_by( 'id', $user_id );
 
-    $logged_type = esc_html__( 'My Account', 'dayneo' );
+    $logged_type = esc_html__( 'My Account', 'bigbo' );
 
     $items .= sprintf(
     '<div id="_desktop_user_info">
@@ -26,12 +26,12 @@ if ( is_user_logged_in() ) {
                 <a class="logout" href="%s"><i class="fa fa-sign-out"></i></a>
             </div>
         </div>
-    </div>', $logged_type, esc_url( $account_link ) , esc_html__( 'Hello,', 'dayneo' ) . ' ' . $author->display_name . '!', esc_url( wp_logout_url( $account ) ), esc_html__( 'Logout', 'dayneo' ), esc_url( $account_link ), esc_html($author->display_name), esc_html($author->user_email), esc_url( wp_logout_url( $account ) )
+    </div>', $logged_type, esc_url( $account_link ) , esc_html__( 'Hello,', 'bigbo' ) . ' ' . $author->display_name . '!', esc_url( wp_logout_url( $account ) ), esc_html__( 'Logout', 'bigbo' ), esc_url( $account_link ), esc_html($author->display_name), esc_html($author->user_email), esc_url( wp_logout_url( $account ) )
     );
 } else {
 
     $register      = '';
-    $register_text = esc_html__( 'Register', 'dayneo' );
+    $register_text = esc_html__( 'Register', 'bigbo' );
 
     if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) {
         $register = sprintf(
@@ -55,7 +55,7 @@ if ( is_user_logged_in() ) {
               <a class="register" href="%s">Register</a>
           </div>
         </div>
-    </div>', esc_url( $account_link ), esc_html__( 'My Account', 'dayneo' ), esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ), esc_html__( 'Log in', 'dayneo' ), $register, esc_url( $account_link ), esc_url( $account_link )
+    </div>', esc_url( $account_link ), esc_html__( 'My Account', 'bigbo' ), esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ), esc_html__( 'Log in', 'bigbo' ), $register, esc_url( $account_link ), esc_url( $account_link )
     );
 }
 echo $items;

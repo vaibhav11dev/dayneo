@@ -38,10 +38,10 @@ if ( ! class_exists( 'ReduxFramework_switch' ) ) {
             }
 
             //Label ON
-            $this->field['on'] = isset( $this->field['on'] ) ? $this->field['on'] : __( 'On', 'dayneo' );
+            $this->field['on'] = isset( $this->field['on'] ) ? $this->field['on'] : __( 'On', 'bigbo' );
 
             //Label OFF
-            $this->field['off'] = isset( $this->field['off'] ) ? $this->field['off'] : __( 'Off', 'dayneo' );
+            $this->field['off'] = isset( $this->field['off'] ) ? $this->field['off'] : __( 'Off', 'bigbo' );
 
             echo '<div class="switch-options">';
             echo '<label class="cb-enable' . $cb_enabled . '" data-id="' . $this->field['id'] . '"><span>' . $this->field['on'] . '</span></label>';

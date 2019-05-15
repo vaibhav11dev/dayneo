@@ -8,33 +8,33 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package dayneo
+ * @package bigbo
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses dayneo_header_style()
+ * @uses bigbo_header_style()
  */
-function dayneo_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'dayneo_custom_header_args', array(
+function bigbo_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'bigbo_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'dayneo_header_style',
+		'wp-head-callback'       => 'bigbo_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'dayneo_custom_header_setup' );
+add_action( 'after_setup_theme', 'bigbo_custom_header_setup' );
 
-if ( ! function_exists( 'dayneo_header_style' ) ) :
+if ( ! function_exists( 'bigbo_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see dayneo_custom_header_setup().
+	 * @see bigbo_custom_header_setup().
 	 */
-	function dayneo_header_style() {
+	function bigbo_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*

@@ -1,5 +1,5 @@
 <?php
-$extras = dayneo_menu_extras();
+$extras = bigbo_menu_extras();
 
 $css_header_search      = 'col-md-6 col-sm-6';
 $css_header_cart        = 'col-md-4 col-sm-4';
@@ -39,10 +39,10 @@ if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
                             <!-- YOUR LOGO HERE -->
                             <div class="inner-header site-identity">
                                 <?php
-                                $dd_header_logo               = dayneo_get_option( 'dd_header_logo', '' );
-                                $dd_header_logo_retina        = dayneo_get_option( 'dd_header_logo_retina', '' );
-                                $dd_header_logo_retina_width  = dayneo_get_option( 'dd_header_logo_retina_width', '' );
-                                $dd_header_logo_retina_height = dayneo_get_option( 'dd_header_logo_retina_height', '' );
+                                $dd_header_logo               = bigbo_get_option( 'dd_header_logo', '' );
+                                $dd_header_logo_retina        = bigbo_get_option( 'dd_header_logo_retina', '' );
+                                $dd_header_logo_retina_width  = bigbo_get_option( 'dd_header_logo_retina_width', '' );
+                                $dd_header_logo_retina_height = bigbo_get_option( 'dd_header_logo_retina_height', '' );
                                 if ( $dd_header_logo != '' || $dd_header_logo_retina != '' ) {
                                     ?>
                                     <a class="inner-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -65,8 +65,8 @@ if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
                                     </a>
                                     <?php
                                 } else {
-                                    $dd_blog_title   = dayneo_get_option( 'dd_blog_title', '0' );
-                                    $dd_blog_tagline = dayneo_get_option( 'dd_blog_tagline', '0' );
+                                    $dd_blog_title   = bigbo_get_option( 'dd_blog_title', '0' );
+                                    $dd_blog_tagline = bigbo_get_option( 'dd_blog_tagline', '0' );
                                     if ( $dd_blog_title == 1 ) {
                                         ?>
                                         <div id="blog-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ) ?></a></div> 
@@ -85,12 +85,12 @@ if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
                     </div>
                     <?php if ( $show_search ) : ?>
                         <div class="header-extras col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <?php dayneo_extra_search(); ?>
+                            <?php bigbo_extra_search(); ?>
                         </div>
                     <?php endif; ?>
                    <?php if ( $show_headerbar ) : ?>
                             <div class="<?php echo esc_attr( $css_header_headerbar ); ?>">
-                                <?php dayneo_header_bar(); ?>
+                                <?php bigbo_header_bar(); ?>
                             </div>
                     <?php endif; ?>
                 </div>
@@ -104,19 +104,19 @@ if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
             <div class="header-row">
                 <?php if ( $show_department ) : ?>
                     <div class="col-md-3 col-sm-3 i-product-cats dd-extra-department">
-                        <?php dayneo_extra_department(); ?>
+                        <?php bigbo_extra_department(); ?>
                     </div>
                 <?php endif; ?>
                 <div class="<?php echo esc_attr( $css_header_menu ); ?> dd-header-menu">
                     <div class="col-header-menu">
                         <div class="<?php echo esc_attr( $css_header_primarymenu ); ?>">
-                            <?php dayneo_header_menu(); ?>
+                            <?php bigbo_header_menu(); ?>
                         </div>
                         <?php if ( $show_cart ) : ?>
                         <div class="col-lg-4 col-md-4">
                             <div class="extras-menu">
                                 <?php
-                                dayneo_extra_cart();
+                                bigbo_extra_cart();
                                 ?>
                             </div>		    
                         </div>

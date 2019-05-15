@@ -1,16 +1,16 @@
 <?php
-add_action( 'widgets_init', 'dayneo_flickr_widgets' );
+add_action( 'widgets_init', 'bigbo_flickr_widgets' );
 
-function dayneo_flickr_widgets() {
-	register_widget( 'Dayneo_Flickr_Widget' );
+function bigbo_flickr_widgets() {
+	register_widget( 'Bigbo_Flickr_Widget' );
 }
 
-class Dayneo_Flickr_Widget extends WP_Widget {
+class Bigbo_Flickr_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'flickr-widget', __( 'Dayneo: Flickr', 'dayneo' ), // Name
-		       array( 'classname' => 'flickr', 'description' => __( 'The most recent photos from flickr.', 'dayneo' ), ) // Args		
+		'flickr-widget', __( 'Bigbo: Flickr', 'bigbo' ), // Name
+		       array( 'classname' => 'flickr', 'description' => __( 'The most recent photos from flickr.', 'bigbo' ), ) // Args		
 		);
 	}
 
@@ -86,23 +86,23 @@ class Dayneo_Flickr_Widget extends WP_Widget {
 		?>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" value="<?php echo esc_attr($instance[ 'title' ]); ?>" />
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'screen_name' )); ?>"><?php echo esc_html_e( 'Flickr ID', 'dayneo' ); ?>(<a href="http://idgettr.com/">Get your flickr ID</a>)</label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'screen_name' )); ?>"><?php echo esc_html_e( 'Flickr ID', 'bigbo' ); ?>(<a href="http://idgettr.com/">Get your flickr ID</a>)</label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'screen_name' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'screen_name' )); ?>" value="<?php echo esc_attr($instance[ 'screen_name' ]); ?>" />
 		</p>
 
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'number' )); ?>"><?php echo esc_html_e( 'Number of photos to show', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'number' )); ?>"><?php echo esc_html_e( 'Number of photos to show', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" style="width: 30px;" id="<?php echo esc_attr($this->get_field_id( 'number' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'number' )); ?>" value="<?php echo esc_attr($instance[ 'number' ]); ?>" />
 		</p>
 
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'api' )); ?>"><?php echo esc_html_e( 'API key', 'dayneo' ); ?>(Use default or get your own from <a href="http://www.flickr.com/services/apps/create/apply">Flickr APP Garden</a>)</label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'api' )); ?>"><?php echo esc_html_e( 'API key', 'bigbo' ); ?>(Use default or get your own from <a href="http://www.flickr.com/services/apps/create/apply">Flickr APP Garden</a>)</label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'api' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'api' )); ?>" value="<?php echo esc_attr($instance[ 'api' ]); ?>" />
 		</p>
 

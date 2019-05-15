@@ -2,42 +2,42 @@
 /**
  * Comments - functions that deal with comments
  *
- * @package Dayneo
+ * @package Bigbo
  * @subpackage Core
  */
 
 /**
- * dayneo_discussion_title()
+ * bigbo_discussion_title()
  *
- * @filter dayneo_many_comments, dayneo_no_comments, dayneo_one_comment, dayneo_comments_number
+ * @filter bigbo_many_comments, bigbo_no_comments, bigbo_one_comment, bigbo_comments_number
  */
-function dayneo_discussion_title( $type = NULL, $echo = true ) {
+function bigbo_discussion_title( $type = NULL, $echo = true ) {
 	if ( ! $type ) {
 		return;
 	}
 
 	$discussion_title	 = '';
-	$comment_count		 = dayneo_count( 'comment', false );
-	$ping_count		 = dayneo_count( 'pings', false );
+	$comment_count		 = bigbo_count( 'comment', false );
+	$ping_count		 = bigbo_count( 'pings', false );
 
 	switch ( $type ) {
 		case 'comment' :
 			$count	 = $comment_count;
-			// Available filter: dayneo_many_comments
-			$many	 = apply_filters( 'dayneo_many_comments', __( '% Comments', 'dayneo' ) );
-			// Available filter: dayneo_no_comments
-			$none	 = apply_filters( 'dayneo_no_comments', __( 'No Comments Yet', 'dayneo' ) );
-			// Available filter: dayneo_one_comment
-			$one	 = apply_filters( 'dayneo_one_comment', __( '1 Comment', 'dayneo' ) );
+			// Available filter: bigbo_many_comments
+			$many	 = apply_filters( 'bigbo_many_comments', __( '% Comments', 'bigbo' ) );
+			// Available filter: bigbo_no_comments
+			$none	 = apply_filters( 'bigbo_no_comments', __( 'No Comments Yet', 'bigbo' ) );
+			// Available filter: bigbo_one_comment
+			$one	 = apply_filters( 'bigbo_one_comment', __( '1 Comment', 'bigbo' ) );
 			break;
 		case 'pings' :
 			$count	 = $ping_count;
-			// Available filter: dayneo_many_pings
-			$many	 = apply_filters( 'dayneo_many_pings', __( '% Pings/Trackbacks', 'dayneo' ) );
-			// Available filter: dayneo_no_pings
-			$none	 = apply_filters( 'dayneo_no_pings', __( 'No Pings/Trackbacks Yet', 'dayneo' ) );
-			// Available filter: dayneo_one_comment
-			$one	 = apply_filters( 'dayneo_one_ping', __( '1 Ping/Trackback', 'dayneo' ) );
+			// Available filter: bigbo_many_pings
+			$many	 = apply_filters( 'bigbo_many_pings', __( '% Pings/Trackbacks', 'bigbo' ) );
+			// Available filter: bigbo_no_pings
+			$none	 = apply_filters( 'bigbo_no_pings', __( 'No Pings/Trackbacks Yet', 'bigbo' ) );
+			// Available filter: bigbo_one_comment
+			$one	 = apply_filters( 'bigbo_one_ping', __( '1 Ping/Trackback', 'bigbo' ) );
 			break;
 	}
 
@@ -50,27 +50,27 @@ function dayneo_discussion_title( $type = NULL, $echo = true ) {
 		$number = $none;
 	}
 
-	// Available filter: dayneo_discussion_title_tag
-	$tag	 = apply_filters( 'dayneo_discussion_title_tag', (string) 'h5' );
+	// Available filter: bigbo_discussion_title_tag
+	$tag	 = apply_filters( 'bigbo_discussion_title_tag', (string) 'h5' );
 	$class	 = 'text-title text-uppercase';
 
 	if ( $number ) {
 		$discussion_title = '<' . $tag . ' class="' . esc_attr($type . '-title ' . $class) . '">' . $number . '</' . $tag . '>';
 	}
 
-	// Available filter: dayneo_discussion_title
-	$dayneo_discussion_title = apply_filters( 'dayneo_discussion_title', (string) $discussion_title );
+	// Available filter: bigbo_discussion_title
+	$bigbo_discussion_title = apply_filters( 'bigbo_discussion_title', (string) $discussion_title );
 
-	return ( $echo ) ? print( $dayneo_discussion_title ) : $dayneo_discussion_title;
+	return ( $echo ) ? print( $bigbo_discussion_title ) : $bigbo_discussion_title;
 }
 
 /**
- * dayneo_count()
+ * bigbo_count()
  *
  * @since 0.3
  * @needsdoc
  */
-function dayneo_count( $type = NULL, $echo = true ) {
+function bigbo_count( $type = NULL, $echo = true ) {
 	if ( ! $type ) {
 		return;
 	}
@@ -91,14 +91,14 @@ function dayneo_count( $type = NULL, $echo = true ) {
 }
 
 /**
- * dayneo_comment_author() short description
+ * bigbo_comment_author() short description
  *
  * @since 0.3
  * @todo needs filter
  */
-function dayneo_comment_author( $meta_format = '%avatar%' ) {
-	// Available filter: dayneo_comment_author_meta_format
-	$meta_format = apply_filters( 'dayneo_comment_author_meta_format', $meta_format );
+function bigbo_comment_author( $meta_format = '%avatar%' ) {
+	// Available filter: bigbo_comment_author_meta_format
+	$meta_format = apply_filters( 'bigbo_comment_author_meta_format', $meta_format );
 
 	if ( ! $meta_format ) {
 		return;
@@ -120,11 +120,11 @@ function dayneo_comment_author( $meta_format = '%avatar%' ) {
 		foreach ( $meta_array as $key => $str ) {
 			switch ( $str ) {
 				case '%avatar%':
-					$meta_array[ $key ] = dayneo_comment_avatar();
+					$meta_array[ $key ] = bigbo_comment_avatar();
 					break;
 
 				case '%name%':
-					$meta_array[ $key ] = dayneo_comment_name();
+					$meta_array[ $key ] = bigbo_comment_name();
 					break;
 			}
 		}
@@ -137,12 +137,12 @@ function dayneo_comment_author( $meta_format = '%avatar%' ) {
 }
 
 /**
- * dayneo_comment_meta() short description
+ * bigbo_comment_meta() short description
  *
  */
-function dayneo_comment_meta( $meta_format = '%date% %reply%' ) {
-	// Available filter: dayneo_comment_meta_format
-	$meta_format = apply_filters( 'dayneo_comment_meta_format', $meta_format );
+function bigbo_comment_meta( $meta_format = '%date% %reply%' ) {
+	// Available filter: bigbo_comment_meta_format
+	$meta_format = apply_filters( 'bigbo_comment_meta_format', $meta_format );
 
 	if ( ! $meta_format ) {
 		return;
@@ -164,23 +164,23 @@ function dayneo_comment_meta( $meta_format = '%date% %reply%' ) {
 		foreach ( $meta_array as $key => $str ) {
 			switch ( $str ) {
 				case '%date%':
-					$meta_array[ $key ] = dayneo_comment_date();
+					$meta_array[ $key ] = bigbo_comment_date();
 					break;
 
 				case '%time%':
-					$meta_array[ $key ] = dayneo_comment_time();
+					$meta_array[ $key ] = bigbo_comment_time();
 					break;
 
 				case '%link%':
-					$meta_array[ $key ] = dayneo_comment_link();
+					$meta_array[ $key ] = bigbo_comment_link();
 					break;
 
 				case '%reply%':
-					$meta_array[ $key ] = dayneo_comment_reply( true );
+					$meta_array[ $key ] = bigbo_comment_reply( true );
 					break;
 
 				case '%edit%':
-					$meta_array[ $key ] = dayneo_comment_edit();
+					$meta_array[ $key ] = bigbo_comment_edit();
 					break;
 			}
 		}
@@ -191,35 +191,35 @@ function dayneo_comment_meta( $meta_format = '%date% %reply%' ) {
 }
 
 /**
- * dayneo_comment_text() short description
+ * bigbo_comment_text() short description
  *
  */
-function dayneo_comment_text() {
+function bigbo_comment_text() {
 	echo '<div class="comment-content">';
-	echo '<h5>' . dayneo_comment_name() . '</h5>';
+	echo '<h5>' . bigbo_comment_name() . '</h5>';
 	echo '<p>' . comment_text() . '</p>';
 	echo '</div>';
 }
 
 /**
- * dayneo_comment_moderation() short description
+ * bigbo_comment_moderation() short description
  *
  */
-function dayneo_comment_moderation() {
+function bigbo_comment_moderation() {
 	global $comment;
 	if ( $comment->comment_approved == '0' )
-		echo '<p class="comment-unapproved moderation alert">' . esc_html__( 'Your comment is awaiting moderation', 'dayneo' ) . '</p>';
+		echo '<p class="comment-unapproved moderation alert">' . esc_html__( 'Your comment is awaiting moderation', 'bigbo' ) . '</p>';
 }
 
 /**
- * dayneo_comment_navigation() paged comments
+ * bigbo_comment_navigation() paged comments
  *
  */
-function dayneo_comment_navigation() {
+function bigbo_comment_navigation() {
 	$num = get_comments_number() + 1;
 
-// Available filter: dayneo_comment_navigation_tag
-	$tag	 = apply_filters( 'dayneo_comment_navigation_tag', (string) 'div' );
+// Available filter: bigbo_comment_navigation_tag
+	$tag	 = apply_filters( 'bigbo_comment_navigation_tag', (string) 'div' );
 	$open	 = "<!--BEGIN .navigation-links-->";
 	$open	 .= "<" . $tag . " class=\"navigation-links comment-navigation\">";
 	$close	 = "<!--END .navigation-links-->";
@@ -239,54 +239,54 @@ function dayneo_comment_navigation() {
 		$comment_navigation = NULL;
 	}
 
-	// Available filter: dayneo_comment_navigation
-	echo apply_filters( 'dayneo_comment_navigation', (string) $comment_navigation );
+	// Available filter: bigbo_comment_navigation
+	echo apply_filters( 'bigbo_comment_navigation', (string) $comment_navigation );
 }
 
 /**
- * dayneo_comments_callback() recreate the comment list
+ * bigbo_comments_callback() recreate the comment list
  *
  */
-function dayneo_comments_callback( $comment, $args, $depth ) {
+function bigbo_comments_callback( $comment, $args, $depth ) {
 	$GLOBALS[ 'comment' ]		 = $comment;
 	$GLOBALS[ 'comment_depth' ]	 = $depth;
-	$tag				 = apply_filters( 'dayneo_comments_list_tag', (string) 'div' );
+	$tag				 = apply_filters( 'bigbo_comments_list_tag', (string) 'div' );
 	?>
 
 	<!--BEING .comment-->
         <<?php echo esc_html($tag); ?> class="<?php esc_attr(semantic_comments()); ?>" id="comment-<?php echo comment_ID(); ?>">
 	<?php
-	dayneo_hook_comments();
+	bigbo_hook_comments();
 }
 
 /**
- * dayneo_comments_endcallback() close the comment list
+ * bigbo_comments_endcallback() close the comment list
  *
  */
-function dayneo_comments_endcallback() {
-	// Available filter: dayneo_comments_list_tag
-	$tag = apply_filters( 'dayneo_comments_list_tag', (string) 'div' );
+function bigbo_comments_endcallback() {
+	// Available filter: bigbo_comments_list_tag
+	$tag = apply_filters( 'bigbo_comments_list_tag', (string) 'div' );
 	echo "<!--END .comment-->";
 	echo "</" . esc_html($tag) . ">";
-	// Available action: dayneo_hook_inside_comments_loop
-	do_action( 'dayneo_hook_inside_comments_loop' );
+	// Available action: bigbo_hook_inside_comments_loop
+	do_action( 'bigbo_hook_inside_comments_loop' );
 }
 
 /**
- * dayneo_pings_callback() recreate the comment list
+ * bigbo_pings_callback() recreate the comment list
  *
  */
-function dayneo_pings_callback( $comment, $args, $depth ) {
+function bigbo_pings_callback( $comment, $args, $depth ) {
 	$GLOBALS[ 'comment' ]	 = $comment;
-	// Available filter: dayneo_pings_callback_tag
-	$tag			 = apply_filters( 'dayneo_pings_callback_tag', (string) 'div' );
-	// Available filter: dayneo_pings_callback_time
-	$time			 = apply_filters( 'dayneo_pings_callback_time', (string) ' on ' );
-	// Available filter: dayneo_pings_callback_time
-	$when			 = apply_filters( 'dayneo_pings_callback_when', (string) ' at ' );
+	// Available filter: bigbo_pings_callback_tag
+	$tag			 = apply_filters( 'bigbo_pings_callback_tag', (string) 'div' );
+	// Available filter: bigbo_pings_callback_time
+	$time			 = apply_filters( 'bigbo_pings_callback_time', (string) ' on ' );
+	// Available filter: bigbo_pings_callback_time
+	$when			 = apply_filters( 'bigbo_pings_callback_when', (string) ' at ' );
 
 	if ( $comment->comment_approved == '0' )
-		echo '<p class="ping-unapproved moderation alert">' . esc_html__( 'Your trackback is awaiting moderation.', 'dayneo' ) . '</p>';
+		echo '<p class="ping-unapproved moderation alert">' . esc_html__( 'Your trackback is awaiting moderation.', 'bigbo' ) . '</p>';
 	?>
 
 	<!--BEING .pings-->
@@ -303,29 +303,29 @@ function dayneo_pings_callback( $comment, $args, $depth ) {
 }
 
 /**
- * dayneo_pings_endcallback() close the comment list
+ * bigbo_pings_endcallback() close the comment list
  *
  */
-function dayneo_pings_endcallback() {
-	// Available filter: dayneo_pings_callback_tag
-	$tag = apply_filters( 'dayneo_pings_callback_tag', (string) 'div' );
+function bigbo_pings_endcallback() {
+	// Available filter: bigbo_pings_callback_tag
+	$tag = apply_filters( 'bigbo_pings_callback_tag', (string) 'div' );
 	echo "<!--END .pings-list-->";
 	echo "</" . esc_html($tag) . ">";
-	// Available action: dayneo_hook_inside_pings_list
-	do_action( 'dayneo_hook_inside_pings_list' );
+	// Available action: bigbo_hook_inside_pings_list
+	do_action( 'bigbo_hook_inside_pings_list' );
 }
 
 /**
- * dayneo_hook_comments() short description.
+ * bigbo_hook_comments() short description.
  *
  * Long description.
  *
  */
-function dayneo_hook_comments( $callback = array( 'dayneo_comment_author', 'dayneo_comment_meta', 'dayneo_comment_moderation', 'dayneo_comment_text' ) ) {
-	do_action( 'dayneo_hook_comments_open' ); // Available action: dayneo_comment_open
-	do_action( 'dayneo_hook_comments' );
+function bigbo_hook_comments( $callback = array( 'bigbo_comment_author', 'bigbo_comment_meta', 'bigbo_comment_moderation', 'bigbo_comment_text' ) ) {
+	do_action( 'bigbo_hook_comments_open' ); // Available action: bigbo_comment_open
+	do_action( 'bigbo_hook_comments' );
 
-	$callback = apply_filters( 'dayneo_comments_callback', $callback ); // Available filter: dayneo_comments_callback
+	$callback = apply_filters( 'bigbo_comments_callback', $callback ); // Available filter: bigbo_comments_callback
 	// If $callback is an array, loop through all callbacks and call those functions if they exist
 	if ( is_array( $callback ) ) {
 		foreach ( $callback as $function ) {
@@ -341,10 +341,10 @@ function dayneo_hook_comments( $callback = array( 'dayneo_comment_author', 'dayn
 			call_user_func( $callback );
 		}
 	}
-	do_action( 'dayneo_hook_comments_close' ); // Available action: dayneo_comment_close
+	do_action( 'bigbo_hook_comments_close' ); // Available action: bigbo_comment_close
 }
 
-function dayneo_custom_comment_form() {
+function bigbo_custom_comment_form() {
 	$commenter = wp_get_current_commenter();
 	$req       = get_option( 'require_name_email' );
 	$aria_req  = ( $req ) ? " aria-required='true'" : '';
@@ -353,22 +353,22 @@ function dayneo_custom_comment_form() {
 
 	$fields = array();
 
-	$fields['author'] = '<div class="comment-form-author form-group row"><label class="col-sm-3 form-control-label required"><span class="required">*</span>Name:</label><div class="col-sm-9"><input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="' . esc_attr__( 'Name*', 'dayneo' ) . '" ' . $aria_req . $html_req . ' aria-label="' . esc_attr__( 'Name', 'dayneo' ) . '"/></div></div>';
-	$fields['email']  = '<div class="comment-form-email form-group row"><label class="col-sm-3 form-control-label required"><span class="required">*</span>E-mail:</label><div class="col-sm-9"><input id="email" class="form-control" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" placeholder="' . esc_attr__( 'Email*', 'dayneo' ) . '" ' . $aria_req . $html_req . ' aria-label="' . esc_attr__( 'Email', 'dayneo' ) . '"/></div></div>';
-	$fields['url']    = '<div class="comment-form-url form-group row"><label class="col-sm-3 form-control-label required">Website:</label><div class="col-sm-9"><input id="url" class="form-control" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" placeholder="' . esc_attr__( 'Website', 'dayneo' ) . '" aria-label="' . esc_attr__( 'URL', 'dayneo' ) . '" /></div></div>';
+	$fields['author'] = '<div class="comment-form-author form-group row"><label class="col-sm-3 form-control-label required"><span class="required">*</span>Name:</label><div class="col-sm-9"><input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="' . esc_attr__( 'Name*', 'bigbo' ) . '" ' . $aria_req . $html_req . ' aria-label="' . esc_attr__( 'Name', 'bigbo' ) . '"/></div></div>';
+	$fields['email']  = '<div class="comment-form-email form-group row"><label class="col-sm-3 form-control-label required"><span class="required">*</span>E-mail:</label><div class="col-sm-9"><input id="email" class="form-control" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" placeholder="' . esc_attr__( 'Email*', 'bigbo' ) . '" ' . $aria_req . $html_req . ' aria-label="' . esc_attr__( 'Email', 'bigbo' ) . '"/></div></div>';
+	$fields['url']    = '<div class="comment-form-url form-group row"><label class="col-sm-3 form-control-label required">Website:</label><div class="col-sm-9"><input id="url" class="form-control" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" placeholder="' . esc_attr__( 'Website', 'bigbo' ) . '" aria-label="' . esc_attr__( 'URL', 'bigbo' ) . '" /></div></div>';
 
 	$comments_args = array(
 		'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-		'comment_field'	 => '<div class="comment-form-comment form-group row"><label class="col-sm-3 form-control-label required"><span class="required">*</span>Comment:</label><div class="col-sm-9"><textarea id="comment" name="comment" placeholder="'.esc_attr__( 'Comment', 'dayneo' ).'" class="form-control" rows="6" aria-required="true"></textarea></div></div>',
-		'title_reply'          => esc_html__( 'Leave A Reply', 'dayneo' ),
-		'title_reply_to'       => esc_html__( 'Leave A Reply', 'dayneo' ),
+		'comment_field'	 => '<div class="comment-form-comment form-group row"><label class="col-sm-3 form-control-label required"><span class="required">*</span>Comment:</label><div class="col-sm-9"><textarea id="comment" name="comment" placeholder="'.esc_attr__( 'Comment', 'bigbo' ).'" class="form-control" rows="6" aria-required="true"></textarea></div></div>',
+		'title_reply'          => esc_html__( 'Leave A Reply', 'bigbo' ),
+		'title_reply_to'       => esc_html__( 'Leave A Reply', 'bigbo' ),
 		/* translators: Opening and closing link tags. */
-		'must_log_in'          => '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$slogged in%2$s to post a comment.', 'dayneo' ), '<a href="' . esc_url(wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )) . '">', '</a>' ) . '</p>',
+		'must_log_in'          => '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$slogged in%2$s to post a comment.', 'bigbo' ), '<a href="' . esc_url(wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )) . '">', '</a>' ) . '</p>',
 		/* translators: %1$s: The username. %2$s and %3$s: Opening and closing link tags. */
 		'comment_notes_before' => '',
 		'id_submit'            => 'comment-submit',
 		'class_submit'         => 'btn btn-lg btn-base',
-		'label_submit'         => esc_html__( 'Submit', 'dayneo' ),
+		'label_submit'         => esc_html__( 'Submit', 'bigbo' ),
 	);
 
 	return comment_form( $comments_args );

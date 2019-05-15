@@ -3,11 +3,11 @@
  * Template part for displaying posts
  *
  *
- * @package dayneo
+ * @package bigbo
  */
 // The Query
 global $dd_options;
-$dd_portfolio_no_item_per_page	 = dayneo_get_option( 'dd_portfolio_no_item_per_page', '10' );
+$dd_portfolio_no_item_per_page	 = bigbo_get_option( 'dd_portfolio_no_item_per_page', '10' );
 
 if ( category_description() ):
 	?>
@@ -38,7 +38,7 @@ if ( category_description() ):
 		while ( have_posts() ): the_post();
 
 			if ( has_post_thumbnail() ) {
-				$icon_url_check = get_post_meta( $post->ID, 'dayneo_link_icon_url', true );
+				$icon_url_check = get_post_meta( $post->ID, 'bigbo_link_icon_url', true );
                                 if ( ! empty( $icon_url_check ) ) {
                                     $permalink = $icon_url_check;
                                 } else {
@@ -46,7 +46,7 @@ if ( category_description() ):
                                 }
 
                                 $link_target = '';
-                                if ( get_post_meta( $post->ID, 'dayneo_link_icon_target', true ) == "yes" ) {
+                                if ( get_post_meta( $post->ID, 'bigbo_link_icon_target', true ) == "yes" ) {
                                     $link_target = ' target=_blank';
                                 }
 
@@ -88,7 +88,7 @@ if ( category_description() ):
 
 <?php
 
-dayneo_portfolio_pagination();
+bigbo_portfolio_pagination();
 
 /* Restore original Post Data */
 wp_reset_postdata();

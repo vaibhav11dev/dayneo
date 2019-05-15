@@ -2,7 +2,7 @@
 jQuery(document).ready(function ($) {
 
     var frame;
-    jQuery('.dayneo_upload_button').on('click', function (event) {
+    jQuery('.bigbo_upload_button').on('click', function (event) {
 
         event.preventDefault();
         var item_id = jQuery(this).attr('data-media-id');
@@ -22,25 +22,25 @@ jQuery(document).ready(function ($) {
 
             var attachment = frame.state().get('selection').first().toJSON();
 
-            jQuery('#dayneo-media-display-' + item_id).append('<input type="text" class="upload_field" value="' + attachment.url + '" /></br><img src="' + attachment.url + '" alt="' + attachment.name + '" class="redux-option-image" style="width:60px; height:60px;"/>');
-            jQuery('#dayneo_' + item_id).val(attachment.id);
-            jQuery('#dayneo-media-upload-' + item_id).addClass('hidden');
-            jQuery('#dayneo-media-remove-' + item_id).removeClass('hidden');
-            jQuery('#dayneo-media-remove-extra-' + item_id).addClass('hidden');
+            jQuery('#bigbo-media-display-' + item_id).append('<input type="text" class="upload_field" value="' + attachment.url + '" /></br><img src="' + attachment.url + '" alt="' + attachment.name + '" class="redux-option-image" style="width:60px; height:60px;"/>');
+            jQuery('#bigbo_' + item_id).val(attachment.id);
+            jQuery('#bigbo-media-upload-' + item_id).addClass('hidden');
+            jQuery('#bigbo-media-remove-' + item_id).removeClass('hidden');
+            jQuery('#bigbo-media-remove-extra-' + item_id).addClass('hidden');
         });
 
         frame.open();
     });
 
-    jQuery('.dayneo_remove_button').on('click', function (event) {
+    jQuery('.bigbo_remove_button').on('click', function (event) {
 
         event.preventDefault();
         var item_id = jQuery(this).attr('data-media-id');
-        jQuery('#dayneo-media-display-' + item_id).html('');
-        jQuery('#dayneo_' + item_id).val('');
-        jQuery('#dayneo-media-upload-' + item_id).removeClass('hidden');
-        jQuery('#dayneo-media-remove-' + item_id).addClass('hidden');
-        jQuery('#dayneo-media-remove-extra-' + item_id).removeClass('hidden');
+        jQuery('#bigbo-media-display-' + item_id).html('');
+        jQuery('#bigbo_' + item_id).val('');
+        jQuery('#bigbo-media-upload-' + item_id).removeClass('hidden');
+        jQuery('#bigbo-media-remove-' + item_id).addClass('hidden');
+        jQuery('#bigbo-media-remove-extra-' + item_id).removeClass('hidden');
     });
 
 });

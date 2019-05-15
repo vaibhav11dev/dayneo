@@ -35,10 +35,10 @@ do_action( 'woocommerce_before_cart' );
 			<tr>
 			    <th class="product-remove">&nbsp;</th>
 			    <th class="product-thumbnail">&nbsp;</th>
-			    <th class="product-name"><?php esc_html_e( 'Product', 'dayneo' ); ?></th>
-			    <th class="product-price"><?php esc_html_e( 'Price', 'dayneo' ); ?></th>
-			    <th class="product-quantity"><?php esc_html_e( 'Quantity', 'dayneo' ); ?></th>
-			    <th class="product-subtotal"><?php esc_html_e( 'Total', 'dayneo' ); ?></th>
+			    <th class="product-name"><?php esc_html_e( 'Product', 'bigbo' ); ?></th>
+			    <th class="product-price"><?php esc_html_e( 'Price', 'bigbo' ); ?></th>
+			    <th class="product-quantity"><?php esc_html_e( 'Quantity', 'bigbo' ); ?></th>
+			    <th class="product-subtotal"><?php esc_html_e( 'Total', 'bigbo' ); ?></th>
 			</tr>
 		    </thead>
 		    <tbody>
@@ -58,7 +58,7 @@ do_action( 'woocommerce_before_cart' );
 					<?php
 					// @codingStandardsIgnoreLine
 					echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
-					'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><i class="fa fa-trash"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), __( 'Remove this item', 'dayneo' ), esc_attr( $product_id ), esc_attr( $_product->get_sku() )
+					'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><i class="fa fa-trash"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), __( 'Remove this item', 'bigbo' ), esc_attr( $product_id ), esc_attr( $_product->get_sku() )
 					), $cart_item_key );
 					?>
 				    </td>
@@ -73,7 +73,7 @@ do_action( 'woocommerce_before_cart' );
 					}
 					?></td>
 
-				    <td class="product-name col-title" data-title="<?php esc_attr_e( 'Product', 'dayneo' ); ?>"><?php
+				    <td class="product-name col-title" data-title="<?php esc_attr_e( 'Product', 'bigbo' ); ?>"><?php
 					if ( ! $product_permalink ) {
 					    echo apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;';
 					} else {
@@ -85,17 +85,17 @@ do_action( 'woocommerce_before_cart' );
 
 					// Backorder notification.
 					if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item[ 'quantity' ] ) ) {
-					    echo '<span class="backorder_notification text-xs">' . esc_html__( 'Available on backorder', 'dayneo' ) . '</span>';
+					    echo '<span class="backorder_notification text-xs">' . esc_html__( 'Available on backorder', 'bigbo' ) . '</span>';
 					}
 					?></td>
 
-				    <td class="product-price col-price" data-title="<?php esc_attr_e( 'Price', 'dayneo' ); ?>">
+				    <td class="product-price col-price" data-title="<?php esc_attr_e( 'Price', 'bigbo' ); ?>">
 					<?php
 					echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
 					?>
 				    </td>
 
-				    <td class="product-quantity col-quantity" data-title="<?php esc_attr_e( 'Quantity', 'dayneo' ); ?>"><?php
+				    <td class="product-quantity col-quantity" data-title="<?php esc_attr_e( 'Quantity', 'bigbo' ); ?>"><?php
 					if ( $_product->is_sold_individually() ) {
 					    $product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
 					} else {
@@ -111,7 +111,7 @@ do_action( 'woocommerce_before_cart' );
 					echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item );
 					?></td>
 
-				    <td class="product-subtotal col-subtotal" data-title="<?php esc_attr_e( 'Total', 'dayneo' ); ?>">
+				    <td class="product-subtotal col-subtotal" data-title="<?php esc_attr_e( 'Total', 'bigbo' ); ?>">
 					<?php
 					echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item[ 'quantity' ] ), $cart_item, $cart_item_key );
 					?>
@@ -133,11 +133,11 @@ do_action( 'woocommerce_before_cart' );
     	    <div class="coupon">
     		<div class="row">
     		    <div class="col-sm-9">
-    			<label for="coupon_code"><?php esc_html_e( 'Coupon:', 'dayneo' ); ?></label>
-    			<input type="text" name="coupon_code" class="form-control input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'dayneo' ); ?>" />
+    			<label for="coupon_code"><?php esc_html_e( 'Coupon:', 'bigbo' ); ?></label>
+    			<input type="text" name="coupon_code" class="form-control input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'bigbo' ); ?>" />
     		    </div>
     		    <div class="col-sm-3">
-    			<input type="submit" class="button btn btn-block btn-round btn-dark m-t-xs-20 btn-base" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'dayneo' ); ?>" />
+    			<input type="submit" class="button btn btn-block btn-round btn-dark m-t-xs-20 btn-base" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'bigbo' ); ?>" />
     		    </div>
 			<?php do_action( 'woocommerce_cart_coupon' ); ?>
     		</div>
@@ -146,7 +146,7 @@ do_action( 'woocommerce_before_cart' );
 	    <?php } ?>
 
 	    <div class="col-sm-12 btn-update-cart">
-		<button type="submit" class="button btn btn-round btn-lg btn-base" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'dayneo' ); ?>"><?php esc_html_e( 'Update cart', 'dayneo' ); ?></button>
+		<button type="submit" class="button btn btn-round btn-lg btn-base" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'bigbo' ); ?>"><?php esc_html_e( 'Update cart', 'bigbo' ); ?></button>
 	    </div>
 	    <div class="clearfix"></div>
 
@@ -175,7 +175,7 @@ do_action( 'woocommerce_before_cart' );
 	    <?php woocommerce_cart_totals(); ?>
 	    <div class="text-right wc-proceed-to-checkout">
 		<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button alt btn btn-round btn-lg btn-base wc-forward">
-		    <?php esc_html_e( 'Proceed to checkout', 'dayneo' ); ?>
+		    <?php esc_html_e( 'Proceed to checkout', 'bigbo' ); ?>
 		</a>
 	    </div>
 	    <?php do_action( 'woocommerce_cart_actions' ); ?>

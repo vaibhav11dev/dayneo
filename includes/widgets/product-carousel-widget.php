@@ -1,8 +1,8 @@
 <?php
-add_action( 'widgets_init', 'dayneo_product_carousel_widgets' );
+add_action( 'widgets_init', 'bigbo_product_carousel_widgets' );
 
-function dayneo_product_carousel_widgets() {
-    register_widget( 'Dayneo_Product_Carousel_Widget' );
+function bigbo_product_carousel_widgets() {
+    register_widget( 'Bigbo_Product_Carousel_Widget' );
 }
 
 /**
@@ -14,21 +14,21 @@ function dayneo_product_carousel_widgets() {
  * @version  2.3.0
  * @extends  WC_Widget
  */
-class Dayneo_Product_Carousel_Widget extends WC_Widget {
+class Bigbo_Product_Carousel_Widget extends WC_Widget {
 
     /**
      * Constructor.
      */
     public function __construct() {
         $this->widget_cssclass    = 'woocommerce widget_product_carousel';
-        $this->widget_description = esc_html__( "A slider of your store's products.", 'dayneo' );
+        $this->widget_description = esc_html__( "A slider of your store's products.", 'bigbo' );
         $this->widget_id          = 'dd_woo_product_carousel';
-        $this->widget_name        = esc_html__( 'Dayneo - Product Carousel', 'dayneo' );
+        $this->widget_name        = esc_html__( 'Bigbo - Product Carousel', 'bigbo' );
         $this->settings           = array(
             'title'       => array(
                 'type'  => 'text',
-                'std'   => esc_html__( 'Products', 'dayneo' ),
-                'label' => esc_html__( 'Title', 'dayneo' ),
+                'std'   => esc_html__( 'Products', 'bigbo' ),
+                'label' => esc_html__( 'Title', 'bigbo' ),
             ),
             'number'      => array(
                 'type'  => 'number',
@@ -36,7 +36,7 @@ class Dayneo_Product_Carousel_Widget extends WC_Widget {
                 'min'   => 1,
                 'max'   => '',
                 'std'   => 3,
-                'label' => esc_html__( 'Number of products to show', 'dayneo' ),
+                'label' => esc_html__( 'Number of products to show', 'bigbo' ),
             ),
             'number_show' => array(
                 'type'  => 'number',
@@ -44,57 +44,57 @@ class Dayneo_Product_Carousel_Widget extends WC_Widget {
                 'min'   => 1,
                 'max'   => '',
                 'std'   => 6,
-                'label' => esc_html__( 'Total number of products to show', 'dayneo' ),
+                'label' => esc_html__( 'Total number of products to show', 'bigbo' ),
             ),
             'show'        => array(
                 'type'    => 'select',
                 'std'     => '',
-                'label'   => esc_html__( 'Show', 'dayneo' ),
+                'label'   => esc_html__( 'Show', 'bigbo' ),
                 'options' => array(
-                    ''         => esc_html__( 'All products', 'dayneo' ),
-                    'featured' => esc_html__( 'Featured products', 'dayneo' ),
-                    'onsale'   => esc_html__( 'On-sale products', 'dayneo' ),
+                    ''         => esc_html__( 'All products', 'bigbo' ),
+                    'featured' => esc_html__( 'Featured products', 'bigbo' ),
+                    'onsale'   => esc_html__( 'On-sale products', 'bigbo' ),
                 ),
             ),
             'orderby'     => array(
                 'type'    => 'select',
                 'std'     => 'date',
-                'label'   => esc_html__( 'Order by', 'dayneo' ),
+                'label'   => esc_html__( 'Order by', 'bigbo' ),
                 'options' => array(
-                    'date'  => esc_html__( 'Date', 'dayneo' ),
-                    'price' => esc_html__( 'Price', 'dayneo' ),
-                    'rand'  => esc_html__( 'Random', 'dayneo' ),
-                    'sales' => esc_html__( 'Sales', 'dayneo' ),
+                    'date'  => esc_html__( 'Date', 'bigbo' ),
+                    'price' => esc_html__( 'Price', 'bigbo' ),
+                    'rand'  => esc_html__( 'Random', 'bigbo' ),
+                    'sales' => esc_html__( 'Sales', 'bigbo' ),
                 ),
             ),
             'order'       => array(
                 'type'    => 'select',
                 'std'     => 'desc',
-                'label'   => _x( 'Order', 'Sorting order', 'dayneo' ),
+                'label'   => _x( 'Order', 'Sorting order', 'bigbo' ),
                 'options' => array(
-                    'asc'  => esc_html__( 'ASC', 'dayneo' ),
-                    'desc' => esc_html__( 'DESC', 'dayneo' ),
+                    'asc'  => esc_html__( 'ASC', 'bigbo' ),
+                    'desc' => esc_html__( 'DESC', 'bigbo' ),
                 ),
             ),
             'taxonomy'    => array(
                 'type'    => 'select',
                 'std'     => 'desc',
-                'label'   => esc_html__( 'Taxonomy', 'dayneo' ),
+                'label'   => esc_html__( 'Taxonomy', 'bigbo' ),
                 'options' => array(
-                    ''         => esc_html__( 'Default', 'dayneo' ),
-                    'category' => esc_html__( 'Same Current Category', 'dayneo' ),
-                    'brand'    => esc_html__( 'Same Current Brand', 'dayneo' ),
+                    ''         => esc_html__( 'Default', 'bigbo' ),
+                    'category' => esc_html__( 'Same Current Category', 'bigbo' ),
+                    'brand'    => esc_html__( 'Same Current Brand', 'bigbo' ),
                 ),
             ),
             'hide_free'   => array(
                 'type'  => 'checkbox',
                 'std'   => 0,
-                'label' => esc_html__( 'Hide free products', 'dayneo' ),
+                'label' => esc_html__( 'Hide free products', 'bigbo' ),
             ),
             'show_hidden' => array(
                 'type'  => 'checkbox',
                 'std'   => 0,
-                'label' => esc_html__( 'Show hidden products', 'dayneo' ),
+                'label' => esc_html__( 'Show hidden products', 'bigbo' ),
             ),
         );
 

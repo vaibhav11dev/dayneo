@@ -28,7 +28,7 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 
 // If checkout registration is disabled and not logged in, the user cannot checkout
 if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
-	echo apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'dayneo' ) );
+	echo apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'bigbo' ) );
 	return;
 }
 
@@ -60,7 +60,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
 		<div id="order_review" class="woocommerce-checkout-review-order">
-			<h5 id="order_review_heading" class="text-title"><?php esc_html_e( 'Your order', 'dayneo' ); ?></h5>
+			<h5 id="order_review_heading" class="text-title"><?php esc_html_e( 'Your order', 'bigbo' ); ?></h5>
 			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
 		</div>
 

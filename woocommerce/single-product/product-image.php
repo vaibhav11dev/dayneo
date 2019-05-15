@@ -36,7 +36,7 @@ if ( $attachment_count > 0 ) {
     <div class="product-slider <?php echo esc_attr( $slider_class ); ?>">
         <?php
         if ( $product->is_on_sale() ) :
-            echo '<span class="onsale single-product">'.esc_html__( 'Sale!', 'dayneo' ).'</span>';
+            echo '<span class="onsale single-product">'.esc_html__( 'Sale!', 'bigbo' ).'</span>';
         endif;
         ?>
         <?php

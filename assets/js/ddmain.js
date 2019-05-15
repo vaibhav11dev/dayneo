@@ -77,7 +77,7 @@
          */
         $(document).ready(function(){
             if ($(document).width() >= 1340){
-                if ((dayneoData.headerbar_on == '1' && dayneoData.headertype == 'h1') || (dayneoData.headercart_on == '1' && dayneoData.headertype == 'h3')) {
+                if ((bigboData.headerbar_on == '1' && bigboData.headertype == 'h1') || (bigboData.headercart_on == '1' && bigboData.headertype == 'h3')) {
                     var number_blocks =5;
                 }else{
                     var number_blocks =7;
@@ -144,7 +144,7 @@
         jQuery(".cart.wishlist_table").wrap("<div class='table-responsive custom-width'>");
 
         /**
-         * dayneo portfolio
+         * bigbo portfolio
          */
         var f = $("#filters");
         var $container = $("#works-grid");
@@ -386,7 +386,7 @@ $(document).on("click", function () {
      */
     $.HandleElement.instanceSearch = function () {
 
-        if (dayneoData.ajax_search != '1') {
+        if (bigboData.ajax_search != '1') {
             return;
         }
 
@@ -486,22 +486,22 @@ $(document).on("click", function () {
 
                 $results.html(result.products);
 
-                $(document.body).trigger('dayneo_ajax_search_request_success', [$results]);
+                $(document.body).trigger('bigbo_ajax_search_request_success', [$results]);
 
                 $currentForm.removeClass('invalid-length');
 
                 $currentForm.addClass('searched actived');
             } else {
                 xhr = $.ajax({
-                    url: dayneoData.ajax_url,
+                    url: bigboData.ajax_url,
                     dataType: 'json',
                     method: 'post',
                     data: {
-                        action: 'dayneo_search_products',
-                        nonce: dayneoData.nonce,
+                        action: 'bigbo_search_products',
+                        nonce: bigboData.nonce,
                         term: keyword,
                         cat: cat,
-                        search_type: dayneoData.search_content_type
+                        search_type: bigboData.search_content_type
                     },
                     success: function (response) {
                         var $products = response.data;
@@ -515,7 +515,7 @@ $(document).on("click", function () {
 
                         $currentForm.removeClass('invalid-length');
 
-                        $(document.body).trigger('dayneo_ajax_search_request_success', [$results]);
+                        $(document.body).trigger('bigbo_ajax_search_request_success', [$results]);
 
                         // Cache
                         searchCache[keycat] = {
@@ -546,7 +546,7 @@ $(document).on("click", function () {
         // update wishlist count
         $.HandleElement.$body.on('added_to_wishlist removed_from_wishlist cart_page_refreshed', function () {
             $.ajax({
-                url: dayneoData.ajax_url,
+                url: bigboData.ajax_url,
                 dataType: 'json',
                 method: 'post',
                 data: {
@@ -600,12 +600,12 @@ $(document).on("click", function () {
             $modal.modal({ show: true }); 
 
             $.ajax({
-                url: dayneoData.ajax_url,
+                url: bigboData.ajax_url,
                 dataType: 'json',
                 method: 'post',
                 data: {
-                    action: 'dayneo_product_quick_view',
-                    nonce: dayneoData.nonce,
+                    action: 'bigbo_product_quick_view',
+                    nonce: bigboData.nonce,
                     product_id: id
                 },
                 success: function (response) {

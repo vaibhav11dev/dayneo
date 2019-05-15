@@ -26,17 +26,17 @@
             <span class="spinner"></span>
 <?php 
             if ( false === $this->parent->args['hide_save'] ) {
-                submit_button( __( 'Save Changes', 'dayneo' ), 'primary', 'redux_save', false );
+                submit_button( __( 'Save Changes', 'bigbo' ), 'primary', 'redux_save', false );
             }
 
             if ( false === $this->parent->args['hide_reset'] ) {
-                submit_button( __( 'Reset Section', 'dayneo' ), 'secondary', $this->parent->args['opt_name'] . '[defaults-section]', false, array( 'id' => 'redux-defaults-section' ) );
-                submit_button( __( 'Reset All', 'dayneo' ), 'secondary', $this->parent->args['opt_name'] . '[defaults]', false, array( 'id' => 'redux-defaults' ) );
+                submit_button( __( 'Reset Section', 'bigbo' ), 'secondary', $this->parent->args['opt_name'] . '[defaults-section]', false, array( 'id' => 'redux-defaults-section' ) );
+                submit_button( __( 'Reset All', 'bigbo' ), 'secondary', $this->parent->args['opt_name'] . '[defaults]', false, array( 'id' => 'redux-defaults' ) );
             } 
 ?>
         </div>
 
-        <div class="redux-ajax-loading" alt="<?php _e( 'Working...', 'dayneo' ) ?>">&nbsp;</div>
+        <div class="redux-ajax-loading" alt="<?php _e( 'Working...', 'bigbo' ) ?>">&nbsp;</div>
         <div class="clear"></div>
 
     </div>

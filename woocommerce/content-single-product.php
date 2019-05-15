@@ -63,7 +63,7 @@ if ( post_password_required() ) {
 	                        /**
 	                         * Single product share
 	                         */
-	                        dayneo_product_share();
+	                        bigbo_product_share();
 			?>
 			</div>
 		</div>

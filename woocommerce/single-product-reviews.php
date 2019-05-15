@@ -48,7 +48,7 @@ if ( ! comments_open() ) {
 
 	<?php else : ?>
 
-    	<p class="woocommerce-noreviews"><?php esc_html_e( 'There are no reviews yet.', 'dayneo' ); ?></p>
+    	<p class="woocommerce-noreviews"><?php esc_html_e( 'There are no reviews yet.', 'bigbo' ); ?></p>
 
 	<?php endif; ?>
     </div>
@@ -61,38 +61,38 @@ if ( ! comments_open() ) {
 		$commenter = wp_get_current_commenter();
 
 		$comment_form = array(
-		    'title_reply'		 => have_comments() ? __( '<h5 class="text-title text-uppercase bottom-line">Add a review</h5>', 'dayneo' ) : sprintf( __( '<h5 class="alert alert-info">Be the first to review &ldquo;%s&rdquo;</h5>', 'dayneo' ), get_the_title() ),
-		    'title_reply_to'	 => __( 'Leave a Reply to %s', 'dayneo' ),
+		    'title_reply'		 => have_comments() ? __( '<h5 class="text-title text-uppercase bottom-line">Add a review</h5>', 'bigbo' ) : sprintf( __( '<h5 class="alert alert-info">Be the first to review &ldquo;%s&rdquo;</h5>', 'bigbo' ), get_the_title() ),
+		    'title_reply_to'	 => __( 'Leave a Reply to %s', 'bigbo' ),
 		    'title_reply_before'	 => '<span id="reply-title" class="comment-reply-title">',
 		    'title_reply_after'	 => '</span>',
 		    'comment_notes_after'	 => '',
 		    'fields'		 => array(
-			'author' => '<div class="row"><div class="col-sm-6"><div class="form-group comment-form-author">' . '<label for="author" class="sr-only">' . esc_html__( 'Name', 'dayneo' ) . ' <span class="required">*</span></label> ' .
-			'<input class="form-control" placeholder="' . esc_attr__( 'Name', 'dayneo' ) . ' " id="author" name="author" type="text" value="' . esc_attr( $commenter[ 'comment_author' ] ) . '" size="30" aria-required="true" required /></div></div>',
-			'email'	 => '<div class="col-sm-6"><div class="form-group comment-form-email"><label for="email" class="sr-only">' . esc_html__( 'Email', 'dayneo' ) . ' <span class="required">*</span></label> ' .
-			'<input placeholder="' . esc_attr__( 'Email', 'dayneo' ) . '" class="form-control" id="email" name="email" type="email" value="' . esc_attr( $commenter[ 'comment_author_email' ] ) . '" size="30" aria-required="true" required /></div></div></div>',
+			'author' => '<div class="row"><div class="col-sm-6"><div class="form-group comment-form-author">' . '<label for="author" class="sr-only">' . esc_html__( 'Name', 'bigbo' ) . ' <span class="required">*</span></label> ' .
+			'<input class="form-control" placeholder="' . esc_attr__( 'Name', 'bigbo' ) . ' " id="author" name="author" type="text" value="' . esc_attr( $commenter[ 'comment_author' ] ) . '" size="30" aria-required="true" required /></div></div>',
+			'email'	 => '<div class="col-sm-6"><div class="form-group comment-form-email"><label for="email" class="sr-only">' . esc_html__( 'Email', 'bigbo' ) . ' <span class="required">*</span></label> ' .
+			'<input placeholder="' . esc_attr__( 'Email', 'bigbo' ) . '" class="form-control" id="email" name="email" type="email" value="' . esc_attr( $commenter[ 'comment_author_email' ] ) . '" size="30" aria-required="true" required /></div></div></div>',
 		    ),
-		    'label_submit'		 => __( 'Submit Review', 'dayneo' ),
+		    'label_submit'		 => __( 'Submit Review', 'bigbo' ),
 		    'logged_in_as'		 => '',
 		    'comment_field'		 => '',
 		);
 
 		if ( $account_page_url = wc_get_page_permalink( 'myaccount' ) ) {
-		    $comment_form[ 'must_log_in' ] = '<p class="must-log-in">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a review.', 'dayneo' ), esc_url( $account_page_url ) ) . '</p>';
+		    $comment_form[ 'must_log_in' ] = '<p class="must-log-in">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a review.', 'bigbo' ), esc_url( $account_page_url ) ) . '</p>';
 		}
 
 		if ( get_option( 'woocommerce_enable_review_rating' ) === 'yes' ) {
 		    $comment_form[ 'comment_field' ] = '<div class="row"><div class="col-sm-12"><div class="form-group comment-form-rating"><select class="form-control" name="rating" id="rating" aria-required="true" required>
-							<option value="">' . esc_html__( 'Rate&hellip;', 'dayneo' ) . '</option>
-							<option value="5">' . esc_html__( 'Perfect', 'dayneo' ) . '</option>
-							<option value="4">' . esc_html__( 'Good', 'dayneo' ) . '</option>
-							<option value="3">' . esc_html__( 'Average', 'dayneo' ) . '</option>
-							<option value="2">' . esc_html__( 'Not that bad', 'dayneo' ) . '</option>
-							<option value="1">' . esc_html__( 'Very poor', 'dayneo' ) . '</option>
+							<option value="">' . esc_html__( 'Rate&hellip;', 'bigbo' ) . '</option>
+							<option value="5">' . esc_html__( 'Perfect', 'bigbo' ) . '</option>
+							<option value="4">' . esc_html__( 'Good', 'bigbo' ) . '</option>
+							<option value="3">' . esc_html__( 'Average', 'bigbo' ) . '</option>
+							<option value="2">' . esc_html__( 'Not that bad', 'bigbo' ) . '</option>
+							<option value="1">' . esc_html__( 'Very poor', 'bigbo' ) . '</option>
 						</select></div></div></div>';
 		}
 
-		$comment_form[ 'comment_field' ] .= '<div class="row"><div class="col-sm-12"><div class="comment-form-comment form-group"><textarea class="form-control" placeholder="' . esc_attr__( 'Your review*', 'dayneo' ) . '" id="comment" name="comment" cols="45" rows="8" aria-required="true" required></textarea></div></div></div>';
+		$comment_form[ 'comment_field' ] .= '<div class="row"><div class="col-sm-12"><div class="comment-form-comment form-group"><textarea class="form-control" placeholder="' . esc_attr__( 'Your review*', 'bigbo' ) . '" id="comment" name="comment" cols="45" rows="8" aria-required="true" required></textarea></div></div></div>';
 
 
 		comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ) );
@@ -102,7 +102,7 @@ if ( ! comments_open() ) {
 
     <?php else : ?>
 
-        <p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'dayneo' ); ?></p>
+        <p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'bigbo' ); ?></p>
 
     <?php endif; ?>
 

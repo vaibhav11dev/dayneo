@@ -5,18 +5,18 @@
  * This is the template that displays all of the <head> section and everything up until <div class="wrapper">
  *
  *
- * @package dayneo
+ * @package bigbo
  */
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 	<head>
 		<?php
-		$dd_favicon		 = dayneo_get_option( 'dd_favicon' );
-		$dd_iphone_icon		 = dayneo_get_option( 'dd_iphone_icon' );
-		$dd_iphone_icon_retina	 = dayneo_get_option( 'dd_iphone_icon_retina' );
-		$dd_ipad_icon		 = dayneo_get_option( 'dd_ipad_icon' );
-		$dd_ipad_icon_retina	 = dayneo_get_option( 'dd_ipad_icon_retina' );
+		$dd_favicon		 = bigbo_get_option( 'dd_favicon' );
+		$dd_iphone_icon		 = bigbo_get_option( 'dd_iphone_icon' );
+		$dd_iphone_icon_retina	 = bigbo_get_option( 'dd_iphone_icon_retina' );
+		$dd_ipad_icon		 = bigbo_get_option( 'dd_ipad_icon' );
+		$dd_ipad_icon_retina	 = bigbo_get_option( 'dd_ipad_icon_retina' );
 
                 if ( isset($dd_favicon[ 'url' ]) && $dd_favicon[ 'url' ] ):
                     ?>
@@ -61,7 +61,7 @@
         <?php //$shop_view = isset( $_COOKIE['shop_view'] ) ? $_COOKIE['shop_view'] : ''; ?>
 	<body <?php body_class(); ?>>
                 <?php
-                $dd_back_to_top = dayneo_get_option( 'dd_back_to_top', 'right' );
+                $dd_back_to_top = bigbo_get_option( 'dd_back_to_top', 'right' );
                 if ( $dd_back_to_top == 1 ) {
                     ?>
                     <div class="back-to-top">
@@ -77,15 +77,15 @@
                 if ( $wp_query->is_posts_page ) {
                     $post_id = get_option( 'page_for_posts' );
                 } elseif ( is_buddypress() ) {
-                    $post_id = dayneo_bp_get_id();
+                    $post_id = bigbo_bp_get_id();
                 } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
                     $post_id = wc_get_page_id( 'shop' );
                 } else {
                     $post_id = isset( $post->ID ) ? $post->ID : '';
                 }
 
-		$dd_siteloader	 = dayneo_get_option( 'dd_siteloader', 1 );
-		$dd_loaderfile	 = dayneo_get_option( 'dd_loaderfile' );
+		$dd_siteloader	 = bigbo_get_option( 'dd_siteloader', 1 );
+		$dd_loaderfile	 = bigbo_get_option( 'dd_loaderfile' );
 		if ( $dd_siteloader == 1 && isset($dd_loaderfile) && $dd_loaderfile ) {
 			?>
 			<!-- PRELOADER -->
@@ -94,10 +94,10 @@
 			<?php
 		}
 
-		$dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h1' );
-		$dayneo_header_type	 = get_post_meta( $post_id, 'dayneo_header_type', true );
-		if ( !$dayneo_header_type ) {
-			$dayneo_header_type = 'default';
+		$dd_header_type		 = bigbo_get_option( 'dd_header_type', 'h1' );
+		$bigbo_header_type	 = get_post_meta( $post_id, 'bigbo_header_type', true );
+		if ( !$bigbo_header_type ) {
+			$bigbo_header_type = 'default';
 		}
                 
                 switch ( $dd_header_type ) {
@@ -115,7 +115,7 @@
                 }
                 
                 if ( is_page() ) {
-			if ( (($dayneo_header_type == 'h1') || ($dayneo_header_type == 'default' && $dd_header_type == 'h1')) || (($dayneo_header_type == 'h2') || ($dayneo_header_type == 'default' && $dd_header_type == 'h2')) ) { ?>
+			if ( (($bigbo_header_type == 'h1') || ($bigbo_header_type == 'default' && $dd_header_type == 'h1')) || (($bigbo_header_type == 'h2') || ($bigbo_header_type == 'default' && $dd_header_type == 'h2')) ) { ?>
 				<div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php	get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-1' );?>
@@ -131,7 +131,7 @@
 		}
                 
                 if ( is_page() ) {
-			if ( ($dayneo_header_type == 'h3') || ($dayneo_header_type == 'default' && $dd_header_type == 'h3') ) { ?>
+			if ( ($bigbo_header_type == 'h3') || ($bigbo_header_type == 'default' && $dd_header_type == 'h3') ) { ?>
 				<div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php	get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-2' );?>
@@ -151,37 +151,37 @@
 		<div class="wrapper">
 
 			<?php
-			$dayneo_hero_header_type = get_post_meta( $post_id, 'dayneo_hero_header_type', true );
+			$bigbo_hero_header_type = get_post_meta( $post_id, 'bigbo_hero_header_type', true );
 
 			$param						 = array();
-			$param[ 'dayneo_hero_type' ]			 = $dayneo_hero_header_type;
-			$param[ 'dayneo_hero_height' ]		 = get_post_meta( $post_id, 'dayneo_hero_height', true );
-			$param[ 'dayneo_hero_content_alignment' ]	 = get_post_meta( $post_id, 'dayneo_hero_content_alignment', true );
-			$param[ 'dayneo_hero_heading' ]		 = get_post_meta( $post_id, 'dayneo_hero_heading', true );
-			$param[ 'dayneo_hero_caption' ]		 = get_post_meta( $post_id, 'dayneo_hero_caption', true );
-			$param[ 'dayneo_hero_image_parallax' ]	 = get_post_meta( $post_id, 'dayneo_hero_image_parallax', true );
-			$param[ 'dayneo_hero_webm' ]			 = get_post_meta( $post_id, 'dayneo_hero_webm', true );
-			$param[ 'dayneo_hero_mp4' ]			 = get_post_meta( $post_id, 'dayneo_hero_mp4', true );
-			$param[ 'dayneo_hero_ogv' ]			 = get_post_meta( $post_id, 'dayneo_hero_ogv', true );
-			$param[ 'dayneo_hero_youtube_id' ]		 = get_post_meta( $post_id, 'dayneo_hero_youtube_id', true );
-			$param[ 'dayneo_hero_vimeo_id' ]		 = get_post_meta( $post_id, 'dayneo_hero_vimeo_id', true );
+			$param[ 'bigbo_hero_type' ]			 = $bigbo_hero_header_type;
+			$param[ 'bigbo_hero_height' ]		 = get_post_meta( $post_id, 'bigbo_hero_height', true );
+			$param[ 'bigbo_hero_content_alignment' ]	 = get_post_meta( $post_id, 'bigbo_hero_content_alignment', true );
+			$param[ 'bigbo_hero_heading' ]		 = get_post_meta( $post_id, 'bigbo_hero_heading', true );
+			$param[ 'bigbo_hero_caption' ]		 = get_post_meta( $post_id, 'bigbo_hero_caption', true );
+			$param[ 'bigbo_hero_image_parallax' ]	 = get_post_meta( $post_id, 'bigbo_hero_image_parallax', true );
+			$param[ 'bigbo_hero_webm' ]			 = get_post_meta( $post_id, 'bigbo_hero_webm', true );
+			$param[ 'bigbo_hero_mp4' ]			 = get_post_meta( $post_id, 'bigbo_hero_mp4', true );
+			$param[ 'bigbo_hero_ogv' ]			 = get_post_meta( $post_id, 'bigbo_hero_ogv', true );
+			$param[ 'bigbo_hero_youtube_id' ]		 = get_post_meta( $post_id, 'bigbo_hero_youtube_id', true );
+			$param[ 'bigbo_hero_vimeo_id' ]		 = get_post_meta( $post_id, 'bigbo_hero_vimeo_id', true );
 
-			if ( $dayneo_hero_header_type == 'hero_parallax' || $dayneo_hero_header_type == 'hero_self_hosted_video' || $dayneo_hero_header_type == 'hero_youtube' || $dayneo_hero_header_type == 'hero_vimeo' ) {
-				dayneo_heroheadertype( $param );
-			} elseif ( $dayneo_hero_header_type == 'hero_slider' ) {
+			if ( $bigbo_hero_header_type == 'hero_parallax' || $bigbo_hero_header_type == 'hero_self_hosted_video' || $bigbo_hero_header_type == 'hero_youtube' || $bigbo_hero_header_type == 'hero_vimeo' ) {
+				bigbo_heroheadertype( $param );
+			} elseif ( $bigbo_hero_header_type == 'hero_slider' ) {
 				get_template_part( 'includes/heroheader/hero_allslider' );
 			}
 			?>
 
 			<?php
-			$dd_pagetitlebar_layout		 = dayneo_get_option( 'dd_pagetitlebar_layout', 1 );
-			$dayneo_enable_page_title	 = get_post_meta( $post_id, 'dayneo_enable_page_title', true );
-                        if (empty($dayneo_enable_page_title)) {
-                            $dayneo_enable_page_title = 'default';
+			$dd_pagetitlebar_layout		 = bigbo_get_option( 'dd_pagetitlebar_layout', 1 );
+			$bigbo_enable_page_title	 = get_post_meta( $post_id, 'bigbo_enable_page_title', true );
+                        if (empty($bigbo_enable_page_title)) {
+                            $bigbo_enable_page_title = 'default';
                         }
                         if ( is_home() || is_front_page() ) {
                             //Do Nothing
-                        } elseif ( $dayneo_enable_page_title == 'on' || ( $dayneo_enable_page_title == 'default' && $dd_pagetitlebar_layout == 1 ) ) {
-                            dayneo_page_title_bar();
+                        } elseif ( $bigbo_enable_page_title == 'on' || ( $bigbo_enable_page_title == 'default' && $dd_pagetitlebar_layout == 1 ) ) {
+                            bigbo_page_title_bar();
                         }
 	    

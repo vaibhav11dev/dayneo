@@ -1,4 +1,4 @@
-=== Dayneo ===
+=== Bigbo ===
 
 Tags: grid-layout, footer-widgets, blog, news, photography, buddypress, two-columns, left-sidebar, right-sidebar, full-width-template, sticky-post, threaded-comments, microformats, post-formats, flexible-header, featured-images, custom-background, custom-colors, custom-header, custom-menu, theme-options, translation-ready
 Requires at least: WordPress 4.8
@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Dayneo is multipurpose responsive WordPress theme with light weight. Ready to use for any purpose such as business, corporate, agency, app, news, blog, magazine, cleaning services, construction, designs, freelancer, restaurant and many more. Dayneo templates are built with super fast light weight Elementor page builder with drag and drop function so your website will not load heavily. We have added lots of options in customizer panel so you don’t need any coding knowledge.
+Bigbo is multipurpose responsive WordPress theme with light weight. Ready to use for any purpose such as business, corporate, agency, app, news, blog, magazine, cleaning services, construction, designs, freelancer, restaurant and many more. Bigbo templates are built with super fast light weight Elementor page builder with drag and drop function so your website will not load heavily. We have added lots of options in customizer panel so you don’t need any coding knowledge.
 
 == Installation ==
 
@@ -20,8 +20,8 @@ Dayneo is multipurpose responsive WordPress theme with light weight. Ready to us
 
 == Frequently Asked Questions ==
 
-= Is Dayneo free to use? =
-Yes! `Dayneo` core features are absolutely free.
+= Is Bigbo free to use? =
+Yes! `Bigbo` core features are absolutely free.
 
 == Changelog
 
@@ -35,7 +35,6 @@ Yes! `Dayneo` core features are absolutely free.
 * Animate. (c) 2015 Daniel Eden. License (MIT). http://opensource.org/licenses/MIT
 * Core Owl Carousel. License (MIT). https://github.com/cdnjs/cdnjs/blob/master/LICENSE
 * Magnific-Popup. License (MIT). https://github.com/dimsemenov/Magnific-Popup/blob/master/LICENSE
-* simple-line-icons. https://graphicburger.com/license/
 
 
 == Credits ==

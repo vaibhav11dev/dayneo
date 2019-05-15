@@ -3,7 +3,7 @@
  * The template for displaying search results pages
  *
  *
- * @package dayneo
+ * @package bigbo
  */
 get_header();
 ?>

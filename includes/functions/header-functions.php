@@ -2,7 +2,7 @@
 /**
  * Basic functions for header layout.
  *
- * @package Dayneo
+ * @package Bigbo
  */
 /**
  * Get Menu extra cart
@@ -12,10 +12,10 @@
  *
  * @return string
  */
-if ( ! function_exists( 'dayneo_extra_cart' ) ) :
+if ( ! function_exists( 'bigbo_extra_cart' ) ) :
 
-    function dayneo_extra_cart() {
-        $extras = dayneo_menu_extras();
+    function bigbo_extra_cart() {
+        $extras = bigbo_menu_extras();
 
         if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
             return;
@@ -23,7 +23,7 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
         ?>
         <!-- SHOP CART -->
         <?php
-        $dd_header_type       = dayneo_get_option( 'dd_header_type', 'h1' );
+        $dd_header_type       = bigbo_get_option( 'dd_header_type', 'h1' );
         if ( class_exists( 'Woocommerce' ) ) {
             global $woocommerce;
             ?>
@@ -37,7 +37,7 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
                                     <i class="flaticon-paper-bag"></i>
                                     <span class="mini-item-counter hidden-lg-up"><?php echo $woocommerce->cart->cart_contents_count; ?></span>
                                 </span>
-                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'dayneo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
+                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'bigbo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
                         </div>
                         <?php } else { ?>
                         <div class="icon-wrap-circle">
@@ -49,7 +49,7 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
                                     </span>
                                 </span>
                             </div> 
-                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shopping Cart', 'dayneo' ) ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>                    
+                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shopping Cart', 'bigbo' ) ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>                    
                         </div>
                         <?php } ?>
                     </a>
@@ -60,7 +60,7 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
                     ?>
                     <div class="sub-cart-menu ajax-cart-content">
                         <span class="empty-cart"></span>
-                        <p class="empty-cart-text"><?php _e( 'Your cart is currently empty.', 'dayneo' ); ?></p>
+                        <p class="empty-cart-text"><?php _e( 'Your cart is currently empty.', 'bigbo' ); ?></p>
                     </div>
                     <?php
                 } else {
@@ -94,7 +94,7 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
                                         <div class="del-minicart">
                                             <?php
                                             echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
-                                            '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-cart_item_key="%s"><i class="fa fa-trash-o" aria-hidden="true"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), esc_html__( 'Remove this item', 'dayneo' ), esc_attr( $cart_item[ 'product_id' ] ), esc_attr( $cart_item_key )
+                                            '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-cart_item_key="%s"><i class="fa fa-trash-o" aria-hidden="true"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), esc_html__( 'Remove this item', 'bigbo' ), esc_attr( $cart_item[ 'product_id' ] ), esc_attr( $cart_item_key )
                                             ), $cart_item_key );
                                             ?>
                                         </div>
@@ -103,25 +103,25 @@ if ( ! function_exists( 'dayneo_extra_cart' ) ) :
                                 <?php endforeach; ?>
                             </div>
                             <div class="hr"></div>
-                            <div class="subtotal-count"><?php _e( 'Subtotal:', 'dayneo' ); ?> 
+                            <div class="subtotal-count"><?php _e( 'Subtotal:', 'bigbo' ); ?> 
                                 <b class="content-subhead">
                                     <?php echo wc_price( $woocommerce->cart->subtotal ); ?>
                                 </b>
                             </div>
-                            <div class="shipping-count"><?php _e( 'Shipping:', 'dayneo' ); ?> 
+                            <div class="shipping-count"><?php _e( 'Shipping:', 'bigbo' ); ?> 
                                 <b class="content-subhead">
                                     <?php echo wc_price( $woocommerce->cart->shipping_total ); ?>
                                 </b>
                             </div>
-                            <div class="total-count"><?php _e( 'Total:', 'dayneo' ); ?> 
+                            <div class="total-count"><?php _e( 'Total:', 'bigbo' ); ?> 
                                 <b class="content-subhead">
                                     <?php echo wc_price( $woocommerce->cart->total ); ?>
                                 </b>
                             </div>
                             <div class="clearfix"></div>
                             <div class="cart-button">
-                                <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'View Cart', 'dayneo' ); ?></a>
-                                <a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'Checkout', 'dayneo' ); ?></a> 
+                                <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'View Cart', 'bigbo' ); ?></a>
+                                <a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'Checkout', 'bigbo' ); ?></a> 
                             </div>
                         </div>
                     </div>
@@ -149,20 +149,20 @@ endif;
  *
  * @return string
  */
-if ( ! function_exists( 'dayneo_extra_search' ) ) :
+if ( ! function_exists( 'bigbo_extra_search' ) ) :
 
-    function dayneo_extra_search( $show_cat = true ) {
-        $extras = dayneo_menu_extras();
+    function bigbo_extra_search( $show_cat = true ) {
+        $extras = bigbo_menu_extras();
         $items  = '';
 
         if ( empty( $extras ) || ! $extras[ 'search' ] ) {
             return $items;
         }
 
-        $cats_text   = dayneo_get_option( 'custom_categories_text' );
-        $search_text = dayneo_get_option( 'custom_search_text' );
-        $button_text = dayneo_get_option( 'custom_search_button' );
-        $search_type = dayneo_get_option( 'search_content_type' );
+        $cats_text   = bigbo_get_option( 'custom_categories_text' );
+        $search_text = bigbo_get_option( 'custom_search_text' );
+        $button_text = bigbo_get_option( 'custom_search_button' );
+        $search_type = bigbo_get_option( 'search_content_type' );
 
         if ( $search_type == 'all' ) {
             $show_cat = false;
@@ -173,8 +173,8 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
         if ( taxonomy_exists( 'product_cat' ) && $show_cat ) {
 
             $depth = 0;
-            if ( intval( dayneo_get_option( 'custom_categories_depth' ) ) > 0 ) {
-                $depth = intval( dayneo_get_option( 'custom_categories_depth' ) );
+            if ( intval( bigbo_get_option( 'custom_categories_depth' ) ) > 0 ) {
+                $depth = intval( bigbo_get_option( 'custom_categories_depth' ) );
             }
 
             $args = array(
@@ -190,13 +190,13 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
                 'depth'           => $depth
             );
 
-            $cat_include = dayneo_get_option( 'custom_categories_include' );
+            $cat_include = bigbo_get_option( 'custom_categories_include' );
             if ( ! empty( $cat_include ) ) {
                 $cat_include       = explode( ',', $cat_include );
                 $args[ 'include' ] = $cat_include;
             }
 
-            $cat_exclude = dayneo_get_option( 'custom_categories_exclude' );
+            $cat_exclude = bigbo_get_option( 'custom_categories_exclude' );
             if ( ! empty( $cat_exclude ) ) {
                 $cat_exclude       = explode( ',', $cat_exclude );
                 $args[ 'exclude' ] = $cat_exclude;
@@ -211,8 +211,8 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
         }
         $words_html = array();
 
-        if ( intval( dayneo_get_option( 'header_hot_words_enable' ) ) ) {
-            $hot_words = dayneo_get_option( 'header_hot_words' );
+        if ( intval( bigbo_get_option( 'header_hot_words_enable' ) ) ) {
+            $hot_words = bigbo_get_option( 'header_hot_words' );
             if ( $hot_words ) {
                 $words_html[] = '<ul class="hot-words">';
                 foreach ( $hot_words as $word ) {
@@ -234,7 +234,7 @@ if ( ! function_exists( 'dayneo_extra_search' ) ) :
             $search_icon = "<i class='flaticon-search'></i>";
         }
 
-        $search_content_type = dayneo_get_option('search_content_type');
+        $search_content_type = bigbo_get_option('search_content_type');
         if($search_content_type == 'all'){ 
             $search_results = '<div class="ajax-search-results search-content-all woocommerce"></div>';
         } else {
@@ -271,9 +271,9 @@ endif;
  *
  * @return string
  */
-if ( ! function_exists( 'dayneo_header_menu' ) ) :
+if ( ! function_exists( 'bigbo_header_menu' ) ) :
 
-    function dayneo_header_menu() {
+    function bigbo_header_menu() {
         if ( ! has_nav_menu( 'primary-menu' ) ) {
             return;
         }
@@ -296,10 +296,10 @@ endif;
  *
  * @return string
  */
-if ( ! function_exists( 'dayneo_header_bar' ) ) :
+if ( ! function_exists( 'bigbo_header_bar' ) ) :
 
-    function dayneo_header_bar() {
-        $extras = dayneo_menu_extras();
+    function bigbo_header_bar() {
+        $extras = bigbo_menu_extras();
 
         if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
             return;
@@ -325,10 +325,10 @@ endif;
  *
  * @return string
  */
-if ( ! function_exists( 'dayneo_extra_department' ) ) :
+if ( ! function_exists( 'bigbo_extra_department' ) ) :
 
-    function dayneo_extra_department( $dep_close = false, $id = '' ) {
-        $extras = dayneo_menu_extras();
+    function bigbo_extra_department( $dep_close = false, $id = '' ) {
+        $extras = bigbo_menu_extras();
 
         if ( empty( $extras ) || ! $extras[ 'department' ] ) {
             return;
@@ -339,7 +339,7 @@ if ( ! function_exists( 'dayneo_extra_department' ) ) :
         }
 
         $dep_text = '<i class="icon-menu ti-menu"></i>';
-        $dep_tit = dayneo_get_option( 'dd_vmenu_title' );
+        $dep_tit = bigbo_get_option( 'dd_vmenu_title' );
         if ( ! empty( $dep_tit ) ) {
             $dep_text .= '<span class="text">' . $dep_tit . '</span>';
         } else {
@@ -348,19 +348,19 @@ if ( ! function_exists( 'dayneo_extra_department' ) ) :
 
         $dep_open = '';
 
-        if ( in_array( dayneo_get_option( 'dd_header_type' ), array(
+        if ( in_array( bigbo_get_option( 'dd_header_type' ), array(
             '1',
             '2',
             '7',
             '3',
-        ) ) && ! $dep_close && dayneo_is_homepage() ) {
-            //$dep_open = dayneo_get_option( 'department_open_homepage' );
+        ) ) && ! $dep_close && bigbo_is_homepage() ) {
+            //$dep_open = bigbo_get_option( 'department_open_homepage' );
         }
         $cat_style = '';
-        if ( in_array( dayneo_get_option( 'dd_header_type' ), array( '2', '3' ) ) ) {
-            //$space = dayneo_get_option( 'department_space_homepage' );
+        if ( in_array( bigbo_get_option( 'dd_header_type' ), array( '2', '3' ) ) ) {
+            //$space = bigbo_get_option( 'department_space_homepage' );
             $space = '40px';
-            if ( dayneo_is_homepage() && $space ) {
+            if ( bigbo_is_homepage() && $space ) {
                 $cat_style = sprintf( 'style=padding-top:%s', esc_attr( $space ) );
             }
         }
@@ -385,10 +385,10 @@ endif;
  *
  * @return string
  */
-if ( ! function_exists( 'dayneo_menu_extras' ) ) :
+if ( ! function_exists( 'bigbo_menu_extras' ) ) :
 
-    function dayneo_menu_extras() {
-        $menu_extras = dayneo_get_option( 'menu_extras' );
+    function bigbo_menu_extras() {
+        $menu_extras = bigbo_get_option( 'menu_extras' );
 
         return $menu_extras;
     }

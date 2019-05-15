@@ -655,7 +655,7 @@ button.accordion:hover {
 .feature-footer ul li a:hover{
     color: #dc324f
 }
-.dayneo_page_dayneo_demos .about-wrap > .container{
+.bigbo_page_bigbo_demos .about-wrap > .container{
         width: 100%;
     max-width: none;
 }
@@ -688,7 +688,7 @@ button.accordion:hover {
 .about-wrap.wrap + .container {
     padding: 0;
 }
-.dayneo_page_ved-settings .about-wrap.wrap + .container {
+.bigbo_page_ved-settings .about-wrap.wrap + .container {
         padding: 0 15px;
 }
 .about-wrap .nav-tab {

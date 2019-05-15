@@ -36,7 +36,7 @@
                 $data = stripslashes($data);
 
                 if ($data != $this->value) {
-                    $this->field['msg'] = __( 'Unsafe strings were found in your CSS and have been filtered out.', 'dayneo' );
+                    $this->field['msg'] = __( 'Unsafe strings were found in your CSS and have been filtered out.', 'bigbo' );
                     $this->warning = $this->field;
                 }
 

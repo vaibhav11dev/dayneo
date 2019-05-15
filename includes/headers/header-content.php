@@ -1,5 +1,5 @@
 <?php
-$dd_content_text	 = dayneo_get_option( 'dd_content_text' );
+$dd_content_text	 = bigbo_get_option( 'dd_content_text' );
 
 ?>
 <p class="content-text">

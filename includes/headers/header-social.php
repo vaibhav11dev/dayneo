@@ -1,7 +1,7 @@
 <?php
 global $dd_options;
 
-$dd_nofollow_social_links	 = dayneo_get_option( 'dd_nofollow_social_links', '0' );
+$dd_nofollow_social_links	 = bigbo_get_option( 'dd_nofollow_social_links', '0' );
 $nofollow			 = '';
 if ( $dd_nofollow_social_links ) {
 	$nofollow = 'rel="nofollow"';

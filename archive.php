@@ -3,7 +3,7 @@
  * The template for displaying archive pages
  *
  *
- * @package dayneo
+ * @package bigbo
  */
 
 get_header();
@@ -16,21 +16,21 @@ get_header();
 
 	    <!-- SECONDARY-2 -->	    
 	    <?php
-	    if ( dayneo_lets_get_sidebar_2() == true ):
+	    if ( bigbo_lets_get_sidebar_2() == true ):
 		    get_sidebar( '2' );
 	    endif;
 	    ?>
 	    <!-- END SECONDARY-2 -->
 
 	    <!-- PRIMARY -->
-	    <div id="primary" class="<?php dayneo_layout_class( $type = 1 ); ?> post-content">
+	    <div id="primary" class="<?php bigbo_layout_class( $type = 1 ); ?> post-content">
 		<?php get_template_part( 'template-parts/content', 'index' ); ?>
 	    </div>
 	    <!-- END PRIMARY -->
 
 	    <!-- SECONDARY-1 -->
 	    <?php
-	    if ( dayneo_lets_get_sidebar() == true ) {
+	    if ( bigbo_lets_get_sidebar() == true ) {
 		    get_sidebar();
 	    }
 	    ?>

@@ -6,11 +6,11 @@
  * and the comment form.
  *
  *
- * @package dayneo
+ * @package bigbo
  */
 if ( post_password_required() ) {
 	?>
-	<p class="password-protected alert"><?php esc_html_e( 'This post is password protected. Enter the password to view comments.', 'dayneo' ); ?></p>
+	<p class="password-protected alert"><?php esc_html_e( 'This post is password protected. Enter the password to view comments.', 'bigbo' ); ?></p>
 	<?php
 	return;
 }
@@ -21,18 +21,18 @@ if ( post_password_required() ) {
 
 		<?php
 		if ( ! empty( $comments_by_type[ 'comment' ] ) ) {
-			dayneo_discussion_title( 'comment' );
+			bigbo_discussion_title( 'comment' );
 		} else {
 			// If comments are open, but there are no comments.
 			if ( comments_open() ) {
 				echo '<h5 class="comment-title text-title text-uppercase">';
-				esc_html__( 'No Comments Yet', 'dayneo' );
+				esc_html__( 'No Comments Yet', 'bigbo' );
 				echo '</h5>';
 			}
 		}
 
 		if ( ! empty( $comments_by_type[ 'pings' ] ) ) {
-			dayneo_discussion_title( 'pings' );
+			bigbo_discussion_title( 'pings' );
 		}
 
 		if ( ! empty( $comments_by_type[ 'comment' ] ) ) {
@@ -42,8 +42,8 @@ if ( post_password_required() ) {
 				<?php
 				wp_list_comments( array(
 					'style'		 => 'div',
-					'callback'	 => 'dayneo_comments_callback',
-					'end-callback'	 => 'dayneo_comments_endcallback'
+					'callback'	 => 'bigbo_comments_callback',
+					'end-callback'	 => 'bigbo_comments_endcallback'
 				) );
 				?>
 				<!--END .comment-list-->
@@ -57,8 +57,8 @@ if ( post_password_required() ) {
 				wp_list_comments( array(
 					'style'		 => 'div',
 					'type'		 => 'pings',
-					'callback'	 => 'dayneo_pings_callback',
-					'end-callback'	 => 'dayneo_pings_endcallback'
+					'callback'	 => 'bigbo_pings_callback',
+					'end-callback'	 => 'bigbo_pings_endcallback'
 				) );
 				?>
 				<!--END .pings-list-->
@@ -71,7 +71,7 @@ if ( post_password_required() ) {
 <?php if ( comments_open() ) { ?>
 
 	<!-- COMMENT FORM -->
-	<?php dayneo_custom_comment_form(); ?>
+	<?php bigbo_custom_comment_form(); ?>
 	<!--END <!-- COMMENT FORM -->
 
 	<?php

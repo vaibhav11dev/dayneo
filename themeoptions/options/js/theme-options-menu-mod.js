@@ -1,18 +1,18 @@
 jQuery(document).ready(function () {
 
-    var dayneomenu;
+    var bigbomenu;
 
     // Hide the menu from Appearance.
-    jQuery('#menu-appearance a[href="themes.php?page=dayneo_options"]').css('display', 'none');
+    jQuery('#menu-appearance a[href="themes.php?page=bigbo_options"]').css('display', 'none');
 
-    // Activate the dayneo admin menu theme option entry when theme options are active
-    if (jQuery('a[href="admin.php?page=dayneo_options"]').hasClass('current')) {
-        dayneomenu = jQuery('#toplevel_page_dayneo');
+    // Activate the bigbo admin menu theme option entry when theme options are active
+    if (jQuery('a[href="admin.php?page=bigbo_options"]').hasClass('current')) {
+        bigbomenu = jQuery('#toplevel_page_bigbo');
 
-        dayneomenu.addClass('wp-has-current-submenu wp-menu-open');
-        dayneomenu.children('a').addClass('wp-has-current-submenu wp-menu-open');
-        dayneomenu.children('.wp-submenu').find('a[href="admin.php?page=dayneo_options"]').parent().addClass('current');
-        dayneomenu.children('.wp-submenu').find('a[href="admin.php?page=dayneo_options"]').addClass('current');
+        bigbomenu.addClass('wp-has-current-submenu wp-menu-open');
+        bigbomenu.children('a').addClass('wp-has-current-submenu wp-menu-open');
+        bigbomenu.children('.wp-submenu').find('a[href="admin.php?page=bigbo_options"]').parent().addClass('current');
+        bigbomenu.children('.wp-submenu').find('a[href="admin.php?page=bigbo_options"]').addClass('current');
 
         // Do not show the appearance menu as active
         jQuery('#menu-appearance a[href="themes.php"]').removeClass('wp-has-current-submenu wp-menu-open');

@@ -12,21 +12,21 @@
     <div id="info_bar">
 
         <a href="javascript:void(0);" class="fa fa-bars expand_options<?php echo esc_attr(( $this->parent->args['open_expanded'] ) ? ' expanded' : ''); ?>"<?php echo $this->parent->args['hide_expand'] ? ' style="display: none;"' : '' ?>>
-            <?php esc_attr_e( 'Expand', 'dayneo' ); ?>
+            <?php esc_attr_e( 'Expand', 'bigbo' ); ?>
         </a>
 
         <div class="redux-action_bar">
             <span class="spinner"></span>
             <?php if ( false === $this->parent->args['hide_save'] ) { ?>
-                <?php submit_button( esc_attr__( 'Save Changes', 'dayneo' ), 'primary', 'redux_save', false ); ?>
+                <?php submit_button( esc_attr__( 'Save Changes', 'bigbo' ), 'primary', 'redux_save', false ); ?>
             <?php } ?>
             
             <?php if ( false === $this->parent->args['hide_reset'] ) { ?>
-                <?php submit_button( esc_attr__( 'Reset Section', 'dayneo' ), 'secondary', $this->parent->args['opt_name'] . '[defaults-section]', false, array( 'id' => 'redux-defaults-section' ) ); ?>
-                <?php submit_button( esc_attr__( 'Reset All', 'dayneo' ), 'secondary', $this->parent->args['opt_name'] . '[defaults]', false, array( 'id' => 'redux-defaults' ) ); ?>
+                <?php submit_button( esc_attr__( 'Reset Section', 'bigbo' ), 'secondary', $this->parent->args['opt_name'] . '[defaults-section]', false, array( 'id' => 'redux-defaults-section' ) ); ?>
+                <?php submit_button( esc_attr__( 'Reset All', 'bigbo' ), 'secondary', $this->parent->args['opt_name'] . '[defaults]', false, array( 'id' => 'redux-defaults' ) ); ?>
             <?php } ?>
         </div>
-        <div class="redux-ajax-loading" alt="<?php esc_attr_e( 'Working...', 'dayneo' ) ?>">&nbsp;</div>
+        <div class="redux-ajax-loading" alt="<?php esc_attr_e( 'Working...', 'bigbo' ) ?>">&nbsp;</div>
         <div class="clear"></div>
     </div>
 

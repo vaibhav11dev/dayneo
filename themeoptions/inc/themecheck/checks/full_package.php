@@ -13,14 +13,14 @@
             if ( $redux ) {
 
                 $blacklist = array(
-                    '.tx'                    => __( 'Redux localization utilities', 'dayneo' ),
-                    'bin'                    => __( 'Redux Resting Diles', 'dayneo' ),
-                    'codestyles'             => __( 'Redux Code Styles', 'dayneo' ),
-                    'tests'                  => __( 'Redux Unit Testing', 'dayneo' ),
-                    'class.redux-plugin.php' => __( 'Redux Plugin File', 'dayneo' ),
-                    'bootstrap_tests.php'    => __( 'Redux Boostrap Tests', 'dayneo' ),
-                    '.travis.yml'            => __( 'CI Testing FIle', 'dayneo' ),
-                    'phpunit.xml'            => __( 'PHP Unit Testing', 'dayneo' ),
+                    '.tx'                    => __( 'Redux localization utilities', 'bigbo' ),
+                    'bin'                    => __( 'Redux Resting Diles', 'bigbo' ),
+                    'codestyles'             => __( 'Redux Code Styles', 'bigbo' ),
+                    'tests'                  => __( 'Redux Unit Testing', 'bigbo' ),
+                    'class.redux-plugin.php' => __( 'Redux Plugin File', 'bigbo' ),
+                    'bootstrap_tests.php'    => __( 'Redux Boostrap Tests', 'bigbo' ),
+                    '.travis.yml'            => __( 'CI Testing FIle', 'bigbo' ),
+                    'phpunit.xml'            => __( 'PHP Unit Testing', 'bigbo' ),
                 );
 
                 $errors = array();
@@ -33,7 +33,7 @@
                 }
 
                 if ( ! empty( $errors ) ) {
-                    $error = '<span class="tc-lead tc-required">REQUIRED</span> ' . __( 'It appears that you have embedded the full Redux package inside your theme. You need only embed the <strong>ReduxCore</strong> folder. Embedding anything else will get your rejected from theme submission. Suspected Redux package file(s):', 'dayneo' );
+                    $error = '<span class="tc-lead tc-required">REQUIRED</span> ' . __( 'It appears that you have embedded the full Redux package inside your theme. You need only embed the <strong>ReduxCore</strong> folder. Embedding anything else will get your rejected from theme submission. Suspected Redux package file(s):', 'bigbo' );
                     $error .= '<ol>';
                     foreach ( $errors as $key => $e ) {
                         $error .= '<li><strong>' . $e . '</strong>: ' . $key . '</li>';

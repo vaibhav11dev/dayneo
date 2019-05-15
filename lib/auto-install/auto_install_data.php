@@ -41,7 +41,7 @@ function auto_install_layout() {
 			// Themevedanta Sliders Import
 			$ved_url = get_template_directory() . '/lib/auto-install/' . $layout . '/ved_slider.zip';
 			if ( file_exists( $ved_url ) ) {
-				@dayneo_import_vedsliders( $ved_url );
+				@bigbo_import_vedsliders( $ved_url );
 			}
 
 			update_option( 'listing_xml', 1 );
@@ -80,7 +80,7 @@ if ( ! function_exists( 'remove_auto_update' ) ) {
 				'products',
 				'oredrs',
 				'attachment',
-				'dayneo_portfolio',
+				'bigbo_portfolio',
 				'slide',
 			),
 			'post_status'	 => array( 'publish', 'draft', 'pending', 'future' ),
@@ -307,7 +307,7 @@ if ( ! function_exists( 'theme_auto_install' ) ) {
 /**
  * Import Theme4Press Sliders
  */
-function dayneo_import_vedsliders( $zip_file ) {
+function bigbo_import_vedsliders( $zip_file ) {
 	$upload_dir	 = wp_upload_dir();
 	$base_dir	 = trailingslashit( $upload_dir[ 'basedir' ] );
 	$ved_dir	 = $base_dir . 'ved_slider_exports/';

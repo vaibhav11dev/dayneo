@@ -23,8 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 <table class="totals table shop_table woocommerce-checkout-review-order-table">
 	<thead>
 		<tr>
-		    <td class="product-name"><h5 class="m-0"><?php esc_html_e( 'Product', 'dayneo' ); ?></h5></td>
-		    <td class="product-total"><h5 class="m-0 text-right"><?php esc_html_e( 'Total', 'dayneo' ); ?></h5></td>
+		    <td class="product-name"><h5 class="m-0"><?php esc_html_e( 'Product', 'bigbo' ); ?></h5></td>
+		    <td class="product-total"><h5 class="m-0 text-right"><?php esc_html_e( 'Total', 'bigbo' ); ?></h5></td>
 		</tr>
 	</thead>
 	<tbody>
@@ -56,7 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<tfoot>
 
 		<tr class="cart-subtotal">
-		    <td><h5 class="m-0"><?php esc_html_e( 'Subtotal', 'dayneo' ); ?></h5></td>
+		    <td><h5 class="m-0"><?php esc_html_e( 'Subtotal', 'bigbo' ); ?></h5></td>
 		    <td><h5 class="m-0 color-gray text-right"><?php wc_cart_totals_subtotal_html(); ?></h5></td>
 		</tr>
 
@@ -103,7 +103,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 		<tr class="order-total">
-		    <td><h4 class="m-0"><?php esc_html_e( 'Total', 'dayneo' ); ?></h4></td>
+		    <td><h4 class="m-0"><?php esc_html_e( 'Total', 'bigbo' ); ?></h4></td>
 		    <td><h4 class="m-0 text-right"><?php wc_cart_totals_order_total_html(); ?></h4></td>
 		</tr>
 

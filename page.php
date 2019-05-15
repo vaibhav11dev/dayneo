@@ -8,7 +8,7 @@
  * different template.
  *
  *
- * @package dayneo
+ * @package bigbo
  */
 get_header();
 ?>
@@ -20,14 +20,14 @@ get_header();
 
 			<!-- SECONDARY-2 -->	    
 			<?php
-			if ( dayneo_lets_get_sidebar_2() == true ):
+			if ( bigbo_lets_get_sidebar_2() == true ):
 				get_sidebar( '2' );
 			endif;
 			?>
 			<!-- END SECONDARY-2 -->
 
 			<!-- PRIMARY -->
-			<div id="primary" class="<?php dayneo_layout_class( $type = 1 ); ?> page-content">
+			<div id="primary" class="<?php bigbo_layout_class( $type = 1 ); ?> page-content">
 				<?php
 				if ( have_posts() ) :
 					while ( have_posts() ) :
@@ -50,7 +50,7 @@ get_header();
 
 			<!-- SECONDARY-1 -->
 			<?php
-			if ( dayneo_lets_get_sidebar() == true ) {
+			if ( bigbo_lets_get_sidebar() == true ) {
 				get_sidebar();
 			}
 			?>

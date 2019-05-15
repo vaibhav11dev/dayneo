@@ -13,9 +13,9 @@
  * @return type
  */
 
-load_theme_textdomain('dayneo', get_template_directory() . '/languages');
+load_theme_textdomain('bigbo', get_template_directory() . '/languages');
 
-function dayneo_get_option( $name, $default = false ) {
+function bigbo_get_option( $name, $default = false ) {
 	$options = get_option( 'dd_options' );
 
 	if ( isset( $options[ $name ] ) ) {
@@ -39,7 +39,7 @@ function dayneo_get_option( $name, $default = false ) {
 	return $default;
 }
 
-function dayneo_hex2rgb( $hex ) {
+function bigbo_hex2rgb( $hex ) {
 	$hex = str_replace( "#", "", $hex );
 
 	if ( strlen( $hex ) == 3 ) {
@@ -56,7 +56,7 @@ function dayneo_hex2rgb( $hex ) {
 	return $rgb; // returns an array with the rgb values
 }
 
-function dayneo_process_tag( $m ) {
+function bigbo_process_tag( $m ) {
 	if ( $m[ 2 ] == 'dropcap' || $m[ 2 ] == 'highlight' || $m[ 2 ] == 'tooltip' ) {
 		return $m[ 0 ];
 	}
@@ -78,7 +78,7 @@ function dayneo_process_tag( $m ) {
  * @param type $trailing
  * @return type
  */
-function dayneo_truncate( $str, $length = 10, $trailing = '..' ) {
+function bigbo_truncate( $str, $length = 10, $trailing = '..' ) {
 	$length -= mb_strlen( $trailing );
 	if ( mb_strlen( $str ) > $length ) {
 		return mb_substr( $str, 0, $length ) . $trailing;
@@ -89,7 +89,7 @@ function dayneo_truncate( $str, $length = 10, $trailing = '..' ) {
 	return $res;
 }
 
-function dayneo_get_first_image() {
+function bigbo_get_first_image() {
 	global $post, $posts;
 	$first_img	 = '';
 	$output		 = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
@@ -107,7 +107,7 @@ function dayneo_get_first_image() {
  * @param type $url
  * @return type
  */
-function dayneo_tinyurl( $url ) {
+function bigbo_tinyurl( $url ) {
 	$response = esc_url( wp_remote_retrieve_body( wp_remote_get( 'http://tinyurl.com/api-create.php?url=' . $url ) ) );
 
 	return $response;
@@ -119,13 +119,13 @@ function dayneo_tinyurl( $url ) {
  * 
  * @global string $post
  */
-function dayneo_similar_posts() {
+function bigbo_similar_posts() {
 	$post			 = '';
 	$orig_post		 = $post;
 	global $post;
-	$dd_similar_posts	 = dayneo_get_option( 'dd_similar_posts', 'disable' );
-	$dd_similar_posts_carousel	 = dayneo_get_option( 'dd_similar_posts_carousel', 0 );
-	$dd_similar_posts_number	 = dayneo_get_option( 'dd_similar_posts_number', '3' );
+	$dd_similar_posts	 = bigbo_get_option( 'dd_similar_posts', 'disable' );
+	$dd_similar_posts_carousel	 = bigbo_get_option( 'dd_similar_posts_carousel', 0 );
+	$dd_similar_posts_number	 = bigbo_get_option( 'dd_similar_posts_number', '3' );
 
         $css_similar_posts = 'col-sm-4';
         if( $dd_similar_posts_carousel == 1 ) {
@@ -155,28 +155,28 @@ function dayneo_similar_posts() {
 
 		$my_query = new wp_query( $args );
 		if ( $my_query->have_posts() ) {
-			echo '<div class="similar-posts"><div class="sec-head-style"><h3 class="text-title text-uppercase page-heading">' . esc_html__( 'Similar posts', 'dayneo' ) . '</h3></div>';
+			echo '<div class="similar-posts"><div class="sec-head-style"><h3 class="text-title text-uppercase page-heading">' . esc_html__( 'Similar posts', 'bigbo' ) . '</h3></div>';
 			echo '<div class="row"><div class="multi-columns-row post-columns">';
 			while ( $my_query->have_posts() ) {
 				$my_query->the_post();
 				?>
                                 <div class="<?php echo esc_attr($css_similar_posts); ?>">
 					<!--  BLOG CONTENT  -->
-					<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo dayneo_post_format(); ?>">
+					<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo bigbo_post_format(); ?>">
                         <?php
-                        $dd_featured_images = dayneo_get_option( 'dd_featured_images', '1' );
+                        $dd_featured_images = bigbo_get_option( 'dd_featured_images', '1' );
                         if ( has_post_thumbnail() && $dd_featured_images == "1" ) {	
                         ?>
                         <div class="post_thumbnail">
                             <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-							<?php dayneo_post_thumbnail('medium'); ?>
+							<?php bigbo_post_thumbnail('medium'); ?>
                                 </a>
 						</div>
                         <?php } ?>
 						<div class="post-content">
 
 							<div class="entry-meta entry-header">
-								<?php the_title( '<h2 class="post-title">' . dayneo_post_format_icon() . '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
+								<?php the_title( '<h2 class="post-title">' . bigbo_post_format_icon() . '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
 							</div>
 
 							<div class="entry-content">
@@ -184,7 +184,7 @@ function dayneo_similar_posts() {
 							</div>
 
 							<div class="entry-meta entry-footer">
-								<?php dayneo_post_readmore(); ?>
+								<?php bigbo_post_readmore(); ?>
 							</div>
 
 						</div>						
@@ -222,7 +222,7 @@ function dayneo_similar_posts() {
 	wp_reset_query();
 }
 
-function dayneo_hexDarker( $hex, $factor = 30 ) {
+function bigbo_hexDarker( $hex, $factor = 30 ) {
 	$new_hex = '';
 
 // if hex code null than assign transparent for hide PHP warning /
@@ -247,10 +247,10 @@ function dayneo_hexDarker( $hex, $factor = 30 ) {
 	return $new_hex;
 }
 
-function dayneo_bootstrap_layout_class() {
+function bigbo_bootstrap_layout_class() {
 	$bootstrap_layout = '';
 
-	$dd_bootstrap_layout = dayneo_get_option( 'dd_bootstrap_layout', 'bootstrap_left' );
+	$dd_bootstrap_layout = bigbo_get_option( 'dd_bootstrap_layout', 'bootstrap_left' );
 
 	if ( $dd_bootstrap_layout == "bootstrap_right" ) {
 		$bootstrap_layout = 'layout-right';
@@ -263,18 +263,18 @@ function dayneo_bootstrap_layout_class() {
 	return $bootstrap_layout;
 }
 
-if ( ! function_exists( 'dayneo_addURLParameter' ) ) {
+if ( ! function_exists( 'bigbo_addURLParameter' ) ) {
 
 	/**
 	 * 
-	 * dayneo_addURLParameter
+	 * bigbo_addURLParameter
 	 * 
 	 * @param type $url
 	 * @param type $paramName
 	 * @param type $paramValue
 	 * @return type
 	 */
-	function dayneo_addURLParameter( $url, $paramName, $paramValue ) {
+	function bigbo_addURLParameter( $url, $paramName, $paramValue ) {
 		$url_data = parse_url( $url );
 		if ( ! isset( $url_data[ "query" ] ) ) {
 			$url_data[ "query" ] = "";
@@ -289,12 +289,12 @@ if ( ! function_exists( 'dayneo_addURLParameter' ) ) {
 		}
 		$url_data[ 'query' ] = http_build_query( $params );
 
-		return dayneo_build_url( $url_data );
+		return bigbo_build_url( $url_data );
 	}
 
 }
 
-function dayneo_build_url( $url_data ) {
+function bigbo_build_url( $url_data ) {
 	$url = "";
 	if ( isset( $url_data[ 'host' ] ) ) {
 		$url .= $url_data[ 'scheme' ] . '://';
@@ -332,7 +332,7 @@ function dayneo_build_url( $url_data ) {
  * @param type $content
  * @return type
  */
-//function dayneo_woo_product( $atts, $content = null ) {
+//function bigbo_woo_product( $atts, $content = null ) {
 //	global $woocommerce_loop;
 //
 //	if ( empty( $atts ) ) {
@@ -399,7 +399,7 @@ function dayneo_build_url( $url_data ) {
  * 
  * @return string
  */
-function dayneo_bp_get_id() {
+function bigbo_bp_get_id() {
 	$post_id	 = '';
 	$bp_page_id	 = get_option( 'bp-pages' );
 
@@ -428,7 +428,7 @@ function dayneo_bp_get_id() {
  *
  */
 
-function dayneo_print_fonts( $name, $css_class, $additional_css = '', $additional_color_css_class = '', $imp = '' ) {
+function bigbo_print_fonts( $name, $css_class, $additional_css = '', $additional_color_css_class = '', $imp = '' ) {
 	global $dd_options;
 	$options	 = $dd_options;
 	$css		 = '';
@@ -478,7 +478,7 @@ function dayneo_print_fonts( $name, $css_class, $additional_css = '', $additiona
  * 
  * @global type $wp_query
  */
-function dayneo_paginate_links() {
+function bigbo_paginate_links() {
 	ob_start();
 
 	global $wp_query;
@@ -498,7 +498,7 @@ function dayneo_paginate_links() {
 
 	if ( ! empty( $pagination ) ) {
 		?>
-                <div class="results"><?php printf(esc_html__('Showing 1-%s of %s post(s)', 'dayneo'), $post, $total_post); ?></div>       
+                <div class="results"><?php printf(esc_html__('Showing 1-%s of %s post(s)', 'bigbo'), $post, $total_post); ?></div>       
 		<ul class="pagination">
 			<?php foreach ( $pagination as $key => $page_link ) { ?>
 				<li class="paginated_link <?php
@@ -524,7 +524,7 @@ function dayneo_paginate_links() {
  * @param type $number_posts
  * @return \WP_Query
  */
-function dayneo_portfolio_rel_pro( $post_id, $number_posts = 8 ) {
+function bigbo_portfolio_rel_pro( $post_id, $number_posts = 8 ) {
 	$query = new WP_Query();
 
 	$args = '';
@@ -547,7 +547,7 @@ function dayneo_portfolio_rel_pro( $post_id, $number_posts = 8 ) {
 		'post__not_in'		 => array( $post_id ),
 		'ignore_sticky_posts'	 => 0,
 		'meta_key'		 => '_thumbnail_id',
-		'post_type'		 => 'dayneo_portfolio',
+		'post_type'		 => 'bigbo_portfolio',
 		'tax_query'		 => array(
 			array(
 				'taxonomy'	 => 'portfolio_category',
@@ -574,7 +574,7 @@ function dayneo_portfolio_rel_pro( $post_id, $number_posts = 8 ) {
  * @param type $range
  * @param type $current_query
  */
-function dayneo_portfolio_pagination( $pages = '', $range = 2, $current_query = '' ) {
+function bigbo_portfolio_pagination( $pages = '', $range = 2, $current_query = '' ) {
 	global $dd_options;
 	$showitems = ( $range * 2 ) + 1;
 
@@ -641,11 +641,11 @@ function dayneo_portfolio_pagination( $pages = '', $range = 2, $current_query = 
 
 /**
  * 
- * Dayneo_portfolio_share
+ * Bigbo_portfolio_share
  * 
  * @global string $post
  */
-function dayneo_portfolio_share() {
+function bigbo_portfolio_share() {
 	global $post;
 	$image_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
 	if ( empty( $image_url ) ) {
@@ -653,12 +653,12 @@ function dayneo_portfolio_share() {
 	}
 	?>
 	<ul class="social-icons social-icons-simple">
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Twitter', 'dayneo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr($post->post_title); ?>+&raquo;+<?php echo esc_url( dayneo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a></li>
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Facebook', 'dayneo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-facebook"></i></a></li>
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'dayneo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
-		<li> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'dayneo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr($image_url); ?>&description=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-pinterest"></i></a></li>			
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share by Email', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/email?linkurl=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-envelope-o"></i></a></li>
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="icon-action-redo icons ti-plus"></i></a></li>
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Twitter', 'bigbo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr($post->post_title); ?>+&raquo;+<?php echo esc_url( bigbo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a></li>
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Facebook', 'bigbo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-facebook"></i></a></li>
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'bigbo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
+		<li> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'bigbo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr($image_url); ?>&description=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-pinterest"></i></a></li>			
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share by Email', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/email?linkurl=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-envelope-o"></i></a></li>
+		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="icon-action-redo icons ti-plus"></i></a></li>
 	</ul>
 	<?php
 }
@@ -672,25 +672,25 @@ function dayneo_portfolio_share() {
  * @global type $wpdb
  * @global type $post
  */
-function dayneo_layerslider() {
+function bigbo_layerslider() {
 
 	global $wpdb, $post;
 
-	$dayneo_slider_page_id = '';
+	$bigbo_slider_page_id = '';
 	if ( ! is_home() && ! is_front_page() && ! is_archive() ) {
-		$dayneo_slider_page_id = $post->ID;
+		$bigbo_slider_page_id = $post->ID;
 	}
 	if ( ! is_home() && is_front_page() ) {
-		$dayneo_slider_page_id = $post->ID;
+		$bigbo_slider_page_id = $post->ID;
 	}
 	if ( is_home() && ! is_front_page() ) {
-		$dayneo_slider_page_id = get_option( 'page_for_posts' );
+		$bigbo_slider_page_id = get_option( 'page_for_posts' );
 	}
 
 
 // Get slider
 	$ls_table_name	 = $wpdb->prefix . "layerslider";
-	$ls_id		 = get_post_meta( $dayneo_slider_page_id, 'dayneo_slider', true );
+	$ls_id		 = get_post_meta( $bigbo_slider_page_id, 'bigbo_slider', true );
 	$ls_slider	 = $wpdb->get_row( "SELECT * FROM $ls_table_name WHERE id = " . (int) $ls_id . " ORDER BY date_c DESC LIMIT 1", ARRAY_A );
 	$ls_slider	 = json_decode( $ls_slider[ 'data' ], true );
 	?>
@@ -703,11 +703,11 @@ function dayneo_layerslider() {
 	<div id="layerslider-container">
 		<div id="layerslider-wrapper">
 			<?php
-//			if ( $ls_slider[ 'properties' ][ 'skin' ] == 'dayneo' ):
+//			if ( $ls_slider[ 'properties' ][ 'skin' ] == 'bigbo' ):
 //			endif;
 
-			echo do_shortcode( '[layerslider id="' . esc_attr(get_post_meta( $dayneo_slider_page_id, 'dayneo_slider', true )) . '"]' );
-//			if ( $ls_slider[ 'properties' ][ 'skin' ] == 'dayneo' ):
+			echo do_shortcode( '[layerslider id="' . esc_attr(get_post_meta( $bigbo_slider_page_id, 'bigbo_slider', true )) . '"]' );
+//			if ( $ls_slider[ 'properties' ][ 'skin' ] == 'bigbo' ):
 //			endif;
 			?>
 		</div>
@@ -724,7 +724,7 @@ function dayneo_layerslider() {
  * @global type $slider_settings
  * @param type $term
  */
-function dayneo_tvslider( $term ) {
+function bigbo_tvslider( $term ) {
 	$args			 = array(
 		'post_type'		 => 'slide',
 		'posts_per_page'	 => - 1,
@@ -751,11 +751,11 @@ function dayneo_tvslider( $term ) {
 					$background_type = '';
 					$parallax_class	 = '';
 					// Image Background Type
-					if ( isset( $metadata[ 'dayneo_type' ][ 0 ] ) && $metadata[ 'dayneo_type' ][ 0 ] == 'image' && has_post_thumbnail() ) {
+					if ( isset( $metadata[ 'bigbo_type' ][ 0 ] ) && $metadata[ 'bigbo_type' ][ 0 ] == 'image' && has_post_thumbnail() ) {
 						$image_id	 = get_post_thumbnail_id();
 						$image_url	 = wp_get_attachment_image_src( $image_id, 'full', true );
 
-						if ( $metadata[ 'dayneo_parallax_effect' ][ 0 ] == 'enable' ) {
+						if ( $metadata[ 'bigbo_parallax_effect' ][ 0 ] == 'enable' ) {
 							$background_type = 'data-background="' . esc_url($image_url[ 0 ]) . '"';
 							$parallax_class	 = 'module-hero parallax';
 						} else {
@@ -764,38 +764,38 @@ function dayneo_tvslider( $term ) {
 					}
 
 					// Youtube Background Type
-					if ( isset( $metadata[ 'dayneo_type' ][ 0 ] ) && $metadata[ 'dayneo_type' ][ 0 ] == 'youtube' && isset( $metadata[ 'dayneo_youtube_id' ][ 0 ] ) ) {
-						$background_type = 'data-jarallax-video="' . esc_url($metadata[ 'dayneo_youtube_id' ][ 0 ]) . '"';
+					if ( isset( $metadata[ 'bigbo_type' ][ 0 ] ) && $metadata[ 'bigbo_type' ][ 0 ] == 'youtube' && isset( $metadata[ 'bigbo_youtube_id' ][ 0 ] ) ) {
+						$background_type = 'data-jarallax-video="' . esc_url($metadata[ 'bigbo_youtube_id' ][ 0 ]) . '"';
 						$parallax_class	 = 'parallax';
 					}
 
 					// Vimeo Background Type
-					if ( isset( $metadata[ 'dayneo_type' ][ 0 ] ) && $metadata[ 'dayneo_type' ][ 0 ] == 'vimeo' && isset( $metadata[ 'dayneo_vimeo_id' ][ 0 ] ) ) {
-						$background_type = 'data-jarallax-video="' . esc_url($metadata[ 'dayneo_vimeo_id' ][ 0 ]) . '"';
+					if ( isset( $metadata[ 'bigbo_type' ][ 0 ] ) && $metadata[ 'bigbo_type' ][ 0 ] == 'vimeo' && isset( $metadata[ 'bigbo_vimeo_id' ][ 0 ] ) ) {
+						$background_type = 'data-jarallax-video="' . esc_url($metadata[ 'bigbo_vimeo_id' ][ 0 ]) . '"';
 						$parallax_class	 = 'parallax';
 					}
 
 					// Self Hosted Video Background Type
 					$self_hosted_video = '';
-					if ( isset( $metadata[ 'dayneo_mp4' ][ 0 ] ) && $metadata[ 'dayneo_mp4' ][ 0 ] ) {
-						$self_hosted_video .= 'mp4:' . esc_url(wp_get_attachment_url( $metadata[ 'dayneo_mp4' ][ 0 ] )) . '';
+					if ( isset( $metadata[ 'bigbo_mp4' ][ 0 ] ) && $metadata[ 'bigbo_mp4' ][ 0 ] ) {
+						$self_hosted_video .= 'mp4:' . esc_url(wp_get_attachment_url( $metadata[ 'bigbo_mp4' ][ 0 ] )) . '';
 					} 
-                                        if ( isset( $metadata[ 'dayneo_webm' ][ 0 ] ) && $metadata[ 'dayneo_webm' ][ 0 ] ) {
-						$self_hosted_video .= ',webm:' . esc_url(wp_get_attachment_url( $metadata[ 'dayneo_webm' ][ 0 ] )) . '';
+                                        if ( isset( $metadata[ 'bigbo_webm' ][ 0 ] ) && $metadata[ 'bigbo_webm' ][ 0 ] ) {
+						$self_hosted_video .= ',webm:' . esc_url(wp_get_attachment_url( $metadata[ 'bigbo_webm' ][ 0 ] )) . '';
 					} 
-                                        if ( isset( $metadata[ 'dayneo_ogv' ][ 0 ] ) && $metadata[ 'dayneo_ogv' ][ 0 ] ) {
-						$self_hosted_video .= ',ogv:' . esc_url(wp_get_attachment_url( $metadata[ 'dayneo_ogv' ][ 0 ] )). '';
+                                        if ( isset( $metadata[ 'bigbo_ogv' ][ 0 ] ) && $metadata[ 'bigbo_ogv' ][ 0 ] ) {
+						$self_hosted_video .= ',ogv:' . esc_url(wp_get_attachment_url( $metadata[ 'bigbo_ogv' ][ 0 ] )). '';
 					}
 
-					if ( isset( $metadata[ 'dayneo_type' ][ 0 ] ) && $metadata[ 'dayneo_type' ][ 0 ] == 'self-hosted-video' && $self_hosted_video ) {
+					if ( isset( $metadata[ 'bigbo_type' ][ 0 ] ) && $metadata[ 'bigbo_type' ][ 0 ] == 'self-hosted-video' && $self_hosted_video ) {
 						$background_type = 'data-jarallax-video="' . $self_hosted_video . '"';
 						$parallax_class	 = 'parallax';
 					}
 
 					//Alignment Style
                                         $align = '';
-					if ( isset( $metadata[ 'dayneo_content_alignment' ] ) && $metadata[ 'dayneo_content_alignment' ] ) {
-						$align = 'text-'.$metadata[ 'dayneo_content_alignment' ][ 0 ];
+					if ( isset( $metadata[ 'bigbo_content_alignment' ] ) && $metadata[ 'bigbo_content_alignment' ] ) {
+						$align = 'text-'.$metadata[ 'bigbo_content_alignment' ][ 0 ];
                                                 
 					}
 					?>
@@ -812,28 +812,28 @@ function dayneo_tvslider( $term ) {
 										<div class="col-sm-12 <?php echo esc_attr($align); ?>">
 
 											<?php
-											if ( isset( $metadata[ 'dayneo_heading' ][ 0 ] ) && $metadata[ 'dayneo_heading' ][ 0 ] ) {
+											if ( isset( $metadata[ 'bigbo_heading' ][ 0 ] ) && $metadata[ 'bigbo_heading' ][ 0 ] ) {
 												?>
-												<h1 class="text-title slide-heading text-uppercase m-b-50 m-t-70"><?php echo esc_attr($metadata[ 'dayneo_heading' ][ 0 ]); ?></h1>
+												<h1 class="text-title slide-heading text-uppercase m-b-50 m-t-70"><?php echo esc_attr($metadata[ 'bigbo_heading' ][ 0 ]); ?></h1>
 												<?php
 											}
-											if ( isset( $metadata[ 'dayneo_caption' ][ 0 ] ) && $metadata[ 'dayneo_caption' ][ 0 ] ) {
+											if ( isset( $metadata[ 'bigbo_caption' ][ 0 ] ) && $metadata[ 'bigbo_caption' ][ 0 ] ) {
 												?>
-                                                                                                <p class="slide-caption"><?php echo esc_attr($metadata[ 'dayneo_caption' ][ 0 ]); ?></p>
+                                                                                                <p class="slide-caption"><?php echo esc_attr($metadata[ 'bigbo_caption' ][ 0 ]); ?></p>
 												<?php
 											}
-											if ( (isset( $metadata[ 'dayneo_button1_link' ][ 0 ] ) && $metadata[ 'dayneo_button1_link' ][ 0 ]) || (isset( $metadata[ 'dayneo_button2_link' ][ 0 ] ) && $metadata[ 'dayneo_button2_link' ][ 0 ]) ) {
+											if ( (isset( $metadata[ 'bigbo_button1_link' ][ 0 ] ) && $metadata[ 'bigbo_button1_link' ][ 0 ]) || (isset( $metadata[ 'bigbo_button2_link' ][ 0 ] ) && $metadata[ 'bigbo_button2_link' ][ 0 ]) ) {
 												?>
 												<div class="m-t-50">
 													<?php
-													if ( isset( $metadata[ 'dayneo_button1_text' ][ 0 ] ) && $metadata[ 'dayneo_button1_text' ][ 0 ] ) {
+													if ( isset( $metadata[ 'bigbo_button1_text' ][ 0 ] ) && $metadata[ 'bigbo_button1_text' ][ 0 ] ) {
 														?>
-														<a href="<?php echo esc_url($metadata[ 'dayneo_button1_link' ][ 0 ]); ?>" class="btn btn-circle btn-white btn-lg"><?php echo esc_attr($metadata[ 'dayneo_button1_text' ][ 0 ]); ?></a>
+														<a href="<?php echo esc_url($metadata[ 'bigbo_button1_link' ][ 0 ]); ?>" class="btn btn-circle btn-white btn-lg"><?php echo esc_attr($metadata[ 'bigbo_button1_text' ][ 0 ]); ?></a>
 														<?php
 													}
-													if ( isset( $metadata[ 'dayneo_button2_text' ][ 0 ] ) && $metadata[ 'dayneo_button2_text' ][ 0 ] ) {
+													if ( isset( $metadata[ 'bigbo_button2_text' ][ 0 ] ) && $metadata[ 'bigbo_button2_text' ][ 0 ] ) {
 														?>
-														<a href="<?php echo esc_url($metadata[ 'dayneo_button2_link' ][ 0 ]); ?>" class="btn btn-circle btn-white btn-lg"><?php echo esc_attr($metadata[ 'dayneo_button2_text' ][ 0 ]); ?></a>
+														<a href="<?php echo esc_url($metadata[ 'bigbo_button2_link' ][ 0 ]); ?>" class="btn btn-circle btn-white btn-lg"><?php echo esc_attr($metadata[ 'bigbo_button2_text' ][ 0 ]); ?></a>
 														<?php
 													}
 													?>
@@ -870,7 +870,7 @@ function dayneo_tvslider( $term ) {
  * @global type $slider_settings
  * @param type $term 
  */
-function dayneo_tvsliderjs( $term ) {
+function bigbo_tvsliderjs( $term ) {
 	global $slider_settings;
 	$term_details	 = get_term_by( 'slug', $term, 'slide-page' );
 	$slider_settings = get_option( 'taxonomy_' . $term_details->term_id );
@@ -896,54 +896,54 @@ function dayneo_tvsliderjs( $term ) {
  * 
  * @param type $param
  */
-function dayneo_heroheadertype( $param ) {
+function bigbo_heroheadertype( $param ) {
 	$background_type = '';
 	$parallax_class	 = '';
 
 	// Image Background Type
-	if ( isset( $param[ 'dayneo_hero_type' ] ) && $param[ 'dayneo_hero_type' ] == 'hero_parallax' && isset( $param[ 'dayneo_hero_image_parallax' ] ) && $param[ 'dayneo_hero_image_parallax' ] ) {
-		$background_type = 'data-background="' . esc_url(wp_get_attachment_url( $param[ 'dayneo_hero_image_parallax' ] )) . '"';
+	if ( isset( $param[ 'bigbo_hero_type' ] ) && $param[ 'bigbo_hero_type' ] == 'hero_parallax' && isset( $param[ 'bigbo_hero_image_parallax' ] ) && $param[ 'bigbo_hero_image_parallax' ] ) {
+		$background_type = 'data-background="' . esc_url(wp_get_attachment_url( $param[ 'bigbo_hero_image_parallax' ] )) . '"';
 		$parallax_class	 = 'module-hero parallax';
 	}
 
 	// Youtube Background Type
-	if ( isset( $param[ 'dayneo_hero_type' ] ) && $param[ 'dayneo_hero_type' ] == 'hero_youtube' && isset( $param[ 'dayneo_hero_youtube_id' ] ) && $param[ 'dayneo_hero_youtube_id' ] ) {
-		$background_type = 'data-jarallax-video="' . esc_attr($param[ 'dayneo_hero_youtube_id' ]) . '"';
+	if ( isset( $param[ 'bigbo_hero_type' ] ) && $param[ 'bigbo_hero_type' ] == 'hero_youtube' && isset( $param[ 'bigbo_hero_youtube_id' ] ) && $param[ 'bigbo_hero_youtube_id' ] ) {
+		$background_type = 'data-jarallax-video="' . esc_attr($param[ 'bigbo_hero_youtube_id' ]) . '"';
 		$parallax_class	 = 'parallax';
 	}
 
 	// Vimeo Background Type
-	if ( isset( $param[ 'dayneo_hero_type' ] ) && $param[ 'dayneo_hero_type' ] == 'hero_vimeo' && isset( $param[ 'dayneo_hero_vimeo_id' ] ) && $param[ 'dayneo_hero_vimeo_id' ] ) {
-		$background_type = 'data-jarallax-video="' . esc_attr($param[ 'dayneo_hero_vimeo_id' ]) . '"';
+	if ( isset( $param[ 'bigbo_hero_type' ] ) && $param[ 'bigbo_hero_type' ] == 'hero_vimeo' && isset( $param[ 'bigbo_hero_vimeo_id' ] ) && $param[ 'bigbo_hero_vimeo_id' ] ) {
+		$background_type = 'data-jarallax-video="' . esc_attr($param[ 'bigbo_hero_vimeo_id' ]) . '"';
 		$parallax_class	 = 'parallax';
 	}
 
 	// Self Hosted Video Background Type
 	$self_hosted_video = '';
-	if ( isset( $param[ 'dayneo_hero_mp4' ] ) && $param[ 'dayneo_hero_mp4' ] ) {
-		$self_hosted_video .= 'mp4:' . esc_attr(wp_get_attachment_url( $param[ 'dayneo_hero_mp4' ] )) . '';
+	if ( isset( $param[ 'bigbo_hero_mp4' ] ) && $param[ 'bigbo_hero_mp4' ] ) {
+		$self_hosted_video .= 'mp4:' . esc_attr(wp_get_attachment_url( $param[ 'bigbo_hero_mp4' ] )) . '';
 	} 
-        if ( isset( $param[ 'dayneo_hero_webm' ] ) && $param[ 'dayneo_hero_webm' ] ) {
-		$self_hosted_video .= ',webm:' . esc_attr(wp_get_attachment_url( $param[ 'dayneo_hero_webm' ] )) . '';
+        if ( isset( $param[ 'bigbo_hero_webm' ] ) && $param[ 'bigbo_hero_webm' ] ) {
+		$self_hosted_video .= ',webm:' . esc_attr(wp_get_attachment_url( $param[ 'bigbo_hero_webm' ] )) . '';
 	} 
-        if ( isset( $param[ 'dayneo_hero_ogv' ] ) && $param[ 'dayneo_hero_ogv' ] ) {
-		$self_hosted_video .= ',ogv:' . esc_attr(wp_get_attachment_url( $param[ 'dayneo_hero_ogv' ] )) . '';
+        if ( isset( $param[ 'bigbo_hero_ogv' ] ) && $param[ 'bigbo_hero_ogv' ] ) {
+		$self_hosted_video .= ',ogv:' . esc_attr(wp_get_attachment_url( $param[ 'bigbo_hero_ogv' ] )) . '';
 	}
 
-	if ( isset( $param[ 'dayneo_hero_type' ] ) && $param[ 'dayneo_hero_type' ] == 'hero_self_hosted_video' && $self_hosted_video ) {
+	if ( isset( $param[ 'bigbo_hero_type' ] ) && $param[ 'bigbo_hero_type' ] == 'hero_self_hosted_video' && $self_hosted_video ) {
 		$background_type = 'data-jarallax-video="' . $self_hosted_video . '"';
 		$parallax_class	 = 'parallax';
 	}
 
 	// Alighnment Style
         $align = '';
-	if ( isset( $param[ 'dayneo_hero_content_alignment' ] ) && $param[ 'dayneo_hero_content_alignment' ] ) {
-		$align = $param[ 'dayneo_hero_content_alignment' ];
+	if ( isset( $param[ 'bigbo_hero_content_alignment' ] ) && $param[ 'bigbo_hero_content_alignment' ] ) {
+		$align = $param[ 'bigbo_hero_content_alignment' ];
 	}
 
 	// Hero Header Height Class
-	if ( isset( $param[ 'dayneo_hero_height' ] ) && $param[ 'dayneo_hero_height' ] ) {
-		$hero_height = $param[ 'dayneo_hero_height' ];
+	if ( isset( $param[ 'bigbo_hero_height' ] ) && $param[ 'bigbo_hero_height' ] ) {
+		$hero_height = $param[ 'bigbo_hero_height' ];
 	}
 
 	if ( $background_type ) :
@@ -958,13 +958,13 @@ function dayneo_heroheadertype( $param ) {
 
 						<div class="row">
 							<div class="col-sm-12 text-<?php echo esc_attr($align); ?>">
-								<?php if ( isset( $param[ 'dayneo_hero_heading' ] ) && $param[ 'dayneo_hero_heading' ] ) { ?>
-									<h1 class="text-title text-uppercase hero_header_heading"><?php echo esc_html($param[ 'dayneo_hero_heading' ]); ?></h1>
+								<?php if ( isset( $param[ 'bigbo_hero_heading' ] ) && $param[ 'bigbo_hero_heading' ] ) { ?>
+									<h1 class="text-title text-uppercase hero_header_heading"><?php echo esc_html($param[ 'bigbo_hero_heading' ]); ?></h1>
 									<?php
 								}
-								if ( isset( $param[ 'dayneo_hero_caption' ] ) && $param[ 'dayneo_hero_caption' ] ) {
+								if ( isset( $param[ 'bigbo_hero_caption' ] ) && $param[ 'bigbo_hero_caption' ] ) {
 									?>
-									<p class="hero_header_caption"><?php echo esc_html($param[ 'dayneo_hero_caption' ]); ?></p>
+									<p class="hero_header_caption"><?php echo esc_html($param[ 'bigbo_hero_caption' ]); ?></p>
 									<?php
 								}
 								?>
@@ -983,7 +983,7 @@ function dayneo_heroheadertype( $param ) {
 }
 
 // -> START WooComm page wrapper
-function dayneo_shop_wrapper_strat() {
+function bigbo_shop_wrapper_strat() {
 	ob_start();
 	?>
 	<!-- SHOP DETAILS -->
@@ -992,13 +992,13 @@ function dayneo_shop_wrapper_strat() {
 			<div class="row">
 
 				<!-- PRIMARY -->
-				<div id="primary" class="<?php dayneo_layout_class( $type = 1 ); ?> post-content">
+				<div id="primary" class="<?php bigbo_layout_class( $type = 1 ); ?> post-content">
 					<?php
 					$wrapper_strat	 = ob_get_clean();
 					echo $wrapper_strat;
 				}
 
-function dayneo_shop_wrapper_end() {
+function bigbo_shop_wrapper_end() {
 					ob_start();
 					?>
 				</div>
@@ -1006,7 +1006,7 @@ function dayneo_shop_wrapper_end() {
 
 				<!-- SECONDARY-1 -->
 				<?php
-				if ( dayneo_lets_get_sidebar() == true || is_archive() ) {
+				if ( bigbo_lets_get_sidebar() == true || is_archive() ) {
 					get_sidebar();
 				}
 				?>
@@ -1022,11 +1022,11 @@ function dayneo_shop_wrapper_end() {
 }
 
 // -> END WooComm page wrapper
-// -> START Dayneo Page Title Bar
-function dayneo_page_title_bar() {
+// -> START Bigbo Page Title Bar
+function bigbo_page_title_bar() {
 	?>
 	<!-- PAGE TITLE -->
-	<section class="<?php echo dayneo_titlebar_bg_class(); ?>">
+	<section class="<?php echo bigbo_titlebar_bg_class(); ?>">
 		<div class="container">
 			<div class="row">
 				<div class="page-title-wrapper col-sm-12">
@@ -1040,24 +1040,24 @@ function dayneo_page_title_bar() {
 						$title = get_the_title();
 
 						if ( is_home() ) {
-							$title = __( 'Blog', 'dayneo' );
+							$title = __( 'Blog', 'bigbo' );
 						}
 
 						if ( is_search() ) {
-							$title = __( 'Search Result For:', 'dayneo' ) . get_search_query();
+							$title = __( 'Search Result For:', 'bigbo' ) . get_search_query();
 						}
 
 						if ( is_404() ) {
-							$title = __( '404 - Page not Found', 'dayneo' );
+							$title = __( '404 - Page not Found', 'bigbo' );
 						}
 
 						if ( is_archive() && ! is_bbpress() ) {
 							if ( is_day() ) {
-								$title = __( 'Daily Archives: ', 'dayneo' ) . '<span>' . get_the_date() . '</span>';
+								$title = __( 'Daily Archives: ', 'bigbo' ) . '<span>' . get_the_date() . '</span>';
 							} else if ( is_month() ) {
-								$title = __( 'Monthly Archives: ', 'dayneo' ) . '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'dayneo' ) ) . '</span>';
+								$title = __( 'Monthly Archives: ', 'bigbo' ) . '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'bigbo' ) ) . '</span>';
 							} elseif ( is_year() ) {
-								$title = __( 'Yearly Archives: ', 'dayneo' ) . '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'dayneo' ) ) . '</span>';
+								$title = __( 'Yearly Archives: ', 'bigbo' ) . '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'bigbo' ) ) . '</span>';
 							} elseif ( is_author() ) {
 								$curauth = ( isset( $_GET[ 'author_name' ] ) ) ? get_user_by( 'slug', $_GET[ 'author_name' ] ) : get_user_by( 'id', get_the_author_meta( 'ID' ) );
 								$title	 = $curauth->nickname;
@@ -1075,11 +1075,11 @@ function dayneo_page_title_bar() {
 					}
 					?>
 
-					<div class="<?php echo dayneo_titlebar_center_class(); ?>">
+					<div class="<?php echo bigbo_titlebar_center_class(); ?>">
 
-						<div class="<?php echo dayneo_titlebar_left_class(); ?>">
+						<div class="<?php echo bigbo_titlebar_left_class(); ?>">
 							<?php
-							if ( dayneo_titlebar_title_check() == true ) {
+							if ( bigbo_titlebar_title_check() == true ) {
 								?>
 								<h3 class="entry-title text-title text-uppercase m-b-10">
 									<?php echo esc_html($title); ?>
@@ -1090,15 +1090,15 @@ function dayneo_page_title_bar() {
 							?>
 						</div>
 
-						<div class="<?php echo dayneo_titlebar_right_class(); ?>">    
+						<div class="<?php echo bigbo_titlebar_right_class(); ?>">    
 							<?php
-							if ( dayneo_titlebar_breadcrumb_check() == true ) {
+							if ( bigbo_titlebar_breadcrumb_check() == true ) {
 								if ( is_bbpress() ) {
 									bbp_breadcrumb();
 								} elseif ( is_product() ) {
 									woocommerce_breadcrumb();
 								} else {
-									dayneo_breadcrumb();
+									bigbo_breadcrumb();
 								}
 							}
 							?>
@@ -1115,13 +1115,13 @@ function dayneo_page_title_bar() {
 	<?php
 }
 
-function dayneo_titlebar_bg_class() {
+function bigbo_titlebar_bg_class() {
 	global $wp_query, $post;
 	$post_id = '';
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = dayneo_bp_get_id();
+            $post_id = bigbo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1130,45 +1130,45 @@ function dayneo_titlebar_bg_class() {
 
 	$titlebar_bg = 'titlebar-bg';
 
-	$dd_pagetitlebar_height		 = dayneo_get_option( 'dd_pagetitlebar_height', 'medium' );
-	$dayneo_page_title_bar_height	 = get_post_meta( $post_id, 'dayneo_page_title_bar_height', true );
-        if (empty($dayneo_page_title_bar_height)) {
-            $dayneo_page_title_bar_height = 'default';
+	$dd_pagetitlebar_height		 = bigbo_get_option( 'dd_pagetitlebar_height', 'medium' );
+	$bigbo_page_title_bar_height	 = get_post_meta( $post_id, 'bigbo_page_title_bar_height', true );
+        if (empty($bigbo_page_title_bar_height)) {
+            $bigbo_page_title_bar_height = 'default';
         }
-	if ( $dayneo_page_title_bar_height == 'small' || ( $dayneo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'small' ) ) {
+	if ( $bigbo_page_title_bar_height == 'small' || ( $bigbo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'small' ) ) {
 		$titlebar_bg .= ' module-xs';
-	} elseif ( $dayneo_page_title_bar_height == 'medium' || ( $dayneo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'medium' ) ) {
+	} elseif ( $bigbo_page_title_bar_height == 'medium' || ( $bigbo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'medium' ) ) {
 		$titlebar_bg .= ' module-sm';
-	} elseif ( $dayneo_page_title_bar_height == 'large' || ( $dayneo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'large' ) ) {
+	} elseif ( $bigbo_page_title_bar_height == 'large' || ( $bigbo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'large' ) ) {
 		$titlebar_bg .= ' module-md';
-	} elseif ( $dayneo_page_title_bar_height == 'custom' || ( $dayneo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'custom' ) ) {
+	} elseif ( $bigbo_page_title_bar_height == 'custom' || ( $bigbo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'custom' ) ) {
 		$titlebar_bg .= ' titlebar-custom';
 	}
 
-	$dd_pagetitlebar_background_parallax	 = dayneo_get_option( 'dd_pagetitlebar_background_parallax', 0 );
-	$dayneo_page_title_bar_parallax_bg	 = get_post_meta( $post_id, 'dayneo_page_title_bar_parallax_bg', true );
-        if (empty($dayneo_page_title_bar_parallax_bg)) {
-            $dayneo_page_title_bar_parallax_bg = 'default';
+	$dd_pagetitlebar_background_parallax	 = bigbo_get_option( 'dd_pagetitlebar_background_parallax', 0 );
+	$bigbo_page_title_bar_parallax_bg	 = get_post_meta( $post_id, 'bigbo_page_title_bar_parallax_bg', true );
+        if (empty($bigbo_page_title_bar_parallax_bg)) {
+            $bigbo_page_title_bar_parallax_bg = 'default';
         }
-        if ( $dayneo_page_title_bar_parallax_bg == 'yes' || ( $dayneo_page_title_bar_parallax_bg == 'default' && $dd_pagetitlebar_background_parallax == 1 ) ) {
+        if ( $bigbo_page_title_bar_parallax_bg == 'yes' || ( $bigbo_page_title_bar_parallax_bg == 'default' && $dd_pagetitlebar_background_parallax == 1 ) ) {
             $titlebar_bg .= ' bg-parallax';
         } elseif ( (is_search() || is_404() || is_archive() || ( class_exists( 'Woocommerce' ) && is_product() )) && $dd_pagetitlebar_background_parallax == 1 ) {
             $titlebar_bg .= ' bg-parallax';
         }
 
-	$dd_pagetitlebar_background	 = dayneo_get_option( 'dd_pagetitlebar_background', '' );
-	$dayneo_page_title_bar_bg	 = get_post_meta( get_the_ID(), 'dayneo_page_title_bar_bg', true );
-	if ( (isset($dd_pagetitlebar_background[ 'url' ] ) && $dd_pagetitlebar_background[ 'url' ]) || $dayneo_page_title_bar_bg ) {
+	$dd_pagetitlebar_background	 = bigbo_get_option( 'dd_pagetitlebar_background', '' );
+	$bigbo_page_title_bar_bg	 = get_post_meta( get_the_ID(), 'bigbo_page_title_bar_bg', true );
+	if ( (isset($dd_pagetitlebar_background[ 'url' ] ) && $dd_pagetitlebar_background[ 'url' ]) || $bigbo_page_title_bar_bg ) {
 		$titlebar_bg .= ' bg-black-alfa-30';
 	}
 
 	return esc_attr($titlebar_bg);
 }
 
-function dayneo_titlebar_left_class() {
+function bigbo_titlebar_left_class() {
 	$titlebar_layout = '';
 
-	$dd_pagetitlebar_layout_opt = dayneo_get_option( 'dd_pagetitlebar_layout_opt', 'titlebar_left' );
+	$dd_pagetitlebar_layout_opt = bigbo_get_option( 'dd_pagetitlebar_layout_opt', 'titlebar_left' );
 
 	if ( $dd_pagetitlebar_layout_opt == "titlebar_left" ) {
 		$titlebar_layout = 'float-left';
@@ -1183,10 +1183,10 @@ function dayneo_titlebar_left_class() {
 	return esc_attr($titlebar_layout);
 }
 
-function dayneo_titlebar_right_class() {
+function bigbo_titlebar_right_class() {
 	$titlebar_layout = '';
 
-	$dd_pagetitlebar_layout_opt = dayneo_get_option( 'dd_pagetitlebar_layout_opt', 'titlebar_left' );
+	$dd_pagetitlebar_layout_opt = bigbo_get_option( 'dd_pagetitlebar_layout_opt', 'titlebar_left' );
 
 	if ( $dd_pagetitlebar_layout_opt == "titlebar_left" ) {
 		$titlebar_layout = 'float-right';
@@ -1201,10 +1201,10 @@ function dayneo_titlebar_right_class() {
 	return esc_attr($titlebar_layout);
 }
 
-function dayneo_titlebar_center_class() {
+function bigbo_titlebar_center_class() {
 	$titlebar_layout = '';
 
-	$dd_pagetitlebar_layout_opt = dayneo_get_option( 'dd_pagetitlebar_layout_opt', 'titlebar_left' );
+	$dd_pagetitlebar_layout_opt = bigbo_get_option( 'dd_pagetitlebar_layout_opt', 'titlebar_left' );
 
 	if ( $dd_pagetitlebar_layout_opt == "titlebar_left" ) {
 		$titlebar_layout = 'dd-dump';
@@ -1219,14 +1219,14 @@ function dayneo_titlebar_center_class() {
 	return esc_attr($titlebar_layout);
 }
 
-function dayneo_titlebar_title_check() {
+function bigbo_titlebar_title_check() {
 
 	global $wp_query, $post;
 	$post_id = '';
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = dayneo_bp_get_id();
+            $post_id = bigbo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1235,20 +1235,20 @@ function dayneo_titlebar_title_check() {
 
 	$get_titlebar = false;
 
-	$dd_display_pagetitlebar	 = dayneo_get_option( 'dd_display_pagetitlebar', 'titlebar_breadcrumb' );
-	$dayneo_display_page_title	 = get_post_meta( $post_id, 'dayneo_display_page_title', true );
-        if (empty($dayneo_display_page_title)) {
-            $dayneo_display_page_title = 'default';
+	$dd_display_pagetitlebar	 = bigbo_get_option( 'dd_display_pagetitlebar', 'titlebar_breadcrumb' );
+	$bigbo_display_page_title	 = get_post_meta( $post_id, 'bigbo_display_page_title', true );
+        if (empty($bigbo_display_page_title)) {
+            $bigbo_display_page_title = 'default';
         }
 	if ( is_search() || is_404() || is_archive() || is_bbpress() || is_product() ) {
 		if ( $dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "titlebar" ) {
 			$get_titlebar = true;
 		}
 	} elseif ( is_single() || is_page() || is_buddypress() || is_home() ) {
-		if ( $dayneo_display_page_title == 'default' && ($dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "titlebar") ) {
+		if ( $bigbo_display_page_title == 'default' && ($dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "titlebar") ) {
 			$get_titlebar = true;
 		}
-		if ( $dayneo_display_page_title != 'default' && ($dayneo_display_page_title == 'titlebar' || $dayneo_display_page_title == 'titlebar_breadcrumb') ) {
+		if ( $bigbo_display_page_title != 'default' && ($bigbo_display_page_title == 'titlebar' || $bigbo_display_page_title == 'titlebar_breadcrumb') ) {
 			$get_titlebar = true;
 		}
 	} else {
@@ -1259,14 +1259,14 @@ function dayneo_titlebar_title_check() {
 	return $get_titlebar;
 }
 
-function dayneo_titlebar_breadcrumb_check() {
+function bigbo_titlebar_breadcrumb_check() {
 	global $wp_query, $post;
 
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( function_exists( 'is_buddypress' ) ) {
                 if ( is_buddypress() ) {
-                    $post_id = dayneo_bp_get_id();
+                    $post_id = bigbo_bp_get_id();
                 } else {
                     $post_id = isset( $post->ID ) ? $post->ID : '';
                 }
@@ -1281,20 +1281,20 @@ function dayneo_titlebar_breadcrumb_check() {
         }
 
 	$get_titlebar			 = false;
-	$dd_display_pagetitlebar	 = dayneo_get_option( 'dd_display_pagetitlebar', 'titlebar_breadcrumb' );
-	$dayneo_display_page_title	 = get_post_meta( $post_id, 'dayneo_display_page_title', true );
-        if (empty($dayneo_display_page_title)) {
-            $dayneo_display_page_title = 'default';
+	$dd_display_pagetitlebar	 = bigbo_get_option( 'dd_display_pagetitlebar', 'titlebar_breadcrumb' );
+	$bigbo_display_page_title	 = get_post_meta( $post_id, 'bigbo_display_page_title', true );
+        if (empty($bigbo_display_page_title)) {
+            $bigbo_display_page_title = 'default';
         }
 	if ( is_search() || is_404() || is_archive() || is_bbpress() || is_product() ) {
 		if ( $dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "breadcrumb" ) {
 			$get_titlebar = true;
 		}
 	} elseif ( is_single() || is_page() || is_buddypress() || is_home() ) {
-		if ( $dayneo_display_page_title == 'default' && ($dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "breadcrumb") ) {
+		if ( $bigbo_display_page_title == 'default' && ($dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "breadcrumb") ) {
 			$get_titlebar = true;
 		}
-		if ( $dayneo_display_page_title != 'default' && ($dayneo_display_page_title == 'breadcrumb' || $dayneo_display_page_title == 'titlebar_breadcrumb') ) {
+		if ( $bigbo_display_page_title != 'default' && ($bigbo_display_page_title == 'breadcrumb' || $bigbo_display_page_title == 'titlebar_breadcrumb') ) {
 			$get_titlebar = true;
 		}
 	} else {
@@ -1306,12 +1306,12 @@ function dayneo_titlebar_breadcrumb_check() {
 	return $get_titlebar;
 }
 
-function dayneo_breadcrumb() {
+function bigbo_breadcrumb() {
 	?>
 
 	<ol class="breadcrumb text-xs">
 
-		<li><a class="home" href="<?php echo esc_url(home_url('/')); ?>" ><?php esc_html_e( 'Home', 'dayneo' ); ?></a></li>
+		<li><a class="home" href="<?php echo esc_url(home_url('/')); ?>" ><?php esc_html_e( 'Home', 'bigbo' ); ?></a></li>
 
 		<?php
 		global $post;
@@ -1338,7 +1338,7 @@ function dayneo_breadcrumb() {
 		}
 
 		if ( is_home() ) {
-			echo '<li>' . esc_html__( 'Blog', 'dayneo' ) . '</li>';
+			echo '<li>' . esc_html__( 'Blog', 'bigbo' ) . '</li>';
 		}
 		if ( is_page() && ! is_front_page() ) {
 			$parents	 = array();
@@ -1360,7 +1360,7 @@ function dayneo_breadcrumb() {
                         $post_type	 = get_post_type( $post->ID );
 			$cat_1_line	 = '';
 
-                        if ( $post_type == 'dayneo_portfolio') {
+                        if ( $post_type == 'bigbo_portfolio') {
                             $categories	 = get_the_terms( $post->ID, 'portfolio_category' );
                         } else {
                             $categories	 = get_the_category( $post->ID );
@@ -1378,10 +1378,10 @@ function dayneo_breadcrumb() {
 			echo '<li>' . "Tag: " . single_tag_title( '', false ) . '</li>';
 		}
 		if ( is_404() ) {
-			echo '<li>' . esc_html( "404 - Page not Found", 'dayneo' ) . '</li>';
+			echo '<li>' . esc_html( "404 - Page not Found", 'bigbo' ) . '</li>';
 		}
 		if ( is_search() ) {
-			echo '<li>' . esc_html( "Search", 'dayneo' ) . '</li>';
+			echo '<li>' . esc_html( "Search", 'bigbo' ) . '</li>';
 		}
 		if ( is_day() ) {
 			echo '<li><a href="' . esc_url(get_year_link( get_the_time( 'Y' ) )) . '">' . get_the_time( 'Y' ) . "</a></li>";
@@ -1406,8 +1406,8 @@ function dayneo_breadcrumb() {
 	<?php
 }
 
-// -> END Dayneo Page Title Bar
-// -> START Dayneo General Layout Functions
+// -> END Bigbo Page Title Bar
+// -> START Bigbo General Layout Functions
 
 /**
  * 
@@ -1421,25 +1421,25 @@ function dayneo_breadcrumb() {
  * $type = 2 is for buddypress.php and bbpress.php
  * 
  */
-function dayneo_layout_class( $type = 1 ) {
+function bigbo_layout_class( $type = 1 ) {
 	global $post, $wp_query;
 
         $post_id = '';
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = dayneo_bp_get_id();
+            $post_id = bigbo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
             $post_id = isset( $post->ID ) ? $post->ID : '';
         }
 
-	$dd_layout			 = dayneo_get_option( 'dd_layout', '2cl' );
-	$dd_post_layout			 = dayneo_get_option( 'dd_post_layout', 'two' );
-	$dd_opt1_width_content		 = dayneo_get_option( 'dd_opt1_width_content', '8' );
-	$dd_opt2_width_content		 = dayneo_get_option( 'dd_opt2_width_content', '6' );
-	$dayneo_sidebar_position	 = get_post_meta( $post_id, 'dayneo_sidebar_position', true );
+	$dd_layout			 = bigbo_get_option( 'dd_layout', '2cl' );
+	$dd_post_layout			 = bigbo_get_option( 'dd_post_layout', 'two' );
+	$dd_opt1_width_content		 = bigbo_get_option( 'dd_opt1_width_content', '8' );
+	$dd_opt2_width_content		 = bigbo_get_option( 'dd_opt2_width_content', '6' );
+	$bigbo_sidebar_position	 = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
 
 	$layout_css = '';
 
@@ -1464,13 +1464,13 @@ function dayneo_layout_class( $type = 1 ) {
 			break;
 	endswitch;
 
-	if ( ( is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress() || ( class_exists( 'Woocommerce' ) && is_shop() ) ) && ($dayneo_sidebar_position && $dayneo_sidebar_position != 'default') ):
+	if ( ( is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress() || ( class_exists( 'Woocommerce' ) && is_shop() ) ) && ($bigbo_sidebar_position && $bigbo_sidebar_position != 'default') ):
 
-		if ( ($type == 1 && $dayneo_sidebar_position == '1c') || ($type == 2 && $dayneo_sidebar_position == '1c') ) {
+		if ( ($type == 1 && $bigbo_sidebar_position == '1c') || ($type == 2 && $bigbo_sidebar_position == '1c') ) {
 			$layout_css = 'col-md-12 full-width';
 		}
 
-		switch ( $dayneo_sidebar_position ):
+		switch ( $bigbo_sidebar_position ):
 			case "1c":
 				$layout_css	 = 'col-md-12 full-width';
 				break;
@@ -1518,14 +1518,14 @@ function dayneo_layout_class( $type = 1 ) {
  * @global string $post
  * @return boolean
  */
-function dayneo_lets_get_sidebar() {
+function bigbo_lets_get_sidebar() {
 
 	global $wp_query, $post;
 	$post_id = '';
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = dayneo_bp_get_id();
+            $post_id = bigbo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1534,16 +1534,16 @@ function dayneo_lets_get_sidebar() {
 
 	$get_sidebar = false;
 
-	$dd_layout			 = dayneo_get_option( 'dd_layout', '2cl' );
-	$dayneo_sidebar_position	 = get_post_meta( $post_id, 'dayneo_sidebar_position', true );
+	$dd_layout			 = bigbo_get_option( 'dd_layout', '2cl' );
+	$bigbo_sidebar_position	 = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
 
 	if ( $dd_layout != "1c" ) {
 		$get_sidebar = true;
 	}
 
-	if ( (is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress() || ( class_exists( 'Woocommerce' ) && is_shop() )) && ($dayneo_sidebar_position && $dayneo_sidebar_position != 'default') ):
+	if ( (is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress() || ( class_exists( 'Woocommerce' ) && is_shop() )) && ($bigbo_sidebar_position && $bigbo_sidebar_position != 'default') ):
 
-		if ( $dayneo_sidebar_position != '1c' ) {
+		if ( $bigbo_sidebar_position != '1c' ) {
 			$get_sidebar = true;
 		} else {
 			$get_sidebar = false;
@@ -1552,7 +1552,7 @@ function dayneo_lets_get_sidebar() {
 	endif;
 
 //	if ( class_exists( 'Woocommerce' ) ):
-//		$shop_sidebar = dayneo_get_option( 'dd_shop_sidebar', 'None' );
+//		$shop_sidebar = bigbo_get_option( 'dd_shop_sidebar', 'None' );
 //		if ( is_shop() && $shop_sidebar != '0' ) {
 //			$get_sidebar = true;
 //		}
@@ -1571,14 +1571,14 @@ function dayneo_lets_get_sidebar() {
  * @global string $post
  * @return boolean
  */
-function dayneo_lets_get_sidebar_2() {
+function bigbo_lets_get_sidebar_2() {
 
 	global $wp_query, $post;
 	$post_id = '';
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = dayneo_bp_get_id();
+            $post_id = bigbo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1587,20 +1587,20 @@ function dayneo_lets_get_sidebar_2() {
 
 	$get_sidebar = false;
 
-	$dd_layout			 = dayneo_get_option( 'dd_layout', '2cl' );
-	$dayneo_sidebar_position	 = get_post_meta( $post_id, 'dayneo_sidebar_position', true );
+	$dd_layout			 = bigbo_get_option( 'dd_layout', '2cl' );
+	$bigbo_sidebar_position	 = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
 
 	if ( $dd_layout == "3cm" || $dd_layout == "3cl" || $dd_layout == "3cr" ) {
 		$get_sidebar = true;
 	}
 
-	if ( (is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress()) && ($dayneo_sidebar_position && $dayneo_sidebar_position != 'default') ):
+	if ( (is_single() || is_page() || $wp_query->is_posts_page || is_buddypress() || is_bbpress()) && ($bigbo_sidebar_position && $bigbo_sidebar_position != 'default') ):
 
-		if ( $dayneo_sidebar_position == '1c' || $dayneo_sidebar_position == '2cl' || $dayneo_sidebar_position == '2cr' ) {
+		if ( $bigbo_sidebar_position == '1c' || $bigbo_sidebar_position == '2cl' || $bigbo_sidebar_position == '2cr' ) {
 			$get_sidebar = false;
 		}
 
-		if ( $dayneo_sidebar_position == "3cm" || $dayneo_sidebar_position == "3cl" || $dayneo_sidebar_position == "3cr" ) {
+		if ( $bigbo_sidebar_position == "3cm" || $bigbo_sidebar_position == "3cl" || $bigbo_sidebar_position == "3cr" ) {
 			$get_sidebar = true;
 		}
 
@@ -1617,14 +1617,14 @@ function dayneo_lets_get_sidebar_2() {
  * @global type $wp_query
  * @global string $post
  */
-function dayneo_sidebar_class() {
+function bigbo_sidebar_class() {
 	global $wp_query, $post;
 
 	$post_id = '';
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = dayneo_bp_get_id();
+            $post_id = bigbo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1633,9 +1633,9 @@ function dayneo_sidebar_class() {
 
 	$sidebar_css = '';
 
-	$dd_layout		 = dayneo_get_option( 'dd_layout', '2cl' );
-	$dd_opt1_width_sidebar1	 = dayneo_get_option( 'dd_opt1_width_sidebar1', '4' );
-	$dd_opt2_width_sidebar1	 = dayneo_get_option( 'dd_opt2_width_sidebar1', '3' );
+	$dd_layout		 = bigbo_get_option( 'dd_layout', '2cl' );
+	$dd_opt1_width_sidebar1	 = bigbo_get_option( 'dd_opt1_width_sidebar1', '4' );
+	$dd_opt2_width_sidebar1	 = bigbo_get_option( 'dd_opt2_width_sidebar1', '3' );
 
 	switch ( $dd_layout ):
 		case "1c":
@@ -1658,9 +1658,9 @@ function dayneo_sidebar_class() {
 			break;
 	endswitch;
 
-	$dayneo_sidebar_position = get_post_meta( $post_id, 'dayneo_sidebar_position', true );
-	if ( (is_page() || is_single()) && ($dayneo_sidebar_position && $dayneo_sidebar_position != 'default') ):
-		switch ( $dayneo_sidebar_position ):
+	$bigbo_sidebar_position = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
+	if ( (is_page() || is_single()) && ($bigbo_sidebar_position && $bigbo_sidebar_position != 'default') ):
+		switch ( $bigbo_sidebar_position ):
 			case "1c":
 				//do nothing
 				break;
@@ -1699,14 +1699,14 @@ function dayneo_sidebar_class() {
  * @global type $wp_query
  * @global string $post
  */
-function dayneo_sidebar2_class() {
+function bigbo_sidebar2_class() {
 	global $wp_query, $post;
 
 	$post_id = '';
         if ( $wp_query->is_posts_page ) {
             $post_id = get_option( 'page_for_posts' );
         } elseif ( is_buddypress() ) {
-            $post_id = dayneo_bp_get_id();
+            $post_id = bigbo_bp_get_id();
         } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
             $post_id = wc_get_page_id('shop');
         } else {
@@ -1715,8 +1715,8 @@ function dayneo_sidebar2_class() {
 
 	$sidebar_css = '';
 
-	$dd_layout		 = dayneo_get_option( 'dd_layout', '2cl' );
-	$dd_opt2_width_sidebar2	 = dayneo_get_option( 'dd_opt2_width_sidebar2', '3' );
+	$dd_layout		 = bigbo_get_option( 'dd_layout', '2cl' );
+	$dd_opt2_width_sidebar2	 = bigbo_get_option( 'dd_opt2_width_sidebar2', '3' );
 
 	switch ( $dd_layout ):
 		case "1c":
@@ -1739,9 +1739,9 @@ function dayneo_sidebar2_class() {
 			break;
 	endswitch;
 
-	$dayneo_sidebar_position = get_post_meta( $post_id, 'dayneo_sidebar_position', true );
-	if ( (is_page() || is_single()) && ($dayneo_sidebar_position && $dayneo_sidebar_position != 'default') ):
-		switch ( $dayneo_sidebar_position ):
+	$bigbo_sidebar_position = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
+	if ( (is_page() || is_single()) && ($bigbo_sidebar_position && $bigbo_sidebar_position != 'default') ):
+		switch ( $bigbo_sidebar_position ):
 			case "1c":
 				//do nothing
 				break;
@@ -1766,13 +1766,13 @@ function dayneo_sidebar2_class() {
 	echo esc_attr($sidebar_css);
 }
 
-// -> END Dayneo General Layout Functions
+// -> END Bigbo General Layout Functions
 
 /**
  * Adds quick view modal on the footer
  */
-if ( ! function_exists( 'dayneo_quick_view_modal' ) ) :
-    function dayneo_quick_view_modal() {
+if ( ! function_exists( 'bigbo_quick_view_modal' ) ) :
+    function bigbo_quick_view_modal() {
             if ( is_page_template( 'template-coming-soon-page.php' ) || is_404() ) {
                     return;
             }
@@ -1790,16 +1790,16 @@ if ( ! function_exists( 'dayneo_quick_view_modal' ) ) :
     }
 endif;
 
-add_action( 'wp_footer', 'dayneo_quick_view_modal' );
+add_action( 'wp_footer', 'bigbo_quick_view_modal' );
 
 /**
  * Add newsletter popup on the footer
  *
  * @since 1.0.0
  */
-if ( ! function_exists( 'dayneo_newsletter_popup' ) ) :
-	function dayneo_newsletter_popup() {
-		if ( ! dayneo_get_option( 'dd_popup' ) ) {
+if ( ! function_exists( 'bigbo_newsletter_popup' ) ) :
+	function bigbo_newsletter_popup() {
+		if ( ! bigbo_get_option( 'dd_popup' ) ) {
 			return;
 		}
 
@@ -1814,19 +1814,19 @@ if ( ! function_exists( 'dayneo_newsletter_popup' ) ) :
 
 		$output = array();
                 
-                if ( $title = dayneo_get_option( 'dd_popup_heading' ) ) {
+                if ( $title = bigbo_get_option( 'dd_popup_heading' ) ) {
 			$output[] = sprintf( '<div class="newsletter_title"><h3 class="h3">%s</h3></div>', esc_html($title) );
 		}
 
-		if ( $desc = dayneo_get_option( 'dd_popup_content' ) ) {
+		if ( $desc = bigbo_get_option( 'dd_popup_content' ) ) {
 			$output[] = sprintf( '<div class="ddContent">%s</div>', esc_html($desc) );
 		}
 
-		if ( $form = dayneo_get_option( 'dd_popup_form' ) ) {
+		if ( $form = bigbo_get_option( 'dd_popup_form' ) ) {
 			$output[] = sprintf( '<div class="form-wrap">%s</div>', do_shortcode($form) );
 		}
 
-                if ( $dd_popup_bg = dayneo_get_option( 'dd_popup_bg', '' ) ) {
+                if ( $dd_popup_bg = bigbo_get_option( 'dd_popup_bg', '' ) ) {
                         $image = $dd_popup_bg['url'];
                 } ?>
                 <!-- START NEWSLETTER POPUP -->
@@ -1839,7 +1839,7 @@ if ( ! function_exists( 'dayneo_newsletter_popup' ) ) :
                                     <?php echo implode( '', $output ) ?>                                      
                                 </div>          
                                 <div class="newsletter_block_popup-bottom check-fancy m-t-15">
-                                    <a href="#" class="newsletter_show_again"><?php echo esc_html_e( 'Don\'t show this popup again', 'dayneo' ); ?></a>         
+                                    <a href="#" class="newsletter_show_again"><?php echo esc_html_e( 'Don\'t show this popup again', 'bigbo' ); ?></a>         
                                 </div>
                             </div>
                         </div>
@@ -1850,4 +1850,4 @@ if ( ! function_exists( 'dayneo_newsletter_popup' ) ) :
 	}
 endif;
 
-add_action( 'wp_footer', 'dayneo_newsletter_popup' );
+add_action( 'wp_footer', 'bigbo_newsletter_popup' );

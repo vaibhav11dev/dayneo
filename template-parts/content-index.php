@@ -3,7 +3,7 @@
  * Template part for displaying posts
  *
  *
- * @package dayneo
+ * @package bigbo
  */
 global $dd_options;
 
@@ -25,7 +25,7 @@ if ( have_posts() ) :
 			}
 			?>
 			<!--  BLOG CONTENT  -->
-			<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo dayneo_post_format(); ?>">
+			<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo bigbo_post_format(); ?>">
 
 			    <?php
 			    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
@@ -34,7 +34,7 @@ if ( have_posts() ) :
 					<div class="col-sm-5 img-col">
 					    <?php
 				    }
-				    dayneo_post_thumbnail();
+				    bigbo_post_thumbnail();
 				    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
 					    ?>
 					</div>
@@ -47,12 +47,12 @@ if ( have_posts() ) :
 
 					<div class="entry-meta entry-header">
 					    <?php
-					    dayneo_post_heading();
+					    bigbo_post_heading();
 
 					    if ( $dd_options[ 'dd_header_meta' ] == 1 ) {
 						    ?>
 						    <ul class="post-meta">
-							<?php dayneo_post_metadata(); ?> 
+							<?php bigbo_post_metadata(); ?> 
 						    </ul>
 						    <?php
 					    }
@@ -64,7 +64,7 @@ if ( have_posts() ) :
 					</div>
 
 					<div class="entry-meta entry-footer">
-					    <?php dayneo_post_readmore(); ?>
+					    <?php bigbo_post_readmore(); ?>
 					</div>
 
 				    </div>

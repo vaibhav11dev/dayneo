@@ -228,8 +228,8 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
                 echo '<input type="hidden" class="redux-typography-google-font" value="' . $isGoogleFont . '" id="' . $this->field['id'] . '-google-font">';
 
                 echo '<div class="select_wrapper typography-family" style="width: 220px; margin-right: 5px;">';
-                echo '<label>' . __( 'Font Family', 'dayneo' ) . '</label>';
-                $placeholder = $fontFamily[0] ? $fontFamily[0] : __( 'Font family', 'dayneo' );
+                echo '<label>' . __( 'Font Family', 'bigbo' ) . '</label>';
+                $placeholder = $fontFamily[0] ? $fontFamily[0] : __( 'Font family', 'bigbo' );
 
                 echo '<div class=" redux-typography redux-typography-family select2-container ' . $this->field['class'] . '" id="' . $this->field['id'] . '-family" placeholder="' . $placeholder . '" data-id="' . $this->field['id'] . '" data-value="' . $fontFamily[0] . '">';
 
@@ -255,8 +255,8 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 
                 if ( $this->field['font-backup'] === true ) {
                     echo '<div class="select_wrapper typography-family-backup" style="width: 220px; margin-right: 5px;">';
-                    echo '<label>' . __( 'Backup Font Family', 'dayneo' ) . '</label>';
-                    echo '<select data-placeholder="' . __( 'Backup Font Family', 'dayneo' ) . '" name="' . $this->field['name'] . $this->field['name_suffix'] . '[font-backup]' . '" class="redux-typography redux-typography-family-backup ' . $this->field['class'] . '" id="' . $this->field['id'] . '-family-backup" data-id="' . $this->field['id'] . '" data-value="' . $this->value['font-backup'] . '">';
+                    echo '<label>' . __( 'Backup Font Family', 'bigbo' ) . '</label>';
+                    echo '<select data-placeholder="' . __( 'Backup Font Family', 'bigbo' ) . '" name="' . $this->field['name'] . $this->field['name_suffix'] . '[font-backup]' . '" class="redux-typography redux-typography-family-backup ' . $this->field['class'] . '" id="' . $this->field['id'] . '-family-backup" data-id="' . $this->field['id'] . '" data-value="' . $this->value['font-backup'] . '">';
                     echo '<option data-google="false" data-details="" value=""></option>';
 
                     foreach ( $this->field['fonts'] as $i => $family ) {
@@ -270,15 +270,15 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
             /* Font Style/Weight */
             if ( $this->field['font-style'] === true || $this->field['font-weight'] === true ) {
 
-                echo '<div class="select_wrapper typography-style" original-title="' . __( 'Font style', 'dayneo' ) . '">';
-                echo '<label>' . __( 'Font Weight &amp; Style', 'dayneo' ) . '</label>';
+                echo '<div class="select_wrapper typography-style" original-title="' . __( 'Font style', 'bigbo' ) . '">';
+                echo '<label>' . __( 'Font Weight &amp; Style', 'bigbo' ) . '</label>';
 
                 $style = $this->value['font-weight'] . $this->value['font-style'];
 
                 echo '<input type="hidden" class="typography-font-weight" name="' . $this->field['name'] . $this->field['name_suffix'] . '[font-weight]' . '" value="' . $this->value['font-weight'] . '" data-id="' . $this->field['id'] . '"  /> ';
                 echo '<input type="hidden" class="typography-font-style" name="' . $this->field['name'] . $this->field['name_suffix'] . '[font-style]' . '" value="' . $this->value['font-style'] . '" data-id="' . $this->field['id'] . '"  /> ';
                 $multi = ( isset( $this->field['multi']['weight'] ) && $this->field['multi']['weight'] ) ? ' multiple="multiple"' : "";
-                echo '<select' . $multi . ' data-placeholder="' . __( 'Style', 'dayneo' ) . '" class="redux-typography redux-typography-style select ' . $this->field['class'] . '" original-title="' . __( 'Font style', 'dayneo' ) . '" id="' . $this->field['id'] . '_style" data-id="' . $this->field['id'] . '" data-value="' . $style . '">';
+                echo '<select' . $multi . ' data-placeholder="' . __( 'Style', 'bigbo' ) . '" class="redux-typography redux-typography-style select ' . $this->field['class'] . '" original-title="' . __( 'Font style', 'bigbo' ) . '" id="' . $this->field['id'] . '_style" data-id="' . $this->field['id'] . '" data-value="' . $style . '">';
 
                 if ( empty( $this->value['subset'] ) || empty( $this->value['font-weight'] ) ) {
                     echo '<option value=""></option>';
@@ -318,11 +318,11 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 
             /* Font Script */
             if ( $this->field['font-family'] == true && $this->field['subsets'] == true && $this->field['google'] == true ) {
-                echo '<div class="select_wrapper typography-script tooltip" original-title="' . __( 'Font subsets', 'dayneo' ) . '">';
+                echo '<div class="select_wrapper typography-script tooltip" original-title="' . __( 'Font subsets', 'bigbo' ) . '">';
                 echo '<input type="hidden" class="typography-subsets" name="' . $this->field['name'] . $this->field['name_suffix'] . '[subsets]' . '" value="' . $this->value['subsets'] . '" data-id="' . $this->field['id'] . '"  /> ';
-                echo '<label>' . __( 'Font Subsets', 'dayneo' ) . '</label>';
+                echo '<label>' . __( 'Font Subsets', 'bigbo' ) . '</label>';
                 $multi = ( isset( $this->field['multi']['subset'] ) && $this->field['multi']['subset'] ) ? ' multiple="multiple"' : "";
-                echo '<select'.$multi.' data-placeholder="' . __( 'Subsets', 'dayneo' ) . '" class="redux-typography redux-typography-subsets ' . $this->field['class'] . '" original-title="' . __( 'Font script', 'dayneo' ) . '"  id="' . $this->field['id'] . '-subsets" data-value="' . $this->value['subsets'] . '" data-id="' . $this->field['id'] . '" >';
+                echo '<select'.$multi.' data-placeholder="' . __( 'Subsets', 'bigbo' ) . '" class="redux-typography redux-typography-subsets ' . $this->field['class'] . '" original-title="' . __( 'Font script', 'bigbo' ) . '"  id="' . $this->field['id'] . '-subsets" data-value="' . $this->value['subsets'] . '" data-id="' . $this->field['id'] . '" >';
 
                 if ( empty( $this->value['subsets'] ) ) {
                     echo '<option value=""></option>';
@@ -339,9 +339,9 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 
             /* Font Align */
             if ( $this->field['text-align'] === true ) {
-                echo '<div class="select_wrapper typography-align tooltip" original-title="' . __( 'Text Align', 'dayneo' ) . '">';
-                echo '<label>' . __( 'Text Align', 'dayneo' ) . '</label>';
-                echo '<select data-placeholder="' . __( 'Text Align', 'dayneo' ) . '" class="redux-typography redux-typography-align ' . $this->field['class'] . '" original-title="' . __( 'Text Align', 'dayneo' ) . '"  id="' . $this->field['id'] . '-align" name="' . $this->field['name'] . $this->field['name_suffix'] . '[text-align]' . '" data-value="' . $this->value['text-align'] . '" data-id="' . $this->field['id'] . '" >';
+                echo '<div class="select_wrapper typography-align tooltip" original-title="' . __( 'Text Align', 'bigbo' ) . '">';
+                echo '<label>' . __( 'Text Align', 'bigbo' ) . '</label>';
+                echo '<select data-placeholder="' . __( 'Text Align', 'bigbo' ) . '" class="redux-typography redux-typography-align ' . $this->field['class'] . '" original-title="' . __( 'Text Align', 'bigbo' ) . '"  id="' . $this->field['id'] . '-align" name="' . $this->field['name'] . $this->field['name_suffix'] . '[text-align]' . '" data-value="' . $this->value['text-align'] . '" data-id="' . $this->field['id'] . '" >';
                 echo '<option value=""></option>';
 
                 $align = array(
@@ -362,9 +362,9 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 
             /* Text Transform */
             if ( $this->field['text-transform'] === true ) {
-                echo '<div class="select_wrapper typography-transform tooltip" original-title="' . __( 'Text Transform', 'dayneo' ) . '">';
-                echo '<label>' . __( 'Text Transform', 'dayneo' ) . '</label>';
-                echo '<select data-placeholder="' . __( 'Text Transform', 'dayneo' ) . '" class="redux-typography redux-typography-transform ' . $this->field['class'] . '" original-title="' . __( 'Text Transform', 'dayneo' ) . '"  id="' . $this->field['id'] . '-transform" name="' . $this->field['name'] . $this->field['name_suffix'] . '[text-transform]' . '" data-value="' . $this->value['text-transform'] . '" data-id="' . $this->field['id'] . '" >';
+                echo '<div class="select_wrapper typography-transform tooltip" original-title="' . __( 'Text Transform', 'bigbo' ) . '">';
+                echo '<label>' . __( 'Text Transform', 'bigbo' ) . '</label>';
+                echo '<select data-placeholder="' . __( 'Text Transform', 'bigbo' ) . '" class="redux-typography redux-typography-transform ' . $this->field['class'] . '" original-title="' . __( 'Text Transform', 'bigbo' ) . '"  id="' . $this->field['id'] . '-transform" name="' . $this->field['name'] . $this->field['name_suffix'] . '[text-transform]' . '" data-value="' . $this->value['text-transform'] . '" data-id="' . $this->field['id'] . '" >';
                 echo '<option value=""></option>';
 
                 $values = array(
@@ -385,9 +385,9 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 
             /* Font Variant */
             if ( $this->field['font-variant'] === true ) {
-                echo '<div class="select_wrapper typography-font-variant tooltip" original-title="' . __( 'Font Variant', 'dayneo' ) . '">';
-                echo '<label>' . __( 'Font Variant', 'dayneo' ) . '</label>';
-                echo '<select data-placeholder="' . __( 'Font Variant', 'dayneo' ) . '" class="redux-typography redux-typography-font-variant ' . $this->field['class'] . '" original-title="' . __( 'Font Variant', 'dayneo' ) . '"  id="' . $this->field['id'] . '-font-variant" name="' . $this->field['name'] . $this->field['name_suffix'] . '[font-variant]' . '" data-value="' . $this->value['font-variant'] . '" data-id="' . $this->field['id'] . '" >';
+                echo '<div class="select_wrapper typography-font-variant tooltip" original-title="' . __( 'Font Variant', 'bigbo' ) . '">';
+                echo '<label>' . __( 'Font Variant', 'bigbo' ) . '</label>';
+                echo '<select data-placeholder="' . __( 'Font Variant', 'bigbo' ) . '" class="redux-typography redux-typography-font-variant ' . $this->field['class'] . '" original-title="' . __( 'Font Variant', 'bigbo' ) . '"  id="' . $this->field['id'] . '-font-variant" name="' . $this->field['name'] . $this->field['name_suffix'] . '[font-variant]' . '" data-value="' . $this->value['font-variant'] . '" data-id="' . $this->field['id'] . '" >';
                 echo '<option value=""></option>';
 
                 $values = array(
@@ -405,9 +405,9 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 
             /* Text Decoration */
             if ( $this->field['text-decoration'] === true ) {
-                echo '<div class="select_wrapper typography-decoration tooltip" original-title="' . __( 'Text Decoration', 'dayneo' ) . '">';
-                echo '<label>' . __( 'Text Decoration', 'dayneo' ) . '</label>';
-                echo '<select data-placeholder="' . __( 'Text Decoration', 'dayneo' ) . '" class="redux-typography redux-typography-decoration ' . $this->field['class'] . '" original-title="' . __( 'Text Decoration', 'dayneo' ) . '"  id="' . $this->field['id'] . '-decoration" name="' . $this->field['name'] . $this->field['name_suffix'] . '[text-decoration]' . '" data-value="' . $this->value['text-decoration'] . '" data-id="' . $this->field['id'] . '" >';
+                echo '<div class="select_wrapper typography-decoration tooltip" original-title="' . __( 'Text Decoration', 'bigbo' ) . '">';
+                echo '<label>' . __( 'Text Decoration', 'bigbo' ) . '</label>';
+                echo '<select data-placeholder="' . __( 'Text Decoration', 'bigbo' ) . '" class="redux-typography redux-typography-decoration ' . $this->field['class'] . '" original-title="' . __( 'Text Decoration', 'bigbo' ) . '"  id="' . $this->field['id'] . '-decoration" name="' . $this->field['name'] . $this->field['name_suffix'] . '[text-decoration]' . '" data-value="' . $this->value['text-decoration'] . '" data-id="' . $this->field['id'] . '" >';
                 echo '<option value=""></option>';
 
                 $values = array(
@@ -429,8 +429,8 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
             /* Font Size */
             if ( $this->field['font-size'] === true ) {
                 echo '<div class="input_wrapper font-size redux-container-typography">';
-                echo '<label>' . __( 'Font Size', 'dayneo' ) . '</label>';
-                echo '<div class="input-append"><input type="text" class="span2 redux-typography redux-typography-size mini typography-input ' . $this->field['class'] . '" title="' . __( 'Font Size', 'dayneo' ) . '" placeholder="' . __( 'Size', 'dayneo' ) . '" id="' . $this->field['id'] . '-size" name="' . $this->field['name'] . $this->field['name_suffix'] . '[font-size]' . '" value="' . str_replace( $unit, '', $this->value['font-size'] ) . '" data-value="' . str_replace( $unit, '', $this->value['font-size'] ) . '"><span class="add-on">' . $unit . '</span></div>';
+                echo '<label>' . __( 'Font Size', 'bigbo' ) . '</label>';
+                echo '<div class="input-append"><input type="text" class="span2 redux-typography redux-typography-size mini typography-input ' . $this->field['class'] . '" title="' . __( 'Font Size', 'bigbo' ) . '" placeholder="' . __( 'Size', 'bigbo' ) . '" id="' . $this->field['id'] . '-size" name="' . $this->field['name'] . $this->field['name_suffix'] . '[font-size]' . '" value="' . str_replace( $unit, '', $this->value['font-size'] ) . '" data-value="' . str_replace( $unit, '', $this->value['font-size'] ) . '"><span class="add-on">' . $unit . '</span></div>';
                 echo '<input type="hidden" class="typography-font-size" name="' . $this->field['name'] . $this->field['name_suffix'] . '[font-size]' . '" value="' . $this->value['font-size'] . '" data-id="' . $this->field['id'] . '"  />';
                 echo '</div>';
             }
@@ -438,8 +438,8 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
             /* Line Height */
             if ( $this->field['line-height'] === true ) {
                 echo '<div class="input_wrapper line-height redux-container-typography">';
-                echo '<label>' . __( 'Line Height', 'dayneo' ) . '</label>';
-                echo '<div class="input-append"><input type="text" class="span2 redux-typography redux-typography-height mini typography-input ' . $this->field['class'] . '" title="' . __( 'Line Height', 'dayneo' ) . '" placeholder="' . __( 'Height', 'dayneo' ) . '" id="' . $this->field['id'] . '-height" value="' . str_replace( $unit, '', $this->value['line-height'] ) . '" data-value="' . str_replace( $unit, '', $this->value['line-height'] ) . '"><span class="add-on">' . $unit . '</span></div>';
+                echo '<label>' . __( 'Line Height', 'bigbo' ) . '</label>';
+                echo '<div class="input-append"><input type="text" class="span2 redux-typography redux-typography-height mini typography-input ' . $this->field['class'] . '" title="' . __( 'Line Height', 'bigbo' ) . '" placeholder="' . __( 'Height', 'bigbo' ) . '" id="' . $this->field['id'] . '-height" value="' . str_replace( $unit, '', $this->value['line-height'] ) . '" data-value="' . str_replace( $unit, '', $this->value['line-height'] ) . '"><span class="add-on">' . $unit . '</span></div>';
                 echo '<input type="hidden" class="typography-line-height" name="' . $this->field['name'] . $this->field['name_suffix'] . '[line-height]' . '" value="' . $this->value['line-height'] . '" data-id="' . $this->field['id'] . '"  />';
                 echo '</div>';
             }
@@ -447,8 +447,8 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
             /* Word Spacing */
             if ( $this->field['word-spacing'] === true ) {
                 echo '<div class="input_wrapper word-spacing redux-container-typography">';
-                echo '<label>' . __( 'Word Spacing', 'dayneo' ) . '</label>';
-                echo '<div class="input-append"><input type="text" class="span2 redux-typography redux-typography-word mini typography-input ' . $this->field['class'] . '" title="' . __( 'Word Spacing', 'dayneo' ) . '" placeholder="' . __( 'Word Spacing', 'dayneo' ) . '" id="' . $this->field['id'] . '-word" value="' . str_replace( $unit, '', $this->value['word-spacing'] ) . '" data-value="' . str_replace( $unit, '', $this->value['word-spacing'] ) . '"><span class="add-on">' . $unit . '</span></div>';
+                echo '<label>' . __( 'Word Spacing', 'bigbo' ) . '</label>';
+                echo '<div class="input-append"><input type="text" class="span2 redux-typography redux-typography-word mini typography-input ' . $this->field['class'] . '" title="' . __( 'Word Spacing', 'bigbo' ) . '" placeholder="' . __( 'Word Spacing', 'bigbo' ) . '" id="' . $this->field['id'] . '-word" value="' . str_replace( $unit, '', $this->value['word-spacing'] ) . '" data-value="' . str_replace( $unit, '', $this->value['word-spacing'] ) . '"><span class="add-on">' . $unit . '</span></div>';
                 echo '<input type="hidden" class="typography-word-spacing" name="' . $this->field['name'] . $this->field['name_suffix'] . '[word-spacing]' . '" value="' . $this->value['word-spacing'] . '" data-id="' . $this->field['id'] . '"  />';
                 echo '</div>';
             }
@@ -456,8 +456,8 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
             /* Letter Spacing */
             if ( $this->field['letter-spacing'] === true ) {
                 echo '<div class="input_wrapper letter-spacing redux-container-typography">';
-                echo '<label>' . __( 'Letter Spacing', 'dayneo' ) . '</label>';
-                echo '<div class="input-append"><input type="text" class="span2 redux-typography redux-typography-letter mini typography-input ' . $this->field['class'] . '" title="' . __( 'Letter Spacing', 'dayneo' ) . '" placeholder="' . __( 'Letter Spacing', 'dayneo' ) . '" id="' . $this->field['id'] . '-letter" value="' . str_replace( $unit, '', $this->value['letter-spacing'] ) . '" data-value="' . str_replace( $unit, '', $this->value['letter-spacing'] ) . '"><span class="add-on">' . $unit . '</span></div>';
+                echo '<label>' . __( 'Letter Spacing', 'bigbo' ) . '</label>';
+                echo '<div class="input-append"><input type="text" class="span2 redux-typography redux-typography-letter mini typography-input ' . $this->field['class'] . '" title="' . __( 'Letter Spacing', 'bigbo' ) . '" placeholder="' . __( 'Letter Spacing', 'bigbo' ) . '" id="' . $this->field['id'] . '-letter" value="' . str_replace( $unit, '', $this->value['letter-spacing'] ) . '" data-value="' . str_replace( $unit, '', $this->value['letter-spacing'] ) . '"><span class="add-on">' . $unit . '</span></div>';
                 echo '<input type="hidden" class="typography-letter-spacing" name="' . $this->field['name'] . $this->field['name_suffix'] . '[letter-spacing]' . '" value="' . $this->value['letter-spacing'] . '" data-id="' . $this->field['id'] . '"  />';
                 echo '</div>';
             }
@@ -475,9 +475,9 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
                 }
 
                 echo '<div class="picker-wrapper">';
-                echo '<label>' . __( 'Font Color', 'dayneo' ) . '</label>';
+                echo '<label>' . __( 'Font Color', 'bigbo' ) . '</label>';
                 echo '<div id="' . $this->field['id'] . '_color_picker" class="colorSelector typography-color"><div style="background-color: ' . $this->value['color'] . '"></div></div>';
-                echo '<input data-default-color="' . $default . '" class="redux-color redux-typography-color ' . $this->field['class'] . '" original-title="' . __( 'Font color', 'dayneo' ) . '" id="' . $this->field['id'] . '-color" name="' . $this->field['name'] . $this->field['name_suffix'] . '[color]' . '" type="text" value="' . $this->value['color'] . '" data-id="' . $this->field['id'] . '" />';
+                echo '<input data-default-color="' . $default . '" class="redux-color redux-typography-color ' . $this->field['class'] . '" original-title="' . __( 'Font color', 'bigbo' ) . '" id="' . $this->field['id'] . '-color" name="' . $this->field['name'] . $this->field['name_suffix'] . '[color]' . '" type="text" value="' . $this->value['color'] . '" data-id="' . $this->field['id'] . '" />';
                 echo '</div>';
             }
 
@@ -887,7 +887,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
                 }
 
                 $this->parent->font_groups['std'] = array(
-                    'text'     => __( 'Standard Fonts', 'dayneo' ),
+                    'text'     => __( 'Standard Fonts', 'bigbo' ),
                     'children' => array(),
                 );
 
@@ -988,7 +988,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 
                     // optgroup
                     $this->parent->font_groups['google'] = array(
-                        'text'     => __( 'Google Webfonts', 'dayneo' ),
+                        'text'     => __( 'Google Webfonts', 'bigbo' ),
                         'children' => array(),
                     );
 

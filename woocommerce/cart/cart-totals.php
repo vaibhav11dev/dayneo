@@ -25,13 +25,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-    <h2 class="cart_total_title"><?php esc_html_e( 'Cart totals', 'dayneo' ); ?></h2>
+    <h2 class="cart_total_title"><?php esc_html_e( 'Cart totals', 'bigbo' ); ?></h2>
 
 	<table cellspacing="0" class="table totals-table shop_table shop_table_responsive">
 
 		<tr class="cart-subtotal">
-		    <td><h5 class="m-0"><?php esc_html_e( 'Subtotal', 'dayneo' ); ?></h5></td>
-		    <td data-title="<?php esc_attr_e( 'Subtotal', 'dayneo' ); ?>"><h5 class="m-0 color-gray text-right"><?php wc_cart_totals_subtotal_html(); ?></h5></td>
+		    <td><h5 class="m-0"><?php esc_html_e( 'Subtotal', 'bigbo' ); ?></h5></td>
+		    <td data-title="<?php esc_attr_e( 'Subtotal', 'bigbo' ); ?>"><h5 class="m-0 color-gray text-right"><?php wc_cart_totals_subtotal_html(); ?></h5></td>
 		</tr>
 
 		<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
@@ -52,8 +52,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php elseif ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
 
 			<tr class="shipping">
-			    <td><h5 class="m-0"><?php esc_html_e( 'Shipping', 'dayneo' ); ?></h5></td>
-				<td data-title="<?php esc_attr_e( 'Shipping', 'dayneo' ); ?>"><h5 class="m-0 color-gray text-right"><?php woocommerce_shipping_calculator(); ?></h5></td>
+			    <td><h5 class="m-0"><?php esc_html_e( 'Shipping', 'bigbo' ); ?></h5></td>
+				<td data-title="<?php esc_attr_e( 'Shipping', 'bigbo' ); ?>"><h5 class="m-0 color-gray text-right"><?php woocommerce_shipping_calculator(); ?></h5></td>
 			</tr>
 
 		<?php endif; ?>
@@ -68,7 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php if ( wc_tax_enabled() && ! WC()->cart->display_prices_including_tax() ) :
 			$taxable_address = WC()->customer->get_taxable_address();
 			$estimated_text  = WC()->customer->is_customer_outside_base() && ! WC()->customer->has_calculated_shipping()
-					? sprintf( ' <small>' . __( '(estimated for %s)', 'dayneo' ) . '</small>', WC()->countries->estimated_for_prefix( $taxable_address[0] ) . WC()->countries->countries[ $taxable_address[0] ] )
+					? sprintf( ' <small>' . __( '(estimated for %s)', 'bigbo' ) . '</small>', WC()->countries->estimated_for_prefix( $taxable_address[0] ) . WC()->countries->countries[ $taxable_address[0] ] )
 					: '';
 
 			if ( 'itemized' === get_option( 'woocommerce_tax_total_display' ) ) : ?>
@@ -89,8 +89,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
 
 		<tr class="order-total">
-		    <td><h4 class="m-0"><?php esc_html_e( 'Total', 'dayneo' ); ?></h4></td>
-			<td data-title="<?php esc_attr_e( 'Total', 'dayneo' ); ?>"><h4 class="m-0 text-right"><?php wc_cart_totals_order_total_html(); ?></h4></td>
+		    <td><h4 class="m-0"><?php esc_html_e( 'Total', 'bigbo' ); ?></h4></td>
+			<td data-title="<?php esc_attr_e( 'Total', 'bigbo' ); ?>"><h4 class="m-0 text-right"><?php wc_cart_totals_order_total_html(); ?></h4></td>
 		</tr>
 
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>

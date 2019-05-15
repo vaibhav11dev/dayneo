@@ -30,9 +30,9 @@ remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_pr
  * @param type $fragments
  * @return type $fragments
  */
-function dayneo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
+function bigbo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
     global $woocommerce;
-    $dd_header_type = dayneo_get_option( 'dd_header_type', 'h1' );
+    $dd_header_type = bigbo_get_option( 'dd_header_type', 'h1' );
     ob_start();
     ?>
     <div class="menu-item header-ajax-cart">
@@ -43,7 +43,7 @@ function dayneo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
                         <i class="flaticon-paper-bag"></i>
                         <span class="mini-item-counter hidden-lg-up"><?php echo $woocommerce->cart->cart_contents_count; ?></span>
                     </span>
-                    <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'dayneo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
+                    <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'bigbo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
                 </div>
             <?php } else { ?>
                 <div class="icon-wrap-circle">
@@ -55,7 +55,7 @@ function dayneo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
                             </span>
                         </span>
                     </div> 
-                    <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shopping Cart', 'dayneo' ) ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>                    
+                    <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shopping Cart', 'bigbo' ) ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>                    
                 </div>
             <?php } ?>
         </a>
@@ -66,16 +66,16 @@ function dayneo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
     return $fragments;
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'dayneo_woocommerce_header_add_to_cart_fragment1', 9 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'bigbo_woocommerce_header_add_to_cart_fragment1', 9 );
 
-function dayneo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
+function bigbo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
     global $woocommerce;
     ob_start();
     if ( ! $woocommerce->cart->cart_contents_count ) {
         ?>
         <div class="sub-cart-menu ajax-cart-content">
             <span class="empty-cart"></span>
-            <p class="empty-cart-text"><?php _e( 'Your cart is currently empty.', 'dayneo' ); ?></p>
+            <p class="empty-cart-text"><?php _e( 'Your cart is currently empty.', 'bigbo' ); ?></p>
         </div>
         <?php
     } else {
@@ -107,7 +107,7 @@ function dayneo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
                         <div class="del-minicart">
                             <?php
                             echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
-                            '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-cart_item_key="%s"><i class="fa fa-trash-o" aria-hidden="true"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), esc_html__( 'Remove this item', 'dayneo' ), esc_attr( $cart_item[ 'product_id' ] ), esc_attr( $cart_item_key )
+                            '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-cart_item_key="%s"><i class="fa fa-trash-o" aria-hidden="true"></i></a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), esc_html__( 'Remove this item', 'bigbo' ), esc_attr( $cart_item[ 'product_id' ] ), esc_attr( $cart_item_key )
                             ), $cart_item_key );
                             ?>
                         </div>
@@ -116,25 +116,25 @@ function dayneo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
                 <?php endforeach; ?>
             </div>
             <div class="hr"></div>
-            <div class="subtotal-count"><?php _e( 'Subtotal:', 'dayneo' ); ?> 
+            <div class="subtotal-count"><?php _e( 'Subtotal:', 'bigbo' ); ?> 
                 <b class="content-subhead">
                     <?php echo wc_price( $woocommerce->cart->subtotal ); ?>
                 </b>
             </div>
-            <div class="shipping-count"><?php _e( 'Shipping:', 'dayneo' ); ?> 
+            <div class="shipping-count"><?php _e( 'Shipping:', 'bigbo' ); ?> 
                 <b class="content-subhead">
                     <?php echo wc_price( $woocommerce->cart->shipping_total ); ?>
                 </b>
             </div>
-            <div class="total-count"><?php _e( 'Total:', 'dayneo' ); ?> 
+            <div class="total-count"><?php _e( 'Total:', 'bigbo' ); ?> 
                 <b class="content-subhead">
                     <?php echo wc_price( $woocommerce->cart->total ); ?>
                 </b>
             </div>
             <div class="clearfix"></div>
             <div class="cart-button"> 
-                <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'View Cart', 'dayneo' ); ?></a>
-                <a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'Checkout', 'dayneo' ); ?></a> 
+                <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'View Cart', 'bigbo' ); ?></a>
+                <a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'Checkout', 'bigbo' ); ?></a> 
             </div>
         </div>
         <?php
@@ -143,10 +143,10 @@ function dayneo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
     return $fragments;
 }
 
-add_filter( 'woocommerce_add_to_cart_fragments', 'dayneo_woocommerce_header_add_to_cart_fragment2', 10 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'bigbo_woocommerce_header_add_to_cart_fragment2', 10 );
 
 // Remove product in the cart using ajax
-function dayneo_ajax_product_remove() {
+function bigbo_ajax_product_remove() {
     // Get mini cart
     ob_start();
 
@@ -177,42 +177,42 @@ function dayneo_ajax_product_remove() {
     die();
 }
 
-add_action( 'wp_ajax_product_remove', 'dayneo_ajax_product_remove' );
-add_action( 'wp_ajax_nopriv_product_remove', 'dayneo_ajax_product_remove' );
+add_action( 'wp_ajax_product_remove', 'bigbo_ajax_product_remove' );
+add_action( 'wp_ajax_nopriv_product_remove', 'bigbo_ajax_product_remove' );
 
 /**
  *
  * Code used to change the price order in WooCommerce
  *
  * */
-function dayneo_woocommerce_price_html( $price, $product ) {
+function bigbo_woocommerce_price_html( $price, $product ) {
     return preg_replace( '@(<del>.*?</del>).*?(<ins>.*?</ins>)@misx', '$2 $1', $price );
 }
 
-add_filter( 'woocommerce_get_price_html', 'dayneo_woocommerce_price_html', 100, 2 );
+add_filter( 'woocommerce_get_price_html', 'bigbo_woocommerce_price_html', 100, 2 );
 
 /**
  * WooCommerce(shop-page) - No of Related Products
  * 
  * @return $args
  */
-function dayneo_related_products_args( $args ) {
+function bigbo_related_products_args( $args ) {
     $args[ 'posts_per_page' ] = 5; // number of related products
     return $args;
 }
 
-add_filter( 'woocommerce_output_related_products_args', 'dayneo_related_products_args', 20 );
+add_filter( 'woocommerce_output_related_products_args', 'bigbo_related_products_args', 20 );
 
 /**
  * WooCommerce(shop-page) - Remove shop page title
  * 
  * @return boolean
  */
-function dayneo_shop_title() {
+function bigbo_shop_title() {
     return false;
 }
 
-add_filter( 'woocommerce_show_page_title', 'dayneo_shop_title', 10 );
+add_filter( 'woocommerce_show_page_title', 'bigbo_shop_title', 10 );
 
 /**
  * WooCommerce(shop-page) - Remove shop page breadcrumb
@@ -227,7 +227,7 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 
  * 
  * @return boolean
  */
-function dayneo_woocommerce_template_loop_product_title() {
+function bigbo_woocommerce_template_loop_product_title() {
     global $product;
 
     $link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
@@ -236,33 +236,33 @@ function dayneo_woocommerce_template_loop_product_title() {
 }
 
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
-add_action( 'woocommerce_shop_loop_item_title', 'dayneo_woocommerce_template_loop_product_title', 10 );
+add_action( 'woocommerce_shop_loop_item_title', 'bigbo_woocommerce_template_loop_product_title', 10 );
 
 /**
  * WooCommerce(shop-page) - Add Custom product shorting filter in shop page
  * 
  * 
  */
-function dayneo_woocommerce_ordering() {
-    $dd_woocommerce_dayneo_ordering = dayneo_get_option( 'dd_woocommerce_dayneo_ordering', '0' );
+function bigbo_woocommerce_ordering() {
+    $dd_woocommerce_bigbo_ordering = bigbo_get_option( 'dd_woocommerce_bigbo_ordering', '0' );
 
     // remove default shorting option
     remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
     remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
-    if ( ! $dd_woocommerce_dayneo_ordering ) {
-        add_action( 'woocommerce_before_shop_loop', 'dayneo_woocommerce_catalog_ordering', 30 );
-        add_action( 'woocommerce_get_catalog_ordering_args', 'dayneo_woocommerce_get_catalog_ordering_args', 20 );
-        add_filter( 'loop_shop_per_page', 'dayneo_loop_shop_per_page' );
+    if ( ! $dd_woocommerce_bigbo_ordering ) {
+        add_action( 'woocommerce_before_shop_loop', 'bigbo_woocommerce_catalog_ordering', 30 );
+        add_action( 'woocommerce_get_catalog_ordering_args', 'bigbo_woocommerce_get_catalog_ordering_args', 20 );
+        add_filter( 'loop_shop_per_page', 'bigbo_loop_shop_per_page' );
     }
 }
 
-add_action( 'init', 'dayneo_woocommerce_ordering' );
+add_action( 'init', 'bigbo_woocommerce_ordering' );
 
-function dayneo_woocommerce_catalog_ordering() {
+function bigbo_woocommerce_catalog_ordering() {
     global $wp_query;
     $total = $wp_query->found_posts;
 
-    $dd_woo_items = dayneo_get_option( 'dd_woo_items', '12' );
+    $dd_woo_items = bigbo_get_option( 'dd_woo_items', '12' );
 
     if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
 
@@ -298,14 +298,14 @@ function dayneo_woocommerce_catalog_ordering() {
     $html .= '<div class="form-group col-md-7">';
     $html .= '<ul class="form-control orderby order-dropdown pull-right">';
     $html .= '<li class="dropdown">';
-    $html .= '<span data-toggle="dropdown" class="current-li"><span class="current-li-content"><a>' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a><i class="fa fa-angle-down"></i></span></span>';
+    $html .= '<span data-toggle="dropdown" class="current-li"><span class="current-li-content"><a>' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Default Order', 'bigbo' ) . '</strong></a><i class="fa fa-angle-down"></i></span></span>';
     $html .= '<ul class="dropdown-menu">';
-    $html .= '<li class="' . (($pob == 'default') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'default' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Default Order', 'dayneo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pob == 'name') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'name' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Name', 'dayneo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pob == 'price') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'price' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Price', 'dayneo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pob == 'date') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'date' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Date', 'dayneo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pob == 'popularity') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'popularity' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Popularity', 'dayneo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pob == 'rating') ? 'current' : '') . '"><a href="' . esc_url( dayneo_addURLParameter( $query_string, 'product_orderby', 'rating' ) ) . '">' . __( 'Sort by', 'dayneo' ) . ' <strong>' . __( 'Rating', 'dayneo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'default') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'default' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Default Order', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'name') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'name' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Name', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'price') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'price' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Price', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'date') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'date' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Date', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'popularity') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'popularity' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Popularity', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'rating') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'rating' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Rating', 'bigbo' ) . '</strong></a></li>';
     $html .= '</ul>';
     $html .= '</li>';
     $html .= '</ul>';
@@ -319,7 +319,7 @@ function dayneo_woocommerce_catalog_ordering() {
     echo $html;
 }
 
-function dayneo_woocommerce_get_catalog_ordering_args( $args ) {
+function bigbo_woocommerce_get_catalog_ordering_args( $args ) {
     global $woocommerce;
 
     if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
@@ -383,13 +383,13 @@ function dayneo_woocommerce_get_catalog_ordering_args( $args ) {
         $args[ 'order' ]    = strtoupper( $args[ 'order' ] );
         $args[ 'meta_key' ] = '';
 
-        add_filter( 'posts_clauses', 'dayneo_order_by_rating_post_clauses' );
+        add_filter( 'posts_clauses', 'bigbo_order_by_rating_post_clauses' );
     }
 
     return $args;
 }
 
-function dayneo_order_by_rating_post_clauses( $args ) {
+function bigbo_order_by_rating_post_clauses( $args ) {
     global $wpdb;
 
     $args[ 'fields' ] .= ", AVG( $wpdb->commentmeta.meta_value ) as average_rating ";
@@ -415,9 +415,9 @@ function dayneo_order_by_rating_post_clauses( $args ) {
     return $args;
 }
 
-function dayneo_loop_shop_per_page() {
+function bigbo_loop_shop_per_page() {
 
-    $dd_woo_items = dayneo_get_option( 'dd_woo_items', '12' );
+    $dd_woo_items = bigbo_get_option( 'dd_woo_items', '12' );
 
     if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
         parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
@@ -436,7 +436,7 @@ function dayneo_loop_shop_per_page() {
 
 /* bootstrap_input_classes hooks */
 
-function dayneo_add_bootstrap_input_classes( $args, $key, $value = null ) {
+function bigbo_add_bootstrap_input_classes( $args, $key, $value = null ) {
 
     // Start field type switch case
     switch ( $args[ 'type' ] ) {
@@ -485,7 +485,7 @@ function dayneo_add_bootstrap_input_classes( $args, $key, $value = null ) {
     return $args;
 }
 
-add_filter( 'woocommerce_form_field_args', 'dayneo_add_bootstrap_input_classes', 10, 3 );
+add_filter( 'woocommerce_form_field_args', 'bigbo_add_bootstrap_input_classes', 10, 3 );
 
 // Hook in
 //add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
@@ -498,12 +498,12 @@ function custom_override_checkout_fields( $fields ) {
 
 /* begin order hooks */
 remove_action( 'woocommerce_view_order', 'woocommerce_order_details_table', 10 );
-add_action( 'woocommerce_view_order', 'dayneo_woocommerce_view_order', 10 );
+add_action( 'woocommerce_view_order', 'bigbo_woocommerce_view_order', 10 );
 
 remove_action( 'woocommerce_thankyou', 'woocommerce_order_details_table', 10 );
-add_action( 'woocommerce_thankyou', 'dayneo_woocommerce_view_order', 10 );
+add_action( 'woocommerce_thankyou', 'bigbo_woocommerce_view_order', 10 );
 
-function dayneo_woocommerce_view_order( $order_id ) {
+function bigbo_woocommerce_view_order( $order_id ) {
     global $woocommerce;
 
     $order              = wc_get_order( $order_id );
@@ -513,16 +513,16 @@ function dayneo_woocommerce_view_order( $order_id ) {
             wc_get_template( 'order/order-downloads.php', array( 'downloads' => $downloads, 'show_title' => true ) );
     }
     ?>
-    <div class="dayneo-order-details woocommerce-content-box">
-        <div class="sec-head-style"><h3 class="text-title"><?php esc_html_e( 'Order Details', 'dayneo' ); ?></h3></div>
+    <div class="bigbo-order-details woocommerce-content-box">
+        <div class="sec-head-style"><h3 class="text-title"><?php esc_html_e( 'Order Details', 'bigbo' ); ?></h3></div>
         <div class="table-responsive">
             <table class="table cart-table order_details">
                 <thead>
                     <tr>
                         <th class="col-title"></th>
-                        <th class="col-title"><?php esc_html_e( 'Product', 'dayneo' ); ?></th>
-                        <th class="col-quantity"><?php esc_html_e( 'Quantity', 'dayneo' ); ?></th>
-                        <th class="col-subtotal"><?php esc_html_e( 'Total', 'dayneo' ); ?></th>
+                        <th class="col-title"><?php esc_html_e( 'Product', 'bigbo' ); ?></th>
+                        <th class="col-quantity"><?php esc_html_e( 'Quantity', 'bigbo' ); ?></th>
+                        <th class="col-subtotal"><?php esc_html_e( 'Total', 'bigbo' ); ?></th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -614,8 +614,8 @@ function dayneo_woocommerce_view_order( $order_id ) {
  * @since 1.0
  */
 function instance_search_result() {
-    if ( apply_filters( 'dayneo_check_ajax_referer', true ) ) {
-        check_ajax_referer( '_dayneo_nonce', 'nonce' );
+    if ( apply_filters( 'bigbo_check_ajax_referer', true ) ) {
+        check_ajax_referer( '_bigbo_nonce', 'nonce' );
     }
     $response = array();
 
@@ -626,7 +626,7 @@ function instance_search_result() {
     }
 
     if ( empty( $response ) ) {
-        $response[] = sprintf( '<li>%s</li>', esc_html__( 'Nothing found', 'dayneo' ) );
+        $response[] = sprintf( '<li>%s</li>', esc_html__( 'Nothing found', 'bigbo' ) );
     }
 
     $output = sprintf( '<ul>%s</ul>', implode( ' ', $response ) );
@@ -760,8 +760,8 @@ function instance_search_every_things_result() {
     return $response;
 }
 
-add_action( 'wp_ajax_dayneo_search_products', 'instance_search_result' );
-add_action( 'wp_ajax_nopriv_dayneo_search_products', 'instance_search_result' );
+add_action( 'wp_ajax_bigbo_search_products', 'instance_search_result' );
+add_action( 'wp_ajax_nopriv_bigbo_search_products', 'instance_search_result' );
 
 /**
  * Ajaxify update count wishlist
@@ -788,7 +788,7 @@ add_action( 'wp_ajax_nopriv_update_wishlist_count', 'update_wishlist_count' );
  * Show WooCommerce Taxonomy
  * 
  */
-function dayneo_woocommerce_taxonomy_archive() {
+function bigbo_woocommerce_taxonomy_archive() {
     if ( is_product_taxonomy() && 0 === absint( get_query_var( 'paged' ) ) ) {
         $cat = get_queried_object();
         if ( $cat && ! empty( $cat->name ) ) {
@@ -806,7 +806,7 @@ function dayneo_woocommerce_taxonomy_archive() {
 }
 
 remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
-add_action( 'woocommerce_archive_description', 'dayneo_woocommerce_taxonomy_archive', 10 );
+add_action( 'woocommerce_archive_description', 'bigbo_woocommerce_taxonomy_archive', 10 );
 
 /**
  * 
@@ -865,11 +865,11 @@ add_action( 'woocommerce_single_product_summary', 'dd_product_navigation', 4 );
 
 /**
  * 
- * Dayneo product share
+ * Bigbo product share
  * 
  * @global string $post
  */
-function dayneo_product_share() {
+function bigbo_product_share() {
     global $post;
     $image_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
     if ( empty( $image_url ) ) {
@@ -879,26 +879,26 @@ function dayneo_product_share() {
     <div class="ddSocial-sharing">
         <span class="labeTitle pull-left">Share</span>
         <ul class="social-icons social-icons-simple pull-left">
-            <li class="ddfacebook"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Facebook', 'dayneo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-facebook"></i></a></li>
-            <li class="ddtwitter"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Twitter', 'dayneo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr( $post->post_title ); ?>+&raquo;+<?php echo esc_url( dayneo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a></li>        
-            <li class="ddgoogleplus"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'dayneo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
-            <li class="ddpinterest"> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'dayneo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr( $image_url ); ?>&description=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-pinterest"></i></a></li>                  
-            <li class="ddmore"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'dayneo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="ti-plus"></i></a></li>
+            <li class="ddfacebook"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Facebook', 'bigbo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-facebook"></i></a></li>
+            <li class="ddtwitter"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Twitter', 'bigbo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr( $post->post_title ); ?>+&raquo;+<?php echo esc_url( bigbo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a></li>        
+            <li class="ddgoogleplus"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'bigbo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
+            <li class="ddpinterest"> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'bigbo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr( $image_url ); ?>&description=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-pinterest"></i></a></li>                  
+            <li class="ddmore"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="ti-plus"></i></a></li>
         </ul>
         <div class="clearfix"></div>
     </div>
     <?php
 }
 
-add_action( 'wp_ajax_dayneo_product_quick_view', 'product_quick_view' );
-add_action( 'wp_ajax_nopriv_dayneo_product_quick_view', 'product_quick_view' );
+add_action( 'wp_ajax_bigbo_product_quick_view', 'product_quick_view' );
+add_action( 'wp_ajax_nopriv_bigbo_product_quick_view', 'product_quick_view' );
 
 /**
  * product_quick_view
  */
 function product_quick_view() {
-//		if ( apply_filters( 'dayneo_check_ajax_referer', true ) ) {
-//			check_ajax_referer( '_dayneo_nonce', 'nonce' );
+//		if ( apply_filters( 'bigbo_check_ajax_referer', true ) ) {
+//			check_ajax_referer( '_bigbo_nonce', 'nonce' );
 //		}
     ob_start();
     if ( isset( $_POST[ 'product_id' ] ) && ! empty( $_POST[ 'product_id' ] ) ) {
@@ -915,7 +915,7 @@ function product_quick_view() {
 }
 
 // QuicKview
-add_action( 'dayneo_single_product_summary', 'get_product_quick_view_header', 5 );
+add_action( 'bigbo_single_product_summary', 'get_product_quick_view_header', 5 );
 
 /**
  * Add single product header
@@ -957,7 +957,7 @@ function get_product_quick_view_header() {
             add_action( 'yith_wcqv_product_summary', 'woocommerce_template_single_excerpt', 20 );
             add_action( 'yith_wcqv_product_summary', 'woocommerce_template_single_add_to_cart', 25 );
             add_action( 'yith_wcqv_product_summary', 'woocommerce_template_single_meta', 30 );
-            add_action( 'yith_wcqv_product_summary', 'dayneo_product_share', 35 );
+            add_action( 'yith_wcqv_product_summary', 'bigbo_product_share', 35 );
 
             // Add product thumbnail
             add_action( 'woocommerce_after_shop_loop_item', 'product_content_thumbnail' );
@@ -999,7 +999,7 @@ function get_product_quick_view_header() {
                     return;
                 }
 
-                $button_text = get_option( 'yith_woocompare_button_text', esc_html__( 'Compare', 'dayneo' ) );
+                $button_text = get_option( 'yith_woocompare_button_text', esc_html__( 'Compare', 'bigbo' ) );
                 $product_id  = $product->get_id();
                 $url_args    = array(
                     'action' => 'yith-woocompare-add-product',
@@ -1019,7 +1019,7 @@ function get_product_quick_view_header() {
                 if ( in_array( $product_id, $the_list ) ) {
                     $css_class          .= ' added';
                     $url_args[ 'action' ] = 'yith-woocompare-view-table';
-                    $button_text        = apply_filters( 'yith_woocompare_compare_added_label', esc_html__( 'Added', 'dayneo' ) );
+                    $button_text        = apply_filters( 'yith_woocompare_compare_added_label', esc_html__( 'Added', 'bigbo' ) );
                 }
 
                 $url = esc_url_raw( add_query_arg( $url_args, site_url() ) );

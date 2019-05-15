@@ -3,24 +3,24 @@
  * Template part for displaying posts
  *
  *
- * @package dayneo
+ * @package bigbo
  */
 global $dd_options;
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo dayneo_post_format(); ?>">
+<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo bigbo_post_format(); ?>">
 
-	<?php dayneo_post_thumbnail() ?>
+	<?php bigbo_post_thumbnail() ?>
 
 	<div class="post-content">
 		<div class="entry-meta entry-header">
 			<?php
-			dayneo_post_heading();
+			bigbo_post_heading();
 
 			if ( $dd_options[ 'dd_header_meta' ] == 1 ) {
 				?>
 				<ul class="post-meta">
-					<?php dayneo_post_metadata(); ?> 
+					<?php bigbo_post_metadata(); ?> 
 				</ul>
 				<?php
 			}
@@ -29,9 +29,9 @@ global $dd_options;
 
 		<div class="entry-content">
 			<?php
-			the_content( __( 'Read More &raquo;', 'dayneo' ) );
+			the_content( __( 'Read More &raquo;', 'bigbo' ) );
 
-			wp_link_pages( array( 'before' => '<div id="page-links"><p>' . __( '<strong>Pages:</strong>', 'dayneo' ), 'after' => '</p></div>' ) );
+			wp_link_pages( array( 'before' => '<div id="page-links"><p>' . __( '<strong>Pages:</strong>', 'bigbo' ), 'after' => '</p></div>' ) );
 			?>	
 		</div>
     	<div class="clearfix"></div>
@@ -39,12 +39,12 @@ global $dd_options;
 	    <div class="tags entry-meta entry-footer">				
 
 				<?php
-				$dd_share_this = dayneo_get_option( 'dd_share_this', 'single' );
+				$dd_share_this = bigbo_get_option( 'dd_share_this', 'single' );
 				if ( ($dd_share_this == "") || ($dd_share_this == "single") || ($dd_share_this == "all") ) {
 					?>
 					<div class="share-wrap">
 						<?php
-						dayneo_sharethis();
+						bigbo_sharethis();
 						?>
 					</div>
 					<?php

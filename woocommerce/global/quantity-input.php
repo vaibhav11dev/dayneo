@@ -28,7 +28,7 @@ if ( $max_value && $min_value === $max_value ) {
 } else {
     ?>
     <div class="quantity">
-        <label class="label" for="<?php echo esc_attr( $input_id ); ?>"><?php esc_html_e( 'Quantity', 'dayneo' ); ?></label>
+        <label class="label" for="<?php echo esc_attr( $input_id ); ?>"><?php esc_html_e( 'Quantity', 'bigbo' ); ?></label>
         <div class="qty-box">
     	<span class="decrease"><i class="fa fa-angle-down " aria-hidden="true"></i>
     	</span>
@@ -41,7 +41,7 @@ if ( $max_value && $min_value === $max_value ) {
     	    max="<?php echo esc_attr( 0 < $max_value ? $max_value : ''  ); ?>"
     	    name="<?php echo esc_attr( $input_name ); ?>"
     	    value="<?php echo esc_attr( $input_value ); ?>"
-    	    title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'dayneo' ); ?>"
+    	    title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'bigbo' ); ?>"
     	    size="4"
     	    pattern="<?php echo esc_attr( $pattern ); ?>"
     	    inputmode="<?php echo esc_attr( $inputmode ); ?>" />

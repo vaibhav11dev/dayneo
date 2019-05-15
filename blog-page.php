@@ -17,7 +17,7 @@ global $dd_options;
 
 	    <!-- SECONDARY-2 -->	    
 	    <?php
-	    if ( dayneo_lets_get_sidebar_2() == true ):
+	    if ( bigbo_lets_get_sidebar_2() == true ):
 		    get_sidebar( '2' );
 	    endif;
 	    ?>
@@ -30,7 +30,7 @@ global $dd_options;
 	    }
 	    ?>
 	    <!-- PRIMARY -->
-	    <div id="primary" class="<?php dayneo_layout_class( $type = 1 );
+	    <div id="primary" class="<?php bigbo_layout_class( $type = 1 );
 	    echo esc_attr($thumbnail);
 	    ?> post-content">
 		<?php
@@ -44,7 +44,7 @@ global $dd_options;
 
 	    <!-- SECONDARY-1 -->
 	    <?php
-	    if ( dayneo_lets_get_sidebar() == true ) {
+	    if ( bigbo_lets_get_sidebar() == true ) {
 		    get_sidebar();
 	    }
 	    ?>

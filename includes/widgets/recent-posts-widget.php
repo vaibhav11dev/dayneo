@@ -1,11 +1,11 @@
 <?php
-add_action( 'widgets_init', 'dayneo_recent_post_widget_widgets' );
+add_action( 'widgets_init', 'bigbo_recent_post_widget_widgets' );
 
-function dayneo_recent_post_widget_widgets() {
-    register_widget( 'Dayneo_Recent_Post_List_Widget' );
+function bigbo_recent_post_widget_widgets() {
+    register_widget( 'Bigbo_Recent_Post_List_Widget' );
 }
 
-class Dayneo_Recent_Post_List_Widget extends WP_Widget {
+class Bigbo_Recent_Post_List_Widget extends WP_Widget {
 
     /**
      * Sets up a new Recent Posts widget instance.
@@ -13,8 +13,8 @@ class Dayneo_Recent_Post_List_Widget extends WP_Widget {
      */
     public function __construct() {
         parent::__construct(
-        'recent_post-widget', __( 'Dayneo: Blog List', 'dayneo' ), // Name
-                                  array( 'classname' => 'recent_post_widget', 'description' => __( 'Display Latest Blog lists.', 'dayneo' ), ) // Args
+        'recent_post-widget', __( 'Bigbo: Blog List', 'bigbo' ), // Name
+                                  array( 'classname' => 'recent_post_widget', 'description' => __( 'Display Latest Blog lists.', 'bigbo' ), ) // Args
         );
     }
 
@@ -123,14 +123,14 @@ class Dayneo_Recent_Post_List_Widget extends WP_Widget {
         $number    = isset( $instance[ 'number' ] ) ? absint( $instance[ 'number' ] ) : 5;
         $show_date = isset( $instance[ 'show_date' ] ) ? (bool) $instance[ 'show_date' ] : false;
         ?>
-        <p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'dayneo' ); ?></label>
+        <p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bigbo' ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
-        <p><label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of posts to show:', 'dayneo' ); ?></label>
+        <p><label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of posts to show:', 'bigbo' ); ?></label>
             <input class="tiny-text" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="number" step="1" min="1" value="<?php echo esc_attr( $number ); ?>" size="3" /></p>
 
         <p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>" />
-            <label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html_e( 'Display Blog Date?', 'dayneo' ); ?></label></p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html_e( 'Display Blog Date?', 'bigbo' ); ?></label></p>
 
         <?php
     }

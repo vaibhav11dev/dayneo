@@ -217,15 +217,15 @@
                 }
 
                 if ( empty ( $this->args['footer_credit'] ) ) {
-                    $this->args['footer_credit'] = '<span id="footer-thankyou">' . sprintf( __( 'Options panel created using %1$s', 'dayneo' ), '<a href="' . esc_url( $this->framework_url ) . '" target="_blank">' . __( 'Redux Framework', 'dayneo' ) . '</a> v' . self::$_version ) . '</span>';
+                    $this->args['footer_credit'] = '<span id="footer-thankyou">' . sprintf( __( 'Options panel created using %1$s', 'bigbo' ), '<a href="' . esc_url( $this->framework_url ) . '" target="_blank">' . __( 'Redux Framework', 'bigbo' ) . '</a> v' . self::$_version ) . '</span>';
                 }
 
                 if ( empty ( $this->args['menu_title'] ) ) {
-                    $this->args['menu_title'] = __( 'Options', 'dayneo' );
+                    $this->args['menu_title'] = __( 'Options', 'bigbo' );
                 }
 
                 if ( empty ( $this->args['page_title'] ) ) {
-                    $this->args['page_title'] = __( 'Options', 'dayneo' );
+                    $this->args['page_title'] = __( 'Options', 'bigbo' );
                 }
 
                 $this->old_opt_name = $this->args['opt_name'];
@@ -597,9 +597,9 @@
                  * filter 'redux/textdomain/{opt_name}'
                  *
                  * @param string     The locale of the blog or from the 'locale' hook
-                 * @param string     'dayneo'  text domain
+                 * @param string     'bigbo'  text domain
                  */
-                //                $locale = apply_filters( "redux/textdomain/{$this->args['opt_name']}", get_locale(), 'dayneo' );
+                //                $locale = apply_filters( "redux/textdomain/{$this->args['opt_name']}", get_locale(), 'bigbo' );
                 //
                 //                if ( strpos( $locale, '_' ) === false ) {
                 //                    if ( file_exists( self::$_dir . 'languages/' . strtolower( $locale ) . '_' . strtoupper( $locale ) . '.mo' ) ) {
@@ -1669,29 +1669,29 @@
 
                     // Default url values for enabling hints.
                     $dismiss = 'true';
-                    $s       = __( 'Enable', 'dayneo' );
+                    $s       = __( 'Enable', 'bigbo' );
 
                     // Values for disabling hints.
                     if ( 'true' == $hint_status ) {
                         $dismiss = 'false';
-                        $s       = __( 'Disable', 'dayneo' );
+                        $s       = __( 'Disable', 'bigbo' );
                     }
 
                     // Make URL
                     $url = '<a class="redux_hint_status" href="?dismiss=' . $dismiss . '&amp;id=hints&amp;page=' . $curPage . '&amp;tab=' . $curTab . '">' . $s . ' hints</a>';
 
-                    $event = __( 'moving the mouse over', 'dayneo' );
+                    $event = __( 'moving the mouse over', 'bigbo' );
                     if ( 'click' == $this->args['hints']['tip_effect']['show']['event'] ) {
-                        $event = __( 'clicking', 'dayneo' );
+                        $event = __( 'clicking', 'bigbo' );
                     }
 
                     // Construct message
-                    $msg = sprintf( __( 'Hints are tooltips that popup when %1$d the hint icon, offering addition information about the field in which they appear.  They can be %2$d d by using the link below.', 'dayneo' ), $event, strtolower( $s ) ) . '<br/><br/>' . $url;
+                    $msg = sprintf( __( 'Hints are tooltips that popup when %1$d the hint icon, offering addition information about the field in which they appear.  They can be %2$d d by using the link below.', 'bigbo' ), $event, strtolower( $s ) ) . '<br/><br/>' . $url;
 
                     // Construct hint tab
                     $tab = array(
                         'id'      => 'redux-hint-tab',
-                        'title'   => __( 'Hints', 'dayneo' ),
+                        'title'   => __( 'Hints', 'bigbo' ),
                         'content' => '<p>' . $msg . '</p>'
                     );
 
@@ -1818,7 +1818,7 @@
                 }
 
                 if ( ! empty ( $default_output ) ) {
-                    $default_output = __( 'Default', 'dayneo' ) . ": " . substr( $default_output, 0, - 2 );
+                    $default_output = __( 'Default', 'bigbo' ) . ": " . substr( $default_output, 0, - 2 );
                 }
 
                 if ( ! empty ( $default_output ) ) {
@@ -2696,7 +2696,7 @@
             public function ajax_save() {
                 if ( ! wp_verify_nonce( $_REQUEST['nonce'], "redux_ajax_nonce" . $this->args['opt_name'] ) ) {
                     echo json_encode( array(
-                        'status' => __( 'Invalid security credential.  Please reload the page and try again.', 'dayneo' ),
+                        'status' => __( 'Invalid security credential.  Please reload the page and try again.', 'bigbo' ),
                         'action' => ''
                     ) );
 
@@ -2705,7 +2705,7 @@
 
                 if ( ! current_user_can( $this->args['page_permissions'] ) ) {
                     echo json_encode( array(
-                        'status' => __( 'Invalid user capability.  Please reload the page and try again.', 'dayneo' ),
+                        'status' => __( 'Invalid user capability.  Please reload the page and try again.', 'bigbo' ),
                         'action' => ''
                     ) );
 
@@ -2785,7 +2785,7 @@
                             $return_array = array( 'status' => $e->getMessage() );
                         }
                     } else {
-                        echo json_encode( array( 'status' => __( 'Your panel has no fields. Nothing to save.', 'dayneo' ) ) );
+                        echo json_encode( array( 'status' => __( 'Your panel has no fields. Nothing to save.', 'bigbo' ) ) );
                     }
                 }
                 if ( isset ( $this->transients['run_compiler'] ) && $this->transients['run_compiler'] ) {
@@ -3880,7 +3880,7 @@
                             if ( is_array( $arr ) && ! empty( $arr ) ) {
                                 foreach ( $arr as $x => $y ) {
                                     if ( strpos( strtolower( $y ), 'redux' ) !== false ) {
-                                        $msg = __( '<strong>Redux Framework Notice: </strong>There are references to the Redux Framework support site in your config\'s <code>admin_bar_links</code> argument.  This is sample data.  Please change or remove this data before shipping your product.', 'dayneo' );
+                                        $msg = __( '<strong>Redux Framework Notice: </strong>There are references to the Redux Framework support site in your config\'s <code>admin_bar_links</code> argument.  This is sample data.  Please change or remove this data before shipping your product.', 'bigbo' );
                                         $this->display_arg_change_notice( 'admin', $msg );
                                         $this->omit_admin_items = true;
                                         continue;
@@ -3895,7 +3895,7 @@
                             if ( is_array( $arr ) && ! empty( $arr ) ) {
                                 foreach ( $arr as $x => $y ) {
                                     if ( strpos( strtolower( $y ), 'redux' ) !== false ) {
-                                        $msg = __( '<strong>Redux Framework Notice: </strong>There are references to the Redux Framework support site in your config\'s <code>share_icons</code> argument.  This is sample data.  Please change or remove this data before shipping your product.', 'dayneo' );
+                                        $msg = __( '<strong>Redux Framework Notice: </strong>There are references to the Redux Framework support site in your config\'s <code>share_icons</code> argument.  This is sample data.  Please change or remove this data before shipping your product.', 'bigbo' );
                                         $this->display_arg_change_notice( 'share', $msg );
                                         $this->omit_share_icons = true;
                                     }

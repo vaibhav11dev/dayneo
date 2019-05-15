@@ -3,29 +3,29 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-get_template_part('admin/dayneo_menu/dayneo', 'menu_header');
-$dayneo_theme = wp_get_theme();
+get_template_part('admin/bigbo_menu/bigbo', 'menu_header');
+$bigbo_theme = wp_get_theme();
 ?>
 <div class="container">
     <div class="box"><div class="row">
         <div class="point-releases col-sm-6">
-            <h3><?php esc_html_e('Dayneo Theme', 'dayneo'); ?></h3> 
-            <p><strong><?php esc_html_e('Dayneo Multipurpose Responsive WordPress Theme', 'dayneo'); ?></strong> <?php esc_html_e("with light weight and less plugins. Ready to use for any purpose such as business, corporate, agency, portfolio, app, news, blog, magazine, cleaning services, construction, designs, freelancer, wedding, restaurant and many more.", "dayneo"); ?></p>
+            <h3><?php esc_html_e('Bigbo Theme', 'bigbo'); ?></h3> 
+            <p><strong><?php esc_html_e('Bigbo Multipurpose Responsive WordPress Theme', 'bigbo'); ?></strong> <?php esc_html_e("with light weight and less plugins. Ready to use for any purpose such as business, corporate, agency, portfolio, app, news, blog, magazine, cleaning services, construction, designs, freelancer, wedding, restaurant and many more.", "bigbo"); ?></p>
             <div class="theme_info">
                 <div class="theme_info_column">
                     <div class="theme_info_left">
                         <div class="theme_link">
-                            <h3><?php esc_html_e('Install Demos', 'dayneo'); ?></h3>
-                            <p class="about"><?php printf(esc_html__('%s provides multiple demos. Click on "Install Demos" to install demo.', 'dayneo'), ucfirst($dayneo_theme->get('Name'))); ?></p>
+                            <h3><?php esc_html_e('Install Demos', 'bigbo'); ?></h3>
+                            <p class="about"><?php printf(esc_html__('%s provides multiple demos. Click on "Install Demos" to install demo.', 'bigbo'), ucfirst($bigbo_theme->get('Name'))); ?></p>
                             <p>
-                                <a href="<?php echo esc_url(admin_url('admin.php?page=dayneo_demos')); ?>" class="button button-primary"><?php esc_html_e('Install Demos', 'dayneo'); ?></a>
+                                <a href="<?php echo esc_url(admin_url('admin.php?page=bigbo_demos')); ?>" class="button button-primary"><?php esc_html_e('Install Demos', 'bigbo'); ?></a>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="theme_info_right col-sm-6"><img src="<?php echo esc_url(get_template_directory_uri() . '/screenshot.png'); ?>" alt="<?php esc_attr_e('Theme Screenshot', 'dayneo') ?>" />
+        <div class="theme_info_right col-sm-6"><img src="<?php echo esc_url(get_template_directory_uri() . '/screenshot.png'); ?>" alt="<?php esc_attr_e('Theme Screenshot', 'bigbo') ?>" />
         </div>
     </div></div>
 

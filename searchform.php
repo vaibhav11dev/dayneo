@@ -11,8 +11,8 @@
     <div class="row">
 
         <div class="col-md-12 form-group widget-search">
-            <input id="search-text" type="text" name="s" class="form-control input-lg input-search" placeholder="<?php _e( 'Type Your Search', 'dayneo' ); ?>" value="">
-            <button id="search-button" type="submit" class="btn btn-round btn-base btn-search"><?php // _e( 'Submit', 'dayneo' ); ?><i class="flaticon-search"></i></button>
+            <input id="search-text" type="text" name="s" class="form-control input-lg input-search" placeholder="<?php _e( 'Type Your Search', 'bigbo' ); ?>" value="">
+            <button id="search-button" type="submit" class="btn btn-round btn-base btn-search"><?php // _e( 'Submit', 'bigbo' ); ?><i class="flaticon-search"></i></button>
         </div>
 
     </div>

@@ -29,7 +29,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 	<?php do_action( 'woocommerce_before_variations_form' ); ?>
 
 	<?php if ( empty( $available_variations ) && false !== $available_variations ) : ?>
-		<p class="stock out-of-stock"><?php esc_html_e( 'This product is currently out of stock and unavailable.', 'dayneo' ); ?></p>
+		<p class="stock out-of-stock"><?php esc_html_e( 'This product is currently out of stock and unavailable.', 'bigbo' ); ?></p>
 	<?php else : ?>
 		<table class="variations" cellspacing="0">
 			<tbody>
@@ -40,7 +40,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 							<?php
 								$selected = isset( $_REQUEST[ 'attribute_' . esc_attr( sanitize_title( $attribute_name ) ) ] ) ? wc_clean( stripslashes( urldecode( $_REQUEST[ 'attribute_' . sanitize_title( $attribute_name ) ] ) ) ) : $product->get_variation_default_attribute( $attribute_name );
 								wc_dropdown_variation_attribute_options( array( 'options' => $options, 'attribute' => $attribute_name, 'product' => $product, 'selected' => $selected ) );
-								echo end( $attribute_keys ) === $attribute_name ? apply_filters( 'woocommerce_reset_variations_link', '<a class="reset_variations" href="#">' . esc_html__( 'Clear', 'dayneo' ) . '</a>' ) : '';
+								echo end( $attribute_keys ) === $attribute_name ? apply_filters( 'woocommerce_reset_variations_link', '<a class="reset_variations" href="#">' . esc_html__( 'Clear', 'bigbo' ) . '</a>' ) : '';
 							?>
 						</td>
 					</tr>

@@ -14,7 +14,7 @@ $dd_footer_widget_col	 = (isset( $dd_options[ 'dd_footer_widget_col' ] )) ? $dd_
 
 if ( function_exists( 'register_sidebar' ) )
 	register_sidebar( array(
-		'name'		 => __( 'Sidebar 1', 'dayneo' ),
+		'name'		 => __( 'Sidebar 1', 'bigbo' ),
 		'id'		 => 'sidebar-1',
 		'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 		'after_widget'	 => '</div></div>',
@@ -24,7 +24,7 @@ if ( function_exists( 'register_sidebar' ) )
 
 if ( function_exists( 'register_sidebar' ) )
 	register_sidebar( array(
-		'name'		 => __( 'Sidebar 2', 'dayneo' ),
+		'name'		 => __( 'Sidebar 2', 'bigbo' ),
 		'id'		 => 'sidebar-2',
 		'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 		'after_widget'	 => '</div></div>',
@@ -32,10 +32,10 @@ if ( function_exists( 'register_sidebar' ) )
 		'after_title'	 => '</h6>',
 	) );
 
-function dayneo_headerbar() {
+function bigbo_headerbar() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'Header Bar', 'dayneo' ),
+			'name'		 => __( 'Header Bar', 'bigbo' ),
 			'id'		 => 'headerbar',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -44,10 +44,10 @@ function dayneo_headerbar() {
 		) );
 }
 
-function dayneo_footer1() {
+function bigbo_footer1() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'Footer 1', 'dayneo' ),
+			'name'		 => __( 'Footer 1', 'bigbo' ),
 			'id'		 => 'footer-1',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -56,10 +56,10 @@ function dayneo_footer1() {
 		) );
 }
 
-function dayneo_footer2() {
+function bigbo_footer2() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'Footer 2', 'dayneo' ),
+			'name'		 => __( 'Footer 2', 'bigbo' ),
 			'id'		 => 'footer-2',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -68,10 +68,10 @@ function dayneo_footer2() {
 		) );
 }
 
-function dayneo_footer3() {
+function bigbo_footer3() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'Footer 3', 'dayneo' ),
+			'name'		 => __( 'Footer 3', 'bigbo' ),
 			'id'		 => 'footer-3',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -80,10 +80,10 @@ function dayneo_footer3() {
 		) );
 }
 
-function dayneo_footer4() {
+function bigbo_footer4() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'Footer 4', 'dayneo' ),
+			'name'		 => __( 'Footer 4', 'bigbo' ),
 			'id'		 => 'footer-4',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -92,10 +92,10 @@ function dayneo_footer4() {
 		) );
 }
 
-function dayneo_beforefooter() {
+function bigbo_beforefooter() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'Before Footer', 'dayneo' ),
+			'name'		 => __( 'Before Footer', 'bigbo' ),
 			'id'		 => 'before-footer',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -104,10 +104,10 @@ function dayneo_beforefooter() {
 		) );
 }
 
-function dayneo_afterfooter() {
+function bigbo_afterfooter() {
 	if ( function_exists( 'register_sidebar' ) )
 		register_sidebar( array(
-			'name'		 => __( 'After Footer', 'dayneo' ),
+			'name'		 => __( 'After Footer', 'bigbo' ),
 			'id'		 => 'after-footer',
 			'before_widget'	 => '<div id="%1$s" class="widget %2$s"><div class="widget-content">',
 			'after_widget'	 => '</div></div>',
@@ -117,10 +117,10 @@ function dayneo_afterfooter() {
 }
 
 // Footer widgets
-dayneo_headerbar();
-dayneo_beforefooter();
-dayneo_afterfooter();
-dayneo_footer1();
-dayneo_footer2();
-dayneo_footer3();
-dayneo_footer4();
+bigbo_headerbar();
+bigbo_beforefooter();
+bigbo_afterfooter();
+bigbo_footer1();
+bigbo_footer2();
+bigbo_footer3();
+bigbo_footer4();

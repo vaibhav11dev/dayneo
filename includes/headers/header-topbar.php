@@ -3,7 +3,7 @@
  * Template part for displaying header topbar
  *
  *
- * @package dayneo
+ * @package bigbo
  */
 global $post, $wp_query, $dd_options;
 
@@ -11,7 +11,7 @@ $post_id = '';
 if ( $wp_query->is_posts_page ) {
     $post_id = get_option( 'page_for_posts' );
 } elseif ( is_buddypress() ) {
-    $post_id = dayneo_bp_get_id();
+    $post_id = bigbo_bp_get_id();
 } elseif ( class_exists( 'Woocommerce' ) && is_shop() ) {
     $post_id = wc_get_page_id('shop');
 } else {
@@ -19,8 +19,8 @@ if ( $wp_query->is_posts_page ) {
 }
 
 $topbar_class		 = '';
-$dd_header_type		 = dayneo_get_option( 'dd_header_type', 'h1' );
-$dayneo_header_type	 = get_post_meta( $post_id, 'dayneo_header_type', true );
+$dd_header_type		 = bigbo_get_option( 'dd_header_type', 'h1' );
+$bigbo_header_type	 = get_post_meta( $post_id, 'bigbo_header_type', true );
 if ( $dd_options[ 'dd_header_left_content' ] != 'empty' ) {
 	$topbar_right_col = 'col-md-6';
 } else {

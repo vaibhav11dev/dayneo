@@ -11,7 +11,7 @@
  * @param bool $previous Optional. Whether to retrieve previous post.
  * @return array of post objects.
  */
-function dayneo_get_adjacent_post_plus($r, $previous = true) {
+function bigbo_get_adjacent_post_plus($r, $previous = true) {
     global $post, $wpdb;
 
     extract($r, EXTR_SKIP);
@@ -208,8 +208,8 @@ function dayneo_get_adjacent_post_plus($r, $previous = true) {
  * @param array|string $args Optional. Override default arguments.
  * @return bool True if previous post link is found, otherwise false.
  */
-function dayneo_previous_post_link_plus($args = '') {
-    return dayneo_adjacent_post_link_plus($args, '&laquo; %link', true);
+function bigbo_previous_post_link_plus($args = '') {
+    return bigbo_adjacent_post_link_plus($args, '&laquo; %link', true);
 }
 
 /**
@@ -220,8 +220,8 @@ function dayneo_previous_post_link_plus($args = '') {
  * @param array|string $args Optional. Override default arguments.
  * @return bool True if next post link is found, otherwise false.
  */
-function dayneo_next_post_link_plus($args = '') {
-    return dayneo_adjacent_post_link_plus($args, '%link &raquo;', false);
+function bigbo_next_post_link_plus($args = '') {
+    return bigbo_adjacent_post_link_plus($args, '%link &raquo;', false);
 }
 
 /**
@@ -235,7 +235,7 @@ function dayneo_next_post_link_plus($args = '') {
  * @param bool $previous Optional, default is true. Whether display link to previous post.
  * @return bool True if next/previous post is found, otherwise false.
  */
-function dayneo_adjacent_post_link_plus($args = '', $format = '%link &raquo;', $previous = true) {
+function bigbo_adjacent_post_link_plus($args = '', $format = '%link &raquo;', $previous = true) {
     $defaults = array(
         'order_by' => 'post_date', 'order_2nd' => 'post_date', 'meta_key' => '', 'post_type' => '',
         'loop' => false, 'end_post' => false, 'thumb' => false, 'max_length' => 0,
@@ -262,7 +262,7 @@ function dayneo_adjacent_post_link_plus($args = '', $format = '%link &raquo;', $
         $posts = array();
         $posts[] = & get_post($GLOBALS['post']->post_parent);
     } else
-        $posts = dayneo_get_adjacent_post_plus($r, $previous);
+        $posts = bigbo_get_adjacent_post_plus($r, $previous);
 
 //	If there is no next/previous post, return false so themes may conditionally display inactive link text.
     if (!$posts)
@@ -297,7 +297,7 @@ function dayneo_adjacent_post_link_plus($args = '', $format = '%link &raquo;', $
     foreach ($posts as $post) {
         $title = $post->post_title;
         if (empty($post->post_title))
-            $title = $previous ? __('Previous Post', 'dayneo') : __('Next Post', 'dayneo');
+            $title = $previous ? __('Previous Post', 'bigbo') : __('Next Post', 'bigbo');
 
         $title = apply_filters('the_title', $title, $post->ID);
         $date = mysql2date($r['date_format'], $post->post_date);

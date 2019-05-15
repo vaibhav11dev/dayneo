@@ -69,14 +69,14 @@
             <li id="accordion-section-{{ data.id }}" class="redux-section accordion-section control-section control-section-{{ data.type }}">
                 <h3 class="accordion-section-title" tabindex="0">
                     {{ data.title }}
-                    <span class="screen-reader-text"><?php _e( 'Press return or enter to open', 'dayneo' ); ?></span>
+                    <span class="screen-reader-text"><?php _e( 'Press return or enter to open', 'bigbo' ); ?></span>
                 </h3>
                 <ul class="accordion-section-content redux-main">
 
                     <li class="customize-section-description-container">
                         <div class="customize-section-title">
                             <button class="customize-section-back" tabindex="-1">
-                                <span class="screen-reader-text"><?php _e( 'Back', 'dayneo' ); ?></span>
+                                <span class="screen-reader-text"><?php _e( 'Back', 'bigbo' ); ?></span>
                             </button>
                             <h3>
 							<span class="customize-action">
@@ -119,7 +119,7 @@
                             ),
                         ) );
                     ?>
-                    <span class="screen-reader-text"><?php esc_attr_e( 'Press return or enter to expand', 'dayneo' ); ?></span>
+                    <span class="screen-reader-text"><?php esc_attr_e( 'Press return or enter to expand', 'bigbo' ); ?></span>
                 </h3>
                 <ul class="accordion-section-content redux-main">
                     <?php

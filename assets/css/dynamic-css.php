@@ -1,14 +1,14 @@
 <?php
 global $post, $wp_query, $dd_options;
-$dayneo_dynamic_css	 = '';
-$dayneo_template_url	 = get_template_directory_uri();
+$bigbo_dynamic_css	 = '';
+$bigbo_template_url	 = get_template_directory_uri();
 
 $post_id = '';
 if ( $wp_query->is_posts_page ) {
     $post_id = get_option( 'page_for_posts' );
 } elseif ( function_exists( 'is_buddypress' ) ) {
         if ( is_buddypress() ) {
-            $post_id = dayneo_bp_get_id();
+            $post_id = bigbo_bp_get_id();
         } else {
             $post_id = isset( $post->ID ) ? $post->ID : '';
         }
@@ -33,7 +33,7 @@ $dd_container_custom_width_px	 = (int)$dd_custom_width_px - 30;
 
 //General - Layout Width
 if ( $dd_width_px != "custom" && ( $dd_width_layout == "fixed" ) && ! is_page_template( 'fullwidth-fluid.php' ) ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 		body {
 	width: ' . esc_attr($dd_width_px) . 'px;
 	margin: 0 auto;
@@ -45,7 +45,7 @@ if ( $dd_width_px != "custom" && ( $dd_width_layout == "fixed" ) && ! is_page_te
 }
 ';
 } elseif ( $dd_width_px != "custom" ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 @media (min-width: ' . esc_attr($dd_width_px) . 'px) {
     .container {
         width: ' . esc_attr($dd_container_width_px) . 'px;
@@ -58,7 +58,7 @@ if ( $dd_width_px != "custom" && ( $dd_width_layout == "fixed" ) && ! is_page_te
 }
 ';
 } elseif ( $dd_width_px == "custom" && ( $dd_width_layout == "fixed" ) && ! is_page_template( 'fullwidth-fluid.php' ) ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 body {
 	width: ' . esc_attr($dd_custom_width_px) . 'px;
 	margin: 0 auto;
@@ -70,7 +70,7 @@ body {
 }
 ';
 } elseif ( $dd_width_px == "custom" ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 @media (min-width: ' . esc_attr($dd_custom_width_px) . 'px) {
     .container {
         width: ' . esc_attr($dd_container_custom_width_px) . 'px;
@@ -86,17 +86,17 @@ body {
 
 // General - Fullwidth - Fluid Template Left/Right Padding
 $dd_hundredp_padding		 = $dd_options[ 'dd_hundredp_padding' ];
-$dayneo_hundredp_padding	 = get_post_meta( $post_id, 'dayneo_hundredp_padding', true );
+$bigbo_hundredp_padding	 = get_post_meta( $post_id, 'bigbo_hundredp_padding', true );
 if ( is_page_template( 'fullwidth-fluid.php' ) ) {
-	if ( $dayneo_hundredp_padding ) {
-		$dayneo_dynamic_css .= ' 	
+	if ( $bigbo_hundredp_padding ) {
+		$bigbo_dynamic_css .= ' 	
 			.page-100-width {
-			    padding-left: ' . esc_attr($dayneo_hundredp_padding) . ';
-			    padding-right: ' . esc_attr($dayneo_hundredp_padding) . ';
+			    padding-left: ' . esc_attr($bigbo_hundredp_padding) . ';
+			    padding-right: ' . esc_attr($bigbo_hundredp_padding) . ';
 			}
 		';
 	} else {
-		$dayneo_dynamic_css .= ' 	
+		$bigbo_dynamic_css .= ' 	
 			.page-100-width {
 			    padding-left: ' . esc_attr($dd_hundredp_padding) . ';
 			    padding-right: ' . esc_attr($dd_hundredp_padding) . ';
@@ -107,18 +107,18 @@ if ( is_page_template( 'fullwidth-fluid.php' ) ) {
 
 // General - Content Top & Bottom Padding
 $dd_content_top_bottom_padding = $dd_options[ 'dd_content_top_bottom_padding' ];
-$dayneo_content_top_bottom_padding	 = get_post_meta( $post_id, 'dayneo_content_top_bottom_padding', true );
-if ( $dayneo_content_top_bottom_padding ) {
-	$dayneo_dynamic_css .= '
+$bigbo_content_top_bottom_padding	 = get_post_meta( $post_id, 'bigbo_content_top_bottom_padding', true );
+if ( $bigbo_content_top_bottom_padding ) {
+	$bigbo_dynamic_css .= '
 	.p-tb-content {
-		padding-top:' . esc_attr($dayneo_content_top_bottom_padding) . ';
-		padding-bottom:' . esc_attr($dayneo_content_top_bottom_padding) . ';
+		padding-top:' . esc_attr($bigbo_content_top_bottom_padding) . ';
+		padding-bottom:' . esc_attr($bigbo_content_top_bottom_padding) . ';
 		padding-left: 0;
 		padding-right: 0;
 }
 ';
 } elseif( $dd_content_top_bottom_padding ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 	.p-tb-content {
 		padding-top:' . esc_attr($dd_content_top_bottom_padding[ 'padding-top' ]) . ';
 		padding-bottom:' . esc_attr($dd_content_top_bottom_padding[ 'padding-bottom' ]) . ';
@@ -134,7 +134,7 @@ if ( $dayneo_content_top_bottom_padding ) {
 
 // For Sticky Header
 if ( is_user_logged_in() ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 	.is_stuck {
 		margin-top: 32px;
 	}
@@ -143,7 +143,7 @@ if ( is_user_logged_in() ) {
 
 //Header Topbar Color
 if ( isset( $dd_options[ 'dd_topbar_color' ] ) ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 	.top-bar.top-bar-color {
 		background: ' . esc_attr($dd_options[ 'dd_topbar_color' ]) . ';
 	}
@@ -151,16 +151,16 @@ if ( isset( $dd_options[ 'dd_topbar_color' ] ) ) {
 }
 
 // Hero Header Custom Height
-$dayneo_hero_height_custom	 = get_post_meta( $post_id, 'dayneo_hero_height_custom', true );
-$dayneo_dynamic_css		 .= '
+$bigbo_hero_height_custom	 = get_post_meta( $post_id, 'bigbo_hero_height_custom', true );
+$bigbo_dynamic_css		 .= '
 .hero-height-custom {
-	height: ' . esc_attr($dayneo_hero_height_custom) . 'vh;
+	height: ' . esc_attr($bigbo_hero_height_custom) . 'vh;
 }
 ';
 
 //Header Background Color (H2)
 if ( isset( $dd_options[ 'dd_bg_header' ] ) && $dd_options[ 'dd_header_type' ] == 'h2'  ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 	#header {
 		background: ' . esc_attr($dd_options[ 'dd_bg_header' ]) . ';
 	}
@@ -169,7 +169,7 @@ if ( isset( $dd_options[ 'dd_bg_header' ] ) && $dd_options[ 'dd_header_type' ] =
 
 //Header Text Color (H2)
 if ( isset( $dd_options[ 'dd_text_header' ] ) && $dd_options[ 'dd_header_type' ] == 'h2'  ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 	.top-bar p, .top-bar-right .dropdown > .expand-more, #_desktop_wishtlistTop .yith-contents,.cart-hover .cart-content-right > span,
 	.cart-hover .cart-content-right .nav-total {
 		color: ' . esc_attr($dd_options[ 'dd_text_header' ]) . ';
@@ -180,64 +180,64 @@ if ( isset( $dd_options[ 'dd_text_header' ] ) && $dd_options[ 'dd_header_type' ]
 /* -----------------------------------------------------------------
   [Page Title Bar Style]
  */
-$dd_pagetitlebar_height			 = dayneo_get_option( 'dd_pagetitlebar_height', 'medium' );
-$dayneo_page_title_bar_height		 = get_post_meta( $post_id, 'dayneo_page_title_bar_height', true );
-$dd_pagetitlebar_custom			 = dayneo_get_option( 'dd_pagetitlebar_custom', '' );
-$dayneo_page_title_bar_height_custom	 = get_post_meta( $post_id, 'dayneo_page_title_bar_height_custom', true );
-if ( !$dayneo_page_title_bar_height ) {
-        $dayneo_page_title_bar_height = 'default';
+$dd_pagetitlebar_height			 = bigbo_get_option( 'dd_pagetitlebar_height', 'medium' );
+$bigbo_page_title_bar_height		 = get_post_meta( $post_id, 'bigbo_page_title_bar_height', true );
+$dd_pagetitlebar_custom			 = bigbo_get_option( 'dd_pagetitlebar_custom', '' );
+$bigbo_page_title_bar_height_custom	 = get_post_meta( $post_id, 'bigbo_page_title_bar_height_custom', true );
+if ( !$bigbo_page_title_bar_height ) {
+        $bigbo_page_title_bar_height = 'default';
 }
 
 // 1.1 Page Title Bar Custom Height
-if ( $dayneo_page_title_bar_height == 'custom' && $dayneo_page_title_bar_height_custom ) {
-	$dayneo_dynamic_css .= '
+if ( $bigbo_page_title_bar_height == 'custom' && $bigbo_page_title_bar_height_custom ) {
+	$bigbo_dynamic_css .= '
 .titlebar-custom {
-	padding: ' . esc_attr($dayneo_page_title_bar_height_custom) . 'px 0;
+	padding: ' . esc_attr($bigbo_page_title_bar_height_custom) . 'px 0;
 }
 ';
-} elseif ( $dayneo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'custom' && $dd_pagetitlebar_custom ) {
-	$dayneo_dynamic_css .= '
+} elseif ( $bigbo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'custom' && $dd_pagetitlebar_custom ) {
+	$bigbo_dynamic_css .= '
 .titlebar-custom {
 	padding: ' . esc_attr($dd_pagetitlebar_custom) . 'px 0;
 }
 ';
 }
 
-$dayneo_enable_page_title	 = get_post_meta( $post_id, 'dayneo_enable_page_title', true );
-if (empty($dayneo_enable_page_title)) {
-    $dayneo_enable_page_title = 'default';
+$bigbo_enable_page_title	 = get_post_meta( $post_id, 'bigbo_enable_page_title', true );
+if (empty($bigbo_enable_page_title)) {
+    $bigbo_enable_page_title = 'default';
 }
-$dd_pagetitlebar_background_color	 = dayneo_get_option( 'dd_pagetitlebar_background_color', '' );
-$dayneo_page_title_bar_bg_color	 = get_post_meta( $post_id, 'dayneo_page_title_bar_bg_color', true );
+$dd_pagetitlebar_background_color	 = bigbo_get_option( 'dd_pagetitlebar_background_color', '' );
+$bigbo_page_title_bar_bg_color	 = get_post_meta( $post_id, 'bigbo_page_title_bar_bg_color', true );
 // 1.2 Page Title Bar Background Color
-if ( $dayneo_page_title_bar_bg_color ) {
-	$dayneo_dynamic_css .= '
+if ( $bigbo_page_title_bar_bg_color ) {
+	$bigbo_dynamic_css .= '
 .titlebar-bg {
-	background-color: ' . esc_attr($dayneo_page_title_bar_bg_color) . ';
+	background-color: ' . esc_attr($bigbo_page_title_bar_bg_color) . ';
 }
 ';
-} elseif ( $dayneo_enable_page_title == 'default' && $dd_pagetitlebar_background_color ) {
-	$dayneo_dynamic_css .= '
+} elseif ( $bigbo_enable_page_title == 'default' && $dd_pagetitlebar_background_color ) {
+	$bigbo_dynamic_css .= '
 .titlebar-bg {
 	background-color: ' . esc_attr($dd_pagetitlebar_background_color) . ';
 }
 ';
 }
 
-$dd_pagetitlebar_background	 = dayneo_get_option( 'dd_pagetitlebar_background', '' );
-$dayneo_page_title_bar_bg	 = get_post_meta( $post_id, 'dayneo_page_title_bar_bg', true );
+$dd_pagetitlebar_background	 = bigbo_get_option( 'dd_pagetitlebar_background', '' );
+$bigbo_page_title_bar_bg	 = get_post_meta( $post_id, 'bigbo_page_title_bar_bg', true );
 // 1.3 Page Title Bar Background Image
-if ( $dayneo_page_title_bar_bg ) {
-	$dayneo_dynamic_css .= '
+if ( $bigbo_page_title_bar_bg ) {
+	$bigbo_dynamic_css .= '
 .titlebar-bg {
-	background-image: url("' . esc_url(wp_get_attachment_url( $dayneo_page_title_bar_bg )) . '");
+	background-image: url("' . esc_url(wp_get_attachment_url( $bigbo_page_title_bar_bg )) . '");
 }
 .titlebar-bg *{
 	color:#fff
 }
 ';
-} elseif ( $dayneo_enable_page_title == 'default' && isset( $dd_pagetitlebar_background[ 'url' ] ) && $dd_pagetitlebar_background[ 'url' ] ) {
-	$dayneo_dynamic_css .= '
+} elseif ( $bigbo_enable_page_title == 'default' && isset( $dd_pagetitlebar_background[ 'url' ] ) && $dd_pagetitlebar_background[ 'url' ] ) {
+	$bigbo_dynamic_css .= '
 .titlebar-bg {
 	background-image: url("' . esc_url($dd_pagetitlebar_background[ 'url' ]) . '");
 }
@@ -250,22 +250,22 @@ if ( $dayneo_page_title_bar_bg ) {
 /* -----------------------------------------------------------------
   [Footer Style]
  */
-$dd_main_pattern	 = dayneo_get_option( 'dd_pattern', '' );
+$dd_main_pattern	 = bigbo_get_option( 'dd_pattern', '' );
 $dd_image_patten_array	 = array( 'none', 'pattern_1_thumb.png', 'pattern_2_thumb.png', 'pattern_3_thumb.png', 'pattern_4_thumb.png', 'pattern_5_thumb.png', 'pattern_6_thumb.png', 'pattern_7_thumb.png', 'pattern_8_thumb.png' );
 if ( ! empty( $dd_main_pattern ) && $dd_main_pattern != 'none' && in_array( $dd_main_pattern, $dd_image_patten_array ) ) {
-	$dd_main_pattern	 = $dayneo_template_url . '/assets/images/pattern/' . $dd_main_pattern;
-	$dayneo_dynamic_css	 .= '
+	$dd_main_pattern	 = $bigbo_template_url . '/assets/images/pattern/' . $dd_main_pattern;
+	$bigbo_dynamic_css	 .= '
     .footer {
 	background-image: url(' .  esc_url($dd_main_pattern) . ');
     }
     ';
 } else {
-	$dd_footer_image_src		 = dayneo_get_option( 'dd_footer_background_image' );
-	$dd_footer_image		 = dayneo_get_option( 'dd_footer_image', 'cover' );
-	$dd_footer_background_repeat	 = dayneo_get_option( 'dd_footer_image_background_repeat', 'no-repeat' );
-	$dd_footer_background_position	 = dayneo_get_option( 'dd_footer_image_background_position', 'center top' );
+	$dd_footer_image_src		 = bigbo_get_option( 'dd_footer_background_image' );
+	$dd_footer_image		 = bigbo_get_option( 'dd_footer_image', 'cover' );
+	$dd_footer_background_repeat	 = bigbo_get_option( 'dd_footer_image_background_repeat', 'no-repeat' );
+	$dd_footer_background_position	 = bigbo_get_option( 'dd_footer_image_background_position', 'center top' );
 	if ( isset($dd_footer_image_src[ 'url' ]) && $dd_footer_image_src[ 'url' ] ) {
-		$dayneo_dynamic_css .= '
+		$bigbo_dynamic_css .= '
 .footer {
 	background-image: url("' . esc_url( $dd_footer_image_src[ 'url' ] ) . '");
 	background-position: ' . esc_attr($dd_footer_background_position) . ';
@@ -277,18 +277,18 @@ if ( ! empty( $dd_main_pattern ) && $dd_main_pattern != 'none' && in_array( $dd_
 ';
 	}
 
-	$dd_footer_bg_color = dayneo_get_option( 'dd_footer_bg_color', '' );
+	$dd_footer_bg_color = bigbo_get_option( 'dd_footer_bg_color', '' );
 	if ( ! empty( $dd_footer_bg_color ) ) {
-		$dayneo_dynamic_css .= '
+		$bigbo_dynamic_css .= '
 .footer {
 	background-color: ' . esc_attr($dd_footer_bg_color) . ';
 }
 ';
 	}
 
-	$dd_footer_parallax = dayneo_get_option( 'dd_footer_parallax', '' );
+	$dd_footer_parallax = bigbo_get_option( 'dd_footer_parallax', '' );
 	if ( $dd_footer_parallax == 1 ) {
-		$dayneo_dynamic_css .= '
+		$bigbo_dynamic_css .= '
 .footer {
 	background-attachment: fixed;
 }
@@ -299,10 +299,10 @@ if ( ! empty( $dd_main_pattern ) && $dd_main_pattern != 'none' && in_array( $dd_
 /* -----------------------------------------------------------------
   [Portfolio Style]
  */
-$dd_portfolio_hover_color	 = dayneo_get_option( 'dd_portfolio_hover_color', '' );
-$rgb				 = dayneo_hex2rgb( $dd_portfolio_hover_color );
+$dd_portfolio_hover_color	 = bigbo_get_option( 'dd_portfolio_hover_color', '' );
+$rgb				 = bigbo_hex2rgb( $dd_portfolio_hover_color );
 if ( is_array( $rgb ) ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 .works-grid .work-overlay {
 	background: rgba(' . esc_attr($rgb[ 0 ] . ', ' . $rgb[ 1 ] . ', ' . $rgb[ 2 ]) . ', 0.8);
 }
@@ -312,9 +312,9 @@ if ( is_array( $rgb ) ) {
 /* -----------------------------------------------------------------
   [Retina Support Style]
  */
-$dd_header_logo_retina = dayneo_get_option( 'dd_header_logo_retina', '' );
+$dd_header_logo_retina = bigbo_get_option( 'dd_header_logo_retina', '' );
 if ( $dd_header_logo_retina != "" ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
 only screen and (-o-min-device-pixel-ratio: 13/10),
 only screen and (min-resolution: 120dpi) {
@@ -333,15 +333,15 @@ only screen and (min-resolution: 120dpi) {
  */
 
 // Custom Fonts
-$dd_custom_font_woff	 = dayneo_get_option( 'dd_custom_font_woff' );
-$dd_custom_font_ttf	 = dayneo_get_option( 'dd_custom_font_ttf' );
-$dd_custom_font_svg	 = dayneo_get_option( 'dd_custom_font_svg' );
-$dd_custom_font_eot	 = dayneo_get_option( 'dd_custom_font_eot' );
+$dd_custom_font_woff	 = bigbo_get_option( 'dd_custom_font_woff' );
+$dd_custom_font_ttf	 = bigbo_get_option( 'dd_custom_font_ttf' );
+$dd_custom_font_svg	 = bigbo_get_option( 'dd_custom_font_svg' );
+$dd_custom_font_eot	 = bigbo_get_option( 'dd_custom_font_eot' );
 if ( isset( $dd_custom_font_woff[ 'url' ] ) && $dd_custom_font_woff[ 'url' ] 
     && isset($dd_custom_font_svg[ 'url' ]) && $dd_custom_font_svg[ 'url' ] 
     && isset($dd_custom_font_eot[ 'url' ]) && $dd_custom_font_eot[ 'url' ] 
     && isset($dd_custom_font_ttf[ 'url' ]) && $dd_custom_font_ttf[ 'url' ] ) {
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 @font-face {
     font-family: "CustomFont";
     src: url("' .  esc_url($dd_custom_font_eot[ 'url' ]) . '");
@@ -358,45 +358,45 @@ body,
 } else {
 
 	//Blog Title Font
-	$dayneo_dynamic_css		 .= dayneo_print_fonts( 'dd_title_font', '#blog-title', $additional_css = 'line-height:1.2', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_title_font', '#blog-title', $additional_css = 'line-height:1.2', $additional_color_css_class = '', $imp = '' );
 
 	//Blog Tagline Font
-	$dayneo_dynamic_css		 .= dayneo_print_fonts( 'dd_tagline_font', '#tagline', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_tagline_font', '#tagline', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
 
 	//Main Menu Font
-	$dayneo_dynamic_css		 .= dayneo_print_fonts( 'dd_menu_font', '.main-nav', $additional_css = 'line-height:20px', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_menu_font', '.main-nav', $additional_css = 'line-height:20px', $additional_color_css_class = '', $imp = '' );
 
 	//Top Menu Font
-	$dayneo_dynamic_css		 .= dayneo_print_fonts( 'dd_top_menu_font', '.top-bar-list', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_top_menu_font', '.top-bar-list', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
 
 	//Post Title Font
-	$dayneo_dynamic_css		 .= dayneo_print_fonts( 'dd_post_font', '.entry-header .post-title', $additional_css = 'line-height:1.2', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_post_font', '.entry-header .post-title', $additional_css = 'line-height:1.2', $additional_color_css_class = '', $imp = '' );
 
 	//Post Content Font
-	$dayneo_dynamic_css		 .= dayneo_print_fonts( 'dd_content_font', '.entry-content', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_content_font', '.entry-content', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
 
 	//Widget Title Font
-	$dayneo_dynamic_css		 .= dayneo_print_fonts( 'dd_widget_title_font', '.widget-content .text-title', $additional_css = 'line-height:1.2', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_widget_title_font', '.widget-content .text-title', $additional_css = 'line-height:1.2', $additional_color_css_class = '', $imp = '' );
 	
 	//Widget Content Font
-	$dayneo_dynamic_css		 .= dayneo_print_fonts( 'dd_widget_content_font', '.widget-content', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_widget_content_font', '.widget-content', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
 
 	//Footer Widget Title Font
-	$dayneo_dynamic_css		 .= dayneo_print_fonts( 'dd_footer_widget_title_font', '.footer .widget-content .text-title', $additional_css = 'line-height:1.2', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_footer_widget_title_font', '.footer .widget-content .text-title', $additional_css = 'line-height:1.2', $additional_color_css_class = '', $imp = '' );
 
 	//Footer Widget Content Font
-	$dayneo_dynamic_css		 .= dayneo_print_fonts( 'dd_footer_widget_content_font', '.footer .widget-content', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_footer_widget_content_font', '.footer .widget-content', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
         
         //ThemeVedanta Slider Heading Font 
-        $dayneo_dynamic_css        .= dayneo_print_fonts( 'dd_slider_heading_font', '.tvslider .slide-heading', $additional_css = '', $additional_color_css_class = '', $imp = '' ); 
+        $bigbo_dynamic_css        .= bigbo_print_fonts( 'dd_slider_heading_font', '.tvslider .slide-heading', $additional_css = '', $additional_color_css_class = '', $imp = '' ); 
         
         //ThemeVedanta Slider Caption Font 
-        $dayneo_dynamic_css        .= dayneo_print_fonts( 'dd_slider_caption_font', '.tvslider .slide-caption', $additional_css = '', $additional_color_css_class = '', $imp = '' ); 
+        $bigbo_dynamic_css        .= bigbo_print_fonts( 'dd_slider_caption_font', '.tvslider .slide-caption', $additional_css = '', $additional_color_css_class = '', $imp = '' ); 
 
 	//H1 to H6 Font
 	for ( $i = 1; $i < 7; $i ++ ) {
 		//we get all h1 to h6 Fonts, dd_content_h1_font ... to dd_content_h6_font values.
-		$dayneo_dynamic_css	 .= dayneo_print_fonts( 'dd_content_h' . $i . '_font', "h{$i}", $additional_css = '' );
+		$bigbo_dynamic_css	 .= bigbo_print_fonts( 'dd_content_h' . $i . '_font', "h{$i}", $additional_css = '' );
 	}
 }
 
@@ -410,7 +410,7 @@ $dd_form_bg_color		 = $dd_options[ 'dd_form_bg_color' ];
 $dd_form_text_color		 = $dd_options[ 'dd_form_text_color' ];
 $dd_form_border_color		 = $dd_options[ 'dd_form_border_color' ];
 
-$dayneo_dynamic_css .= '
+$bigbo_dynamic_css .= '
 .sub-menu li > a:hover, 
 .sub-menu li > a:focus, 
 .sub-menu li.submenu-open > a {
@@ -433,7 +433,7 @@ $dd_sharing_box_icon_color	 = $dd_options[ 'dd_sharing_box_icon_color' ];
 $dd_sharing_box_color		 = $dd_options[ 'dd_sharing_box_color' ];
 $dd_sharing_box_radius		 = $dd_options[ 'dd_sharing_box_radius' ];
 
-$dayneo_dynamic_css .= '
+$bigbo_dynamic_css .= '
 .share-this a {
 	background: ' . esc_attr($dd_sharing_box_color) . ';
 	border-radius: ' . esc_attr($dd_sharing_box_radius) . ';
@@ -448,7 +448,7 @@ $dd_social_color	 = $dd_options[ 'dd_social_color' ];
 $dd_social_boxed_color	 = $dd_options[ 'dd_social_boxed_color' ];
 $dd_social_boxed_radius	 = $dd_options[ 'dd_social_boxed_radius' ];
 
-$dayneo_dynamic_css .= '
+$bigbo_dynamic_css .= '
 .header-social.social-icons > li > a {
 	color: ' . esc_attr($dd_social_color) . ';
 }
@@ -463,9 +463,9 @@ $dayneo_dynamic_css .= '
 /* -----------------------------------------------------------------
   [Menu Style]
  */
-$dd_main_menu_padding	 = dayneo_get_option( 'dd_main_menu_padding', '15px' );
-$dd_menu_text_transform	 = dayneo_get_option( 'dd_menu_text_transform', 'none' );
-$dayneo_dynamic_css	 .= '
+$dd_main_menu_padding	 = bigbo_get_option( 'dd_main_menu_padding', '15px' );
+$dd_menu_text_transform	 = bigbo_get_option( 'dd_menu_text_transform', 'none' );
+$bigbo_dynamic_css	 .= '
 .inner-nav > li > a {
 	text-transform: ' . esc_attr($dd_menu_text_transform) . ';
 	padding-top: ' . esc_attr($dd_main_menu_padding[ 'padding-top' ]) . ';
@@ -484,25 +484,25 @@ $dayneo_dynamic_css	 .= '
  */
 
 
-$dd_megamenu_title_size	 = dayneo_get_option( 'dd_megamenu_title_size', '15px' );
-$dd_menu_font		 = dayneo_get_option( 'dd_menu_font' );
-$dd_widget_content_font	 = dayneo_get_option( 'dd_widget_content_font' );
+$dd_megamenu_title_size	 = bigbo_get_option( 'dd_megamenu_title_size', '15px' );
+$dd_menu_font		 = bigbo_get_option( 'dd_menu_font' );
+$dd_widget_content_font	 = bigbo_get_option( 'dd_widget_content_font' );
 
 if ( $dd_width_px != "custom" ) {
-	$dayneo_width_col_span_1	 = (int)$dd_container_width_px / 4;
-	$dayneo_width_col_span_2	 = (int)$dayneo_width_col_span_1 * 2;
-	$dayneo_width_col_span_3	 = (int)$dayneo_width_col_span_1 * 3;
+	$bigbo_width_col_span_1	 = (int)$dd_container_width_px / 4;
+	$bigbo_width_col_span_2	 = (int)$bigbo_width_col_span_1 * 2;
+	$bigbo_width_col_span_3	 = (int)$bigbo_width_col_span_1 * 3;
 
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 @media (min-width: ' . esc_attr($dd_width_px) . 'px) {
     #wrapper .t4p-megamenu-wrapper.col-span-1 {
-        width: ' . esc_attr($dayneo_width_col_span_1) . 'px;
+        width: ' . esc_attr($bigbo_width_col_span_1) . 'px;
     }
     #wrapper .t4p-megamenu-wrapper.col-span-2 {
-        width: ' . esc_attr($dayneo_width_col_span_2) . 'px;
+        width: ' . esc_attr($bigbo_width_col_span_2) . 'px;
     }
     #wrapper .t4p-megamenu-wrapper.col-span-3 {
-        width: ' . esc_attr($dayneo_width_col_span_3) . 'px;
+        width: ' . esc_attr($bigbo_width_col_span_3) . 'px;
     }
     #wrapper .t4p-megamenu-wrapper {
         width: ' . esc_attr($dd_container_width_px) . 'px;
@@ -511,20 +511,20 @@ if ( $dd_width_px != "custom" ) {
 ';
 } else {
 
-	$dayneo_width_col_span_1	 = (int)$dd_container_custom_width_px / 4;
-	$dayneo_width_col_span_2	 = (int)$dayneo_width_col_span_1 * 2;
-	$dayneo_width_col_span_3	 = (int)$dayneo_width_col_span_1 * 3;
+	$bigbo_width_col_span_1	 = (int)$dd_container_custom_width_px / 4;
+	$bigbo_width_col_span_2	 = (int)$bigbo_width_col_span_1 * 2;
+	$bigbo_width_col_span_3	 = (int)$bigbo_width_col_span_1 * 3;
 
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
 @media (min-width: ' . esc_attr($dd_custom_width_px) . 'px) {
     #wrapper .t4p-megamenu-wrapper.col-span-1 {
-        width: ' . esc_attr($dayneo_width_col_span_1) . 'px;
+        width: ' . esc_attr($bigbo_width_col_span_1) . 'px;
     }
     #wrapper .t4p-megamenu-wrapper.col-span-2 {
-        width: ' . esc_attr($dayneo_width_col_span_2) . 'px;
+        width: ' . esc_attr($bigbo_width_col_span_2) . 'px;
     }
     #wrapper .t4p-megamenu-wrapper.col-span-3 {
-        width: ' . esc_attr($dayneo_width_col_span_3) . 'px;
+        width: ' . esc_attr($bigbo_width_col_span_3) . 'px;
     }
     #wrapper .t4p-megamenu-wrapper {
         width: ' . esc_attr($dd_container_custom_width_px) . 'px;
@@ -533,7 +533,7 @@ if ( $dd_width_px != "custom" ) {
 ';
 }
 
-	$dayneo_dynamic_css .= '
+	$bigbo_dynamic_css .= '
  .ved-megamenu-wrapper .ved-megamenu-title {
     font-family: ' . esc_attr($dd_menu_font[ 'font-family' ]) . ';
     font-size: ' . esc_attr($dd_megamenu_title_size) . ';
@@ -567,9 +567,9 @@ ul.nav-menu li li.current-menu-ancestor .ved-megamenu-title a,
   [Main Color Scheme Style]
  */
 
-$dd_primary_color	 = dayneo_get_option( 'dd_primary_color', '#3ab54a' );
-$dd_secondry_color	 = dayneo_get_option( 'dd_secondry_color', '#3ab54a' );
-$dayneo_dynamic_css	 .= '
+$dd_primary_color	 = bigbo_get_option( 'dd_primary_color', '#3ab54a' );
+$dd_secondry_color	 = bigbo_get_option( 'dd_secondry_color', '#3ab54a' );
+$bigbo_dynamic_css	 .= '
 ::-moz-selection {
     background: ' . esc_attr($dd_primary_color) . ';
     color: #fff!important

@@ -1,4 +1,4 @@
-/* LayerSlider dayneo skin */
+/* LayerSlider bigbo skin */
 
 .fullwidthbanner-container {
     width: auto !important;
@@ -13,13 +13,13 @@
     z-index: 2;
 }
 
-.ls-dayneo .ls-layer {
+.ls-bigbo .ls-layer {
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-.ls-dayneo a.ls-nav-prev,
-.ls-dayneo a.ls-nav-next {
+.ls-bigbo a.ls-nav-prev,
+.ls-bigbo a.ls-nav-next {
     background-color: rgba(0, 0, 0, 0.5)!important;
     background-repeat: no-repeat;
     display: none;
@@ -43,27 +43,27 @@
     transition: all 0.2s ease-in-out!important;
 }
 
-.no-rgba .ls-dayneo .ls-nav-prev,
-.no-rgba .ls-dayneo .ls-nav-next {
+.no-rgba .ls-bigbo .ls-nav-prev,
+.no-rgba .ls-bigbo .ls-nav-next {
     background-color: #ccc !important;
 }
 
-.ls-dayneo .ls-nav-prev:hover,
-.ls-dayneo .ls-nav-next:hover {
+.ls-bigbo .ls-nav-prev:hover,
+.ls-bigbo .ls-nav-next:hover {
     opacity: 1 !important;
 }
 
-.ls-dayneo:hover .ls-nav-prev,
-.ls-dayneo:hover .ls-nav-next {
+.ls-bigbo:hover .ls-nav-prev,
+.ls-bigbo:hover .ls-nav-next {
     display: block;
 }
 
-.ls-dayneo .ls-nav-prev {
+.ls-bigbo .ls-nav-prev {
     left: 0 !important;
 }
 
-.ls-dayneo .ls-nav-prev:before,
-.ls-dayneo .ls-nav-next:before {
+.ls-bigbo .ls-nav-prev:before,
+.ls-bigbo .ls-nav-next:before {
     font-family: IcoMoon !important;
     content: '\e918';
     position: absolute;
@@ -80,11 +80,11 @@
     text-align: center;
 }
 
-.ls-dayneo .ls-nav-next {
+.ls-bigbo .ls-nav-next {
     right: 0 !important;
 }
 
-.ls-dayneo .ls-nav-next:before {
+.ls-bigbo .ls-nav-next:before {
     content: '\e919';
     right: 0;
     left: auto;
@@ -94,22 +94,22 @@
     clear: none !important;
 }
 
-.ls-dayneo .ls-playvideo {
+.ls-bigbo .ls-playvideo {
     width: 50px;
     height: 50px;
     margin-left: -25px;
     margin-top: -25px;
 }
 
-.ls-dayneo .ls-playvideo {
+.ls-bigbo .ls-playvideo {
     background-image: url("../../../../assets/images/skin.png");
 }
 
-.ls-dayneo .ls-playvideo {
+.ls-bigbo .ls-playvideo {
     background-position: -300px -150px;
 }
 
-.ls-dayneo .ls-playvideo:hover,
-.ls-dayneo .ls-vpcontainer:hover .ls-playvideo {
+.ls-bigbo .ls-playvideo:hover,
+.ls-bigbo .ls-vpcontainer:hover .ls-playvideo {
     background-position: -375px -150px;
 }

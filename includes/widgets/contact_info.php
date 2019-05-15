@@ -1,15 +1,15 @@
 <?php
-add_action( 'widgets_init', 'dayneo_contact_info_widgets' );
+add_action( 'widgets_init', 'bigbo_contact_info_widgets' );
 
-function dayneo_contact_info_widgets() {
-	register_widget( 'Dayneo_Contact_Info_Widget' );
+function bigbo_contact_info_widgets() {
+	register_widget( 'Bigbo_Contact_Info_Widget' );
 }
 
-class Dayneo_Contact_Info_Widget extends WP_Widget {
+class Bigbo_Contact_Info_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-		'contact_info-widget', __( 'Dayneo: Get In Touch', 'dayneo' ), // Name
+		'contact_info-widget', __( 'Bigbo: Get In Touch', 'bigbo' ), // Name
 			     array( 'classname' => 'contact_info', 'description' => '', ) // Args
 		);
 	}
@@ -100,43 +100,43 @@ class Dayneo_Contact_Info_Widget extends WP_Widget {
 	}
 
 	public function form( $instance ) {
-		$defaults	 = array( 'title' => esc_html__( 'Contact Us', 'dayneo' ), 'address' => '', 'phone' => '', 'mobile' => '', 'fax' => '', 'email' => '', 'emailtxt' => '', 'web' => '', 'webtxt' => '' );
+		$defaults	 = array( 'title' => esc_html__( 'Contact Us', 'bigbo' ), 'address' => '', 'phone' => '', 'mobile' => '', 'fax' => '', 'email' => '', 'emailtxt' => '', 'web' => '', 'webtxt' => '' );
 		$instance	 = wp_parse_args( (array) $instance, $defaults );
 		?>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php echo esc_html_e( 'Title', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" value="<?php echo esc_attr($instance[ 'title' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'address' )); ?>"><?php echo esc_html_e( 'Address', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'address' )); ?>"><?php echo esc_html_e( 'Address', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'address' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'address' )); ?>" value="<?php echo esc_attr($instance[ 'address' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'phone' )); ?>"><?php echo esc_html_e( 'Phone', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'phone' )); ?>"><?php echo esc_html_e( 'Phone', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'phone' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'phone' )); ?>" value="<?php echo esc_attr($instance[ 'phone' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'mobile' )); ?>"><?php echo esc_html_e( 'Mobile', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'mobile' )); ?>"><?php echo esc_html_e( 'Mobile', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'mobile' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'mobile' )); ?>" value="<?php echo esc_attr($instance[ 'mobile' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'fax' )); ?>"><?php echo esc_html_e( 'Fax', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'fax' )); ?>"><?php echo esc_html_e( 'Fax', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'fax' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'fax' )); ?>" value="<?php echo esc_attr($instance[ 'fax' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'email' )); ?>"><?php echo esc_html_e( 'Email', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'email' )); ?>"><?php echo esc_html_e( 'Email', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'email' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'email' )); ?>" value="<?php echo esc_attr($instance[ 'email' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'emailtxt' )); ?>"><?php echo esc_html_e( 'Email Link Text', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'emailtxt' )); ?>"><?php echo esc_html_e( 'Email Link Text', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'emailtxt' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'emailtxt' )); ?>" value="<?php echo esc_attr($instance[ 'emailtxt' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'web' )); ?>"><?php echo esc_html_e( 'Website URL (with HTTP)', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'web' )); ?>"><?php echo esc_html_e( 'Website URL (with HTTP)', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'web' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'web' )); ?>" value="<?php echo esc_attr($instance[ 'web' ]); ?>" />
 		</p>
 		<p>
-		    <label for="<?php echo esc_attr($this->get_field_id( 'webtxt' )); ?>"><?php echo esc_html_e( 'Website URL Text', 'dayneo' ); ?></label>
+		    <label for="<?php echo esc_attr($this->get_field_id( 'webtxt' )); ?>"><?php echo esc_html_e( 'Website URL Text', 'bigbo' ); ?></label>
 		    <input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id( 'webtxt' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'webtxt' )); ?>" value="<?php echo esc_attr($instance[ 'webtxt' ]); ?>" />
 		</p>
 		<?php
