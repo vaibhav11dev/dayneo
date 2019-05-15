@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <section class="woocommerce-order-downloads">
 	<?php if ( isset( $show_title ) ) : ?>
-		<h2 class="woocommerce-order-downloads__title"><?php esc_html_e( 'Downloads', 'woocommerce' ); ?></h2>
+		<div class="sec-head-style"><h3 class="text-title"><?php esc_html_e( 'Downloads', 'woocommerce' ); ?></h3></div>
 	<?php endif; ?>
 	<div class="table-responsive">
 	<table class="woocommerce-table woocommerce-table--order-downloads shop_table table-bordered full-width-table shop_table_responsive order_details">

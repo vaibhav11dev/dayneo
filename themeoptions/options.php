@@ -1461,7 +1461,7 @@ Redux::setSection( $dd_options, array(
 			'options'	 => $sidebar_options,
 			'title'		 => __( 'Shop Archive/Category Sidebar', 'dayneo' ),
 			'default'	 => 'Siderbar 1',
-		),
+		),         
 	),
 )
 );

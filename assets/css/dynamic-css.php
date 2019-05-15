@@ -548,44 +548,8 @@ if ( $dd_width_px != "custom" ) {
     border-left: 3px solid ' . esc_attr($dd_menu_font[ 'color' ]) . ';
 }
 
-ul.nav-menu > li {
-    float: left;
-}
-
-ul.nav-menu > li.ved-dropdown-menu {
-    position: relative;
-}
-
-ul.nav-menu > li.ved-dropdown-menu li {
-    position: relative;
-    width: 100%;
-}
-
-ul.nav-menu li.ved-dropdown-menu li:hover ul,
-ul.nav-menu li.ved-dropdown-menu li.nav-hover ul,
-ul.nav-menu li.ved-dropdown-menu li li:hover ul,
-ul.nav-menu li.ved-dropdown-menu li li.nav-hover ul,
-ul.nav-menu li.ved-dropdown-menu li li li:hover ul,
-ul.nav-menu li.ved-dropdown-menu li li li.nav-hover ul {
-    left: 14em;
-}
-
-ul.nav-menu li.ved-dropdown-menu ul {
-    left: 0px;
-    width: 14em;
-}
-
 ul.nav-menu .ved-megamenu-menu .widget-content a {
     color: ' . esc_attr($dd_widget_content_font[ 'color' ]) . ' ;
-}
-
-ul.nav-menu .ved-megamenu-menu li .widget-content ul,
-ul.nav-menu .ved-megamenu-menu li:hover .widget-content ul {
-    background: transparent;
-}
-
-.center-menu ul.nav-menu li {
-    display: block;
 }
 
 ul.nav-menu li li:hover .ved-megamenu-title,
