@@ -7514,7 +7514,7 @@ table td {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 input::placeholder,input::-moz-placeholder,input:-moz-placeholder{
-    opacity: .8
+    opacity: .6
 }
 .wpcf7-form label{
     display: block;
@@ -7628,6 +7628,9 @@ input::placeholder,input::-moz-placeholder,input:-moz-placeholder{
 .product-slider .slider-for {
     border: 2px solid #e2e2e2;
     margin-bottom: 15px;
+}
+.product-slider .slider .slider-item-for img{
+    width: 100%
 }
 .product-slider .slider-nav .slider-item-nav img{
     border:1px solid #e2e2e2;
