@@ -7255,6 +7255,9 @@ table td {
     margin-top: 20px;
     text-align: center;
 }
+.woocommerce-view-order .woocommerce-order-downloads{
+    margin-bottom: 20px
+}
 .woocommerce .woocommerce-form-register .woocommerce-Button{
     margin-top: 15px;
 }
