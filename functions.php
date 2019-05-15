@@ -53,9 +53,8 @@ function dayneo_scripts() {
     wp_enqueue_script( 'dayneo-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '1.0.0', true );
     wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/assets/slick/slick.min.js', array( 'jquery' ), '1.0', true );
 
-$menu_extras = dayneo_get_option( 'menu_extras' );
-$header_type = dayneo_get_option( 'dd_header_type' );
-$product_style = dayneo_get_option( 'dd_product_style' );
+    $menu_extras = dayneo_get_option( 'menu_extras' );
+    $header_type = dayneo_get_option( 'dd_header_type' );
     wp_localize_script( 'ddmain', 'dayneoData', array(
         'ajax_url'            => admin_url( 'admin-ajax.php' ),
         'nonce'               => wp_create_nonce( '_dayneo_nonce' ),
@@ -64,7 +63,6 @@ $product_style = dayneo_get_option( 'dd_product_style' );
         'headerbar_on' => $menu_extras[ 'headerbar' ], 
         'headercart_on' => $menu_extras[ 'cart' ],
         'headertype' => $header_type,
-        'product_style' => $product_style,
     ) );
 }
 
