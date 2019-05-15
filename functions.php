@@ -55,6 +55,7 @@ function dayneo_scripts() {
 
 $menu_extras = dayneo_get_option( 'menu_extras' );
 $header_type = dayneo_get_option( 'dd_header_type' );
+$product_style = dayneo_get_option( 'dd_product_style' );
     wp_localize_script( 'ddmain', 'dayneoData', array(
         'ajax_url'            => admin_url( 'admin-ajax.php' ),
         'nonce'               => wp_create_nonce( '_dayneo_nonce' ),
@@ -63,6 +64,7 @@ $header_type = dayneo_get_option( 'dd_header_type' );
         'headerbar_on' => $menu_extras[ 'headerbar' ], 
         'headercart_on' => $menu_extras[ 'cart' ],
         'headertype' => $header_type,
+        'product_style' => $product_style,
     ) );
 }
 
