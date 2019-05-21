@@ -28,7 +28,7 @@ global $dd_options;
                         endif;
                         ?>   
 
-                        <div class="portfolio-content mt-30"><?php the_content(); ?></div>
+                        <div class="portfolio-content"><?php the_content(); ?></div>
 
                     </div>
                     <div class="col-md-4">

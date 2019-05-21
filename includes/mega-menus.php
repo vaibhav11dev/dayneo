@@ -90,10 +90,9 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 		 */
 		public function start_lvl( &$output, $depth = 0, $args = array() ) {
 			$indent = str_repeat( "\t", $depth );
-
 			if ( $depth === 0 && $this->menu_megamenu_status == "enabled" ) {
 				$output	 .= "\n{first_level}\n";
-				$output	 .= "\n$indent<ul class=\"ved-megamenu-holder\" >\n<ul class='ved-megamenu {megamenu_border}'>\n";
+				$output	 .= "\n$indent<div class=\"ved-megamenu-holder\" >\n<ul class='ved-megamenu {megamenu_border}'>\n";
 			} elseif ( $depth >= 2 && $this->menu_megamenu_status == "enabled" ) {
 				$output .= "\n$indent<ul class=\"sub-menu deep-level\">\n";
 			} else {
@@ -114,7 +113,7 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 
 			if ( $depth === 0 && $this->menu_megamenu_status == "enabled" ) {
 
-				$output .= "\n</ul>\n</ul><div style='clear:both;'></div>\n</ul>\n";
+				$output .= "\n</ul>\n</div>\n</div><!--/ved-megamenu-wrapper-->\n";
 
 				if ( $this->total_num_of_columns < $this->max_num_of_columns ) {
 					$col_span = " col-span-" . $this->total_num_of_columns;
@@ -126,7 +125,7 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 					$col_span = " col-span-12";
 				}
 
-				$output = str_replace( "{first_level}", "<ul class='ved-megamenu-wrapper columns-" . esc_attr($this->total_num_of_columns . $col_span ) . "  sub-menu'>", $output );
+				$output = str_replace( "{first_level}", "<div class='ved-megamenu-wrapper columns-" . esc_attr($this->total_num_of_columns . $col_span ) . "  sub-menu'>", $output );
 				if ( $this->total_num_of_columns > $this->max_num_of_columns ) {
 					$output = str_replace( "{megamenu_border}", "ved-megamenu-border", $output );
 				} else {
@@ -243,7 +242,7 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 					$heading = sprintf( '%s%s%s%s', $link, $title_enhance, $title, $link_closing );
 
 					if ( ! empty( $this->menu_megamenu_banner ) ) {
-						$item_output .= $link.'<img src="' . esc_url($this->menu_megamenu_banner) . '">'.$link_closing;
+						$item_output .= $link.'<img alt src="' . esc_url($this->menu_megamenu_banner) . '">'.$link_closing;
 					} elseif ( $this->menu_megamenu_title != 'disabled' ) {
 						$item_output .= "<h3 class='ved-megamenu-title'>" . $heading . "</h3>";
 					} else {

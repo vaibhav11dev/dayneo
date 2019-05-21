@@ -72,7 +72,7 @@ if ( post_password_required() ) {
 
 	<!-- COMMENT FORM -->
 	<?php bigbo_custom_comment_form(); ?>
-	<!--END <!-- COMMENT FORM -->
+	 <!-- COMMENT FORM -->
 
 	<?php
 } 

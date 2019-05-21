@@ -280,7 +280,7 @@ if ( ! function_exists( 'bigbo_header_menu' ) ) :
         ?>
         <div class="primary-nav nav">
             <?php
-            wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav', 'container' => 'nav', 'container_class' => 'ved-main-megamenu ved-navbar-nav main-nav collapse clearfix', 'container_id' => '_desktop_menu', 'walker' => new VedCoreFrontendWalker() ) );
+            wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_class' => 'inner-nav', 'container' => 'nav', 'container_class' => 'ved-main-megamenu ved-navbar-nav main-nav clearfix', 'container_id' => '_desktop_menu', 'walker' => new VedCoreFrontendWalker() ) );
             ?>
         </div>
         <?php
@@ -369,7 +369,7 @@ if ( ! function_exists( 'bigbo_extra_department' ) ) :
             <h2 class="cats-menu-title"><?php echo wp_kses( $dep_text, wp_kses_allowed_html( 'post' ) ); ?></h2>
 
             <div class="toggle-product-cats nav" <?php echo esc_attr( $cat_style ); ?>>
-                <?php wp_nav_menu( array( 'theme_location' => 'department-menu', 'menu_class' => 'inner-nav', 'container' => 'nav', 'container_class' => 'ved-navbar-nav main-nav vertical-megamenu collapse clearfix', 'container_id' => '_desktop_vmenu', 'walker' => new VedCoreFrontendWalker() ) ); ?>
+                <?php wp_nav_menu( array( 'theme_location' => 'department-menu', 'menu_class' => 'inner-nav', 'container' => 'nav', 'container_class' => 'ved-navbar-nav main-nav vertical-megamenu clearfix', 'container_id' => '_desktop_vmenu', 'walker' => new VedCoreFrontendWalker() ) ); ?>
             </div>
         </div>
         <?php
@@ -392,10 +392,5 @@ if ( ! function_exists( 'bigbo_menu_extras' ) ) :
 
         return $menu_extras;
     }
-
-
-
-
-
+    
 endif;
-

@@ -55,7 +55,7 @@ if ( ! comments_open() ) {
 
     <?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 
-        <div id="review_form_wrapper clearfix">
+        <div id="review_form_wrapper">
     	<div id="review_form">
 		<?php
 		$commenter = wp_get_current_commenter();
@@ -63,8 +63,8 @@ if ( ! comments_open() ) {
 		$comment_form = array(
 		    'title_reply'		 => have_comments() ? __( '<h5 class="text-title text-uppercase bottom-line">Add a review</h5>', 'bigbo' ) : sprintf( __( '<h5 class="alert alert-info">Be the first to review &ldquo;%s&rdquo;</h5>', 'bigbo' ), get_the_title() ),
 		    'title_reply_to'	 => __( 'Leave a Reply to %s', 'bigbo' ),
-		    'title_reply_before'	 => '<span id="reply-title" class="comment-reply-title">',
-		    'title_reply_after'	 => '</span>',
+		    'title_reply_before'	 => '<div id="reply-title" class="comment-reply-title">',
+		    'title_reply_after'	 => '</div>',
 		    'comment_notes_after'	 => '',
 		    'fields'		 => array(
 			'author' => '<div class="row"><div class="col-sm-6"><div class="form-group comment-form-author">' . '<label for="author" class="sr-only">' . esc_html__( 'Name', 'bigbo' ) . ' <span class="required">*</span></label> ' .

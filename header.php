@@ -11,6 +11,8 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 	<head>
+		<meta charset="<?php bloginfo( 'charset' ); ?>">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<?php
 		$dd_favicon		 = bigbo_get_option( 'dd_favicon' );
 		$dd_iphone_icon		 = bigbo_get_option( 'dd_iphone_icon' );
@@ -49,17 +51,14 @@
                     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo esc_url($dd_ipad_icon_retina[ 'url' ]); ?>">
                     <?php
                 endif;
-                ?>
-
-		<meta charset="<?php bloginfo( 'charset' ); ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+                ?>		
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 
 		<?php wp_head(); ?>
 	</head>
 
-        <?php //$shop_view = isset( $_COOKIE['shop_view'] ) ? $_COOKIE['shop_view'] : ''; ?>
-	<body <?php body_class(); ?>>
+        <?php $dd_demo_style = bigbo_get_option( 'dd_demo_style', 'dddemo1' ); ?>
+	<body <?php body_class($dd_demo_style); ?>>
                 <?php
                 $dd_back_to_top = bigbo_get_option( 'dd_back_to_top', 'right' );
                 if ( $dd_back_to_top == 1 ) {

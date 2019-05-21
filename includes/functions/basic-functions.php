@@ -1436,7 +1436,7 @@ function bigbo_layout_class( $type = 1 ) {
         }
 
 	$dd_layout			 = bigbo_get_option( 'dd_layout', '2cl' );
-	$dd_post_layout			 = bigbo_get_option( 'dd_post_layout', 'two' );
+	$dd_post_layout			 = bigbo_get_option( 'dd_post_layout', '2' );
 	$dd_opt1_width_content		 = bigbo_get_option( 'dd_opt1_width_content', '8' );
 	$dd_opt2_width_content		 = bigbo_get_option( 'dd_opt2_width_content', '6' );
 	$bigbo_sidebar_position	 = get_post_meta( $post_id, 'bigbo_sidebar_position', true );

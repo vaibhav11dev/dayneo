@@ -830,7 +830,7 @@ function dd_product_navigation() {
 
         if ( $next_id ) {
             $next_img_link = wp_get_attachment_image_src( get_post_thumbnail_id( $next_id ), 'single-post-thumbnail' );
-            $next_img      = "<a href='" . esc_url( $next_link ) . "'><img class='img-responsive' src='" . esc_url( $next_img_link[ 0 ] ) . "'></a>";
+            $next_img      = "<a href='" . esc_url( $next_link ) . "'><img alt class='img-responsive' src='" . esc_url( $next_img_link[ 0 ] ) . "'></a>";
         }
     }
 
@@ -843,7 +843,7 @@ function dd_product_navigation() {
 
         if ( $previous_id ) {
             $previous_img_link = wp_get_attachment_image_src( get_post_thumbnail_id( $previous_id ), 'single-post-thumbnail' );
-            $previous_img      = "<a href='" . esc_url( $previous_link ) . "'><img class='img-responsive' src='" . esc_url( $previous_img_link[ 0 ] ) . "'></a>";
+            $previous_img      = "<a href='" . esc_url( $previous_link ) . "'><img alt class='img-responsive' src='" . esc_url( $previous_img_link[ 0 ] ) . "'></a>";
         }
     }
 
@@ -1027,4 +1027,18 @@ function get_product_quick_view_header() {
                 printf( '<a href="%s" class="%s" title="%s" data-product_id="%d">%s</a>', esc_url( $url ), esc_attr( $css_class ), esc_html( $button_text ), $product_id, $button_text );
                 //echo '</div>';
             }
-            
+
+            // Display the additional product images
+            function bigbo_second_product_thumbnail() {
+                    global $product, $woocommerce,$id;
+                    $attachment_ids = $product->get_gallery_image_ids();
+                    $id =	get_post_thumbnail_id( $product->get_id() );
+                    if ( count($attachment_ids) > 0 ) {
+                            $secondary_image_id = $attachment_ids['0'];		
+                            echo wp_get_attachment_image( $secondary_image_id, 'shop_catalog', '', $attr = array( 'class' => 'secondary-image attachment-shop-catalog' ) );
+                    }
+                    else{				
+                            echo wp_get_attachment_image( $id, 'shop_catalog', '', $attr = array( 'class' => 'secondary-image attachment-shop-catalog' ) );		
+                    }
+            }
+            add_action( 'woocommerce_before_shop_loop_item_title', 'bigbo_second_product_thumbnail');

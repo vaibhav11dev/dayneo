@@ -20,7 +20,6 @@ function bigbo_scripts() {
 
     //Icon Fonts
     wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css' );
-    wp_enqueue_style( 'flaticon', get_template_directory_uri() . '/assets/css/flaticon.css' );
 
     //Plugins
     wp_enqueue_style( 'magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css' );
@@ -30,8 +29,14 @@ function bigbo_scripts() {
     wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/slick/slick.css' );
 
     //Theme Core CSS
+    $dd_demo_style = bigbo_get_option( 'dd_demo_style', 'dddemo1' );
     wp_enqueue_style( 'ddmain', get_template_directory_uri() . '/assets/css/ddmain.css' );
-    wp_enqueue_style( 'ddmedia', get_template_directory_uri() . '/assets/css/ddmedia.css' );
+    if ( $dd_demo_style == 'dddemo2' ) {
+        wp_enqueue_style( 'dddemo2', get_template_directory_uri() . '/assets/css/dddemo2.css' );
+    }
+    if ( $dd_demo_style == 'dddemo3' ) {
+        wp_enqueue_style( 'dddemo3', get_template_directory_uri() . '/assets/css/dddemo3.css' );
+    }
     wp_enqueue_style( 'dynamic-style', get_template_directory_uri() . '/assets/css/dynamic.css' );
 
     //Theme Dynamic CSS

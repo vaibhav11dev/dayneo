@@ -328,9 +328,9 @@ function bigbo_sharethis() {
  */
 function bigbo_post_layout( $xyz ) {
 
-    $dd_post_layout = bigbo_get_option( 'dd_post_layout', 'two' );
+    $dd_post_layout = bigbo_get_option( 'dd_post_layout', '2' );
 
-    if ( $dd_post_layout == "two" ) {
+    if ( $dd_post_layout == "2" ) {
         echo ' col-md-6 odd' . ( (int) $xyz % 2 );
     } else {
         echo ' col-md-4 odd' . ( (int) $xyz % 3 );

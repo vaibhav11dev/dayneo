@@ -47,14 +47,6 @@
 	width: 100%;
 	display: block;
 }
-.flexslider .slides:after {
-	content: "\0020";
-	display: block;
-	clear: both;
-	visibility: hidden;
-	line-height: 0;
-	height: 0;
-}
 html[xmlns] .flexslider .slides {
 	display: block;
 }
@@ -94,36 +86,6 @@ html[xmlns] .flexslider .slides {
 			background-size: cover;
 }
 
-.flex-nav-prev,
-.flex-nav-next {
-	position: absolute;
-	z-index: 10;
-	top: 50%;
-	left: 0;
-	margin-top: -10px;
-}
-
-.flex-nav-next {
-	left: auto;
-	right: 0;
-}
-
-.flex-nav-prev a,
-.flex-nav-next a {
-	display: block;
-	font-size: 20px;
-	color: #fff;
-	padding: 0 20px;
-}
-
-.flex-nav-prev a:hover {
-	padding-left: 15px;
-}
-
-.flex-nav-next a:hover {
-	padding-right: 15px;
-}
-
 .flex-control-nav {
 	position: absolute;
 	bottom: 20px;
@@ -135,31 +97,4 @@ html[xmlns] .flexslider .slides {
 .flex-control-nav > li {
 	display: inline-block;
 	position: relative;
-	margin: 0 5px;
-}
-
-.flex-control-nav > li > a {
-	text-indent: -9999px;
-	background: #fff;
-	box-shadow: 0px 0px 0px 3px transparent;
-	border-radius: 50%;
-	display: block;
-	height: 10px;
-	width: 10px;
-	opacity: 0.5;
-	zoom: 1;
-	-webkit-transform: scale(0.8);
-	transform: scale(0.8);
-	-webkit-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
-}
-
-
-.flex-control-nav > li > a.flex-active {
-	background: transparent;
-	box-shadow: 0px 0px 0px 3px white;
-	-webkit-transform: scale(0.9);
-	transform: scale(0.9);
-	opacity: 1;
-	zoom: 1;
 }

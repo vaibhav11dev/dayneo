@@ -19,10 +19,8 @@
     width: 100%;
 }
 
-.mega_menu_wrap.about-wrap .notice,
-.mega_menu_wrap.about-wrap div.error,
-.mega_menu_wrap.about-wrap div.updated {
-    display: block !important;
+.appearance_page_bigbo_options .notice {
+    display: none;
 }
 
 .activate_licence {

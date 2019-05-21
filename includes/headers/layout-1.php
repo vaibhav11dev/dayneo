@@ -1,11 +1,11 @@
 <?php
 $extras = bigbo_menu_extras();
 
-$css_header_search      = 'col-md-6 col-sm-6';
-$css_header_cart        = 'col-md-3 col-sm-3';
-$css_header_menu        = 'col-md-9 col-sm-9';
-$css_header_primarymenu = 'col-md-8 col-sm-8';
-$css_header_headerbar   = 'col-md-4 col-sm-4';
+$css_header_search      = 'col-md-6';
+$css_header_cart        = 'col-md-3';
+$css_header_menu        = 'col-md-9';
+$css_header_primarymenu = 'col-md-9';
+$css_header_headerbar   = 'col-md-3';
 
 $show_search     = true;
 $show_cart       = true;
@@ -49,7 +49,7 @@ if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
                                         <?php
                                        if ( $dd_header_logo != '' ):
                                             ?>
-                                            <img class="normal-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo $dd_header_logo ?>" width="200">
+                                            <img class="normal-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo $dd_header_logo ?>">
                                             <?php
                                         endif;
                                         if ( $dd_header_logo_retina != "" && $dd_header_logo_retina_width != "" && $dd_header_logo_retina_height != "" ):

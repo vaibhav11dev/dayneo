@@ -216,6 +216,19 @@ Redux::setSection( $dd_options, array(
 	'title'		 => __( 'Layout', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
+                array(
+			'id'		 => 'dd_demo_style',
+			'type'		 => 'select',
+			'compiler'	 => false,
+			'options'	 => array(
+				'dddemo1'	 => __( 'Demo1', 'bigbo' ),
+				'dddemo2'	 => __( 'Demo2', 'bigbo' ),
+				'dddemo3'	 => __( 'Demo3', 'bigbo' ),
+			),
+			'title'		 => __( 'Demo Style', 'bigbo' ),
+			'default'	 => 'dddemo1',
+			'class'	 => 'demo_style_opt',
+		),
 		array(
 			'subtitle'	 => __( 'Select main content and sidebar alignment.', 'bigbo' ),
 			'id'		 => 'dd_layout',
@@ -494,9 +507,9 @@ Redux::setSection( $dd_options, array(
 			'compiler'	 => true,
 			'type'		 => 'image_select',
 			'options'	 => array(
-				'h1'	 => BIGBO_IMAGEFOLDER . '/header/header-5.png',
-				'h2'	 => BIGBO_IMAGEFOLDER . '/header/header-5.png',
-				'h3'	 => BIGBO_IMAGEFOLDER . '/header/header-5.png',
+				'h1'	 => BIGBO_IMAGEFOLDER . '/header/header-1.png',
+				'h2'	 => BIGBO_IMAGEFOLDER . '/header/header-2.png',
+				'h3'	 => BIGBO_IMAGEFOLDER . '/header/header-3.png',
 			),
 			'title'		 => __( 'Choose Header Type', 'bigbo' ),
 			'default'	 => 'h1',

@@ -44,12 +44,7 @@ if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {
     <div class="shop-item">
         <div <?php post_class(); ?>>
             <?php
-            /**
-             * woocommerce_before_shop_loop_item hook.
-             *
-             * @hooked woocommerce_template_loop_product_link_open - 10
-             */
-            //do_action( 'woocommerce_before_shop_loop_item' );
+                remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
             ?>
             <div class="shop-item-photo">
                 <?php
@@ -108,15 +103,6 @@ if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {
                 </div>
 
             </div>
-            <?php
-            /**
-             * woocommerce_after_shop_loop_item hook.
-             *
-             * @hooked woocommerce_template_loop_product_link_close - 5
-             * @hooked woocommerce_template_loop_add_to_cart - 10
-             */
-            remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
-            ?>
         </div>
     </div>
 </div>

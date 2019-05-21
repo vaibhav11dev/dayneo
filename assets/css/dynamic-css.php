@@ -132,15 +132,6 @@ if ( $bigbo_content_top_bottom_padding ) {
   [Header Section Style]
  */
 
-// For Sticky Header
-if ( is_user_logged_in() ) {
-	$bigbo_dynamic_css .= '
-	.is_stuck {
-		margin-top: 32px;
-	}
-';
-}
-
 //Header Topbar Color
 if ( isset( $dd_options[ 'dd_topbar_color' ] ) ) {
 	$bigbo_dynamic_css .= '
@@ -152,11 +143,13 @@ if ( isset( $dd_options[ 'dd_topbar_color' ] ) ) {
 
 // Hero Header Custom Height
 $bigbo_hero_height_custom	 = get_post_meta( $post_id, 'bigbo_hero_height_custom', true );
+if ( $bigbo_hero_height_custom ) {
 $bigbo_dynamic_css		 .= '
 .hero-height-custom {
 	height: ' . esc_attr($bigbo_hero_height_custom) . 'vh;
 }
 ';
+}
 
 //Header Background Color (H2)
 if ( isset( $dd_options[ 'dd_bg_header' ] ) && $dd_options[ 'dd_header_type' ] == 'h2'  ) {
@@ -171,7 +164,7 @@ if ( isset( $dd_options[ 'dd_bg_header' ] ) && $dd_options[ 'dd_header_type' ] =
 if ( isset( $dd_options[ 'dd_text_header' ] ) && $dd_options[ 'dd_header_type' ] == 'h2'  ) {
 	$bigbo_dynamic_css .= '
 	.top-bar p, .top-bar-right .dropdown > .expand-more, #_desktop_wishtlistTop .yith-contents,.cart-hover .cart-content-right > span,
-	.cart-hover .cart-content-right .nav-total {
+	.cart-hover .cart-content-right .nav-total,.mobile-logo-bar #menu-icon,#_mobile_cart .header-ajax-cart .icon-box {
 		color: ' . esc_attr($dd_options[ 'dd_text_header' ]) . ';
 	}
 ';
@@ -280,7 +273,7 @@ if ( ! empty( $dd_main_pattern ) && $dd_main_pattern != 'none' && in_array( $dd_
 	$dd_footer_bg_color = bigbo_get_option( 'dd_footer_bg_color', '' );
 	if ( ! empty( $dd_footer_bg_color ) ) {
 		$bigbo_dynamic_css .= '
-.footer {
+.footer,.dddemo2 .before-footer .social-icons,.dddemo3 .before-footer .social-icons {
 	background-color: ' . esc_attr($dd_footer_bg_color) . ';
 }
 ';
@@ -364,7 +357,7 @@ body,
 	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_tagline_font', '#tagline', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
 
 	//Main Menu Font
-	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_menu_font', '.main-nav', $additional_css = 'line-height:20px', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_menu_font', '.primary-nav .inner-nav > li > a', $additional_color_css_class = '', $imp = '' );
 
 	//Top Menu Font
 	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_top_menu_font', '.top-bar-list', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
@@ -385,7 +378,7 @@ body,
 	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_footer_widget_title_font', '.footer .widget-content .text-title', $additional_css = 'line-height:1.2', $additional_color_css_class = '', $imp = '' );
 
 	//Footer Widget Content Font
-	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_footer_widget_content_font', '.footer .widget-content', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'dd_footer_widget_content_font', '.footer .widget-content,.footer .widget-content a,.footer > .footer-bg-black > .container p', $additional_color_css_class = '', $imp = '' );
         
         //ThemeVedanta Slider Heading Font 
         $bigbo_dynamic_css        .= bigbo_print_fonts( 'dd_slider_heading_font', '.tvslider .slide-heading', $additional_css = '', $additional_color_css_class = '', $imp = '' ); 
@@ -466,7 +459,7 @@ $bigbo_dynamic_css .= '
 $dd_main_menu_padding	 = bigbo_get_option( 'dd_main_menu_padding', '15px' );
 $dd_menu_text_transform	 = bigbo_get_option( 'dd_menu_text_transform', 'none' );
 $bigbo_dynamic_css	 .= '
-.inner-nav > li > a {
+.primary-nav .inner-nav > li > a {
 	text-transform: ' . esc_attr($dd_menu_text_transform) . ';
 	padding-top: ' . esc_attr($dd_main_menu_padding[ 'padding-top' ]) . ';
 	padding-right: ' . esc_attr($dd_main_menu_padding[ 'padding-right' ]) . ';
@@ -615,11 +608,15 @@ button[type=submit]:hover,
 .button.wc-forward,
 .wishlist_table .product-add-to-cart .button:hover,
 .main-slider .ved-image-slider .owl-buttons > div,
+.flex-direction-nav > li,
 .main-slider .ved-image-slider .owl-pagination > div:hover,
 .owl-pagination > div.active,
+.flex-control-nav > li > a.flex-active,
 .ved-woo-cats-slider .item .categoryName:after,
 .ddPopupnewsletter-i .close,
-.header-3 .extras-menu
+.header-3 .extras-menu,
+.header-2 .header-bar,
+.ved-pricing .ved-pricing-button:hover
 {
     background: ' . esc_attr($dd_primary_color) . ';
 }
@@ -658,13 +655,13 @@ button[type=submit]:hover,
 .widget.woocommerce .widget-content ul li a:hover + .count,
 .ved-testimonial-user,
 .slick-dots li.slick-active button:before,
-.contact-info-wrap .contact-info-box .elementor-icon,
 .portfolio-info .social-icons li a:hover,
 .wc_payment_method a:hover,
 .footer a:hover,
 .dd-quick-view-modal .modal-content .close:hover,
 .header-2 .ved-main-megamenu .inner-nav > li:hover > a,
-.page-search article .entry-meta .read-more:hover
+.page-search article .entry-meta .read-more:hover,
+input[type="checkbox"] + label:after, input[type="checkbox"] + span:after, .newsletter_show_again:after
 {
     color: ' . esc_attr($dd_primary_color) . ';
 }
@@ -690,12 +687,11 @@ button[type=submit]:hover,
 .woocommerce .widget_price_filter .price_slider_amount .button:hover,
 .shop-item-tools a:hover, .button.wishlist .yith-wcwl-add-button a.add_to_wishlist:hover,
 .product .onsale,
-.single-product .product .single_add_to_cart_button:hover, #review_form .submit:hover, .woocommerce-address-fields .button:hover, .woocommerce-form-coupon .button:hover, .woocommerce .woocommerce-Button:hover, .widget_product_search .widget-content button:hover, .wpcf7-submit:hover,
+.single-product .product .single_add_to_cart_button:hover, #review_form .submit:hover, .woocommerce-address-fields .button:hover, .woocommerce-form-coupon .button:hover, .woocommerce .woocommerce-Button:hover, .widget_product_search .widget-content button:hover, .wpcf7-submit:hover,.order-again a:hover,
 .woocommerce div.product .product-slider .slick-arrow:hover,
 .woocommerce-account .woocommerce-MyAccount-navigation ul li.is-active:before, .woocommerce-account .woocommerce-MyAccount-navigation ul li:hover:before,
 .service-sec .service-box .elementor-image-box-img,
 body .elementor-button:hover,
-.contact-info-wrap .contact-info-box:hover .elementor-icon,
 .filters > li > a:after,
 .ved-modalbox-open-button:hover,
 .sec-head-style:before,.wishlist-title:before,
@@ -709,12 +705,18 @@ button[type=submit]:hover,
 .vedanta-slider .slides .owl-buttons > div,
 .header-2 .extras-menu .icon-wrap .icon-box .mini-item-counter,
 .header-2 .extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box,
-.header-2 .products-search .search-submit,
-.header-3 #_desktop_cart
+.header-3 #_desktop_cart,
+.dddemo3 .sidebar .widget.widget_media_image .widget-content a:after, .dddemo3 .banner-col a:after, .dddemo3 .menu-item .widget.widget_media_image .widget-content a:after,
+.dddemo3 .sidebar .widget.widget_media_image .widget-content a:before, .dddemo3 .banner-col a:before, .dddemo3 .menu-item .widget.widget_media_image .widget-content a:before,
+.header-3 .ved-main-megamenu .inner-nav > li:hover > a
 {
     background-color: ' . esc_attr($dd_primary_color) . ';
 }
-
+@media screen and (min-width:1051px){
+.header-2 .products-search .search-submit{
+	background-color: ' . esc_attr($dd_primary_color) . ';
+}
+}
 .ved-post-item .ved-post-preview .ved-post-thumbnail:after{
 	background: -moz-linear-gradient(top,rgba(255,255,255,0) 0%, '. esc_attr($dd_primary_color) .' 100%);
     background: -webkit-gradient(left top,left bottom,color-stop(0%,rgba(255,255,255,0)),color-stop(100%,'. esc_attr($dd_primary_color) .'));
@@ -740,9 +742,9 @@ button[type=submit]:hover,
 .product-slider .slider-nav .slider-item-nav.slick-current img,
 .woocommerce div.product .product-slider .slick-arrow:hover,
 .main-slider .ved-image-slider .owl-buttons > div,
+.flex-direction-nav > li,
 .scroll-top:hover:before,
 .ved-price-list .featured-highlight,
-.contact-info-wrap .contact-info-box .elementor-icon,
 input[type="radio"] + label:before, input[type="radio"] + span:before, input[type="checkbox"] + label:before, input[type="checkbox"] + span:before,
 .newsletter_show_again:before,
 .vedanta-slider .slides .owl-buttons > div,
@@ -750,7 +752,9 @@ input[type="radio"] + label:before, input[type="radio"] + span:before, input[typ
 {
     border-color: ' . esc_attr($dd_primary_color) . ';
 }
-
+.dddemo3 .sec-head-style h3:before,.dddemo3 .wishlist-title h2:before{
+	border-right-color: ' . esc_attr($dd_primary_color) . ';
+}
 .pagination>.active>a,
 .pagination>.active>span,
 .pagination>.active:hover>span{
@@ -784,21 +788,22 @@ input[type="radio"] + label:before, input[type="radio"] + span:before, input[typ
 .bg-brand-hvr,
 .main-menu,
 .header-1 .products-cats-menu .cats-menu-title,
-.products-cats-menu .cats-menu-title,
 .ved-main-megamenu .inner-nav > li:hover > a,
 .products-search .search-submit,
 .extras-menu .icon-wrap .icon-box .mini-item-counter,
 .extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box,
 .main-slider .ved-image-slider .owl-buttons > div:hover,
+.flex-direction-nav > li:hover,
 .service-sec .service-box:hover .elementor-image-box-img,
 .ved-woo-product-tab .ved-nav-tab li.active a,.ved-woo-product-tab .ved-nav-tab li a:hover,
-.footer .social-icons > li > a ,
+.dddemo1 .footer .social-icons > li > a,
 .vedanta-slider .slides .owl-buttons > div:hover{
     background-color: ' . esc_attr($dd_secondry_color) . ';
 }
 
 .header-row .extras-menu .icon-wrap-circle:hover .icon-wrap,
 .main-slider .ved-image-slider .owl-buttons > div:hover,
+.flex-direction-nav > li:hover,
 .vedanta-slider .slides .owl-buttons > div:hover{
 	border-color: ' . esc_attr($dd_secondry_color) . ';
 }

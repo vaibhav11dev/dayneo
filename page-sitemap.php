@@ -9,7 +9,7 @@ get_header();
 ?>
  
 <div id="primary" class="content-area mb-30 mt-30">
-    <main id="main" class="site-main" role="main">
+    <main id="main" class="site-main">
          
         <div class="container"> 
             <div class="sitemap">
@@ -33,7 +33,7 @@ get_header();
                             foreach ($categories as $cat) {
                             ?>
                                 <li class="category">
-                                    <h4><font color="grey">Category: </font><?php echo $cat->cat_name; ?></h4>
+                                    <h4><span>Category: </span><?php echo $cat->cat_name; ?></h4>
                                     <ul class="cat-posts mb-30">
                                     <?php
                                         query_posts('posts_per_page=-1&cat='.$cat->cat_ID); //-1 shows all posts per category. 1 to show most recent post.

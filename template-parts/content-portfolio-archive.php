@@ -61,7 +61,11 @@ if ( category_description() ):
 				<!-- PORTFOLIO ITEM -->
 				<article class="work-item <?php echo esc_attr($item_classes); ?>">
 				    <div class="work-wrapper">
-					<?php the_post_thumbnail( 'full' ); ?>
+					<?php the_post_thumbnail( 'full', array(
+                            'alt' => the_title_attribute( array(
+                                'echo' => false,
+                            ) ),
+                        ) ); ?>
 					<div class="work-overlay">
 					    <div class="work-caption">
 						<h6 class="work-title"><?php the_title(); ?></h6>
