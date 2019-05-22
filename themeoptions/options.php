@@ -558,7 +558,6 @@ Redux::setSection( $dd_options, array(
             ),
         ),
         array(
-			'subtitle'	 => __( '', 'bigbo' ),
 			'id'		 => 'dd_vmenu_title',
 			'type'		 => 'text',
 			'title'		 => __( 'Vertical Menu Title', 'bigbo' ),
@@ -653,7 +652,6 @@ Redux::setSection( $dd_options, array(
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
-			'subtitle'	 => __( '', 'bigbo' ),
 			'id'		 => 'search_content_type',
 			'type'		 => 'select',
 			'options'	 => array(
@@ -664,14 +662,12 @@ Redux::setSection( $dd_options, array(
 			'default'	 => 'product',
 		),
             array(
-			'subtitle'	 => __( '', 'bigbo' ),
 			'id'		 => 'custom_categories_text',
 			'type'		 => 'text',
 			'title'		 => __( 'Categories Text', 'bigbo' ),
                         'default'	 => 'All Categories',
 		),
             array(
-			'subtitle'	 => __( '', 'bigbo' ),
 			'id'		 => 'custom_categories_depth',
 			'type'		 => 'text',
 			'title'		 => __( 'Categories Depth', 'bigbo' ),
@@ -689,20 +685,17 @@ Redux::setSection( $dd_options, array(
 			'title'		 => __( 'Categories Exclude', 'bigbo' ),
 		),
             array(
-			'subtitle'	 => __( '', 'bigbo' ),
 			'id'		 => 'custom_search_text',
 			'type'		 => 'text',
 			'title'		 => __( 'Search Text', 'bigbo' ),
                         'default'	 => 'Search entire store...',
 		),
             array(
-			'subtitle'	 => __( '', 'bigbo' ),
 			'id'		 => 'custom_search_button',
 			'type'		 => 'text',
 			'title'		 => __( 'Button Text', 'bigbo' ),
 		),
             array(
-			'subtitle'	 => __( '', 'bigbo' ),
 			'id'		 => 'header_ajax_search',
 			'type'		 => 'switch',
 			'title'		 => __( 'AJAX Search', 'bigbo' ),
@@ -2387,8 +2380,6 @@ Redux::setSection( $dd_options, array(
 		array(
 			'id'		 => 'redux_import_export',
 			'type'		 => 'import_export',
-			//'class'      => 'redux-field-init redux_remove_th',
-			//'title'      => __( '',
 			'full_width'	 => true,
 		)
 	),
