@@ -25,6 +25,14 @@
     background-image: url(../images/user-bg-fashion.jpg);
 }
 }
+@media (min-width: 992px) and (max-width: 1529px){
+.elementor .elementor-element#secondary{
+    width: 25%;
+}
+.elementor .elementor-element#primary-cus{
+    width: 75%;
+}
+}
 
 /*==========title==========*/
 @media screen and (min-width: 768px){

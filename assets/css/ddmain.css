@@ -261,6 +261,7 @@ p {
 */
 @font-face {
     font-family: "Flaticon";
+    font-display:swap;
     src: url("../fonts/Flaticon.eot");
     src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
 	url("../fonts/Flaticon.woff2") format("woff2"),
