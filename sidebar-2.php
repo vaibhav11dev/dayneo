@@ -13,7 +13,7 @@ if ( class_exists( 'Woocommerce' ) ) {
 }
 ?>
 
-<div id="secondary-2" class="aside <?php bigbo_sidebar2_class(); ?>"
+<div id="secondary-2" class="aside sidebar <?php bigbo_sidebar2_class(); ?>"
      <?php
      if ( class_exists( 'Woocommerce' ) ):
 	     echo 'style="' . esc_attr($bigbo_sidebar_css) . '"';

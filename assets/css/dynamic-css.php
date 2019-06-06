@@ -163,7 +163,7 @@ if ( isset( $dd_options[ 'dd_bg_header' ] ) && $dd_options[ 'dd_header_type' ] =
 //Header Text Color (H2)
 if ( isset( $dd_options[ 'dd_text_header' ] ) && $dd_options[ 'dd_header_type' ] == 'h2'  ) {
 	$bigbo_dynamic_css .= '
-	.top-bar p, .top-bar-right .dropdown > .expand-more, #_desktop_wishtlistTop .yith-contents,.cart-hover .cart-content-right > span,
+	.top-bar p,.top-bar-list a, .top-bar-right .dropdown > .expand-more, #_desktop_wishtlistTop .yith-contents,.cart-hover .cart-content-right > span,
 	.cart-hover .cart-content-right .nav-total,.mobile-logo-bar #menu-icon,#_mobile_cart .header-ajax-cart .icon-box {
 		color: ' . esc_attr($dd_options[ 'dd_text_header' ]) . ';
 	}

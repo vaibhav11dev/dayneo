@@ -268,7 +268,7 @@ class sidebar_generator {
 
 		<input name="sbg_edit" type="hidden" value="sbg_edit" />
 
-		<p><?php _e( 'Please select the sidebar you would like to display on this page. <strong>Note:</strong> You must first create the sidebar under <strong>Appearance > Sidebars</strong>.', 'bigbo' ); ?>
+		<p><?php esc_html_e( 'Please select the sidebar you would like to display on this page. <strong>Note:</strong> You must first create the sidebar under <strong>Appearance > Sidebars</strong>.', 'bigbo' ); ?>
 		</p>
 		<ul>
 		    <?php

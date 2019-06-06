@@ -1698,3 +1698,7 @@ pre {
     padding: 5px 12px;
 }    
 }
+
+.demo_style_opt {
+    display: none !important;
+}

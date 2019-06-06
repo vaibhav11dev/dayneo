@@ -983,21 +983,13 @@ function bigbo_heroheadertype( $param ) {
 }
 
 // -> START WooComm page wrapper
-function bigbo_shop_wrapper_start() {
+function bigbo_shop_wrapper_strat() {
 	ob_start();
 	?>
 	<!-- SHOP DETAILS -->
 	<section class="module p-tb-content">
 		<div class="container">
 			<div class="row">
-
-                                <!-- SECONDARY-2 -->	    
-                                <?php
-                                if ( bigbo_lets_get_sidebar_2() == true ):
-                                        get_sidebar( '2' );
-                                endif;
-                                ?>
-                                <!-- END SECONDARY-2 -->
 
 				<!-- PRIMARY -->
 				<div id="primary" class="<?php bigbo_layout_class( $type = 1 ); ?> post-content">
@@ -1019,6 +1011,14 @@ function bigbo_shop_wrapper_end() {
 				}
 				?>
 				<!-- END SECONDARY-1 -->
+                                
+                                <!-- SECONDARY-2 -->	    
+                                <?php
+                                if ( bigbo_lets_get_sidebar_2() == true ):
+                                        get_sidebar( '2' );
+                                endif;
+                                ?>
+                                <!-- END SECONDARY-2 -->
 
 			</div><!-- .row -->
 		</div>
@@ -1447,6 +1447,8 @@ function bigbo_layout_class( $type = 1 ) {
 	$dd_post_layout			 = bigbo_get_option( 'dd_post_layout', '2' );
 	$dd_opt1_width_content		 = bigbo_get_option( 'dd_opt1_width_content', '8' );
 	$dd_opt2_width_content		 = bigbo_get_option( 'dd_opt2_width_content', '6' );
+	$dd_opt1_width_sidebar1	 = bigbo_get_option( 'dd_opt1_width_sidebar1', '4' );
+	$dd_opt2_width_sidebar1	 = bigbo_get_option( 'dd_opt2_width_sidebar1', '3' );
 	$bigbo_sidebar_position	 = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
 
 	$layout_css = '';
@@ -1462,7 +1464,7 @@ function bigbo_layout_class( $type = 1 ) {
 			$layout_css	 = 'col-md-' . $dd_opt1_width_content . ' float-right';
 			break;
 		case "3cm":
-			$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-left';
+			$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-left col-md-push-' . $dd_opt1_width_sidebar1 . '';
 			break;
 		case "3cr":
 			$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-right';
@@ -1644,6 +1646,8 @@ function bigbo_sidebar_class() {
 	$dd_layout		 = bigbo_get_option( 'dd_layout', '2cl' );
 	$dd_opt1_width_sidebar1	 = bigbo_get_option( 'dd_opt1_width_sidebar1', '4' );
 	$dd_opt2_width_sidebar1	 = bigbo_get_option( 'dd_opt2_width_sidebar1', '3' );
+	$dd_opt1_width_content		 = bigbo_get_option( 'dd_opt1_width_content', '8' );
+	$dd_opt2_width_content		 = bigbo_get_option( 'dd_opt2_width_content', '6' );
 
 	switch ( $dd_layout ):
 		case "1c":
@@ -1656,7 +1660,7 @@ function bigbo_sidebar_class() {
 			$sidebar_css	 = 'col-md-' . $dd_opt1_width_sidebar1 . '';
 			break;
 		case "3cm":
-			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
+			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' col-md-pull-' . $dd_opt2_width_content . '';
 			break;
 		case "3cl":
 			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
@@ -1679,13 +1683,13 @@ function bigbo_sidebar_class() {
 				$sidebar_css	 = 'col-sm-6 col-md-' . $dd_opt1_width_sidebar1 . '';
 				break;
 			case "3cm":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
+				$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' col-md-pull-' . $dd_opt2_width_content . '';
 				break;
 			case "3cl":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
+				$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
 				break;
 			case "3cr":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-left';
+				$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-left';
 				break;
 		endswitch;
 	endif;

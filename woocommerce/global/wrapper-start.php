@@ -45,6 +45,6 @@ switch ( $template ) {
 		echo '<div id="primary" class="content-area twentysixteen"><main id="main" class="site-main" role="main">';
 		break;
 	default :
-		bigbo_shop_wrapper_start();
+		bigbo_shop_wrapper_strat();
 		break;
 }

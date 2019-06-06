@@ -146,6 +146,16 @@ body .ved-post-item .ved-post-preview .ved-post-thumbnail:after {
     border-bottom: none;
 }
 
+@media screen and (min-width:992px){
+.ved-woo-cats-slider .item .cat-img a {
+    height: 125px;
+}
+}
+@media screen and (min-width:1200px){
+.ved-woo-cats-slider .item .cat-img a {
+    height: 110px;
+}
+}
 @media screen and (min-width:1530px){
 .ved-woo-cats-slider .item .cat-img a {
     height: 150px;

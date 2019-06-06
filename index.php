@@ -18,15 +18,7 @@ global $dd_options;
 <!-- BLOG-CLASSIC -->
 <section class="module p-tb-content">
     <div class="container">
-	<div class="row">
-
-	    <!-- SECONDARY-2 -->	    
-	    <?php
-	    if ( bigbo_lets_get_sidebar_2() == true ):
-		    get_sidebar( '2' );
-	    endif;
-	    ?>
-	    <!-- END SECONDARY-2 -->
+	<div class="row">	    
 
 	    <?php
 	    $thumbnail = '';
@@ -49,6 +41,14 @@ global $dd_options;
 	    }
 	    ?>
 	    <!-- END SECONDARY-1 -->
+
+	    <!-- SECONDARY-2 -->	    
+	    <?php
+	    if ( bigbo_lets_get_sidebar_2() == true ):
+		    get_sidebar( '2' );
+	    endif;
+	    ?>
+	    <!-- END SECONDARY-2 -->
 
 	</div><!-- .row -->
     </div>

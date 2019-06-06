@@ -16,14 +16,6 @@ $dd_post_links		 = bigbo_get_option( 'dd_post_links', 'after' );
     <div class="container">
 	<div class="row">
 
-	    <!-- SECONDARY-2 -->	    
-	    <?php
-	    if ( bigbo_lets_get_sidebar_2() == true ):
-		    get_sidebar( '2' );
-	    endif;
-	    ?>
-	    <!-- END SECONDARY-2 -->
-
 	    <!-- PRIMARY -->
 	    <div id="primary" class="<?php bigbo_layout_class( $type = 1 ); ?> single-post">
 		<?php
@@ -62,6 +54,14 @@ $dd_post_links		 = bigbo_get_option( 'dd_post_links', 'after' );
 	    }
 	    ?>
 	    <!-- END SECONDARY-1 -->
+
+	    <!-- SECONDARY-2 -->	    
+	    <?php
+	    if ( bigbo_lets_get_sidebar_2() == true ):
+		    get_sidebar( '2' );
+	    endif;
+	    ?>
+	    <!-- END SECONDARY-2 -->
 
 	</div><!-- .row -->
     </div>

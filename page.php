@@ -18,14 +18,6 @@ get_header();
 	<div class="container">
 		<div class="row">
 
-			<!-- SECONDARY-2 -->	    
-			<?php
-			if ( bigbo_lets_get_sidebar_2() == true ):
-				get_sidebar( '2' );
-			endif;
-			?>
-			<!-- END SECONDARY-2 -->
-
 			<!-- PRIMARY -->
 			<div id="primary" class="<?php bigbo_layout_class( $type = 1 ); ?> page-content">
 				<?php
@@ -55,6 +47,14 @@ get_header();
 			}
 			?>
 			<!-- END SECONDARY-1 -->
+
+			<!-- SECONDARY-2 -->	    
+			<?php
+			if ( bigbo_lets_get_sidebar_2() == true ):
+				get_sidebar( '2' );
+			endif;
+			?>
+			<!-- END SECONDARY-2 -->
 
 
 		</div><!-- .row -->
