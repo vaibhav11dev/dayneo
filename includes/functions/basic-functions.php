@@ -16,13 +16,13 @@
 load_theme_textdomain('bigbo', get_template_directory() . '/languages');
 
 function bigbo_get_option( $name, $default = false ) {
-	$options = get_option( 'dd_options' );
+	$options = get_option( 'ved_options' );
 
 	if ( isset( $options[ $name ] ) ) {
 		$mediaKeys = array(
-			'dd_header_logo',
-                        'dd_header2_logo',
-			'dd_header_logo_retina',
+			'ved_header_logo',
+                        'ved_header2_logo',
+			'ved_header_logo_retina',
 		);
 // Media SHIM
 		if ( in_array( $name, $mediaKeys ) ) {
@@ -123,16 +123,16 @@ function bigbo_similar_posts() {
 	$post			 = '';
 	$orig_post		 = $post;
 	global $post;
-	$dd_similar_posts	 = bigbo_get_option( 'dd_similar_posts', 'disable' );
-	$dd_similar_posts_carousel	 = bigbo_get_option( 'dd_similar_posts_carousel', 0 );
-	$dd_similar_posts_number	 = bigbo_get_option( 'dd_similar_posts_number', '3' );
+	$ved_similar_posts	 = bigbo_get_option( 'ved_similar_posts', 'disable' );
+	$ved_similar_posts_carousel	 = bigbo_get_option( 'ved_similar_posts_carousel', 0 );
+	$ved_similar_posts_number	 = bigbo_get_option( 'ved_similar_posts_number', '3' );
 
         $css_similar_posts = 'col-sm-4';
-        if( $dd_similar_posts_carousel == 1 ) {
+        if( $ved_similar_posts_carousel == 1 ) {
             $css_similar_posts = 'col-sm-12';
         }
 
-	if ( $dd_similar_posts == "category" ) {
+	if ( $ved_similar_posts == "category" ) {
 		$matchby = get_the_category( $post->ID );
 		$matchin = 'category';
 	} else {
@@ -149,7 +149,7 @@ function bigbo_similar_posts() {
 		$args = array(
 			$matchin . '__in'	 => $matchby_ids,
 			'post__not_in'		 => array( $post->ID ),
-			'showposts'		 => $dd_similar_posts_number, // Number of related posts that will be shown.
+			'showposts'		 => $ved_similar_posts_number, // Number of related posts that will be shown.
 			'ignore_sticky_posts'	 => 1
 		);
 
@@ -164,8 +164,8 @@ function bigbo_similar_posts() {
 					<!--  BLOG CONTENT  -->
 					<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo bigbo_post_format(); ?>">
                         <?php
-                        $dd_featured_images = bigbo_get_option( 'dd_featured_images', '1' );
-                        if ( has_post_thumbnail() && $dd_featured_images == "1" ) {	
+                        $ved_featured_images = bigbo_get_option( 'ved_featured_images', '1' );
+                        if ( has_post_thumbnail() && $ved_featured_images == "1" ) {	
                         ?>
                         <div class="post_thumbnail">
                             <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
@@ -196,7 +196,7 @@ function bigbo_similar_posts() {
 			echo '</div></div></div>'; 
                         
                         
-                        if( $dd_similar_posts_carousel == 1 ) {
+                        if( $ved_similar_posts_carousel == 1 ) {
                         ?>
 			<script>
 				jQuery(document).ready(function($){
@@ -250,11 +250,11 @@ function bigbo_hexDarker( $hex, $factor = 30 ) {
 function bigbo_bootstrap_layout_class() {
 	$bootstrap_layout = '';
 
-	$dd_bootstrap_layout = bigbo_get_option( 'dd_bootstrap_layout', 'bootstrap_left' );
+	$ved_bootstrap_layout = bigbo_get_option( 'ved_bootstrap_layout', 'bootstrap_left' );
 
-	if ( $dd_bootstrap_layout == "bootstrap_right" ) {
+	if ( $ved_bootstrap_layout == "bootstrap_right" ) {
 		$bootstrap_layout = 'layout-right';
-	} elseif ( $dd_bootstrap_layout == "bootstrap_center" ) {
+	} elseif ( $ved_bootstrap_layout == "bootstrap_center" ) {
 		$bootstrap_layout = 'layout-center';
 	} else {
 		$bootstrap_layout = 'layout-left';
@@ -429,8 +429,8 @@ function bigbo_bp_get_id() {
  */
 
 function bigbo_print_fonts( $name, $css_class, $additional_css = '', $additional_color_css_class = '', $imp = '' ) {
-	global $dd_options;
-	$options	 = $dd_options;
+	global $ved_options;
+	$options	 = $ved_options;
 	$css		 = '';
 	$font_size	 = '';
 	$font_family	 = '';
@@ -575,7 +575,7 @@ function vedanta_portfolio_rel_pro( $post_id, $number_posts = 8 ) {
  * Portfolio Pagination
  * 
  * @global type $smof_data
- * @global type $dd_options
+ * @global type $ved_options
  * @global type $paged
  * @global type $wp_query
  * @param type $pages
@@ -583,7 +583,7 @@ function vedanta_portfolio_rel_pro( $post_id, $number_posts = 8 ) {
  * @param type $current_query
  */
 function vedanta_portfolio_pagination( $pages = '', $range = 2, $current_query = '' ) {
-	global $dd_options;
+	global $ved_options;
 	$showitems = ( $range * 2 ) + 1;
 
 	if ( $current_query == '' ) {
@@ -1146,35 +1146,35 @@ function bigbo_titlebar_bg_class() {
 
 	$titlebar_bg = 'titlebar-bg';
 
-	$dd_pagetitlebar_height		 = bigbo_get_option( 'dd_pagetitlebar_height', 'medium' );
+	$ved_pagetitlebar_height		 = bigbo_get_option( 'ved_pagetitlebar_height', 'medium' );
 	$bigbo_page_title_bar_height	 = get_post_meta( $post_id, 'bigbo_page_title_bar_height', true );
         if (empty($bigbo_page_title_bar_height)) {
             $bigbo_page_title_bar_height = 'default';
         }
-	if ( $bigbo_page_title_bar_height == 'small' || ( $bigbo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'small' ) ) {
+	if ( $bigbo_page_title_bar_height == 'small' || ( $bigbo_page_title_bar_height == 'default' && $ved_pagetitlebar_height == 'small' ) ) {
 		$titlebar_bg .= ' module-xs';
-	} elseif ( $bigbo_page_title_bar_height == 'medium' || ( $bigbo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'medium' ) ) {
+	} elseif ( $bigbo_page_title_bar_height == 'medium' || ( $bigbo_page_title_bar_height == 'default' && $ved_pagetitlebar_height == 'medium' ) ) {
 		$titlebar_bg .= ' module-sm';
-	} elseif ( $bigbo_page_title_bar_height == 'large' || ( $bigbo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'large' ) ) {
+	} elseif ( $bigbo_page_title_bar_height == 'large' || ( $bigbo_page_title_bar_height == 'default' && $ved_pagetitlebar_height == 'large' ) ) {
 		$titlebar_bg .= ' module-md';
-	} elseif ( $bigbo_page_title_bar_height == 'custom' || ( $bigbo_page_title_bar_height == 'default' && $dd_pagetitlebar_height == 'custom' ) ) {
+	} elseif ( $bigbo_page_title_bar_height == 'custom' || ( $bigbo_page_title_bar_height == 'default' && $ved_pagetitlebar_height == 'custom' ) ) {
 		$titlebar_bg .= ' titlebar-custom';
 	}
 
-	$dd_pagetitlebar_background_parallax	 = bigbo_get_option( 'dd_pagetitlebar_background_parallax', 0 );
+	$ved_pagetitlebar_background_parallax	 = bigbo_get_option( 'ved_pagetitlebar_background_parallax', 0 );
 	$bigbo_page_title_bar_parallax_bg	 = get_post_meta( $post_id, 'bigbo_page_title_bar_parallax_bg', true );
         if (empty($bigbo_page_title_bar_parallax_bg)) {
             $bigbo_page_title_bar_parallax_bg = 'default';
         }
-        if ( $bigbo_page_title_bar_parallax_bg == 'yes' || ( $bigbo_page_title_bar_parallax_bg == 'default' && $dd_pagetitlebar_background_parallax == 1 ) ) {
+        if ( $bigbo_page_title_bar_parallax_bg == 'yes' || ( $bigbo_page_title_bar_parallax_bg == 'default' && $ved_pagetitlebar_background_parallax == 1 ) ) {
             $titlebar_bg .= ' bg-parallax';
-        } elseif ( (is_search() || is_404() || is_archive() || ( class_exists( 'Woocommerce' ) && is_product() )) && $dd_pagetitlebar_background_parallax == 1 ) {
+        } elseif ( (is_search() || is_404() || is_archive() || ( class_exists( 'Woocommerce' ) && is_product() )) && $ved_pagetitlebar_background_parallax == 1 ) {
             $titlebar_bg .= ' bg-parallax';
         }
 
-	$dd_pagetitlebar_background	 = bigbo_get_option( 'dd_pagetitlebar_background', '' );
+	$ved_pagetitlebar_background	 = bigbo_get_option( 'ved_pagetitlebar_background', '' );
 	$bigbo_page_title_bar_bg	 = get_post_meta( get_the_ID(), 'bigbo_page_title_bar_bg', true );
-	if ( (isset($dd_pagetitlebar_background[ 'url' ] ) && $dd_pagetitlebar_background[ 'url' ]) || $bigbo_page_title_bar_bg ) {
+	if ( (isset($ved_pagetitlebar_background[ 'url' ] ) && $ved_pagetitlebar_background[ 'url' ]) || $bigbo_page_title_bar_bg ) {
 		$titlebar_bg .= ' bg-black-alfa-30';
 	}
 
@@ -1184,16 +1184,16 @@ function bigbo_titlebar_bg_class() {
 function bigbo_titlebar_left_class() {
 	$titlebar_layout = '';
 
-	$dd_pagetitlebar_layout_opt = bigbo_get_option( 'dd_pagetitlebar_layout_opt', 'titlebar_left' );
+	$ved_pagetitlebar_layout_opt = bigbo_get_option( 'ved_pagetitlebar_layout_opt', 'titlebar_left' );
 
-	if ( $dd_pagetitlebar_layout_opt == "titlebar_left" ) {
+	if ( $ved_pagetitlebar_layout_opt == "titlebar_left" ) {
 		$titlebar_layout = 'float-left';
-	} elseif ( $dd_pagetitlebar_layout_opt == "titlebar_right" ) {
+	} elseif ( $ved_pagetitlebar_layout_opt == "titlebar_right" ) {
 		$titlebar_layout = 'float-right';
-	} elseif ( $dd_pagetitlebar_layout_opt == "titlebar_center" ) {
-		$titlebar_layout = 'dd-dump';
+	} elseif ( $ved_pagetitlebar_layout_opt == "titlebar_center" ) {
+		$titlebar_layout = 'ved-dump';
 	} else {
-		$titlebar_layout = 'dd-dump';
+		$titlebar_layout = 'ved-dump';
 	}
 
 	return esc_attr($titlebar_layout);
@@ -1202,16 +1202,16 @@ function bigbo_titlebar_left_class() {
 function bigbo_titlebar_right_class() {
 	$titlebar_layout = '';
 
-	$dd_pagetitlebar_layout_opt = bigbo_get_option( 'dd_pagetitlebar_layout_opt', 'titlebar_left' );
+	$ved_pagetitlebar_layout_opt = bigbo_get_option( 'ved_pagetitlebar_layout_opt', 'titlebar_left' );
 
-	if ( $dd_pagetitlebar_layout_opt == "titlebar_left" ) {
+	if ( $ved_pagetitlebar_layout_opt == "titlebar_left" ) {
 		$titlebar_layout = 'float-right';
-	} elseif ( $dd_pagetitlebar_layout_opt == "titlebar_right" ) {
+	} elseif ( $ved_pagetitlebar_layout_opt == "titlebar_right" ) {
 		$titlebar_layout = 'float-left';
-	} elseif ( $dd_pagetitlebar_layout_opt == "titlebar_center" ) {
-		$titlebar_layout = 'dd-dump';
+	} elseif ( $ved_pagetitlebar_layout_opt == "titlebar_center" ) {
+		$titlebar_layout = 'ved-dump';
 	} else {
-		$titlebar_layout = 'dd-dump';
+		$titlebar_layout = 'ved-dump';
 	}
 
 	return esc_attr($titlebar_layout);
@@ -1220,16 +1220,16 @@ function bigbo_titlebar_right_class() {
 function bigbo_titlebar_center_class() {
 	$titlebar_layout = '';
 
-	$dd_pagetitlebar_layout_opt = bigbo_get_option( 'dd_pagetitlebar_layout_opt', 'titlebar_left' );
+	$ved_pagetitlebar_layout_opt = bigbo_get_option( 'ved_pagetitlebar_layout_opt', 'titlebar_left' );
 
-	if ( $dd_pagetitlebar_layout_opt == "titlebar_left" ) {
-		$titlebar_layout = 'dd-dump';
-	} elseif ( $dd_pagetitlebar_layout_opt == "titlebar_right" ) {
-		$titlebar_layout = 'dd-dump';
-	} elseif ( $dd_pagetitlebar_layout_opt == "titlebar_center" ) {
+	if ( $ved_pagetitlebar_layout_opt == "titlebar_left" ) {
+		$titlebar_layout = 'ved-dump';
+	} elseif ( $ved_pagetitlebar_layout_opt == "titlebar_right" ) {
+		$titlebar_layout = 'ved-dump';
+	} elseif ( $ved_pagetitlebar_layout_opt == "titlebar_center" ) {
 		$titlebar_layout = 'text-center';
 	} else {
-		$titlebar_layout = 'dd-dump';
+		$titlebar_layout = 'ved-dump';
 	}
 
 	return esc_attr($titlebar_layout);
@@ -1251,24 +1251,24 @@ function bigbo_titlebar_title_check() {
 
 	$get_titlebar = false;
 
-	$dd_display_pagetitlebar	 = bigbo_get_option( 'dd_display_pagetitlebar', 'titlebar_breadcrumb' );
+	$ved_display_pagetitlebar	 = bigbo_get_option( 'ved_display_pagetitlebar', 'titlebar_breadcrumb' );
 	$bigbo_display_page_title	 = get_post_meta( $post_id, 'bigbo_display_page_title', true );
         if (empty($bigbo_display_page_title)) {
             $bigbo_display_page_title = 'default';
         }
 	if ( is_search() || is_404() || is_archive() || is_bbpress() || is_product() ) {
-		if ( $dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "titlebar" ) {
+		if ( $ved_display_pagetitlebar == "titlebar_breadcrumb" || $ved_display_pagetitlebar == "titlebar" ) {
 			$get_titlebar = true;
 		}
 	} elseif ( is_single() || is_page() || is_buddypress() || is_home() ) {
-		if ( $bigbo_display_page_title == 'default' && ($dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "titlebar") ) {
+		if ( $bigbo_display_page_title == 'default' && ($ved_display_pagetitlebar == "titlebar_breadcrumb" || $ved_display_pagetitlebar == "titlebar") ) {
 			$get_titlebar = true;
 		}
 		if ( $bigbo_display_page_title != 'default' && ($bigbo_display_page_title == 'titlebar' || $bigbo_display_page_title == 'titlebar_breadcrumb') ) {
 			$get_titlebar = true;
 		}
 	} else {
-		if ( $dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "titlebar" ) {
+		if ( $ved_display_pagetitlebar == "titlebar_breadcrumb" || $ved_display_pagetitlebar == "titlebar" ) {
 			$get_titlebar = true;
 		}
 	}
@@ -1297,24 +1297,24 @@ function bigbo_titlebar_breadcrumb_check() {
         }
 
 	$get_titlebar			 = false;
-	$dd_display_pagetitlebar	 = bigbo_get_option( 'dd_display_pagetitlebar', 'titlebar_breadcrumb' );
+	$ved_display_pagetitlebar	 = bigbo_get_option( 'ved_display_pagetitlebar', 'titlebar_breadcrumb' );
 	$bigbo_display_page_title	 = get_post_meta( $post_id, 'bigbo_display_page_title', true );
         if (empty($bigbo_display_page_title)) {
             $bigbo_display_page_title = 'default';
         }
 	if ( is_search() || is_404() || is_archive() || is_bbpress() || is_product() ) {
-		if ( $dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "breadcrumb" ) {
+		if ( $ved_display_pagetitlebar == "titlebar_breadcrumb" || $ved_display_pagetitlebar == "breadcrumb" ) {
 			$get_titlebar = true;
 		}
 	} elseif ( is_single() || is_page() || is_buddypress() || is_home() ) {
-		if ( $bigbo_display_page_title == 'default' && ($dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "breadcrumb") ) {
+		if ( $bigbo_display_page_title == 'default' && ($ved_display_pagetitlebar == "titlebar_breadcrumb" || $ved_display_pagetitlebar == "breadcrumb") ) {
 			$get_titlebar = true;
 		}
 		if ( $bigbo_display_page_title != 'default' && ($bigbo_display_page_title == 'breadcrumb' || $bigbo_display_page_title == 'titlebar_breadcrumb') ) {
 			$get_titlebar = true;
 		}
 	} else {
-		if ( $dd_display_pagetitlebar == "titlebar_breadcrumb" || $dd_display_pagetitlebar == "breadcrumb" ) {
+		if ( $ved_display_pagetitlebar == "titlebar_breadcrumb" || $ved_display_pagetitlebar == "breadcrumb" ) {
 			$get_titlebar = true;
 		}
 	}
@@ -1451,32 +1451,32 @@ function bigbo_layout_class( $type = 1 ) {
             $post_id = isset( $post->ID ) ? $post->ID : '';
         }
 
-	$dd_layout			 = bigbo_get_option( 'dd_layout', '2cl' );
-	$dd_post_layout			 = bigbo_get_option( 'dd_post_layout', '2' );
-	$dd_opt1_width_content		 = bigbo_get_option( 'dd_opt1_width_content', '8' );
-	$dd_opt2_width_content		 = bigbo_get_option( 'dd_opt2_width_content', '6' );
+	$ved_layout			 = bigbo_get_option( 'ved_layout', '2cl' );
+	$ved_post_layout			 = bigbo_get_option( 'ved_post_layout', '2' );
+	$ved_opt1_width_content		 = bigbo_get_option( 'ved_opt1_width_content', '8' );
+	$ved_opt2_width_content		 = bigbo_get_option( 'ved_opt2_width_content', '6' );
 	$bigbo_sidebar_position	 = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
 
 	$layout_css = '';
 
-	switch ( $dd_layout ):
+	switch ( $ved_layout ):
 		case "1c":
 			$layout_css	 = 'col-md-12 full-width';
 			break;
 		case "2cl":
-			$layout_css	 = 'col-md-' . $dd_opt1_width_content . ' float-left';
+			$layout_css	 = 'col-md-' . $ved_opt1_width_content . ' float-left';
 			break;
 		case "2cr":
-			$layout_css	 = 'col-md-' . $dd_opt1_width_content . ' float-right';
+			$layout_css	 = 'col-md-' . $ved_opt1_width_content . ' float-right';
 			break;
 		case "3cm":
-			$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-left';
+			$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-left';
 			break;
 		case "3cr":
-			$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-right';
+			$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-right';
 			break;
 		case "3cl":
-			$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-left';
+			$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-left';
 			break;
 	endswitch;
 
@@ -1491,19 +1491,19 @@ function bigbo_layout_class( $type = 1 ) {
 				$layout_css	 = 'col-md-12 full-width';
 				break;
 			case "2cl":
-				$layout_css	 = 'col-md-' . $dd_opt1_width_content . ' float-left';
+				$layout_css	 = 'col-md-' . $ved_opt1_width_content . ' float-left';
 				break;
 			case "2cr":
-				$layout_css	 = 'col-md-' . $dd_opt1_width_content . ' float-right';
+				$layout_css	 = 'col-md-' . $ved_opt1_width_content . ' float-right';
 				break;
 			case "3cm":
-				$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-left';
+				$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-left';
 				break;
 			case "3cr":
-				$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-right';
+				$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-right';
 				break;
 			case "3cl":
-				$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-left';
+				$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-left';
 				break;
 		endswitch;
 
@@ -1512,7 +1512,7 @@ function bigbo_layout_class( $type = 1 ) {
         if ( class_exists( 'Woocommerce' ) ):
                 if ( is_cart() || is_checkout() || is_account_page() || (get_option( 'woocommerce_thanks_page_id' ) && is_page( get_option( 'woocommerce_thanks_page_id' ) )) ) {
                         $layout_css = 'col-md-12 full-width';
-                } elseif (is_archive() && $dd_layout == '1c' && !is_category()) {
+                } elseif (is_archive() && $ved_layout == '1c' && !is_category()) {
                         $layout_css	 = 'col-md-9 float-right col-single';
                 }
         endif;
@@ -1550,10 +1550,10 @@ function bigbo_lets_get_sidebar() {
 
 	$get_sidebar = false;
 
-	$dd_layout			 = bigbo_get_option( 'dd_layout', '2cl' );
+	$ved_layout			 = bigbo_get_option( 'ved_layout', '2cl' );
 	$bigbo_sidebar_position	 = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
 
-	if ( $dd_layout != "1c" ) {
+	if ( $ved_layout != "1c" ) {
 		$get_sidebar = true;
 	}
 
@@ -1568,7 +1568,7 @@ function bigbo_lets_get_sidebar() {
 	endif;
 
 //	if ( class_exists( 'Woocommerce' ) ):
-//		$shop_sidebar = bigbo_get_option( 'dd_shop_sidebar', 'None' );
+//		$shop_sidebar = bigbo_get_option( 'ved_shop_sidebar', 'None' );
 //		if ( is_shop() && $shop_sidebar != '0' ) {
 //			$get_sidebar = true;
 //		}
@@ -1603,10 +1603,10 @@ function bigbo_lets_get_sidebar_2() {
 
 	$get_sidebar = false;
 
-	$dd_layout			 = bigbo_get_option( 'dd_layout', '2cl' );
+	$ved_layout			 = bigbo_get_option( 'ved_layout', '2cl' );
 	$bigbo_sidebar_position	 = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
 
-	if ( $dd_layout == "3cm" || $dd_layout == "3cl" || $dd_layout == "3cr" ) {
+	if ( $ved_layout == "3cm" || $ved_layout == "3cl" || $ved_layout == "3cr" ) {
 		$get_sidebar = true;
 	}
 
@@ -1649,28 +1649,28 @@ function bigbo_sidebar_class() {
 
 	$sidebar_css = '';
 
-	$dd_layout		 = bigbo_get_option( 'dd_layout', '2cl' );
-	$dd_opt1_width_sidebar1	 = bigbo_get_option( 'dd_opt1_width_sidebar1', '4' );
-	$dd_opt2_width_sidebar1	 = bigbo_get_option( 'dd_opt2_width_sidebar1', '3' );
+	$ved_layout		 = bigbo_get_option( 'ved_layout', '2cl' );
+	$ved_opt1_width_sidebar1	 = bigbo_get_option( 'ved_opt1_width_sidebar1', '4' );
+	$ved_opt2_width_sidebar1	 = bigbo_get_option( 'ved_opt2_width_sidebar1', '3' );
 
-	switch ( $dd_layout ):
+	switch ( $ved_layout ):
 		case "1c":
 			//do nothing
 			break;
 		case "2cl":
-			$sidebar_css	 = 'col-md-' . $dd_opt1_width_sidebar1 . '';
+			$sidebar_css	 = 'col-md-' . $ved_opt1_width_sidebar1 . '';
 			break;
 		case "2cr":
-			$sidebar_css	 = 'col-md-' . $dd_opt1_width_sidebar1 . '';
+			$sidebar_css	 = 'col-md-' . $ved_opt1_width_sidebar1 . '';
 			break;
 		case "3cm":
-			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
+			$sidebar_css	 = 'col-xs-12 col-md-' . $ved_opt2_width_sidebar1 . ' float-right';
 			break;
 		case "3cl":
-			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
+			$sidebar_css	 = 'col-xs-12 col-md-' . $ved_opt2_width_sidebar1 . ' float-right';
 			break;
 		case "3cr":
-			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-left';
+			$sidebar_css	 = 'col-xs-12 col-md-' . $ved_opt2_width_sidebar1 . ' float-left';
 			break;
 	endswitch;
 
@@ -1681,25 +1681,25 @@ function bigbo_sidebar_class() {
 				//do nothing
 				break;
 			case "2cl":
-				$sidebar_css	 = 'col-sm-6 col-md-' . $dd_opt1_width_sidebar1 . '';
+				$sidebar_css	 = 'col-sm-6 col-md-' . $ved_opt1_width_sidebar1 . '';
 				break;
 			case "2cr":
-				$sidebar_css	 = 'col-sm-6 col-md-' . $dd_opt1_width_sidebar1 . '';
+				$sidebar_css	 = 'col-sm-6 col-md-' . $ved_opt1_width_sidebar1 . '';
 				break;
 			case "3cm":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
+				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar1 . ' float-right';
 				break;
 			case "3cl":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
+				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar1 . ' float-right';
 				break;
 			case "3cr":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-left';
+				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar1 . ' float-left';
 				break;
 		endswitch;
 	endif;
 
 	if ( class_exists( 'Woocommerce' ) ):
-		if (is_archive() && $dd_layout == '1c' && !is_category()) {
+		if (is_archive() && $ved_layout == '1c' && !is_category()) {
                         $sidebar_css	 = 'col-md-3';
                 }
 	endif;
@@ -1731,10 +1731,10 @@ function bigbo_sidebar2_class() {
 
 	$sidebar_css = '';
 
-	$dd_layout		 = bigbo_get_option( 'dd_layout', '2cl' );
-	$dd_opt2_width_sidebar2	 = bigbo_get_option( 'dd_opt2_width_sidebar2', '3' );
+	$ved_layout		 = bigbo_get_option( 'ved_layout', '2cl' );
+	$ved_opt2_width_sidebar2	 = bigbo_get_option( 'ved_opt2_width_sidebar2', '3' );
 
-	switch ( $dd_layout ):
+	switch ( $ved_layout ):
 		case "1c":
 			//do nothing
 			break;
@@ -1745,13 +1745,13 @@ function bigbo_sidebar2_class() {
 			//do nothing
 			break;
 		case "3cm":
-			$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar2 . ' float-left';
+			$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar2 . ' float-left';
 			break;
 		case "3cl":
-			$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar2 . ' float-right';
+			$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar2 . ' float-right';
 			break;
 		case "3cr":
-			$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar2 . ' float-left';
+			$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar2 . ' float-left';
 			break;
 	endswitch;
 
@@ -1768,13 +1768,13 @@ function bigbo_sidebar2_class() {
 				//do nothing
 				break;
 			case "3cm":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar2 . ' float-left';
+				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar2 . ' float-left';
 				break;
 			case "3cl":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar2 . ' float-right';
+				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar2 . ' float-right';
 				break;
 			case "3cr":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar2 . ' float-left';
+				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar2 . ' float-left';
 				break;
 		endswitch;
 	endif;
@@ -1794,12 +1794,12 @@ if ( ! function_exists( 'bigbo_quick_view_modal' ) ) :
             }
     ?>
     <!-- START QUICK VIEW MODAL -->
-    <div id="dd-quick-view-modal" class="dd-quick-view-modal single-product woocommerce modal fade" tabindex="-1">
+    <div id="ved-quick-view-modal" class="ved-quick-view-modal single-product woocommerce modal fade" tabindex="-1">
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close" aria-hidden="true"></i></button>
             <div class="product-modal-content"></div>
         </div>
-        <div class="dd-loading"></div>
+        <div class="ved-loading"></div>
     </div>
     <!-- START QUICK VIEW MODAL -->
     <?php
@@ -1815,35 +1815,35 @@ add_action( 'wp_footer', 'bigbo_quick_view_modal' );
  */
 if ( ! function_exists( 'bigbo_newsletter_popup' ) ) :
 	function bigbo_newsletter_popup() {
-		if ( ! bigbo_get_option( 'dd_popup' ) ) {
+		if ( ! bigbo_get_option( 'ved_popup' ) ) {
 			return;
 		}
 
-		$dd_newletter = '';
-		if ( isset( $_COOKIE['dd_newletter'] ) ) {
-			$dd_newletter = $_COOKIE['dd_newletter'];
+		$ved_newletter = '';
+		if ( isset( $_COOKIE['ved_newletter'] ) ) {
+			$ved_newletter = $_COOKIE['ved_newletter'];
 		}
 
-		if ( ! empty( $dd_newletter ) ) {
+		if ( ! empty( $ved_newletter ) ) {
 			return;
 		}
 
 		$output = array();
                 
-                if ( $title = bigbo_get_option( 'dd_popup_heading' ) ) {
+                if ( $title = bigbo_get_option( 'ved_popup_heading' ) ) {
 			$output[] = sprintf( '<div class="newsletter_title"><h3 class="h3">%s</h3></div>', esc_html($title) );
 		}
 
-		if ( $desc = bigbo_get_option( 'dd_popup_content' ) ) {
+		if ( $desc = bigbo_get_option( 'ved_popup_content' ) ) {
 			$output[] = sprintf( '<div class="ddContent">%s</div>', esc_html($desc) );
 		}
 
-		if ( $form = bigbo_get_option( 'dd_popup_form' ) ) {
+		if ( $form = bigbo_get_option( 'ved_popup_form' ) ) {
 			$output[] = sprintf( '<div class="form-wrap">%s</div>', do_shortcode($form) );
 		}
 
-                if ( $dd_popup_bg = bigbo_get_option( 'dd_popup_bg', '' ) ) {
-                        $image = $dd_popup_bg['url'];
+                if ( $ved_popup_bg = bigbo_get_option( 'ved_popup_bg', '' ) ) {
+                        $image = $ved_popup_bg['url'];
                 } ?>
                 <!-- START NEWSLETTER POPUP -->
                 <div id="ddPopupnewsletter" class="modal fade" tabindex="-1" role="dialog">  

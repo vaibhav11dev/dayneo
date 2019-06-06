@@ -14,41 +14,41 @@
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<?php
-		$dd_favicon		 = bigbo_get_option( 'dd_favicon' );
-		$dd_iphone_icon		 = bigbo_get_option( 'dd_iphone_icon' );
-		$dd_iphone_icon_retina	 = bigbo_get_option( 'dd_iphone_icon_retina' );
-		$dd_ipad_icon		 = bigbo_get_option( 'dd_ipad_icon' );
-		$dd_ipad_icon_retina	 = bigbo_get_option( 'dd_ipad_icon_retina' );
+		$ved_favicon		 = bigbo_get_option( 'ved_favicon' );
+		$ved_iphone_icon		 = bigbo_get_option( 'ved_iphone_icon' );
+		$ved_iphone_icon_retina	 = bigbo_get_option( 'ved_iphone_icon_retina' );
+		$ved_ipad_icon		 = bigbo_get_option( 'ved_ipad_icon' );
+		$ved_ipad_icon_retina	 = bigbo_get_option( 'ved_ipad_icon_retina' );
 
-                if ( isset($dd_favicon[ 'url' ]) && $dd_favicon[ 'url' ] ):
+                if ( isset($ved_favicon[ 'url' ]) && $ved_favicon[ 'url' ] ):
                     ?>
                     <!-- Favicon -->
                     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. -->
-                    <link rel="shortcut icon" href="<?php echo esc_url($dd_favicon[ 'url' ]); ?>" type="image/x-icon" />
+                    <link rel="shortcut icon" href="<?php echo esc_url($ved_favicon[ 'url' ]); ?>" type="image/x-icon" />
                     <?php
                 endif;
-                if ( isset($dd_iphone_icon[ 'url' ]) && $dd_iphone_icon[ 'url' ] ):
+                if ( isset($ved_iphone_icon[ 'url' ]) && $ved_iphone_icon[ 'url' ] ):
                     ?>
                     <!-- For iPhone -->
-                    <link rel="apple-touch-icon-precomposed" href="<?php echo esc_url($dd_iphone_icon[ 'url' ]); ?>">
+                    <link rel="apple-touch-icon-precomposed" href="<?php echo esc_url($ved_iphone_icon[ 'url' ]); ?>">
                     <?php
                 endif;
-                if ( isset($dd_iphone_icon_retina[ 'url' ]) && $dd_iphone_icon_retina[ 'url' ] ):
+                if ( isset($ved_iphone_icon_retina[ 'url' ]) && $ved_iphone_icon_retina[ 'url' ] ):
                     ?>
                     <!-- For iPhone 4 Retina display -->
-                    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo esc_url($dd_iphone_icon_retina[ 'url' ]); ?>">
+                    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo esc_url($ved_iphone_icon_retina[ 'url' ]); ?>">
                     <?php
                 endif;
-                if ( isset($dd_ipad_icon[ 'url' ]) && $dd_ipad_icon[ 'url' ] ):
+                if ( isset($ved_ipad_icon[ 'url' ]) && $ved_ipad_icon[ 'url' ] ):
                     ?>
                     <!-- For iPad -->
-                    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo esc_url($dd_ipad_icon[ 'url' ]); ?>">
+                    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo esc_url($ved_ipad_icon[ 'url' ]); ?>">
                     <?php
                 endif;
-                if ( isset($dd_ipad_icon_retina[ 'url' ]) && $dd_ipad_icon_retina[ 'url' ] ):
+                if ( isset($ved_ipad_icon_retina[ 'url' ]) && $ved_ipad_icon_retina[ 'url' ] ):
                     ?>
                     <!-- For iPad Retina display -->
-                    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo esc_url($dd_ipad_icon_retina[ 'url' ]); ?>">
+                    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo esc_url($ved_ipad_icon_retina[ 'url' ]); ?>">
                     <?php
                 endif;
                 ?>		
@@ -57,11 +57,11 @@
 		<?php wp_head(); ?>
 	</head>
 
-        <?php $dd_demo_style = bigbo_get_option( 'dd_demo_style', 'dddemo1' ); ?>
-	<body <?php body_class($dd_demo_style); ?>>
+        <?php $ved_demo_style = bigbo_get_option( 'ved_demo_style', 'dddemo1' ); ?>
+	<body <?php body_class($ved_demo_style); ?>>
                 <?php
-                $dd_back_to_top = bigbo_get_option( 'dd_back_to_top', 'right' );
-                if ( $dd_back_to_top == 1 ) {
+                $ved_back_to_top = bigbo_get_option( 'ved_back_to_top', 'right' );
+                if ( $ved_back_to_top == 1 ) {
                     ?>
                     <div class="back-to-top">
                         <a href="#top" class="scroll-top"><i class="ti-arrow-up"></i></a>
@@ -70,7 +70,7 @@
                 }
                 ?>
 		<?php
-		global $post, $wp_query, $dd_options;
+		global $post, $wp_query, $ved_options;
 
                 $post_id = '';
                 if ( $wp_query->is_posts_page ) {
@@ -83,23 +83,23 @@
                     $post_id = isset( $post->ID ) ? $post->ID : '';
                 }
 
-		$dd_siteloader	 = bigbo_get_option( 'dd_siteloader', 1 );
-		$dd_loaderfile	 = bigbo_get_option( 'dd_loaderfile' );
-		if ( $dd_siteloader == 1 && isset($dd_loaderfile) && $dd_loaderfile ) {
+		$ved_siteloader	 = bigbo_get_option( 'ved_siteloader', 1 );
+		$ved_loaderfile	 = bigbo_get_option( 'ved_loaderfile' );
+		if ( $ved_siteloader == 1 && isset($ved_loaderfile) && $ved_loaderfile ) {
 			?>
 			<!-- PRELOADER -->
-			<div class="page-loader"><img src="<?php echo esc_url($dd_loaderfile[ 'url' ]); ?>" alt="siteloader" ></div>
+			<div class="page-loader"><img src="<?php echo esc_url($ved_loaderfile[ 'url' ]); ?>" alt="siteloader" ></div>
 			<!-- END PRELOADER -->
 			<?php
 		}
 
-		$dd_header_type		 = bigbo_get_option( 'dd_header_type', 'h1' );
+		$ved_header_type		 = bigbo_get_option( 'ved_header_type', 'h1' );
 		$bigbo_header_type	 = get_post_meta( $post_id, 'bigbo_header_type', true );
 		if ( !$bigbo_header_type ) {
 			$bigbo_header_type = 'default';
 		}
                 
-                switch ( $dd_header_type ) {
+                switch ( $ved_header_type ) {
                     case 'h1':
                         $header_class = 'header-1';
                         break;
@@ -114,14 +114,14 @@
                 }
                 
                 if ( is_page() ) {
-			if ( (($bigbo_header_type == 'h1') || ($bigbo_header_type == 'default' && $dd_header_type == 'h1')) || (($bigbo_header_type == 'h2') || ($bigbo_header_type == 'default' && $dd_header_type == 'h2')) ) { ?>
+			if ( (($bigbo_header_type == 'h1') || ($bigbo_header_type == 'default' && $ved_header_type == 'h1')) || (($bigbo_header_type == 'h2') || ($bigbo_header_type == 'default' && $ved_header_type == 'h2')) ) { ?>
 				<div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php	get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-1' );?>
 				</div>
 			<?php	}
 		} else {
-			if ( $dd_header_type == 'h1' || $dd_header_type == 'h2' ) { ?>
+			if ( $ved_header_type == 'h1' || $ved_header_type == 'h2' ) { ?>
                         <div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-1' );?>
@@ -130,14 +130,14 @@
 		}
                 
                 if ( is_page() ) {
-			if ( ($bigbo_header_type == 'h3') || ($bigbo_header_type == 'default' && $dd_header_type == 'h3') ) { ?>
+			if ( ($bigbo_header_type == 'h3') || ($bigbo_header_type == 'default' && $ved_header_type == 'h3') ) { ?>
 				<div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php	get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-2' );?>
 				</div>
 			<?php	}
 		} else {
-			if ( $dd_header_type == 'h3' ) { ?>
+			if ( $ved_header_type == 'h3' ) { ?>
                         <div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
 				<?php get_template_part( 'includes/headers/header-topbar' );
 				get_template_part( 'includes/headers/layout-2' );?>
@@ -173,14 +173,14 @@
 			?>
 
 			<?php
-			$dd_pagetitlebar_layout		 = bigbo_get_option( 'dd_pagetitlebar_layout', 1 );
+			$ved_pagetitlebar_layout		 = bigbo_get_option( 'ved_pagetitlebar_layout', 1 );
 			$bigbo_enable_page_title	 = get_post_meta( $post_id, 'bigbo_enable_page_title', true );
                         if (empty($bigbo_enable_page_title)) {
                             $bigbo_enable_page_title = 'default';
                         }
                         if ( is_home() || is_front_page() ) {
                             //Do Nothing
-                        } elseif ( $bigbo_enable_page_title == 'on' || ( $bigbo_enable_page_title == 'default' && $dd_pagetitlebar_layout == 1 ) ) {
+                        } elseif ( $bigbo_enable_page_title == 'on' || ( $bigbo_enable_page_title == 'default' && $ved_pagetitlebar_layout == 1 ) ) {
                             bigbo_page_title_bar();
                         }
 	    

@@ -12,7 +12,7 @@
  */
 
 get_header();
-global $dd_options;
+global $ved_options;
 ?>
 
 <!-- BLOG-CLASSIC -->
@@ -22,7 +22,7 @@ global $dd_options;
 
 	    <?php
 	    $thumbnail = '';
-	    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
+	    if ( $ved_options[ 'ved_blog_style' ] == 'thumbnail_on_side' ) {
 		    $thumbnail = ' post-thumbnail';
 	    }
 	    ?>

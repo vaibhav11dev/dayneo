@@ -6,7 +6,7 @@
  * @package bigbo
  */
 // The Query
-global $dd_options;
+global $ved_options;
 $temp			 = $wp_query;
 $wp_query		 = new WP_Query();
 $default_posts_per_page	 = get_option( 'posts_per_page', 6 );
@@ -14,15 +14,15 @@ $wp_query->query( "posts_per_page=$default_posts_per_page&paged=$paged" );
 
 // this code only for preview purpose
 if (isset($_GET[ 'style' ])) {
-    $dd_options[ 'dd_blog_style' ] = $_GET[ 'style' ];
+    $ved_options[ 'ved_blog_style' ] = $_GET[ 'style' ];
 }
 if (isset($_GET[ 'layout' ])) {
-    $dd_options[ 'dd_post_layout' ] = $_GET[ 'layout' ];
+    $ved_options[ 'ved_post_layout' ] = $_GET[ 'layout' ];
 }
 
 
 if ( $wp_query->have_posts() ) :
-	if ( $dd_options[ 'dd_blog_style' ] == 'grid' ) {
+	if ( $ved_options[ 'ved_blog_style' ] == 'grid' ) {
 		?>
 				<div class="row multi-columns-row post-columns">
 		    <?php
@@ -30,10 +30,10 @@ if ( $wp_query->have_posts() ) :
 	    while ( $wp_query->have_posts() ) :
 		    $wp_query->the_post();
 
-		    $dd_post_layout	 = $dd_options[ 'dd_post_layout' ];
-		    $post_layout_class	 = (int)12 / $dd_post_layout;
+		    $ved_post_layout	 = $ved_options[ 'ved_post_layout' ];
+		    $post_layout_class	 = (int)12 / $ved_post_layout;
 
-		    if ( $dd_options[ 'dd_blog_style' ] == 'grid' ) {
+		    if ( $ved_options[ 'ved_blog_style' ] == 'grid' ) {
 			    ?>
 					<div class="col-sm-<?php echo esc_attr($post_layout_class); ?> col-md-<?php echo esc_attr($post_layout_class); ?> col-lg-<?php echo esc_attr($post_layout_class); ?>">
 				<?php
@@ -44,7 +44,7 @@ if ( $wp_query->have_posts() ) :
 
 
 			    <?php
-			    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
+			    if ( $ved_options[ 'ved_blog_style' ] == 'thumbnail_on_side' ) {
 				    ?>
 							    <div class="row">
 								<div class="col-sm-5 img-col">
@@ -53,7 +53,7 @@ if ( $wp_query->have_posts() ) :
 
 				    bigbo_post_thumbnail();
 
-				    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
+				    if ( $ved_options[ 'ved_blog_style' ] == 'thumbnail_on_side' ) {
 					    ?>
 								</div>
 								<div class="col-sm-7 text-col">
@@ -67,7 +67,7 @@ if ( $wp_query->have_posts() ) :
 					    <?php
 					    bigbo_post_heading();
 
-					    if ( $dd_options[ 'dd_header_meta' ] == 1 ) {
+					    if ( $ved_options[ 'ved_header_meta' ] == 1 ) {
 						    ?>
 									    <ul class="post-meta">
 							<?php bigbo_post_metadata(); ?> 
@@ -87,7 +87,7 @@ if ( $wp_query->have_posts() ) :
 
 						    </div>
 				    <?php
-				    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
+				    if ( $ved_options[ 'ved_blog_style' ] == 'thumbnail_on_side' ) {
 					    ?>
 								</div>
 							    </div>
@@ -97,13 +97,13 @@ if ( $wp_query->have_posts() ) :
 					</article>
 					<!-- END BLOG CONTENT -->
 			<?php
-			if ( $dd_options[ 'dd_blog_style' ] == 'grid' ) {
+			if ( $ved_options[ 'ved_blog_style' ] == 'grid' ) {
 				?>
 						    </div>			
 			    <?php
 		    }
 	    endwhile;
-	    if ( $dd_options[ 'dd_blog_style' ] == 'grid' ) {
+	    if ( $ved_options[ 'ved_blog_style' ] == 'grid' ) {
 		    ?>
 				</div>
 		<?php

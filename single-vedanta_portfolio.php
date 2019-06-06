@@ -2,7 +2,7 @@
 // Single Portfolio
 get_header();
 
-global $dd_options;
+global $ved_options;
 ?>
 
 <!-- SINGLE PORTFOLIO -->
@@ -18,7 +18,7 @@ global $dd_options;
                     <div class="col-md-8">
 
                         <?php
-                        if ( has_post_thumbnail() && ( get_post_meta( $post->ID, 'bigbo_po_featured_image', true ) == 'yes' || (get_post_meta( $post->ID, 'bigbo_po_featured_image', true ) == 'default' && $dd_options[ 'dd_portfolio_featured_image' ]) ) ):
+                        if ( has_post_thumbnail() && ( get_post_meta( $post->ID, 'bigbo_po_featured_image', true ) == 'yes' || (get_post_meta( $post->ID, 'bigbo_po_featured_image', true ) == 'default' && $ved_options[ 'ved_portfolio_featured_image' ]) ) ):
                             $attachment_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
                             ?>
                             <a href="<?php echo esc_url( $attachment_image[ 0 ] ); ?>" class="lightbox">
@@ -79,9 +79,9 @@ global $dd_options;
                                 <?php
                             endif;
 
-                            $dd_portfolio_author = bigbo_get_option( 'dd_portfolio_author', '0' );
+                            $ved_portfolio_author = bigbo_get_option( 'ved_portfolio_author', '0' );
                             if ( get_post_meta( $post->ID, 'bigbo_po_author', true ) == 'yes' ||
-                            ( $dd_portfolio_author && get_post_meta( $post->ID, 'bigbo_po_author', true ) == 'default' ) ):
+                            ( $ved_portfolio_author && get_post_meta( $post->ID, 'bigbo_po_author', true ) == 'default' ) ):
                                 ?>
                                 <li class="project-info-author">
                                     <h5><?php echo esc_html_e( 'By', 'bigbo' ) ?>:</h5>
@@ -89,9 +89,9 @@ global $dd_options;
                                 </li>	
                                 <?php
                             endif;
-                            $dd_portfolio_sharing = bigbo_get_option( 'dd_portfolio_sharing', '1' );
+                            $ved_portfolio_sharing = bigbo_get_option( 'ved_portfolio_sharing', '1' );
                             if ( get_post_meta( $post->ID, 'bigbo_po_sharing', true ) == 'yes' ||
-                            ( $dd_portfolio_sharing && get_post_meta( $post->ID, 'bigbo_po_sharing', true ) == 'default' ) ):
+                            ( $ved_portfolio_sharing && get_post_meta( $post->ID, 'bigbo_po_sharing', true ) == 'default' ) ):
                                 ?>
                                 <li>
                                     <h5>Share:</h5>
@@ -135,8 +135,8 @@ if ( $categoryID ) {
 }
 
 // Portfolio Navigation 
-$dd_portfolio_pagination = bigbo_get_option( 'dd_portfolio_pagination', '1' );
-if ( $dd_portfolio_pagination == 1 ):
+$ved_portfolio_pagination = bigbo_get_option( 'ved_portfolio_pagination', '1' );
+if ( $ved_portfolio_pagination == 1 ):
     ?>
     <!-- START PAGINATION -->
     <section class="module-xs divider-top portfolio-pagination">
@@ -162,13 +162,13 @@ if ( $dd_portfolio_pagination == 1 ):
 endif;
 
 // Portfolio Related Posts
-$dd_portfolio_related_posts_number = '4';
-$dd_portfolio_related_posts        = bigbo_get_option( 'dd_portfolio_related_posts', '1' );
+$ved_portfolio_related_posts_number = '4';
+$ved_portfolio_related_posts        = bigbo_get_option( 'ved_portfolio_related_posts', '1' );
 
 if ( get_post_meta( $post->ID, 'bigbo_po_related_posts', true ) == 'yes' ||
- ( $dd_portfolio_related_posts && get_post_meta( $post->ID, 'bigbo_po_related_posts', true ) == 'default' ) ):
+ ( $ved_portfolio_related_posts && get_post_meta( $post->ID, 'bigbo_po_related_posts', true ) == 'default' ) ):
 
-    $projects = vedanta_portfolio_rel_pro( $post->ID, $dd_portfolio_related_posts_number );
+    $projects = vedanta_portfolio_rel_pro( $post->ID, $ved_portfolio_related_posts_number );
 
     if ( $projects->have_posts() ):
         ?>

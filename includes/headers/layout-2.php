@@ -39,40 +39,40 @@ if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
                             <!-- YOUR LOGO HERE -->
                             <div class="inner-header site-identity">
                                 <?php
-                                $dd_header_logo               = bigbo_get_option( 'dd_header_logo', '' );
-                                $dd_header_logo_retina        = bigbo_get_option( 'dd_header_logo_retina', '' );
-                                $dd_header_logo_retina_width  = bigbo_get_option( 'dd_header_logo_retina_width', '' );
-                                $dd_header_logo_retina_height = bigbo_get_option( 'dd_header_logo_retina_height', '' );
-                                if ( $dd_header_logo != '' || $dd_header_logo_retina != '' ) {
+                                $ved_header_logo               = bigbo_get_option( 'ved_header_logo', '' );
+                                $ved_header_logo_retina        = bigbo_get_option( 'ved_header_logo_retina', '' );
+                                $ved_header_logo_retina_width  = bigbo_get_option( 'ved_header_logo_retina_width', '' );
+                                $ved_header_logo_retina_height = bigbo_get_option( 'ved_header_logo_retina_height', '' );
+                                if ( $ved_header_logo != '' || $ved_header_logo_retina != '' ) {
                                     ?>
                                     <a class="inner-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                                         <?php
-                                       if ( $dd_header_logo != '' ):
+                                       if ( $ved_header_logo != '' ):
                                             ?>
-                                            <img class="normal-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo esc_url($dd_header_logo); ?>">
+                                            <img class="normal-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo esc_url($ved_header_logo); ?>">
                                             <?php
                                         endif;
-                                        if ( $dd_header_logo_retina != "" && $dd_header_logo_retina_width != "" && $dd_header_logo_retina_height != "" ):
+                                        if ( $ved_header_logo_retina != "" && $ved_header_logo_retina_width != "" && $ved_header_logo_retina_height != "" ):
                                             $pixels = "";
-                                            if ( is_numeric( $dd_header_logo_retina_width ) && is_numeric( $dd_header_logo_retina_height ) ):
+                                            if ( is_numeric( $ved_header_logo_retina_width ) && is_numeric( $ved_header_logo_retina_height ) ):
                                                 $pixels = "px";
                                             endif;
                                             ?>
-                                            <img class="retina-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo esc_url($dd_header_logo_retina); ?>" style="width:<?php echo esc_attr($dd_header_logo_retina_width . $pixels); ?>;max-height:<?php echo esc_attr($dd_header_logo_retina_height . $pixels); ?>;" />
+                                            <img class="retina-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo esc_url($ved_header_logo_retina); ?>" style="width:<?php echo esc_attr($ved_header_logo_retina_width . $pixels); ?>;max-height:<?php echo esc_attr($ved_header_logo_retina_height . $pixels); ?>;" />
                                             <?php
                                         endif;
                                         ?>
                                     </a>
                                     <?php
                                 } else {
-                                    $dd_blog_title   = bigbo_get_option( 'dd_blog_title', '0' );
-                                    $dd_blog_tagline = bigbo_get_option( 'dd_blog_tagline', '0' );
-                                    if ( $dd_blog_title == 1 ) {
+                                    $ved_blog_title   = bigbo_get_option( 'ved_blog_title', '0' );
+                                    $ved_blog_tagline = bigbo_get_option( 'ved_blog_tagline', '0' );
+                                    if ( $ved_blog_title == 1 ) {
                                         ?>
                                         <div id="blog-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ) ?></a></div> 
                                         <?php
                                     }
-                                    if ( $dd_blog_tagline == 1 ) {
+                                    if ( $ved_blog_tagline == 1 ) {
                                         ?>
                                         <div id="tagline"><?php echo esc_html( get_bloginfo( 'description' ) ); ?></div>
                                         <?php
@@ -103,11 +103,11 @@ if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
         <div class="row">
             <div class="header-row">
                 <?php if ( $show_department ) : ?>
-                    <div class="col-md-3 col-sm-3 i-product-cats dd-extra-department">
+                    <div class="col-md-3 col-sm-3 i-product-cats ved-extra-department">
                         <?php bigbo_extra_department(); ?>
                     </div>
                 <?php endif; ?>
-                <div class="<?php echo esc_attr( $css_header_menu ); ?> dd-header-menu">
+                <div class="<?php echo esc_attr( $css_header_menu ); ?> ved-header-menu">
                     <div class="col-header-menu">
                         <div class="<?php echo esc_attr( $css_header_primarymenu ); ?>">
                             <?php bigbo_header_menu(); ?>

@@ -19,15 +19,15 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-global $product, $woocommerce_loop, $dd_options;
+global $product, $woocommerce_loop, $ved_options;
 
 // Ensure visibility
 if ( empty( $product ) || ! $product->is_visible() ) {
     return;
 }
 
-$dd_woocommerce_layout = $dd_options[ 'dd_woocommerce_layout' ];
-$woo_product_layout    = (12 / $dd_woocommerce_layout);
+$ved_woocommerce_layout = $ved_options[ 'ved_woocommerce_layout' ];
+$woo_product_layout    = (12 / $ved_woocommerce_layout);
 
 $shop_col_class = '';
 if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {

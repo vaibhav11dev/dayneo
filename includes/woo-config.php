@@ -32,12 +32,12 @@ remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_pr
  */
 function bigbo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
     global $woocommerce;
-    $dd_header_type = bigbo_get_option( 'dd_header_type', 'h1' );
+    $ved_header_type = bigbo_get_option( 'ved_header_type', 'h1' );
     ob_start();
     ?>
     <div class="menu-item header-ajax-cart">
         <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
-            <?php if ( $dd_header_type == 'h3' ) { ?>
+            <?php if ( $ved_header_type == 'h3' ) { ?>
                 <div class="icon-wrap">
                     <span class="icon-box">
                         <i class="flaticon-paper-bag"></i>
@@ -244,12 +244,12 @@ add_action( 'woocommerce_shop_loop_item_title', 'bigbo_woocommerce_template_loop
  * 
  */
 function bigbo_woocommerce_ordering() {
-    $dd_woocommerce_bigbo_ordering = bigbo_get_option( 'dd_woocommerce_bigbo_ordering', '0' );
+    $ved_woocommerce_bigbo_ordering = bigbo_get_option( 'ved_woocommerce_bigbo_ordering', '0' );
 
     // remove default shorting option
     remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
     remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
-    if ( ! $dd_woocommerce_bigbo_ordering ) {
+    if ( ! $ved_woocommerce_bigbo_ordering ) {
         add_action( 'woocommerce_before_shop_loop', 'bigbo_woocommerce_catalog_ordering', 30 );
         add_action( 'woocommerce_get_catalog_ordering_args', 'bigbo_woocommerce_get_catalog_ordering_args', 20 );
         add_filter( 'loop_shop_per_page', 'bigbo_loop_shop_per_page' );
@@ -262,7 +262,7 @@ function bigbo_woocommerce_catalog_ordering() {
     global $wp_query;
     $total = $wp_query->found_posts;
 
-    $dd_woo_items = bigbo_get_option( 'dd_woo_items', '12' );
+    $ved_woo_items = bigbo_get_option( 'ved_woo_items', '12' );
     $param_url = sanitize_text_field( $_SERVER[ 'QUERY_STRING' ] );
 
     if ( isset( $param_url ) ) {
@@ -275,8 +275,8 @@ function bigbo_woocommerce_catalog_ordering() {
     }
     
     // replace it with theme option
-    if ( $dd_woo_items ) {
-        $per_page = $dd_woo_items;
+    if ( $ved_woo_items ) {
+        $per_page = $ved_woo_items;
     } else {
         $per_page = 12;
     }
@@ -289,8 +289,8 @@ function bigbo_woocommerce_catalog_ordering() {
     $html .= '<div class="catalog-ordering row">';
     $html .= '<div class="orderby-order-container form-group col-md-5">';
     $html .= '<div class="shop-view GridList">';
-    $html .= '<a href="#" class="grid-view dd-shop-view current pull-left" data-view="grid"></a>';
-    $html .= '<a href="#" class="list-view dd-shop-view pull-left" data-view="list"></a>';
+    $html .= '<a href="#" class="grid-view ved-shop-view current pull-left" data-view="grid"></a>';
+    $html .= '<a href="#" class="list-view ved-shop-view pull-left" data-view="list"></a>';
     $html .= '</div>';
     $html .= '<p>There are ' . $total . ' products</p>';
     $html .= '<div class="clearfix"></div>';
@@ -418,14 +418,14 @@ function bigbo_order_by_rating_post_clauses( $args ) {
 
 function bigbo_loop_shop_per_page() {
 
-    $dd_woo_items = bigbo_get_option( 'dd_woo_items', '12' );
+    $ved_woo_items = bigbo_get_option( 'ved_woo_items', '12' );
 
     if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
         parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
     }
 
-    if ( $dd_woo_items ) {
-        $per_page = $dd_woo_items;
+    if ( $ved_woo_items ) {
+        $per_page = $ved_woo_items;
     } else {
         $per_page = 12;
     }
@@ -819,7 +819,7 @@ add_action( 'woocommerce_archive_description', 'bigbo_woocommerce_taxonomy_archi
  * Single Product Next/Prev
  * 
  */
-function dd_product_navigation() {
+function ved_product_navigation() {
     global $post;
     $current_url = get_permalink( $post->ID );
 
@@ -867,7 +867,7 @@ function dd_product_navigation() {
     echo wp_kses_post( $output );
 }
 
-add_action( 'woocommerce_single_product_summary', 'dd_product_navigation', 4 );
+add_action( 'woocommerce_single_product_summary', 'ved_product_navigation', 4 );
 
 /**
  * 
@@ -930,7 +930,7 @@ function get_product_quick_view_header() {
     global $product;
     ?>
 
-    <div class="dd-entry-product-header">
+    <div class="ved-entry-product-header">
         <div class="entry-left">
     <?php
     echo sprintf( '<h2 class="product_title"><a href="%s">%s</a></h2>', esc_url( $product->get_permalink() ), $product->get_title() );
@@ -980,7 +980,7 @@ function get_product_quick_view_header() {
 
                 echo '<div class="action-btn quick-view-warp">';
 
-                echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button dd-product-quick-view"></a>';
+                echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button ved-product-quick-view"></a>';
 
                 echo '</div>';
 

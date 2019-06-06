@@ -6,8 +6,8 @@
  * @package bigbo
  */
 // The Query
-global $dd_options;
-$dd_portfolio_no_item_per_page	 = bigbo_get_option( 'dd_portfolio_no_item_per_page', '10' );
+global $ved_options;
+$ved_portfolio_no_item_per_page	 = bigbo_get_option( 'ved_portfolio_no_item_per_page', '10' );
 
 if ( category_description() ):
 	?>
@@ -22,11 +22,11 @@ if ( category_description() ):
 
     <?php
     $portfolio_style = '';
-    if ( $dd_options[ 'dd_portfolio_style' ] == 'grid' ) {
+    if ( $ved_options[ 'ved_portfolio_style' ] == 'grid' ) {
 	    $portfolio_style = 'works-grid-gutter';
     }
-    if ( $dd_options[ 'dd_portfolio_layout' ] == '3' || $dd_options[ 'dd_portfolio_layout' ] == '4' ) {
-	    $portfolio_style .= ' works-grid-' . $dd_options[ 'dd_portfolio_layout' ];
+    if ( $ved_options[ 'ved_portfolio_layout' ] == '3' || $ved_options[ 'ved_portfolio_layout' ] == '4' ) {
+	    $portfolio_style .= ' works-grid-' . $ved_options[ 'ved_portfolio_layout' ];
     }
     ?>
 

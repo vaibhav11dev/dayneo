@@ -25,8 +25,8 @@ $bigbo_slider_page_id = '';
 
 // LayerSlider Slider
     if ( get_post_meta( $bigbo_slider_page_id, 'bigbo_slider_type', true ) == 'layer' ):
-	    $dd_layerslider = bigbo_get_option( 'dd_layerslider', '1' );
-	    if ( $dd_layerslider == "1" ):
+	    $ved_layerslider = bigbo_get_option( 'ved_layerslider', '1' );
+	    if ( $ved_layerslider == "1" ):
 		    bigbo_layerslider();
 	    endif;
     endif;

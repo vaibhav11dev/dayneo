@@ -23,7 +23,7 @@ if ( ! function_exists( 'bigbo_extra_cart' ) ) :
         ?>
         <!-- SHOP CART -->
         <?php
-        $dd_header_type       = bigbo_get_option( 'dd_header_type', 'h1' );
+        $ved_header_type       = bigbo_get_option( 'ved_header_type', 'h1' );
         if ( class_exists( 'Woocommerce' ) ) {
             global $woocommerce;
             ?>
@@ -31,7 +31,7 @@ if ( ! function_exists( 'bigbo_extra_cart' ) ) :
             <div class="cart-hover">
                 <div class="menu-item header-ajax-cart">
                     <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
-                        <?php if ($dd_header_type == 'h3') { ?>
+                        <?php if ($ved_header_type == 'h3') { ?>
                         <div class="icon-wrap">
                                 <span class="icon-box">
                                     <i class="flaticon-paper-bag"></i>
@@ -339,7 +339,7 @@ if ( ! function_exists( 'bigbo_extra_department' ) ) :
         }
 
         $dep_text = '<i class="icon-menu ti-menu"></i>';
-        $dep_tit = bigbo_get_option( 'dd_vmenu_title' );
+        $dep_tit = bigbo_get_option( 'ved_vmenu_title' );
         if ( ! empty( $dep_tit ) ) {
             $dep_text .= '<span class="text">' . $dep_tit . '</span>';
         } else {
@@ -348,7 +348,7 @@ if ( ! function_exists( 'bigbo_extra_department' ) ) :
 
         $dep_open = '';
 
-        if ( in_array( bigbo_get_option( 'dd_header_type' ), array(
+        if ( in_array( bigbo_get_option( 'ved_header_type' ), array(
             '1',
             '2',
             '7',
@@ -357,7 +357,7 @@ if ( ! function_exists( 'bigbo_extra_department' ) ) :
             //$dep_open = bigbo_get_option( 'department_open_homepage' );
         }
         $cat_style = '';
-        if ( in_array( bigbo_get_option( 'dd_header_type' ), array( '2', '3' ) ) ) {
+        if ( in_array( bigbo_get_option( 'ved_header_type' ), array( '2', '3' ) ) ) {
             //$space = bigbo_get_option( 'department_space_homepage' );
             $space = '40px';
             if ( bigbo_is_homepage() && $space ) {

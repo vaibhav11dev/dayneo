@@ -5,7 +5,7 @@
  *
  * @package bigbo
  */
-global $post, $wp_query, $dd_options;
+global $post, $wp_query, $ved_options;
 
 $post_id = '';
 if ( $wp_query->is_posts_page ) {
@@ -19,9 +19,9 @@ if ( $wp_query->is_posts_page ) {
 }
 
 $topbar_class		 = '';
-$dd_header_type		 = bigbo_get_option( 'dd_header_type', 'h1' );
+$ved_header_type		 = bigbo_get_option( 'ved_header_type', 'h1' );
 $bigbo_header_type	 = get_post_meta( $post_id, 'bigbo_header_type', true );
-if ( $dd_options[ 'dd_header_left_content' ] != 'empty' ) {
+if ( $ved_options[ 'ved_header_left_content' ] != 'empty' ) {
 	$topbar_right_col = 'col-md-6';
 } else {
 	$topbar_right_col = 'col-md-12';
@@ -32,16 +32,16 @@ if ( $dd_options[ 'dd_header_left_content' ] != 'empty' ) {
     <div class="container">
 	<div class="row">
 
-	    <?php if ( $dd_options[ 'dd_header_left_content' ] != 'empty' ): ?>  
+	    <?php if ( $ved_options[ 'ved_header_left_content' ] != 'empty' ): ?>  
 		    <div class="col-md-6 hidden-sm hidden-xs">
 			<?php
-			if ( $dd_options[ 'dd_header_left_content' ] == 'contact_info' ) {
+			if ( $ved_options[ 'ved_header_left_content' ] == 'contact_info' ) {
 				get_template_part( 'includes/headers/header-info' );
-			} elseif ( $dd_options[ 'dd_header_left_content' ] == 'social_links' ) {
+			} elseif ( $ved_options[ 'ved_header_left_content' ] == 'social_links' ) {
 				get_template_part( 'includes/headers/header-social' );
-			} elseif ( $dd_options[ 'dd_header_left_content' ] == 'navigation' ) {
+			} elseif ( $ved_options[ 'ved_header_left_content' ] == 'navigation' ) {
 				get_template_part( 'includes/headers/header-topmenu' );
-			} elseif ( $dd_options[ 'dd_header_left_content' ] == 'content_text' ) {
+			} elseif ( $ved_options[ 'ved_header_left_content' ] == 'content_text' ) {
 				get_template_part( 'includes/headers/header-content' );
 			}
 			?>

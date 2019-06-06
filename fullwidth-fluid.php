@@ -21,8 +21,8 @@ get_header();
 
 			get_template_part( 'template-parts/content', 'page' );
 
-			$dd_share_this = bigbo_get_option( 'dd_share_this', 'single' );
-			if ( $dd_share_this == 'all' || $dd_share_this == 'page' ) {
+			$ved_share_this = bigbo_get_option( 'ved_share_this', 'single' );
+			if ( $ved_share_this == 'all' || $ved_share_this == 'page' ) {
 				bigbo_sharethis();
 			}
 

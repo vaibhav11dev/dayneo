@@ -6,9 +6,9 @@
  *
  * @package bigbo
  */
-$dd_pagetitlebar_layout		 = bigbo_get_option( 'dd_pagetitlebar_layout', 1 );
+$ved_pagetitlebar_layout		 = bigbo_get_option( 'ved_pagetitlebar_layout', 1 );
 $bigbo_enable_page_title	 = get_post_meta( get_the_ID(), 'bigbo_enable_page_title', true );
-$dd_edit_post			 = bigbo_get_option( 'dd_edit_post', '0' );
+$ved_edit_post			 = bigbo_get_option( 'ved_edit_post', '0' );
 ?>
 
 <div id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?>">
@@ -33,7 +33,7 @@ $dd_edit_post			 = bigbo_get_option( 'dd_edit_post', '0' );
 	<div class="tags entry-meta entry-footer">
 		<div class="row">
 			<?php
-			if ( $dd_edit_post == "1" && get_edit_post_link() ) :
+			if ( $ved_edit_post == "1" && get_edit_post_link() ) :
 				?>
 				<div class="col-sm-6">
 					<?php
@@ -56,8 +56,8 @@ $dd_edit_post			 = bigbo_get_option( 'dd_edit_post', '0' );
 			?>
 
 			<?php
-			$dd_share_this = bigbo_get_option( 'dd_share_this', 'single' );
-			if ( $dd_share_this == 'all' || $dd_share_this == 'page' ) {
+			$ved_share_this = bigbo_get_option( 'ved_share_this', 'single' );
+			if ( $ved_share_this == 'all' || $ved_share_this == 'page' ) {
 				?>
 				<div class="col-sm-6">
 					<?php

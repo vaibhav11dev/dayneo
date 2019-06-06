@@ -7,7 +7,7 @@
 
 get_header();
 
-global $dd_options;
+global $ved_options;
 ?>
 
 <!-- BLOG-CLASSIC -->
@@ -18,11 +18,11 @@ global $dd_options;
 	    <?php
             // this code only for preview purpose
             if (isset($_GET[ 'style' ])) {
-                $dd_options[ 'dd_blog_style' ] = $_GET[ 'style' ];
+                $ved_options[ 'ved_blog_style' ] = $_GET[ 'style' ];
             }
 
 	    $thumbnail = '';
-	    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
+	    if ( $ved_options[ 'ved_blog_style' ] == 'thumbnail_on_side' ) {
 		    $thumbnail = ' post-thumbnail ';
 	    }
 	    ?>

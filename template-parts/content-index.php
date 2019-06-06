@@ -5,20 +5,20 @@
  *
  * @package bigbo
  */
-global $dd_options;
+global $ved_options;
 
 if ( have_posts() ) :
-	if ( $dd_options[ 'dd_blog_style' ] == 'grid' ) {
+	if ( $ved_options[ 'ved_blog_style' ] == 'grid' ) {
 		?>
 		<div class="row multi-columns-row post-columns">
 		    <?php
 	    }
 	    while ( have_posts() ) : the_post();
 
-		    $dd_post_layout	 = $dd_options[ 'dd_post_layout' ];
-		    $post_layout_class	 = (int)12 / $dd_post_layout;
+		    $ved_post_layout	 = $ved_options[ 'ved_post_layout' ];
+		    $post_layout_class	 = (int)12 / $ved_post_layout;
 
-		    if ( $dd_options[ 'dd_blog_style' ] == 'grid' ) {
+		    if ( $ved_options[ 'ved_blog_style' ] == 'grid' ) {
 			    ?>
 			    <div class="col-sm-<?php echo esc_attr($post_layout_class); ?> col-md-<?php echo esc_attr($post_layout_class); ?> col-lg-<?php echo esc_attr($post_layout_class); ?>">
 				<?php
@@ -28,14 +28,14 @@ if ( have_posts() ) :
 			<article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo bigbo_post_format(); ?>">
 
 			    <?php
-			    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
+			    if ( $ved_options[ 'ved_blog_style' ] == 'thumbnail_on_side' ) {
 				    ?>
 				    <div class="row">
 					<div class="col-sm-5 img-col">
 					    <?php
 				    }
 				    bigbo_post_thumbnail();
-				    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
+				    if ( $ved_options[ 'ved_blog_style' ] == 'thumbnail_on_side' ) {
 					    ?>
 					</div>
 					<div class="col-sm-7 text-col">
@@ -49,7 +49,7 @@ if ( have_posts() ) :
 					    <?php
 					    bigbo_post_heading();
 
-					    if ( $dd_options[ 'dd_header_meta' ] == 1 ) {
+					    if ( $ved_options[ 'ved_header_meta' ] == 1 ) {
 						    ?>
 						    <ul class="post-meta">
 							<?php bigbo_post_metadata(); ?> 
@@ -69,7 +69,7 @@ if ( have_posts() ) :
 
 				    </div>
 				    <?php
-				    if ( $dd_options[ 'dd_blog_style' ] == 'thumbnail_on_side' ) {
+				    if ( $ved_options[ 'ved_blog_style' ] == 'thumbnail_on_side' ) {
 					    ?>
 					</div>
 				    </div>
@@ -79,13 +79,13 @@ if ( have_posts() ) :
 			</article>
 			<!-- END BLOG CONTENT -->
 			<?php
-			if ( $dd_options[ 'dd_blog_style' ] == 'grid' ) {
+			if ( $ved_options[ 'ved_blog_style' ] == 'grid' ) {
 				?>
 			    </div>			
 			    <?php
 		    }
 	    endwhile;
-	    if ( $dd_options[ 'dd_blog_style' ] == 'grid' ) {
+	    if ( $ved_options[ 'ved_blog_style' ] == 'grid' ) {
 		    ?>
 		</div>
 		<?php

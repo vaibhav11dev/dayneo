@@ -6,12 +6,12 @@
  * @package bigbo
  */
 // The Query
-global $paged, $dd_options;
-$dd_portfolio_no_item_per_page	 = bigbo_get_option( 'dd_portfolio_no_item_per_page', '10' );
+global $paged, $ved_options;
+$ved_portfolio_no_item_per_page	 = bigbo_get_option( 'ved_portfolio_no_item_per_page', '10' );
 $args				 = array(
     'post_type'	 => 'vedanta_portfolio',
     'paged'		 => $paged,
-    'posts_per_page' => $dd_portfolio_no_item_per_page,
+    'posts_per_page' => $ved_portfolio_no_item_per_page,
 );
 $pcats				 = get_post_meta( get_the_ID(), 'vedanta_portfolio_category', true );
 if ( $pcats && $pcats[ 0 ] == 0 ) {
@@ -50,11 +50,11 @@ if ( ! post_password_required( $portfolio->ID ) ):
 
 	    <?php
 	    $portfolio_style = '';
-	    if ( $dd_options[ 'dd_portfolio_style' ] == 'grid' ) {
+	    if ( $ved_options[ 'ved_portfolio_style' ] == 'grid' ) {
 		    $portfolio_style = 'works-grid-gutter';
 	    }
-	    if ( $dd_options[ 'dd_portfolio_layout' ] == '3' || $dd_options[ 'dd_portfolio_layout' ] == '4' ) {
-		    $portfolio_style .= ' works-grid-'.$dd_options[ 'dd_portfolio_layout' ];
+	    if ( $ved_options[ 'ved_portfolio_layout' ] == '3' || $ved_options[ 'ved_portfolio_layout' ] == '4' ) {
+		    $portfolio_style .= ' works-grid-'.$ved_options[ 'ved_portfolio_layout' ];
 	    }
 	    ?>
 

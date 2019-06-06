@@ -29,12 +29,12 @@ function bigbo_scripts() {
     wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/slick/slick.css' );
 
     //Theme Core CSS
-    $dd_demo_style = bigbo_get_option( 'dd_demo_style', 'dddemo1' );
+    $ved_demo_style = bigbo_get_option( 'ved_demo_style', 'dddemo1' );
     wp_enqueue_style( 'ddmain', get_template_directory_uri() . '/assets/css/ddmain.css' );
-    if ( $dd_demo_style == 'dddemo2' ) {
+    if ( $ved_demo_style == 'dddemo2' ) {
         wp_enqueue_style( 'dddemo2', get_template_directory_uri() . '/assets/css/dddemo2.css' );
     }
-    if ( $dd_demo_style == 'dddemo3' ) {
+    if ( $ved_demo_style == 'dddemo3' ) {
         wp_enqueue_style( 'dddemo3', get_template_directory_uri() . '/assets/css/dddemo3.css' );
     }
     wp_enqueue_style( 'dynamic-style', get_template_directory_uri() . '/assets/css/dynamic.css' );
@@ -58,7 +58,7 @@ function bigbo_scripts() {
     wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/assets/slick/slick.min.js', array( 'jquery' ), '1.0', true );
 
     $menu_extras = bigbo_get_option( 'menu_extras' );
-    $header_type = bigbo_get_option( 'dd_header_type' );
+    $header_type = bigbo_get_option( 'ved_header_type' );
     wp_localize_script( 'ddmain', 'bigboData', array(
         'ajax_url'            => admin_url( 'admin-ajax.php' ),
         'nonce'               => wp_create_nonce( '_bigbo_nonce' ),
@@ -159,7 +159,7 @@ function restora_pro_theme_activation() {
             include $theme_options_txt;
             $theme_options_txt = ob_get_clean();
             $datafile		 = json_decode( ($theme_options_txt ), true );
-            update_option( 'dd_options', $datafile );
+            update_option( 'ved_options', $datafile );
             update_option( 'active_restora_theme', true );
     }
 }

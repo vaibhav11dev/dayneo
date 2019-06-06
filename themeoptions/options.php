@@ -7,20 +7,20 @@ define( 'BIGBO_DEFAULT', get_template_directory_uri() . '/assets/images/default/
 // -> BEGIN Themeoption Setup
 
 if ( ! class_exists( 'Redux' ) ) {
-        $dd_options = get_option( 'dd_options' );
+        $ved_options = get_option( 'ved_options' );
 	return;
 }
 
-global $dd_options;
+global $ved_options;
 
-$dd_options		 = "dd_options"; // This is your option name where all the Redux data is stored.
+$ved_options		 = "ved_options"; // This is your option name where all the Redux data is stored.
 $bigbo_theme		 = wp_get_theme(); // For use with some settings. Not necessary.
 $bigbo_rss_url	 = get_bloginfo( 'rss_url' );
 $bigbo_site_url	 = esc_url( "http://themevedanta.com/" );
 $bigbo_fb_url	 = '#';
 
 $args = array(
-	'opt_name'		 => $dd_options,
+	'opt_name'		 => $ved_options,
 	'display_name'		 => $bigbo_theme->get( 'Name' ),
 	'display_name'		 => '<img width="128" height="34" src="' . esc_url(get_template_directory_uri() . '/admin/assets/images/light-logo.png').'" alt="'. esc_attr(get_bloginfo( 'name' )) .'">',
 	'page_type'		 => 'submenu',
@@ -99,7 +99,7 @@ $args[ 'share_icons' ][] = array(
 	'icon'	 => 'fa fa-instagram',
 );
 
-Redux::setArgs( $dd_options, $args );
+Redux::setArgs( $ved_options, $args );
 
 // -> END Themeoption Setup
 // -> START Basic Configuration
@@ -131,49 +131,49 @@ if ( class_exists( 'sidebar_generator' ) ) {
 // -> END Basic Configuration
 // -> START Basic Fields
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-general-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-general-main-tab',
 	'title'	 => esc_html__( 'General', 'bigbo' ),
 	'icon'	 => 'fa fa-dashboard',
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-general-subsec-fav-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-general-subsec-fav-tab',
 	'title'		 => esc_html__( 'Favicon', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Upload custom favicon.', 'bigbo' ),
-			'id'		 => 'dd_favicon',
+			'id'		 => 'ved_favicon',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Custom Favicon', 'bigbo' ),
 			'url'		 => true,
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Favicon for Apple iPhone (57px x 57px).', 'bigbo' ),
-			'id'		 => 'dd_iphone_icon',
+			'id'		 => 'ved_iphone_icon',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Apple iPhone Icon Upload', 'bigbo' ),
 			'url'		 => true,
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Favicon for Apple iPhone Retina Version (114px x 114px).', 'bigbo' ),
-			'id'		 => 'dd_iphone_icon_retina',
+			'id'		 => 'ved_iphone_icon_retina',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Apple iPhone Retina Icon Upload', 'bigbo' ),
 			'url'		 => true,
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Favicon for Apple iPad (72px x 72px).', 'bigbo' ),
-			'id'		 => 'dd_ipad_icon',
+			'id'		 => 'ved_ipad_icon',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Apple iPad Icon Upload', 'bigbo' ),
 			'url'		 => true,
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Favicon for Apple iPad Retina Version (144px x 144px).', 'bigbo' ),
-			'id'		 => 'dd_ipad_icon_retina',
+			'id'		 => 'ved_ipad_icon_retina',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Apple iPad Retina Icon Upload', 'bigbo' ),
 			'url'		 => true,
@@ -182,14 +182,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-general-subsec-loader-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-general-subsec-loader-tab',
 	'title'		 => esc_html__( 'Site Loader', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to display loader in site', 'bigbo' ),
-			'id'		 => 'dd_siteloader',
+			'id'		 => 'ved_siteloader',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -198,11 +198,11 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Upload custom loader.', 'bigbo' ),
-			'id'		 => 'dd_loaderfile',
+			'id'		 => 'ved_loaderfile',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Custom Loader', 'bigbo' ),
 			'url'		 => true,
-			'required'	 => array( array( "dd_siteloader", '=', 1 ) ),
+			'required'	 => array( array( "ved_siteloader", '=', 1 ) ),
 			'default'	 => array(
 				'url' => BIGBO_DEFAULT . 'loader.gif'
 			),
@@ -212,13 +212,13 @@ Redux::setSection( $dd_options, array(
 );
 
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-general-subsec-lay-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-general-subsec-lay-tab',
 	'title'		 => esc_html__( 'Layout', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
                 array(
-			'id'		 => 'dd_demo_style',
+			'id'		 => 'ved_demo_style',
 			'type'		 => 'select',
 			'compiler'	 => false,
 			'options'	 => array(
@@ -232,7 +232,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select main content and sidebar alignment.', 'bigbo' ),
-			'id'		 => 'dd_layout',
+			'id'		 => 'ved_layout',
 			'type'		 => 'image_select',
 			'compiler'	 => true,
 			'options'	 => array(
@@ -248,7 +248,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => __( '<strong>Boxed version</strong> automatically enables custom background', 'bigbo' ),
-			'id'		 => 'dd_width_layout',
+			'id'		 => 'ved_width_layout',
 			'type'		 => 'select',
 			'compiler'	 => true,
 			'options'	 => array(
@@ -260,7 +260,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the width for your website', 'bigbo' ),
-			'id'		 => 'dd_width_px',
+			'id'		 => 'ved_width_px',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -276,21 +276,21 @@ Redux::setSection( $dd_options, array(
 		array(
 			'title'		 => esc_html__( 'Custom Layout Width', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Add the custom width in px (ex: 1024)', 'bigbo' ),
-			'id'		 => "dd_custom_width_px",
+			'id'		 => "ved_custom_width_px",
 			'type'		 => "text",
-			'required'	 => array( array( "dd_width_px", '=', 'custom' ) ),
+			'required'	 => array( array( "ved_width_px", '=', 'custom' ) ),
 			'default'	 => '1340',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the left and right padding for the Fullwidth-Fluid main content area. Enter value in px. ex: 20px', 'bigbo' ),
-			'id'		 => 'dd_hundredp_padding',
+			'id'		 => 'ved_hundredp_padding',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Fullwidth - Fluid Template Left/Right Padding', 'bigbo' ),
 			'default'	 => '40px',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Enter the page content top & bottom padding.', 'bigbo' ),
-			'id'		 => 'dd_content_top_bottom_padding',
+			'id'		 => 'ved_content_top_bottom_padding',
 			'type'		 => 'spacing',
 			'units'		 => array( 'px', 'em' ),
 			'title'		 => esc_html__( 'Content Top & Bottom Padding', 'bigbo' ),
@@ -303,20 +303,20 @@ Redux::setSection( $dd_options, array(
 			),
 		),
 		array(
-			'id'		 => 'dd_info_consid1',
+			'id'		 => 'ved_info_consid1',
 			'type'		 => 'info',
 			'subtitle'	 => __( '<h3>Content and One Sidebar Width</h3>', 'bigbo' ),
 		),
 		array(
 			'subtitle'	 => sprintf( __( '<span class="subtitleription">These options apply for the following layouts</span> <img style="float:left, display:inline" src="%1$s2cl.png" /> <img style="float:left, display:inline" src="%2$s2cr.png" />', 'bigbo' ), esc_url(BIGBO_IMAGEPATH), esc_url(BIGBO_IMAGEPATH) ),
-			'id'		 => 'dd_info_consid1_widths',
+			'id'		 => 'ved_info_consid1_widths',
 			'style'		 => 'notice',
 			'type'		 => 'info',
 			'notice'	 => false,
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the width for your content', 'bigbo' ),
-			'id'		 => 'dd_opt1_width_content',
+			'id'		 => 'ved_opt1_width_content',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -338,7 +338,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the width for your Sidebar 1', 'bigbo' ),
-			'id'		 => 'dd_opt1_width_sidebar1',
+			'id'		 => 'ved_opt1_width_sidebar1',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -359,20 +359,20 @@ Redux::setSection( $dd_options, array(
 			'default'	 => '3',
 		),
 		array(
-			'id'		 => 'dd_info_consid2',
+			'id'		 => 'ved_info_consid2',
 			'type'		 => 'info',
 			'subtitle'	 => __( '<h3>Content and Two Sidebars Width</h3>', 'bigbo' ),
 		),
 		array(
 			'subtitle'	 => sprintf( __( '<span class="subtitleription">These options apply for the following layouts</span> <img style="float:left, display:inline" src="%1$s3cm.png" /> <img style="float:left, display:inline" src="%2$s3cr.png" /> <img style="float:left, display:inline" src="%3$s3cl.png" />', 'bigbo' ), esc_url(BIGBO_IMAGEPATH), esc_url(BIGBO_IMAGEPATH), esc_url(BIGBO_IMAGEPATH) ),
-			'id'		 => 'dd_info_consid2_widths',
+			'id'		 => 'ved_info_consid2_widths',
 			'style'		 => 'notice',
 			'type'		 => 'info',
 			'notice'	 => false,
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the width for your content', 'bigbo' ),
-			'id'		 => 'dd_opt2_width_content',
+			'id'		 => 'ved_opt2_width_content',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -394,7 +394,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the width for your Sidebar 1', 'bigbo' ),
-			'id'		 => 'dd_opt2_width_sidebar1',
+			'id'		 => 'ved_opt2_width_sidebar1',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -416,7 +416,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the width for your Sidebar 2', 'bigbo' ),
-			'id'		 => 'dd_opt2_width_sidebar2',
+			'id'		 => 'ved_opt2_width_sidebar2',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -440,14 +440,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-general-subsec-popup-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-general-subsec-popup-tab',
 	'title'		 => esc_html__( 'Newslatter Popup', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to display newslatter popup in site', 'bigbo' ),
-			'id'		 => 'dd_popup',
+			'id'		 => 'ved_popup',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -456,7 +456,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Upload background image will display in the newslatter popup.', 'bigbo' ),
-			'id'		 => 'dd_popup_bg',
+			'id'		 => 'ved_popup_bg',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Newslatter Popup Background', 'bigbo' ),
 			'url'		 => true,
@@ -466,21 +466,21 @@ Redux::setSection( $dd_options, array(
 		),
             array(
 			'subtitle'	 => esc_html__( 'Add heading will display in the newslatter popup.', 'bigbo' ),
-			'id'		 => 'dd_popup_heading',
+			'id'		 => 'ved_popup_heading',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Newslatter Popup Heading', 'bigbo' ),
 			'default'	 => 'Newsletter',
 		),
             array(
 			'subtitle'	 => esc_html__( 'Add content will display in the newslatter popup.', 'bigbo' ),
-			'id'		 => 'dd_popup_content',
+			'id'		 => 'ved_popup_content',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Newslatter Popup Content', 'bigbo' ),
 			'default'	 => 'Sign up here to get 20% off on your next purchase, special offers and other discount information.',
 		),
             array(
 			'subtitle'	 => esc_html__( 'Add form shortcode will display in the newslatter popup.', 'bigbo' ),
-			'id'		 => 'dd_popup_form',
+			'id'		 => 'ved_popup_form',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Newslatter Popup Form Shortcode', 'bigbo' ),
 		),
@@ -490,21 +490,21 @@ Redux::setSection( $dd_options, array(
 );
 
 // Header Main Sections
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-header-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-header-main-tab',
 	'title'	 => esc_html__( 'Header', 'bigbo' ),
 	'icon'	 => 'fa fa-window-maximize icon-large',
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-header-subsec-header-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-header-subsec-header-tab',
 	'title'		 => esc_html__( 'Header', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose your Header Type', 'bigbo' ),
-			'id'		 => 'dd_header_type',
+			'id'		 => 'ved_header_type',
 			'compiler'	 => true,
 			'type'		 => 'image_select',
 			'options'	 => array(
@@ -517,7 +517,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Control the background color of topbar header.', 'bigbo' ),
-			'id'		 => 'dd_topbar_color',
+			'id'		 => 'ved_topbar_color',
 			'compiler'	 => true,
 			'type'		 => 'color',
 			'title'		 => esc_html__( 'Top Bar Color', 'bigbo' ),
@@ -525,21 +525,21 @@ Redux::setSection( $dd_options, array(
 		),
         array(
 			'subtitle'	 => esc_html__( 'Control the background color of header.', 'bigbo' ),
-			'id'		 => 'dd_bg_header',
+			'id'		 => 'ved_bg_header',
 			'compiler'	 => true,
 			'type'		 => 'color',
 			'title'		 => esc_html__( 'Header Background Color', 'bigbo' ),
 			'default'	 => '#000000',
-			'required'	 => array( array( "dd_header_type", '=', 'h2' ) ),
+			'required'	 => array( array( "ved_header_type", '=', 'h2' ) ),
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Control the Text color of header.', 'bigbo' ),
-			'id'		 => 'dd_text_header',
+			'id'		 => 'ved_text_header',
 			'compiler'	 => true,
 			'type'		 => 'color',
 			'title'		 => esc_html__( 'Header Text Color', 'bigbo' ),
 			'default'	 => '#ffffff',
-			'required'	 => array( array( "dd_header_type", '=', 'h2' ) ),
+			'required'	 => array( array( "ved_header_type", '=', 'h2' ) ),
 		),
         array(
             'id'       => 'menu_extras',
@@ -559,7 +559,7 @@ Redux::setSection( $dd_options, array(
             ),
         ),
         array(
-			'id'		 => 'dd_vmenu_title',
+			'id'		 => 'ved_vmenu_title',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Vertical Menu Title', 'bigbo' ),
 			'default'	 => 'Shop By Category',
@@ -568,14 +568,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-header-subsec-topbar-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-header-subsec-topbar-tab',
 	'title'		 => esc_html__( 'Top Bar', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Select which content displays in the top left area of the header.', 'bigbo' ),
-			'id'		 => 'dd_header_left_content',
+			'id'		 => 'ved_header_left_content',
 			'type'		 => 'select',
 			'options'	 => array(
 				'contact_info'	 => esc_html__( 'Contact Info', 'bigbo' ),
@@ -589,21 +589,21 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Phone number will display in the Contact Info section of your top header.', 'bigbo' ),
-			'id'		 => 'dd_header_number',
+			'id'		 => 'ved_header_number',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Header Phone Number', 'bigbo' ),
 			'default'	 => '+01 7890 123 456',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Email address will display in the Contact Info section of your top header.', 'bigbo' ),
-			'id'		 => 'dd_header_email',
+			'id'		 => 'ved_header_email',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Header Email Address', 'bigbo' ),
 			'default'	 => 'contact@example.com',
 		),
                 array(
 			'subtitle'	 => esc_html__( 'Text will display in the Content Text section of your top header.', 'bigbo' ),
-			'id'		 => 'dd_content_text',
+			'id'		 => 'ved_content_text',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Content Text', 'bigbo' ),
 			'default'	 => 'Welcome to website',
@@ -612,34 +612,34 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-header-subsec-logo-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-header-subsec-logo-tab',
 	'title'		 => esc_html__( 'Logo', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Upload a logo for your theme, or specify an image URL directly.', 'bigbo' ),
-			'id'		 => 'dd_header_logo',
+			'id'		 => 'ved_header_logo',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Custom Logo', 'bigbo' ),
 			'url'		 => true,
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select an image file for the retina version of the custom logo. It should be exactly 2x the size of main logo.', 'bigbo' ),
-			'id'		 => 'dd_header_logo_retina',
+			'id'		 => 'ved_header_logo_retina',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Custom Logo (Retina Version @2x)', 'bigbo' ),
 			'url'		 => true,
 		),
 		array(
 			'subtitle'	 => esc_html__( 'If retina logo is uploaded, enter the standard logo (1x) version width, do not enter the retina logo width. In px.', 'bigbo' ),
-			'id'		 => 'dd_header_logo_retina_width',
+			'id'		 => 'ved_header_logo_retina_width',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Standard Logo Width for Retina Logo', 'bigbo' ),
 		),
 		array(
 			'subtitle'	 => esc_html__( 'If retina logo is uploaded, enter the standard logo (1x) version height, do not enter the retina logo height. In px.', 'bigbo' ),
-			'id'		 => 'dd_header_logo_retina_height',
+			'id'		 => 'ved_header_logo_retina_height',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Standard Logo Height for Retina Logo', 'bigbo' ),
 		),
@@ -647,8 +647,8 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-header-subsec-search-content-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-header-subsec-search-content-tab',
 	'title'		 => esc_html__( 'Header Search Content', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
@@ -706,21 +706,21 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-header-subsec-title-tagline-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-header-subsec-title-tagline-tab',
 	'title'		 => esc_html__( 'Title & Tagline', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you don\'t want to display title of your blog', 'bigbo' ),
-			'id'		 => 'dd_blog_title',
+			'id'		 => 'ved_blog_title',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Enable Blog Title', 'bigbo' ),
 			'default'	 => '1',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you don\'t want to display tagline of your blog', 'bigbo' ),
-			'id'		 => 'dd_blog_tagline',
+			'id'		 => 'ved_blog_tagline',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Enable Blog Tagline', 'bigbo' ),
 			'default'	 => '1',
@@ -729,21 +729,21 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-footer-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-footer-main-tab',
 	'title'	 => esc_html__( 'Footer', 'bigbo' ),
 	'icon'	 => 'fa fa-columns icon-large',
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-footer-subsec-footer-widgets-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-footer-subsec-footer-widgets-tab',
 	'title'		 => esc_html__( 'Footer Widgets', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Select how many footer widget areas you want to display.', 'bigbo' ),
-			'id'		 => 'dd_footer_widget_col',
+			'id'		 => 'ved_footer_widget_col',
 			'type'		 => 'image_select',
 			'options'	 => array(
 				'disable'	 => BIGBO_IMAGEPATH . '1c.png',
@@ -759,14 +759,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-footer-subsec-custom-footer-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-footer-subsec-custom-footer-tab',
 	'title'		 => esc_html__( 'Custom Footer', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => __( 'Available <strong>HTML</strong> tags and attributes:<br /><br /> <code> &lt;b&gt; &lt;i&gt; &lt;a href="" &gt; &lt;blockquote&gt; &lt;del &gt; <br /> &lt;ins &gt; &lt;img /&gt; &lt;ul&gt; &lt;ol&gt; &lt;li&gt; <br /> &lt;code&gt; &lt;em&gt; &lt;strong&gt; &lt;div&gt; &lt;span&gt; &lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt; <br /> &lt;table&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt; &lt;br /&gt; &lt;hr /&gt;</code>', 'bigbo' ),
-			'id'		 => 'dd_footer_content',
+			'id'		 => 'ved_footer_content',
 			'type'		 => 'textarea',
 			'title'		 => esc_html__( 'Custom Footer', 'bigbo' ),
 			'default'	 => '<p id="copyright"><span class="credits"><a href="' . esc_url($bigbo_site_url . 'bigbo-multipurpose-wordpress-theme/').'">Bigbo</a> theme by ThemeVedanta</span></p>',
@@ -775,14 +775,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-styling-subsec-header-footer-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-styling-subsec-header-footer-tab',
 	'title'		 => esc_html__( 'Footer Styles', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Custom background color of footer', 'bigbo' ),
-			'id'		 => 'dd_footer_bg_color',
+			'id'		 => 'ved_footer_bg_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Footer Background color', 'bigbo' ),
@@ -790,14 +790,14 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Upload a footer background image for your theme, or specify an image URL directly.', 'bigbo' ),
-			'id'		 => 'dd_footer_background_image',
+			'id'		 => 'ved_footer_background_image',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Footer Background Image', 'bigbo' ),
 			'url'		 => true,
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select if the footer background image should be displayed in cover or contain size.', 'bigbo' ),
-			'id'		 => 'dd_footer_image',
+			'id'		 => 'ved_footer_image',
 			'type'		 => 'select',
 			'options'	 => array(
 				'cover'		 => esc_html__( 'Cover', 'bigbo' ),
@@ -808,7 +808,7 @@ Redux::setSection( $dd_options, array(
 			'default'	 => 'cover',
 		),
 		array(
-			'id'		 => 'dd_footer_image_background_repeat',
+			'id'		 => 'ved_footer_image_background_repeat',
 			'type'		 => 'select',
 			'options'	 => array(
 				'no-repeat'	 => esc_html__( 'no-repeat', 'bigbo' ),
@@ -820,7 +820,7 @@ Redux::setSection( $dd_options, array(
 			'default'	 => 'no-repeat',
 		),
 		array(
-			'id'		 => 'dd_footer_image_background_position',
+			'id'		 => 'ved_footer_image_background_position',
 			'type'		 => 'select',
 			'options'	 => array(
 				'center top'	 => esc_html__( 'center top', 'bigbo' ),
@@ -838,7 +838,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Check to enable parallax background image when scrolling.', 'bigbo' ),
-			'id'		 => 'dd_footer_parallax',
+			'id'		 => 'ved_footer_parallax',
 			'compiler'	 => true,
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Parallax Background Image', 'bigbo' ),
@@ -846,12 +846,12 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => __( '<h3 style=\'margin: 0;\'>Footer Default Pattern</h3>', 'bigbo' ),
-			'id'		 => 'dd_header_footer',
+			'id'		 => 'ved_header_footer',
 			'type'		 => 'info',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose the pattern for footer background', 'bigbo' ),
-			'id'		 => 'dd_pattern',
+			'id'		 => 'ved_pattern',
 			'compiler'	 => true,
 			'type'		 => 'image_select',
 			'options'	 => array(
@@ -872,14 +872,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-payment-footer-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-payment-footer-tab',
 	'title'		 => esc_html__( 'Footer Payment Icon', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_icon1',
+			'id'		 => 'ved_footer_payment_icon1',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Footer Payment Icon One', 'bigbo' ),
 			'url'		 => true,
@@ -889,14 +889,14 @@ Redux::setSection( $dd_options, array(
 		),
                 array(
 			'subtitle'	 => esc_html__( 'Add a footer payment link for your theme', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_link1',
+			'id'		 => 'ved_footer_payment_link1',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Payment Icon One Link', 'bigbo' ),
                     'default'	 => '#',
 		),
             array(
 			'subtitle'	 => esc_html__( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_icon2',
+			'id'		 => 'ved_footer_payment_icon2',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Footer Payment Icon Two', 'bigbo' ),
 			'url'		 => true,
@@ -906,14 +906,14 @@ Redux::setSection( $dd_options, array(
 		),
                 array(
 			'subtitle'	 => esc_html__( 'Add a footer payment link for your theme', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_link2',
+			'id'		 => 'ved_footer_payment_link2',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Payment Icon Two Link', 'bigbo' ),
                     'default'	 => '#',
 		),
             array(
 			'subtitle'	 => esc_html__( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_icon3',
+			'id'		 => 'ved_footer_payment_icon3',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Footer Payment Icon Three', 'bigbo' ),
 			'url'		 => true,
@@ -923,14 +923,14 @@ Redux::setSection( $dd_options, array(
 		),
                 array(
 			'subtitle'	 => esc_html__( 'Add a footer payment link for your theme', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_link3',
+			'id'		 => 'ved_footer_payment_link3',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Payment Icon Three Link', 'bigbo' ),
                     'default'	 => '#',
 		),
             array(
 			'subtitle'	 => esc_html__( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_icon4',
+			'id'		 => 'ved_footer_payment_icon4',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Footer Payment Icon Four', 'bigbo' ),
 			'url'		 => true,
@@ -940,14 +940,14 @@ Redux::setSection( $dd_options, array(
 		),
                 array(
 			'subtitle'	 => esc_html__( 'Add a footer payment link for your theme', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_link4',
+			'id'		 => 'ved_footer_payment_link4',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Payment Icon Four Link', 'bigbo' ),
                     'default'	 => '#',
 		),
             array(
 			'subtitle'	 => esc_html__( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_icon5',
+			'id'		 => 'ved_footer_payment_icon5',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Footer Payment Icon Five', 'bigbo' ),
 			'url'		 => true,
@@ -957,14 +957,14 @@ Redux::setSection( $dd_options, array(
 		),
                 array(
 			'subtitle'	 => esc_html__( 'Add a footer payment link for your theme', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_link5',
+			'id'		 => 'ved_footer_payment_link5',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Payment Icon Five Link', 'bigbo' ),
                     'default'	 => '#',
 		),
             array(
 			'subtitle'	 => esc_html__( 'Upload a footer payment icon for your theme, or specify an image URL directly.', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_icon6',
+			'id'		 => 'ved_footer_payment_icon6',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Footer Payment Icon Six', 'bigbo' ),
 			'url'		 => true,
@@ -974,7 +974,7 @@ Redux::setSection( $dd_options, array(
 		),
                 array(
 			'subtitle'	 => esc_html__( 'Add a footer payment link for your theme', 'bigbo' ),
-			'id'		 => 'dd_footer_payment_link6',
+			'id'		 => 'ved_footer_payment_link6',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Payment Icon Six Link', 'bigbo' ),
                     'default'	 => '#',
@@ -984,14 +984,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-pagetitlebar-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-pagetitlebar-tab',
 	'title'	 => esc_html__( 'Page Title Bar', 'bigbo' ),
 	'icon'	 => 'fa fa-pencil-square-o icon-large',
 	'fields' => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to display page titlebar above the content and sidebar area', 'bigbo' ),
-			'id'		 => 'dd_pagetitlebar_layout',
+			'id'		 => 'ved_pagetitlebar_layout',
 			'compiler'	 => true,
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
@@ -1001,7 +1001,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose the display option to show the page title', 'bigbo' ),
-			'id'		 => 'dd_display_pagetitlebar',
+			'id'		 => 'ved_display_pagetitlebar',
 			'type'		 => 'select',
 			'compiler'	 => true,
 			'options'	 => array(
@@ -1012,12 +1012,12 @@ Redux::setSection( $dd_options, array(
 			'title'		 => esc_html__( 'Page Title & Breadcrumbs', 'bigbo' ),
 			'default'	 => 'titlebar_breadcrumb',
 			'required'	 => array(
-				array( 'dd_pagetitlebar_layout', '=', '1' )
+				array( 'ved_pagetitlebar_layout', '=', '1' )
 			),
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose your page titlebar layout', 'bigbo' ),
-			'id'		 => 'dd_pagetitlebar_layout_opt',
+			'id'		 => 'ved_pagetitlebar_layout_opt',
 			'compiler'	 => true,
 			'type'		 => 'image_select',
 			'title'		 => esc_html__( 'Page Title Bar Layout Type', 'bigbo' ),
@@ -1028,12 +1028,12 @@ Redux::setSection( $dd_options, array(
 			),
                         'default'	 => 'titlebar_left',
 			'required'	 => array(
-				array( 'dd_pagetitlebar_layout', '=', '1' )
+				array( 'ved_pagetitlebar_layout', '=', '1' )
 			),
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the height for your pagetitle bar', 'bigbo' ),
-			'id'		 => 'dd_pagetitlebar_height',
+			'id'		 => 'ved_pagetitlebar_height',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -1045,46 +1045,46 @@ Redux::setSection( $dd_options, array(
 			'title'		 => esc_html__( 'Page Title Bar Height', 'bigbo' ),
 			'default'	 => 'small',
 			'required'	 => array(
-				array( 'dd_pagetitlebar_layout', '=', '1' )
+				array( 'ved_pagetitlebar_layout', '=', '1' )
 			),
 		),
 		array(
 			'title'		 => esc_html__( 'Custom Page Title Bar Height', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Add the custom height for page title bar. All height in px. Ex: 70', 'bigbo' ),
-			'id'		 => "dd_pagetitlebar_custom",
+			'id'		 => "ved_pagetitlebar_custom",
 			'type'		 => "text",
-			'required'	 => array( array( "dd_pagetitlebar_height", '=', 'custom' ) ),
+			'required'	 => array( array( "ved_pagetitlebar_height", '=', 'custom' ) ),
 			'default'	 => '',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Custom background color of page title bar', 'bigbo' ),
-			'id'		 => 'dd_pagetitlebar_background_color',
+			'id'		 => 'ved_pagetitlebar_background_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Page Title Bar Background Color', 'bigbo' ),
 			'required'	 => array(
-				array( 'dd_pagetitlebar_layout', '=', '1' )
+				array( 'ved_pagetitlebar_layout', '=', '1' )
 			),
 			'default'	 => '#f8f8f8',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select an image or insert an image url to use for the page title bar background.', 'bigbo' ),
-			'id'		 => 'dd_pagetitlebar_background',
+			'id'		 => 'ved_pagetitlebar_background',
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Page Title Bar Background', 'bigbo' ),
 			'required'	 => array(
-				array( 'dd_pagetitlebar_layout', '=', '1' )
+				array( 'ved_pagetitlebar_layout', '=', '1' )
 			),
 			'url'		 => true,
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Check to enable parallax background image when scrolling.', 'bigbo' ),
-			'id'		 => 'dd_pagetitlebar_background_parallax',
+			'id'		 => 'ved_pagetitlebar_background_parallax',
 			'compiler'	 => true,
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Parallax Background Image', 'bigbo' ),
 			'required'	 => array(
-				array( 'dd_pagetitlebar_layout', '=', '1' )
+				array( 'ved_pagetitlebar_layout', '=', '1' )
 			),
 			'default'	 => '0',
 		),
@@ -1092,21 +1092,21 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-blog-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-blog-main-tab',
 	'title'	 => esc_html__( 'Blog', 'bigbo' ),
 	'icon'	 => 'fa fa-newspaper-o icon-large',
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-blog-subsec-general-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-blog-subsec-general-tab',
 	'title'		 => esc_html__( 'General', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Select the blog style that will display on the blog pages.', 'bigbo' ),
-			'id'		 => 'dd_blog_style',
+			'id'		 => 'ved_blog_style',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -1119,7 +1119,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => __( 'Grid layout with <strong>3 and 4</strong> posts per row is recommended to use with disabled <strong>Sidebar(s)</strong>', 'bigbo' ),
-			'id'		 => 'dd_post_layout',
+			'id'		 => 'ved_post_layout',
 			'type'		 => 'image_select',
 			'compiler'	 => true,
 			'options'	 => array(
@@ -1130,12 +1130,12 @@ Redux::setSection( $dd_options, array(
 			'title'		 => esc_html__( 'Blog Grid layout', 'bigbo' ),
 			'default'	 => '3',
 			'required'	 => array(
-				array( 'dd_blog_style', '=', 'grid' )
+				array( 'ved_blog_style', '=', 'grid' )
 			),
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the sidebar that will display on the archive/category pages.', 'bigbo' ),
-			'id'		 => 'dd_blog_archive_sidebar',
+			'id'		 => 'ved_blog_archive_sidebar',
 			'type'		 => 'select',
 			'options'	 => $sidebar_options,
 			'title'		 => esc_html__( 'Blog Archive/Category Sidebar', 'bigbo' ),
@@ -1143,7 +1143,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose placement of the \'Share This\' buttons', 'bigbo' ),
-			'id'		 => 'dd_share_this',
+			'id'		 => 'ved_share_this',
 			'type'		 => 'select',
 			'options'	 => array(
 				'single'	 => esc_html__( 'Single Posts', 'bigbo' ),
@@ -1156,7 +1156,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the pagination type for the assigned blog page in Settings > Reading.', 'bigbo' ),
-			'id'		 => 'dd_pagination_type',
+			'id'		 => 'ved_pagination_type',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -1168,7 +1168,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to display edit post link', 'bigbo' ),
-			'id'		 => 'dd_edit_post',
+			'id'		 => 'ved_edit_post',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Enable Edit Post Link', 'bigbo' ),
 			'default'	 => '0',
@@ -1177,14 +1177,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-blog-subsec-post-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-blog-subsec-post-tab',
 	'title'		 => esc_html__( 'Posts', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose enable button if you want to display post meta header', 'bigbo' ),
-			'id'		 => 'dd_header_meta',
+			'id'		 => 'ved_header_meta',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -1193,7 +1193,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose enable button if you want to display post meta date', 'bigbo' ),
-			'id'		 => 'dd_meta_date',
+			'id'		 => 'ved_meta_date',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -1202,7 +1202,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose enable button if you want to display post meta author', 'bigbo' ),
-			'id'		 => 'dd_meta_author',
+			'id'		 => 'ved_meta_author',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -1211,7 +1211,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to display post author avatar', 'bigbo' ),
-			'id'		 => 'dd_author_avatar',
+			'id'		 => 'ved_author_avatar',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -1220,7 +1220,7 @@ Redux::setSection( $dd_options, array(
 		),
                 array(
 			'subtitle'	 => esc_html__( 'Choose enable button if you want to display post meta categories', 'bigbo' ),
-			'id'		 => 'dd_meta_cats',
+			'id'		 => 'ved_meta_cats',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -1229,7 +1229,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose enable button if you want to display post meta tags', 'bigbo' ),
-			'id'		 => 'dd_meta_tags',
+			'id'		 => 'ved_meta_tags',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -1238,7 +1238,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose enable button if you want to display post meta comments', 'bigbo' ),
-			'id'		 => 'dd_meta_comments',
+			'id'		 => 'ved_meta_comments',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -1247,7 +1247,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => __( 'Choose the position of the <strong>Previous/Next Post</strong> links', 'bigbo' ),
-			'id'		 => 'dd_post_links',
+			'id'		 => 'ved_post_links',
 			'type'		 => 'select',
 			'options'	 => array(
 				'after'	 => esc_html__( 'After posts', 'bigbo' ),
@@ -1259,7 +1259,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => __( 'Choose if you want to display <strong>Similar posts</strong> in articles', 'bigbo' ),
-			'id'		 => 'dd_similar_posts',
+			'id'		 => 'ved_similar_posts',
 			'type'		 => 'select',
 			'options'	 => array(
 				'disable'	 => esc_html__( 'Disable', 'bigbo' ),
@@ -1271,7 +1271,7 @@ Redux::setSection( $dd_options, array(
 		),
                 array(
 			'subtitle'	 => __( 'Choose enable button if you want to display <strong>Similar posts</strong> in slider', 'bigbo' ),
-			'id'		 => 'dd_similar_posts_carousel',
+			'id'		 => 'ved_similar_posts_carousel',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -1280,7 +1280,7 @@ Redux::setSection( $dd_options, array(
 		),
                 array(
 			'subtitle'	 => esc_html__( 'Choose number of similar posts', 'bigbo' ),
-			'id'		 => 'dd_similar_posts_number',
+			'id'		 => 'ved_similar_posts_number',
 			'type'		 => 'select',
 			'options'	 => array(
 				'3'	 => esc_html__( 'Three', 'bigbo' ),
@@ -1297,21 +1297,21 @@ Redux::setSection( $dd_options, array(
 	),
 )
 );
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-blog-subsec-featured-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-blog-subsec-featured-tab',
 	'title'		 => esc_html__( 'Featured Image', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to display featured images on blog page', 'bigbo' ),
-			'id'		 => 'dd_featured_images',
+			'id'		 => 'ved_featured_images',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Enable Featured Images', 'bigbo' ),
 			'default'	 => '1',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to display featured image on Single Blog Posts', 'bigbo' ),
-			'id'		 => 'dd_blog_featured_image',
+			'id'		 => 'ved_blog_featured_image',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -1322,28 +1322,28 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-portfolio-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-portfolio-main-tab',
 	'title'	 => esc_html__( 'Portfolio', 'bigbo' ),
 	'icon'	 => 'fa fa-th icon-large',
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-portfolio-subsec-general-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-portfolio-subsec-general-tab',
 	'title'		 => esc_html__( 'General', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Insert the number of posts to display per page.', 'bigbo' ),
-			'id'		 => 'dd_portfolio_no_item_per_page',
+			'id'		 => 'ved_portfolio_no_item_per_page',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Number of Portfolio Items Per Page', 'bigbo' ),
 			'default'	 => '10',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the portfolio style that will display on the portfolio pages.', 'bigbo' ),
-			'id'		 => 'dd_portfolio_style',
+			'id'		 => 'ved_portfolio_style',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -1355,7 +1355,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => __( 'Grid layout with <strong>3 and 4</strong> portfolio per row is recommended to use with disabled <strong>Sidebar(s)</strong>', 'bigbo' ),
-			'id'		 => 'dd_portfolio_layout',
+			'id'		 => 'ved_portfolio_layout',
 			'type'		 => 'image_select',
 			'compiler'	 => true,
 			'options'	 => array(
@@ -1368,7 +1368,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Custom hover color of portfolio works', 'bigbo' ),
-			'id'		 => 'dd_portfolio_hover_color',
+			'id'		 => 'ved_portfolio_hover_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Portfolio Hover Color', 'bigbo' ),
@@ -1376,7 +1376,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the sidebar that will be added to the archive/category portfolio pages.', 'bigbo' ),
-			'id'		 => 'dd_portfolio_sidebar',
+			'id'		 => 'ved_portfolio_sidebar',
 			'type'		 => 'select',
 			'options'	 => $sidebar_options,
 			'title'		 => esc_html__( 'Portfolio Archive/Category Sidebar', 'bigbo' ),
@@ -1386,42 +1386,42 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-portfolio-subsec-single-post-page-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-portfolio-subsec-single-post-page-tab',
 	'title'		 => esc_html__( 'Single Portfolio Page', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to display featured images on single post pages.', 'bigbo' ),
-			'id'		 => 'dd_portfolio_featured_image',
+			'id'		 => 'ved_portfolio_featured_image',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Featured Image on Single Portfolio', 'bigbo' ),
 			'default'	 => '1',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to enable Author on portfolio items.', 'bigbo' ),
-			'id'		 => 'dd_portfolio_author',
+			'id'		 => 'ved_portfolio_author',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Show Author', 'bigbo' ),
 			'default'	 => '1',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to display the social sharing box.', 'bigbo' ),
-			'id'		 => 'dd_portfolio_sharing',
+			'id'		 => 'ved_portfolio_sharing',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Social Sharing Box', 'bigbo' ),
 			'default'	 => '1',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to display related portfolio.', 'bigbo' ),
-			'id'		 => 'dd_portfolio_related_posts',
+			'id'		 => 'ved_portfolio_related_posts',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Related Portfolio', 'bigbo' ),
 			'default'	 => '1',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to disable previous/next pagination.', 'bigbo' ),
-			'id'		 => 'dd_portfolio_pagination',
+			'id'		 => 'ved_portfolio_pagination',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Previous/Next Pagination', 'bigbo' ),
 			'default'	 => '1',
@@ -1430,27 +1430,27 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-woocommerce-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-woocommerce-main-tab',
 	'title'	 => esc_html__( 'WooCommerce', 'bigbo' ),
 	'icon'	 => 'fa  fa-shopping-cart icon-large',
 	'fields' => array(
 		array(
 			'subtitle'	 => esc_html__( 'Insert the number of products to display per page.', 'bigbo' ),
-			'id'		 => 'dd_woo_items',
+			'id'		 => 'ved_woo_items',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Number of Products Per Page', 'bigbo' ),
 			'default'	 => '12',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to disable the ordering boxes displayed on the shop page.', 'bigbo' ),
-			'id'		 => 'dd_woocommerce_bigbo_ordering',
+			'id'		 => 'ved_woocommerce_bigbo_ordering',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'Disable Woocommerce Shop Page Ordering Boxes', 'bigbo' ),
 		),
 		array(
 			'subtitle'	 => __( 'Grid layout with <strong>3 and 4</strong> products per row is recommended to use with disabled <strong>Sidebar(s)</strong>', 'bigbo' ),
-			'id'		 => 'dd_woocommerce_layout',
+			'id'		 => 'ved_woocommerce_layout',
 			'type'		 => 'image_select',
 			'compiler'	 => true,
 			'options'	 => array(
@@ -1463,7 +1463,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the sidebar that will display on the shop archive/category pages.', 'bigbo' ),
-			'id'		 => 'dd_shop_archive_sidebar',
+			'id'		 => 'ved_shop_archive_sidebar',
 			'type'		 => 'select',
 			'options'	 => $sidebar_options,
 			'title'		 => esc_html__( 'Shop Archive/Category Sidebar', 'bigbo' ),
@@ -1473,26 +1473,26 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-typography-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-typography-main-tab',
 	'title'	 => esc_html__( 'Typography', 'bigbo' ),
 	'icon'	 => 'fa fa-font icon-large',
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-typography-custom',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-typography-custom',
 	'title'		 => esc_html__( 'Custom Fonts', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'raw'	 => __( '<h3 style=\'margin: 0;\'>Custom fonts for all elements.</h3><p style="margin-bottom:0;">This will override the Google / standard font options. All 4 files are required.</h3>', 'bigbo' ),
-			'id'	 => 'dd_custom_fonts',
+			'id'	 => 'ved_custom_fonts',
 			'type'	 => 'info',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Upload the .woff font file.', 'bigbo' ),
-			'id'		 => 'dd_custom_font_woff',
+			'id'		 => 'ved_custom_font_woff',
 			'mode'		 => 0,
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Custom Font .woff', 'bigbo' ),
@@ -1500,7 +1500,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Upload the .ttf font file.', 'bigbo' ),
-			'id'		 => 'dd_custom_font_ttf',
+			'id'		 => 'ved_custom_font_ttf',
 			'mode'		 => 0,
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Custom Font .ttf', 'bigbo' ),
@@ -1508,7 +1508,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Upload the .svg font file.', 'bigbo' ),
-			'id'		 => 'dd_custom_font_svg',
+			'id'		 => 'ved_custom_font_svg',
 			'mode'		 => 0,
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Custom Font .svg', 'bigbo' ),
@@ -1516,7 +1516,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Upload the .eot font file.', 'bigbo' ),
-			'id'		 => 'dd_custom_font_eot',
+			'id'		 => 'ved_custom_font_eot',
 			'mode'		 => 0,
 			'type'		 => 'media',
 			'title'		 => esc_html__( 'Custom Font .eot', 'bigbo' ),
@@ -1526,14 +1526,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-typography-subsec-title-tagline-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-typography-subsec-title-tagline-tab',
 	'title'		 => esc_html__( 'Title & Tagline', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your blog title. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_title_font',
+			'id'		 => 'ved_title_font',
 			'type'		 => 'typography',
 			'title'		 => esc_html__( 'Blog Title Font', 'bigbo' ),
 			'text-align'	 => false,
@@ -1547,7 +1547,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your blog tagline. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_tagline_font',
+			'id'		 => 'ved_tagline_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1563,14 +1563,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-    'id'         => 'dd-typography-subsec-tvslider-tab',
+Redux::setSection( $ved_options, array(
+    'id'         => 'ved-typography-subsec-tvslider-tab',
     'title'      => esc_html__( 'ThemeVedanta Slider', 'bigbo' ),
     'subsection' => true,
     'fields'     => array(
         array(
             'subtitle'    => esc_html__( 'Select the typography you want for your slider heading. * non web-safe font.', 'bigbo' ),
-            'id'          => 'dd_slider_heading_font',
+            'id'          => 'ved_slider_heading_font',
             'type'        => 'typography',
             'title'       => esc_html__( 'Slider Heading Font', 'bigbo' ),
             'text-align'  => false,
@@ -1584,7 +1584,7 @@ Redux::setSection( $dd_options, array(
         ),
         array(
             'subtitle'    => esc_html__( 'Select the typography you want for your slider caption. * non web-safe font.', 'bigbo' ),
-            'id'          => 'dd_slider_caption_font',
+            'id'          => 'ved_slider_caption_font',
             'type'        => 'typography',
             'text-align'  => false,
             'line-height' => false,
@@ -1600,14 +1600,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-typography-subsec-menu-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-typography-subsec-menu-tab',
 	'title'		 => esc_html__( 'Menu', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your main menu. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_menu_font',
+			'id'		 => 'ved_menu_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1621,7 +1621,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your top menu. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_top_menu_font',
+			'id'		 => 'ved_top_menu_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1638,14 +1638,14 @@ Redux::setSection( $dd_options, array(
 );
 
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-typography-subsec-post-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-typography-subsec-post-tab',
 	'title'		 => esc_html__( 'Post Title & Content', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your post titles. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_post_font',
+			'id'		 => 'ved_post_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1659,7 +1659,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your blog content. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_content_font',
+			'id'		 => 'ved_content_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1675,14 +1675,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-typography-subsec-widget-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-typography-subsec-widget-tab',
 	'title'		 => esc_html__( 'Widget', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your widget title. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_widget_title_font',
+			'id'		 => 'ved_widget_title_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1696,7 +1696,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your widget content. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_widget_content_font',
+			'id'		 => 'ved_widget_content_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1710,7 +1710,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your widget title. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_footer_widget_title_font',
+			'id'		 => 'ved_footer_widget_title_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1724,7 +1724,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your widget content. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_footer_widget_content_font',
+			'id'		 => 'ved_footer_widget_content_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1740,14 +1740,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-typography-subsec-headings-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-typography-subsec-headings-tab',
 	'title'		 => esc_html__( 'Headings', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your H1 tag in blog content. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_content_h1_font',
+			'id'		 => 'ved_content_h1_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1761,7 +1761,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your H2 tag in blog content. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_content_h2_font',
+			'id'		 => 'ved_content_h2_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1775,7 +1775,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your H3 tag in blog content. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_content_h3_font',
+			'id'		 => 'ved_content_h3_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1789,7 +1789,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your H4 tag in blog content. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_content_h4_font',
+			'id'		 => 'ved_content_h4_font',
 			'type'		 => 'typography',
 			'title'		 => esc_html__( 'H4 Font', 'bigbo' ),
 			'text-align'	 => false,
@@ -1803,7 +1803,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your H5 tag in blog content. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_content_h5_font',
+			'id'		 => 'ved_content_h5_font',
 			'type'		 => 'typography',
 			'title'		 => esc_html__( 'H5 Font', 'bigbo' ),
 			'text-align'	 => false,
@@ -1817,7 +1817,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select the typography you want for your H6 tag in blog content. * non web-safe font.', 'bigbo' ),
-			'id'		 => 'dd_content_h6_font',
+			'id'		 => 'ved_content_h6_font',
 			'type'		 => 'typography',
 			'text-align'	 => false,
 			'line-height'	 => false,
@@ -1833,20 +1833,20 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-styling-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-styling-main-tab',
 	'title'	 => esc_html__( 'Styling', 'bigbo' ),
 	'icon'	 => 'fa fa-paint-brush icon-large',
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-styling-subsec-main-scheme-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-styling-subsec-main-scheme-tab',
 	'title'		 => esc_html__( 'Main Color Scheme', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
-			'id'		 => 'dd_color_palettes',
+			'id'		 => 'ved_color_palettes',
 			'type'		 => 'palette',
 			'title'		 => esc_html__( 'Main Color Scheme', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Please select the predefined color scheme of your website', 'bigbo' ),
@@ -1886,7 +1886,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Primary color of site', 'bigbo' ),
-			'id'		 => 'dd_primary_color',
+			'id'		 => 'ved_primary_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Primary Color', 'bigbo' ),
@@ -1894,7 +1894,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Secondry color of site', 'bigbo' ),
-			'id'		 => 'dd_secondry_color',
+			'id'		 => 'ved_secondry_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Secondry Color', 'bigbo' ),
@@ -1904,21 +1904,21 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-styling-subsec-menu-tab',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-styling-subsec-menu-tab',
 	'title'		 => esc_html__( 'Menu', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Set the font size for mega menu column titles. In pixels, ex: 15px', 'bigbo' ),
-			'id'		 => 'dd_megamenu_title_size',
+			'id'		 => 'ved_megamenu_title_size',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Mega Menu Column Title Size', 'bigbo' ),
 			'default'	 => '15px',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Set padding between menu items.', 'bigbo' ),
-			'id'		 => 'dd_main_menu_padding',
+			'id'		 => 'ved_main_menu_padding',
 			'type'		 => 'spacing',
 			'units'		 => array( 'px', 'em' ),
 			'title'		 => esc_html__( 'Padding Between Menu Items', 'bigbo' ),
@@ -1932,7 +1932,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Main menu text transform', 'bigbo' ),
-			'id'		 => 'dd_menu_text_transform',
+			'id'		 => 'ved_menu_text_transform',
 			'compiler'	 => true,
 			'type'		 => 'select',
 			'options'	 => array(
@@ -1946,7 +1946,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Main menu hover font color', 'bigbo' ),
-			'id'		 => 'dd_main_menu_hover_font_color',
+			'id'		 => 'ved_main_menu_hover_font_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Menu Hover Font Color', 'bigbo' ),
@@ -1954,7 +1954,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Sub menu hover font color', 'bigbo' ),
-			'id'		 => 'dd_sub_menu_hover_font_color',
+			'id'		 => 'ved_sub_menu_hover_font_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Submenu Hover Font Color', 'bigbo' ),
@@ -1964,28 +1964,28 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'		 => 'dd-element-colors',
+Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-element-colors',
 	'title'		 => esc_html__( 'Element Colors', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
 			'subtitle'	 => esc_html__( 'Controls the background color of form fields.', 'bigbo' ),
-			'id'		 => 'dd_form_bg_color',
+			'id'		 => 'ved_form_bg_color',
 			'type'		 => 'color',
 			'title'		 => esc_html__( 'Form Background Color', 'bigbo' ),
 			'default'	 => '#ffffff',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Controls the text color for forms.', 'bigbo' ),
-			'id'		 => 'dd_form_text_color',
+			'id'		 => 'ved_form_text_color',
 			'type'		 => 'color',
 			'title'		 => esc_html__( 'Form Text Color', 'bigbo' ),
 			'default'	 => '#222222',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Controls the border color of form fields.', 'bigbo' ),
-			'id'		 => 'dd_form_border_color',
+			'id'		 => 'ved_form_border_color',
 			'type'		 => 'color',
 			'title'		 => esc_html__( 'Form Border Color', 'bigbo' ),
 			'default'	 => '#e2e2e2',
@@ -1994,14 +1994,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-social-sharing-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-social-sharing-main-tab',
 	'title'	 => esc_html__( 'Social Sharing Box', 'bigbo' ),
 	'icon'	 => 'fa fa-group icon-large',
 	'fields' => array(
 		array(
 			'subtitle'	 => esc_html__( 'Select a custom social icon color.', 'bigbo' ),
-			'id'		 => 'dd_sharing_box_icon_color',
+			'id'		 => 'ved_sharing_box_icon_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Social Sharing Box Custom Icons Color', 'bigbo' ),
@@ -2009,7 +2009,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Select a custom social icon box color.', 'bigbo' ),
-			'id'		 => 'dd_sharing_box_color',
+			'id'		 => 'ved_sharing_box_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Social Sharing Box Icons Custom Box Color', 'bigbo' ),
@@ -2017,14 +2017,14 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Box radius for the social icons. In pixels, ex: 4px.', 'bigbo' ),
-			'id'		 => 'dd_sharing_box_radius',
+			'id'		 => 'ved_sharing_box_radius',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Social Sharing Box Icons Boxed Radius', 'bigbo' ),
 			'default'	 => '50%',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Controls the tooltip position of the social icons in the sharing box.', 'bigbo' ),
-			'id'		 => 'dd_sharing_box_tooltip_position',
+			'id'		 => 'ved_sharing_box_tooltip_position',
 			'type'		 => 'select',
 			'options'	 => array(
 				'top'	 => esc_html__( 'Top', 'bigbo' ),
@@ -2038,7 +2038,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Show the facebook sharing icon in blog posts.', 'bigbo' ),
-			'id'		 => 'dd_sharing_facebook',
+			'id'		 => 'ved_sharing_facebook',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -2047,7 +2047,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Show the twitter sharing icon in blog posts.', 'bigbo' ),
-			'id'		 => 'dd_sharing_twitter',
+			'id'		 => 'ved_sharing_twitter',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -2056,7 +2056,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Show the linkedin sharing icon in blog posts.', 'bigbo' ),
-			'id'		 => 'dd_sharing_linkedin',
+			'id'		 => 'ved_sharing_linkedin',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -2065,7 +2065,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Show the g+ sharing icon in blog posts.', 'bigbo' ),
-			'id'		 => 'dd_sharing_google',
+			'id'		 => 'ved_sharing_google',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -2074,7 +2074,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Show the pinterest sharing icon in blog posts.', 'bigbo' ),
-			'id'		 => 'dd_sharing_pinterest',
+			'id'		 => 'ved_sharing_pinterest',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -2083,7 +2083,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Show the email sharing icon in blog posts.', 'bigbo' ),
-			'id'		 => 'dd_sharing_email',
+			'id'		 => 'ved_sharing_email',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -2092,7 +2092,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Show the more options button in blog posts.', 'bigbo' ),
-			'id'		 => 'dd_sharing_more_options',
+			'id'		 => 'ved_sharing_more_options',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -2103,14 +2103,14 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-social-links-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-social-links-main-tab',
 	'title'	 => esc_html__( 'Social Media Links', 'bigbo' ),
 	'icon'	 => 'fa fa-share-square-o icon-larg',
 	'fields' => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose the color scheme of social icons', 'bigbo' ),
-			'id'		 => 'dd_social_color',
+			'id'		 => 'ved_social_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Social Icons Color', 'bigbo' ),
@@ -2118,7 +2118,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose yes option if you want to display icon in boxed', 'bigbo' ),
-			'id'		 => 'dd_social_boxed',
+			'id'		 => 'ved_social_boxed',
 			'type'		 => 'select',
 			'options'	 => array(
 				'no'	 => esc_html__( 'No', 'bigbo' ),
@@ -2129,7 +2129,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose the color scheme of social icon boxed', 'bigbo' ),
-			'id'		 => 'dd_social_boxed_color',
+			'id'		 => 'ved_social_boxed_color',
 			'type'		 => 'color',
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Social Icon Boxed Background Color', 'bigbo' ),
@@ -2137,14 +2137,14 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Box radius for the social icons. In pixels, ex: 4px.', 'bigbo' ),
-			'id'		 => 'dd_social_boxed_radius',
+			'id'		 => 'ved_social_boxed_radius',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Social Icon Boxed Radius', 'bigbo' ),
 			'default'	 => '2px',
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose _blank option if you want to open link in new window tab.', 'bigbo' ),
-			'id'		 => 'dd_social_target',
+			'id'		 => 'ved_social_target',
 			'type'		 => 'select',
 			'options'	 => array(
 				'_blank' => esc_html__( '_blank', 'bigbo' ),
@@ -2155,7 +2155,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Controls the tooltip position of the social icons', 'bigbo' ),
-			'id'		 => 'dd_social_tooltip_position',
+			'id'		 => 'ved_social_tooltip_position',
 			'type'		 => 'select',
 			'options'	 => array(
 				'top'	 => esc_html__( 'Top', 'bigbo' ),
@@ -2168,174 +2168,174 @@ Redux::setSection( $dd_options, array(
 			'default'	 => 'none',
 		),
 		array(
-			'id'		 => 'dd_social_link_facebook',
+			'id'		 => 'ved_social_link_facebook',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Facebook', 'bigbo' ),
 			'default'	 => '#',
 			'subtitle'	 => esc_html__( 'Insert your Facebook URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_twitter',
+			'id'		 => 'ved_social_link_twitter',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Twitter', 'bigbo' ),
 			'default'	 => '#',
 			'subtitle'	 => esc_html__( 'Insert your Twitter URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_google-plus',
+			'id'		 => 'ved_social_link_google-plus',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Google Plus', 'bigbo' ),
 			'default'	 => '#',
 			'subtitle'	 => esc_html__( 'Insert your google-plus URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_dribbble',
+			'id'		 => 'ved_social_link_dribbble',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Dribbble', 'bigbo' ),
 			'default'	 => '#',
 			'subtitle'	 => esc_html__( 'Insert your dribbble URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_linkedin',
+			'id'		 => 'ved_social_link_linkedin',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'LinkedIn', 'bigbo' ),
 			'default'	 => '#',
 			'subtitle'	 => esc_html__( 'Insert your linkedin URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_tumblr',
+			'id'		 => 'ved_social_link_tumblr',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Tumblr', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your tumblr URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_reddit',
+			'id'		 => 'ved_social_link_reddit',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Reddit', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your reddit URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_yahoo',
+			'id'		 => 'ved_social_link_yahoo',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Yahoo', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your yahoo URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_deviantart',
+			'id'		 => 'ved_social_link_deviantart',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Deviantart', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your deviantart URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_vimeo',
+			'id'		 => 'ved_social_link_vimeo',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Vimeo', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your vimeo URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_youtube',
+			'id'		 => 'ved_social_link_youtube',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Youtube', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your youtube URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_pinterest',
+			'id'		 => 'ved_social_link_pinterest',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Pinterest', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your pinterest URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_digg',
+			'id'		 => 'ved_social_link_digg',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Digg', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your digg URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_flickr',
+			'id'		 => 'ved_social_link_flickr',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Flickr', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your flickr URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_skype',
+			'id'		 => 'ved_social_link_skype',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Skype', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your skype URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_instagram',
+			'id'		 => 'ved_social_link_instagram',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Instagram', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your instagram URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_vk',
+			'id'		 => 'ved_social_link_vk',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'VK', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your vk URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_paypal',
+			'id'		 => 'ved_social_link_paypal',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'PayPal', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your paypal URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_dropbox',
+			'id'		 => 'ved_social_link_dropbox',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Dropbox', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your dropbox URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_soundcloud',
+			'id'		 => 'ved_social_link_soundcloud',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Soundcloud', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your soundcloud URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_foursquare',
+			'id'		 => 'ved_social_link_foursquare',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Foursquare', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your foursquare URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_foursquare',
+			'id'		 => 'ved_social_link_foursquare',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Vine', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your vine URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_wordpress',
+			'id'		 => 'ved_social_link_wordpress',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Wordpress', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your wordpress URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_behance',
+			'id'		 => 'ved_social_link_behance',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Behance', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your behance URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_stumbleupo',
+			'id'		 => 'ved_social_link_stumbleupo',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Stumbleupo', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your stumbleupo URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_github',
+			'id'		 => 'ved_social_link_github',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Github', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your github URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_lastfm',
+			'id'		 => 'ved_social_link_lastfm',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Lastfm', 'bigbo' ),
 			'subtitle'	 => esc_html__( 'Insert your lastfm URL', 'bigbo' ),
 		),
 		array(
-			'id'		 => 'dd_social_link_rss',
+			'id'		 => 'ved_social_link_rss',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'RSS Feed', 'bigbo' ),
 			'default'	 => $bigbo_rss_url,
@@ -2347,14 +2347,14 @@ Redux::setSection( $dd_options, array(
 
 
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-extra-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-extra-main-tab',
 	'title'	 => esc_html__( 'Extra', 'bigbo' ),
 	'icon'	 => 'fa  fa-gears icon-large',
 	'fields' => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose enable button if you want to display Back to Top button.', 'bigbo' ),
-			'id'		 => 'dd_back_to_top',
+			'id'		 => 'ved_back_to_top',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
 			'off'		 => esc_html__( 'Disabled', 'bigbo' ),
@@ -2363,7 +2363,7 @@ Redux::setSection( $dd_options, array(
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Choose Enable button if you want to add rel="nofollow" attribute to social sharing box and social links.', 'bigbo' ),
-			'id'		 => 'dd_nofollow_social_links',
+			'id'		 => 'ved_nofollow_social_links',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Yes', 'bigbo' ),
 			'off'		 => esc_html__( 'No', 'bigbo' ),
@@ -2373,8 +2373,8 @@ Redux::setSection( $dd_options, array(
 )
 );
 
-Redux::setSection( $dd_options, array(
-	'id'	 => 'dd-import-export-main-tab',
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-import-export-main-tab',
 	'title'	 => esc_html__( 'Import / Export', 'bigbo' ),
 	'icon'	 => 'fa fa-exchange icon-large',
 	'fields' => array(
@@ -2401,7 +2401,7 @@ function bigbo_override_content() {
 	wp_dequeue_style( 'redux-elusive-icon-ie7' );
 }
 
-add_action( 'redux-enqueue-dd_options', 'bigbo_override_content' );
+add_action( 'redux-enqueue-ved_options', 'bigbo_override_content' );
 
 /*
  * Hide Demo Mode Link
@@ -2431,5 +2431,5 @@ function bigbo_colorpalettes() {
 	wp_enqueue_script( 'bigbo-colorpalettes', get_template_directory_uri() . '/themeoptions/options/js/colorpalettes.js', array(), '', true );
 }
 
-add_action( "redux/page/{$dd_options}/enqueue", "bigbo_colorpalettes" );
+add_action( "redux/page/{$ved_options}/enqueue", "bigbo_colorpalettes" );
 

@@ -33,31 +33,31 @@ function bigbo_after_setup() {
 
 	add_editor_style( 'editor-style.css' );
 
-	$dd_width_px		 = bigbo_get_option( 'dd_width_px', '1200' );
-	$dd_custom_width_px	 = bigbo_get_option( 'dd_custom_width_px', '1200' );
-	if ( $dd_width_px != "custom" ) {
-		$dd_width_px	 = apply_filters( 'bigbo_header_image_width', $dd_width_px );
-		//define( 'HEADER_IMAGE_WIDTH', apply_filters( 'bigbo_header_image_width', $dd_width_px ) );
+	$ved_width_px		 = bigbo_get_option( 'ved_width_px', '1200' );
+	$ved_custom_width_px	 = bigbo_get_option( 'ved_custom_width_px', '1200' );
+	if ( $ved_width_px != "custom" ) {
+		$ved_width_px	 = apply_filters( 'bigbo_header_image_width', $ved_width_px );
+		//define( 'HEADER_IMAGE_WIDTH', apply_filters( 'bigbo_header_image_width', $ved_width_px ) );
 		//define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'bigbo_header_image_height', 170 ) );
 		//define( 'HEADER_TEXTCOLOR', '' );
 		//define( 'NO_HEADER_TEXT', true );
 		$args		 = array(
 			'flex-width'	 => true,
-			'width'		 => $dd_width_px,
+			'width'		 => $ved_width_px,
 			'flex-height'	 => true,
 			'height'	 => 200,
 			'header-text'	 => false,
 		);
 		add_theme_support( 'custom-header', $args );
-	} elseif ( $dd_width_px == "custom" ) {
-		$dd_custom_width_px	 = apply_filters( 'bigbo_header_image_width', $dd_custom_width_px );
-		//define( 'HEADER_IMAGE_WIDTH', apply_filters( 'bigbo_header_image_width', $dd_width_px ) );
+	} elseif ( $ved_width_px == "custom" ) {
+		$ved_custom_width_px	 = apply_filters( 'bigbo_header_image_width', $ved_custom_width_px );
+		//define( 'HEADER_IMAGE_WIDTH', apply_filters( 'bigbo_header_image_width', $ved_width_px ) );
 		//define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'bigbo_header_image_height', 170 ) );
 		//define( 'HEADER_TEXTCOLOR', '' );
 		//define( 'NO_HEADER_TEXT', true );
 		$args			 = array(
 			'flex-width'	 => true,
-			'width'		 => $dd_custom_width_px,
+			'width'		 => $ved_custom_width_px,
 			'flex-height'	 => true,
 			'height'	 => 200,
 			'header-text'	 => false,
@@ -86,9 +86,9 @@ function bigbo_after_setup() {
 		//remove_action( 'woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20 ); // Remove Duplicated Checkout Button
 	}
 
-	$dd_width_layout = bigbo_get_option( 'dd_width_layout', 'fixed' );
+	$ved_width_layout = bigbo_get_option( 'ved_width_layout', 'fixed' );
 
-	if ( $dd_width_layout == "fixed" ) {
+	if ( $ved_width_layout == "fixed" ) {
 		$defaults = array(
 			'default-color'	 => 'e5e5e5',
 			'default-image'	 => ''
@@ -114,14 +114,14 @@ function bigbo_after_setup() {
 	register_nav_menu( 'top-menu', esc_html__( 'Top Menu', 'bigbo' ) );
 	register_nav_menu( 'department-menu', esc_html__( 'Department Menu', 'bigbo' ) );
 
-	$dd_container_width_px		 = (int)$dd_width_px - 30;
-	$dd_container_custom_width_px	 = (int)$dd_custom_width_px - 30;
+	$ved_container_width_px		 = (int)$ved_width_px - 30;
+	$ved_container_custom_width_px	 = (int)$ved_custom_width_px - 30;
 
 	if ( ! isset( $content_width ) ) {
-		if ( $dd_width_px != "custom" ) {
-			$content_width = $dd_container_width_px;
+		if ( $ved_width_px != "custom" ) {
+			$content_width = $ved_container_width_px;
 		} else {
-			$content_width = $dd_container_custom_width_px;
+			$content_width = $ved_container_custom_width_px;
 		}
 	}
 }

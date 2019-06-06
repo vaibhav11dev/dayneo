@@ -600,7 +600,7 @@ $(document).on("click", function () {
      */
     $.HandleElement.shopView = function () {
 
-        $.HandleElement.$body.on('click', '.dd-shop-view', function (e) {
+        $.HandleElement.$body.on('click', '.ved-shop-view', function (e) {
             e.preventDefault();
             var $el = $(this),
             view = $el.data('view');
@@ -609,7 +609,7 @@ $(document).on("click", function () {
                 return;
             }
 
-            $.HandleElement.$body.find('.dd-shop-view').removeClass('current');
+            $.HandleElement.$body.find('.ved-shop-view').removeClass('current');
             $el.addClass('current');
             $.HandleElement.$body.removeClass('shop-view-grid shop-view-list').addClass('shop-view-' + view);
 
@@ -621,10 +621,10 @@ $(document).on("click", function () {
      * Toggle product quick view
      */
     $.HandleElement.productQuickView = function () {
-        var $modal = $('#dd-quick-view-modal'),
+        var $modal = $('#ved-quick-view-modal'),
             $product = $modal.find('.product-modal-content');
 
-        $.HandleElement.$body.on('click', '.dd-product-quick-view', function (e) {
+        $.HandleElement.$body.on('click', '.ved-product-quick-view', function (e) {
             e.preventDefault();
 
             var $a = $(this),
@@ -647,14 +647,14 @@ $(document).on("click", function () {
                     $product.append(response.data);
                     $modal.removeClass('loading').addClass('loaded'); 
                     if (!jQuery('body').hasClass("rtl")) {
-                        $('#dd-quick-view-modal .slider-for').slick({
+                        $('#ved-quick-view-modal .slider-for').slick({
                           slidesToShow: 1,
                           slidesToScroll: 1,
                           arrows: true,
                           fade: true,
                           asNavFor: '.slider-nav'
                         });
-                        $('#dd-quick-view-modal .slider-nav').slick({
+                        $('#ved-quick-view-modal .slider-nav').slick({
                           slidesToShow: 4,
                           slidesToScroll: 1,
                           asNavFor: '.slider-for',
@@ -662,8 +662,8 @@ $(document).on("click", function () {
                           focusOnSelect: true
                         });
                     } else {         
-                        jQuery("#dd-quick-view-modal .slider-nav,#dd-quick-view-modal .slider-for").attr("dir","rtl");
-                        $('#dd-quick-view-modal .slider-for').slick({
+                        jQuery("#ved-quick-view-modal .slider-nav,#ved-quick-view-modal .slider-for").attr("dir","rtl");
+                        $('#ved-quick-view-modal .slider-for').slick({
                           slidesToShow: 1,
                           slidesToScroll: 1,
                           arrows: true,
@@ -671,7 +671,7 @@ $(document).on("click", function () {
                           rtl: true,
                           asNavFor: '.slider-nav'
                         });
-                        $('#dd-quick-view-modal .slider-nav').slick({
+                        $('#ved-quick-view-modal .slider-nav').slick({
                           slidesToShow: 4,
                           slidesToScroll: 1,
                           asNavFor: '.slider-for',
@@ -680,7 +680,7 @@ $(document).on("click", function () {
                           focusOnSelect: true
                         });
                     }
-                    $('#dd-quick-view-modal .slider-for,#dd-quick-view-modal .slider-nav').resize();
+                    $('#ved-quick-view-modal .slider-for,#ved-quick-view-modal .slider-nav').resize();
                 }
             });
         });
@@ -744,7 +744,7 @@ $(document).on("click", function () {
 
             date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
 
-            document.cookie = 'dd_newletter=' + value + ';expires=' + date.toGMTString() + ';path=/';
+            document.cookie = 'ved_newletter=' + value + ';expires=' + date.toGMTString() + ';path=/';
         }
     };
 

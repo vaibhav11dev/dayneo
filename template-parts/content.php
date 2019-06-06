@@ -5,7 +5,7 @@
  *
  * @package bigbo
  */
-global $dd_options;
+global $ved_options;
 ?>
 
 <article id="post-<?php the_ID(); ?>" class="<?php esc_attr(semantic_entries()); ?> post format-<?php echo bigbo_post_format(); ?>">
@@ -17,7 +17,7 @@ global $dd_options;
 			<?php
 			bigbo_post_heading();
 
-			if ( $dd_options[ 'dd_header_meta' ] == 1 ) {
+			if ( $ved_options[ 'ved_header_meta' ] == 1 ) {
 				?>
 				<ul class="post-meta">
 					<?php bigbo_post_metadata(); ?> 
@@ -39,8 +39,8 @@ global $dd_options;
 	    <div class="tags entry-meta entry-footer">				
 
 				<?php
-				$dd_share_this = bigbo_get_option( 'dd_share_this', 'single' );
-				if ( ($dd_share_this == "") || ($dd_share_this == "single") || ($dd_share_this == "all") ) {
+				$ved_share_this = bigbo_get_option( 'ved_share_this', 'single' );
+				if ( ($ved_share_this == "") || ($ved_share_this == "single") || ($ved_share_this == "all") ) {
 					?>
 					<div class="share-wrap">
 						<?php

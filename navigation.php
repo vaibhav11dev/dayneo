@@ -5,7 +5,7 @@
  *
  */
 
-$dd_pagination_type = bigbo_get_option( 'dd_pagination_type', 'pagination' );
+$ved_pagination_type = bigbo_get_option( 'ved_pagination_type', 'pagination' );
 
 if ( is_singular() and ! is_page() ) {
 	?>
@@ -17,7 +17,7 @@ if ( is_singular() and ! is_page() ) {
 <?php } else { ?>
 	<div class="navigation-links page-navigation clearfix">
 	    <?php
-	    if ( $dd_pagination_type == "number_pagination" ) {
+	    if ( $ved_pagination_type == "number_pagination" ) {
 		    ?>
 		    <nav class="number-pagination">
 			<?php echo bigbo_paginate_links(); ?>

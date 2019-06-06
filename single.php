@@ -7,8 +7,8 @@
  */
 get_header();
 
-$dd_similar_posts	 = bigbo_get_option( 'dd_similar_posts', 'disable' );
-$dd_post_links		 = bigbo_get_option( 'dd_post_links', 'after' );
+$ved_similar_posts	 = bigbo_get_option( 'ved_similar_posts', 'disable' );
+$ved_post_links		 = bigbo_get_option( 'ved_post_links', 'after' );
 ?>
 
 <!-- SINGLE BLOG -->
@@ -22,13 +22,13 @@ $dd_post_links		 = bigbo_get_option( 'dd_post_links', 'after' );
 		while ( have_posts() ) :
 			the_post();
 		
-			if ( ($dd_post_links == "") || ($dd_post_links == "before") || ($dd_post_links == "both") ) {
+			if ( ($ved_post_links == "") || ($ved_post_links == "before") || ($ved_post_links == "both") ) {
 				get_template_part( 'navigation', 'index' );
 			}
 
 			get_template_part( 'template-parts/content' );
 
-			if ( ($dd_post_links == "") || ($dd_post_links == "after") || ($dd_post_links == "both") ) {
+			if ( ($ved_post_links == "") || ($ved_post_links == "after") || ($ved_post_links == "both") ) {
 				get_template_part( 'navigation', 'index' );
 			}
 			
@@ -36,7 +36,7 @@ $dd_post_links		 = bigbo_get_option( 'dd_post_links', 'after' );
 				comments_template( '', true );
 			endif;
 
-			if ( ($dd_similar_posts == "") || ($dd_similar_posts == "disable") ) {
+			if ( ($ved_similar_posts == "") || ($ved_similar_posts == "disable") ) {
 				//Do Nothing
 			} else {
 				bigbo_similar_posts();

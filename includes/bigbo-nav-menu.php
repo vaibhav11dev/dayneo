@@ -85,7 +85,7 @@
 		     * if there is a value in the attr_title property. If the attr_title
 		     * property is NOT null we apply it as the class name for the glyphicon.
 		     */
-		    if ( bigbo_get_option( 'dd_main_menu_hover_effect', 'rollover' ) == 'disable' ) {
+		    if ( bigbo_get_option( 'ved_main_menu_hover_effect', 'rollover' ) == 'disable' ) {
 			    $item_output .= '<a' . $attributes . '>';
 		    } else {
 			    $item_output .= '<a' . $attributes . '><span data-hover="' . $item->title . '">';
@@ -93,7 +93,7 @@
 
 		    $item_output	 .= $args->link_before . apply_filters( 'the_title', $item->title_2, $item->ID ) . $args->link_after;
 		    $item_output	 .= ( $args->has_children && 0 === $depth ) ? ' <span class="arrow"></span>' : '';
-		    if ( bigbo_get_option( 'dd_main_menu_hover_effect', 'rollover' ) == 'disable' ) {
+		    if ( bigbo_get_option( 'ved_main_menu_hover_effect', 'rollover' ) == 'disable' ) {
 			    $item_output .= '</a>';
 		    } else {
 			    $item_output .= '</span></a>';

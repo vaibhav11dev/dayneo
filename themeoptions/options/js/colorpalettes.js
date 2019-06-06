@@ -1,32 +1,32 @@
 
 var ColorPalettes = {
-    baseName: 'dd_options',
-    colorpalettesFieldName: 'dd_color_palettes',
+    baseName: 'ved_options',
+    colorpalettesFieldName: 'ved_color_palettes',
     colorpalettesValue: {
         'color_palette_1': [
-            {fieldType: 'color', fieldName: 'dd_primary_color', fieldValue: '#3ab54a'},
-            {fieldType: 'color', fieldName: 'dd_secondry_color', fieldValue: '#3ab54a'},
-            {fieldType: 'color', fieldName: 'dd_portfolio_hover_color', fieldValue: '#3ab54a'},
+            {fieldType: 'color', fieldName: 'ved_primary_color', fieldValue: '#3ab54a'},
+            {fieldType: 'color', fieldName: 'ved_secondry_color', fieldValue: '#3ab54a'},
+            {fieldType: 'color', fieldName: 'ved_portfolio_hover_color', fieldValue: '#3ab54a'},
 	],
         'color_palette_2': [
-            {fieldType: 'color', fieldName: 'dd_primary_color', fieldValue: '#3498db'},
-            {fieldType: 'color', fieldName: 'dd_secondry_color', fieldValue: '#217dbb'},
-            {fieldType: 'color', fieldName: 'dd_portfolio_hover_color', fieldValue: '#217dbb'},
+            {fieldType: 'color', fieldName: 'ved_primary_color', fieldValue: '#3498db'},
+            {fieldType: 'color', fieldName: 'ved_secondry_color', fieldValue: '#217dbb'},
+            {fieldType: 'color', fieldName: 'ved_portfolio_hover_color', fieldValue: '#217dbb'},
 	],
         'color_palette_3': [
-            {fieldType: 'color', fieldName: 'dd_primary_color', fieldValue: '#444'},
-            {fieldType: 'color', fieldName: 'dd_secondry_color', fieldValue: '#2b2b2b'},
-            {fieldType: 'color', fieldName: 'dd_portfolio_hover_color', fieldValue: '#2b2b2b'},
+            {fieldType: 'color', fieldName: 'ved_primary_color', fieldValue: '#444'},
+            {fieldType: 'color', fieldName: 'ved_secondry_color', fieldValue: '#2b2b2b'},
+            {fieldType: 'color', fieldName: 'ved_portfolio_hover_color', fieldValue: '#2b2b2b'},
 	],
 	'color_palette_4': [
-            {fieldType: 'color', fieldName: 'dd_primary_color', fieldValue: '#ff6c5c'},
-            {fieldType: 'color', fieldName: 'dd_secondry_color', fieldValue: '#ff3e29'},
-            {fieldType: 'color', fieldName: 'dd_portfolio_hover_color', fieldValue: '#ff3e29'},
+            {fieldType: 'color', fieldName: 'ved_primary_color', fieldValue: '#ff6c5c'},
+            {fieldType: 'color', fieldName: 'ved_secondry_color', fieldValue: '#ff3e29'},
+            {fieldType: 'color', fieldName: 'ved_portfolio_hover_color', fieldValue: '#ff3e29'},
 	],
 	'color_palette_5': [
-            {fieldType: 'color', fieldName: 'dd_primary_color', fieldValue: '#f1c40f'},
-            {fieldType: 'color', fieldName: 'dd_secondry_color', fieldValue: '#c29d0b'},
-            {fieldType: 'color', fieldName: 'dd_portfolio_hover_color', fieldValue: '#c29d0b'},
+            {fieldType: 'color', fieldName: 'ved_primary_color', fieldValue: '#f1c40f'},
+            {fieldType: 'color', fieldName: 'ved_secondry_color', fieldValue: '#c29d0b'},
+            {fieldType: 'color', fieldName: 'ved_portfolio_hover_color', fieldValue: '#c29d0b'},
 	],
     }
     ,
