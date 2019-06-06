@@ -20,7 +20,7 @@ if ( is_singular() and ! is_page() ) {
 	    if ( $dd_pagination_type == "number_pagination" ) {
 		    ?>
 		    <nav class="number-pagination">
-			<?php bigbo_paginate_links(); ?>
+			<?php echo bigbo_paginate_links(); ?>
 		    </nav>
 	    <?php } else { ?>
 		    <div class="col-xs-6 col-md-6 nav-next"><?php previous_posts_link( __( '<i class="fa fa-angle-left p-r-10"></i> Newer Entries', 'bigbo' ) ); ?></div>

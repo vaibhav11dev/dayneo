@@ -29,7 +29,7 @@ global $dd_options;
 
 		<div class="entry-content">
 			<?php
-			the_content( __( 'Read More &raquo;', 'bigbo' ) );
+			the_content( esc_html__( 'Read More &raquo;', 'bigbo' ) );
 
 			wp_link_pages( array( 'before' => '<div id="page-links"><p>' . __( '<strong>Pages:</strong>', 'bigbo' ), 'after' => '</p></div>' ) );
 			?>	

@@ -18,7 +18,7 @@ global $dd_options;
 <!-- BLOG-CLASSIC -->
 <section class="module p-tb-content">
     <div class="container">
-	<div class="row">	    
+	<div class="row">
 
 	    <?php
 	    $thumbnail = '';

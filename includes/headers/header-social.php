@@ -26,7 +26,7 @@ if ( isset( $dd_options[ 'dd_social_boxed' ] ) && $dd_options[ 'dd_social_boxed'
 		if ( $dd_options[ $name ] ):
 			?>
 			<li>
-				<a class="ved-social-network-icon ved-<?php echo esc_attr($value); ?>" href="<?php echo esc_url($dd_options[ $name ]); ?>" data-toggle="tooltip" data-placement="<?php echo esc_attr(strtolower( $dd_options[ 'dd_social_tooltip_position' ] )); ?>" data-original-title="<?php echo esc_attr(ucwords( $value )); ?>" title="" <?php echo esc_attr($nofollow); ?> target="<?php echo esc_attr($dd_options[ 'dd_social_target' ]); ?>"><i class="fa fa-<?php echo esc_attr($value); ?>"></i>
+				<a class="ved-social-network-icon ved-<?php echo esc_attr($value); ?>" href="<?php echo esc_url($dd_options[ $name ]); ?>" data-toggle="tooltip" data-placement="<?php echo esc_attr(strtolower( $dd_options[ 'dd_social_tooltip_position' ] )); ?>" data-original-title="<?php echo esc_attr(ucwords( $value )); ?>" <?php echo esc_attr($nofollow); ?> target="<?php echo esc_attr($dd_options[ 'dd_social_target' ]); ?>"><i class="fa fa-<?php echo esc_attr($value); ?>"></i>
 				</a>
 			</li>
 			<?php

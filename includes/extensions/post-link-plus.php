@@ -297,7 +297,7 @@ function bigbo_adjacent_post_link_plus($args = '', $format = '%link &raquo;', $p
     foreach ($posts as $post) {
         $title = $post->post_title;
         if (empty($post->post_title))
-            $title = $previous ? __('Previous Post', 'bigbo') : __('Next Post', 'bigbo');
+            $title = $previous ? esc_html__('Previous Post', 'bigbo') : esc_html__('Next Post', 'bigbo');
 
         $title = apply_filters('the_title', $title, $post->ID);
         $date = mysql2date($r['date_format'], $post->post_date);

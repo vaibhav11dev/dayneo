@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( $upsells ) : ?>
 
 	<section class="up-sells upsells products m-t-30">
-		<div class="sec-head-style"><h3 class="text-title"><?php esc_html_e( 'You may also like&hellip;', 'woocommerce' ); ?></h3></div>
+		<div class="sec-head-style"><h3 class="text-title"><?php esc_html_e( 'You may also like&hellip;', 'bigbo' ); ?></h3></div>
 		
 		<?php woocommerce_product_loop_start(); ?>
 

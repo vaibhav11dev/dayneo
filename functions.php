@@ -76,47 +76,18 @@ add_action( 'wp_enqueue_scripts', 'bigbo_scripts' );
  * Enqueue admin scripts and styles.
  */
 function bigbo_adminscripts( $hook ) {
-    if ( $hook == 'toplevel_page_bigbo-menu' || $hook == 'bigbo_page_bigbo_demos' || $hook == 'appearance_page_bigbo_options' || $hook == 'bigbo_page_ved-settings' ) {
-        wp_enqueue_style( 'admincss', get_template_directory_uri() . '/admin/assets/css/admin_css.css', '', '' );
-
-        wp_enqueue_style( 'font-awesomecss', get_template_directory_uri() . '/assets/css/font-awesome.min.css', '', '4.7.0' );
-    }
-
     if ( $hook == 'appearance_page_bigbo_options' ) {
         wp_enqueue_style( 'themeoptions', get_template_directory_uri() . '/themeoptions/options/css/themeoptions.css', false, 398 );
 
         wp_enqueue_script( 'theme-options-menu-mod', get_template_directory_uri() . '/themeoptions/options/js/theme-options-menu-mod.js', '', '', true );
     }
-
-    wp_enqueue_script( 'adminjs', get_template_directory_uri() . '/admin/assets/js/admin_script.js', array( 'jquery' ), '' );
-    wp_localize_script( 'adminjs', 'js_strings', array(
-        'ajaxurl'            => admin_url( 'admin-ajax.php' ),
-        'select_demo_notice' => __( 'select demo', 'bigbo' ),
-    ) );
-
-    wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
-
-    wp_enqueue_style( 'jquery-ui-datepicker' );
-
-    wp_enqueue_script( 'jquery-ui-dialog' );
-
-    /*
-     * mega menu icon picker 
-     */
-//	if ( $hook == 'nav-menus.php' || $hook == 'appearance_page_bigbo_options' ) {
-//		wp_enqueue_script( 'iconpicker', get_template_directory_uri() . '/assets/iconpicker/fontawesome-iconpicker.js', array(), '', true, 'all' );
-//
-//		wp_enqueue_style( 'colorpickercss', get_template_directory_uri() . '/assets/iconpicker/fontawesome-iconpicker.css', array(), '', 'all' );
-//	}
 }
 
 add_action( 'admin_enqueue_scripts', 'bigbo_adminscripts' );
 
-// Multiple Sidebars
-require_once( BIGBO_PHP_INCLUDE . 'multiple_sidebars.php' );
-
 // load Widget functions
 require_once( BIGBO_PHP_INCLUDE . 'widgets.php' );
+require_once( BIGBO_PHP_INCLUDE . 'multiple_sidebars.php' );
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
@@ -140,29 +111,17 @@ require_once( BIGBO_PHP_INCLUDE . 'bigbo-nav-menu.php' );
  */
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+if ( class_exists( 'Woocommerce' ) ) {
     include_once( BIGBO_PHP_INCLUDE . 'woo-config.php' );
-}
-
-/**
- * Initialize theme admin dashboard
- */
-if ( current_user_can( 'manage_options' ) ) {
-    require_once( get_template_directory() . '/admin/bigbo-menu-panel.php' );
 }
 
 /**
  * Initialize Theme Options
  */
-require_once( get_template_directory() . '/themeoptions/framework.php');
-require_once( get_template_directory() . '/themeoptions/options.php');
-require_once( get_template_directory() . '/themeoptions/options/vedanta_extension.php');
+require_once(get_template_directory() . '/themeoptions/options.php');
 
 // TGMPA Library
 require_once( BIGBO_PHP_LIB . 'tgmpa/register-plugins.php' );
-
-// Metaboxes
-require_once( BIGBO_PHP_INCLUDE . 'metaboxes/metaboxes.php' );
 
 // load Semantic Classes functions
 require_once( BIGBO_PHP_INCLUDE . 'extensions/semantic-classes.php' );
@@ -189,13 +148,40 @@ if ( defined( 'JETPACK__VERSION' ) ) {
     require_once( BIGBO_PHP_INCLUDE . 'functions/jetpack.php' );
 }
 
-/**
- * For auto install
- */
-if ( is_admin() ) {
-    load_template( BIGBO_PHP_LIB . 'auto-install/auto_install_data.php' );
-    add_action( 'wp_ajax_auto_install_layout', 'auto_install_layout' );
-    add_action( 'wp_ajax_nopriv_auto_install_layout', 'auto_install_layout' );
-    add_action( 'wp_ajax_remove_auto_update', 'remove_auto_update' );
-    add_action( 'wp_ajax_nopriv_remove_auto_update', 'remove_auto_update' );
+/*
+Import theme-options when theme active/init
+*/
+add_action( 'after_switch_theme', 'restora_pro_theme_activation' );
+function restora_pro_theme_activation() {
+    if ( !get_option( 'active_restora_theme' ) ) {
+            $theme_options_txt	 = get_template_directory() . '/themeoptions/theme-options.json';
+            ob_start();
+            include $theme_options_txt;
+            $theme_options_txt = ob_get_clean();
+            $datafile		 = json_decode( ($theme_options_txt ), true );
+            update_option( 'dd_options', $datafile );
+            update_option( 'active_restora_theme', true );
+    }
+}
+
+/*
+Enqueue scripts and styles.
+*/
+if ( ! class_exists( 'Redux' ) ) {
+    add_action( 'get_header', 'restora_google_fonts' ); 
+}
+
+function restora_google_fonts() {
+    wp_enqueue_style( 'google-fonts', restora_load_fonts(), array(), '1.0.0' );
+}
+
+function restora_load_fonts() {
+    $fonts_url = '';
+    $font_families[] = 'Poppins:300,400,500,600,800';
+    $query_args = array(
+        'family' => urlencode( implode( '|', $font_families ) ),
+        'subset' => urlencode( 'latin,latin-ext' ),
+    );
+    $fonts_url = esc_url( add_query_arg( $query_args, 'https://fonts.googleapis.com/css' ));
+    return esc_url_raw( $fonts_url );
 }

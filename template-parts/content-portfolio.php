@@ -9,11 +9,11 @@
 global $paged, $dd_options;
 $dd_portfolio_no_item_per_page	 = bigbo_get_option( 'dd_portfolio_no_item_per_page', '10' );
 $args				 = array(
-    'post_type'	 => 'bigbo_portfolio',
+    'post_type'	 => 'vedanta_portfolio',
     'paged'		 => $paged,
     'posts_per_page' => $dd_portfolio_no_item_per_page,
 );
-$pcats				 = get_post_meta( get_the_ID(), 'bigbo_portfolio_category', true );
+$pcats				 = get_post_meta( get_the_ID(), 'vedanta_portfolio_category', true );
 if ( $pcats && $pcats[ 0 ] == 0 ) {
 	unset( $pcats[ 0 ] );
 }
@@ -30,7 +30,7 @@ $portfolio = new WP_Query( $args );
 if ( ! post_password_required( $portfolio->ID ) ):
 
 	$all_terms = get_terms( 'portfolio_category' );
-	if ( is_array( $all_terms ) && ! empty( $all_terms ) && get_post_meta( $post->ID, 'bigbo_portfolio_filters', true ) != 'no' ):
+	if ( is_array( $all_terms ) && ! empty( $all_terms ) && get_post_meta( $post->ID, 'vedanta_portfolio_filters', true ) != 'no' ):
 		?>
 		<!-- PORTFOLIO FILTERS -->
 		<div class="row">
@@ -125,6 +125,6 @@ if ( ! post_password_required( $portfolio->ID ) ):
 		
 	<?php
 
-	bigbo_portfolio_pagination( $portfolio->max_num_pages, $range = 2 );
+	vedanta_portfolio_pagination( $portfolio->max_num_pages, $range = 2 );
 
 endif;

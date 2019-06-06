@@ -58,4 +58,4 @@ if ( is_user_logged_in() ) {
     </div>', esc_url( $account_link ), esc_html__( 'My Account', 'bigbo' ), esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ), esc_html__( 'Log in', 'bigbo' ), $register, esc_url( $account_link ), esc_url( $account_link )
     );
 }
-echo $items;
+echo $items; // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped

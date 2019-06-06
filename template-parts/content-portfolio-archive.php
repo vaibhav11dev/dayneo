@@ -92,7 +92,7 @@ if ( category_description() ):
 
 <?php
 
-bigbo_portfolio_pagination();
+vedanta_portfolio_pagination();
 
 /* Restore original Post Data */
 wp_reset_postdata();

@@ -23,7 +23,7 @@ if ( $related_products ) : ?>
 
 	<section class="related products m-t-30">
 
-		<div class="sec-head-style"><h3 class="text-title"><?php esc_html_e( 'Related products', 'woocommerce' ); ?></h3></div>
+		<div class="sec-head-style"><h3 class="text-title"><?php esc_html_e( 'Related products', 'bigbo' ); ?></h3></div>
 
 		<?php woocommerce_product_loop_start(); ?>
 

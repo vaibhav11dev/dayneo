@@ -15,7 +15,7 @@ $dd_edit_post			 = bigbo_get_option( 'dd_edit_post', '0' );
 	<?php
 	if ( has_post_thumbnail() ) {
 		echo '<div class="thumbnail-post">';
-		the_post_thumbnail( 'post-thumbnail' );
+		the_post_thumbnail();
 		echo '</div>';
 	}
 	?>

@@ -80,7 +80,7 @@ if ( ! function_exists( 'bigbo_comment_link' ) ):
 
 	function bigbo_comment_link() {
 		$link	 = '<span class="comment-permalink">';
-		$link	 .= '<a rel="bookmark" title="' . __( 'Permalink to this comment', 'bigbo' ) . '" href="' . esc_url(htmlspecialchars( get_comment_link() )) . '">';
+		$link	 .= '<a rel="bookmark" title="' . esc_html__( 'Permalink to this comment', 'bigbo' ) . '" href="' . esc_url(htmlspecialchars( get_comment_link() )) . '">';
 		$link	 .= apply_filters( 'bigbo_comment_link_text', (string) '<i class="ved-icon-link"></i>' );
 		$link	 .= '</a></span>';
 		return apply_filters( 'bigbo_comment_link', (string) $link ); // Available filter: bigbo_comment_link
@@ -97,7 +97,7 @@ if ( ! function_exists( 'bigbo_comment_edit' ) ):
 
 	function bigbo_comment_edit() {
 		ob_start();
-		edit_comment_link( __( 'EDIT', 'bigbo' ), '<span class="edit-comment">', '</span>' );
+		edit_comment_link( esc_html__( 'EDIT', 'bigbo' ), '<span class="edit-comment">', '</span>' );
 		return ob_get_clean();
 	}
 
@@ -116,7 +116,7 @@ if ( ! function_exists( 'bigbo_comment_reply' ) ):
 		// Available filter: bigbo_reply_text
 		$reply_text	 = apply_filters( 'bigbo_reply_text', (string) __( '<i class="icon-action-undo icons"></i>', 'bigbo' ) );
 		// Available filter: bigbo_login_text
-		$login_text	 = apply_filters( 'bigbo_login_text', (string) __( 'Log in to reply.', 'bigbo' ) );
+		$login_text	 = apply_filters( 'bigbo_login_text', (string) esc_html__( 'Log in to reply.', 'bigbo' ) );
 		if ( ( get_option( 'thread_comments' ) ) && get_comment_type() == 'comment' ) {
 
 			if ( $return ) {

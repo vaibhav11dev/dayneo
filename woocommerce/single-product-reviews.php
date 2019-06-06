@@ -62,7 +62,7 @@ if ( ! comments_open() ) {
 
 		$comment_form = array(
 		    'title_reply'		 => have_comments() ? __( '<h5 class="text-title text-uppercase bottom-line">Add a review</h5>', 'bigbo' ) : sprintf( __( '<h5 class="alert alert-info">Be the first to review &ldquo;%s&rdquo;</h5>', 'bigbo' ), get_the_title() ),
-		    'title_reply_to'	 => __( 'Leave a Reply to %s', 'bigbo' ),
+		    'title_reply_to'	 => esc_html__( 'Leave a Reply to %s', 'bigbo' ),
 		    'title_reply_before'	 => '<div id="reply-title" class="comment-reply-title">',
 		    'title_reply_after'	 => '</div>',
 		    'comment_notes_after'	 => '',
@@ -72,7 +72,7 @@ if ( ! comments_open() ) {
 			'email'	 => '<div class="col-sm-6"><div class="form-group comment-form-email"><label for="email" class="sr-only">' . esc_html__( 'Email', 'bigbo' ) . ' <span class="required">*</span></label> ' .
 			'<input placeholder="' . esc_attr__( 'Email', 'bigbo' ) . '" class="form-control" id="email" name="email" type="email" value="' . esc_attr( $commenter[ 'comment_author_email' ] ) . '" size="30" aria-required="true" required /></div></div></div>',
 		    ),
-		    'label_submit'		 => __( 'Submit Review', 'bigbo' ),
+		    'label_submit'		 => esc_html__( 'Submit Review', 'bigbo' ),
 		    'logged_in_as'		 => '',
 		    'comment_field'		 => '',
 		);

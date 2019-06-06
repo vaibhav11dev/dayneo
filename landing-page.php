@@ -15,7 +15,6 @@
 <meta name="description" content="HTML5 Template" />
 <meta name="author" content="www.horsewaythemes.com" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>Elezone- Electronics Store</title>
 
 <!-- favicon icon -->
 <link rel="shortcut icon" href="<?php echo content_url(); ?>/html-assets/images/favicon.png" />
@@ -41,7 +40,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-10 col-md-12 ml-auto mr-auto">
-          <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/logo.png" alt="">
+          <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/logo.png" alt="logo-image">
           <h1 class="my-3">Welcome to Elezone- Electronics Store Responsive Theme</h1>
           <p class="lead mb-5">We Provide Creative And Modern Prestashop Theme, 
           </br>ElezoneIs Most Powerfull Template For Your E-commerce Store</p>
@@ -102,7 +101,7 @@
                 <div class="col-md-4 wow fadeInUp" data-wow-duration="0.4s">
                   <div class="home-img">
                     <a target="_blank" href="https://horsewaythemes.com/prestashop/HT1011/en/">
-                      <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/home/home-1.jpg" alt="">
+                      <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/home/home-1.jpg" alt="home-1">
                     </a>
                     <div class="home-title">
                       <h5>
@@ -114,7 +113,7 @@
                 <div class="col-md-4 wow fadeInUp" data-wow-duration="0.6s">
                   <div class="home-img">
                     <a target="_blank" href="https://horsewaythemes.com/prestashop/HT1011/en/15-make-up">
-                      <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/home/home-2.jpg" alt="">
+                      <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/home/home-2.jpg" alt="home-2">
                     </a>
                     <div class="home-title">
                       <h5>
@@ -126,7 +125,7 @@
                 <div class="col-md-4 wow fadeInUp" data-wow-duration="0.8s">
                   <div class="home-img">
                     <a target="_blank" href="https://horsewaythemes.com/prestashop/HT1011/en/home/11-27-hummingbird-cushion.html#/11-color-black">
-                      <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/home/home-3.jpg" alt="">
+                      <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/home/home-3.jpg" alt="home-3">
                     </a>
                     <div class="home-title">
                       <h5>
@@ -167,7 +166,7 @@
           <div class="item">
             <div class="home-img">
               <a target="_blank" href="#">
-                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/01.jpg" alt="">
+                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/01.jpg" alt="inner-page-1">
               </a>
               <div class="home-title">
                 <h5>
@@ -179,7 +178,7 @@
           <div class="item">
             <div class="home-img">
               <a target="_blank" href="#">
-                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/02.jpg" alt="">
+                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/02.jpg" alt="inner-page-2">
               </a>
               <div class="home-title">
                 <h5>
@@ -191,7 +190,7 @@
           <div class="item">
             <div class="home-img">
               <a target="_blank" href="#">
-                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/03.jpg" alt="">
+                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/03.jpg" alt="inner-page-3">
               </a>
               <div class="home-title">
                 <h5>
@@ -203,7 +202,7 @@
           <div class="item">
             <div class="home-img">
               <a target="_blank" href="#">
-                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/04.jpg" alt="">
+                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/04.jpg" alt="inner-page-4">
               </a>
               <div class="home-title">
                 <h5>
@@ -215,7 +214,7 @@
           <div class="item">
             <div class="home-img">
               <a target="_blank" href="#">
-                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/05.jpg" alt="">
+                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/05.jpg" alt="inner-page-5">
               </a>
               <div class="home-title">
                 <h5>
@@ -227,7 +226,7 @@
           <div class="item">
             <div class="home-img">
               <a target="_blank" href="#">
-                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/06.jpg" alt="">
+                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/06.jpg" alt="inner-page-6">
               </a>
               <div class="home-title">
                 <h5>
@@ -239,7 +238,7 @@
           <div class="item">
             <div class="home-img">
               <a target="_blank" href="#">
-                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/08.jpg" alt="">
+                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/07.jpg" alt="inner-page-7">
               </a>
               <div class="home-title">
                 <h5>
@@ -251,7 +250,7 @@
           <div class="item">
             <div class="home-img">
               <a target="_blank" href="#">
-                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/09.jpg" alt="">
+                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/08.jpg" alt="inner-page-8">
               </a>
               <div class="home-title">
                 <h5>
@@ -263,7 +262,7 @@
           <div class="item">
             <div class="home-img">
               <a target="_blank" href="#">
-                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/10.jpg" alt="">
+                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/09.jpg" alt="inner-page-9">
               </a>
               <div class="home-title">
                 <h5>
@@ -275,7 +274,7 @@
           <div class="item">
             <div class="home-img">
               <a target="_blank" href="#">
-                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/11.jpg" alt="">
+                <img class="img-fluid" src="<?php echo content_url(); ?>/html-assets/images/pages/inner-page/10.jpg" alt="inner-page-10">
               </a>
               <div class="home-title">
                 <h5>
@@ -295,7 +294,7 @@
         <div class="container-fluid">
             <div class="col-lg-7 col-md-7 col-sm-12 fl-left">
                 <div class="highlight-inner wow fadeInLeft  animated" style="visibility: visible; animation-name: fadeInLeft;">
-                    <img src="<?php echo content_url(); ?>/html-assets/images/1.png" alt="img" class="img-rsponsive">
+                    <img src="<?php echo content_url(); ?>/html-assets/images/1.png" alt="image-1" class="img-rsponsive">
                     <div class="block-content">
                         <h4>Popup Newsletter</h4>
                         <p>Your visitors would get the most relevant search results, and personalized
@@ -304,7 +303,7 @@
                     </div>
                 </div>
                 <div class="highlight-inner wow fadeInLeft animated pl-200 text-center" style="visibility: hidden; animation-name: none;">
-                    <img src="<?php echo content_url(); ?>/html-assets/images/3.jpg" alt="img" class="img-rsponsive">
+                    <img src="<?php echo content_url(); ?>/html-assets/images/3.jpg" alt="image-2" class="img-rsponsive">
                     <div class="block-content">
                         <h4>Quick view attribute product variable</h4>
                         <p>The goal of the Quickview feature is to minimize the numbers of clicks and <br>
@@ -314,7 +313,7 @@
             </div>
             <div class="col-lg-4 offset-lg-1 col-md-5 col-sm-12 pt-310 fl-left">
                 <div class="highlight-inner wow fadeInRight animated" style="visibility: hidden; animation-name: none;">
-                    <img src="<?php echo content_url(); ?>/html-assets/images/2.jpg" alt="img" class="img-rsponsive">
+                    <img src="<?php echo content_url(); ?>/html-assets/images/2.jpg" alt="image-3" class="img-rsponsive">
                     <div class="block-content">
                         <h4>Ajax Cart &amp; Wishlist</h4>
                         <p>Elezonesupport cart and wishlist similar with any shopping platform<br> all over the world. Let your customers enjoy this awesome ajax feature.</p>
@@ -326,7 +325,7 @@
     <div class="container-fluid clearfix">
         <div class="col-ultra">
             <div class="highlight-inner wow fadeInRight animated" style="visibility: hidden; animation-name: none;">
-                <img src="<?php echo content_url(); ?>/html-assets/images/4.jpg" alt="img" class="img-rsponsive">
+                <img src="<?php echo content_url(); ?>/html-assets/images/4.jpg" alt="image-4" class="img-rsponsive">
                 <div class="block-content">
                     <h4>Horizontal &amp; Vertical Megamenu</h4>
                     <p>Your build-in mega menu is the perfect choice for large menus. You can setup columns and rows,
@@ -352,7 +351,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/01.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/01.png" alt="icon-1">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Powerfull Code</h6>
@@ -364,7 +363,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/02.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/02.png" alt="icon-2">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Fully Responsive</h6>
@@ -376,7 +375,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-             <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/03.png" alt="">
+             <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/03.png" alt="icon-3">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Retina Ready</h6>
@@ -388,7 +387,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/04.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/04.png" alt="icon-4">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Creative And Modern Design Layout</h6>
@@ -400,7 +399,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/05.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/05.png" alt="icon-5">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Pixel Perfect</h6>
@@ -412,7 +411,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/06.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/06.png" alt="icon-6">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">24/7 Support</h6>
@@ -424,7 +423,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/07.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/07.png" alt="icon-7">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Build With Bootstrap</h6>
@@ -436,7 +435,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/08.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/08.png" alt="icon-8">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Cretive Banner</h6>
@@ -448,7 +447,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/09.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/09.png" alt="icon-9">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Free Google Font </h6>
@@ -460,7 +459,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/10.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/10.png" alt="icon-10">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Easily Customizable</h6>
@@ -472,7 +471,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/11.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/11.png" alt="icon-11">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Support all major Browsers</h6>
@@ -484,7 +483,7 @@
         <div class="featured-item">
             <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/12.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/12.png" alt="icon-12">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Detailed documentation</h6>
@@ -496,7 +495,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/13.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/13.png" alt="icon-13">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">Font Icon</h6>
@@ -508,7 +507,7 @@
         <div class="featured-item">
           <div class="item-inn">
             <div class="featured-icon">
-              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/14.png" alt="">
+              <img class="img-center" src="<?php echo content_url(); ?>/html-assets/images/icon/14.png" alt="icon-14">
             </div>
             <div class="featured-title text-uppercase">
               <h6 class="mb-0">JS Animations</h6>

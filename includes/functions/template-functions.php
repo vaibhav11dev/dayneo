@@ -1,32 +1,4 @@
 <?php
-
-/**
- * Activation redirects
- *
- * @since 1.0.0
- */
-function bigbo_activate() {
-	add_option( 'ved_do_activation_redirect', true );
-}
-
-add_action( 'after_switch_theme', 'bigbo_activate' );
-
-/**
- * Redirect to options page
- *
- * @since 1.0.0
- */
-function bigbo_redirect() {
-	if ( get_option( 'ved_do_activation_redirect', false ) ) {
-		delete_option( 'ved_do_activation_redirect' );
-		if ( ! isset( $_GET[ 'activate-multi' ] ) ) {
-			wp_redirect( "admin.php?page=bigbo-menu" );
-		}
-	}
-}
-
-add_action( 'admin_init', 'bigbo_redirect' );
-
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
@@ -58,19 +30,6 @@ function bigbo_after_setup() {
 	add_theme_support( 'woocommerce', array(
 		'thumbnail_image_width' => 500,
 	) );
-	add_image_size( 'post-thumbnail', 680, 330, true );
-	add_image_size( 'slider-thumbnail', 400, 280, true );
-	add_image_size( 'tabs-img', 50, 50, true );
-	add_image_size( 'recent-works-thumbnail', 65, 65, true );
-	add_image_size( 'blog-large', 669, 272, true );
-	add_image_size( 'blog-medium', 320, 202, true );
-	add_image_size( 'related-img', 180, 138, true );
-	add_image_size( 'portfolio-one', 540, 272, true );
-	add_image_size( 'portfolio-two', 460, 295, true );
-	add_image_size( 'portfolio-three', 300, 214, true );
-	add_image_size( 'portfolio-four', 220, 161, true );
-	add_image_size( 'portfolio-full', 940, 400, true );
-	add_image_size( 'recent-posts', 660, 405, true );
 
 	add_editor_style( 'editor-style.css' );
 
@@ -151,9 +110,9 @@ function bigbo_after_setup() {
 
 	load_theme_textdomain( 'bigbo', get_template_directory() . '/languages' );
 
-	register_nav_menu( 'primary-menu', __( 'Primary Menu', 'bigbo' ) );
-	register_nav_menu( 'top-menu', __( 'Top Menu', 'bigbo' ) );
-	register_nav_menu( 'department-menu', __( 'Department Menu', 'bigbo' ) );
+	register_nav_menu( 'primary-menu', esc_html__( 'Primary Menu', 'bigbo' ) );
+	register_nav_menu( 'top-menu', esc_html__( 'Top Menu', 'bigbo' ) );
+	register_nav_menu( 'department-menu', esc_html__( 'Department Menu', 'bigbo' ) );
 
 	$dd_container_width_px		 = (int)$dd_width_px - 30;
 	$dd_container_custom_width_px	 = (int)$dd_custom_width_px - 30;
@@ -361,13 +320,13 @@ add_filter( 'upload_mimes', 'bigbo_custom_upload_mimes' );
  * 
  */
 function bigbo_pll_get_post_types( $types ) {
-	return array_merge( $types, array( 'bigbo_portfolio' => 'bigbo_portfolio', 'slide' => 'slide' ) );
+	return array_merge( $types, array( 'vedanta_portfolio' => 'vedanta_portfolio', 'slide' => 'slide' ) );
 }
 
 add_filter( 'pll_get_post_types', 'bigbo_pll_get_post_types' );
 
 // Override the calculated image sources
-add_filter( 'wp_calculate_image_srcset', '__return_false', PHP_INT_MAX );
+//add_filter( 'wp_calculate_image_srcset', '__return_false', PHP_INT_MAX );
 
 function add_lighbox_rel( $attachment_link ) {
 	if ( strpos( $attachment_link, 'a href' ) != false && strpos( $attachment_link, 'img src' ) != false )

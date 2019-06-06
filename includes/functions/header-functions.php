@@ -35,9 +35,9 @@ if ( ! function_exists( 'bigbo_extra_cart' ) ) :
                         <div class="icon-wrap">
                                 <span class="icon-box">
                                     <i class="flaticon-paper-bag"></i>
-                                    <span class="mini-item-counter hidden-lg-up"><?php echo $woocommerce->cart->cart_contents_count; ?></span>
+                                    <span class="mini-item-counter hidden-lg-up"><?php echo (int)$woocommerce->cart->cart_contents_count; ?></span>
                                 </span>
-                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'bigbo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
+                            <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'bigbo' ) ?></span><span class="nav-total"><?php echo (int)$woocommerce->cart->cart_contents_count; ?></span></div>                    
                         </div>
                         <?php } else { ?>
                         <div class="icon-wrap-circle">
@@ -45,7 +45,7 @@ if ( ! function_exists( 'bigbo_extra_cart' ) ) :
                                 <span class="icon-box">
                                     <i class="flaticon-paper-bag"></i>
                                     <span class="mini-item-counter">
-                                        <?php echo $woocommerce->cart->cart_contents_count; ?>
+                                        <?php echo (int)$woocommerce->cart->cart_contents_count; ?>
                                     </span>
                                 </span>
                             </div> 
@@ -60,7 +60,7 @@ if ( ! function_exists( 'bigbo_extra_cart' ) ) :
                     ?>
                     <div class="sub-cart-menu ajax-cart-content">
                         <span class="empty-cart"></span>
-                        <p class="empty-cart-text"><?php _e( 'Your cart is currently empty.', 'bigbo' ); ?></p>
+                        <p class="empty-cart-text"><?php esc_html_e( 'Your cart is currently empty.', 'bigbo' ); ?></p>
                     </div>
                     <?php
                 } else {
@@ -80,15 +80,15 @@ if ( ! function_exists( 'bigbo_extra_cart' ) ) :
                                             <a href="<?php echo get_permalink( $cart_item[ 'product_id' ] ); ?>">
                                                 <?php
                                                 $thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
-                                                echo $thumbnail;
+                                                echo wp_kses_post( $thumbnail );
                                                 ?>
                                             </a>
                                         </div>
                                         <div class="list-product-detail">
                                             <a href="<?php echo get_permalink( $cart_item[ 'product_id' ] ); ?>">
-                                                <?php echo $cart_item[ 'data' ]->get_name(); ?>
+                                                <?php echo esc_html($cart_item[ 'data' ]->get_name()); ?>
                                             </a>
-                                            <p class="quantity-line"><span class="quantity">Qty:</span><b><?php echo $cart_item[ 'quantity' ]; ?></b></p>
+                                            <p class="quantity-line"><span class="quantity">Qty:</span><b><?php echo (int)$cart_item[ 'quantity' ]; ?></b></p>
                                             <p class="price-line"><span class="price"><?php echo get_woocommerce_currency_symbol() . $cart_item[ 'data' ]->get_price(); ?></span></p>
                                         </div>
                                         <div class="del-minicart">
@@ -103,25 +103,25 @@ if ( ! function_exists( 'bigbo_extra_cart' ) ) :
                                 <?php endforeach; ?>
                             </div>
                             <div class="hr"></div>
-                            <div class="subtotal-count"><?php _e( 'Subtotal:', 'bigbo' ); ?> 
+                            <div class="subtotal-count"><?php esc_html_e( 'Subtotal:', 'bigbo' ); ?> 
                                 <b class="content-subhead">
                                     <?php echo wc_price( $woocommerce->cart->subtotal ); ?>
                                 </b>
                             </div>
-                            <div class="shipping-count"><?php _e( 'Shipping:', 'bigbo' ); ?> 
+                            <div class="shipping-count"><?php esc_html_e( 'Shipping:', 'bigbo' ); ?> 
                                 <b class="content-subhead">
                                     <?php echo wc_price( $woocommerce->cart->shipping_total ); ?>
                                 </b>
                             </div>
-                            <div class="total-count"><?php _e( 'Total:', 'bigbo' ); ?> 
+                            <div class="total-count"><?php esc_html_e( 'Total:', 'bigbo' ); ?> 
                                 <b class="content-subhead">
                                     <?php echo wc_price( $woocommerce->cart->total ); ?>
                                 </b>
                             </div>
                             <div class="clearfix"></div>
                             <div class="cart-button">
-                                <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'View Cart', 'bigbo' ); ?></a>
-                                <a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'Checkout', 'bigbo' ); ?></a> 
+                                <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn btn-base"><?php esc_html_e( 'View Cart', 'bigbo' ); ?></a>
+                                <a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn btn-base"><?php esc_html_e( 'Checkout', 'bigbo' ); ?></a> 
                             </div>
                         </div>
                     </div>
@@ -258,7 +258,7 @@ if ( ! function_exists( 'bigbo_extra_search' ) ) :
                 <div class="search-limit"><p class="limit">Number of characters at least are 3</p></div></div></div>', esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, esc_attr( $item_class ), esc_html( $cats_text ), $cat, $search_icon, implode( ' ', $words_html ), $search_results
         );
 
-        echo $items;
+        echo $items; // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }
 
 endif;

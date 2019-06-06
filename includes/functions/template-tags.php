@@ -75,7 +75,7 @@ if ( ! function_exists( 'bigbo_entry_footer' ) ) :
             sprintf(
             wp_kses(
             /* translators: %s: post title */
-            __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'bigbo' ), array(
+            esc_html__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'bigbo' ), array(
                 'span' => array(
                     'class' => array(),
                 ),
@@ -243,7 +243,7 @@ function bigbo_post_metadata() {
     if ( comments_open() && $dd_options[ 'dd_meta_comments' ] == 1 ) {
         ?>
         <li class="comment-count">
-        <?php comments_popup_link( __( 'Leave a Comment', 'bigbo' ), __( '1 Comment', 'bigbo' ), __( '% Comments', 'bigbo' ) ); ?>
+        <?php comments_popup_link( esc_html__( 'Leave a Comment', 'bigbo' ), esc_html__( '1 Comment', 'bigbo' ), esc_html__( '% Comments', 'bigbo' ) ); ?>
         </li>
         <?php
     }
@@ -301,19 +301,19 @@ function bigbo_sharethis() {
     ?>
     <div class="share-this">
         <?php if ( $dd_options[ 'dd_sharing_twitter' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" title="" data-original-title="<?php esc_html_e( 'Share on Twitter', 'bigbo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr( $post->post_title ); ?>+&raquo;+<?php echo esc_url( bigbo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a>
+            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Twitter', 'bigbo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr( $post->post_title ); ?>+&raquo;+<?php echo esc_url( bigbo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a>
         <?php } if ( $dd_options[ 'dd_sharing_facebook' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" title="" data-original-title="<?php esc_html_e( 'Share on Facebook', 'bigbo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-facebook"></i></a>
+            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Facebook', 'bigbo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-facebook"></i></a>
         <?php } if ( $dd_options[ 'dd_sharing_google' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" title="" data-original-title="<?php esc_html_e( 'Share on Google Plus', 'bigbo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a>
+            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Google Plus', 'bigbo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a>
         <?php } if ( $dd_options[ 'dd_sharing_pinterest' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" title="" data-original-title="<?php esc_html_e( 'Share on Pinterest', 'bigbo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr( $image_url ); ?>&description=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-pinterest"></i></a>			
+            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Pinterest', 'bigbo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr( $image_url ); ?>&description=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-pinterest"></i></a>			
         <?php } if ( $dd_options[ 'dd_sharing_linkedin' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" title="" data-original-title="<?php esc_html_e( 'Share on Linkedin', 'bigbo' ); ?>" target="_blank" href="http://linkedin.com/shareArticle?mini=true&amp;url=<?php the_permalink(); ?>&amp;title=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-linkedin-square"></i></a>			
+            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Linkedin', 'bigbo' ); ?>" target="_blank" href="http://linkedin.com/shareArticle?mini=true&amp;url=<?php the_permalink(); ?>&amp;title=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-linkedin-square"></i></a>			
         <?php } if ( $dd_options[ 'dd_sharing_email' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" title="" data-original-title="<?php esc_html_e( 'Share on Email', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/email?linkurl=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-envelope-o"></i></a>
+            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Email', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/email?linkurl=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-envelope-o"></i></a>
             <?php } if ( $dd_options[ 'dd_sharing_more_options' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" title="" data-original-title="<?php esc_html_e( 'More options', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="icon-action-redo icons ti-plus"></i></a>
+            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $dd_options[ 'dd_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'More options', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="icon-action-redo icons ti-plus"></i></a>
     <?php } ?>
     </div>
     <?php

@@ -1,20 +1,9 @@
 <?php
 /*
-  Copyright (C) 2009 Kyle Robert Getson, kylegetson.com and getson.info
-
-  This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 3 of the License, or
-  (at your option) any later version.
-
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+ * 
+ * Multiple Sidebar Generator
+ * 
+*/
 
 class sidebar_generator {
 
@@ -268,7 +257,7 @@ class sidebar_generator {
 
 		<input name="sbg_edit" type="hidden" value="sbg_edit" />
 
-		<p><?php esc_html_e( 'Please select the sidebar you would like to display on this page. <strong>Note:</strong> You must first create the sidebar under <strong>Appearance > Sidebars</strong>.', 'bigbo' ); ?>
+		<p><?php esc_html_e( 'Please select the sidebar you would like to display on this page. Note: You must first create the sidebar under Appearance > Sidebars.', 'bigbo' ); ?>
 		</p>
 		<ul>
 		    <?php
@@ -277,7 +266,7 @@ class sidebar_generator {
 		    for ( $i = 0; $i < 1; $i++ ) {
 			    ?>
 			    <li>
-				<select name="sidebar_generator[<?php echo $i ?>]" style="display: none;">
+				<select name="sidebar_generator[<?php echo (int)$i ?>]" style="display: none;">
 				    <option value="0"<?php
 				    if ( $selected_sidebar[$i] == '' ) {
 					    echo " selected";
@@ -296,7 +285,7 @@ class sidebar_generator {
 					    }
 					    ?>
 				</select>
-				<select name="sidebar_generator_replacement[<?php echo $i ?>]">
+				<select name="sidebar_generator_replacement[<?php echo (int)$i ?>]">
 				    <option value="0"<?php
 				    if ( $selected_sidebar_replacement[$i] == '' ) {
 					    echo " selected";
@@ -418,7 +407,7 @@ class sidebar_generator {
 
 $sbg = new sidebar_generator;
 
-function generated_dynamic_sidebar( $name = '0' ) {
+function restora_dynamic_sidebar( $name = '0' ) {
 	sidebar_generator::get_sidebar( $name );
 	return true;
 }

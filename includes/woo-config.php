@@ -41,9 +41,9 @@ function bigbo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
                 <div class="icon-wrap">
                     <span class="icon-box">
                         <i class="flaticon-paper-bag"></i>
-                        <span class="mini-item-counter hidden-lg-up"><?php echo $woocommerce->cart->cart_contents_count; ?></span>
+                        <span class="mini-item-counter hidden-lg-up"><?php echo (int)$woocommerce->cart->cart_contents_count; ?></span>
                     </span>
-                    <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'bigbo' ) ?></span><span class="nav-total"><?php echo $woocommerce->cart->cart_contents_count; ?></span></div>                    
+                    <div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'bigbo' ) ?></span><span class="nav-total"><?php echo (int)$woocommerce->cart->cart_contents_count; ?></span></div>                    
                 </div>
             <?php } else { ?>
                 <div class="icon-wrap-circle">
@@ -51,7 +51,7 @@ function bigbo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
                         <span class="icon-box">
                             <i class="flaticon-paper-bag"></i>
                             <span class="mini-item-counter">
-                                <?php echo $woocommerce->cart->cart_contents_count; ?>
+                                <?php echo (int)$woocommerce->cart->cart_contents_count; ?>
                             </span>
                         </span>
                     </div> 
@@ -75,7 +75,7 @@ function bigbo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
         ?>
         <div class="sub-cart-menu ajax-cart-content">
             <span class="empty-cart"></span>
-            <p class="empty-cart-text"><?php _e( 'Your cart is currently empty.', 'bigbo' ); ?></p>
+            <p class="empty-cart-text"><?php esc_html_e( 'Your cart is currently empty.', 'bigbo' ); ?></p>
         </div>
         <?php
     } else {
@@ -93,15 +93,15 @@ function bigbo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
                             <a href="<?php echo get_permalink( $cart_item[ 'product_id' ] ); ?>"> 
                                 <?php
                                 $thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
-                                echo $thumbnail;
+                                echo wp_kses_post( $thumbnail );
                                 ?>
                             </a>
                         </div>
                         <div class="list-product-detail"> 
                             <a href="<?php echo get_permalink( $cart_item[ 'product_id' ] ); ?>">
-                                <?php echo $cart_item[ 'data' ]->get_name(); ?>
+                                <?php echo esc_html($cart_item[ 'data' ]->get_name()); ?>
                             </a>
-                            <p class="quantity-line"><span class="quantity">Qty:</span><b><?php echo $cart_item[ 'quantity' ]; ?></b></p>
+                            <p class="quantity-line"><span class="quantity">Qty:</span><b><?php echo (int)$cart_item[ 'quantity' ]; ?></b></p>
                             <p class="price-line"><span class="price"><?php echo get_woocommerce_currency_symbol() . $cart_item[ 'data' ]->get_price(); ?></span></p>
                         </div>
                         <div class="del-minicart">
@@ -116,25 +116,25 @@ function bigbo_woocommerce_header_add_to_cart_fragment2( $fragments ) {
                 <?php endforeach; ?>
             </div>
             <div class="hr"></div>
-            <div class="subtotal-count"><?php _e( 'Subtotal:', 'bigbo' ); ?> 
+            <div class="subtotal-count"><?php esc_html_e( 'Subtotal:', 'bigbo' ); ?> 
                 <b class="content-subhead">
                     <?php echo wc_price( $woocommerce->cart->subtotal ); ?>
                 </b>
             </div>
-            <div class="shipping-count"><?php _e( 'Shipping:', 'bigbo' ); ?> 
+            <div class="shipping-count"><?php esc_html_e( 'Shipping:', 'bigbo' ); ?> 
                 <b class="content-subhead">
                     <?php echo wc_price( $woocommerce->cart->shipping_total ); ?>
                 </b>
             </div>
-            <div class="total-count"><?php _e( 'Total:', 'bigbo' ); ?> 
+            <div class="total-count"><?php esc_html_e( 'Total:', 'bigbo' ); ?> 
                 <b class="content-subhead">
                     <?php echo wc_price( $woocommerce->cart->total ); ?>
                 </b>
             </div>
             <div class="clearfix"></div>
             <div class="cart-button"> 
-                <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'View Cart', 'bigbo' ); ?></a>
-                <a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn btn-base"><?php _e( 'Checkout', 'bigbo' ); ?></a> 
+                <a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" class="btn btn-base"><?php esc_html_e( 'View Cart', 'bigbo' ); ?></a>
+                <a href="<?php echo get_permalink( get_option( 'woocommerce_checkout_page_id' ) ); ?>" class="btn btn-base"><?php esc_html_e( 'Checkout', 'bigbo' ); ?></a> 
             </div>
         </div>
         <?php
@@ -263,16 +263,17 @@ function bigbo_woocommerce_catalog_ordering() {
     $total = $wp_query->found_posts;
 
     $dd_woo_items = bigbo_get_option( 'dd_woo_items', '12' );
+    $param_url = sanitize_text_field( $_SERVER[ 'QUERY_STRING' ] );
 
-    if ( isset( $_SERVER[ 'QUERY_STRING' ] ) ) {
+    if ( isset( $param_url ) ) {
 
-        parse_str( $_SERVER[ 'QUERY_STRING' ], $params );
+        parse_str( $param_url, $params );
 
-        $query_string = '?' . $_SERVER[ 'QUERY_STRING' ];
+        $query_string = '?' . $param_url;
     } else {
         $query_string = '';
     }
-
+    
     // replace it with theme option
     if ( $dd_woo_items ) {
         $per_page = $dd_woo_items;
@@ -298,14 +299,14 @@ function bigbo_woocommerce_catalog_ordering() {
     $html .= '<div class="form-group col-md-7">';
     $html .= '<ul class="form-control orderby order-dropdown pull-right">';
     $html .= '<li class="dropdown">';
-    $html .= '<span data-toggle="dropdown" class="current-li"><span class="current-li-content"><a>' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Default Order', 'bigbo' ) . '</strong></a><i class="fa fa-angle-down"></i></span></span>';
+    $html .= '<span data-toggle="dropdown" class="current-li"><span class="current-li-content"><a>' . esc_html__( 'Sort by', 'bigbo' ) . ' <strong>' . esc_html__( 'Default Order', 'bigbo' ) . '</strong></a><i class="fa fa-angle-down"></i></span></span>';
     $html .= '<ul class="dropdown-menu">';
-    $html .= '<li class="' . (($pob == 'default') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'default' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Default Order', 'bigbo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pob == 'name') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'name' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Name', 'bigbo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pob == 'price') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'price' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Price', 'bigbo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pob == 'date') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'date' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Date', 'bigbo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pob == 'popularity') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'popularity' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Popularity', 'bigbo' ) . '</strong></a></li>';
-    $html .= '<li class="' . (($pob == 'rating') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'rating' ) ) . '">' . __( 'Sort by', 'bigbo' ) . ' <strong>' . __( 'Rating', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'default') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'default' ) ) . '">' . esc_html__( 'Sort by', 'bigbo' ) . ' <strong>' . esc_html__( 'Default Order', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'name') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'name' ) ) . '">' . esc_html__( 'Sort by', 'bigbo' ) . ' <strong>' . esc_html__( 'Name', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'price') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'price' ) ) . '">' . esc_html__( 'Sort by', 'bigbo' ) . ' <strong>' . esc_html__( 'Price', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'date') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'date' ) ) . '">' . esc_html__( 'Sort by', 'bigbo' ) . ' <strong>' . esc_html__( 'Date', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'popularity') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'popularity' ) ) . '">' . esc_html__( 'Sort by', 'bigbo' ) . ' <strong>' . esc_html__( 'Popularity', 'bigbo' ) . '</strong></a></li>';
+    $html .= '<li class="' . (($pob == 'rating') ? 'current' : '') . '"><a href="' . esc_url( bigbo_addURLParameter( $query_string, 'product_orderby', 'rating' ) ) . '">' . esc_html__( 'Sort by', 'bigbo' ) . ' <strong>' . esc_html__( 'Rating', 'bigbo' ) . '</strong></a></li>';
     $html .= '</ul>';
     $html .= '</li>';
     $html .= '</ul>';
@@ -316,7 +317,7 @@ function bigbo_woocommerce_catalog_ordering() {
     $html .= '<div class="products-found col-sm-12 hidden-lg-up">Showing 1-' . $pc . ' of ' . $total . ' item(s)</div>';
     $html .= '</div>';
 
-    echo $html;
+    echo wp_kses_post( $html );
 }
 
 function bigbo_woocommerce_get_catalog_ordering_args( $args ) {
@@ -512,6 +513,11 @@ function bigbo_woocommerce_view_order( $order_id ) {
     if ( $show_downloads ) {
             wc_get_template( 'order/order-downloads.php', array( 'downloads' => $downloads, 'show_title' => true ) );
     }
+    $allowed_html = array(
+        'span'   => array(
+            'class' => array(),
+        ),
+    );
     ?>
     <div class="bigbo-order-details woocommerce-content-box">
         <div class="sec-head-style"><h3 class="text-title"><?php esc_html_e( 'Order Details', 'bigbo' ); ?></h3></div>
@@ -534,7 +540,7 @@ function bigbo_woocommerce_view_order( $order_id ) {
                                 <td class="filler-td">&nbsp;</td>
                                 <td class="filler-td">&nbsp;</td>
                                 <th scope="row"><?php echo esc_html( $total[ 'label' ] ); ?></th>
-                                <td class="product-total"><?php echo $total[ 'value' ]; ?></td>
+                                <td class="product-total"><?php echo wp_kses( $total[ 'value' ], $allowed_html ); ?></td>
                             </tr>
                             <?php
                         endforeach;
@@ -556,7 +562,7 @@ function bigbo_woocommerce_view_order( $order_id ) {
                                     $thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 
                                     if ( ! $_product->is_visible() )
-                                        echo $thumbnail;
+                                        echo wp_kses_post( $thumbnail );
                                     else
                                         printf( '<a href="%s">%s</a>', esc_url( $_product->get_permalink() ), $thumbnail );
                                     ?>
@@ -576,7 +582,7 @@ function bigbo_woocommerce_view_order( $order_id ) {
                                     <?php echo apply_filters( 'woocommerce_order_item_quantity_html', $item[ 'qty' ], $item ); ?>
                                 </td>
                                 <td class="col-subtotal">
-                                    <?php echo $order->get_formatted_line_subtotal( $item ); ?>
+                                    <?php echo wp_kses( $order->get_formatted_line_subtotal( $item ), $allowed_html ); ?>
                                 </td>
                             </tr>
                             <?php
@@ -797,7 +803,7 @@ function bigbo_woocommerce_taxonomy_archive() {
         if ( $cat && ! empty( $cat->term_id ) ) {
             $thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
             $image        = wp_get_attachment_url( $thumbnail_id );
-            echo '<img class="cat-img" src=' . esc_url( $image ) . ' alt="" />';
+            echo '<img class="cat-img" src=' . esc_url( $image ) . ' alt=' . esc_attr( $cat->name ) . '/>';
         }
         if ( $cat && ! empty( $cat->description ) ) {
             echo '<div class="term-description">' . wc_format_content( $cat->description ) . '</div>'; // WPCS: XSS ok.

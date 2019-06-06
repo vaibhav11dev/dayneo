@@ -33,7 +33,7 @@ get_header();
                             foreach ($categories as $cat) {
                             ?>
                                 <li class="category">
-                                    <h4><span>Category: </span><?php echo $cat->cat_name; ?></h4>
+                                    <h4><span>Category: </span><?php echo esc_html($cat->cat_name); ?></h4>
                                     <ul class="cat-posts mb-30">
                                     <?php
                                         query_posts('posts_per_page=-1&cat='.$cat->cat_ID); //-1 shows all posts per category. 1 to show most recent post.

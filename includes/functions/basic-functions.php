@@ -485,6 +485,14 @@ function bigbo_paginate_links() {
 	$current = max( 1, absint( get_query_var( 'paged' ) ) );
         $total_post = $wp_query->found_posts;
         $post = $wp_query->post_count;
+        $allowed_html = array(
+            'a'   => array(
+                'href' => array(),
+            ),
+            'i'   => array(
+                'class' => array(),
+            ),
+        );
         
 	$pagination = paginate_links( array(
 		'base'		 => str_replace( PHP_INT_MAX, '%#%', esc_url( get_pagenum_link( PHP_INT_MAX ) ) ),
@@ -506,14 +514,14 @@ function bigbo_paginate_links() {
 					echo 'active';
 				}
 				?>">
-					    <?php echo wp_kses_post($page_link); ?>
+                                    <?php echo wp_kses( $page_link, $allowed_html ); ?>
 				</li>
 			<?php } ?>
 		</ul>
 		<?php
 	}
 	$links = ob_get_clean();
-	echo $links;
+	return $links;
 }
 
 /**
@@ -524,7 +532,7 @@ function bigbo_paginate_links() {
  * @param type $number_posts
  * @return \WP_Query
  */
-function bigbo_portfolio_rel_pro( $post_id, $number_posts = 8 ) {
+function vedanta_portfolio_rel_pro( $post_id, $number_posts = 8 ) {
 	$query = new WP_Query();
 
 	$args = '';
@@ -547,7 +555,7 @@ function bigbo_portfolio_rel_pro( $post_id, $number_posts = 8 ) {
 		'post__not_in'		 => array( $post_id ),
 		'ignore_sticky_posts'	 => 0,
 		'meta_key'		 => '_thumbnail_id',
-		'post_type'		 => 'bigbo_portfolio',
+		'post_type'		 => 'vedanta_portfolio',
 		'tax_query'		 => array(
 			array(
 				'taxonomy'	 => 'portfolio_category',
@@ -574,7 +582,7 @@ function bigbo_portfolio_rel_pro( $post_id, $number_posts = 8 ) {
  * @param type $range
  * @param type $current_query
  */
-function bigbo_portfolio_pagination( $pages = '', $range = 2, $current_query = '' ) {
+function vedanta_portfolio_pagination( $pages = '', $range = 2, $current_query = '' ) {
 	global $dd_options;
 	$showitems = ( $range * 2 ) + 1;
 
@@ -645,7 +653,7 @@ function bigbo_portfolio_pagination( $pages = '', $range = 2, $current_query = '
  * 
  * @global string $post
  */
-function bigbo_portfolio_share() {
+function vedanta_portfolio_share() {
 	global $post;
 	$image_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
 	if ( empty( $image_url ) ) {
@@ -801,7 +809,7 @@ function bigbo_tvslider( $term ) {
 					?>
 
 					<!-- SLIDE -->
-					<li class="bg-black-alfa-40 <?php echo esc_attr($parallax_class); ?>" <?php echo $background_type; ?>>
+					<li class="bg-black-alfa-40 <?php echo esc_attr($parallax_class); ?>" <?php echo $background_type; // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 						<!-- HERO TEXT -->
 						<div class="hero-caption">
 							<div class="hero-text">
@@ -949,7 +957,7 @@ function bigbo_heroheadertype( $param ) {
 	if ( $background_type ) :
 		?>
 		<!-- HERO -->
-		<section id="hero" class="bg-black-alfa-30 color-white hero-height-<?php echo esc_attr($hero_height); ?> <?php echo esc_attr($parallax_class); ?>" <?php echo $background_type; ?>>
+		<section id="hero" class="bg-black-alfa-30 color-white hero-height-<?php echo esc_attr($hero_height); ?> <?php echo esc_attr($parallax_class); ?>" <?php echo $background_type; // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 			<!-- HERO TEXT -->
 			<div class="hero-caption">
 				<div class="hero-text">
@@ -983,7 +991,7 @@ function bigbo_heroheadertype( $param ) {
 }
 
 // -> START WooComm page wrapper
-function bigbo_shop_wrapper_strat() {
+function bigbo_shop_wrapper_start() {
 	ob_start();
 	?>
 	<!-- SHOP DETAILS -->
@@ -995,7 +1003,7 @@ function bigbo_shop_wrapper_strat() {
 				<div id="primary" class="<?php bigbo_layout_class( $type = 1 ); ?> post-content">
 					<?php
 					$wrapper_strat	 = ob_get_clean();
-					echo $wrapper_strat;
+					return $wrapper_strat;
 				}
 
 function bigbo_shop_wrapper_end() {
@@ -1026,7 +1034,7 @@ function bigbo_shop_wrapper_end() {
 	<!-- END SHOP DETAILS -->
 	<?php
 	$wrapper_end = ob_get_clean();
-	echo $wrapper_end;
+	return $wrapper_end;
 }
 
 // -> END WooComm page wrapper
@@ -1048,24 +1056,24 @@ function bigbo_page_title_bar() {
 						$title = get_the_title();
 
 						if ( is_home() ) {
-							$title = __( 'Blog', 'bigbo' );
+							$title = esc_html__( 'Blog', 'bigbo' );
 						}
 
 						if ( is_search() ) {
-							$title = __( 'Search Result For:', 'bigbo' ) . get_search_query();
+							$title = esc_html__( 'Search Result For:', 'bigbo' ) . get_search_query();
 						}
 
 						if ( is_404() ) {
-							$title = __( '404 - Page not Found', 'bigbo' );
+							$title = esc_html__( '404 - Page not Found', 'bigbo' );
 						}
 
 						if ( is_archive() && ! is_bbpress() ) {
 							if ( is_day() ) {
-								$title = __( 'Daily Archives: ', 'bigbo' ) . '<span>' . get_the_date() . '</span>';
+								$title = esc_html__( 'Daily Archives: ', 'bigbo' ) . '<span>' . get_the_date() . '</span>';
 							} else if ( is_month() ) {
-								$title = __( 'Monthly Archives: ', 'bigbo' ) . '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'bigbo' ) ) . '</span>';
+								$title = esc_html__( 'Monthly Archives: ', 'bigbo' ) . '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'bigbo' ) ) . '</span>';
 							} elseif ( is_year() ) {
-								$title = __( 'Yearly Archives: ', 'bigbo' ) . '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'bigbo' ) ) . '</span>';
+								$title = esc_html__( 'Yearly Archives: ', 'bigbo' ) . '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'bigbo' ) ) . '</span>';
 							} elseif ( is_author() ) {
 								$curauth = ( isset( $_GET[ 'author_name' ] ) ) ? get_user_by( 'slug', $_GET[ 'author_name' ] ) : get_user_by( 'id', get_the_author_meta( 'ID' ) );
 								$title	 = $curauth->nickname;
@@ -1368,7 +1376,7 @@ function bigbo_breadcrumb() {
                         $post_type	 = get_post_type( $post->ID );
 			$cat_1_line	 = '';
 
-                        if ( $post_type == 'bigbo_portfolio') {
+                        if ( $post_type == 'vedanta_portfolio') {
                             $categories	 = get_the_terms( $post->ID, 'portfolio_category' );
                         } else {
                             $categories	 = get_the_category( $post->ID );
@@ -1447,8 +1455,6 @@ function bigbo_layout_class( $type = 1 ) {
 	$dd_post_layout			 = bigbo_get_option( 'dd_post_layout', '2' );
 	$dd_opt1_width_content		 = bigbo_get_option( 'dd_opt1_width_content', '8' );
 	$dd_opt2_width_content		 = bigbo_get_option( 'dd_opt2_width_content', '6' );
-	$dd_opt1_width_sidebar1	 = bigbo_get_option( 'dd_opt1_width_sidebar1', '4' );
-	$dd_opt2_width_sidebar1	 = bigbo_get_option( 'dd_opt2_width_sidebar1', '3' );
 	$bigbo_sidebar_position	 = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
 
 	$layout_css = '';
@@ -1464,7 +1470,7 @@ function bigbo_layout_class( $type = 1 ) {
 			$layout_css	 = 'col-md-' . $dd_opt1_width_content . ' float-right';
 			break;
 		case "3cm":
-			$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-left col-md-push-' . $dd_opt1_width_sidebar1 . '';
+			$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-left';
 			break;
 		case "3cr":
 			$layout_css	 = 'col-md-' . $dd_opt2_width_content . ' float-right';
@@ -1646,8 +1652,6 @@ function bigbo_sidebar_class() {
 	$dd_layout		 = bigbo_get_option( 'dd_layout', '2cl' );
 	$dd_opt1_width_sidebar1	 = bigbo_get_option( 'dd_opt1_width_sidebar1', '4' );
 	$dd_opt2_width_sidebar1	 = bigbo_get_option( 'dd_opt2_width_sidebar1', '3' );
-	$dd_opt1_width_content		 = bigbo_get_option( 'dd_opt1_width_content', '8' );
-	$dd_opt2_width_content		 = bigbo_get_option( 'dd_opt2_width_content', '6' );
 
 	switch ( $dd_layout ):
 		case "1c":
@@ -1660,7 +1664,7 @@ function bigbo_sidebar_class() {
 			$sidebar_css	 = 'col-md-' . $dd_opt1_width_sidebar1 . '';
 			break;
 		case "3cm":
-			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' col-md-pull-' . $dd_opt2_width_content . '';
+			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
 			break;
 		case "3cl":
 			$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
@@ -1683,13 +1687,13 @@ function bigbo_sidebar_class() {
 				$sidebar_css	 = 'col-sm-6 col-md-' . $dd_opt1_width_sidebar1 . '';
 				break;
 			case "3cm":
-				$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' col-md-pull-' . $dd_opt2_width_content . '';
+				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
 				break;
 			case "3cl":
-				$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
+				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-right';
 				break;
 			case "3cr":
-				$sidebar_css	 = 'col-xs-12 col-md-' . $dd_opt2_width_sidebar1 . ' float-left';
+				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $dd_opt2_width_sidebar1 . ' float-left';
 				break;
 		endswitch;
 	endif;

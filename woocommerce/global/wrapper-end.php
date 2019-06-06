@@ -48,6 +48,6 @@ switch ( $template ) {
 		echo '</main></div>';
 		break;
 	default :
-		bigbo_shop_wrapper_end();
+		echo bigbo_shop_wrapper_end();
 		break;
 }

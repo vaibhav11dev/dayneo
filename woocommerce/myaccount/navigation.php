@@ -30,7 +30,7 @@ do_action( 'woocommerce_before_account_navigation' );
 	<div class="account-avatar"><i class="fa fa-user-circle-o"></i></div>
 	<div class="account-name">
 		<span>Hello!</span>
-		<h3><?php echo $author->display_name; ?></h3>
+		<h3><?php echo esc_html($author->display_name); ?></h3>
 	</div>
 </div>
 

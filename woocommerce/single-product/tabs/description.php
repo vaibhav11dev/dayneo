@@ -22,6 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $post;
 
-$heading = esc_html( apply_filters( 'woocommerce_product_description_heading', __( 'Description', 'bigbo' ) ) );
+$heading = esc_html( apply_filters( 'woocommerce_product_description_heading', esc_html__( 'Description', 'bigbo' ) ) );
 
 the_content();

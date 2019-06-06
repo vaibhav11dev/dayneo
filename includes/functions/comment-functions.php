@@ -24,20 +24,20 @@ function bigbo_discussion_title( $type = NULL, $echo = true ) {
 		case 'comment' :
 			$count	 = $comment_count;
 			// Available filter: bigbo_many_comments
-			$many	 = apply_filters( 'bigbo_many_comments', __( '% Comments', 'bigbo' ) );
+			$many	 = apply_filters( 'bigbo_many_comments', esc_html__( '% Comments', 'bigbo' ) );
 			// Available filter: bigbo_no_comments
-			$none	 = apply_filters( 'bigbo_no_comments', __( 'No Comments Yet', 'bigbo' ) );
+			$none	 = apply_filters( 'bigbo_no_comments', esc_html__( 'No Comments Yet', 'bigbo' ) );
 			// Available filter: bigbo_one_comment
-			$one	 = apply_filters( 'bigbo_one_comment', __( '1 Comment', 'bigbo' ) );
+			$one	 = apply_filters( 'bigbo_one_comment', esc_html__( '1 Comment', 'bigbo' ) );
 			break;
 		case 'pings' :
 			$count	 = $ping_count;
 			// Available filter: bigbo_many_pings
-			$many	 = apply_filters( 'bigbo_many_pings', __( '% Pings/Trackbacks', 'bigbo' ) );
+			$many	 = apply_filters( 'bigbo_many_pings', esc_html__( '% Pings/Trackbacks', 'bigbo' ) );
 			// Available filter: bigbo_no_pings
-			$none	 = apply_filters( 'bigbo_no_pings', __( 'No Pings/Trackbacks Yet', 'bigbo' ) );
+			$none	 = apply_filters( 'bigbo_no_pings', esc_html__( 'No Pings/Trackbacks Yet', 'bigbo' ) );
 			// Available filter: bigbo_one_comment
-			$one	 = apply_filters( 'bigbo_one_ping', __( '1 Ping/Trackback', 'bigbo' ) );
+			$one	 = apply_filters( 'bigbo_one_ping', esc_html__( '1 Ping/Trackback', 'bigbo' ) );
 			break;
 	}
 
@@ -61,7 +61,13 @@ function bigbo_discussion_title( $type = NULL, $echo = true ) {
 	// Available filter: bigbo_discussion_title
 	$bigbo_discussion_title = apply_filters( 'bigbo_discussion_title', (string) $discussion_title );
 
-	return ( $echo ) ? print( $bigbo_discussion_title ) : $bigbo_discussion_title;
+        $allowed_html = array(
+                'h5' => array(
+                        'class' => array(),
+                ),
+        );
+        
+	return ( $echo ) ? print( wp_kses( $bigbo_discussion_title, $allowed_html ) ) : wp_kses( $bigbo_discussion_title, $allowed_html );
 }
 
 /**
@@ -80,12 +86,18 @@ function bigbo_count( $type = NULL, $echo = true ) {
 	$comment_count	 = $wp_query->comment_count;
 	$ping_count	 = count( $wp_query->comments_by_type[ 'pings' ] );
 
+        $allowed_html = array(
+                'a'   => array(
+                        'href' => array(),
+                )
+        );
+        
 	switch ( $type ):
 		case 'comment':
-			return ( $echo ) ? print( $comment_count ) : (int)$comment_count;
+			return ( $echo ) ? print( wp_kses( $comment_count, $allowed_html ) ) : (int)$comment_count;
 			break;
 		case 'pings':
-			return ( $echo ) ? print( $ping_count ) : (int)$ping_count;
+			return ( $echo ) ? print( wp_kses( $ping_count, $allowed_html ) ) : (int)$ping_count;
 			break;
 	endswitch;
 }
@@ -106,7 +118,7 @@ function bigbo_comment_author( $meta_format = '%avatar%' ) {
 
 	// No keywords to replace
 	if ( strpos( $meta_format, '%' ) === false ) {
-		echo $meta_format;
+		echo wp_kses_post($meta_format);
 	} else {
 		$open	 = '<!--BEGIN .comment-author-->';
 		$open	 .= '<div class="comment-avatar">';
@@ -131,7 +143,7 @@ function bigbo_comment_author( $meta_format = '%avatar%' ) {
 
 		$output = join( '', $meta_array );
 		if ( $output ) {
-			echo $open . $output . $close;
+			echo wp_kses_post($open . $output . $close);
 		}
 	}
 }
@@ -150,7 +162,7 @@ function bigbo_comment_meta( $meta_format = '%date% %reply%' ) {
 
 	// No keywords to replace
 	if ( strpos( $meta_format, '%' ) === false ) {
-		echo $meta_format;
+		echo wp_kses_post($meta_format);
 	} else {
 		$open	 = '<!--BEGIN .comment-meta-->';
 		$open	 .= '<div class="comment-tools">';
@@ -186,7 +198,7 @@ function bigbo_comment_meta( $meta_format = '%date% %reply%' ) {
 		}
 		$output = join( '', $meta_array );
 		if ( $output )
-			echo $open . $output . $close;
+			echo wp_kses_post($open . $output . $close);
 	}
 }
 

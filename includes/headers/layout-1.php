@@ -49,7 +49,7 @@ if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
                                         <?php
                                        if ( $dd_header_logo != '' ):
                                             ?>
-                                            <img class="normal-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo $dd_header_logo ?>">
+                                            <img class="normal-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo esc_url($dd_header_logo); ?>">
                                             <?php
                                         endif;
                                         if ( $dd_header_logo_retina != "" && $dd_header_logo_retina_width != "" && $dd_header_logo_retina_height != "" ):
@@ -58,7 +58,7 @@ if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
                                                 $pixels = "px";
                                             endif;
                                             ?>
-                                            <img class="retina-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo $dd_header_logo_retina ?>" style="width:<?php echo $dd_header_logo_retina_width . $pixels ?>;max-height:<?php echo $dd_header_logo_retina_height . $pixels ?>;" />
+                                            <img class="retina-logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo esc_url($dd_header_logo_retina); ?>" style="width:<?php echo esc_attr($dd_header_logo_retina_width . $pixels); ?>;max-height:<?php echo esc_attr($dd_header_logo_retina_height . $pixels); ?>;" />
                                             <?php
                                         endif;
                                         ?>
