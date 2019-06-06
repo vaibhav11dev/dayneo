@@ -182,6 +182,7 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 
 			$this->menu_megamenu_title	 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_title', true );
 			$this->menu_megamenu_widgetarea	 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_widgetarea', true );
+			$this->menu_megamenu_label	 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_label', true );
 			$this->menu_megamenu_icon	 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_icon', true );
 			//For MegaMenu thumbnail
                         $ved_img_id			 = get_post_meta( $item->ID, '_menu_item_ved_megamenu_thumbnail', true );
@@ -280,13 +281,15 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 				$attributes	 = implode( ' ', $atts );
 
 				$item_output .= $args->before;
-				/* check if ne need to set an image */
-				if ( ! empty( $this->menu_megamenu_thumbnail ) && $this->menu_megamenu_status == "enabled" ) {
-					$item_output .= '<a ' . $attributes . '><span class="ved-megamenu-icon"><img src="' . esc_url($this->menu_megamenu_thumbnail) . '"></span>';
-				} elseif ( ! empty( $this->menu_megamenu_icon ) && $this->menu_megamenu_status == "enabled" ) {
-					$item_output .= '<a ' . $attributes . '><span class="ved-megamenu-icon text-menu-icon"><i class="fa ' . get_post_meta( $item->ID, '_menu_item_ved_megamenu_icon', true ) . '"></i></span>';
-				} elseif ( $depth !== 0 && $this->menu_megamenu_status == "enabled" && $this->menu_megamenu_icon) {
+				/* check if we need to set an image */
+				if ( $depth !== 0 && ! empty( $this->menu_megamenu_thumbnail ) && $this->menu_megamenu_status == "enabled" ) {
 					$item_output .= '<a ' . $attributes . '><span class="ved-megamenu-bullet"></span>';
+				} elseif ( $depth !== 0 && $this->menu_megamenu_icon && $this->menu_megamenu_status == "enabled" ) {
+					$item_output .= '<a ' . $attributes . '><span class="ved-megamenu-bullet"></span>';
+				} elseif ( ! empty( $this->menu_megamenu_thumbnail ) ) {
+					$item_output .= '<a ' . $attributes . '><span class="ved-megamenu-icon"><img src="' . esc_url($this->menu_megamenu_thumbnail) . '"></span>';
+				} elseif ( ! empty( $this->menu_megamenu_icon ) ) {
+					$item_output .= '<a ' . $attributes . '><span class="ved-megamenu-icon text-menu-icon"><i class="fa ' . get_post_meta( $item->ID, '_menu_item_ved_megamenu_icon', true ) . '"></i></span>';
 				} else {
 					$item_output .= '<a ' . $attributes . '>';
 				}
@@ -299,6 +302,10 @@ if ( ! class_exists( 'vedCoreFrontendWalker' ) ) {
 
 				if ( ! empty( $this->menu_megamenu_icon ) && $this->menu_megamenu_status == "enabled" ) {
 					$item_output .= '</span>';
+				}
+                                
+                                if ( $this->menu_megamenu_label !== "none" ) {
+					$item_output .= '<span class="ved-menu-label ved-menu-'. esc_attr($this->menu_megamenu_label) .'">'.esc_html($this->menu_megamenu_label).'</span>';
 				}
 
 				if ( $depth === 0 && $args->has_children ) {
@@ -657,6 +664,17 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 								</select>
 							</label>
 			                        </p>
+                                                <p class="field-megamenu-columns description description-wide">
+							<label for="edit-menu-item-megamenu-label-<?php echo esc_attr($item_id); ?>">
+								<?php esc_html_e( 'Mega Menu Label', 'bigbo' ); ?>
+								<select id="edit-menu-item-megamenu-label-<?php echo esc_attr($item_id); ?>" class="widefat code edit-menu-item-megamenu-label" name="menu-item-ved-megamenu-label[<?php echo esc_attr($item_id); ?>]">
+									<option value="none" <?php selected( $item->ved_megamenu_label, 'none' ); ?>><?php esc_html_e( 'None', 'bigbo' ); ?></option>
+									<option value="new" <?php selected( $item->ved_megamenu_label, 'new' ); ?>><?php esc_html_e( 'New', 'bigbo' ); ?></option>
+									<option value="sale" <?php selected( $item->ved_megamenu_label, 'sale' ); ?>><?php esc_html_e( 'Sale', 'bigbo' ); ?></option>
+									<option value="hot" <?php selected( $item->ved_megamenu_label, 'hot' ); ?>><?php esc_html_e( 'Hot', 'bigbo' ); ?></option>
+								</select>
+							</label>
+			                        </p>
 			                        <p class="field-megamenu-icon description description-wide">
 							<label for="edit-menu-item-megamenu-icon-<?php echo esc_attr($item_id); ?>">
 								<?php esc_html_e( 'Mega Menu Icon (use full font awesome or glyphicon name)', 'bigbo' ); ?>
@@ -815,7 +833,7 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 			 */
 			function save_custom_fields( $menu_id, $menu_item_db_id, $args ) {
 
-				$field_name_suffix = array( 'status', 'width', 'columns', 'title', 'widgetarea', 'icon', 'thumbnail', 'banner' );
+				$field_name_suffix = array( 'status', 'width', 'columns', 'title', 'widgetarea', 'label', 'icon', 'thumbnail', 'banner' );
 
 				foreach ( $field_name_suffix as $key ) {
 					if ( ! isset( $_REQUEST[ 'menu-item-ved-megamenu-' . $key ][ $menu_item_db_id ] ) ) {
@@ -837,11 +855,12 @@ if ( ! class_exists( 'vedCoreMegaMenus' ) ) {
 					$menu_item->ved_megamenu_status		 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_status', true );
 					$menu_item->ved_megamenu_width		 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_width', true );
 					$menu_item->ved_megamenu_columns	 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_columns', true );
+					$menu_item->ved_megamenu_label           = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_label', true );
 					$menu_item->ved_megamenu_title		 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_title', true );
 					$menu_item->ved_megamenu_widgetarea	 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_widgetarea', true );
 					$menu_item->ved_megamenu_icon		 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_icon', true );
 					$menu_item->ved_megamenu_thumbnail	 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_thumbnail', true );
-					$menu_item->ved_megamenu_banner	 = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_banner', true );
+					$menu_item->ved_megamenu_banner          = get_post_meta( $menu_item->ID, '_menu_item_ved_megamenu_banner', true );
 				}
 				return $menu_item;
 			}

@@ -983,13 +983,21 @@ function bigbo_heroheadertype( $param ) {
 }
 
 // -> START WooComm page wrapper
-function bigbo_shop_wrapper_strat() {
+function bigbo_shop_wrapper_start() {
 	ob_start();
 	?>
 	<!-- SHOP DETAILS -->
 	<section class="module p-tb-content">
 		<div class="container">
 			<div class="row">
+
+                                <!-- SECONDARY-2 -->	    
+                                <?php
+                                if ( bigbo_lets_get_sidebar_2() == true ):
+                                        get_sidebar( '2' );
+                                endif;
+                                ?>
+                                <!-- END SECONDARY-2 -->
 
 				<!-- PRIMARY -->
 				<div id="primary" class="<?php bigbo_layout_class( $type = 1 ); ?> post-content">
