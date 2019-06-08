@@ -100,7 +100,7 @@ class sidebar_generator {
 		sidebar_generator::update_sidebars( $sidebars );
 
 		$js = "
-			var tbl = document.getElementById('sbg_table');
+			var tbl = document.getElementById('vedanta_table');
 			var lastRow = tbl.rows.length;
 			// if there's no header row in the table, then iteration = lastRow + 1
 			var iteration = lastRow;
@@ -147,7 +147,7 @@ class sidebar_generator {
 		unset( $sidebars[$id] );
 		sidebar_generator::update_sidebars( $sidebars );
 		$js = "
-			var tbl = document.getElementById('sbg_table');
+			var tbl = document.getElementById('vedanta_table');
 			tbl.deleteRow($row_number)
 
 		";
@@ -179,7 +179,7 @@ class sidebar_generator {
 		<div class="wrap">
 		    <h2>Sidebars</h2>
 		    <br />
-		    <table class="widefat page" id="sbg_table" style="width:600px;">
+		    <table class="widefat page" id="vedanta_table" style="width:600px;">
 			<tr>
 			    <th>Sidebar Name</th>
 			    <th>CSS class</th>
@@ -223,13 +223,13 @@ class sidebar_generator {
 	 * for saving the pages/post
 	 */
 	public static function save_form( $post_id ) {
-		if ( isset( $_POST['sbg_edit'] ) ) {
-			$is_saving = $_POST['sbg_edit'];
+		if ( isset( $_POST['vedanta_edit'] ) ) {
+			$is_saving = $_POST['vedanta_edit'];
 			if ( !empty( $is_saving ) ) {
-				delete_post_meta( $post_id, 'sbg_selected_sidebar' );
-				delete_post_meta( $post_id, 'sbg_selected_sidebar_replacement' );
-				add_post_meta( $post_id, 'sbg_selected_sidebar', $_POST['sidebar_generator'] );
-				add_post_meta( $post_id, 'sbg_selected_sidebar_replacement', $_POST['sidebar_generator_replacement'] );
+				delete_post_meta( $post_id, 'vedanta_selected_sidebar' );
+				delete_post_meta( $post_id, 'vedanta_selected_sidebar_replacement' );
+				add_post_meta( $post_id, 'vedanta_selected_sidebar', $_POST['sidebar_generator'] );
+				add_post_meta( $post_id, 'vedanta_selected_sidebar_replacement', $_POST['sidebar_generator_replacement'] );
 			}
 		}
 	}
@@ -240,13 +240,13 @@ class sidebar_generator {
 		if ( is_object( $post_id ) ) {
 			$post_id = $post_id->ID;
 		}
-		$selected_sidebar = get_post_meta( $post_id, 'sbg_selected_sidebar', true );
+		$selected_sidebar = get_post_meta( $post_id, 'vedanta_selected_sidebar', true );
 		if ( !is_array( $selected_sidebar ) ) {
 			$tmp = $selected_sidebar;
 			$selected_sidebar = array();
 			$selected_sidebar[0] = $tmp;
 		}
-		$selected_sidebar_replacement = get_post_meta( $post_id, 'sbg_selected_sidebar_replacement', true );
+		$selected_sidebar_replacement = get_post_meta( $post_id, 'vedanta_selected_sidebar_replacement', true );
 		if ( !is_array( $selected_sidebar_replacement ) ) {
 			$tmp = $selected_sidebar_replacement;
 			$selected_sidebar_replacement = array();
@@ -255,7 +255,7 @@ class sidebar_generator {
 		?>
 
 
-		<input name="sbg_edit" type="hidden" value="sbg_edit" />
+		<input name="vedanta_edit" type="hidden" value="vedanta_edit" />
 
 		<p><?php esc_html_e( 'Please select the sidebar you would like to display on this page. Note: You must first create the sidebar under Appearance > Sidebars.', 'bigbo' ); ?>
 		</p>
@@ -333,8 +333,8 @@ class sidebar_generator {
                 } else {
                     $post_id = isset( $post->ID ) ? $post->ID : '';
                 }
-		$selected_sidebar = get_post_meta( $post_id, 'sbg_selected_sidebar', true );
-		$selected_sidebar_replacement = get_post_meta( $post_id, 'sbg_selected_sidebar_replacement', true );
+		$selected_sidebar = get_post_meta( $post_id, 'vedanta_selected_sidebar', true );
+		$selected_sidebar_replacement = get_post_meta( $post_id, 'vedanta_selected_sidebar_replacement', true );
 		$did_sidebar = false;
 		//this page uses a generated sidebar
 		if ( $selected_sidebar != '' && $selected_sidebar != "0" ) {
@@ -387,14 +387,14 @@ class sidebar_generator {
 	 * replaces array of sidebar names
 	 */
 	public static function update_sidebars( $sidebar_array ) {
-		$sidebars = update_option( 'sbg_sidebars', $sidebar_array );
+		$sidebars = update_option( 'vedanta_sidebars', $sidebar_array );
 	}
 
 	/**
 	 * gets the generated sidebars
 	 */
 	public static function get_sidebars() {
-		$sidebars = get_option( 'sbg_sidebars' );
+		$sidebars = get_option( 'vedanta_sidebars' );
 		return $sidebars;
 	}
 

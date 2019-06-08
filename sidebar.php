@@ -66,7 +66,7 @@ if ( class_exists( 'Woocommerce' ) ) {
             }
         }
     } elseif ( is_home() ) {
-        $name = get_post_meta( get_option( 'page_for_posts' ), 'sbg_selected_sidebar_replacement', true );
+        $name = get_post_meta( get_option( 'page_for_posts' ), 'vedanta_selected_sidebar_replacement', true );
         if ( $name ) {
             restora_dynamic_sidebar( $name[ 0 ] );
         } else {

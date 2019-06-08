@@ -1455,6 +1455,8 @@ function bigbo_layout_class( $type = 1 ) {
 	$ved_post_layout			 = bigbo_get_option( 'ved_post_layout', '2' );
 	$ved_opt1_width_content		 = bigbo_get_option( 'ved_opt1_width_content', '8' );
 	$ved_opt2_width_content		 = bigbo_get_option( 'ved_opt2_width_content', '6' );
+        $ved_opt1_width_sidebar1	 = bigbo_get_option( 'ved_opt1_width_sidebar1', '4' );
+	$ved_opt2_width_sidebar1	 = bigbo_get_option( 'ved_opt2_width_sidebar1', '3' );
 	$bigbo_sidebar_position	 = get_post_meta( $post_id, 'bigbo_sidebar_position', true );
 
 	$layout_css = '';
@@ -1470,7 +1472,7 @@ function bigbo_layout_class( $type = 1 ) {
 			$layout_css	 = 'col-md-' . $ved_opt1_width_content . ' float-right';
 			break;
 		case "3cm":
-			$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-left';
+			$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-left col-md-push-' . $ved_opt1_width_sidebar1 . '';
 			break;
 		case "3cr":
 			$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-right';
@@ -1497,7 +1499,7 @@ function bigbo_layout_class( $type = 1 ) {
 				$layout_css	 = 'col-md-' . $ved_opt1_width_content . ' float-right';
 				break;
 			case "3cm":
-				$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-left';
+                                $layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-left col-md-push-' . $ved_opt1_width_sidebar1 . '';
 				break;
 			case "3cr":
 				$layout_css	 = 'col-md-' . $ved_opt2_width_content . ' float-right';
@@ -1652,6 +1654,8 @@ function bigbo_sidebar_class() {
 	$ved_layout		 = bigbo_get_option( 'ved_layout', '2cl' );
 	$ved_opt1_width_sidebar1	 = bigbo_get_option( 'ved_opt1_width_sidebar1', '4' );
 	$ved_opt2_width_sidebar1	 = bigbo_get_option( 'ved_opt2_width_sidebar1', '3' );
+        $ved_opt1_width_content		 = bigbo_get_option( 'ved_opt1_width_content', '8' );
+	$ved_opt2_width_content		 = bigbo_get_option( 'ved_opt2_width_content', '6' );
 
 	switch ( $ved_layout ):
 		case "1c":
@@ -1664,7 +1668,7 @@ function bigbo_sidebar_class() {
 			$sidebar_css	 = 'col-md-' . $ved_opt1_width_sidebar1 . '';
 			break;
 		case "3cm":
-			$sidebar_css	 = 'col-xs-12 col-md-' . $ved_opt2_width_sidebar1 . ' float-right';
+			$sidebar_css	 = 'col-xs-12 col-md-' . $ved_opt2_width_sidebar1 . ' col-md-pull-' . $ved_opt2_width_content . '';
 			break;
 		case "3cl":
 			$sidebar_css	 = 'col-xs-12 col-md-' . $ved_opt2_width_sidebar1 . ' float-right';
@@ -1687,13 +1691,13 @@ function bigbo_sidebar_class() {
 				$sidebar_css	 = 'col-sm-6 col-md-' . $ved_opt1_width_sidebar1 . '';
 				break;
 			case "3cm":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar1 . ' float-right';
+				$sidebar_css	 = 'col-xs-12 col-md-' . $ved_opt2_width_sidebar1 . ' col-md-pull-' . $ved_opt2_width_content . '';
 				break;
 			case "3cl":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar1 . ' float-right';
+				$sidebar_css	 = 'col-xs-12 col-md-' . $ved_opt2_width_sidebar1 . ' float-right';
 				break;
 			case "3cr":
-				$sidebar_css	 = 'col-xs-12 col-sm-6 col-md-' . $ved_opt2_width_sidebar1 . ' float-left';
+				$sidebar_css	 = 'col-xs-12 col-md-' . $ved_opt2_width_sidebar1 . ' float-left';
 				break;
 		endswitch;
 	endif;
