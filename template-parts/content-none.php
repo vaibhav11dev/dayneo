@@ -15,18 +15,7 @@
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) :
 
-			printf(
-				'<p>' . wp_kses(
-					/* translators: 1: link to WP admin new post page. */
-					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'bigbo' ),
-					array(
-						'a' => array(
-							'href' => array(),
-						),
-					)
-				) . '</p>',
-				esc_url( admin_url( 'post-new.php' ) )
-			);
+			printf( '<p>%1$s<a href="%2$s">%3$s</a></p>', esc_html__( 'Ready to publish your first post?', 'bigbo' ), esc_url( admin_url( 'post-new.php' ), esc_html__( 'Get started here', 'bigbo' ) ));
 
 		elseif ( is_search() ) :
 			?>

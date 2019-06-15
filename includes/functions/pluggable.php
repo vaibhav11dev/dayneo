@@ -49,7 +49,7 @@ if ( ! function_exists( 'bigbo_comment_date' ) ):
 
 	function bigbo_comment_date() {
 		$date	 = '<a href="' . esc_url(htmlspecialchars( get_comment_link() )) . '" data-toggle="tooltip" title="' . get_comment_date() . '">';
-		$date	 .= '<i class="icon-clock icons"></i>';
+		$date	 .= '<i class="fa fa-clock-o"></i>';
 		$date	 .= '</a>';
 		return apply_filters( 'bigbo_comment_date', (string) $date ); // Available filter: bigbo_comment_date
 	}
@@ -114,7 +114,7 @@ if ( ! function_exists( 'bigbo_comment_reply' ) ):
 		global $comment_depth;
 		$max_depth	 = get_option( 'thread_comments_depth' );
 		// Available filter: bigbo_reply_text
-		$reply_text	 = apply_filters( 'bigbo_reply_text', (string) __( '<i class="icon-action-undo icons"></i>', 'bigbo' ) );
+		$reply_text	 = apply_filters( 'bigbo_reply_text', (string)'<i class="fa fa-reply"></i>' );
 		// Available filter: bigbo_login_text
 		$login_text	 = apply_filters( 'bigbo_login_text', (string) esc_html__( 'Log in to reply.', 'bigbo' ) );
 		if ( ( get_option( 'thread_comments' ) ) && get_comment_type() == 'comment' ) {

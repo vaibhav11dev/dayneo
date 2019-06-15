@@ -876,24 +876,11 @@ add_action( 'woocommerce_single_product_summary', 'ved_product_navigation', 4 );
  * @global string $post
  */
 function bigbo_product_share() {
-	global $post;
-	$image_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
-	if ( empty( $image_url ) ) {
-		$image_url = get_template_directory_uri() . '/assets/images/no-thumbnail.jpg';
+	$ved_tooltip_position = bigbo_get_option( 'ved_sharing_box_tooltip_position', 'none' );
+	$image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+	if ( function_exists( 'vedanta_share_link_socials' ) ) {
+		vedanta_share_link_socials( $ved_tooltip_position, get_the_title(), get_the_permalink(), $image );
 	}
-	?>
-	<div class="ddSocial-sharing">
-		<span class="labeTitle pull-left">Share</span>
-		<ul class="social-icons social-icons-simple pull-left">
-			<li class="ddfacebook"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Facebook', 'bigbo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-facebook"></i></a></li>
-			<li class="ddtwitter"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Twitter', 'bigbo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr( $post->post_title ); ?>+&raquo;+<?php echo esc_url( bigbo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a></li>        
-			<li class="ddgoogleplus"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'bigbo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
-			<li class="ddpinterest"> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'bigbo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr( $image_url ); ?>&description=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-pinterest"></i></a></li>                  
-			<li class="ddmore"><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="ti-plus"></i></a></li>
-		</ul>
-		<div class="clearfix"></div>
-	</div>
-	<?php
 }
 
 add_action( 'wp_ajax_bigbo_product_quick_view', 'product_quick_view' );
@@ -938,8 +925,6 @@ function get_product_quick_view_header() {
 
 			<ul class="entry-meta">
 				<?php
-				$this->single_product_brand();
-
 				if ( function_exists( 'woocommerce_template_single_rating' ) && $product->get_rating_count() ) {
 					echo '<li>';
 					woocommerce_template_single_rating();
@@ -1052,13 +1037,13 @@ add_action( 'woocommerce_before_shop_loop_item_title', 'bigbo_second_product_thu
 /**
  * Product On Sale
  */
-add_action( 'bigbo_onsale_product_content', 'woocommerce_template_loop_product_link_open', 10 );
-add_action( 'bigbo_onsale_product_content', 'bigbo_template_loop_product_thumbnail', 20 );
-add_action( 'bigbo_onsale_product_content', 'woocommerce_template_loop_product_title', 30 );
-add_action( 'bigbo_onsale_product_content', 'woocommerce_template_loop_product_link_close', 40 );
-add_action( 'bigbo_onsale_product_content', 'woocommerce_template_loop_price', 50 );
-add_action( 'bigbo_onsale_product_content', 'bigbo_deal_progress_bar', 60 );
-add_action( 'bigbo_onsale_product_content', 'bigbo_deal_countdown_timer', 70 );
+add_action( 'bigbo_onsale_product_photo', 'woocommerce_template_loop_product_link_open', 10 );
+add_action( 'bigbo_onsale_product_photo', 'bigbo_template_loop_product_thumbnail', 20 );
+add_action( 'bigbo_onsale_product_photo', 'woocommerce_template_loop_product_link_close', 30 );
+add_action( 'bigbo_onsale_product_photo', 'bigbo_deal_countdown_timer', 40 );
+add_action( 'bigbo_onsale_product_title', 'bigbo_woocommerce_template_loop_product_title', 50 );
+add_action( 'bigbo_onsale_product_title', 'woocommerce_template_loop_price', 60 );
+add_action( 'bigbo_onsale_product_title', 'bigbo_deal_progress_bar', 70 );
 
 if ( !function_exists( 'bigbo_template_loop_product_thumbnail' ) ) {
 
@@ -1067,7 +1052,7 @@ if ( !function_exists( 'bigbo_template_loop_product_thumbnail' ) ) {
 	 */
 	function bigbo_template_loop_product_thumbnail() {
 		$thumbnail = woocommerce_get_product_thumbnail();
-		echo apply_filters( 'bigbo_template_loop_product_thumbnail', wp_kses_post( sprintf( '<div class="product-thumbnail">%s</div>', $thumbnail ) ) );
+		echo apply_filters( 'bigbo_template_loop_product_thumbnail', $thumbnail );
 	}
 
 }

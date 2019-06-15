@@ -53,7 +53,7 @@ get_header();
                         <?php } ?>
                     </ul>
                 </div>
-                <?php  wp_reset_query(); ?>
+                <?php  wp_reset_postdata(); ?>
                 
                 <div class="col-sm-4 mt-30">
                     <div class="sec-head-style">

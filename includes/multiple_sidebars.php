@@ -324,7 +324,7 @@ class sidebar_generator {
 			}
 			return; //dont do anything
 		}
-		wp_reset_query();
+		wp_reset_postdata();
 		global $wp_query;
 		$post = $wp_query->get_queried_object();
                 $post_id = '';

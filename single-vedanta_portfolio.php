@@ -94,8 +94,15 @@ global $ved_options;
                             ( $ved_portfolio_sharing && get_post_meta( $post->ID, 'bigbo_po_sharing', true ) == 'default' ) ):
                                 ?>
                                 <li>
-                                    <h5>Share:</h5>
-                                    <?php vedanta_portfolio_share(); ?>
+                                    <h5><?php esc_html_e('Share:', 'bigbo') ?></h5>
+                                    <?php
+										$ved_tooltip_position = bigbo_get_option( 'ved_sharing_box_tooltip_position', 'none' );
+										$image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+
+										if ( function_exists( 'vedanta_share_link_socials' ) ) {
+											vedanta_share_link_socials( $ved_tooltip_position, get_the_title(), get_the_permalink(), $image );
+										}
+									?>
                                 </li>
                                 <?php
                             endif;

@@ -348,14 +348,6 @@ if ( ! function_exists( 'bigbo_extra_department' ) ) :
 
         $dep_open = '';
 
-        if ( in_array( bigbo_get_option( 'ved_header_type' ), array(
-            '1',
-            '2',
-            '7',
-            '3',
-        ) ) && ! $dep_close && bigbo_is_homepage() ) {
-            //$dep_open = bigbo_get_option( 'department_open_homepage' );
-        }
         $cat_style = '';
         if ( in_array( bigbo_get_option( 'ved_header_type' ), array( '2', '3' ) ) ) {
             //$space = bigbo_get_option( 'department_space_homepage' );

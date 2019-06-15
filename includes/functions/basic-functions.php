@@ -219,7 +219,7 @@ function bigbo_similar_posts() {
                 }
         }
 	$post = $orig_post;
-	wp_reset_query();
+	wp_reset_postdata();
 }
 
 function bigbo_hexDarker( $hex, $factor = 30 ) {
@@ -647,30 +647,6 @@ function vedanta_portfolio_pagination( $pages = '', $range = 2, $current_query =
 	}
 }
 
-/**
- * 
- * Bigbo_portfolio_share
- * 
- * @global string $post
- */
-function vedanta_portfolio_share() {
-	global $post;
-	$image_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
-	if ( empty( $image_url ) ) {
-		$image_url = get_template_directory_uri() . '/assets/images/no-thumbnail.jpg';
-	}
-	?>
-	<ul class="social-icons social-icons-simple">
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Twitter', 'bigbo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr($post->post_title); ?>+&raquo;+<?php echo esc_url( bigbo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a></li>
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Facebook', 'bigbo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-facebook"></i></a></li>
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Google Plus', 'bigbo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a></li>
-		<li> <a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share on Pinterest', 'bigbo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr($image_url); ?>&description=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-pinterest"></i></a></li>			
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'Share by Email', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/email?linkurl=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="fa fa-envelope-o"></i></a></li>
-		<li><a rel="nofollow" class="tipsytext" title="<?php esc_html_e( 'More options', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr($post->post_title); ?>"><i class="icon-action-redo icons ti-plus"></i></a></li>
-	</ul>
-	<?php
-}
-
 // -> START All Slider Functions Here
 
 /**
@@ -867,7 +843,7 @@ function bigbo_tvslider( $term ) {
 		<?php
 	}
 
-	wp_reset_query();
+	wp_reset_postdata();
 }
 
 /**
@@ -1148,9 +1124,9 @@ function bigbo_titlebar_bg_class() {
 
 	$ved_pagetitlebar_height		 = bigbo_get_option( 'ved_pagetitlebar_height', 'medium' );
 	$bigbo_page_title_bar_height	 = get_post_meta( $post_id, 'bigbo_page_title_bar_height', true );
-        if (empty($bigbo_page_title_bar_height)) {
-            $bigbo_page_title_bar_height = 'default';
-        }
+	if (empty($bigbo_page_title_bar_height)) {
+		$bigbo_page_title_bar_height = 'default';
+	}
 	if ( $bigbo_page_title_bar_height == 'small' || ( $bigbo_page_title_bar_height == 'default' && $ved_pagetitlebar_height == 'small' ) ) {
 		$titlebar_bg .= ' module-xs';
 	} elseif ( $bigbo_page_title_bar_height == 'medium' || ( $bigbo_page_title_bar_height == 'default' && $ved_pagetitlebar_height == 'medium' ) ) {

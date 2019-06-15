@@ -61,7 +61,7 @@ if ( ! comments_open() ) {
 		$commenter = wp_get_current_commenter();
 
 		$comment_form = array(
-		    'title_reply'		 => have_comments() ? __( '<h5 class="text-title text-uppercase bottom-line">Add a review</h5>', 'bigbo' ) : sprintf( __( '<h5 class="alert alert-info">Be the first to review &ldquo;%s&rdquo;</h5>', 'bigbo' ), get_the_title() ),
+		    'title_reply'		 => have_comments() ? sprintf( '<h5 class="text-title text-uppercase bottom-line">%s</h5>', esc_html__( 'Add a review', 'bigbo' ) ) : sprintf( '<h5 class="alert alert-info">%s &ldquo;%s&rdquo;</h5>',  esc_html__( 'Be the first to review', 'bigbo' ), get_the_title() ),
 		    'title_reply_to'	 => esc_html__( 'Leave a Reply to %s', 'bigbo' ),
 		    'title_reply_before'	 => '<div id="reply-title" class="comment-reply-title">',
 		    'title_reply_after'	 => '</div>',
@@ -78,7 +78,7 @@ if ( ! comments_open() ) {
 		);
 
 		if ( $account_page_url = wc_get_page_permalink( 'myaccount' ) ) {
-		    $comment_form[ 'must_log_in' ] = '<p class="must-log-in">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a review.', 'bigbo' ), esc_url( $account_page_url ) ) . '</p>';
+		    $comment_form[ 'must_log_in' ] = '<p class="must-log-in">' . sprintf('You must be <a href="%s">logged in</a> to post a review.', esc_url( $account_page_url ) ) . '</p>';
 		}
 
 		if ( get_option( 'woocommerce_enable_review_rating' ) === 'yes' ) {

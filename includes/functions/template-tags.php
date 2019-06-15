@@ -71,33 +71,11 @@ if ( ! function_exists( 'bigbo_entry_footer' ) ) :
 
         if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
             echo '<span class="comments-link">';
-            comments_popup_link(
-            sprintf(
-            wp_kses(
-            /* translators: %s: post title */
-            esc_html__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'bigbo' ), array(
-                'span' => array(
-                    'class' => array(),
-                ),
-            )
-            ), get_the_title()
-            )
-            );
+            comments_popup_link( sprintf( '%s <span class="screen-reader-text"> on %s</span>', esc_html__( 'Leave a Comment', 'bigbo' ), get_the_title() ) );
             echo '</span>';
         }
 
-        edit_post_link(
-        sprintf(
-        wp_kses(
-        /* translators: %s: Name of current post. Only visible to screen readers */
-        __( 'Edit <span class="screen-reader-text">%s</span>', 'bigbo' ), array(
-            'span' => array(
-                'class' => array(),
-            ),
-        )
-        ), get_the_title()
-        ), '<span class="edit-link">', '</span>'
-        );
+        edit_post_link( sprintf( '%s <span class="screen-reader-text">%s</span>', esc_html__( 'Edit', 'bigbo' ), get_the_title() ), '<span class="edit-link">', '</span>');
     }
 
 endif;
@@ -284,39 +262,6 @@ function bigbo_get_terms( $term = NULL, $glue = ', ' ) {
     }
 
     return trim( join( $glue, $thing ) );
-}
-
-// Share This Buttons
-function bigbo_sharethis() {
-    global $post, $ved_options;
-    $image_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
-    if ( empty( $image_url ) ) {
-        $image_url = get_template_directory_uri() . '/assets/images/no-thumbnail.jpg';
-    }
-    $ved_nofollow_social_links = bigbo_get_option( 'ved_nofollow_social_links', '0' );
-    $nofollow                 = '';
-    if ( $ved_nofollow_social_links ) {
-        $nofollow = 'rel="nofollow"';
-    }
-    ?>
-    <div class="share-this">
-        <?php if ( $ved_options[ 'ved_sharing_twitter' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $ved_options[ 'ved_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Twitter', 'bigbo' ); ?>" target="_blank" href="http://twitter.com/intent/tweet?status=<?php echo esc_attr( $post->post_title ); ?>+&raquo;+<?php echo esc_url( bigbo_tinyurl( get_permalink() ) ); ?>"><i class="fa fa-twitter"></i></a>
-        <?php } if ( $ved_options[ 'ved_sharing_facebook' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $ved_options[ 'ved_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Facebook', 'bigbo' ); ?>" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&amp;t=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-facebook"></i></a>
-        <?php } if ( $ved_options[ 'ved_sharing_google' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $ved_options[ 'ved_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Google Plus', 'bigbo' ); ?>" target="_blank" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"><i class="fa fa-google-plus"></i></a>
-        <?php } if ( $ved_options[ 'ved_sharing_pinterest' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $ved_options[ 'ved_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Pinterest', 'bigbo' ); ?>" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&media=<?php echo esc_attr( $image_url ); ?>&description=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-pinterest"></i></a>			
-        <?php } if ( $ved_options[ 'ved_sharing_linkedin' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $ved_options[ 'ved_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Linkedin', 'bigbo' ); ?>" target="_blank" href="http://linkedin.com/shareArticle?mini=true&amp;url=<?php the_permalink(); ?>&amp;title=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-linkedin-square"></i></a>			
-        <?php } if ( $ved_options[ 'ved_sharing_email' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $ved_options[ 'ved_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'Share on Email', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/email?linkurl=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="fa fa-envelope-o"></i></a>
-            <?php } if ( $ved_options[ 'ved_sharing_more_options' ] == 1 ) { ?>
-            <a <?php echo esc_attr( $nofollow ); ?> data-toggle="tooltip" data-placement="<?php echo esc_attr( $ved_options[ 'ved_sharing_box_tooltip_position' ] ) ?>" data-original-title="<?php esc_html_e( 'More options', 'bigbo' ); ?>" target="_blank" href="http://www.addtoany.com/share_save#url=<?php the_permalink(); ?>&linkname=<?php echo esc_attr( $post->post_title ); ?>"><i class="icon-action-redo icons ti-plus"></i></a>
-    <?php } ?>
-    </div>
-    <?php
 }
 
 /**

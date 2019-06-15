@@ -247,7 +247,7 @@ Redux::setSection( $ved_options, array(
 			'default'	 => '2cr',
 		),
 		array(
-			'subtitle'	 => __( '<strong>Boxed version</strong> automatically enables custom background', 'bigbo' ),
+			'subtitle'	 => esc_html__( 'Boxed version automatically enables custom background', 'bigbo' ),
 			'id'		 => 'ved_width_layout',
 			'type'		 => 'select',
 			'compiler'	 => true,
@@ -305,10 +305,10 @@ Redux::setSection( $ved_options, array(
 		array(
 			'id'		 => 'ved_info_consid1',
 			'type'		 => 'info',
-			'subtitle'	 => __( '<h3>Content and One Sidebar Width</h3>', 'bigbo' ),
+			'subtitle'	 => sprintf( '<h3>%s</h3>', esc_html__( 'Content and One Sidebar Width', 'bigbo' ) ),
 		),
 		array(
-			'subtitle'	 => sprintf( __( '<span class="subtitleription">These options apply for the following layouts</span> <img style="float:left, display:inline" src="%1$s2cl.png" /> <img style="float:left, display:inline" src="%2$s2cr.png" />', 'bigbo' ), esc_url(BIGBO_IMAGEPATH), esc_url(BIGBO_IMAGEPATH) ),
+			'subtitle'	 => sprintf('<span class="subtitleription">%1$s</span> <img style="float:left, display:inline" src="%2$s2cl.png" /> <img style="float:left, display:inline" src="%3$s2cr.png" />', esc_html__( 'These options apply for the following layouts', 'bigbo' ), esc_url(BIGBO_IMAGEPATH), esc_url(BIGBO_IMAGEPATH) ),
 			'id'		 => 'ved_info_consid1_widths',
 			'style'		 => 'notice',
 			'type'		 => 'info',
@@ -361,10 +361,10 @@ Redux::setSection( $ved_options, array(
 		array(
 			'id'		 => 'ved_info_consid2',
 			'type'		 => 'info',
-			'subtitle'	 => __( '<h3>Content and Two Sidebars Width</h3>', 'bigbo' ),
+			'subtitle'	 => sprintf( '<h3>%s</h3>', esc_html__( 'Content and Two Sidebars Width', 'bigbo' ) ),
 		),
 		array(
-			'subtitle'	 => sprintf( __( '<span class="subtitleription">These options apply for the following layouts</span> <img style="float:left, display:inline" src="%1$s3cm.png" /> <img style="float:left, display:inline" src="%2$s3cr.png" /> <img style="float:left, display:inline" src="%3$s3cl.png" />', 'bigbo' ), esc_url(BIGBO_IMAGEPATH), esc_url(BIGBO_IMAGEPATH), esc_url(BIGBO_IMAGEPATH) ),
+			'subtitle'	 => sprintf( '<span class="subtitleription">%1$s</span> <img style="float:left, display:inline" src="%2$s3cm.png" /> <img style="float:left, display:inline" src="%3$s3cr.png" /> <img style="float:left, display:inline" src="%4$s3cl.png" />', esc_html__( 'These options apply for the following layouts', 'bigbo' ), esc_url(BIGBO_IMAGEPATH), esc_url(BIGBO_IMAGEPATH), esc_url(BIGBO_IMAGEPATH) ),
 			'id'		 => 'ved_info_consid2_widths',
 			'style'		 => 'notice',
 			'type'		 => 'info',
@@ -765,7 +765,10 @@ Redux::setSection( $ved_options, array(
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
-			'subtitle'	 => __( 'Available <strong>HTML</strong> tags and attributes:<br /><br /> <code> &lt;b&gt; &lt;i&gt; &lt;a href="" &gt; &lt;blockquote&gt; &lt;del &gt; <br /> &lt;ins &gt; &lt;img /&gt; &lt;ul&gt; &lt;ol&gt; &lt;li&gt; <br /> &lt;code&gt; &lt;em&gt; &lt;strong&gt; &lt;div&gt; &lt;span&gt; &lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt; <br /> &lt;table&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt; &lt;br /&gt; &lt;hr /&gt;</code>', 'bigbo' ),
+			'subtitle'	 => esc_html__( 'Available HTML tags and attributes:<b> <i> <a href="" > <blockquote> <del >
+										<ins > <img /> <ul> <ol> <li>
+										<code> <em> <strong> <div> <span> <h1> <h2> <h3> <h4> <h5> <h6>
+										<table> <tbody> <tr> <td> <br /> <hr />', 'bigbo' ),
 			'id'		 => 'ved_footer_content',
 			'type'		 => 'textarea',
 			'title'		 => esc_html__( 'Custom Footer', 'bigbo' ),
@@ -845,7 +848,7 @@ Redux::setSection( $ved_options, array(
 			'default'	 => '0',
 		),
 		array(
-			'subtitle'	 => __( '<h3 style=\'margin: 0;\'>Footer Default Pattern</h3>', 'bigbo' ),
+			'subtitle'	 => sprintf( '<h3 style=\'margin: 0;\'>%s</h3>', esc_html__( 'Footer Default Pattern', 'bigbo' ) ),
 			'id'		 => 'ved_header_footer',
 			'type'		 => 'info',
 		),
@@ -1118,7 +1121,7 @@ Redux::setSection( $ved_options, array(
 			'default'	 => 'classic',
 		),
 		array(
-			'subtitle'	 => __( 'Grid layout with <strong>3 and 4</strong> posts per row is recommended to use with disabled <strong>Sidebar(s)</strong>', 'bigbo' ),
+			'subtitle'	 => esc_html__( 'Grid layout with 3 and 4 posts per row is recommended to use with disabled Sidebar(s)', 'bigbo' ),
 			'id'		 => 'ved_post_layout',
 			'type'		 => 'image_select',
 			'compiler'	 => true,
@@ -1246,7 +1249,7 @@ Redux::setSection( $ved_options, array(
                         'default'	 => 0,
 		),
 		array(
-			'subtitle'	 => __( 'Choose the position of the <strong>Previous/Next Post</strong> links', 'bigbo' ),
+			'subtitle'	 => esc_html__( 'Choose the position of the Previous/Next Post links', 'bigbo' ),
 			'id'		 => 'ved_post_links',
 			'type'		 => 'select',
 			'options'	 => array(
@@ -1258,7 +1261,7 @@ Redux::setSection( $ved_options, array(
 			'default'	 => 'after',
 		),
 		array(
-			'subtitle'	 => __( 'Choose if you want to display <strong>Similar posts</strong> in articles', 'bigbo' ),
+			'subtitle'	 => esc_html__( 'Choose if you want to display Similar posts in articles', 'bigbo' ),
 			'id'		 => 'ved_similar_posts',
 			'type'		 => 'select',
 			'options'	 => array(
@@ -1270,7 +1273,7 @@ Redux::setSection( $ved_options, array(
 			'default'	 => 'category',
 		),
                 array(
-			'subtitle'	 => __( 'Choose enable button if you want to display <strong>Similar posts</strong> in slider', 'bigbo' ),
+			'subtitle'	 => esc_html__( 'Choose enable button if you want to display Similar posts in slider', 'bigbo' ),
 			'id'		 => 'ved_similar_posts_carousel',
 			'type'		 => 'switch',
 			'on'		 => esc_html__( 'Enabled', 'bigbo' ),
@@ -1354,7 +1357,7 @@ Redux::setSection( $ved_options, array(
 			'default'	 => 'grid',
 		),
 		array(
-			'subtitle'	 => __( 'Grid layout with <strong>3 and 4</strong> portfolio per row is recommended to use with disabled <strong>Sidebar(s)</strong>', 'bigbo' ),
+			'subtitle'	 => esc_html__( 'Grid layout with 3 and 4 portfolio per row is recommended to use with disabled Sidebar(s)', 'bigbo' ),
 			'id'		 => 'ved_portfolio_layout',
 			'type'		 => 'image_select',
 			'compiler'	 => true,
@@ -1449,7 +1452,7 @@ Redux::setSection( $ved_options, array(
 			'title'		 => esc_html__( 'Disable Woocommerce Shop Page Ordering Boxes', 'bigbo' ),
 		),
 		array(
-			'subtitle'	 => __( 'Grid layout with <strong>3 and 4</strong> products per row is recommended to use with disabled <strong>Sidebar(s)</strong>', 'bigbo' ),
+			'subtitle'	 => esc_html__( 'Grid layout with 3 and 4 products per row is recommended to use with disabled Sidebar(s)', 'bigbo' ),
 			'id'		 => 'ved_woocommerce_layout',
 			'type'		 => 'image_select',
 			'compiler'	 => true,
@@ -1486,7 +1489,7 @@ Redux::setSection( $ved_options, array(
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
-			'raw'	 => __( '<h3 style=\'margin: 0;\'>Custom fonts for all elements.</h3><p style="margin-bottom:0;">This will override the Google / standard font options. All 4 files are required.</h3>', 'bigbo' ),
+			'raw'	 => sprintf( '<h3 style=\'margin: 0;\'>%s</h3><p style="margin-bottom:0;">%s</h3>', esc_html__( 'Custom fonts for all elements.', 'bigbo' ), esc_html__( 'This will override the Google / standard font options. All 4 files are required.', 'bigbo' ) ),
 			'id'	 => 'ved_custom_fonts',
 			'type'	 => 'info',
 		),
@@ -2339,7 +2342,7 @@ Redux::setSection( $ved_options, array(
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'RSS Feed', 'bigbo' ),
 			'default'	 => $bigbo_rss_url,
-			'subtitle'	 => __( 'Insert custom RSS Feed URL, e.g. <strong>http://feeds.feedburner.com/Example</strong>', 'bigbo' ),
+			'subtitle'	 => esc_html__( 'Insert custom RSS Feed URL, e.g. http://feeds.feedburner.com/Example', 'bigbo' ),
 		),
 	)
 ) );

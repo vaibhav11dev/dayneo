@@ -175,11 +175,11 @@ if ( isset( $ved_options[ 'ved_text_header' ] ) && $ved_options[ 'ved_header_typ
  */
 $ved_pagetitlebar_height			 = bigbo_get_option( 'ved_pagetitlebar_height', 'medium' );
 $bigbo_page_title_bar_height		 = get_post_meta( $post_id, 'bigbo_page_title_bar_height', true );
-$ved_pagetitlebar_custom			 = bigbo_get_option( 'ved_pagetitlebar_custom', '' );
-$bigbo_page_title_bar_height_custom	 = get_post_meta( $post_id, 'bigbo_page_title_bar_height_custom', true );
 if ( !$bigbo_page_title_bar_height ) {
         $bigbo_page_title_bar_height = 'default';
 }
+$ved_pagetitlebar_custom			 = bigbo_get_option( 'ved_pagetitlebar_custom', '' );
+$bigbo_page_title_bar_height_custom	 = get_post_meta( $post_id, 'bigbo_page_title_bar_height_custom', true );
 
 // 1.1 Page Title Bar Custom Height
 if ( $bigbo_page_title_bar_height == 'custom' && $bigbo_page_title_bar_height_custom ) {
@@ -601,8 +601,8 @@ button[type=submit]:hover,
 .post.format-quote,
 .post.format-quote blockquote,
 .social-icons>li>a:hover,
-.tags a:focus,
-.tags a:hover,
+.share-this a:focus,
+.share-this a:hover,
 .divider-line::after,
 .button.wc-backward:hover,
 .button.wc-forward,

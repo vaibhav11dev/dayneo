@@ -22,8 +22,11 @@ get_header();
 			get_template_part( 'template-parts/content', 'page' );
 
 			$ved_share_this = bigbo_get_option( 'ved_share_this', 'single' );
-			if ( $ved_share_this == 'all' || $ved_share_this == 'page' ) {
-				bigbo_sharethis();
+			$ved_tooltip_position = bigbo_get_option( 'ved_sharing_box_tooltip_position', 'none' );
+			$image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+
+			if ( ($ved_share_this == 'all' || $ved_share_this == 'page') && function_exists( 'vedanta_share_link_socials' ) ) {
+				vedanta_share_link_socials( $ved_tooltip_position, get_the_title(), get_the_permalink(), $image );
 			}
 
 			//hide from static homepage, allowed in all normal pages. 

@@ -178,9 +178,7 @@
                         if (empty($bigbo_enable_page_title)) {
                             $bigbo_enable_page_title = 'default';
                         }
-                        if ( is_home() || is_front_page() ) {
-                            //Do Nothing
-                        } elseif ( $bigbo_enable_page_title == 'on' || ( $bigbo_enable_page_title == 'default' && $ved_pagetitlebar_layout == 1 ) ) {
+                        if ( ( ! is_home() || ! is_front_page() ) && ( $bigbo_enable_page_title == 'on' || ( $bigbo_enable_page_title == 'default' && $ved_pagetitlebar_layout == 1 ) ) ) {
                             bigbo_page_title_bar();
                         }
 	    

@@ -23,8 +23,8 @@ if ( is_singular() and ! is_page() ) {
 			<?php echo bigbo_paginate_links(); ?>
 		    </nav>
 	    <?php } else { ?>
-		    <div class="col-xs-6 col-md-6 nav-next"><?php previous_posts_link( __( '<i class="fa fa-angle-left p-r-10"></i> Newer Entries', 'bigbo' ) ); ?></div>
-		    <div class="col-xs-6 col-md-6 nav-previous"><?php next_posts_link( __( 'Older Entries <i class="fa fa-angle-right p-l-10"></i>', 'bigbo' ) ); ?></div>
+			<div class="col-xs-6 col-md-6 nav-next"><?php previous_posts_link( sprintf('<i class="fa fa-angle-left p-r-10"></i> %s', esc_html__( 'Newer Entries', 'bigbo' ) ) ); ?></div>
+		    <div class="col-xs-6 col-md-6 nav-previous"><?php next_posts_link( sprintf('%s <i class="fa fa-angle-right p-l-10"></i>', esc_html__( 'Older Entries', 'bigbo' ) ) ); ?></div>
 	    <?php } ?>
 	</div>
 	<div class="clearfix"></div> 

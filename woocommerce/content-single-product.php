@@ -20,6 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$ved_tooltip_position = bigbo_get_option( 'ved_sharing_box_tooltip_position', 'none' );
+$image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+
 /**
  * Hook Woocommerce_before_single_product.
  *
@@ -59,11 +62,13 @@ if ( post_password_required() ) {
 				 * @hooked WC_Structured_Data::generate_product_data() - 60
 				 */
 				do_action( 'woocommerce_single_product_summary' );
-	                        
-	                        /**
-	                         * Single product share
-	                         */
-	                        bigbo_product_share();
+
+				/**
+				 * Single product share
+				 */
+				if ( function_exists( 'vedanta_share_link_socials' ) ) {
+					vedanta_share_link_socials( $ved_tooltip_position, get_the_title(), get_the_permalink(), $image );
+				}
 			?>
 			</div>
 		</div>

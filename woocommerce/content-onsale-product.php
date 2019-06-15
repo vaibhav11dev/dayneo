@@ -11,12 +11,10 @@ if ( !defined( 'ABSPATH' ) ) {
 global $product;
 ?>
 <div class="onsale-product">
-
-	<?php
-	/**
-	 * 
-	 */
-	do_action( 'bigbo_onsale_product_content', $product );
-	?>
-
+	<div class="shop-item-photo">
+		<?php do_action( 'bigbo_onsale_product_photo', $product ); ?>
+	</div>
+	<div class="shop-item-title">
+		<?php do_action( 'bigbo_onsale_product_title', $product ); ?>
+	</div>
 </div>

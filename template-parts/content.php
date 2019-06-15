@@ -15,8 +15,6 @@ global $ved_options;
 	<div class="post-content">
 		<div class="entry-meta entry-header">
 			<?php
-			bigbo_post_heading();
-
 			if ( $ved_options[ 'ved_header_meta' ] == 1 ) {
 				?>
 				<ul class="post-meta">
@@ -31,7 +29,7 @@ global $ved_options;
 			<?php
 			the_content( esc_html__( 'Read More &raquo;', 'bigbo' ) );
 
-			wp_link_pages( array( 'before' => '<div id="page-links"><p>' . __( '<strong>Pages:</strong>', 'bigbo' ), 'after' => '</p></div>' ) );
+			wp_link_pages( array( 'before' => '<div id="page-links"><p>' . sprintf( '<strong>%s</strong>', esc_html__( 'Pages:', 'bigbo' ) ), 'after' => '</p></div>' ) );
 			?>	
 		</div>
     	<div class="clearfix"></div>
@@ -40,11 +38,14 @@ global $ved_options;
 
 				<?php
 				$ved_share_this = bigbo_get_option( 'ved_share_this', 'single' );
-				if ( ($ved_share_this == "") || ($ved_share_this == "single") || ($ved_share_this == "all") ) {
+				$ved_tooltip_position = bigbo_get_option( 'ved_sharing_box_tooltip_position', 'none' );
+				$image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+
+				if ( ($ved_share_this == 'all' || $ved_share_this == 'single') && function_exists( 'vedanta_share_link_socials' ) ) {
 					?>
 					<div class="share-wrap">
 						<?php
-						bigbo_sharethis();
+						vedanta_share_link_socials( $ved_tooltip_position, get_the_title(), get_the_permalink(), $image );
 						?>
 					</div>
 					<?php

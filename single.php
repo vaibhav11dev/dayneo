@@ -36,9 +36,7 @@ $ved_post_links		 = bigbo_get_option( 'ved_post_links', 'after' );
 				comments_template( '', true );
 			endif;
 
-			if ( ($ved_similar_posts == "") || ($ved_similar_posts == "disable") ) {
-				//Do Nothing
-			} else {
+			if ( $ved_similar_posts != "disable" ) {
 				bigbo_similar_posts();
 			}
 			

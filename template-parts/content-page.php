@@ -7,7 +7,6 @@
  * @package bigbo
  */
 $ved_pagetitlebar_layout		 = bigbo_get_option( 'ved_pagetitlebar_layout', 1 );
-$bigbo_enable_page_title	 = get_post_meta( get_the_ID(), 'bigbo_enable_page_title', true );
 $ved_edit_post			 = bigbo_get_option( 'ved_edit_post', '0' );
 ?>
 
@@ -37,18 +36,7 @@ $ved_edit_post			 = bigbo_get_option( 'ved_edit_post', '0' );
 				?>
 				<div class="col-sm-6">
 					<?php
-					edit_post_link(
-					sprintf(
-					wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'bigbo' ), array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-					), get_the_title()
-					), '<span class="edit-link">', '</span>'
-					);
+					edit_post_link(sprintf('%s <span class="screen-reader-text">%s</span>', esc_html__( 'Edit', 'bigbo' ), get_the_title()), '<span class="edit-link">', '</span>');
 					?>
 				</div>
 				<?php
@@ -57,11 +45,14 @@ $ved_edit_post			 = bigbo_get_option( 'ved_edit_post', '0' );
 
 			<?php
 			$ved_share_this = bigbo_get_option( 'ved_share_this', 'single' );
-			if ( $ved_share_this == 'all' || $ved_share_this == 'page' ) {
+			$ved_tooltip_position = bigbo_get_option( 'ved_sharing_box_tooltip_position', 'none' );
+			$image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+
+			if ( ($ved_share_this == 'all' || $ved_share_this == 'page') && function_exists( 'vedanta_share_link_socials' ) ) {
 				?>
 				<div class="col-sm-6">
 					<?php
-					bigbo_sharethis();
+					vedanta_share_link_socials( $ved_tooltip_position, get_the_title(), get_the_permalink(), $image );
 					?>
 				</div>
 				<?php

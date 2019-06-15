@@ -95,7 +95,7 @@ if ( is_product() && $woocommerce_loop[ 'name' ] == 'related' ) {
                 ?>
                 
                 <div class="short_description">
-                    <p><?php echo wp_kses_post( $product->short_description ); ?></p>
+                    <p><?php echo wp_kses_post( $product->get_short_description() ); ?></p>
                 </div>
 
                 <div class="shop-item-tools product-list-meta-options">
