@@ -105,26 +105,15 @@ Redux::setArgs( $ved_options, $args );
 // -> START Basic Configuration
 
 
-global $wp_registered_sidebars;
 $sidebar_options[] = 'None';
-// GET All Register Sidebars
-for ( $i = 0; $i < 1; $i ++ ) {
-	$sidebars = $wp_registered_sidebars;
-	if ( is_array( $sidebars ) && ! empty( $sidebars ) ) {
-		foreach ( $sidebars as $key => $sidebar ) {
-			$sidebar_options[ $key ] = $sidebar[ 'name' ];
-		}
-	}
-}
-
-// GET Custom Sidebars
-if ( class_exists( 'sidebar_generator' ) ) {
-	$sidebars2 = sidebar_generator::get_sidebars();
-	if ( is_array( $sidebars2 ) && ! empty( $sidebars2 ) ) {
-		foreach ( $sidebars2 as $key ) {
-			$sidebar_options[ $key ] = $key; //$key
-		}
-	}
+$sidebars = get_option('sidebars_widgets');
+if ( is_array( $sidebars ) && ! empty( $sidebars ) ) {
+        foreach ( $sidebars as $key => $sidebar ) {
+            if( $key !== 'wp_inactive_widgets' && $key !== 'array_version') {
+                $lable = str_replace( 'bigbo-custom-sidebar-', '', $key ) ;
+                $sidebar_options[ $key ] = $lable;
+            }
+        }
 }
 
 
@@ -297,8 +286,8 @@ Redux::setSection( $ved_options, array(
 			'left'		 => false,
 			'right'		 => false,
 			'default'	 => array(
-				'padding-top'	 => '30',
-				'padding-bottom' => '40',
+				'padding-top'	 => '30px',
+				'padding-bottom' => '40px',
 				'units'		 => 'px',
 			),
 		),
@@ -1437,6 +1426,13 @@ Redux::setSection( $ved_options, array(
 	'id'	 => 'ved-woocommerce-main-tab',
 	'title'	 => esc_html__( 'WooCommerce', 'bigbo' ),
 	'icon'	 => 'fa  fa-shopping-cart icon-large',
+	)
+);
+
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-woocommerce-General-tab',
+	'title'	 => esc_html__( 'General', 'bigbo' ),
+	'subsection'	 => true,
 	'fields' => array(
 		array(
 			'subtitle'	 => esc_html__( 'Insert the number of products to display per page.', 'bigbo' ),
@@ -1472,6 +1468,202 @@ Redux::setSection( $ved_options, array(
 			'title'		 => esc_html__( 'Shop Archive/Category Sidebar', 'bigbo' ),
 			'default'	 => 'Siderbar 1',
 		),         
+	),
+)
+);
+
+Redux::setSection( $ved_options, array(
+	'id'	 => 'ved-woocommerce-prolisting-tab',
+	'title'	 => esc_html__( 'Products Listing', 'bigbo' ),
+	'subsection'	 => true,
+	'fields' => array(
+            array(
+                'id' => 'product_hover_style',
+                'type' => 'ved_select_image',
+                'title' => esc_html__('Product Hover Style', 'bigbo' ),
+                'placeholder' => esc_html__('Select product hover style.', 'bigbo' ),
+                'select2' => array(
+                    'allowClear' => 0,
+                ),
+                'options' => Array(
+					'default' => array(
+                        'alt' => esc_html__('Default', 'bigbo' ),
+                        'title' => esc_html__('Default', 'bigbo' ),
+                        'img' => esc_url(BIGBO_IMAGEFOLDER.'/product_hover_style/default.jpg'),
+                    ),
+					'icon-top-left' => array(
+                        'alt' => esc_html__('Icon Top Left', 'bigbo' ),
+                        'title' => esc_html__('Icon Top Left', 'bigbo' ),
+                        'img' => esc_url(BIGBO_IMAGEFOLDER.'/product_hover_style/icon-top-left.jpg'),
+                    ),
+                    'image-center' => array(
+                        'alt' => esc_html__('Image Center', 'bigbo' ),
+                        'title' => esc_html__('Image Center', 'bigbo' ),
+                        'img' => esc_url(BIGBO_IMAGEFOLDER.'/product_hover_style/image-center.jpg'),
+                    ),
+                    'image-left' => array(
+                        'alt' => esc_html__('Image Left', 'bigbo' ),
+                        'title' => esc_html__('Image Left', 'bigbo' ),
+                        'img' => esc_url(BIGBO_IMAGEFOLDER.'/product_hover_style/image-left.jpg'),
+                    ),
+                    'image-bottom' => array(
+                        'alt' => esc_html__('Image Bottom', 'bigbo' ),
+                        'title' => esc_html__('Image Bottom', 'bigbo' ),
+                        'img' => esc_url(BIGBO_IMAGEFOLDER.'/product_hover_style/image-bottom.jpg'),
+                    ),
+                    'image-bottom-2' => array(
+                        'alt' => esc_html__('Image Bottom 2', 'bigbo' ),
+                        'title' => esc_html__('Image Bottom 2', 'bigbo' ),
+                        'img' => esc_url(BIGBO_IMAGEFOLDER.'/product_hover_style/image-bottom-2.jpg'),
+                    ),
+                    'image-bottom-bar' => array(
+                        'alt' => esc_html__('Image Bottom Bar', 'bigbo' ),
+                        'title' => esc_html__('Image Bottom Bar', 'bigbo' ),
+                        'img' => esc_url(BIGBO_IMAGEFOLDER.'/product_hover_style/image-bottom-bar.jpg'),
+                    ),
+                    'info-bottom' => array(
+                        'alt' => esc_html__('Info Bottom', 'bigbo' ),
+                        'title' => esc_html__('Info Bottom', 'bigbo' ),
+                        'img' => esc_url(BIGBO_IMAGEFOLDER.'/product_hover_style/info-bottom.jpg'),
+                    ),
+                    'info-bottom-bar' => array(
+                        'alt' => esc_html__('Info Bottom Bar', 'bigbo' ),
+                        'title' => esc_html__('Info Bottom Bar', 'bigbo' ),
+                        'img' => esc_url(BIGBO_IMAGEFOLDER.'/product_hover_style/info-bottom-bar.jpg'),
+                    ),
+                ),
+                'default' => 'image-center',
+            ),    
+		array(
+                'id' => 'product_image_swap',
+                'type' => 'switch',
+                'title' => esc_html__('Swape Image On Hover', 'bigbo' ),
+                'subtitle' => esc_html__('Product image change on hover.', 'bigbo' ),
+                'on' => esc_html__('Yes', 'bigbo' ),
+                'off' => esc_html__('No', 'bigbo' ),
+                'default' => true,
+            ),
+			array(
+                'id' => 'product_title_length',
+                'type' => 'button_set',
+                'title' => esc_html__('Product Title Length', 'bigbo' ),
+                'options' => array(
+                    'full' => esc_html__('Full', 'bigbo' ),
+                    'single_line' => esc_html__('Single Line', 'bigbo' ),
+                ),
+                'default' => 'single_line',
+            ),
+		array(
+                'id' => 'product_hover_button_shape',
+                'type' => 'button_set',
+                'title' => esc_html__('Button Shape', 'bigbo' ),
+                'options' => array(
+                    'square' => esc_html__('Square', 'bigbo' ),
+                    'round' => esc_html__('Round', 'bigbo' ),
+                ),
+                'default' => 'square',
+                'required' => array('product_hover_style', '=', array('image-center', 'image-left', 'image-bottom', 'image-bottom-2', 'info-bottom')),
+            ),
+            array(
+                'id' => 'product_hover_button_style',
+                'type' => 'button_set',
+                'title' => esc_html__('Button Style', 'bigbo' ),
+                'options' => array(
+                    'flat' => esc_html__('Flat', 'bigbo' ),
+                    'border' => esc_html__('Border', 'bigbo' ),
+                ),
+                'default' => 'flat',
+                'required' => array('product_hover_style', '=', array('image-center', 'image-left', 'image-bottom')),
+            ),
+            array(
+                'id' => 'product_hover_bar_style',
+                'type' => 'button_set',
+                'title' => esc_html__('Bar Style', 'bigbo' ),
+                'options' => array(
+                    'flat' => esc_html__('Flat', 'bigbo' ),
+                    'border' => esc_html__('Border', 'bigbo' ),
+                ),
+                'default' => 'flat',
+                'required' => array('product_hover_style', '=', array('image-bottom-bar', 'info-bottom-bar')),
+            ),
+            array(
+                'id' => 'product_hover_add_to_cart_position',
+                'type' => 'button_set',
+                'title' => esc_html__('"Add to Cart" Position', 'bigbo' ),
+                'options' => array(
+                    'center' => esc_html__('Center', 'bigbo' ),
+                    'left' => esc_html__('Left', 'bigbo' ),
+                ),
+                'default' => 'center',
+                'required' => array('product_hover_style', '=', array('image-bottom-bar', 'info-bottom', 'info-bottom-bar')),
+            ),
+			array(
+                'id' => 'product_hover_default_button_style',
+                'type' => 'button_set',
+                'title' => esc_html__('Button Style', 'bigbo' ),
+                'options' => array(
+                    'dark' => esc_html__('Dark', 'bigbo' ),
+                    'light' => esc_html__('Light', 'bigbo' ),
+                ),
+                'default' => 'dark',
+                'required' => array('product_hover_style', '=', array('default', 'icon-top-left')),
+            ),
+            array(
+                'id' => 'product_hover_icon_type',
+                'type' => 'button_set',
+                'title' => esc_html__('Product Icons Type', 'bigbo' ),
+                'subtitle' => esc_html__('Overall Product Hover Icon Type.', 'bigbo' ),
+                'options' => array(
+                    'fill-icon' => esc_html__('Flat Icons', 'bigbo' ),
+                    'line-icon' => esc_html__('Line Icons', 'bigbo' ),
+                ),
+                'default' => 'fill-icon',
+            ),
+			array(
+    			'id'         => 'product_pagination',
+    			'type'       => 'button_set',
+    			'title'      => esc_html__('Product Pagination', 'bigbo' ),
+    			'options'    => array(
+    				'pagination'   		=> esc_html__('Pagination', 'bigbo' ),
+    				'load_more'			=> esc_html__('Load More', 'bigbo' ),
+    				'infinite_scroll'   => esc_html__('Infinite Scroll', 'bigbo' ),
+    			),
+    			'default' => 'pagination',
+    		),	
+		array(
+                'id' => 'product_hover_icon_type',
+                'type' => 'button_set',
+                'title' => esc_html__('Product Icons Type', 'bigbo' ),
+                'subtitle' => esc_html__('Overall Product Hover Icon Type.', 'bigbo' ),
+                'options' => array(
+                    'fill-icon' => esc_html__('Flat Icons', 'bigbo' ),
+                    'line-icon' => esc_html__('Line Icons', 'bigbo' ),
+                ),
+                'default' => 'fill-icon',
+            ),
+		array(
+                'id' => 'product-out-of-stock-icon',
+                'type' => 'switch',
+                'title' => esc_html__('Display "Out of stock" Label', 'bigbo' ),
+                'default' => true,
+                'on' => esc_html__('Yes', 'bigbo' ),
+                'off' => esc_html__('No', 'bigbo' ),
+            ),
+		array(
+                'id' => 'woocommerce_catalog_mode',
+                'type' => 'switch',
+                'title' => esc_html__('Just Catalog', 'bigbo' ),
+                'subtitle' => esc_html__('Disable "Add To Cart" button and shopping cart', 'bigbo' ),
+                'default' => false,
+            ),
+            array(
+                'id' => 'woocommerce_price_hide',
+                'type' => 'switch',
+                'title' => esc_html__('Hide Price', 'bigbo' ),
+                'subtitle' => esc_html__('Hide product price on Product pages', 'bigbo' ),
+                'default' => false,
+                'required' => array('woocommerce_catalog_mode', '=', true)
+            ),
 	),
 )
 );
@@ -1926,10 +2118,10 @@ Redux::setSection( $ved_options, array(
 			'units'		 => array( 'px', 'em' ),
 			'title'		 => esc_html__( 'Padding Between Menu Items', 'bigbo' ),
 			'default'	 => array(
-				'padding-top'	 => '0',
-				'padding-right' => '15',
-				'padding-bottom' => '0',
-				'padding-left' => '15',
+				'padding-top'	 => '0px',
+				'padding-right' => '15px',
+				'padding-bottom' => '0px',
+				'padding-left' => '15px',
 				'units'		 => 'px',
 			),
 		),

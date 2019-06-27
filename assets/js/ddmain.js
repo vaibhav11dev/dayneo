@@ -624,7 +624,7 @@ $(document).on("click", function () {
         var $modal = $('#ved-quick-view-modal'),
             $product = $modal.find('.product-modal-content');
 
-        $.HandleElement.$body.on('click', '.ved-product-quick-view', function (e) {
+        $.HandleElement.$body.on('click', '.open-quick-view', function (e) {
             e.preventDefault();
 
             var $a = $(this),
@@ -1011,11 +1011,6 @@ jQuery(document).ready(function(){
         });
     }
 });
-
-/**
- * Product Action Button Wrap Div
- */
-jQuery(".shop-item .shop-item-photo .shop-item-tools .compare").wrap("<div class='action-btn compare-warp'>");
 
 /**
  * contact form 7 on submit hide message

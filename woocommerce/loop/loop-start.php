@@ -19,6 +19,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-?>
 
-<div class="row"><div class="multi-columns-row products">
+$column = bigbo_get_option( 'ved_woocommerce_layout', '4' );
+?>
+<ul class="<?php echo esc_attr( bigbo_products_loop_classes('products') );?>" data-column="<?php echo esc_attr( $column );?>">

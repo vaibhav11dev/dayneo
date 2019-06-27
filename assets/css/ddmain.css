@@ -6043,7 +6043,7 @@ body #cboxClose:hover{
     opacity: .8
 }
 
-@media screen and (min-width: 1051px){
+/*@media screen and (min-width: 1051px){
 .shop-item .shop-item-photo .shop-item-tools > .button,
 .shop-item .shop-item-photo .shop-item-tools > .action-btn,
 .shop-item .shop-item-photo .shop-item-tools .yith-wcwl-add-to-wishlist{
@@ -6085,7 +6085,7 @@ body #cboxClose:hover{
     -webkit-transition-delay: .3s;
     -ms-transition-delay: .3s;
 }
-}
+}*/
 @media screen and (max-width: 767px){
 .products.multi-columns-row{
     padding-left: 8px;

@@ -113,6 +113,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 if ( class_exists( 'Woocommerce' ) ) {
     include_once( BIGBO_PHP_INCLUDE . 'woo-config.php' );
+    include_once( BIGBO_PHP_INCLUDE . 'woo-shop-hooks.php' );
 }
 
 /**

@@ -227,16 +227,16 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 
  * 
  * @return boolean
  */
-function bigbo_woocommerce_template_loop_product_title() {
-	global $product;
-
-	$link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
-
-	echo '<h5 class="woocommerce-loop-product__title"><a href="' . esc_url( $link ) . '" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">' . esc_html( get_the_title() ) . '</a></h5>';
-}
-
-remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
-add_action( 'woocommerce_shop_loop_item_title', 'bigbo_woocommerce_template_loop_product_title', 10 );
+//function bigbo_woocommerce_template_loop_product_title() {
+//	global $product;
+//
+//	$link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
+//
+//	echo '<h5 class="woocommerce-loop-product__title"><a href="' . esc_url( $link ) . '" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">' . esc_html( get_the_title() ) . '</a></h5>';
+//}
+//
+//remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+//add_action( 'woocommerce_shop_loop_item_title', 'bigbo_woocommerce_template_loop_product_title', 10 );
 
 /**
  * WooCommerce(shop-page) - Add Custom product shorting filter in shop page
@@ -951,7 +951,7 @@ add_action( 'yith_wcqv_product_summary', 'woocommerce_template_single_meta', 30 
 add_action( 'yith_wcqv_product_summary', 'bigbo_product_share', 35 );
 
 // Add product thumbnail
-add_action( 'woocommerce_after_shop_loop_item', 'product_content_thumbnail' );
+//add_action( 'woocommerce_after_shop_loop_item', 'product_content_thumbnail' );
 
 /**
  * WooCommerce Loop Product Content Thumbs
@@ -960,21 +960,21 @@ add_action( 'woocommerce_after_shop_loop_item', 'product_content_thumbnail' );
  *
  * @return string
  */
-function product_content_thumbnail() {
-	global $product;
-
-	echo '<div class="action-btn quick-view-warp">';
-
-	echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button ved-product-quick-view"></a>';
-
-	echo '</div>';
-
-	if ( shortcode_exists( 'yith_wcwl_add_to_wishlist' ) ) {
-		echo do_shortcode( '[yith_wcwl_add_to_wishlist]' );
-	}
-
-	product_compare();
-}
+//function product_content_thumbnail() {
+//	global $product;
+//
+//	echo '<div class="action-btn quick-view-warp">';
+//
+//	echo '<a href="' . $product->get_permalink() . '" data-id="' . esc_attr( $product->get_id() ) . '"  class="button yith-wcqv-button ved-product-quick-view"></a>';
+//
+//	echo '</div>';
+//
+//	if ( shortcode_exists( 'yith_wcwl_add_to_wishlist' ) ) {
+//		echo do_shortcode( '[yith_wcwl_add_to_wishlist]' );
+//	}
+//
+//	product_compare();
+//}
 
 /**
  * WooCommerce product compare
@@ -1014,25 +1014,25 @@ function product_compare() {
 	}
 
 	$url = esc_url_raw( add_query_arg( $url_args, site_url() ) );
-	//echo '<div class="action-btn compare-warp">';
+	echo '<div class="action-btn compare-warp">';
 	printf( '<a href="%s" class="%s" title="%s" data-product_id="%d">%s</a>', esc_url( $url ), esc_attr( $css_class ), esc_html( $button_text ), $product_id, $button_text );
-	//echo '</div>';
+	echo '</div>';
 }
 
 // Display the additional product images
-function bigbo_second_product_thumbnail() {
-	global $product, $woocommerce, $id;
-	$attachment_ids	 = $product->get_gallery_image_ids();
-	$id				 = get_post_thumbnail_id( $product->get_id() );
-	if ( count( $attachment_ids ) > 0 ) {
-		$secondary_image_id	 = $attachment_ids[ '0' ];
-		echo wp_get_attachment_image( $secondary_image_id, 'shop_catalog', '', $attr				 = array( 'class' => 'secondary-image attachment-shop-catalog' ) );
-	} else {
-		echo wp_get_attachment_image( $id, 'shop_catalog', '', $attr = array( 'class' => 'secondary-image attachment-shop-catalog' ) );
-	}
-}
-
-add_action( 'woocommerce_before_shop_loop_item_title', 'bigbo_second_product_thumbnail' );
+//function bigbo_second_product_thumbnail() {
+//	global $product, $woocommerce, $id;
+//	$attachment_ids	 = $product->get_gallery_image_ids();
+//	$id				 = get_post_thumbnail_id( $product->get_id() );
+//	if ( count( $attachment_ids ) > 0 ) {
+//		$secondary_image_id	 = $attachment_ids[ '0' ];
+//		echo wp_get_attachment_image( $secondary_image_id, 'shop_catalog', '', $attr				 = array( 'class' => 'secondary-image attachment-shop-catalog' ) );
+//	} else {
+//		echo wp_get_attachment_image( $id, 'shop_catalog', '', $attr = array( 'class' => 'secondary-image attachment-shop-catalog' ) );
+//	}
+//}
+//
+//add_action( 'woocommerce_before_shop_loop_item_title', 'bigbo_second_product_thumbnail' );
 
 /**
  * Product On Sale
