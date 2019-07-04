@@ -2072,43 +2072,6 @@ Redux::setSection( $ved_options, array(
 );
 
 Redux::setSection( $ved_options, array(
-    'id'         => 'ved-typography-subsec-tvslider-tab',
-    'title'      => esc_html__( 'ThemeVedanta Slider', 'bigbo' ),
-    'subsection' => true,
-    'fields'     => array(
-        array(
-            'subtitle'    => esc_html__( 'Select the typography you want for your slider heading. * non web-safe font.', 'bigbo' ),
-            'id'          => 'ved_slider_heading_font',
-            'type'        => 'typography',
-            'title'       => esc_html__( 'Slider Heading Font', 'bigbo' ),
-            'text-align'  => false,
-            'line-height' => false,
-            'default'     => array(
-                'font-size'   => '58px',
-                'color'       => '#ffffff',
-                'font-family' => 'Poppins',
-                'font-weight' => '400',
-            ),
-        ),
-        array(
-            'subtitle'    => esc_html__( 'Select the typography you want for your slider caption. * non web-safe font.', 'bigbo' ),
-            'id'          => 'ved_slider_caption_font',
-            'type'        => 'typography',
-            'text-align'  => false,
-            'line-height' => false,
-            'title'       => esc_html__( 'Slider Caption Font', 'bigbo' ),
-            'default'     => array(
-                'font-size'   => '20px',
-                'font-family' => 'Poppins',
-                'color'       => '#ffffff',
-                'font-weight' => '400',
-            ),
-        ),
-    ),
-)
-);
-
-Redux::setSection( $ved_options, array(
 	'id'		 => 'ved-typography-subsec-menu-tab',
 	'title'		 => esc_html__( 'Menu', 'bigbo' ),
 	'subsection'	 => true,

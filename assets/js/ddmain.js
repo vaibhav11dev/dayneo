@@ -273,45 +273,6 @@
                 scrollTop: 0
             }, "slow"), false;
         });
-        
-
-        /**
-         * Vedanta Slider
-         * 
-         */
-        var js_local_vars = '';
-        $(".flexslider").flexslider({
-            slideshow: js_local_vars.slide_auto_play,
-            slideshowSpeed: js_local_vars.slide_show_speed,
-            animation: js_local_vars.slide_animation,
-            animationSpeed: js_local_vars.slide_animation_speed,
-            directionNav: js_local_vars.slide_nav_arrows,
-            controlNav: js_local_vars.slide_pagination_circles,
-            video: true,
-            prevText: '<i class="fa fa-angle-left"></i>',
-            nextText: '<i class="fa fa-angle-right"></i>',
-            before: function (slider) {
-                $(".hero-caption").fadeOut().animate({
-                    top: "-80px"
-                }, {
-                    queue: false,
-                    easing: "swing",
-                    duration: 700
-                });
-                slider.slides.eq(slider.currentSlide).delay(500);
-                slider.slides.eq(slider.animatingTo).delay(500);
-            },
-            after: function (inRangeAlready) {
-                $(".hero-caption").fadeIn().animate({
-                    top: "0"
-                }, {
-                    queue: false,
-                    easing: "swing",
-                    duration: 700
-                });
-            },
-            useCSS: true
-        });
 
         /**
          * Custom product shorting filter in shop page

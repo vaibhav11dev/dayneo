@@ -12,9 +12,6 @@
  * @param type $default
  * @return type
  */
-
-load_theme_textdomain('bigbo', get_template_directory() . '/languages');
-
 function bigbo_get_option( $name, $default = false ) {
 	$options = get_option( 'ved_options' );
 
@@ -69,15 +66,6 @@ function bigbo_process_tag( $m ) {
 	return $m[ 1 ] . $m[ 6 ];
 }
 
-/**
- * 
- * Truncate content
- * 
- * @param type $str
- * @param type $length
- * @param type $trailing
- * @return type
- */
 function bigbo_truncate( $str, $length = 10, $trailing = '..' ) {
 	$length -= mb_strlen( $trailing );
 	if ( mb_strlen( $str ) > $length ) {
@@ -100,25 +88,12 @@ function bigbo_get_first_image() {
 	}
 }
 
-/**
- * 
- * Tiny URL
- * 
- * @param type $url
- * @return type
- */
 function bigbo_tinyurl( $url ) {
 	$response = esc_url( wp_remote_retrieve_body( wp_remote_get( 'http://tinyurl.com/api-create.php?url=' . $url ) ) );
 
 	return $response;
 }
 
-/**
- * 
- * Similar Posts
- * 
- * @global string $post
- */
 function bigbo_similar_posts() {
 	$post			 = '';
 	$orig_post		 = $post;
@@ -322,76 +297,6 @@ function bigbo_build_url( $url_data ) {
 
 	return $url;
 }
-
-/**
- * 
- * Woo Products Shortcode Recode
- * 
- * @global type $woocommerce_loop
- * @param type $atts
- * @param type $content
- * @return type
- */
-//function bigbo_woo_product( $atts, $content = null ) {
-//	global $woocommerce_loop;
-//
-//	if ( empty( $atts ) ) {
-//		return;
-//	}
-//
-//	$args = array(
-//		'post_type'	 => 'product',
-//		'posts_per_page' => 1,
-//		'no_found_rows'	 => 1,
-//		'post_status'	 => 'publish',
-//		'meta_query'	 => array(
-//			array(
-//				'key'		 => '_visibility',
-//				'value'		 => array( 'catalog', 'visible' ),
-//				'compare'	 => 'IN'
-//			)
-//		),
-//		'columns'	 => 1
-//	);
-//
-//	if ( isset( $atts[ 'sku' ] ) ) {
-//		$args[ 'meta_query' ][] = array(
-//			'key'		 => '_sku',
-//			'value'		 => $atts[ 'sku' ],
-//			'compare'	 => '='
-//		);
-//	}
-//
-//	if ( isset( $atts[ 'id' ] ) ) {
-//		$args[ 'p' ] = $atts[ 'id' ];
-//	}
-//
-//	ob_start();
-//
-//	if ( isset( $columns ) ) {
-//		$woocommerce_loop[ 'columns' ] = $columns;
-//	}
-//
-//	$products = new WP_Query( $args );
-//
-//	if ( $products->have_posts() ) :
-//
-//		woocommerce_product_loop_start();
-//
-//		while ( $products->have_posts() ) : $products->the_post();
-//
-//			woocommerce_get_template_part( 'content', 'product' );
-//
-//		endwhile; // end of the loop. 
-//
-//		woocommerce_product_loop_end();
-//
-//	endif;
-//
-//	wp_reset_postdata();
-//
-//	return '<div class="woocommerce">' . ob_get_clean() . '</div>';
-//}
 
 /**
  * 
@@ -647,232 +552,6 @@ function vedanta_portfolio_pagination( $pages = '', $range = 2, $current_query =
 	}
 }
 
-// -> START All Slider Functions Here
-
-/**
- * 
- * 1. LayerSlider Configurations
- * 
- * @global type $wpdb
- * @global type $post
- */
-function bigbo_layerslider() {
-
-	global $wpdb, $post;
-
-	$bigbo_slider_page_id = '';
-	if ( ! is_home() && ! is_front_page() && ! is_archive() ) {
-		$bigbo_slider_page_id = $post->ID;
-	}
-	if ( ! is_home() && is_front_page() ) {
-		$bigbo_slider_page_id = $post->ID;
-	}
-	if ( is_home() && ! is_front_page() ) {
-		$bigbo_slider_page_id = get_option( 'page_for_posts' );
-	}
-
-
-// Get slider
-	$ls_table_name	 = $wpdb->prefix . "layerslider";
-	$ls_id		 = get_post_meta( $bigbo_slider_page_id, 'bigbo_slider', true );
-	$ls_slider	 = $wpdb->get_row( "SELECT * FROM $ls_table_name WHERE id = " . (int) $ls_id . " ORDER BY date_c DESC LIMIT 1", ARRAY_A );
-	$ls_slider	 = json_decode( $ls_slider[ 'data' ], true );
-	?>
-
-	<style type="text/css" scoped>
-		#layerslider-container {
-			max-width: <?php echo esc_attr($ls_slider[ 'properties' ][ 'width' ]); ?>;
-		}
-	</style>
-	<div id="layerslider-container">
-		<div id="layerslider-wrapper">
-			<?php
-//			if ( $ls_slider[ 'properties' ][ 'skin' ] == 'bigbo' ):
-//			endif;
-
-			echo do_shortcode( '[layerslider id="' . esc_attr(get_post_meta( $bigbo_slider_page_id, 'bigbo_slider', true )) . '"]' );
-//			if ( $ls_slider[ 'properties' ][ 'skin' ] == 'bigbo' ):
-//			endif;
-			?>
-		</div>
-	</div>
-
-	<?php
-}
-
-/**
- * 
- * 2. TVSlider
- * TVSlider HTML and Design Configuration.
- * 
- * @global type $slider_settings
- * @param type $term
- */
-function bigbo_tvslider( $term ) {
-	$args			 = array(
-		'post_type'		 => 'slide',
-		'posts_per_page'	 => - 1,
-		'suppress_filters'	 => 0
-	);
-	$args[ 'tax_query' ][]	 = array(
-		'taxonomy'	 => 'slide-page',
-		'field'		 => 'slug',
-		'terms'		 => $term
-	);
-	$query			 = new WP_Query( $args );
-	?>
-
-	<?php
-	if ( $query->have_posts() ) {
-		?>
-		<!-- SLIDER -->
-		<div id="home" class="flexslider tvslider fullheight color-white">
-			<ul class="slides">
-				<?php
-				while ( $query->have_posts() ): $query->the_post();
-					$metadata = get_metadata( 'post', get_the_ID() );
-
-					$background_type = '';
-					$parallax_class	 = '';
-					// Image Background Type
-					if ( isset( $metadata[ 'bigbo_type' ][ 0 ] ) && $metadata[ 'bigbo_type' ][ 0 ] == 'image' && has_post_thumbnail() ) {
-						$image_id	 = get_post_thumbnail_id();
-						$image_url	 = wp_get_attachment_image_src( $image_id, 'full', true );
-
-						if ( $metadata[ 'bigbo_parallax_effect' ][ 0 ] == 'enable' ) {
-							$background_type = 'data-background="' . esc_url($image_url[ 0 ]) . '"';
-							$parallax_class	 = 'module-hero parallax';
-						} else {
-							$background_type = 'style="background-image: url(' . esc_url($image_url[ 0 ]) . ')"';
-						}
-					}
-
-					// Youtube Background Type
-					if ( isset( $metadata[ 'bigbo_type' ][ 0 ] ) && $metadata[ 'bigbo_type' ][ 0 ] == 'youtube' && isset( $metadata[ 'bigbo_youtube_id' ][ 0 ] ) ) {
-						$background_type = 'data-jarallax-video="' . esc_url($metadata[ 'bigbo_youtube_id' ][ 0 ]) . '"';
-						$parallax_class	 = 'parallax';
-					}
-
-					// Vimeo Background Type
-					if ( isset( $metadata[ 'bigbo_type' ][ 0 ] ) && $metadata[ 'bigbo_type' ][ 0 ] == 'vimeo' && isset( $metadata[ 'bigbo_vimeo_id' ][ 0 ] ) ) {
-						$background_type = 'data-jarallax-video="' . esc_url($metadata[ 'bigbo_vimeo_id' ][ 0 ]) . '"';
-						$parallax_class	 = 'parallax';
-					}
-
-					// Self Hosted Video Background Type
-					$self_hosted_video = '';
-					if ( isset( $metadata[ 'bigbo_mp4' ][ 0 ] ) && $metadata[ 'bigbo_mp4' ][ 0 ] ) {
-						$self_hosted_video .= 'mp4:' . esc_url(wp_get_attachment_url( $metadata[ 'bigbo_mp4' ][ 0 ] )) . '';
-					} 
-                                        if ( isset( $metadata[ 'bigbo_webm' ][ 0 ] ) && $metadata[ 'bigbo_webm' ][ 0 ] ) {
-						$self_hosted_video .= ',webm:' . esc_url(wp_get_attachment_url( $metadata[ 'bigbo_webm' ][ 0 ] )) . '';
-					} 
-                                        if ( isset( $metadata[ 'bigbo_ogv' ][ 0 ] ) && $metadata[ 'bigbo_ogv' ][ 0 ] ) {
-						$self_hosted_video .= ',ogv:' . esc_url(wp_get_attachment_url( $metadata[ 'bigbo_ogv' ][ 0 ] )). '';
-					}
-
-					if ( isset( $metadata[ 'bigbo_type' ][ 0 ] ) && $metadata[ 'bigbo_type' ][ 0 ] == 'self-hosted-video' && $self_hosted_video ) {
-						$background_type = 'data-jarallax-video="' . $self_hosted_video . '"';
-						$parallax_class	 = 'parallax';
-					}
-
-					//Alignment Style
-                                        $align = '';
-					if ( isset( $metadata[ 'bigbo_content_alignment' ] ) && $metadata[ 'bigbo_content_alignment' ] ) {
-						$align = 'text-'.$metadata[ 'bigbo_content_alignment' ][ 0 ];
-                                                
-					}
-					?>
-
-					<!-- SLIDE -->
-					<li class="bg-black-alfa-40 <?php echo esc_attr($parallax_class); ?>" <?php echo $background_type; // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-						<!-- HERO TEXT -->
-						<div class="hero-caption">
-							<div class="hero-text">
-
-								<div class="container">
-
-									<div class="row">
-										<div class="col-sm-12 <?php echo esc_attr($align); ?>">
-
-											<?php
-											if ( isset( $metadata[ 'bigbo_heading' ][ 0 ] ) && $metadata[ 'bigbo_heading' ][ 0 ] ) {
-												?>
-												<h1 class="text-title slide-heading text-uppercase m-b-50 m-t-70"><?php echo esc_attr($metadata[ 'bigbo_heading' ][ 0 ]); ?></h1>
-												<?php
-											}
-											if ( isset( $metadata[ 'bigbo_caption' ][ 0 ] ) && $metadata[ 'bigbo_caption' ][ 0 ] ) {
-												?>
-                                                                                                <p class="slide-caption"><?php echo esc_attr($metadata[ 'bigbo_caption' ][ 0 ]); ?></p>
-												<?php
-											}
-											if ( (isset( $metadata[ 'bigbo_button1_link' ][ 0 ] ) && $metadata[ 'bigbo_button1_link' ][ 0 ]) || (isset( $metadata[ 'bigbo_button2_link' ][ 0 ] ) && $metadata[ 'bigbo_button2_link' ][ 0 ]) ) {
-												?>
-												<div class="m-t-50">
-													<?php
-													if ( isset( $metadata[ 'bigbo_button1_text' ][ 0 ] ) && $metadata[ 'bigbo_button1_text' ][ 0 ] ) {
-														?>
-														<a href="<?php echo esc_url($metadata[ 'bigbo_button1_link' ][ 0 ]); ?>" class="btn btn-circle btn-white btn-lg"><?php echo esc_attr($metadata[ 'bigbo_button1_text' ][ 0 ]); ?></a>
-														<?php
-													}
-													if ( isset( $metadata[ 'bigbo_button2_text' ][ 0 ] ) && $metadata[ 'bigbo_button2_text' ][ 0 ] ) {
-														?>
-														<a href="<?php echo esc_url($metadata[ 'bigbo_button2_link' ][ 0 ]); ?>" class="btn btn-circle btn-white btn-lg"><?php echo esc_attr($metadata[ 'bigbo_button2_text' ][ 0 ]); ?></a>
-														<?php
-													}
-													?>
-												</div>
-												<?php
-											}
-											?>
-										</div>
-									</div>
-
-								</div>
-
-							</div>
-						</div>
-						<!-- END HERO TEXT -->
-					</li>
-					<!-- END SLIDE -->
-
-				<?php endwhile; ?>
-			</ul>
-		</div>
-		<!-- END SLIDER -->
-		<?php
-	}
-
-	wp_reset_postdata();
-}
-
-/**
- * 
- * 2.1 SubFunction of TVSlider
- * TVSlider JS Configurations
- * 
- * @global type $slider_settings
- * @param type $term 
- */
-function bigbo_tvsliderjs( $term ) {
-	global $slider_settings;
-	$term_details	 = get_term_by( 'slug', $term, 'slide-page' );
-	$slider_settings = get_option( 'taxonomy_' . $term_details->term_id );
-
-	$slider_local_variables = array(
-		'slide_show_speed'		 => $slider_settings[ 'slideshow_speed' ],
-		'slide_animation'		 => $slider_settings[ 'animation' ],
-		'slide_animation_speed'		 => $slider_settings[ 'animation_speed' ],
-		'slide_auto_play'		 => ($slider_settings[ 'autoplay' ] == 1 ? true : false),
-		'slide_nav_arrows'		 => ($slider_settings[ 'nav_arrows' ] == 1 ? true : false),
-		'slide_pagination_circles'	 => ($slider_settings[ 'pagination_circles' ] == 1 ? true : false),
-	);
-
-	wp_localize_script( 'ddmain', 'js_local_vars', $slider_local_variables );
-}
-
-// -> END All Slider Functions Here
-
 /**
  * 
  * Display hero header content like parallax,
@@ -966,7 +645,7 @@ function bigbo_heroheadertype( $param ) {
 	endif;
 }
 
-// -> START WooComm page wrapper
+/*------------ START WooComm page wrapper -------------------*/
 function bigbo_shop_wrapper_start() {
 	ob_start();
 	?>
@@ -1012,9 +691,9 @@ function bigbo_shop_wrapper_end() {
 	$wrapper_end = ob_get_clean();
 	return $wrapper_end;
 }
+/*------------ END WooComm page wrapper -------------------*/
 
-// -> END WooComm page wrapper
-// -> START Bigbo Page Title Bar
+/*------------ START Bigbo Page Title Bar -------------------*/
 function bigbo_page_title_bar() {
 	?>
 	<!-- PAGE TITLE -->
@@ -1397,10 +1076,9 @@ function bigbo_breadcrumb() {
 	</ol>
 	<?php
 }
+/*------------ END Bigbo Page Title Bar -------------------*/
 
-// -> END Bigbo Page Title Bar
-// -> START Bigbo General Layout Functions
-
+/*------------ START Bigbo General Layout Functions -------------------*/
 /**
  * 
  * Function to print out css class according to layout or post meta
@@ -1761,94 +1439,14 @@ function bigbo_sidebar2_class() {
 
 	echo esc_attr($sidebar_css);
 }
-
-// -> END Bigbo General Layout Functions
-
-/**
- * Adds quick view modal on the footer
- */
-if ( ! function_exists( 'bigbo_quick_view_modal' ) ) :
-    function bigbo_quick_view_modal() {
-            if ( is_page_template( 'template-coming-soon-page.php' ) || is_404() ) {
-                    return;
-            }
-    ?>
-    <!-- START QUICK VIEW MODAL -->
-    <div id="ved-quick-view-modal" class="ved-quick-view-modal single-product woocommerce modal fade" tabindex="-1">
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close" aria-hidden="true"></i></button>
-            <div class="product-modal-content"></div>
-        </div>
-        <div class="ved-loading"></div>
-    </div>
-    <!-- START QUICK VIEW MODAL -->
-    <?php
-    }
-endif;
-
-add_action( 'wp_footer', 'bigbo_quick_view_modal' );
+/*------------ END Bigbo General Layout Functions -------------------*/
 
 /**
- * Add newsletter popup on the footer
- *
- * @since 1.0.0
+ * Check plugin active or not
+ * 
+ * @param type $plugin
+ * @return boolean
  */
-if ( ! function_exists( 'bigbo_newsletter_popup' ) ) :
-	function bigbo_newsletter_popup() {
-		if ( ! bigbo_get_option( 'ved_popup' ) ) {
-			return;
-		}
-
-		$ved_newletter = '';
-		if ( isset( $_COOKIE['ved_newletter'] ) ) {
-			$ved_newletter = $_COOKIE['ved_newletter'];
-		}
-
-		if ( ! empty( $ved_newletter ) ) {
-			return;
-		}
-
-		$output = array();
-                
-                if ( $title = bigbo_get_option( 'ved_popup_heading' ) ) {
-			$output[] = sprintf( '<div class="newsletter_title"><h3 class="h3">%s</h3></div>', esc_html($title) );
-		}
-
-		if ( $desc = bigbo_get_option( 'ved_popup_content' ) ) {
-			$output[] = sprintf( '<div class="ddContent">%s</div>', esc_html($desc) );
-		}
-
-		if ( $form = bigbo_get_option( 'ved_popup_form' ) ) {
-			$output[] = sprintf( '<div class="form-wrap">%s</div>', do_shortcode($form) );
-		}
-
-                if ( $ved_popup_bg = bigbo_get_option( 'ved_popup_bg', '' ) ) {
-                        $image = $ved_popup_bg['url'];
-                } ?>
-                <!-- START NEWSLETTER POPUP -->
-                <div id="ddPopupnewsletter" class="modal fade" tabindex="-1" role="dialog">  
-                    <div class="ddPopupnewsletter-i" role="document">    
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close" aria-hidden="true"></i></button>
-                        <div class="itpopupnewsletter" style="background-image: url(<?php echo esc_url($image); ?>);">
-                            <div id="newsletter_block_popup" class="block">     
-                                <div class="block_content">             
-                                    <?php echo implode( '', $output ) ?>                                      
-                                </div>          
-                                <div class="newsletter_block_popup-bottom check-fancy m-t-15">
-                                    <a href="#" class="newsletter_show_again"><?php echo esc_html_e( 'Don\'t show this popup again', 'bigbo' ); ?></a>         
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END NEWSLETTER POPUP -->
-		<?php
-	}
-endif;
-
-add_action( 'wp_footer', 'bigbo_newsletter_popup' );
-
-
 function bigbo_check_plugin_active( $plugin = '' ) {
 
 	if( empty($plugin) ) return false;

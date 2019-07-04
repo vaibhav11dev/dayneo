@@ -125,7 +125,6 @@ function bigbo_after_setup() {
 		}
 	}
 }
-
 add_action( 'after_setup_theme', 'bigbo_after_setup' );
 
 /**
@@ -147,18 +146,18 @@ function bigbo_body_classes( $classes ) {
 
 	return $classes;
 }
-
 add_filter( 'body_class', 'bigbo_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
+ * 
+ * 
  */
 function bigbo_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 	}
 }
-
 add_action( 'wp_head', 'bigbo_pingback_header' );
 
 /**
@@ -173,12 +172,13 @@ function bigbo_pretty( $content ) {
 
 	return $content;
 }
-
 add_filter( 'wp_get_attachment_link', 'bigbo_pretty' );
 
-//import demo data success message!
-add_action( 'admin_notices', 'bigbo_importer_admin_notice' );
-
+/**
+ * Import demo data success message!
+ * 
+ * 
+ */
 function bigbo_importer_admin_notice() {
 	if ( isset( $_GET[ 'imported' ] ) && $_GET[ 'imported' ] == 'success' ) {
 		echo '<div id="setting-error-settings_updated" class="updated settings-error"><p>';
@@ -186,10 +186,15 @@ function bigbo_importer_admin_notice() {
 		echo "</p></div>";
 	}
 }
+add_action( 'admin_notices', 'bigbo_importer_admin_notice' );
 
-// Custom RSS Link
-add_filter( 'feed_link', 'bigbo_feed_link', 1, 2 );
-
+/**
+ * Custom RSS Link
+ * 
+ * @param type $output
+ * @param type $feed
+ * @return type
+ */
 function bigbo_feed_link( $output, $feed ) {
 	if ( isset( $smof_data[ 'rss_link' ] ) && $smof_data[ 'rss_link' ] ) {
 		$feed_url = $smof_data[ 'rss_link' ];
@@ -207,43 +212,36 @@ function bigbo_feed_link( $output, $feed ) {
 
 	return $output;
 }
+add_filter( 'feed_link', 'bigbo_feed_link', 1, 2 );
 
-/* change in bbpress breadcrumb */
-
+/**
+ * Change in bbpress breadcrumb
+ * 
+ * @return string
+ */
 function bigbo_custom_bbp_breadcrumb() {
 	$args[ 'sep' ] = ' / ';
 	return $args;
 }
-
 add_filter( 'bbp_before_get_breadcrumb_parse_args', 'bigbo_custom_bbp_breadcrumb' );
 
 /**
- * Layerslider API
+ * Add Comment reply script
+ * 
+ * 
  */
-function bigbo_layerslider_ready() {
-	if ( class_exists( 'LS_Sources' ) ) {
-		LS_Sources::addSkins( get_template_directory() . '/lib/ls-skins' );
-	}
-}
-
-add_action( 'layerslider_ready', 'bigbo_layerslider_ready' );
-
-function bigbo_admin_css() {
-	wp_enqueue_style( 'admin-shortcode-style', get_template_directory_uri() . '/admin/assets/css/admin_shortcodes.css' );
-}
-
-add_action( 'admin_head', 'bigbo_admin_css' );
-
 function bigbo_enqueue_comment_reply() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-
 add_action( 'wp_enqueue_scripts', 'bigbo_enqueue_comment_reply' );
 
-// Register default function when plugin not activated
-
+/**
+ * Register default function when plugin not activated
+ * 
+ * 
+ */
 function bigbo_plugins_loaded() {
 	if ( ! function_exists( 'is_woocommerce' ) ) {
 
@@ -274,11 +272,14 @@ function bigbo_plugins_loaded() {
 
 	}
 }
-
 add_action( 'wp_head', 'bigbo_plugins_loaded' );
 
-/* Theme Activation Hook */
-
+/**
+ * Theme Activation Hook
+ * 
+ * @global type $pagenow
+ * 
+ */
 function bigbo_theme_activation() {
 	global $pagenow;
 	if ( is_admin() && 'themes.php' == $pagenow && isset( $_GET[ 'activated' ] ) ) {
@@ -287,22 +288,12 @@ function bigbo_theme_activation() {
 		update_option( 'shop_thumbnail_image_size', array( 'width' => 120, 'height' => '', 0 ) );
 	}
 }
-
 add_action( 'admin_init', 'bigbo_theme_activation' );
-
-//function remove_product_shortcode() {
-//	if ( class_exists( 'Woocommerce' ) ) {
-//		// First remove the shortcode
-//		remove_shortcode( 'product' );
-//		// Then recode it
-//		add_shortcode( 'product', 'bigbo_woo_product' );
-//	}
-//}
-//
-//add_action( 'wp_loaded', 'remove_product_shortcode' );
 
 /**
  * Upload custom mimes
+ * 
+ * 
  */
 function bigbo_custom_upload_mimes( $existing_mimes ) {
 	$existing_mimes[ 'otf' ]	 = 'application/x-font-otf';
@@ -312,26 +303,112 @@ function bigbo_custom_upload_mimes( $existing_mimes ) {
 	$existing_mimes[ 'eot' ]	 = 'application/vnd.ms-fontobject';
 	return $existing_mimes;
 }
-
 add_filter( 'upload_mimes', 'bigbo_custom_upload_mimes' );
 
 /**
  *  polylang plugin if active than filter custom post type  
  * 
+ * 
  */
 function bigbo_pll_get_post_types( $types ) {
 	return array_merge( $types, array( 'vedanta_portfolio' => 'vedanta_portfolio', 'slide' => 'slide' ) );
 }
-
 add_filter( 'pll_get_post_types', 'bigbo_pll_get_post_types' );
 
-// Override the calculated image sources
-//add_filter( 'wp_calculate_image_srcset', '__return_false', PHP_INT_MAX );
-
+/**
+ * Add Lightbox link
+ * 
+ * @param type $attachment_link
+ * @return type
+ * 
+ */
 function add_lighbox_rel( $attachment_link ) {
 	if ( strpos( $attachment_link, 'a href' ) != false && strpos( $attachment_link, 'img src' ) != false )
 		$attachment_link = str_replace( 'a href', 'a rel="gallery" href', $attachment_link );
 	return $attachment_link;
 }
-
 add_filter( 'wp_get_attachment_link', 'add_lighbox_rel' );
+
+/**
+ * Adds quick view modal on the footer
+ * 
+ * 
+ */
+if ( ! function_exists( 'bigbo_quick_view_modal' ) ) :
+    function bigbo_quick_view_modal() {
+            if ( is_page_template( 'template-coming-soon-page.php' ) || is_404() ) {
+                    return;
+            }
+    ?>
+    <!-- START QUICK VIEW MODAL -->
+    <div id="ved-quick-view-modal" class="ved-quick-view-modal single-product woocommerce modal fade" tabindex="-1">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close" aria-hidden="true"></i></button>
+            <div class="product-modal-content"></div>
+        </div>
+        <div class="ved-loading"></div>
+    </div>
+    <!-- START QUICK VIEW MODAL -->
+    <?php
+    }
+endif;
+add_action( 'wp_footer', 'bigbo_quick_view_modal' );
+
+/**
+ * Add newsletter popup on the footer
+ * 
+ * 
+ */
+if ( ! function_exists( 'bigbo_newsletter_popup' ) ) :
+	function bigbo_newsletter_popup() {
+		if ( ! bigbo_get_option( 'ved_popup' ) ) {
+			return;
+		}
+
+		$ved_newletter = '';
+		if ( isset( $_COOKIE['ved_newletter'] ) ) {
+			$ved_newletter = $_COOKIE['ved_newletter'];
+		}
+
+		if ( ! empty( $ved_newletter ) ) {
+			return;
+		}
+
+		$output = array();
+                
+                if ( $title = bigbo_get_option( 'ved_popup_heading' ) ) {
+			$output[] = sprintf( '<div class="newsletter_title"><h3 class="h3">%s</h3></div>', esc_html($title) );
+		}
+
+		if ( $desc = bigbo_get_option( 'ved_popup_content' ) ) {
+			$output[] = sprintf( '<div class="ddContent">%s</div>', esc_html($desc) );
+		}
+
+		if ( $form = bigbo_get_option( 'ved_popup_form' ) ) {
+			$output[] = sprintf( '<div class="form-wrap">%s</div>', do_shortcode($form) );
+		}
+
+                if ( $ved_popup_bg = bigbo_get_option( 'ved_popup_bg', '' ) ) {
+                        $image = $ved_popup_bg['url'];
+                } ?>
+                <!-- START NEWSLETTER POPUP -->
+                <div id="ddPopupnewsletter" class="modal fade" tabindex="-1" role="dialog">  
+                    <div class="ddPopupnewsletter-i" role="document">    
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close" aria-hidden="true"></i></button>
+                        <div class="itpopupnewsletter" style="background-image: url(<?php echo esc_url($image); ?>);">
+                            <div id="newsletter_block_popup" class="block">     
+                                <div class="block_content">             
+                                    <?php echo implode( '', $output ) ?>                                      
+                                </div>          
+                                <div class="newsletter_block_popup-bottom check-fancy m-t-15">
+                                    <a href="#" class="newsletter_show_again"><?php echo esc_html_e( 'Don\'t show this popup again', 'bigbo' ); ?></a>         
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END NEWSLETTER POPUP -->
+		<?php
+	}
+endif;
+add_action( 'wp_footer', 'bigbo_newsletter_popup' );

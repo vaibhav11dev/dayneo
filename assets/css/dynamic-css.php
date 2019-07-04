@@ -377,13 +377,7 @@ body,
 
 	//Footer Widget Content Font
 	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'ved_footer_widget_content_font', '.footer .widget-content,.footer .widget-content a,.footer > .footer-bg-black > .container p', $additional_color_css_class = '', $imp = '' );
-        
-        //ThemeVedanta Slider Heading Font 
-        $bigbo_dynamic_css        .= bigbo_print_fonts( 'ved_slider_heading_font', '.tvslider .slide-heading', $additional_css = '', $additional_color_css_class = '', $imp = '' ); 
-        
-        //ThemeVedanta Slider Caption Font 
-        $bigbo_dynamic_css        .= bigbo_print_fonts( 'ved_slider_caption_font', '.tvslider .slide-caption', $additional_css = '', $additional_color_css_class = '', $imp = '' ); 
-
+ 
 	//H1 to H6 Font
 	for ( $i = 1; $i < 7; $i ++ ) {
 		//we get all h1 to h6 Fonts, ved_content_h1_font ... to ved_content_h6_font values.

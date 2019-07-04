@@ -142,8 +142,6 @@
 
 			if ( $bigbo_hero_header_type == 'hero_parallax' || $bigbo_hero_header_type == 'hero_self_hosted_video' || $bigbo_hero_header_type == 'hero_youtube' || $bigbo_hero_header_type == 'hero_vimeo' ) {
 				bigbo_heroheadertype( $param );
-			} elseif ( $bigbo_hero_header_type == 'hero_slider' ) {
-				get_template_part( 'includes/heroheader/hero_allslider' );
 			}
 			?>
 
