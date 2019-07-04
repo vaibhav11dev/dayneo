@@ -83,35 +83,21 @@
          */
         $(document).ready(function(){
             if ($(document).width() >= 1530){
-                if ((bigboData.headercart_on == '1' && bigboData.headertype == 'h3') || (bigboData.headerbar_on == '1' && bigboData.headertype == 'h2')) {
-                    var number_blocks =8;
-                }else{
-                    var number_blocks =9;
-                }
-              var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
-              var moremenu = count_block.slice(number_blocks, count_block.length);
-              moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
-              $('.view_menu').prepend('<a href="#"><span>More</span></a>');
+                var number_blocks =9;
+                var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+                var moremenu = count_block.slice(number_blocks, count_block.length);
+                moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_menu').prepend('<a href="#"><span>More</span></a>');
             }
             if (($(document).width() >= 1340) && ($(document).width() <= 1529)){
-                if ((bigboData.headercart_on == '1' && bigboData.headertype == 'h3') || (bigboData.headerbar_on == '1' && bigboData.headertype == 'h2')) {
-                    var number_blocks =5;
-                }else{
-                    var number_blocks =8;
-                }
-              var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
-              var moremenu = count_block.slice(number_blocks, count_block.length);
-              moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
-              $('.view_menu').prepend('<a href="#"><span>More</span></a>');
+                var number_blocks =8;
+                var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+                var moremenu = count_block.slice(number_blocks, count_block.length);
+                moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_menu').prepend('<a href="#"><span>More</span></a>');
             }
             if ($(document).width() >= 1340){
-                if ((bigboData.headerbar_on == '1' && bigboData.headertype == 'h1')) {
-                    var number_blocks =6;
-                    var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
-                      var moremenu = count_block.slice(number_blocks, count_block.length);
-                      moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
-                      $('.view_menu').prepend('<a href="#"><span>More</span></a>');
-                }else if((bigboData.headerbar_on == '0' && bigboData.headertype == 'h1')){
+                if((bigboData.headertype == 'h1')){
                     var number_blocks =8;
                     var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
                       var moremenu = count_block.slice(number_blocks, count_block.length);
@@ -120,26 +106,18 @@
                 }              
             }
             if (($(document).width() >= 1200) && ($(document).width() <= 1339)){
-                if ((bigboData.headercart_on == '1' && bigboData.headertype == 'h3') || (bigboData.headerbar_on == '1' && bigboData.headertype == 'h2')) {
-                    var number_blocks =5;
-                }else{
-                    var number_blocks =6;
-                }
-              var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
-              var moremenu = count_block.slice(number_blocks, count_block.length);
-              moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
-              $('.view_menu').prepend('<a href="#"><span>More</span></a>');
+                var number_blocks =6;
+                var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+                var moremenu = count_block.slice(number_blocks, count_block.length);
+                moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_menu').prepend('<a href="#"><span>More</span></a>');
             };
             if (($(document).width() >= 1051) && ($(document).width() <= 1199)){
-                if ((bigboData.headerbar_on == '1' && bigboData.headertype == 'h1') || (bigboData.headercart_on == '1' && bigboData.headertype == 'h3') || (bigboData.headerbar_on == '1' && bigboData.headertype == 'h2')) {
-                    var number_blocks = 4;
-                }else{
-                    var number_blocks =6;
-                }
-                  var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
-                  var moremenu = count_block.slice(number_blocks, count_block.length);
-                  moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
-                  $('.view_menu').prepend('<a href="#"><span>More</span></a>');
+                var number_blocks =6;
+                var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+                var moremenu = count_block.slice(number_blocks, count_block.length);
+                moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_menu').prepend('<a href="#"><span>More</span></a>');
             };
         });
 
@@ -1025,3 +1003,11 @@ document.addEventListener( 'wpcf7submit', function( event ) {
 jQuery(document).ready(function(){
     setTimeout(function(){  jQuery(".mc4wp-response").fadeOut(); }, 5000);
 });    
+
+/**
+ * Fix for form without action
+ */
+var topbar_currency_switcher_form = document.querySelector(".topbar_item.topbar_item_type-currency .woocommerce-currency-switcher-form");
+if(topbar_currency_switcher_form != null){
+	topbar_currency_switcher_form.setAttribute("action", "");
+}

@@ -422,10 +422,6 @@ div.wpcf7-response-output {
     margin-right: 0;
     margin-left: 10px;
 }
-.header-3 .extras-menu .icon-wrap .icon-box {
-    margin-right: 0;
-    margin-left: 10px;
-}
 
 @media screen and (min-width: 768px){
 .sec-head-style {
@@ -481,10 +477,6 @@ div.wpcf7-response-output {
 .primary-nav .inner-nav>li.menu-item-has-children>a:after {
     padding-right: 6px;
     padding-left: 0;
-}
-.header-3 .cart-hover .cart-content-right .nav-total {
-    margin-left: 0;
-    margin-right: 8px;
 }
 }
 @media screen and (min-width: 1200px){

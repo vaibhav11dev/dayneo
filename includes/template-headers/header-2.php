@@ -1,30 +1,16 @@
 <?php
-$extras = bigbo_menu_extras();
+//Topbar
+bigbo_header_topbar();
 
-$css_header_search      = 'col-md-6';
-$css_header_cart        = 'col-md-3';
-$css_header_menu        = 'col-md-9';
-$css_header_primarymenu = 'col-md-9';
-$css_header_headerbar   = 'col-md-3';
+$ved_show_search = bigbo_get_option( 'ved_show_search' );
+$ved_show_header_cart = bigbo_get_option( 'ved_show_header_cart' );
+$ved_show_header_compare = bigbo_get_option( 'ved_show_header_compare' );
+$ved_show_header_wishlist = bigbo_get_option( 'ved_show_header_wishlist' );
+$ved_cat_menu_status = bigbo_get_option( 'ved_cat_menu_status' );
 
-$show_search     = true;
-$show_cart       = true;
-$show_department = true;
-$show_headerbar  = true;
-
-if ( empty( $extras ) || ! $extras[ 'search' ] ) {
-    $show_search = false;
-}
-if ( empty( $extras ) || ! $extras[ 'cart' ] ) {
-    $show_cart = false;
-}
-if ( empty( $extras ) || ! $extras[ 'department' ] ) {
-    $show_department = false;
-    $css_header_menu = 'col-md-12 col-sm-12';
-}
-if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
-    $show_headerbar         = false;
-    $css_header_primarymenu = 'col-md-12 col-sm-12';
+$css_header_menu        = 'col-md-12 col-sm-12';
+if ( $ved_cat_menu_status == 'enable' ) {
+    $css_header_menu = 'col-md-9 col-sm-9';
 }
 ?>
 
@@ -34,7 +20,14 @@ if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
         <div class="container">
             <div class="row">
                 <div class="header-row">
-                    <div class="header-logo col-md-3 col-sm-6">
+					<div class="header-extras col-md-4 col-sm-4">
+						<?php 
+							if ( $ved_show_search ) {
+								bigbo_header_search_icon(); 
+							}
+						?>
+					</div>
+					<div class="header-logo col-md-4 col-sm-4">
                         <div id="_desktop_logo" class="d-logo">
                             <!-- YOUR LOGO HERE -->
                             <div class="inner-header site-identity">
@@ -83,20 +76,21 @@ if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
                         </div>
 
                     </div>
-                    <?php if ( $show_search ) : ?>
-                        <div class="header-extras col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <?php bigbo_extra_search(); ?>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ( $show_cart ) : ?>
-                        <div class="col-lg-3 col-md-3">
-                            <div class="extras-menu">
-                                <?php
-                                bigbo_extra_cart();
-                                ?>
-                            </div>		    
-                        </div>
-                    <?php endif; ?>
+					<div class="col-md-4 col-sm-4">
+						<div class="extras-menu">
+							<?php
+							if ( $ved_show_header_cart ) {
+								bigbo_header_cart();
+							}
+							if ( $ved_show_header_compare ) {
+								bigbo_topbar_compare();
+							}
+							if ( $ved_show_header_wishlist ) {
+								bigbo_topbar_wishlist();
+							}
+							?>
+						</div>		    
+					</div>
                 </div>
             </div>
         </div>
@@ -106,65 +100,19 @@ if ( empty( $extras ) || ! $extras[ 'headerbar' ] ) {
     <div class="container">
         <div class="row">
             <div class="header-row">
-                <?php if ( $show_department ) : ?>
+                <?php if ( $ved_cat_menu_status == 'enable' ) : ?>
                     <div class="col-md-3 col-sm-3 i-product-cats ved-extra-department">
-                        <?php bigbo_extra_department(); ?>
+                        <?php bigbo_categories_menu(); ?>
                     </div>
                 <?php endif; ?>
-                <div class="<?php echo esc_attr( $css_header_menu ); ?> ved-header-menu">
-                    <div class="col-header-menu">
-                        <div class="<?php echo esc_attr( $css_header_primarymenu ); ?>">
-                            <?php bigbo_header_menu(); ?>
-                        </div>
-                        <?php if ( $show_headerbar ) : ?>
-                            <div class="<?php echo esc_attr( $css_header_headerbar ); ?>">
-                                <?php bigbo_header_bar(); ?>
-                            </div>
-                        <?php endif; ?>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
+					<div class="<?php echo esc_attr( $css_header_menu ); ?> ved-header-menu">
+						<?php bigbo_header_menu(); ?>
+					</div>
             </div>
         </div>
     </div>
 </div>
 
-<!--mobile-header-->
-<div class="mobile-menu hidden-lg">
-    <div class="container">
-        <div class="mobile-logo-bar">
-            <div id="menu-icon"><i class="ti-menu"></i></div>
-            <div id="_mobile_logo"></div>
-            <div id="_mobile_cart"></div>
-        </div>
-    </div>
-    <div class="mobile-search-bar">
-        <div class="container">
-            <div id="_mobile_search" class="mobile-search"></div>
-        </div>
-    </div>
-</div>
-
-<!--mobile-sidebar-->
-<div class="sidebar-overlay"></div>
-<div id="mobile_top_menu_wrapper" class="hidden-lg-up">
-    <a class="close-sidebar pull-right"><i class="ti-close"></i></a>
-    <div id="_mobile_user_info"></div>
-    <div class="js-top-menu-bottom">
-        <div class="menu-horizontal">
-            <h4 class="menu-tit"><i class="ti-menu"></i> Menu</h4>
-            <div id="_mobile_menu"></div>
-        </div>
-        <div class="menu-vertical">
-            <h4 class="menu-tit"><i class="ti-menu"></i> Category</h4>
-            <div id="_mobile_vmenu"></div>
-        </div>
-        <div class="slidetoggle mobile-sidebar-meta mb-30">
-            <h4 class="menu-tit slidetoggle-init"><i class="ti-settings"></i> Settings</h4>
-            <div class="slidetoggle-menu">
-                <div id="_mobile_wishtlistTop" class="col-xs-6 meta-menu-wrap"></div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-</div>
+<?php
+//Topbar
+bigbo_header_mobilebar();

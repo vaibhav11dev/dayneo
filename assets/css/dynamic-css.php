@@ -65,7 +65,7 @@ body {
 }
 @media (min-width: ' . esc_attr($ved_custom_width_px) . 'px) {
     .container {
-        width: ' . esc_attr($ved_container_custom_width_p) . 'px;
+        width: ' . esc_attr($ved_container_custom_width_px) . 'px;
     }
 }
 ';
@@ -133,10 +133,10 @@ if ( $bigbo_content_top_bottom_padding ) {
  */
 
 //Header Topbar Color
-if ( isset( $ved_options[ 'ved_topbar_color' ] ) ) {
+if ( isset( $ved_options[ 'ved_topbar_bg_color' ] ) ) {
 	$bigbo_dynamic_css .= '
 	.top-bar.top-bar-color {
-		background: ' . esc_attr($ved_options[ 'ved_topbar_color' ]) . ';
+		background: ' . esc_attr($ved_options[ 'ved_topbar_bg_color' ]) . ';
 	}
 ';
 }
@@ -151,24 +151,22 @@ $bigbo_dynamic_css		 .= '
 ';
 }
 
-//Header Background Color (H2)
-if ( isset( $ved_options[ 'ved_bg_header' ] ) && $ved_options[ 'ved_header_type' ] == 'h2'  ) {
-	$bigbo_dynamic_css .= '
+//Header Background Color
+$bigbo_dynamic_css .= '
 	#header {
-		background: ' . esc_attr($ved_options[ 'ved_bg_header' ]) . ';
+		background: ' . esc_attr($ved_options[ 'ved_header_bg_color' ]) . ';
 	}
 ';
-}
 
-//Header Text Color (H2)
-if ( isset( $ved_options[ 'ved_text_header' ] ) && $ved_options[ 'ved_header_type' ] == 'h2'  ) {
-	$bigbo_dynamic_css .= '
+
+//Header Text Color
+$bigbo_dynamic_css .= '
 	.top-bar p,.top-bar-list a, .top-bar-right .dropdown > .expand-more, #_desktop_wishtlistTop .yith-contents,.cart-hover .cart-content-right > span,
 	.cart-hover .cart-content-right .nav-total,.mobile-logo-bar #menu-icon,#_mobile_cart .header-ajax-cart .icon-box {
-		color: ' . esc_attr($ved_options[ 'ved_text_header' ]) . ';
+		color: ' . esc_attr($ved_options[ 'ved_header_text_color' ]) . ';
 	}
 ';
-}
+
 
 /* -----------------------------------------------------------------
   [Page Title Bar Style]
@@ -614,8 +612,6 @@ button[type=submit]:hover,
 .flex-control-nav > li > a.flex-active,
 .ved-woo-cats-slider .item .categoryName:after,
 .ddPopupnewsletter-i .close,
-.header-3 .extras-menu,
-.header-2 .header-bar,
 .ved-pricing .ved-pricing-button:hover
 {
     background: ' . esc_attr($ved_primary_color) . ';
@@ -659,7 +655,6 @@ button[type=submit]:hover,
 .wc_payment_method a:hover,
 .footer a:hover,
 .ved-quick-view-modal .modal-content .close:hover,
-.header-2 .ved-main-megamenu .inner-nav > li:hover > a,
 .page-search article .entry-meta .read-more:hover,
 input[type="checkbox"] + label:after, input[type="checkbox"] + span:after, .newsletter_show_again:after
 {
@@ -676,9 +671,6 @@ input[type="checkbox"] + label:after, input[type="checkbox"] + span:after, .news
 .main-menu,
 .products-cats-menu .cats-menu-title,
 .header-1 .main-menu,
-.extras-menu .icon-wrap:hover .icon-box,
-.extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box .mini-item-counter,
-.extras-menu .icon-wrap .icon-box,
 .footer .copyright,.owl-carousel .owl-buttons>*:hover,
 .ved-post-item .ved-post-preview .meta_date,.ved-post-item .ved-post-preview .blogicons a.icon:hover,
 #_mobile_cart .icon-box .mini-item-counter,
@@ -702,20 +694,9 @@ body .elementor-button:hover,
 .sidebar .yith-woocompare-widget a.compare,
 input[type="radio"] + label:after, input[type="radio"] + span:after,
 button[type=submit]:hover,
-.vedanta-slider .slides .owl-buttons > div,
-.header-2 .extras-menu .icon-wrap .icon-box .mini-item-counter,
-.header-2 .extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box,
-.header-3 #_desktop_cart,
-.dddemo3 .sidebar .widget.widget_media_image .widget-content a:after, .dddemo3 .banner-col a:after, .dddemo3 .menu-item .widget.widget_media_image .widget-content a:after,
-.dddemo3 .sidebar .widget.widget_media_image .widget-content a:before, .dddemo3 .banner-col a:before, .dddemo3 .menu-item .widget.widget_media_image .widget-content a:before,
-.header-3 .ved-main-megamenu .inner-nav > li:hover > a
+.vedanta-slider .slides .owl-buttons > div
 {
     background-color: ' . esc_attr($ved_primary_color) . ';
-}
-@media screen and (min-width:1051px){
-.header-2 .products-search .search-submit{
-	background-color: ' . esc_attr($ved_primary_color) . ';
-}
 }
 .ved-post-item .ved-post-preview .ved-post-thumbnail:after{
 	background: -moz-linear-gradient(top,rgba(255,255,255,0) 0%, '. esc_attr($ved_primary_color) .' 100%);
@@ -747,8 +728,7 @@ button[type=submit]:hover,
 .ved-price-list .featured-highlight,
 input[type="radio"] + label:before, input[type="radio"] + span:before, input[type="checkbox"] + label:before, input[type="checkbox"] + span:before,
 .newsletter_show_again:before,
-.vedanta-slider .slides .owl-buttons > div,
-.header-3 .products-cats-menu .toggle-product-cats
+.vedanta-slider .slides .owl-buttons > div
 {
     border-color: ' . esc_attr($ved_primary_color) . ';
 }
@@ -801,7 +781,6 @@ input[type="radio"] + label:before, input[type="radio"] + span:before, input[typ
     background-color: ' . esc_attr($ved_secondry_color) . ';
 }
 
-.header-row .extras-menu .icon-wrap-circle:hover .icon-wrap,
 .main-slider .ved-image-slider .owl-buttons > div:hover,
 .flex-direction-nav > li:hover,
 .vedanta-slider .slides .owl-buttons > div:hover{

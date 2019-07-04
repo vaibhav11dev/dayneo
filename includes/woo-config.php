@@ -43,7 +43,6 @@ function bigbo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
 						<i class="flaticon-paper-bag"></i>
 						<span class="mini-item-counter hidden-lg-up"><?php echo (int) $woocommerce->cart->cart_contents_count; ?></span>
 					</span>
-					<div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shop Items', 'bigbo' ) ?></span><span class="nav-total"><?php echo (int) $woocommerce->cart->cart_contents_count; ?></span></div>                    
 				</div>
 			<?php } else { ?>
 				<div class="icon-wrap-circle">
@@ -55,7 +54,6 @@ function bigbo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
 							</span>
 						</span>
 					</div> 
-					<div class="cart-content-right hidden-md-down"><span class="hidden-sm-down icon-wrap-tit"><?php echo esc_html_e( 'Shopping Cart', 'bigbo' ) ?></span><span class="nav-total"><?php echo wc_price( $woocommerce->cart->total ); ?></span></div>                    
 				</div>
 			<?php } ?>
 		</a>

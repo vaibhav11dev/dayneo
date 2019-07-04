@@ -57,7 +57,7 @@
 		<?php wp_head(); ?>
 	</head>
 
-        <?php $ved_demo_style = bigbo_get_option( 'ved_demo_style', 'dddemo1' ); ?>
+	<?php $ved_demo_style = bigbo_get_option( 'ved_demo_style', 'dddemo1' ); ?>
 	<body <?php body_class($ved_demo_style); ?>>
                 <?php
                 $ved_back_to_top = bigbo_get_option( 'ved_back_to_top', 'right' );
@@ -94,58 +94,33 @@
 		}
 
 		$ved_header_type		 = bigbo_get_option( 'ved_header_type', 'h1' );
-		$bigbo_header_type	 = get_post_meta( $post_id, 'bigbo_header_type', true );
-		if ( !$bigbo_header_type ) {
-			$bigbo_header_type = 'default';
-		}
-                
-                switch ( $ved_header_type ) {
-                    case 'h1':
-                        $header_class = 'header-1';
-                        break;
+		switch ( $ved_header_type ) {
+			case 'h1':
+				$header_type = 'header-1';
+				break;
 
-                    case 'h2':
-                        $header_class = 'header-2';
-                        break;
-                    
-                    case 'h3':
-                        $header_class = 'header-3';
-                        break;
-                }
-                
-                if ( is_page() ) {
-			if ( (($bigbo_header_type == 'h1') || ($bigbo_header_type == 'default' && $ved_header_type == 'h1')) || (($bigbo_header_type == 'h2') || ($bigbo_header_type == 'default' && $ved_header_type == 'h2')) ) { ?>
-				<div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
-				<?php	get_template_part( 'includes/headers/header-topbar' );
-				get_template_part( 'includes/headers/layout-1' );?>
-				</div>
-			<?php	}
-		} else {
-			if ( $ved_header_type == 'h1' || $ved_header_type == 'h2' ) { ?>
-                        <div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
-				<?php get_template_part( 'includes/headers/header-topbar' );
-				get_template_part( 'includes/headers/layout-1' );?>
-				</div>
-			<?php }
-		}
-                
-                if ( is_page() ) {
-			if ( ($bigbo_header_type == 'h3') || ($bigbo_header_type == 'default' && $ved_header_type == 'h3') ) { ?>
-				<div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
-				<?php	get_template_part( 'includes/headers/header-topbar' );
-				get_template_part( 'includes/headers/layout-2' );?>
-				</div>
-			<?php	}
-		} else {
-			if ( $ved_header_type == 'h3' ) { ?>
-                        <div id="header" class="header-wrap <?php echo esc_attr( $header_class ); ?>">
-				<?php get_template_part( 'includes/headers/header-topbar' );
-				get_template_part( 'includes/headers/layout-2' );?>
-				</div>
-			<?php }
-		}
+			case 'h2':
+				$header_type = 'header-2';
+				break;
 
+			case 'h3':
+				$header_type = 'header-3';
+				break;
+			
+			case 'h4':
+				$header_type = 'header-4';
+				break;
+			
+			case 'h5':
+				$header_type = 'header-5';
+				break;
+		}
 		?>
+
+		<div id="header" class="header-wrap <?php echo esc_attr( $header_type ); ?>">
+			<?php get_template_part( 'includes/template-headers/'.$header_type ); ?>
+		</div>
+
 		<!-- WRAPPER -->
 		<div class="wrapper">
 

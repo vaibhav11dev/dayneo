@@ -241,8 +241,8 @@ Redux::setSection( $ved_options, array(
 			'type'		 => 'select',
 			'compiler'	 => true,
 			'options'	 => array(
-				'fixed'	 => esc_html__( 'Boxed', 'bigbo' ),
 				'fluid'	 => esc_html__( 'Wide', 'bigbo' ),
+				'fixed'	 => esc_html__( 'Boxed', 'bigbo' ),
 			),
 			'title'		 => esc_html__( 'Layout Style', 'bigbo' ),
 			'default'	 => 'fluid',
@@ -497,61 +497,235 @@ Redux::setSection( $ved_options, array(
 			'compiler'	 => true,
 			'type'		 => 'image_select',
 			'options'	 => array(
-				'h1'	 => BIGBO_IMAGEFOLDER . '/header/header-1.png',
-				'h2'	 => BIGBO_IMAGEFOLDER . '/header/header-2.png',
-				'h3'	 => BIGBO_IMAGEFOLDER . '/header/header-3.png',
+				'h1'	 => BIGBO_IMAGEFOLDER . '/header/header1.jpg',
+				'h2'	 => BIGBO_IMAGEFOLDER . '/header/header2.jpg',
+				'h3'	 => BIGBO_IMAGEFOLDER . '/header/header3.jpg',
+				'h4'	 => BIGBO_IMAGEFOLDER . '/header/header4.jpg',
+				'h5'	 => BIGBO_IMAGEFOLDER . '/header/header5.jpg',
 			),
 			'title'		 => esc_html__( 'Choose Header Type', 'bigbo' ),
 			'default'	 => 'h1',
-		),
+		),		
 		array(
-			'subtitle'	 => esc_html__( 'Control the background color of topbar header.', 'bigbo' ),
-			'id'		 => 'ved_topbar_color',
-			'compiler'	 => true,
-			'type'		 => 'color',
-			'title'		 => esc_html__( 'Top Bar Color', 'bigbo' ),
-			'default'	 => '#ffffff',
+			'id'         => 'ved_cat_menu_status',
+			'type'       => 'button_set',
+			'title'      => esc_html__('Categories Menu', 'bigbo' ),
+			'options'    => array(
+				'enable' => esc_html__('Enable', 'bigbo' ),
+				'disable' => esc_html__('Disable', 'bigbo' ),
+			),
+			'default'    => 'enable',
+			'required'   => array(
+				array('ved_header_type', '=', array('h1', 'h2', 'h4') ),
+			)
 		),
         array(
-			'subtitle'	 => esc_html__( 'Control the background color of header.', 'bigbo' ),
-			'id'		 => 'ved_bg_header',
+			'id'		 => 'ved_cat_menu_title',
+			'type'		 => 'text',
+			'title'		 => esc_html__( 'Categories Menu Title', 'bigbo' ),
+			'default'	 => 'Shop By Category',
+			'required'   => array(
+				array('ved_cat_menu_status', '=', array('enable') ),
+			)
+		),
+		array(
+			'id'         => 'ved_header_width',
+			'type'       => 'button_set',
+			'title'      => esc_html__( 'Header Width', 'bigbo' ),
+			'options'    => array(
+				'full_width' => esc_html__( 'Full Width', 'bigbo' ),
+				'fixed_width'=> esc_html__( 'Fixed Width', 'bigbo' ),
+			),
+			'default'    => 'full_width',
+			'required'   => array(
+				array( 'ved_width_layout', '=', 'fluid' ),
+				array( 'ved_header_type', '=', array( 'h3' ) ),
+			),
+		),
+		array(
+			'id'       => 'ved_header_transparent',
+			'type'     => 'switch',
+			'title'    => esc_html__('Header Transparent', 'bigbo' ), 
+			'subtitle'     => esc_html__('This will display the header above the page content. This is useful when displaying here or slider section below the header.', 'bigbo' ),
+			'default'  => '0',
+			'on'       => 'Enabled',
+			'off'      => 'Disabled',
+			'required'   => array(
+				array( 'ved_header_type', '=', array( 'h3' ) ),
+			),
+		),
+		array(
+			'id'      => 'ved_woocommerce_icons-start',
+			'type'    => 'section',
+			'title'   => esc_html__('WooCommerce Icons', 'bigbo' ),
+			'indent'  => true
+		),
+		array(
+			'id'     => 'ved_show_header_cart',
+			'type'   => 'switch',
+			'title'  => esc_html__('Show Cart Icon', 'bigbo' ),
+			'on'     => esc_html__('Yes', 'bigbo' ),
+			'off'    => esc_html__('No', 'bigbo' ),
+			'default'=> true, 
+		),
+		array(
+			'id'       => 'ved_header_cart_icon',
+			'type'     => 'radio',
+			'title'    => esc_html__('Cart Icon', 'bigbo' ),
+			'options'  => array(
+				'fa fa-shopping-cart'                             => '<i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>',
+				'fa fa-shopping-basket'                           => '<i class="fa fa-shopping-basket fa-2x" aria-hidden="true"></i>',
+				'fa fa-shopping-bag'                              => '<i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-empty-shopping-cart'=> '<i class="glyph-icon pgsicon-ecommerce-empty-shopping-cart fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-shopping-cart-1'    => '<i class="glyph-icon pgsicon-ecommerce-shopping-cart-1 fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-shopping-bag-4'     => '<i class="glyph-icon pgsicon-ecommerce-shopping-bag-4 fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-commerce-1'         => '<i class="glyph-icon pgsicon-ecommerce-commerce-1 fa-2x" aria-hidden="true"></i>',
+			),
+			'default' => 'fa fa-shopping-cart',
+			'class'   => 'cart-icon-large radio-icon-selector-horizontal',
+			'required' => array(
+				array('ved_show_header_cart', '=', 1),
+			),
+		),
+		array(
+			'id'     => 'ved_show_header_compare',
+			'type'   => 'switch',
+			'title'  => esc_html__('Show Compare Icon', 'bigbo' ),
+			'on'     => esc_html__('Yes', 'bigbo' ),
+			'off'    => esc_html__('No', 'bigbo' ),
+			'default'=> true, 
+		),
+		array(
+			'id'       => 'ved_header_compare_icon',
+			'type'     => 'radio',
+			'title'    => esc_html__('Compare Icon', 'bigbo' ),
+			'options'  => array(
+				'fa fa-compress'                       => '<i class="fa fa-compress fa-2x" aria-hidden="true"></i>',
+				'fa fa-expand'                         => '<i class="fa fa-expand fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-arrows-9'=> '<i class="glyph-icon pgsicon-ecommerce-arrows-9 fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-repeat-2'=> '<i class="glyph-icon pgsicon-ecommerce-repeat-2 fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-shuffle' => '<i class="glyph-icon pgsicon-ecommerce-shuffle fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-arrows-7'=> '<i class="glyph-icon pgsicon-ecommerce-arrows-7 fa-2x" aria-hidden="true"></i>',
+			),
+			'default' => 'fa fa-compress',
+			'class'   => 'compare-icon-large radio-icon-selector-horizontal',
+			'required' => array(
+				array('ved_show_header_compare', '=', 1),
+			),
+		),
+		array(
+			'id'     => 'ved_show_header_wishlist',
+			'type'   => 'switch',
+			'title'  => esc_html__('Show Wishlist Icon', 'bigbo' ),
+			'on'     => esc_html__('Yes', 'bigbo' ),
+			'off'    => esc_html__('No', 'bigbo' ),
+			'default'=> true, 
+		),
+		array(
+			'id'       => 'ved_header_wishlist_icon',
+			'type'     => 'radio',
+			'title'    => esc_html__('Wishlist Icon', 'bigbo' ),
+			'options'  => array(
+				'fa fa-heart'                          => '<i class="fa fa-heart fa-2x" aria-hidden="true"></i>',
+				'fa fa-heart-o'                        => '<i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-heart'   => '<i class="glyph-icon pgsicon-ecommerce-heart fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-shapes-1'=> '<i class="glyph-icon pgsicon-ecommerce-shapes-1 fa-2x" aria-hidden="true"></i>',
+				'glyph-icon pgsicon-ecommerce-like'    => '<i class="glyph-icon pgsicon-ecommerce-like fa-2x" aria-hidden="true"></i>',
+			),
+			'default' => 'fa fa-heart',
+			'class'   => 'wishlist-icon-large radio-icon-selector-horizontal',
+			'required' => array(
+				array('ved_show_header_wishlist', '=', 1),
+			),
+		),
+		array(
+			'id'      => 'ved_woocommerce_icons-end',
+			'type'   => 'section',
+			'indent' => false,
+		),
+
+		array(
+			'id'      => 'ved_topbar_colors-start',
+			'type'    => 'section',
+			'title'   => esc_html__('Topbar Colors', 'bigbo' ),
+			'indent'  => true
+		),
+		array(
+			'id'         => 'ved_topbar_bg_type',
+			'type'       => 'button_set',
+			'title'      => esc_html__( 'Background Color Type', 'bigbo' ),
+			'options'    => array(
+				'default'    => esc_html__( 'Default', 'bigbo' ),
+				'custom'     => esc_html__( 'Custom', 'bigbo' ),
+			),
+			'default'    => 'default',
+		),
+		array(
+			'id'		 => 'ved_topbar_bg_color',
+			'compiler'	 => true,
+			'type'		 => 'color',
+			'title'      => esc_html__('Background Color', 'bigbo' ),
+			'default'	 => '#ffffff',
+			'required'   => array(
+				array('ved_topbar_bg_type', '=', array('custom') ),
+			)
+		),
+		array(
+			'id'		 => 'ved_topbar_text_color',
+			'compiler'	 => true,
+			'type'		 => 'color',
+			'title'      => esc_html__('Text Color', 'bigbo' ),
+			'default'	 => '#323232',
+			'required'   => array(
+				array('ved_topbar_bg_type', '=', array('custom') ),
+			)
+		),
+		array(
+			'id'      => 'ved_topbar_colors-end',
+			'type'   => 'section',
+			'indent' => false,
+		),
+
+		array(
+			'id'      => 'ved_header_colors-start',
+			'type'    => 'section',
+			'title'   => esc_html__('Header (Main) Colors', 'bigbo' ),
+			'indent'  => true
+		),
+		array(
+			'id'         => 'ved_header_bg_type',
+			'type'       => 'button_set',
+			'title'      => esc_html__( 'Background Color Type', 'bigbo' ),
+			'options'    => array(
+				'default'    => esc_html__( 'Default', 'bigbo' ),
+				'custom'     => esc_html__( 'Custom', 'bigbo' ),
+			),
+			'default'    => 'default',
+		),
+		array(
+			'id'		 => 'ved_header_bg_color',
 			'compiler'	 => true,
 			'type'		 => 'color',
 			'title'		 => esc_html__( 'Header Background Color', 'bigbo' ),
-			'default'	 => '#000000',
-			'required'	 => array( array( "ved_header_type", '=', 'h2' ) ),
+			'default'	 => '#ffffff',
+			'required'   => array(
+				array('ved_header_bg_type', '=', array('custom') ),
+			)
 		),
 		array(
-			'subtitle'	 => esc_html__( 'Control the Text color of header.', 'bigbo' ),
-			'id'		 => 'ved_text_header',
+			'id'		 => 'ved_header_text_color',
 			'compiler'	 => true,
 			'type'		 => 'color',
 			'title'		 => esc_html__( 'Header Text Color', 'bigbo' ),
-			'default'	 => '#ffffff',
-			'required'	 => array( array( "ved_header_type", '=', 'h2' ) ),
+			'default'	 => '#323232',
+			'required'   => array(
+				array('ved_header_bg_type', '=', array('custom') ),
+			)
 		),
-        array(
-            'id'       => 'menu_extras',
-            'type'     => 'checkbox',
-            'title'    => esc_html__('Menu Extras', 'bigbo'), 
-            'options'  => array(
-                'search' => 'Search',
-                'cart' => 'Cart',
-                'department' => 'Category Menu',
-                'headerbar' => 'Header Bar',
-            ),
-            'default' => array(
-                'search' => '1',
-                'cart' => '1',
-                'department' => '1',
-                'headerbar' => '0',
-            ),
-        ),
-        array(
-			'id'		 => 'ved_vmenu_title',
-			'type'		 => 'text',
-			'title'		 => esc_html__( 'Vertical Menu Title', 'bigbo' ),
-			'default'	 => 'Shop By Category',
+		array(
+			'id'      => 'ved_header_colors-end',
+			'type'   => 'section',
+			'indent' => false,
 		),
 		),
 )
@@ -563,39 +737,106 @@ Redux::setSection( $ved_options, array(
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
-			'subtitle'	 => esc_html__( 'Select which content displays in the top left area of the header.', 'bigbo' ),
-			'id'		 => 'ved_header_left_content',
-			'type'		 => 'select',
-			'options'	 => array(
-				'contact_info'	 => esc_html__( 'Contact Info', 'bigbo' ),
-				'social_links'	 => esc_html__( 'Social Links', 'bigbo' ),
-				'navigation'	 => esc_html__( 'Navigation', 'bigbo' ),
-				'content_text'	 => esc_html__( 'Content Text', 'bigbo' ),
-				'empty'		 => esc_html__( 'Leave Empty', 'bigbo' ),
+			'id'      => 'ved_topbar_enable',
+			'type'    => 'switch',
+			'title'   => esc_html__('Topbar', 'bigbo' ),
+			'default' => true,
+		),
+		array(
+			'id'      => 'ved_topbar_mobile_enable',
+			'type'    => 'switch',
+			'title'   => esc_html__('Topbar Mobile', 'bigbo' ),
+			'default' => true,
+			'required' => array(
+				array('ved_topbar_enable', '=', 1),
 			),
-			'title'		 => esc_html__( 'Header Top Left Content', 'bigbo' ),
-			'default'	 => 'contact_info',
+		),
+		array(
+			'id'         => 'ved_topbar_layout',
+			'type'       => 'sorter',
+			'title'      => 'Layout',
+			'subtitle'   => 'Select layout contents.',
+			'description'=> '<p>'
+				. '<strong>' . esc_html__( 'Notes', 'bigbo' ) .':</strong>'
+				. '<ol>'
+				. '<li>'. sprintf( wp_kses( __('<strong>Language</strong>: This content is <a href="%1$s" target="_blank">WPML</a> dependant and it will be available only if <a href="%1$s" target="_blank">WPML</a> is installed.', 'bigbo' ),
+						array(
+							'a' => array(
+								'href'   => true,
+								'target' => true,
+							),
+							'strong' => true,
+						)
+					),
+					'https://wpml.org/'
+				) . '</li>'
+				. '<li>'. sprintf( wp_kses( __('<strong>Currency</strong>: This content is <a href="%1$s" target="_blank">WooCommerce Currency Switcher</a> dependant and it will be available only if <a href="%1$s" target="_blank">WooCommerce Currency Switcher</a> is installed.', 'bigbo' ),
+						array(
+							'a' => array(
+								'href'   => true,
+								'target' => true,
+							),
+							'strong' => true
+						)
+					),
+					'https://wordpress.org/plugins/woocommerce-currency-switcher/'
+				) . '</li>'
+				. '<li>'. wp_kses( __('<strong>Topbar Menu</strong>: You can manage topbar menu from <strong>Appearance > Menus</strong>.', 'bigbo' ),
+					array(
+						'strong' => array()
+					)
+				) . '</li>'
+				. '<li>'. wp_kses( __('<strong>Social Profiles</strong>: You can manage social profiles from <strong>Theme Options > Social Media Links</strong>.', 'bigbo' ),
+					array(
+						'strong' => array()
+					)
+				) . '</li>'
+				. '<li>'. wp_kses( __('<strong>Phone Number/Email</strong>: You can manage phone number and email with <strong>below options</strong>.', 'bigbo' ),
+					array(
+						'strong' => array()
+					)
+				) . '</li>'
+				,
+			'options'    => array(
+				'Left'                => array(
+					'email'           => esc_html__('Email', 'bigbo' ),
+					'phone_number'    => esc_html__('Phone Number', 'bigbo' ),
+				),
+				'Right'               => array(
+					'topbar_menu'     => esc_html__('Topbar Menu', 'bigbo' ),
+					'social_profiles' => esc_html__('Social Profiles', 'bigbo' ),
+				),
+				'Available Items'     => array(
+					'currency'        => esc_html__('Currency', 'bigbo' ),
+					'language'        => esc_html__('Language', 'bigbo' ),
+					
+				),
+			),
+			'limits'   => array(
+			),
+			'required' => array(
+				array('ved_topbar_enable', '=', 1),
+			),
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Phone number will display in the Contact Info section of your top header.', 'bigbo' ),
 			'id'		 => 'ved_header_number',
 			'type'		 => 'text',
-			'title'		 => esc_html__( 'Header Phone Number', 'bigbo' ),
+			'title'		 => esc_html__( 'Phone Number', 'bigbo' ),
 			'default'	 => '+01 7890 123 456',
+			'required' => array(
+				array('ved_topbar_enable', '=', 1),
+			),
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Email address will display in the Contact Info section of your top header.', 'bigbo' ),
 			'id'		 => 'ved_header_email',
 			'type'		 => 'text',
-			'title'		 => esc_html__( 'Header Email Address', 'bigbo' ),
+			'title'		 => esc_html__( 'Email Address', 'bigbo' ),
 			'default'	 => 'contact@example.com',
-		),
-                array(
-			'subtitle'	 => esc_html__( 'Text will display in the Content Text section of your top header.', 'bigbo' ),
-			'id'		 => 'ved_content_text',
-			'type'		 => 'text',
-			'title'		 => esc_html__( 'Content Text', 'bigbo' ),
-			'default'	 => 'Welcome to website',
+			'required' => array(
+				array('ved_topbar_enable', '=', 1),
+			),
 		),
 	),
 )
@@ -638,11 +879,48 @@ Redux::setSection( $ved_options, array(
 
 Redux::setSection( $ved_options, array(
 	'id'		 => 'ved-header-subsec-search-content-tab',
-	'title'		 => esc_html__( 'Header Search Content', 'bigbo' ),
+	'title'		 => esc_html__( 'Search', 'bigbo' ),
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
-			'id'		 => 'search_content_type',
+			'id'     => 'ved_show_search',
+			'type'   => 'switch',
+			'title'  => esc_html__('Enable Search', 'bigbo' ),
+			'on'     => esc_html__('Yes', 'bigbo' ),
+			'off'    => esc_html__('No', 'bigbo' ),
+			'default'=> true,
+		),
+		array(
+			'id'         => 'ved_search_background_type',
+			'type'       => 'button_set',
+			'title'      => esc_html__('Search Box Background', 'bigbo' ),
+			'options'    => array(
+				'search-bg-default' => esc_html__('Default', 'bigbo' ),
+				'search-bg-transparent' => esc_html__('Transparent', 'bigbo' ),
+				'search-bg-white' => esc_html__('White', 'bigbo' ),
+				'search-bg-dark'  => esc_html__('Dark', 'bigbo' ),
+				'search-bg-theme'  => esc_html__('Theme', 'bigbo' ),
+			),
+			'default' => 'search-bg-default',
+			'required'=> array(
+				array('ved_show_search', '=', 1),
+			)
+		),
+		array(
+			'id'         => 'ved_search_box_shape',
+			'type'       => 'button_set',
+			'title'      => esc_html__('Search Box Shape', 'bigbo' ),
+			'options'    => array(
+				'square'    => esc_html__('Square', 'bigbo' ),
+				'rounded'   => esc_html__('Rounded', 'bigbo' ),
+			),
+			'default' => 'square',
+			'required'=> array(
+				array( 'ved_show_search', '=', 1 ),
+			)
+		),
+		array(
+			'id'		 => 'ved_search_content_type',
 			'type'		 => 'select',
 			'options'	 => array(
 				'all'	 => esc_html__( 'Search for everything', 'bigbo' ),
@@ -650,46 +928,81 @@ Redux::setSection( $ved_options, array(
 			),
 			'title'		 => esc_html__( 'Search Content Type', 'bigbo' ),
 			'default'	 => 'product',
+			'required'=> array(
+				array('ved_show_search', '=', 1),
+			)
 		),
-            array(
-			'id'		 => 'custom_categories_text',
+		array(
+			'id'      => 'ved_show_categories',
+			'type'    => 'switch',
+			'title'   => esc_html__('Show Categories', 'bigbo' ),
+			'on'      => esc_html__('Yes', 'bigbo' ),
+			'off'     => esc_html__('No', 'bigbo' ),
+			'default' => true,
+			'required'=> array(
+				array('ved_search_content_type', '=', array('product') ),
+			)
+		),
+		array(
+			'id'		 => 'ved_custom_categories_text',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Categories Text', 'bigbo' ),
-                        'default'	 => 'All Categories',
+			'default'	 => 'All Categories',
+			'required'=> array(
+				array('ved_show_search', '=', 1),
+			)
 		),
-            array(
-			'id'		 => 'custom_categories_depth',
+		array(
+			'id'		 => 'ved_custom_categories_depth',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Categories Depth', 'bigbo' ),
+			'required'=> array(
+				array('ved_show_search', '=', 1),
+			)
 		),
-            array(
+		array(
 			'subtitle'	 => esc_html__( 'Enter Category IDs to include. Divide every category by comma(,)', 'bigbo' ),
-			'id'		 => 'custom_categories_include',
+			'id'		 => 'ved_custom_categories_include',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Categories Include', 'bigbo' ),
+			'required'=> array(
+				array('ved_show_search', '=', 1),
+			)
 		),
-            array(
+		array(
 			'subtitle'	 => esc_html__( 'Enter Category IDs to exclude. Divide every category by comma(,)', 'bigbo' ),
-			'id'		 => 'custom_categories_exclude',
+			'id'		 => 'ved_custom_categories_exclude',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Categories Exclude', 'bigbo' ),
+			'required'=> array(
+				array('ved_show_search', '=', 1),
+			)
 		),
-            array(
-			'id'		 => 'custom_search_text',
+		array(
+			'id'		 => 'ved_custom_search_text',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Search Text', 'bigbo' ),
-                        'default'	 => 'Search entire store...',
+			'default'	 => 'Search entire store...',
+			'required'=> array(
+				array('ved_show_search', '=', 1),
+			)
 		),
-            array(
-			'id'		 => 'custom_search_button',
+		array(
+			'id'		 => 'ved_custom_search_button',
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Button Text', 'bigbo' ),
+			'required'=> array(
+				array('ved_show_search', '=', 1),
+			)
 		),
-            array(
-			'id'		 => 'header_ajax_search',
+		array(
+			'id'		 => 'ved_header_ajax_search',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'AJAX Search', 'bigbo' ),
 			'default'	 => '1',
+			'required'=> array(
+				array('ved_show_search', '=', 1),
+			)
 		),
 	),
 )
@@ -2041,45 +2354,6 @@ Redux::setSection( $ved_options, array(
 	'subsection'	 => true,
 	'fields'	 => array(
 		array(
-			'id'		 => 'ved_color_palettes',
-			'type'		 => 'palette',
-			'title'		 => esc_html__( 'Main Color Scheme', 'bigbo' ),
-			'subtitle'	 => esc_html__( 'Please select the predefined color scheme of your website', 'bigbo' ),
-			'default'	 => 'color_palette_1',
-			'palettes'	 => array(
-				'color_palette_1'	 => array(
-					'#3ab54a',
-					'#3ab54a',
-					'#222222',
-					'#777777',
-				),
-				'color_palette_2'	 => array(
-					'#3498db',
-					'#217dbb',
-					'#222',
-					'#777',
-				),
-				'color_palette_3'	 => array(
-					'#444',
-					'#2b2b2b',
-					'#222',
-					'#777',
-				),
-				'color_palette_4'	 => array(
-					'#ff6c5c',
-					'#ff3e29',
-					'#222',
-					'#777',
-				),
-				'color_palette_5'	 => array(
-					'#f1c40f',
-					'#c29d0b',
-					'#222',
-					'#777',
-				),
-			),
-		),
-		array(
 			'subtitle'	 => esc_html__( 'Primary color of site', 'bigbo' ),
 			'id'		 => 'ved_primary_color',
 			'type'		 => 'color',
@@ -2094,7 +2368,15 @@ Redux::setSection( $ved_options, array(
 			'compiler'	 => true,
 			'title'		 => esc_html__( 'Secondry Color', 'bigbo' ),
 			'default'	 => '#0c3e3e',
-		),		
+		),	
+		array(
+			'subtitle'	 => esc_html__( 'Tertiary color of site', 'bigbo' ),
+			'id'		 => 'ved_tertiary_color',
+			'type'		 => 'color',
+			'compiler'	 => true,
+			'title'		 => esc_html__( 'Tertiary Color', 'bigbo' ),
+			'default'	 => '#969696',
+		),	
 	),
 )
 );
@@ -2589,42 +2871,29 @@ Redux::setSection( $ved_options, array(
  */
 function bigbo_override_content() {
 	wp_dequeue_style( 'redux-admin-css' );
-	wp_register_style( 'bigbo-redux-custom-css', get_template_directory_uri() . '/themeoptions/options/css/style.css', false, 258 );
-	wp_enqueue_style( 'bigbo-redux-custom-css' );
 	wp_dequeue_style( 'select2-css' );
 	wp_dequeue_style( 'redux-elusive-icon' );
 	wp_dequeue_style( 'redux-elusive-icon-ie7' );
 }
-
 add_action( 'redux-enqueue-ved_options', 'bigbo_override_content' );
 
 /*
  * Hide Demo Mode Link
  */
-
 function bigbo_remove_demo() {
 
 	// Used to hide the demo mode link from the plugin page. Only used when Redux is a plugin.
 	if ( class_exists( 'ReduxFrameworkPlugin' ) ) {
-//		remove_filter( 'plugin_row_meta', array(
-//			ReduxFrameworkPlugin::instance(),
-//			'plugin_metalinks'
-//		), null, 2 );
-
 		// Used to hide the activation notice informing users of the demo panel. Only used when Redux is a plugin.
 		remove_action( 'admin_notices', array( ReduxFrameworkPlugin::instance(), 'admin_notices' ) );
 	}
 }
-
 add_action( 'redux/loaded', 'bigbo_remove_demo' );
 
 /*
- * Override Colorplate Options
+ * Hide Demo Mode Link
  */
-
-function bigbo_colorpalettes() {
-	wp_enqueue_script( 'bigbo-colorpalettes', get_template_directory_uri() . '/themeoptions/options/js/colorpalettes.js', array(), '', true );
+function bigbo_headerdefault() {
+    wp_enqueue_script('bigbo-headerdefault', get_template_directory_uri() . '/themeoptions/options/js/headerdefault.js', array(), '', true);
 }
-
-add_action( "redux/page/{$ved_options}/enqueue", "bigbo_colorpalettes" );
-
+add_action("redux/page/{$ved_options}/enqueue", "bigbo_headerdefault");

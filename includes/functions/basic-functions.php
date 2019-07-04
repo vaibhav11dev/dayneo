@@ -1847,3 +1847,11 @@ if ( ! function_exists( 'bigbo_newsletter_popup' ) ) :
 endif;
 
 add_action( 'wp_footer', 'bigbo_newsletter_popup' );
+
+
+function bigbo_check_plugin_active( $plugin = '' ) {
+
+	if( empty($plugin) ) return false;
+
+	return ( in_array( $plugin, (array) get_option( 'active_plugins', array() ) ) || ( function_exists('is_plugin_active_for_network') && is_plugin_active_for_network($plugin) ) );
+}

@@ -57,15 +57,12 @@ function bigbo_scripts() {
     wp_enqueue_script( 'bigbo-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '1.0.0', true );
     wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/assets/slick/slick.min.js', array( 'jquery' ), '1.0', true );
 
-    $menu_extras = bigbo_get_option( 'menu_extras' );
     $header_type = bigbo_get_option( 'ved_header_type' );
     wp_localize_script( 'ddmain', 'bigboData', array(
         'ajax_url'            => admin_url( 'admin-ajax.php' ),
         'nonce'               => wp_create_nonce( '_bigbo_nonce' ),
-        'search_content_type' => bigbo_get_option( 'search_content_type' ),
-        'ajax_search'         => intval( bigbo_get_option( 'header_ajax_search' ) ),
-        'headerbar_on' => $menu_extras[ 'headerbar' ], 
-        'headercart_on' => $menu_extras[ 'cart' ],
+        'search_content_type' => bigbo_get_option( 'ved_search_content_type' ),
+        'ajax_search'         => intval( bigbo_get_option( 'ved_header_ajax_search' ) ),
         'headertype' => $header_type,
     ) );
 }
@@ -77,9 +74,8 @@ add_action( 'wp_enqueue_scripts', 'bigbo_scripts' );
  */
 function bigbo_adminscripts( $hook ) {
     if ( $hook == 'appearance_page_bigbo_options' ) {
-        wp_enqueue_style( 'themeoptions', get_template_directory_uri() . '/themeoptions/options/css/themeoptions.css', false, 398 );
-
-        wp_enqueue_script( 'theme-options-menu-mod', get_template_directory_uri() . '/themeoptions/options/js/theme-options-menu-mod.js', '', '', true );
+        wp_enqueue_style( 'themeoptions', get_template_directory_uri() . '/themeoptions/options/css/themeoptions.css', false, 258 );
+        wp_enqueue_script( 'themeoptions-js', get_template_directory_uri() . '/themeoptions/options/js/themeoptions.js', '', '', true );
     }
 }
 
