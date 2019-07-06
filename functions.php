@@ -52,7 +52,8 @@ function bigbo_scripts() {
     }
 
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.min.js', array( 'jquery' ), BIGBO_VERSION, true );
-    wp_enqueue_script( 'ddcore', get_template_directory_uri() . '/assets/js/ddcore.min.js', array( 'jquery' ), BIGBO_VERSION, true );
+    wp_enqueue_script( 'ddcore', get_template_directory_uri() . '/assets/js/ddcore.js', array( 'jquery' ), BIGBO_VERSION, true );
+	wp_enqueue_script( 'bigbo-countdown', get_template_directory_uri() . '/assets/js/jquery.countdown.js', array(), '1.0.0', true );
     wp_enqueue_script( 'ddmain', get_template_directory_uri() . '/assets/js/ddmain.js', array( 'jquery' ), BIGBO_VERSION, true );
     wp_enqueue_script( 'bigbo-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '1.0.0', true );
     wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/assets/slick/slick.min.js', array( 'jquery' ), '1.0', true );
@@ -95,6 +96,7 @@ require_once( BIGBO_PHP_INCLUDE . 'functions/template-functions.php');
  */
 require_once( BIGBO_PHP_INCLUDE . 'functions/basic-functions.php');
 require_once( BIGBO_PHP_INCLUDE . 'functions/header-functions.php');
+require_once( BIGBO_PHP_INCLUDE . 'functions/maintenance.php');
 
 //  ThemeVedanta Mega Menu
 require_once( BIGBO_PHP_INCLUDE . 'mega-menu-framework.php' );

@@ -412,3 +412,12 @@ if ( ! function_exists( 'bigbo_newsletter_popup' ) ) :
 	}
 endif;
 add_action( 'wp_footer', 'bigbo_newsletter_popup' );
+
+/**
+ * 
+ * 
+ */
+function bigbo_cookie_notice(){
+	get_template_part('template-parts/footer/cookies_info');
+}
+add_action( 'bigbo_after_page_wrapper', 'bigbo_cookie_notice', 10 );

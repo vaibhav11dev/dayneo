@@ -902,6 +902,62 @@ jQuery('.dropdown').on('hide.bs.dropdown', function (e) {
 				}
 			}
 		});
+                
+                /* ---------------------------------------------
+		 :: Cookies info
+		 --------------------------------------------- */
+		bigbo_cookiesinfo();
+		function bigbo_cookiesinfo(){
+			if( Cookies.get('bigbo_cookies') == 'accepted' ){
+				$('.bigbo-cookies-info').hide();
+				return;
+			}
+
+			$( '.bigbo-cookies-info' ).on('click', '.cookies-info-accept-btn', function(e) {
+				e.preventDefault();
+				bigbo_acceptCookies();
+			});
+			var bigbo_acceptCookies = function() {
+				$('.bigbo-cookies-info').hide();
+				Cookies.set('bigbo_cookies', 'accepted', { expires: 60, path: '/' } );
+			};
+		}
+                
+                /****************************
+		:: Commingsoon countdown
+		******************************/
+		if( $(".commingsoon_countdown").length != 0 ) {
+			var ved_countdown      = $('.commingsoon_countdown'),
+				ved_countdown_date = $(ved_countdown).data('countdown_date'),
+				ved_counter_data   = $(ved_countdown).data('counter_data');
+
+			$('.commingsoon_countdown').countdown( ved_countdown_date )
+				.on('update.countdown', function(event) {
+					var format = '';
+
+					var display_weeks = false;
+
+					if( display_weeks ){
+						if(event.offset.weeks > 0) {
+							format = format + '<li><span class="days">%-w</span><p class="days_ref">'+ved_counter_data.weeks+'</p></li>';
+						}
+						if(event.offset.totalDays > 0) {
+							format = format + '<li><span class="days">%-d</span><p class="days_ref">'+ved_counter_data.days+'</p></li>';
+						}
+					}else{
+						if(event.offset.totalDays > 0) {
+							format = format + '<li><span class="days">%-D</span><p class="days_ref">'+ved_counter_data.days+'</p></li>';
+						}
+					}
+
+					format = format + '<li><span class="hours">%H</span><p class="hours_ref">'+ved_counter_data.hours+'</p></li>';
+					format = format + '<li><span class="minutes">%M</span><p class="minutes_ref">'+ved_counter_data.minutes+'</p></li>';
+					format = format + '<li><span class="seconds">%S</span><p class="seconds_ref">'+ved_counter_data.seconds+'</p></li>';
+
+					ved_countdown.html(event.strftime(format));
+				});
+		}
+
 }(jQuery);
 
 

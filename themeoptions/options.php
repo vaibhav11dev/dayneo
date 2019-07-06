@@ -5,7 +5,6 @@ define( 'BIGBO_IMAGEPATH', get_template_directory_uri() . '/themeoptions/options
 define( 'BIGBO_DEFAULT', get_template_directory_uri() . '/assets/images/default/' );
 
 // -> BEGIN Themeoption Setup
-
 if ( ! class_exists( 'Redux' ) ) {
         $ved_options = get_option( 'ved_options' );
 	return;
@@ -100,26 +99,9 @@ $args[ 'share_icons' ][] = array(
 );
 
 Redux::setArgs( $ved_options, $args );
-
 // -> END Themeoption Setup
-// -> START Basic Configuration
 
-
-$sidebar_options[] = 'None';
-$sidebars = get_option('sidebars_widgets');
-if ( is_array( $sidebars ) && ! empty( $sidebars ) ) {
-        foreach ( $sidebars as $key => $sidebar ) {
-            if( $key !== 'wp_inactive_widgets' && $key !== 'array_version') {
-                $lable = str_replace( 'bigbo-custom-sidebar-', '', $key ) ;
-                $sidebar_options[ $key ] = $lable;
-            }
-        }
-}
-
-
-// -> END Basic Configuration
 // -> START Basic Fields
-
 Redux::setSection( $ved_options, array(
 	'id'	 => 'ved-general-main-tab',
 	'title'	 => esc_html__( 'General', 'bigbo' ),
@@ -1442,7 +1424,7 @@ Redux::setSection( $ved_options, array(
 			'subtitle'	 => esc_html__( 'Select the sidebar that will display on the archive/category pages.', 'bigbo' ),
 			'id'		 => 'ved_blog_archive_sidebar',
 			'type'		 => 'select',
-			'options'	 => $sidebar_options,
+			'data' => 'sidebars',
 			'title'		 => esc_html__( 'Blog Archive/Category Sidebar', 'bigbo' ),
 			'default'	 => 'Sidebar 1',
 		),
@@ -1683,7 +1665,7 @@ Redux::setSection( $ved_options, array(
 			'subtitle'	 => esc_html__( 'Select the sidebar that will be added to the archive/category portfolio pages.', 'bigbo' ),
 			'id'		 => 'ved_portfolio_sidebar',
 			'type'		 => 'select',
-			'options'	 => $sidebar_options,
+			'data' => 'sidebars',
 			'title'		 => esc_html__( 'Portfolio Archive/Category Sidebar', 'bigbo' ),
 			'default'	 => 'Sidebar 1',
 		),
@@ -1777,7 +1759,7 @@ Redux::setSection( $ved_options, array(
 			'subtitle'	 => esc_html__( 'Select the sidebar that will display on the shop archive/category pages.', 'bigbo' ),
 			'id'		 => 'ved_shop_archive_sidebar',
 			'type'		 => 'select',
-			'options'	 => $sidebar_options,
+			'data' => 'sidebars',
 			'title'		 => esc_html__( 'Shop Archive/Category Sidebar', 'bigbo' ),
 			'default'	 => 'Siderbar 1',
 		),         
@@ -1979,6 +1961,38 @@ Redux::setSection( $ved_options, array(
 		),
 	),
 )
+);
+
+Redux::setSection( $ved_options, array(
+	'id'              => 'ved_woocommerce_cookie_law_info',
+	'title'           => esc_html__('Cookie Law Info', 'bigbo' ),
+	'subsection'	 => true,
+	'fields' => array(
+			array (
+				'id'      => 'ved_cookies_info',
+				'type'    => 'switch',
+				'title'   => esc_html__('Show Cookies Info', 'bigbo' ),
+				'subtitle'=> esc_html__('Under EU privacy regulations, websites must make it clear to visitors what information about them is being stored. This specifically includes cookies. Turn on this option and user will see info box at the bottom of the page that your web-site is using cookies.', 'bigbo' ),
+				'default' => true
+			),
+			array (
+				'id'      => 'ved_cookies_text',
+				'type'    => 'editor',
+				'title'   => esc_html__('Popup Text', 'bigbo' ),
+				'subtitle'=> esc_html__('Place here some information about cookies usage that will be shown in the popup.', 'bigbo' ),
+				'default' => esc_html__('We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.', 'bigbo' ),
+				'required' => array( 'ved_cookies_info', '=', 1 ),
+			),
+			array (
+				'id'      => 'ved_cookies_policy_page',
+				'type'    => 'select',
+				'title'   => esc_html__('Page with Details', 'bigbo' ),
+				'subtitle'=> esc_html__('Choose page that will contain detailed information about your Privacy Policy', 'bigbo' ),
+				'data'    => 'pages',
+				'required' => array( 'ved_cookies_info', '=', 1 ),
+			),
+		),
+	)
 );
 
 Redux::setSection( $ved_options, array(
@@ -2784,13 +2798,17 @@ Redux::setSection( $ved_options, array(
 	)
 ) );
 
-
-
-
 Redux::setSection( $ved_options, array(
 	'id'	 => 'ved-extra-main-tab',
 	'title'	 => esc_html__( 'Extra', 'bigbo' ),
 	'icon'	 => 'fa  fa-gears icon-large',
+)
+);
+
+Redux::setSection( $ved_options, array(
+	'id'              => 'ved-miscellaneous-sub-tab',
+	'title'           => esc_html__('Miscellaneous', 'bigbo' ),
+	'subsection'	 => true,
 	'fields' => array(
 		array(
 			'subtitle'	 => esc_html__( 'Choose enable button if you want to display Back to Top button.', 'bigbo' ),
@@ -2814,6 +2832,101 @@ Redux::setSection( $ved_options, array(
 );
 
 Redux::setSection( $ved_options, array(
+	'id'              => 'ved-maintenance-sub-tab',
+	'title'           => esc_html__('Maintenance', 'bigbo' ),
+	'subsection'	 => true,
+	'fields'          => array(
+		array(
+			'id'         => 'ved_enable_maintenance',
+			'type'       => 'switch',
+			'title'      => esc_html__('Enable Maintenance?', 'bigbo' ),
+			'on'         => esc_html__('Yes', 'bigbo' ),
+			'off'        => esc_html__('No', 'bigbo' ),
+			'default'    => '0',
+		),
+		array(
+			'id'       => 'ved_maintenance_mode',
+			'type'     => 'button_set',
+			'title'    => esc_html__('Maintenance Mode', 'bigbo' ),
+			'options'  => array(
+				'maintenance' => esc_html__('Maintenance', 'bigbo' ),
+				'comingsoon'  => esc_html__('Coming Soon', 'bigbo' ),
+			),
+			'default'      => 'maintenance',
+			'required'     => array( 'ved_enable_maintenance', '=', '1' ),
+		),
+		array(
+			'id'           => 'ved_maintenance_title',
+			'type'         => 'text',
+			'title'        => esc_html__('Maintenance Title', 'bigbo' ),
+			'default'      => esc_html__('Site is Under Maintenance', 'bigbo' ),
+			'required'     => array( 'ved_maintenance_mode', '=', 'maintenance' ),
+		),
+		array(
+			'id'           => 'ved_maintenance_subtitle',
+			'type'         => 'text',
+			'title'        => esc_html__('Maintenance Subtitle', 'bigbo' ),
+			'default'      => esc_html__('This Site is Currently Under Maintenance. We will back shortly', 'bigbo' ),
+			'required'     => array( 'ved_maintenance_mode', '=', 'maintenance' ),
+		),
+		array(
+			'id'           => 'ved_comingsoon_title',
+			'type'         => 'text',
+			'title'        => esc_html__('Coming Soon Title', 'bigbo' ),
+			'default'      => esc_html__('Coming soon', 'bigbo' ),
+			'required'     => array( 'ved_maintenance_mode', '=', 'comingsoon' ),
+		),
+		array(
+			'id'           => 'ved_comingsoon_subtitle',
+			'type'         => 'text',
+			'title'        => esc_html__('Coming Soon Subtitle', 'bigbo' ),
+			'default'      => esc_html__('We are currently working on a website and won\'t take long. Don\'t forget to check out our Social updates.', 'bigbo' ),
+			'required'     => array( 'ved_maintenance_mode', '=', 'comingsoon' ),
+		),
+		array(
+			'id'           => 'ved_comingsoon_date',
+			'type'         => 'date',
+			'title'        => esc_html__('Coming Soon Date', 'bigbo' ),
+			'subtitle'     => esc_html__('Select coming soon date.', 'bigbo' ),
+			'placeholder'  => esc_html__('Click to enter a date', 'bigbo' ),
+			'required'     => array( 'ved_maintenance_mode', '=', 'comingsoon' ),
+			'default'      => date( 'm/d/Y', strtotime('+1 months') ),
+		),
+		array(
+			'id'           => 'ved_comming_soon_social_icons',
+			'type'         => 'switch',
+			'title'        => esc_html__('Social Icons', 'bigbo' ),
+			'subtitle'     => esc_html__('Show/hide social icons.', 'bigbo' ),
+			'default'      => true,
+			'required'     => array( 'ved_enable_maintenance', '=', '1' ),
+		),
+		array(
+			'id'           => 'ved_comming_soon_newsletter',
+			'type'         => 'switch',
+			'title'        => esc_html__('Display Newsletter', 'bigbo' ),
+			'subtitle'     => esc_html__('Show/hide newsletter.', 'bigbo' ),
+			'default'      => false,
+			'required'     => array( 'ved_enable_maintenance', '=', '1' ),
+		),
+		array(
+			'id'           => 'ved_comming_page_newsletter_shortcode',
+			'type'         => 'select',
+			'title'        => esc_html__('Newsletter Form', 'bigbo' ),    
+			'subtitle'     => esc_html__('Select newsletter form for display newsletter box on Comming Soon/Maintenance Page.', 'bigbo' ),   
+			'data'         => 'posts',
+			'args'         => array(
+				'post_type'=> 'mc4wp-form',
+			),
+			'required'     => array(
+				array( 'ved_enable_maintenance', '=', '1' ),
+				array( 'ved_comming_soon_newsletter', '=', '1' ),
+			),
+		),
+	),
+)
+);
+
+Redux::setSection( $ved_options, array(
 	'id'	 => 'ved-import-export-main-tab',
 	'title'	 => esc_html__( 'Import / Export', 'bigbo' ),
 	'icon'	 => 'fa fa-exchange icon-large',
@@ -2826,11 +2939,12 @@ Redux::setSection( $ved_options, array(
 	),
 )
 );
-
 // -> END Basic Fields
 
 /*
  * Override Redux Content with Bigbo Content
+ * 
+ * 
  */
 function bigbo_override_content() {
 	wp_dequeue_style( 'redux-admin-css' );
@@ -2842,6 +2956,8 @@ add_action( 'redux-enqueue-ved_options', 'bigbo_override_content' );
 
 /*
  * Hide Demo Mode Link
+ * 
+ * 
  */
 function bigbo_remove_demo() {
 
@@ -2855,6 +2971,8 @@ add_action( 'redux/loaded', 'bigbo_remove_demo' );
 
 /*
  * Hide Demo Mode Link
+ * 
+ * 
  */
 function bigbo_headerdefault() {
     wp_enqueue_script('bigbo-headerdefault', get_template_directory_uri() . '/themeoptions/options/js/headerdefault.js', array(), '', true);

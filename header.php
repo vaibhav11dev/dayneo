@@ -118,7 +118,7 @@
 		?>
 
 		<div id="header" class="header-wrap <?php echo esc_attr( $header_type ); ?>">
-			<?php get_template_part( 'includes/template-headers/'.$header_type ); ?>
+			<?php get_template_part( 'template-parts/header/'.$header_type ); ?>
 		</div>
 
 		<!-- WRAPPER -->

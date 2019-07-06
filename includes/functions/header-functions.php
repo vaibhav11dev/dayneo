@@ -381,7 +381,7 @@ if ( !function_exists( 'bigbo_header_topbar' ) ) :
 		$ved_topbar_enable = bigbo_get_option( 'ved_topbar_enable' );
 
 		if ( $ved_topbar_enable ) {
-			get_template_part( 'includes/template-headers/header-topbar' );
+			get_template_part( 'template-parts/header/header-topbar' );
 		}
 	}
 
@@ -394,7 +394,7 @@ endif;
 if ( !function_exists( 'bigbo_header_mobilebar' ) ) :
 
 	function bigbo_header_mobilebar() {
-		get_template_part( 'includes/template-headers/header-mobile' );
+		get_template_part( 'template-parts/header/header-mobile' );
 	}
 
 endif;
@@ -406,7 +406,7 @@ endif;
 if ( !function_exists( 'bigbo_header_sticky' ) ) :
 
 	function bigbo_header_sticky() {
-		get_template_part( 'includes/template-headers/header-sticky' );
+		get_template_part( 'template-parts/header/header-sticky' );
 	}
 
 endif;

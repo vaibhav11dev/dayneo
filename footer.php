@@ -121,8 +121,15 @@ if ( $ved_footer_parallax == 1 ) {
 <!-- END WRAPPER -->
 
 <?php
-wp_footer();
+/**
+ * Functions hooked in to bigbo_after_page_wrapper action
+ *
+ * @hooked bigbo_cookie_notice - 10
+ */
+do_action( 'bigbo_after_page_wrapper' ); 
 ?>
+
+<?php wp_footer(); ?>
 
 </body>
 </html>
