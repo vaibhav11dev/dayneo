@@ -400,6 +400,18 @@ if ( !function_exists( 'bigbo_header_mobilebar' ) ) :
 endif;
 
 /**
+ * Get header sticky
+ *
+ */
+if ( !function_exists( 'bigbo_header_sticky' ) ) :
+
+	function bigbo_header_sticky() {
+		get_template_part( 'includes/template-headers/header-sticky' );
+	}
+
+endif;
+
+/**
  * Get topbar wishlist
  *
  */

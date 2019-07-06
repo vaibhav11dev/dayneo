@@ -84,14 +84,14 @@
         $(document).ready(function(){
             if ($(document).width() >= 1530){
                 var number_blocks =9;
-                var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+                var count_block = $('.ved-header-menu .ved-main-megamenu .inner-nav > .menu-item');
                 var moremenu = count_block.slice(number_blocks, count_block.length);
                 moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
                 $('.view_menu').prepend('<a href="#"><span>More</span></a>');
             }
             if (($(document).width() >= 1340) && ($(document).width() <= 1529)){
                 var number_blocks =8;
-                var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+                var count_block = $('.ved-header-menu .ved-main-megamenu .inner-nav > .menu-item');
                 var moremenu = count_block.slice(number_blocks, count_block.length);
                 moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
                 $('.view_menu').prepend('<a href="#"><span>More</span></a>');
@@ -99,7 +99,7 @@
             if ($(document).width() >= 1340){
                 if((bigboData.headertype == 'h1')){
                     var number_blocks =8;
-                    var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+                    var count_block = $('.ved-header-menu .ved-main-megamenu .inner-nav > .menu-item');
                       var moremenu = count_block.slice(number_blocks, count_block.length);
                       moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
                       $('.view_menu').prepend('<a href="#"><span>More</span></a>');
@@ -107,14 +107,14 @@
             }
             if (($(document).width() >= 1200) && ($(document).width() <= 1339)){
                 var number_blocks =6;
-                var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+                var count_block = $('.ved-header-menu .ved-main-megamenu .inner-nav > .menu-item');
                 var moremenu = count_block.slice(number_blocks, count_block.length);
                 moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
                 $('.view_menu').prepend('<a href="#"><span>More</span></a>');
             };
             if (($(document).width() >= 1051) && ($(document).width() <= 1199)){
                 var number_blocks =6;
-                var count_block = $('.ved-main-megamenu .inner-nav > .menu-item');
+                var count_block = $('.ved-header-menu .ved-main-megamenu .inner-nav > .menu-item');
                 var moremenu = count_block.slice(number_blocks, count_block.length);
                 moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
                 $('.view_menu').prepend('<a href="#"><span>More</span></a>');
@@ -809,6 +809,99 @@ jQuery('.dropdown').on('hide.bs.dropdown', function (e) {
             toggleMobileStyles();
         }
     });
+    
+    		/*************************
+		:: Product Load More
+		*************************/
+		
+		jQuery('.product-more-button a').on('click', function(e) {
+		    e.preventDefault();
+			var more_btn     = this;
+			var next_link    = $(this).data( 'next_link' );
+			var max_pages    = $(this).data( 'max_pages' );
+			var current_page = $(this).data( 'current_page' );
+			var next_page    = $(this).data( 'next_page' );
+			
+			// Disable button click if loaded all pages and added disabled class
+			if( $(more_btn).hasClass( 'disabled' ) ){
+				return;
+			}
+
+			// Call ajax to fetch data
+			$.ajax({
+				url: next_link,
+				beforeSend: function( xhr ) {
+					$(more_btn).html('Loading....');
+					$(more_btn).addClass('content-loading');
+				}
+			})
+			.done(function( data ) {
+				
+				$(more_btn).removeClass('content-loading');
+				// Load data in temp
+				var temp = $(data);
+			
+				// Get button from ajax data
+				var next_btn = temp.find('.product-more-button').html();
+				var products = temp.find('ul.products-loop');
+
+				// Get button data from button in returned data
+				var next_btn_link         = $( next_btn ).data('next_link');
+				var next_btn_max_pages    = $( next_btn ).data('max_pages');
+				var next_btn_next_page    = $( next_btn ).data('next_page');
+				var next_btn_current_page = $( next_btn ).data('current_page');
+				
+				// Check if current page count is less than max page count
+				if( next_btn_current_page < next_btn_max_pages ){
+
+					// Set 'Load more...' back after ajax completed
+					$( more_btn ).html('Load more...');
+
+					// Set returned button data to button
+					$( more_btn ).data( 'next_link', next_btn_link);
+					$( more_btn ).data( 'max_pages', next_btn_max_pages);
+					$( more_btn ).data( 'next_page', next_btn_next_page);
+					$( more_btn ).data( 'current_page', next_btn_current_page);
+				}else{
+					$( more_btn ).html('No more product to load').addClass( 'disabled' );
+				}
+				
+				// Append the new data to product
+				$( 'li.product' ).last().after( products.html() );
+				
+				// Set the grid column 
+				product_grid_set();
+				bigbo_lazyload();
+				
+			})
+		});
+        
+                /****************************
+		:: Product Infinit Scroll 
+		****************************/
+		
+		var counter = 1;
+		jQuery( window ).scroll(function() {
+			if( $('.product-infinite_scroll').length > 0 ){
+				var load_more_button = $('.product-more-button a');
+				
+				var scrollHeight = Math.round( load_more_button.offset().top );
+				var scrollOuterHeight = load_more_button.height();
+				var scrollPosition = $(window).height() + $(window).scrollTop();
+				var total = load_more_button.data('current_page');
+				
+				if ( scrollPosition > scrollHeight + scrollOuterHeight ) {
+					setTimeout(function () {				
+						if( total == counter ){
+							if(!load_more_button.hasClass('content-loading')){
+								counter++;
+								load_more_button.trigger( 'click' );
+							}
+						}
+					}, 200);
+				}
+			}
+		});
 }(jQuery);
 
 
@@ -971,4 +1064,39 @@ jQuery(document).ready(function(){
 var topbar_currency_switcher_form = document.querySelector(".topbar_item.topbar_item_type-currency .woocommerce-currency-switcher-form");
 if(topbar_currency_switcher_form != null){
 	topbar_currency_switcher_form.setAttribute("action", "");
+}
+
+function product_grid_set(){
+	if( jQuery( 'ul.products-loop' ).hasClass('grid') ){
+		var index = 0;
+		var column = jQuery( 'ul.products-loop' ).data('column');
+		
+		jQuery( 'ul.products-loop' ).find('li').each( function() {
+			index++;
+			if(jQuery(this).hasClass('first')){
+				jQuery(this).removeClass('first');
+			}else if(jQuery(this).hasClass('last')){
+				jQuery(this).removeClass('last');
+			}
+			
+			if( column == index ){
+				jQuery(this).addClass('last');
+				index = 0;
+			}else if( index == 1 ){
+				jQuery(this).addClass('first');
+			}
+		});
+	}
+}
+
+function bigbo_lazyload() {
+	if(jQuery('.bigbo-lazy-load').length) {
+		jQuery('.bigbo-lazy-load').lazy({
+			afterLoad: function(element) {
+				// called after an element was successfully handled
+				element.removeClass('bigbo-lazy-load');
+				element.addClass('bigbo-loaded');				
+			}
+		});
+	}
 }

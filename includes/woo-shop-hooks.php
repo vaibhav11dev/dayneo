@@ -29,7 +29,7 @@ function bigbo_products_loop_classes( $classes = array() ){
 		
 		if( is_shop() ){
 			$classes[] = $gridlist_view;
-			if( isset( $ved_options['product_pagination'] ) && $ved_options['product_pagination'] == 'infinite_scroll' ){
+			if( isset( $ved_options['ved_product_pagination'] ) && $ved_options['ved_product_pagination'] == 'infinite_scroll' ){
 				$classes[] = 'product-infinite_scroll';
 			}
 		}
@@ -126,7 +126,7 @@ function bigbo_wc_before_shop_loop_item_product_thumbnail_inner_end(){
 			<?php
 			global $ved_options;
 			$attachment_image = bigbo_get_swap_image();
-			if( isset($ved_options['product_image_swap']) && $ved_options['product_image_swap'] == 1 && !empty($attachment_image)){
+			if( isset($ved_options['ved_product_image_swap']) && $ved_options['ved_product_image_swap'] == 1 && !empty($attachment_image)){
 				echo '<div class="product-thumbnail-swap">';
 					echo $attachment_image; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 				echo '</div>';
@@ -212,8 +212,8 @@ function bigbo_product_actions_wrapper_open(){
 	?>
 	<div class="product-actions">
 	<?php
-	$ved_options['product_hover_style'];
-	if( isset( $ved_options['product_hover_style'] ) && ( $ved_options['product_hover_style'] == 'default' || $ved_options['product_hover_style'] == 'image-bottom-2' || $ved_options['product_hover_style'] == 'icon-top-left'  ) ) {
+	$ved_options['ved_product_hover_style'];
+	if( isset( $ved_options['ved_product_hover_style'] ) && ( $ved_options['ved_product_hover_style'] == 'default' || $ved_options['ved_product_hover_style'] == 'image-bottom-2' || $ved_options['ved_product_hover_style'] == 'icon-top-left'  ) ) {
 		?>
 		<div class="product-actions-inner">
 		<?php
@@ -224,7 +224,7 @@ add_action( 'bigbo_after_product_actions', 'bigbo_product_actions_wrapper_close'
 function bigbo_product_actions_wrapper_close(){
 	global $ved_options;
 
-	if( isset( $ved_options['product_hover_style'] ) && ( $ved_options['product_hover_style'] == 'default' || $ved_options['product_hover_style'] == 'image-bottom-2' || $ved_options['product_hover_style'] == 'icon-top-left' ) ) {
+	if( isset( $ved_options['ved_product_hover_style'] ) && ( $ved_options['ved_product_hover_style'] == 'default' || $ved_options['ved_product_hover_style'] == 'image-bottom-2' || $ved_options['ved_product_hover_style'] == 'icon-top-left' ) ) {
 		?>
 		</div>
 		<?php
@@ -277,11 +277,11 @@ function bigbo_product_classes( $classes ) {
 	}
 
 	// Product Title length
-	if( isset($ved_options['product_title_length']) && !empty($ved_options['product_title_length']) ){
-		$classes[] = 'product_title_type-'.$ved_options['product_title_length'];
+	if( isset($ved_options['ved_product_title_length']) && !empty($ved_options['ved_product_title_length']) ){
+		$classes[] = 'product_title_type-'.$ved_options['ved_product_title_length'];
 	}
 
-	$icon_type = isset($ved_options['product_hover_icon_type']) && !empty($ved_options['product_hover_icon_type']) ? $ved_options['product_hover_icon_type'] : 'fill-icon';
+	$icon_type = isset($ved_options['ved_product_hover_icon_type']) && !empty($ved_options['ved_product_hover_icon_type']) ? $ved_options['ved_product_hover_icon_type'] : 'fill-icon';
 
 	$classes[] = 'product_icon_type-'.$icon_type;
 
@@ -328,7 +328,7 @@ if( ! function_exists('bigbo_product_availability') ) {
 	function bigbo_product_availability() {
 		global $ved_options;
 
-		if( is_shop() && ! $ved_options['product-out-of-stock-icon'] ) return;
+		if( is_shop() && ! $ved_options['ved_product-out-of-stock-icon'] ) return;
 
 		global $product;
 
@@ -352,7 +352,7 @@ function bigbo_woocommerce_catalog_mode(){
 	if ( class_exists( 'WooCommerce' ) ) {
 		global $ved_options;
 
-		if(isset($ved_options['woocommerce_catalog_mode']) && $ved_options['woocommerce_catalog_mode']==1){
+		if(isset($ved_options['ved_woocommerce_catalog_mode']) && $ved_options['ved_woocommerce_catalog_mode']==1){
 			remove_action( 'bigbo_product_actions', 'woocommerce_template_loop_add_to_cart', 10 );
 			remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 			remove_action( 'woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30 );
@@ -376,8 +376,8 @@ if (!function_exists('ciya_sh0op_hide_price')) {
 
     function bigbo_hide_price($price, $product) {
         global $ved_options;
-        if (isset($ved_options['woocommerce_catalog_mode']) && $ved_options['woocommerce_catalog_mode'] == 1) {
-            if (isset($ved_options['woocommerce_price_hide']) && $ved_options['woocommerce_price_hide'] == 1) {
+        if (isset($ved_options['ved_woocommerce_catalog_mode']) && $ved_options['ved_woocommerce_catalog_mode'] == 1) {
+            if (isset($ved_options['ved_woocommerce_price_hide']) && $ved_options['ved_woocommerce_price_hide'] == 1) {
                 $price = '';
             }
         }
@@ -429,8 +429,8 @@ add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_price
 function bigbo_product_hover_style(){
 	global $ved_options;
 	
-	if( isset( $ved_options['product_hover_style'] ) && !empty($ved_options['product_hover_style']) ){
-		$option_data = $ved_options['product_hover_style'];
+	if( isset( $ved_options['ved_product_hover_style'] ) && !empty($ved_options['ved_product_hover_style']) ){
+		$option_data = $ved_options['ved_product_hover_style'];
 	}else{
 		$option_data = 'image-center';
 	}
@@ -443,8 +443,8 @@ function bigbo_product_hover_style(){
 function bigbo_product_hover_button_shape(){
 	global $ved_options;
 
-	if( isset( $ved_options['product_hover_button_shape'] ) && !empty($ved_options['product_hover_button_shape']) ){
-		$option_data = $ved_options['product_hover_button_shape'];
+	if( isset( $ved_options['ved_product_hover_button_shape'] ) && !empty($ved_options['ved_product_hover_button_shape']) ){
+		$option_data = $ved_options['ved_product_hover_button_shape'];
 	}else{
 		$option_data = 'square';
 	}
@@ -457,8 +457,8 @@ function bigbo_product_hover_button_shape(){
 function bigbo_product_hover_button_style(){
 	global $ved_options;
 	
-	if( isset( $ved_options['product_hover_button_style'] ) && !empty($ved_options['product_hover_button_style']) ){
-		$option_data = $ved_options['product_hover_button_style'];
+	if( isset( $ved_options['ved_product_hover_button_style'] ) && !empty($ved_options['ved_product_hover_button_style']) ){
+		$option_data = $ved_options['ved_product_hover_button_style'];
 	}else{
 		$option_data = 'flat';
 	}
@@ -471,8 +471,8 @@ function bigbo_product_hover_button_style(){
 function bigbo_product_hover_default_button_style(){
 	global $ved_options;
 	
-	if( isset( $ved_options['product_hover_default_button_style'] ) && !empty($ved_options['product_hover_default_button_style']) ){
-		$option_data = $ved_options['product_hover_default_button_style'];
+	if( isset( $ved_options['ved_product_hover_default_button_style'] ) && !empty($ved_options['ved_product_hover_default_button_style']) ){
+		$option_data = $ved_options['ved_product_hover_default_button_style'];
 	}else{
 		$option_data = 'dark';
 	}
@@ -486,8 +486,8 @@ function bigbo_product_hover_default_button_style(){
 function bigbo_product_hover_bar_style(){
 	global $ved_options;
 	
-	if( isset( $ved_options['product_hover_bar_style'] ) && !empty($ved_options['product_hover_bar_style']) ){
-		$option_data = $ved_options['product_hover_bar_style'];
+	if( isset( $ved_options['ved_product_hover_bar_style'] ) && !empty($ved_options['ved_product_hover_bar_style']) ){
+		$option_data = $ved_options['ved_product_hover_bar_style'];
 	}else{
 		$option_data = 'flat';
 	}
@@ -499,8 +499,8 @@ function bigbo_product_hover_bar_style(){
 function bigbo_product_hover_add_to_cart_position(){
 	global $ved_options;
 	
-	if( isset( $ved_options['product_hover_add_to_cart_position'] ) && !empty($ved_options['product_hover_add_to_cart_position']) ){
-		$option_data = $ved_options['product_hover_add_to_cart_position'];
+	if( isset( $ved_options['ved_product_hover_add_to_cart_position'] ) && !empty($ved_options['ved_product_hover_add_to_cart_position']) ){
+		$option_data = $ved_options['ved_product_hover_add_to_cart_position'];
 	}else{
 		$option_data = 'center';
 	}
@@ -533,7 +533,7 @@ function bigbo_get_swap_image($size = 'woocommerce_thumbnail' ) {
 	$image_src = '';
 	$attachment_ids = $product->get_gallery_image_ids();
 
-	if( isset($ved_options['product_image_swap']) && $ved_options['product_image_swap'] == 1 ){
+	if( isset($ved_options['ved_product_image_swap']) && $ved_options['ved_product_image_swap'] == 1 ){
 		$attachment_ids = $product->get_gallery_image_ids();
 		if(count($attachment_ids) >= 1) {
 			$attachment_id = $attachment_ids[0];

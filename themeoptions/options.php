@@ -1791,7 +1791,7 @@ Redux::setSection( $ved_options, array(
 	'subsection'	 => true,
 	'fields' => array(
             array(
-                'id' => 'product_hover_style',
+                'id' => 'ved_product_hover_style',
                 'type' => 'ved_select_image',
                 'title' => esc_html__('Product Hover Style', 'bigbo' ),
                 'placeholder' => esc_html__('Select product hover style.', 'bigbo' ),
@@ -1848,7 +1848,7 @@ Redux::setSection( $ved_options, array(
                 'default' => 'image-center',
             ),    
 		array(
-                'id' => 'product_image_swap',
+                'id' => 'ved_product_image_swap',
                 'type' => 'switch',
                 'title' => esc_html__('Swape Image On Hover', 'bigbo' ),
                 'subtitle' => esc_html__('Product image change on hover.', 'bigbo' ),
@@ -1857,7 +1857,7 @@ Redux::setSection( $ved_options, array(
                 'default' => true,
             ),
 			array(
-                'id' => 'product_title_length',
+                'id' => 'ved_product_title_length',
                 'type' => 'button_set',
                 'title' => esc_html__('Product Title Length', 'bigbo' ),
                 'options' => array(
@@ -1867,7 +1867,7 @@ Redux::setSection( $ved_options, array(
                 'default' => 'single_line',
             ),
 		array(
-                'id' => 'product_hover_button_shape',
+                'id' => 'ved_product_hover_button_shape',
                 'type' => 'button_set',
                 'title' => esc_html__('Button Shape', 'bigbo' ),
                 'options' => array(
@@ -1875,10 +1875,10 @@ Redux::setSection( $ved_options, array(
                     'round' => esc_html__('Round', 'bigbo' ),
                 ),
                 'default' => 'square',
-                'required' => array('product_hover_style', '=', array('image-center', 'image-left', 'image-bottom', 'image-bottom-2', 'info-bottom')),
+                'required' => array('ved_product_hover_style', '=', array('image-center', 'image-left', 'image-bottom', 'image-bottom-2', 'info-bottom')),
             ),
             array(
-                'id' => 'product_hover_button_style',
+                'id' => 'ved_product_hover_button_style',
                 'type' => 'button_set',
                 'title' => esc_html__('Button Style', 'bigbo' ),
                 'options' => array(
@@ -1886,10 +1886,10 @@ Redux::setSection( $ved_options, array(
                     'border' => esc_html__('Border', 'bigbo' ),
                 ),
                 'default' => 'flat',
-                'required' => array('product_hover_style', '=', array('image-center', 'image-left', 'image-bottom')),
+                'required' => array('ved_product_hover_style', '=', array('image-center', 'image-left', 'image-bottom')),
             ),
             array(
-                'id' => 'product_hover_bar_style',
+                'id' => 'ved_product_hover_bar_style',
                 'type' => 'button_set',
                 'title' => esc_html__('Bar Style', 'bigbo' ),
                 'options' => array(
@@ -1897,10 +1897,10 @@ Redux::setSection( $ved_options, array(
                     'border' => esc_html__('Border', 'bigbo' ),
                 ),
                 'default' => 'flat',
-                'required' => array('product_hover_style', '=', array('image-bottom-bar', 'info-bottom-bar')),
+                'required' => array('ved_product_hover_style', '=', array('image-bottom-bar', 'info-bottom-bar')),
             ),
             array(
-                'id' => 'product_hover_add_to_cart_position',
+                'id' => 'ved_product_hover_add_to_cart_position',
                 'type' => 'button_set',
                 'title' => esc_html__('"Add to Cart" Position', 'bigbo' ),
                 'options' => array(
@@ -1908,10 +1908,10 @@ Redux::setSection( $ved_options, array(
                     'left' => esc_html__('Left', 'bigbo' ),
                 ),
                 'default' => 'center',
-                'required' => array('product_hover_style', '=', array('image-bottom-bar', 'info-bottom', 'info-bottom-bar')),
+                'required' => array('ved_product_hover_style', '=', array('image-bottom-bar', 'info-bottom', 'info-bottom-bar')),
             ),
 			array(
-                'id' => 'product_hover_default_button_style',
+                'id' => 'ved_product_hover_default_button_style',
                 'type' => 'button_set',
                 'title' => esc_html__('Button Style', 'bigbo' ),
                 'options' => array(
@@ -1919,10 +1919,10 @@ Redux::setSection( $ved_options, array(
                     'light' => esc_html__('Light', 'bigbo' ),
                 ),
                 'default' => 'dark',
-                'required' => array('product_hover_style', '=', array('default', 'icon-top-left')),
+                'required' => array('ved_product_hover_style', '=', array('default', 'icon-top-left')),
             ),
             array(
-                'id' => 'product_hover_icon_type',
+                'id' => 'ved_product_hover_icon_type',
                 'type' => 'button_set',
                 'title' => esc_html__('Product Icons Type', 'bigbo' ),
                 'subtitle' => esc_html__('Overall Product Hover Icon Type.', 'bigbo' ),
@@ -1933,7 +1933,7 @@ Redux::setSection( $ved_options, array(
                 'default' => 'fill-icon',
             ),
 			array(
-    			'id'         => 'product_pagination',
+    			'id'         => 'ved_product_pagination',
     			'type'       => 'button_set',
     			'title'      => esc_html__('Product Pagination', 'bigbo' ),
     			'options'    => array(
@@ -1944,7 +1944,7 @@ Redux::setSection( $ved_options, array(
     			'default' => 'pagination',
     		),	
 		array(
-                'id' => 'product_hover_icon_type',
+                'id' => 'ved_product_hover_icon_type',
                 'type' => 'button_set',
                 'title' => esc_html__('Product Icons Type', 'bigbo' ),
                 'subtitle' => esc_html__('Overall Product Hover Icon Type.', 'bigbo' ),
@@ -1955,7 +1955,7 @@ Redux::setSection( $ved_options, array(
                 'default' => 'fill-icon',
             ),
 		array(
-                'id' => 'product-out-of-stock-icon',
+                'id' => 'ved_product-out-of-stock-icon',
                 'type' => 'switch',
                 'title' => esc_html__('Display "Out of stock" Label', 'bigbo' ),
                 'default' => true,
@@ -1963,20 +1963,20 @@ Redux::setSection( $ved_options, array(
                 'off' => esc_html__('No', 'bigbo' ),
             ),
 		array(
-                'id' => 'woocommerce_catalog_mode',
+                'id' => 'ved_woocommerce_catalog_mode',
                 'type' => 'switch',
                 'title' => esc_html__('Just Catalog', 'bigbo' ),
                 'subtitle' => esc_html__('Disable "Add To Cart" button and shopping cart', 'bigbo' ),
                 'default' => false,
             ),
-            array(
-                'id' => 'woocommerce_price_hide',
-                'type' => 'switch',
-                'title' => esc_html__('Hide Price', 'bigbo' ),
-                'subtitle' => esc_html__('Hide product price on Product pages', 'bigbo' ),
-                'default' => false,
-                'required' => array('woocommerce_catalog_mode', '=', true)
-            ),
+		array(
+			'id' => 'ved_woocommerce_price_hide',
+			'type' => 'switch',
+			'title' => esc_html__('Hide Price', 'bigbo' ),
+			'subtitle' => esc_html__('Hide product price on Product pages', 'bigbo' ),
+			'default' => false,
+			'required' => array('ved_woocommerce_catalog_mode', '=', true)
+		),
 	),
 )
 );

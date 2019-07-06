@@ -219,20 +219,6 @@ add_filter( 'woocommerce_show_page_title', 'bigbo_shop_title', 10 );
  */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 
-/**
- * WooCommerce(shop-page) - Remove shop page product heading
- * And create new html for shop page product heading
- * 
- * @return boolean
- */
-//function bigbo_woocommerce_template_loop_product_title() {
-//	global $product;
-//
-//	$link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
-//
-//	echo '<h5 class="woocommerce-loop-product__title"><a href="' . esc_url( $link ) . '" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">' . esc_html( get_the_title() ) . '</a></h5>';
-//}
-//
 //remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
 //add_action( 'woocommerce_shop_loop_item_title', 'bigbo_woocommerce_template_loop_product_title', 10 );
 
@@ -1036,19 +1022,19 @@ function product_compare() {
  * Product On Sale
  */
 add_action( 'bigbo_onsale_product_photo', 'woocommerce_template_loop_product_link_open', 10 );
-add_action( 'bigbo_onsale_product_photo', 'bigbo_template_loop_product_thumbnail', 20 );
+add_action( 'bigbo_onsale_product_photo', 'bigbo_deal_product_thumbnail', 20 );
 add_action( 'bigbo_onsale_product_photo', 'woocommerce_template_loop_product_link_close', 30 );
 add_action( 'bigbo_onsale_product_photo', 'bigbo_deal_countdown_timer', 40 );
-add_action( 'bigbo_onsale_product_title', 'bigbo_woocommerce_template_loop_product_title', 50 );
+add_action( 'bigbo_onsale_product_title', 'bigbo_deal_product_title', 50 );
 add_action( 'bigbo_onsale_product_title', 'woocommerce_template_loop_price', 60 );
 add_action( 'bigbo_onsale_product_title', 'bigbo_deal_progress_bar', 70 );
 
-if ( !function_exists( 'bigbo_template_loop_product_thumbnail' ) ) {
+if ( !function_exists( 'bigbo_deal_product_thumbnail' ) ) {
 
 	/**
 	 * Get the product thumbnail for the loop.
 	 */
-	function bigbo_template_loop_product_thumbnail() {
+	function bigbo_deal_product_thumbnail() {
 		$thumbnail = woocommerce_get_product_thumbnail();
 		echo apply_filters( 'bigbo_template_loop_product_thumbnail', $thumbnail );
 	}
@@ -1143,4 +1129,20 @@ if ( !function_exists( 'bigbo_deal_countdown_timer' ) ) {
 		endif;
 	}
 
+}
+
+if ( !function_exists( 'bigbo_deal_product_title' ) ) {
+	/**
+	 * WooCommerce(shop-page) - Remove shop page product heading
+	 * And create new html for shop page product heading
+	 * 
+	 * @return boolean
+	 */
+	function bigbo_deal_product_title() {
+		global $product;
+
+		$link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
+
+		echo '<h5 class="woocommerce-loop-product__title"><a href="' . esc_url( $link ) . '" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">' . esc_html( get_the_title() ) . '</a></h5>';
+	}
 }

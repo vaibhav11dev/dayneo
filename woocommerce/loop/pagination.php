@@ -14,66 +14,66 @@
  * @package WooCommerce/Templates
  * @version 3.3.1
  */
+global $ved_options, $wp_query;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$total	 = isset( $total ) ? $total : wc_get_loop_prop( 'total_pages' );
+$total   = isset( $total ) ? $total : wc_get_loop_prop( 'total_pages' );
 $current = isset( $current ) ? $current : wc_get_loop_prop( 'current_page' );
-$base	 = isset( $base ) ? $base : esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
-$format	 = isset( $format ) ? $format : '';
-$allowed_html = array(
-    'a'   => array(
-        'href' => array(),
-    ),
-    'i'   => array(
-        'class' => array(),
-    ),
-);
+$base    = isset( $base ) ? $base : esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
+$format  = isset( $format ) ? $format : '';
 
 if ( $total <= 1 ) {
 	return;
 }
-?>
-<!-- PAGINATION -->
-<div class="row product-pagination-wrap">
-    <div class="col-sm-12">
+
+$product_pagination = isset( $ved_options['ved_product_pagination'] ) ?  $ved_options['ved_product_pagination'] : '';
+
+if( !empty($product_pagination) && ( $product_pagination == 'load_more' || $product_pagination == 'infinite_scroll' )){
+
+	$load_more_button_style = ( $product_pagination == 'infinite_scroll' ) ? 'pointer-events: none; cursor: default;' : '';
+	
+	$max_pages 	  = $wp_query->max_num_pages;
+	$current_page = ( get_query_var('paged') > 1 ) ? get_query_var('paged') : 1;
+	$next_link    = next_posts($max_pages, false);
+	$next_page    = !empty($next_link) ? $current_page + 1 : '';
+	
+	?>
+	<div class="product-more-button">
+		<?php 
+			if(!empty($next_page)){
+			?>
+			<a href="#" style="<?php echo esc_attr( $load_more_button_style );?>" 
+				data-max_pages="<?php echo esc_attr($max_pages);?>" 
+				data-current_page="<?php echo esc_attr($current_page);?>" 
+				data-next_page="<?php echo esc_attr($next_page);?>" 
+				data-next_link="<?php echo esc_attr($next_link);?>">
+				<?php esc_html_e('Load more...','bigbo' );?></a>
+			<?php
+		}
+		?>
+	</div>
+	<?php
+}else{
+	?>
 	<nav class="woocommerce-pagination">
-	    <?php
-	    ob_start();
-
-	    $pagination = paginate_links( apply_filters( 'woocommerce_pagination_args', array( // WPCS: XSS ok.
-		'base'		 => $base,
-		'format'	 => $format,
-		'add_args'	 => false,
-		'current'	 => max( 1, $current ),
-		'total'		 => $total,
-		'prev_text'	 => '<i class="fa fa-angle-left"></i>',
-		'next_text'	 => '<i class="fa fa-angle-right"></i>',
-		'type'		 => 'array',
-		'end_size'	 => 3,
-		'mid_size'	 => 3,
-	    ) ) );
-
-	    if ( ! empty( $pagination ) ) {
-		    ?>
-		    <ul class="pagination">
-			<?php foreach ( $pagination as $key => $page_link ) { ?>
-				<li class="paginated_link <?php
-				    if ( strpos( $page_link, 'current' ) !== false ) {
-					    echo 'active';
-				    }
-				    ?>">
-					<?php echo wp_kses( $page_link, $allowed_html ); ?>
-				</li>
-			<?php } ?>
-		    </ul>
-		    <?php
-	    }
-	    $links = ob_get_clean();
-	    echo wp_kses_post($links);
-	    ?>
+		<?php
+			echo paginate_links( apply_filters( 'woocommerce_pagination_args', array( // WPCS: XSS ok.
+				'base'         => $base,
+				'format'       => $format,
+				'add_args'     => false,
+				'current'      => max( 1, $current ),
+				'total'        => $total,
+				'prev_text'    => '&larr;',
+				'next_text'    => '&rarr;',
+				'type'         => 'list',
+				'end_size'     => 3,
+				'mid_size'     => 3,
+			) ) );
+		?>
 	</nav>
-    </div>
-</div>
-<!-- END PAGINATION -->
+	<?php
+}
+?>

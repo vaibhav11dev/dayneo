@@ -1,7 +1,4 @@
 <?php
-//Header Topbar
-bigbo_header_topbar();
-
 $ved_show_search = bigbo_get_option( 'ved_show_search' );
 $ved_show_header_cart = bigbo_get_option( 'ved_show_header_cart' );
 $ved_show_header_compare = bigbo_get_option( 'ved_show_header_compare' );
@@ -12,16 +9,21 @@ $css_header_menu        = 'col-md-12 col-sm-12';
 if ( $ved_cat_menu_status == 'enable' ) {
     $css_header_menu = 'col-md-9 col-sm-9';
 }
+
+$ved_header_width		 = bigbo_get_option( 'ved_header_width' );
+$header_width_class = "container";
+if ($ved_header_width == 'full_width') {
+	$header_width_class = "container-fluid";
+}
 ?>
 
-<!--desktop-header-->
-<div class="header-main-wapper hidden-md-down">
-    <div class="header-main">
-        <div class="container">
+<div id="header-sticky" class="header-sticky-wapper">
+    <div class="header-sticky header-sticky-desktop-on header-sticky-mobile-on">
+        <div class="<?php echo esc_attr( $header_width_class ); ?>">
             <div class="row">
-                <div class="header-row">
-                    <div class="header-logo col-md-3 col-sm-6">
-                        <div id="_desktop_logo" class="d-logo">
+                <div class="header-sticky-row">
+                    <div class="header-sticky-logo col-md-3 col-sm-6">
+                        <div id="header_sticky_logo" class="d-logo">
                             <!-- YOUR LOGO HERE -->
                             <div class="inner-header site-identity">
                                 <?php
@@ -69,53 +71,29 @@ if ( $ved_cat_menu_status == 'enable' ) {
                         </div>
 
                     </div>
-                        <div class="header-extras col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <?php 
-								if ( $ved_show_search ) {
-									bigbo_header_search(); 
-								}
+					<div class="ved-header-sticky-menu col-lg-6 col-md-6 col-sm-6 col-xs-6">
+							<?php bigbo_header_menu(); ?>
+					</div>
+					<div class="col-lg-3 col-md-3">
+						<div class="extras-menu">
+							<?php
+							if ( $ved_show_header_cart ) {
+								bigbo_header_cart();
+							}
+							if ( $ved_show_header_compare ) {
+								bigbo_topbar_compare();
+							}
+							if ( $ved_show_header_wishlist ) {
+								bigbo_topbar_wishlist();
+							}
+							if ( $ved_show_search ) {
+								bigbo_header_search_icon(); 
+							}
 							?>
-                        </div>
-                        <div class="col-lg-3 col-md-3">
-                            <div class="extras-menu">
-                                <?php
-								if ( $ved_show_header_cart ) {
-									bigbo_header_cart();
-								}
-								if ( $ved_show_header_compare ) {
-									bigbo_topbar_compare();
-								}
-								if ( $ved_show_header_wishlist ) {
-									bigbo_topbar_wishlist();
-								}
-                                ?>
-                            </div>		    
-                        </div>
+						</div>		    
+					</div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="main-menu hidden-md-down">
-    <div class="container">
-        <div class="row">
-            <div class="header-row">
-                <?php if ( $ved_cat_menu_status == 'enable' ) : ?>
-                    <div class="col-md-3 col-sm-3 i-product-cats ved-extra-department">
-                        <?php bigbo_categories_menu(); ?>
-                    </div>
-                <?php endif; ?>
-					<div class="<?php echo esc_attr( $css_header_menu ); ?> ved-header-menu">
-						<?php bigbo_header_menu(); ?>
-					</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php
-//Header Mobile
-bigbo_header_mobilebar();
-
-//Header Sticky
-//bigbo_header_sticky();
