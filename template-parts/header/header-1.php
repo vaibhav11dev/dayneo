@@ -69,14 +69,14 @@ if ( $ved_cat_menu_status == 'enable' ) {
                         </div>
 
                     </div>
-                        <div class="header-extras col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="header-extras col-lg-7 col-md-6 col-sm-6 col-xs-6">
                             <?php 
 								if ( $ved_show_search ) {
 									bigbo_header_search(); 
 								}
 							?>
                         </div>
-                        <div class="col-lg-3 col-md-3">
+                        <div class="col-lg-2 col-md-3">
                             <div class="extras-menu">
                                 <?php
 								if ( $ved_show_header_cart ) {

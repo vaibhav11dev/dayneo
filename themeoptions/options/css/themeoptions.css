@@ -422,9 +422,9 @@ label.icon-link-target {
 
 .redux-container .redux-container-sorter ul h3 {
     margin: 0 0 10px;
-    text-align: center;
     color: #777;
-    text-transform: capitalize
+    text-transform: capitalize;
+    line-height: 1;    
 }
 
 #customize-controls .redux-field-info,
@@ -673,7 +673,9 @@ label.icon-link-target {
 .redux-container .redux-group-tab h3 {
     margin-top: 0;
     line-height: 2em;
-    border-bottom: 1px solid #E7E7E7
+    border-bottom: 1px solid #E7E7E7;
+    font-weight: bold; 
+    padding: 10px 0;       
 }
 
 .redux-container .redux-group-tab .redux-section-desc {
@@ -1259,12 +1261,6 @@ label.icon-link-target {
 .redux-container-image_select .redux-image-select-selected img,
 .wp-customizer .redux-container-image_select .redux-image-select-selected img {
     border-color: #dc324f
-}
-
-@media screen and (min-width:1140px) {
-    .redux-container-sorter ul {
-        width: 200px
-    }
 }
 
 @media screen and (max-width:600px) {
@@ -3141,4 +3137,34 @@ html[dir=rtl] .select2-search-choice-close {
 .select2-container {
     min-width: 100%;
 }
+}
+tr.radio-icon-selector-horizontal .redux-field-container.redux-container-radio > ul > li label > span {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #dedede;
+    color: #757575;
+    padding: 0;
+    display: block;
+    font-size: 12px;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+tr.radio-icon-selector-horizontal .redux-field-container.redux-container-radio > ul > li label > input[type="radio"] {
+    display: none;
+}
+tr.radio-icon-selector-horizontal .redux-field-container.redux-container-radio > ul > li {
+    float: left;
+    text-align: center;
+    width: auto;
+    margin-right: 5px;
+}
+tr.radio-icon-selector-horizontal .redux-field-container.redux-container-radio > ul > li label > span i {
+    height: 100%;
+    line-height: 44px;
+}
+tr.radio-icon-selector-horizontal .redux-field-container.redux-container-radio > ul > li:hover label > span, tr.radio-icon-selector-horizontal .redux-field-container.redux-container-radio > ul > li label > input[type="radio"]:checked + span {
+    border-color: #dc324f;
+    color: #dc324f;
 }

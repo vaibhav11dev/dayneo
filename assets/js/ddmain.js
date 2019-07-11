@@ -1041,6 +1041,10 @@ function vegamenuposition(){
 jQuery(".slidetoggle-init").click(function(){
   jQuery(this).parent().find(".slidetoggle-menu").slideToggle();
 });
+jQuery(".language#drop > a").click(function(e){
+    e.stopPropagation();
+    jQuery(this).next().slideToggle();
+});
 
 /**
  * Mobile Filter Toggle

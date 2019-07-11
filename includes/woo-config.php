@@ -45,16 +45,12 @@ function bigbo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
 					</span>
 				</div>
 			<?php } else { ?>
-				<div class="icon-wrap-circle">
-					<div class="icon-wrap">
-						<span class="icon-box">
-							<i class="flaticon-paper-bag"></i>
-							<span class="mini-item-counter">
-								<?php echo (int) $woocommerce->cart->cart_contents_count; ?>
-							</span>
+					<div class="icon-box">
+						<i class="flaticon-paper-bag"></i>
+						<span class="mini-item-counter">
+							<?php echo (int) $woocommerce->cart->cart_contents_count; ?>
 						</span>
-					</div> 
-				</div>
+					</div>
 			<?php } ?>
 		</a>
 
