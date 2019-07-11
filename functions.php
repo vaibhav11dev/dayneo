@@ -31,6 +31,7 @@ function bigbo_scripts() {
     //Theme Core CSS
     $ved_demo_style = bigbo_get_option( 'ved_demo_style', 'dddemo1' );
     wp_enqueue_style( 'ddmain', get_template_directory_uri() . '/assets/css/ddmain.css' );
+    wp_enqueue_style( 'wooshop', get_template_directory_uri() . '/assets/css/wooshop.css' );
     if ( $ved_demo_style == 'dddemo2' ) {
         wp_enqueue_style( 'dddemo2', get_template_directory_uri() . '/assets/css/dddemo2.css' );
     }
