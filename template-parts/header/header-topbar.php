@@ -32,7 +32,8 @@ $ved_topbar_layout		 = bigbo_get_option( 'ved_topbar_layout' );
 	<div class="<?php echo esc_attr( $header_width_class ); ?>">
 	<div class="row">
 
-		<div class="col-md-6 hidden-sm hidden-xs">
+		<div class="col-md-6 hidden-sm hidden-xs topbar-left">
+			<div class="topbar-left-wrap">
 			<?php
 			if ( isset($ved_topbar_layout[ 'Left' ]['email']) ) {
 				bigbo_topbar_email();
@@ -53,8 +54,10 @@ $ved_topbar_layout		 = bigbo_get_option( 'ved_topbar_layout' );
 				bigbo_topbar_language();
 			}
 			?>
+			</div>
 		</div>
-	    <div class="col-md-6 hidden-sm hidden-xs">
+	    <div class="col-md-6 hidden-sm hidden-xs text-right topbar-right">
+	    	<div class="topbar-right-wrap">
 			<?php
 			if ( isset($ved_topbar_layout[ 'Right' ]['email']) ) {
 				bigbo_topbar_email();
@@ -75,6 +78,7 @@ $ved_topbar_layout		 = bigbo_get_option( 'ved_topbar_layout' );
 				bigbo_topbar_language();
 			}
 			?>
+			</div>
 		</div>
 	   
 	</div>

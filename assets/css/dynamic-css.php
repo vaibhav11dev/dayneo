@@ -132,11 +132,17 @@ if ( $bigbo_content_top_bottom_padding ) {
   [Header Section Style]
  */
 
-//Header Topbar Color
-if ( isset( $ved_options[ 'ved_topbar_bg_color' ] ) ) {
+//Header Topbar bgColor
+if ( $ved_options['ved_topbar_bg_type'] == 'custom' ) {
 	$bigbo_dynamic_css .= '
 	.top-bar.top-bar-color {
 		background: ' . esc_attr($ved_options[ 'ved_topbar_bg_color' ]) . ';
+	}
+';
+
+	$bigbo_dynamic_css .= '
+	.top-bar p,.top-bar-list a, .top-bar-right .dropdown > .expand-more,.top-bar .header-social.social-icons > li > a,.top-bar .language > a,.top-bar .woocommerce-currency-switcher-form select {
+		color: ' . esc_attr($ved_options[ 'ved_topbar_text_color' ]) . ';
 	}
 ';
 }
@@ -152,20 +158,16 @@ $bigbo_dynamic_css		 .= '
 }
 
 //Header Background Color
+if ( $ved_options[ 'ved_header_bg_type' ] == 'custom'  ) {
 $bigbo_dynamic_css .= '
-	#header {
+	.header-main-wapper {
 		background: ' . esc_attr($ved_options[ 'ved_header_bg_color' ]) . ';
 	}
-';
-
-
-//Header Text Color
-$bigbo_dynamic_css .= '
-	.top-bar p,.top-bar-list a, .top-bar-right .dropdown > .expand-more, #_desktop_wishtlistTop .yith-contents,.cart-hover .cart-content-right > span,
-	.cart-hover .cart-content-right .nav-total,.mobile-logo-bar #menu-icon,#_mobile_cart .header-ajax-cart .icon-box {
+	.extras-menu .yith-contents, .extras-menu #open-cart{
 		color: ' . esc_attr($ved_options[ 'ved_header_text_color' ]) . ';
 	}
 ';
+}
 
 
 /* -----------------------------------------------------------------
@@ -606,11 +608,15 @@ button[type=submit]:hover,
 .flex-control-nav > li > a.flex-active,
 .ved-woo-cats-slider .item .categoryName:after,
 .ddPopupnewsletter-i .close,
-.ved-pricing .ved-pricing-button:hover
+.ved-pricing .ved-pricing-button:hover,
+.header-ajax-cart .icon-box .mini-item-counter,.extras-menu .yith-contents .mini-item-counter,
+.search-bg-theme .product-extra-search,.search-bg-theme .search-wrapper input
 {
     background: ' . esc_attr($ved_primary_color) . ';
 }
-
+.search-bg-theme .products-search .product-cat-dd{
+	background-color: ' . esc_attr($ved_primary_color) . '
+}
 .btn.btn-base.btn-outline,
 .btn.btn-base.btn-fade:focus,
 .btn.btn-base.btn-fade:hover,

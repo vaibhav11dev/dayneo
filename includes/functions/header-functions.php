@@ -31,15 +31,11 @@ if ( !function_exists( 'bigbo_header_cart' ) ) :
 									</span>
 								</div>
 							<?php } else { ?>
-								<div class="icon-wrap-circle">
-									<div class="icon-wrap">
-										<span class="icon-box">
-											<i class="flaticon-paper-bag"></i>
-											<span class="mini-item-counter">
-												<?php echo (int) $woocommerce->cart->cart_contents_count; ?>
-											</span>
-										</span>
-									</div> 
+								<div class="icon-box">
+									<i class="flaticon-paper-bag"></i>
+									<span class="mini-item-counter">
+										<?php echo (int) $woocommerce->cart->cart_contents_count; ?>
+									</span>
 								</div>
 							<?php } ?>
 						</a>
@@ -222,6 +218,22 @@ if ( !function_exists( 'bigbo_header_search' ) ) :
 			$search_results = '<div class="ajax-search-results woocommerce"></div>';
 		}
 
+		$search_box_bg = bigbo_get_option( 'ved_search_background_type' );
+		if ( $search_box_bg == 'search-bg-transparent' ) {
+			$search_box_bg = 'search-bg-transparent';
+		} else if ( $search_box_bg == 'search-bg-white' ) {
+			$search_box_bg = 'search-bg-white';
+		} else if ( $search_box_bg == 'search-bg-dark' ) {
+			$search_box_bg = 'search-bg-dark';
+		} else if ( $search_box_bg == 'search-bg-theme' ) {
+			$search_box_bg = 'search-bg-theme';
+		}
+
+		$search_box_shape = bigbo_get_option( 'ved_search_box_shape' );
+		if ( $search_box_shape == 'rounded' ) {
+			$search_shape_class = 'search-rounded';
+		}
+
 		$show_categories = bigbo_get_option( 'ved_show_categories' );
 		$product_categories = '';
 		if ($show_categories) {
@@ -229,7 +241,7 @@ if ( !function_exists( 'bigbo_header_search' ) ) :
 		}
 
 		$items .= sprintf(
-		'<div id="_desktop_search"><div class="top-search-wrap"><div class="product-extra-search">
+		'<div id="_desktop_search"><div class="top-search-wrap %s"><div class="product-extra-search %s">
                 <form class="products-search" method="get" action="%s">
                     <div class="psearch-content">
 			            <div class="search-wrapper">
@@ -244,7 +256,7 @@ if ( !function_exists( 'bigbo_header_search' ) ) :
 		</div>
                 %s
                 <div class="search-limit"><p class="limit">Number of characters at least are 3</p></div></div></div>', 
-		esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, $product_categories, $search_icon, implode( ' ', $words_html ), $search_results
+		$search_box_bg, $search_shape_class, esc_url( home_url( '/' ) ), esc_html( $search_text ), $post_type_html, $product_categories, $search_icon, implode( ' ', $words_html ), $search_results
 		);
 
 		echo $items; // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -394,7 +406,7 @@ endif;
 if ( !function_exists( 'bigbo_header_mobilebar' ) ) :
 
 	function bigbo_header_mobilebar() {
-		get_template_part( 'template-parts/header/header-mobile' );
+		get_template_part( 'template-parts/header/header-mobilebar' );
 	}
 
 endif;
@@ -426,7 +438,7 @@ if ( !function_exists( 'bigbo_topbar_wishlist' ) ) :
 		?>
 		<div id="_desktop_wishtlistTop" class="extra-menu-item menu-item-wishlist menu-item-yith">    			    
 			<a class="yith-contents" id="icon-wishlist-contents" href="<?php echo esc_url( get_permalink( get_option( 'yith_wcwl_wishlist_page_id' ) ) ) ?>">
-				<i class="fa fa-heart-o"></i>
+				<i class="fa fa-heart-o hidden-md-down"></i>
 				<span class="hidden-lg-up"><?php echo esc_html_e( 'Wishlist', 'bigbo' ); ?></span>
 				<span class="mini-item-counter"><?php echo intval( $count ); ?></span>
 			</a>
@@ -451,7 +463,7 @@ if ( !function_exists( 'bigbo_topbar_compare' ) ) :
 		?>
 		<div id="_desktop_compareTop" class="extra-menu-item menu-item-wishlist menu-item-yith">    			    
 			<a class="yith-contents yith-woocompare-open" id="icon-compare-contents" href="javascript:void(0)">    	
-				<i class="fa fa-compress"></i>
+				<i class="fa fa-compress hidden-md-down"></i>
 				<span class="hidden-lg-up"><?php echo esc_html_e( 'Compare', 'bigbo' ); ?></span>
 				<span class="mini-item-counter">0</span>
 			</a>
@@ -517,7 +529,7 @@ if ( !function_exists( 'bigbo_topbar_phone' ) ) :
 		$ved_header_number = bigbo_get_option( 'ved_header_number' );
 		if ( $ved_header_number ):
 			?>
-			<div>	
+			<div class="top-bar-list icon-list">	
 				<a class="phone-number" href="tel:<?php echo str_replace( ' ', '', esc_attr( $ved_header_number ) ); ?>"><i class="fa fa-phone"></i><?php echo esc_html( $ved_header_number ); ?></a>
 			</div>
 			<?php
@@ -536,7 +548,7 @@ if ( !function_exists( 'bigbo_topbar_email' ) ) :
 		$ved_header_email = bigbo_get_option( 'ved_header_email' );
 		if ( $ved_header_email ):
 			?> 
-			<div>
+			<div class="top-bar-list icon-list">
 				<a class="email-address" href="mailto:<?php echo esc_url( antispambot( $ved_header_email ) ); ?>"><i class="fa fa-envelope"></i><?php echo esc_html( $ved_header_email ); ?></a>
 			</div>
 			<?php

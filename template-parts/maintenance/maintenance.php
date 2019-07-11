@@ -33,16 +33,15 @@ if( $maintenance_mode == 'comingsoon' ){
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
-				<div class="mntc-cs-item mntc-cs-content text-center">
-					<i class="fa <?php echo esc_attr(( $maintenance_mode == 'comingsoon' ) ? 'fa-clock-o' : 'fa-cog');?> fa-spin fa-3x fa-fw margin-bottom"></i>
-					<h1 class="text-blue"><?php echo esc_html($mntc_cs_title);?></h1>
-					<p><?php echo esc_html($mntc_cs_sutitle);?></p>
+				<div class="mntc-cs-item mntc-cs-head text-center">
+					<h1 class="mntc-title"><?php echo esc_html($mntc_cs_title);?></h1>
+					<p class="mntc-subtitle"><?php echo esc_html($mntc_cs_sutitle);?></p>
 				</div>
 				<?php
 				if( $maintenance_mode == 'comingsoon' ){
 					$comingsoon_date = $ved_options['ved_comingsoon_date'];
 					$comingsoon_date = date_create_from_format('m/d/Y', $comingsoon_date);
-					$comingsoon_date = $comingsoon_date->format( 'Y/m/d' );
+					$comingsoon_date = $comingsoon_date->format( 'Y-m-d' );
 					
 					$counter_data = array(
 						'days'           => esc_html__("Days", 'bigbo' ),
@@ -54,7 +53,38 @@ if( $maintenance_mode == 'comingsoon' ){
 					$counter_data = json_encode($counter_data);
 					?>
 					<div class="mntc-cs-item mntc-cs-content coming-soon-countdown">
-						<ul class="commingsoon_countdown" data-countdown_date="<?php echo esc_attr($comingsoon_date);?>" data-counter_data="<?php echo esc_attr($counter_data);?>"></ul>
+						<h2>We'll be back soon in</h2>
+						<div id="DateCountdown" data-date="<?php echo esc_attr($comingsoon_date);?>"></div>
+						<script>
+							$("#DateCountdown").TimeCircles({
+							    "animation": "smooth",
+							    "bg_width": 0.2,
+							    "fg_width": 0.03,
+							    "circle_bg_color": "#666",
+							    "time": {
+							        "Days": {
+							            "text": "Days",
+							            "color": "#fff",
+							            "show": true
+							        },
+							        "Hours": {
+							            "text": "Hours",
+							            "color": "#fff",
+							            "show": true
+							        },
+							        "Minutes": {
+							            "text": "Minutes",
+							            "color": "#fff",
+							            "show": true
+							        },
+							        "Seconds": {
+							            "text": "Seconds",
+							            "color": "#fff",
+							            "show": true
+							        }
+							    }
+							});
+						</script>
 					</div>
 					<?php
 				}
