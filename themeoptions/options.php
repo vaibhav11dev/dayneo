@@ -1083,6 +1083,31 @@ Redux::setSection( $ved_options, array(
 				array('ved_show_search', '=', 1),
 			)
 		),
+		array(
+			'id'   =>'divider_1',
+			'type' => 'divide'
+		),
+		array(
+			'id'         => 'ved_search_icon_title',
+			'type'       => 'section',
+			'title'      => esc_html__( 'Search Keyword', 'bigbo' ),
+			'indent'     => true,
+		),
+		array(
+			'id'       => 'ved_search_icon',
+			'type'     => 'radio',
+			'title'    => esc_html__('Search Icon', 'bigbo' ),
+			'options'  => array(
+				'fa fa-search'                             => '<i class="fa fa-search fa-2x" aria-hidden="true"></i>',
+				'flaticon-search'=> '<i class="flaticon-search"></i>',
+				'pgsicon-ecommerce-shopping-cart-1'    => '<i class="glyph-icon pgsicon-ecommerce-shopping-cart-1 fa-2x" aria-hidden="true"></i>',
+			),
+			'default' => 'fa fa-search',
+			'class'   => 'cart-icon-large radio-icon-selector-horizontal',
+			'required' => array(
+				array('ved_show_header_cart', '=', 1),
+			),
+		),
 	),
 )
 );

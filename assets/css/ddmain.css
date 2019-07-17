@@ -4570,8 +4570,8 @@ body .primary-nav .inner-nav > li > a{
     opacity: 0;
     position: absolute;
     width: 100%;
-    z-index: -1;    
-    z-index: 999;
+    z-index: -1;  
+    visibility: hidden;
     box-shadow: 0 2px 15px rgba(0,0,0,.1);
     -webkit-box-shadow: 0 2px 15px rgba(0,0,0,.1);
     -moz-box-shadow: 0 2px 15px rgba(0,0,0,.1);
@@ -4586,6 +4586,8 @@ body .primary-nav .inner-nav > li > a{
     position: fixed;
     animation: slide-down 0.4s;
     opacity: 1;
+    visibility: visible;
+    z-index: 999;
     visibility: visible;
 }
 .admin-bar .header-wrap .sticky-wrapper {
