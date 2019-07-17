@@ -15,7 +15,7 @@ $ved_header_type_check = bigbo_get_option( 'ved_header_type' );
 <div class="mobile-menu hidden-lg">
     <div class="container">
         <div class="mobile-logo-bar">
-            <div id="menu-icon"><i class="ti-menu"></i></div>
+            <div id="menu-icon" class="menu-icon"><i class="ti-menu"></i></div>
             <div id="_mobile_logo"></div>
             <div id="_mobile_cart"></div>
         </div>
