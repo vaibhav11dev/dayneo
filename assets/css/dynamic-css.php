@@ -147,6 +147,23 @@ if ( $ved_options['ved_topbar_bg_type'] == 'custom' ) {
 ';
 }
 
+//Fixheader bgColor
+if($ved_options['ved_sticky_header']) {
+ 
+	$bigbo_dynamic_css .= '
+	#header-sticky-wrapper {
+		background: ' . esc_attr($ved_options[ 'ved_sticky_header_color' ]) . ';
+	}
+	#header-sticky-wrapper .primary-nav .inner-nav > li > a,#header-sticky-wrapper .extras-menu #open-cart,#header-sticky-wrapper .extras-menu .yith-contents{
+		color: '. esc_attr($ved_options[ 'ved_sticky_header_text_color' ]) .';
+	}
+	#header-sticky-wrapper .inner-nav > li:hover > a,#header-sticky-wrapper .extras-menu #open-cart:hover,#header-sticky-wrapper .extras-menu .yith-contents:hover,#header-sticky-wrapper .sub-menu li > a:hover, #header-sticky-wrapper .sub-menu li > a:focus, #header-sticky-wrapper .sub-menu li.submenu-open > a{
+		color: '. esc_attr($ved_options[ 'ved_sticky_header_link_color' ]) .';	
+	}
+	';
+
+}
+
 // Hero Header Custom Height
 $bigbo_hero_height_custom	 = get_post_meta( $post_id, 'bigbo_hero_height_custom', true );
 if ( $bigbo_hero_height_custom ) {
@@ -357,7 +374,7 @@ body,
 	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'ved_tagline_font', '#tagline', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
 
 	//Main Menu Font
-	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'ved_menu_font', '.primary-nav .inner-nav > li > a', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'ved_menu_font', '.main-menu .primary-nav .inner-nav > li > a', $additional_color_css_class = '', $imp = '' );
 
 	//Top Menu Font
 	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'ved_top_menu_font', '.top-bar-list', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
@@ -760,8 +777,8 @@ input[type="radio"] + label:before, input[type="radio"] + span:before, input[typ
 .bg-brand-hvr,
 .main-menu,
 .header-1 .products-cats-menu .cats-menu-title,
-.header-1 .ved-main-megamenu .inner-nav > li:hover > a,
-.header-4 .ved-main-megamenu .inner-nav > li:hover > a,
+.header-1 .ved-main-megamenu .ved-header-main-menu .inner-nav > li:hover > a,
+.header-4 .ved-main-megamenu .ved-header-main-menu .inner-nav > li:hover > a,
 .products-search .search-submit,
 .extras-menu .icon-wrap .icon-box .mini-item-counter,
 .extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box,

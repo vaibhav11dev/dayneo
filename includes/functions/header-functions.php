@@ -206,7 +206,8 @@ if ( !function_exists( 'bigbo_header_search' ) ) :
 			$post_type_html .= '<input type="hidden" name="lang" value="' . $lang . '"/>';
 		}
 		
-		$search_icon = "<i class='flaticon-search'></i>";
+		$ved_search_icon_type = bigbo_get_option( 'ved_search_icon');
+		$search_icon = '<i class="'.$ved_search_icon_type.'"></i>';
 		
 
 		$search_content_type = bigbo_get_option( 'ved_search_content_type' );
