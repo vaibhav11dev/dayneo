@@ -22,5 +22,39 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+
+<?php if ( bigbo_get_option( 'ved_maintenance_mode' ) == 'comingsoon' ) { ?>
+<script>
+    jQuery("#DateCountdown").TimeCircles({
+        "animation": "smooth",
+        "bg_width": 0.2,
+        "fg_width": 0.03,
+        "circle_bg_color": "#666",
+        "time": {
+            "Days": {
+                "text": "Days",
+                "color": "#222",
+                "show": true
+            },
+            "Hours": {
+                "text": "Hours",
+                "color": "#222",
+                "show": true
+            },
+            "Minutes": {
+                "text": "Minutes",
+                "color": "#222",
+                "show": true
+            },
+            "Seconds": {
+                "text": "Seconds",
+                "color": "#222",
+                "show": true
+            }
+        }
+    });
+</script>
+<?php } ?>
+
 </body>
 </html>

@@ -970,14 +970,6 @@ Redux::setSection( $ved_options, array(
 			)
 		),
 		array(
-			'id'		 => 'ved_custom_search_button',
-			'type'		 => 'text',
-			'title'		 => esc_html__( 'Button Text', 'bigbo' ),
-			'required'=> array(
-				array('ved_show_search', '=', 1),
-			)
-		),
-		array(
 			'id'		 => 'ved_header_ajax_search',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'AJAX Search', 'bigbo' ),
@@ -2339,20 +2331,6 @@ Redux::setSection( $ved_options, array(
 			'default'	 => '15px',
 		),
 		array(
-			'subtitle'	 => esc_html__( 'Set padding between menu items.', 'bigbo' ),
-			'id'		 => 'ved_main_menu_padding',
-			'type'		 => 'spacing',
-			'units'		 => array( 'px', 'em' ),
-			'title'		 => esc_html__( 'Padding Between Menu Items', 'bigbo' ),
-			'default'	 => array(
-				'padding-top'	 => '0px',
-				'padding-right' => '15px',
-				'padding-bottom' => '0px',
-				'padding-left' => '15px',
-				'units'		 => 'px',
-			),
-		),
-		array(
 			'subtitle'	 => esc_html__( 'Main menu text transform', 'bigbo' ),
 			'id'		 => 'ved_menu_text_transform',
 			'compiler'	 => true,
@@ -2836,6 +2814,17 @@ Redux::setSection( $ved_options, array(
 			'title'        => esc_html__('Maintenance Subtitle', 'bigbo' ),
 			'default'      => esc_html__('This Site is Currently Under Maintenance. We will back shortly', 'bigbo' ),
 			'required'     => array( 'ved_maintenance_mode', '=', 'maintenance' ),
+		),
+		array(
+			'subtitle'	 => esc_html__( 'Upload background image will display in the Comingsoon Background.', 'bigbo' ),
+			'id'		 => 'ved_comingsoon_bg',
+			'type'		 => 'media',
+			'title'        => esc_html__('Coming Soon BG Image', 'bigbo' ),
+			'url'		 => true,
+			'default'	 => array(
+				'url' => BIGBO_DEFAULT . 'comingsoon-bg.jpg'
+			),
+			'required'     => array( 'ved_maintenance_mode', '=', 'comingsoon' ),
 		),
 		array(
 			'id'           => 'ved_comingsoon_title',

@@ -33,20 +33,21 @@ remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_pr
 function bigbo_woocommerce_header_add_to_cart_fragment1( $fragments ) {
 	global $woocommerce;
 	$ved_header_type = bigbo_get_option( 'ved_header_type', 'h1' );
+	$ved_cart_icon_type = bigbo_get_option( 'ved_header_cart_icon');
 	ob_start();
 	?>
 	<div class="menu-item header-ajax-cart">
 		<a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
-			<?php if ( $ved_header_type == 'h3' ) { ?>
+			<?php if ( $ved_header_type == 'h8' ) { ?>
 				<div class="icon-wrap">
 					<span class="icon-box">
-						<i class="flaticon-paper-bag"></i>
+						<i class="<?php echo $ved_cart_icon_type; ?>"></i>
 						<span class="mini-item-counter hidden-lg-up"><?php echo (int) $woocommerce->cart->cart_contents_count; ?></span>
 					</span>
 				</div>
 			<?php } else { ?>
 					<div class="icon-box">
-						<i class="flaticon-paper-bag"></i>
+						<i class="<?php echo $ved_cart_icon_type; ?>"></i>
 						<span class="mini-item-counter">
 							<?php echo (int) $woocommerce->cart->cart_contents_count; ?>
 						</span>

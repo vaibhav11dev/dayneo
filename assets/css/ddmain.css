@@ -2028,6 +2028,20 @@ table th {
     text-align: center;
 }
 
+/*transparent header*/
+@media screen and (min-width: 1051px){
+#header.header-transparent {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 99;
+}
+.admin-bar #header.header-transparent {
+    top: 32px
+}
+}
+
 /*--------------------------------------------------------------
 ## Header-6 Styles
 --------------------------------------------------------------*/
@@ -2306,7 +2320,7 @@ table th {
 .extras-menu .yith-contents{
 	position: relative;
 }
-.extras-menu .yith-contents,.extras-menu #open-cart{
+.extras-menu .yith-contents,.extras-menu #open-cart,.extras-menu #_desktop_search .icon-wrap{
     width: 30px;
     height: 30px;
     text-align: center;
@@ -2362,6 +2376,7 @@ table th {
 .primary-nav .inner-nav > li > a{
     line-height: 50px;
     color: #fff;
+    padding: 0 15px
 }
 .main-menu .ved-header-menu {
     padding: 0;
@@ -3554,17 +3569,31 @@ table th {
 .topbar-right-wrap > :last-child{
 	padding-right: 0;
 }
-.topbar-left-wrap > *:not(:last-child){
-	border-right: 1px solid #e2e2e2
-}
-.topbar-right-wrap > *:not(:first-child){
-	border-left: 1px solid #e2e2e2
-}
 
 @media (max-width: 991px) {
     .top-bar .container {
         width: 100%;
     }
+}
+@media screen and (max-width: 1050px){
+.topbar-left-wrap > *, .topbar-right-wrap > * {
+    display: inline-block;
+    padding: 5px 7px;
+}
+.topbar-left, .text-right.topbar-right {
+    text-align: center;
+}
+.topbar-right-wrap {
+    margin: 0 auto;
+}
+}
+@media screen and (min-width: 1051px){
+.header-1 .topbar-left-wrap > *:not(:last-child){
+	border-right: 1px solid #e2e2e2
+}
+.header-1 .topbar-right-wrap > *:not(:first-child){
+	border-left: 1px solid #e2e2e2
+}
 }
 
 /*------------------------------------------------------------------
@@ -3576,9 +3605,10 @@ table th {
 .inner-header {
     /*    position: relative;*/
     z-index: 1;
+}
+.header-1 .inner-header {
     float: left;
 }
-
 #blog-title {
     /*padding-top: 17px;*/
 }
@@ -3588,7 +3618,6 @@ table th {
 }
 
 .inner-brand {
-    display: table-cell;
     vertical-align: middle;
     height: 70px;
     font-weight: 700;
@@ -3596,7 +3625,11 @@ table th {
     color: #000000;
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
+    display: inline-block;    
 }
+.header-1 .inner-brand {
+    display: table-cell;
+}    
 #_desktop_logo .normal-logo{
 	max-width: 230px;
 	max-height: 70px;
@@ -3664,7 +3697,11 @@ table th {
     padding: 0;
     margin: 0;
 }
-
+.inner-nav:after{
+	content: '';
+	display: block;
+	clear: both;
+}
 .inner-nav > ul {
     list-style-type: none;
 }
@@ -4390,6 +4427,136 @@ body .primary-nav .inner-nav > li > a{
     font-weight: 600;
 }
 
+/*-------header-2--------*/
+/*search-popup*/
+#search_popup {
+    background: #fff;
+    margin: 20px;
+}
+#search_popup .modal-dialog {
+    max-width: 100%;
+    margin: 0;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+#search_popup .modal-content {
+    background: 0 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: table-cell;
+    vertical-align: middle;
+    box-shadow: none;    
+}
+#search_popup .modal-header {
+    background: 0 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+}
+#search_popup .modal-header button{
+	font-size: 24px
+}
+#search_popup .modal-body {
+    max-width: 800px;
+    margin: 0 auto;
+}
+#search_popup .product-extra-search  {
+   border:none;
+    -webkit-box-shadow: 0 10px 40px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 10px 40px rgba(0,0,0,.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,.1);
+}
+.header-2 .top-bar {
+    border: none;
+    background-color: #111;
+    color: #fff;
+}
+.header-2 .top-bar p, .header-2 .top-bar-list a, .header-2 .top-bar-right .dropdown > .expand-more, .header-2 .top-bar .header-social.social-icons > li > a, .header-2 .top-bar .language > a, .header-2 .top-bar .woocommerce-currency-switcher-form select {
+    color: #ffffff;
+}
+
+@media screen and (min-width: 1051px){
+.header-2 #menu-all-pages,.header-3 #menu-all-pages {
+    display: flex;
+    justify-content: center;
+}
+.header-2 #_desktop_search .icon-wrap {
+    font-size: 18px;
+    margin-right: 5px;
+}
+#search_popup .products-search .product-cat-dd,#search_popup .products-search .search-field{
+	height: 50px;
+}
+}
+
+/*----------header-4---------*/
+@media screen and (min-width: 1051px){
+.header-4 .extras-menu .yith-contents,.header-4 .extras-menu #open-cart,.header-4 .extras-menu #_desktop_search .icon-wrap,
+.header-5 .extras-menu .yith-contents, .header-5 .extras-menu #open-cart, .header-5 .extras-menu #_desktop_search .icon-wrap{
+	height: 50px;
+	line-height: 50px;
+    font-size: 20px;
+    color: #fff	
+}
+.header-4 .cart-hover .sub-cart-menu,.header-5 .cart-hover .sub-cart-menu {
+    top: 100%;
+}    
+.header-4 .extras-menu .yith-contents > i,
+.header-5 .extras-menu .yith-contents > i {
+    line-height: inherit;
+}
+.header-4 .header-ajax-cart .icon-box .mini-item-counter,.header-4 .extras-menu .yith-contents .mini-item-counter,
+.header-5 .header-ajax-cart .icon-box .mini-item-counter,.header-5 .extras-menu .yith-contents .mini-item-counter {
+    top: 8px;
+}    
+}
+
+/*---------header-5---------*/
+@media screen and (min-width: 1051px){
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+.no-gutters>[class*=col-] {
+    padding-right: 0;
+    padding-left: 0;
+}
+.header-5 .header-logo-left-style {
+	display: flex;
+	margin: 0;
+}
+.header-5 .d-logo{
+    background: #fff;
+    border-right: 1px solid #ddd;
+    padding: 0 15px;
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+.header-5 .d-logo .inner-header{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.header-5 .topbar .container{
+	width: 100%
+}
+.header-5 .extras-menu .yith-contents, .header-5 .extras-menu #open-cart, .header-5 .extras-menu #_desktop_search .icon-wrap{
+	color: #666
+}
+.header-5 .extras-menu{
+    justify-content: flex-end;
+}
+.header-5 .headerbar .row{
+	margin-right: 0
+}
+}
+
 /*from dynamic-css*/
 ul.nav-menu > li {
     float: left;
@@ -4448,6 +4615,9 @@ ul.nav-menu .ved-megamenu-menu li:hover .widget-content ul {
 }
 }
 @media screen and (max-width: 1050px){
+.inner-brand {
+	display: table-cell;
+}
 .inner-nav > li > a .ved-megamenu-icon {
     display: none;
 }
@@ -10169,6 +10339,11 @@ body .ddPopupnewsletter-i .close{
     position: relative;
     padding: 80px 0;
     text-align: center;
+    display: flex;
+    align-items: center;
+}
+.ved_maintenance #main{
+	width: 100%
 }
 .ved_maintenance h1{
 	font-weight: 700;
@@ -10178,7 +10353,7 @@ body .ddPopupnewsletter-i .close{
     margin-bottom: 10px;  
 }
 .coming-soon-countdown h2{
-    font-size: 14px;	
+    font-size: 24px;	
 }
 .mntc-cs-head{
 	margin-bottom: 50px
@@ -10196,14 +10371,75 @@ body .ddPopupnewsletter-i .close{
 	color: #fff
 }
 
-@media screen and (min-width: 992px){
+.time_circles {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin:0 auto;
+}
+.time_circles > div {
+    position: absolute;
+    text-align: center;
+}
+.time_circles > div > h4 {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.time_circles > div > span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 300%;
+    margin-top: 0.4em;
+    font-weight: bold;
+}
+.maintenance-newsletter .widget_mailchimp .input-wrapper input {
+    margin-bottom: 0;
+    text-align: left;    
+}
+.maintenance-newsletter .widget_mailchimp {
+    padding: 0;
+}
+.maintenance-newsletter .mc4wp-form-fields {
+    display: flex;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.maintenance-newsletter .mc4wp-form-fields .input-wrapper{
+	width: 100%;
+}
+.maintenance-newsletter .mc4wp-form-fields .newsletter_submit{
+	margin-left: 15px;
+}
+.mntc-tit{
+	font-size: 16px
+}
+
+@media screen and (min-width: 768px){
 .ved_maintenance h1{
     font-size: 60px;	
 }
 .ved_maintenance .mntc-subtitle{
     font-size: 20px;
 }
-.coming-soon-countdown h2 {
+.coming-soon-countdown h2,.mntc-tit {
 	font-size: 30px;
+}
+#DateCountdown{
+	width: 80%;
+    margin: 0 auto;	
+}
+}
+@media screen and (max-width: 767px){
+.mntc-cs-head {
+    margin-bottom: 20px;
+}
+.coming-soon-countdown h2 {
+    margin-bottom: 5px;
+}
+.ved_maintenance #page {
+    padding: 60px 0 80px;
 }
 }

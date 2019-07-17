@@ -115,9 +115,16 @@
 				$header_type = 'header-5';
 				break;
 		}
+
+		$ved_header_transparent = bigbo_get_option( 'ved_header_transparent' );
+		$ved_header_type_check = bigbo_get_option( 'ved_header_type' );
+		$ved_header_transparent_class = "";
+		if ($ved_header_transparent && $ved_header_type_check == "h3") {
+		    $ved_header_transparent_class = "header-transparent";
+		}
 		?>
 
-		<div id="header" class="header-wrap <?php echo esc_attr( $header_type ); ?>">
+		<div id="header" class="header-wrap <?php echo esc_attr( $header_type ); ?> <?php echo esc_attr($ved_header_transparent_class); ?>">
 			<?php get_template_part( 'template-parts/header/'.$header_type ); ?>
 		</div>
 

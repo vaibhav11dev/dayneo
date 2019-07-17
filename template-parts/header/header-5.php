@@ -17,7 +17,7 @@ if ( $ved_cat_menu_status == 'enable' ) {
 <div class="header-main-wapper hidden-md-down">
     <div class="header-main">
         <div class="container">
-            <div class="row">
+            <div class="row header-logo-left-style no-gutters">
                     <div class="header-logo col-lg-3 col-md-4 col-sm-3">
                         <div id="_desktop_logo" class="d-logo">
                             <!-- YOUR LOGO HERE -->
