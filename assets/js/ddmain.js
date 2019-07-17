@@ -79,46 +79,109 @@
         });        
 
         /**
+         * Sticky Header
+         */
+        
+         $(window).scroll(function () {
+            var header_height = $('.header-main-wapper').outerHeight();
+            if ( $( window ).scrollTop() > header_height ) {
+                $('#header-sticky-wrapper').addClass('is-sticky');
+            } else {
+                $('#header-sticky-wrapper').removeClass('is-sticky');
+            }
+        });
+        /**
          * Mega menu More Dropdown
          */
         $(document).ready(function(){
+            
+            //For Header Main Menu
             if ($(document).width() >= 1530){
-                var number_blocks =9;
-                var count_block = $('.ved-header-menu .ved-main-megamenu .inner-nav > .menu-item');
+                if (bigboData.header_type == 'h1' || bigboData.header_width == 'full_width') {
+                    var number_blocks =9;
+                } else {
+                     var number_blocks =6;
+                }
+                var count_block = $('.ved-header-main-menu .ved-main-megamenu .inner-nav > .menu-item');
                 var moremenu = count_block.slice(number_blocks, count_block.length);
-                moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
-                $('.view_menu').prepend('<a href="#"><span>More</span></a>');
+                moremenu.wrapAll('<li class="view_main_menu more-menu-btn menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_main_menu').prepend('<a href="#" class="more-btn">More</a>');
             }
+            
             if (($(document).width() >= 1340) && ($(document).width() <= 1529)){
-                var number_blocks =8;
-                var count_block = $('.ved-header-menu .ved-main-megamenu .inner-nav > .menu-item');
-                var moremenu = count_block.slice(number_blocks, count_block.length);
-                moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
-                $('.view_menu').prepend('<a href="#"><span>More</span></a>');
-            }
-            if ($(document).width() >= 1340){
-                if((bigboData.headertype == 'h1')){
+                if (bigboData.header_type == 'h1' || bigboData.header_width == 'full_width') {
                     var number_blocks =8;
-                    var count_block = $('.ved-header-menu .ved-main-megamenu .inner-nav > .menu-item');
-                      var moremenu = count_block.slice(number_blocks, count_block.length);
-                      moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
-                      $('.view_menu').prepend('<a href="#"><span>More</span></a>');
-                }              
+                } else {
+                    var number_blocks =5;
+                }
+                var count_block = $('.ved-header-main-menu .ved-main-megamenu .inner-nav > .menu-item');
+                var moremenu = count_block.slice(number_blocks, count_block.length);
+                moremenu.wrapAll('<li class="view_main_menu more-menu-btn menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_main_menu').prepend('<a href="#" class="more-btn">More</a>');
             }
+            
             if (($(document).width() >= 1200) && ($(document).width() <= 1339)){
-                var number_blocks =6;
-                var count_block = $('.ved-header-menu .ved-main-megamenu .inner-nav > .menu-item');
+                if (bigboData.header_type == 'h1' || bigboData.header_width == 'full_width') {
+                    var number_blocks =7;
+                } else {
+                    var number_blocks =4;
+                }
+                var count_block = $('.ved-header-main-menu .ved-main-megamenu .inner-nav > .menu-item');
                 var moremenu = count_block.slice(number_blocks, count_block.length);
-                moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
-                $('.view_menu').prepend('<a href="#"><span>More</span></a>');
+                moremenu.wrapAll('<li class="view_main_menu more-menu-btn menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_main_menu').prepend('<a href="#" class="more-btn">More</a>');
             };
+            
             if (($(document).width() >= 1051) && ($(document).width() <= 1199)){
-                var number_blocks =6;
-                var count_block = $('.ved-header-menu .ved-main-megamenu .inner-nav > .menu-item');
+                if (bigboData.header_type == 'h1' || bigboData.header_width == 'full_width') {
+                    var number_blocks = 6;
+                } else {
+                    var number_blocks =4;
+                }
+                var count_block = $('.ved-header-main-menu .ved-main-megamenu .inner-nav > .menu-item');
                 var moremenu = count_block.slice(number_blocks, count_block.length);
-                moremenu.wrapAll('<li class="view_menu menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
-                $('.view_menu').prepend('<a href="#"><span>More</span></a>');
+                moremenu.wrapAll('<li class="view_main_menu more-menu-btn menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_main_menu').prepend('<a href="#" class="more-btn">More</a>');
             };
+            
+            //For Sticky Header Main Menu
+            if ($(document).width() >= 1530){
+                var number_blocks =6;
+                var count_block = $('.sticky-menu .ved-main-megamenu .inner-nav > .menu-item');
+                var moremenu = count_block.slice(number_blocks, count_block.length);
+                moremenu.wrapAll('<li class="view_sticky_menu more-menu-btn menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_sticky_menu').prepend('<a href="#" class="more-btn">More</a>');
+            }
+            
+            if (($(document).width() >= 1340) && ($(document).width() <= 1529)){
+                var number_blocks =5;
+                var count_block = $('.sticky-menu .ved-main-megamenu .inner-nav > .menu-item');
+                var moremenu = count_block.slice(number_blocks, count_block.length);
+                moremenu.wrapAll('<li class="view_sticky_menu more-menu-btn menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_sticky_menu').prepend('<a href="#" class="more-btn">More</a>');
+            }
+            
+            if (($(document).width() >= 1200) && ($(document).width() <= 1339)){
+                var number_blocks =4;
+                var count_block = $('.sticky-menu .ved-main-megamenu .inner-nav > .menu-item');
+                var moremenu = count_block.slice(number_blocks, count_block.length);
+                moremenu.wrapAll('<li class="view_sticky_menu more-menu-btn menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_sticky_menu').prepend('<a href="#" class="more-btn">More</a>');
+            };
+            
+            if (($(document).width() >= 1051) && ($(document).width() <= 1199)){
+                var number_blocks =4;
+                var count_block = $('.sticky-menu .ved-main-megamenu .inner-nav > .menu-item');
+                var moremenu = count_block.slice(number_blocks, count_block.length);
+                moremenu.wrapAll('<li class="view_sticky_menu more-menu-btn menu-item has-submenu menu-item-has-children ved-dropdown-menu"><ul class="sub-menu">');
+                $('.view_sticky_menu').prepend('<a href="#" class="more-btn">More</a>');
+            };
+            
+            //For More Button Hover
+            $('.more-menu-btn').hover(
+                function(){ $(this).addClass('submenu-open') },
+                function(){ $(this).removeClass('submenu-open') }
+            );
         });
 
         /**

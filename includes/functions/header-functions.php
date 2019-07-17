@@ -229,6 +229,7 @@ if ( !function_exists( 'bigbo_header_search' ) ) :
 			$search_box_bg = 'search-bg-theme';
 		}
 
+		$search_shape_class = '';
 		$search_box_shape = bigbo_get_option( 'ved_search_box_shape' );
 		if ( $search_box_shape == 'rounded' ) {
 			$search_shape_class = 'search-rounded';

@@ -714,6 +714,111 @@ Redux::setSection( $ved_options, array(
 );
 
 Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-sticky-header-tab',
+	'title'		 => esc_html__( 'Sticky Header', 'bigbo' ),
+	'subsection'	 => true,
+	'fields'          => array(
+		array(
+			'id'         => esc_html__('ved_sticky_header', 'bigbo' ),
+			'type'       => 'switch',
+			'title'      => esc_html__('Sticky Header', 'bigbo' ),
+			'subtitle'   => esc_html__('Enable/disable sticky header.', 'bigbo' ),
+			'default'    => true,
+		),
+		array(
+			'id'         => esc_html__('ved_mobile_sticky_header', 'bigbo' ),
+			'type'       => 'switch',
+			'title'      => esc_html__('Mobile Sticky', 'bigbo' ),
+			'subtitle'   => esc_html__('Enable/disable mobile sticky header.', 'bigbo' ),
+			'default'    => true,
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+		array(
+			'id'      => 'ved_woocommerce_sticky_icons-start',
+			'type'    => 'section',
+			'title'   => esc_html__('WooCommerce Icons', 'bigbo' ),
+			'indent'  => true
+		),
+		array(
+			'id'     => 'ved_show_sticky_header_cart',
+			'type'   => 'switch',
+			'title'  => esc_html__('Show Cart Icon', 'bigbo' ),
+			'on'     => esc_html__('Yes', 'bigbo' ),
+			'off'    => esc_html__('No', 'bigbo' ),
+			'default'=> true, 
+		),
+		array(
+			'id'     => 'ved_show_sticky_header_compare',
+			'type'   => 'switch',
+			'title'  => esc_html__('Show Compare Icon', 'bigbo' ),
+			'on'     => esc_html__('Yes', 'bigbo' ),
+			'off'    => esc_html__('No', 'bigbo' ),
+			'default'=> true, 
+		),
+		array(
+			'id'     => 'ved_show_sticky_header_wishlist',
+			'type'   => 'switch',
+			'title'  => esc_html__('Show Wishlist Icon', 'bigbo' ),
+			'on'     => esc_html__('Yes', 'bigbo' ),
+			'off'    => esc_html__('No', 'bigbo' ),
+			'default'=> true, 
+		),
+		array(
+			'id'      => 'ved_woocommerce_sticky_icons-end',
+			'type'   => 'section',
+			'indent' => false,
+		),
+		array(
+			'id'   =>'divider_1',
+			'type' => 'divide'
+		),
+		array(
+			'id'         => 'ved_sticky_color_section_start',
+			'type'       => 'section',
+			'title'      => esc_html__( 'Sticky Color Settings', 'bigbo' ),
+			'indent'     => true,
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+		array(
+			'id'         => esc_html__('ved_sticky_header_color', 'bigbo' ),
+			'type'       => 'color',
+			'title'      => esc_html__('Sticky Header Background Color', 'bigbo' ),
+			'subtitle'   => esc_html__('Set sticky header background color.', 'bigbo' ),
+			'default'    => '#ffffff',
+			'transparent'=> false,
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+		array(
+			'id'         => esc_html__('ved_sticky_header_text_color', 'bigbo' ),
+			'type'       => 'color',
+			'title'      => esc_html__('Sticky Header Text Color', 'bigbo' ),
+			'subtitle'   => esc_html__('Set sticky header text color.', 'bigbo' ),
+			'default'    => '#969696',
+			'transparent'=> false,
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+		array(
+			'id'         => 'ved_sticky_header_link_color',
+			'type'       => 'color',
+			'title'      => esc_html__('Link Color', 'bigbo' ),
+			'subtitle'   => esc_html__('Set sticky header link color.', 'bigbo' ),
+			'mode'       => 'background-color',
+			'validate'   => 'color',
+			'transparent'=> false,
+			'default'    => '#04d39f',
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+		array(
+			'id'         => 'ved_sticky_color_section_end',
+			'type'       => 'section',
+			'indent'     => false,
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+	),
+)
+);
+
+Redux::setSection( $ved_options, array(
 	'id'		 => 'ved-header-subsec-topbar-tab',
 	'title'		 => esc_html__( 'Top Bar', 'bigbo' ),
 	'subsection'	 => true,

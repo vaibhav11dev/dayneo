@@ -62,12 +62,14 @@ function bigbo_scripts() {
     wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/assets/slick/slick.min.js', array( 'jquery' ), '1.0', true );
 
     $header_type = bigbo_get_option( 'ved_header_type' );
+	$ved_header_type		 = bigbo_get_option( 'ved_header_type' );
     wp_localize_script( 'ddmain', 'bigboData', array(
         'ajax_url'            => admin_url( 'admin-ajax.php' ),
         'nonce'               => wp_create_nonce( '_bigbo_nonce' ),
         'search_content_type' => bigbo_get_option( 'ved_search_content_type' ),
         'ajax_search'         => intval( bigbo_get_option( 'ved_header_ajax_search' ) ),
         'headertype' => $header_type,
+        'header_width' => $ved_header_type,
     ) );
 }
 

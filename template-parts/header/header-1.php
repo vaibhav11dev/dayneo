@@ -7,6 +7,7 @@ $ved_show_header_cart = bigbo_get_option( 'ved_show_header_cart' );
 $ved_show_header_compare = bigbo_get_option( 'ved_show_header_compare' );
 $ved_show_header_wishlist = bigbo_get_option( 'ved_show_header_wishlist' );
 $ved_cat_menu_status = bigbo_get_option( 'ved_cat_menu_status' );
+$ved_sticky_header = bigbo_get_option( 'ved_sticky_header' );
 
 $css_header_menu        = 'col-md-12 col-sm-12';
 if ( $ved_cat_menu_status == 'enable' ) {
@@ -105,7 +106,7 @@ if ( $ved_cat_menu_status == 'enable' ) {
                         <?php bigbo_categories_menu(); ?>
                     </div>
                 <?php endif; ?>
-					<div class="<?php echo esc_attr( $css_header_menu ); ?> ved-header-menu">
+					<div class="<?php echo esc_attr( $css_header_menu ); ?> ved-header-main-menu">
 						<?php bigbo_header_menu(); ?>
 					</div>
             </div>
@@ -117,5 +118,7 @@ if ( $ved_cat_menu_status == 'enable' ) {
 //Header Mobile
 bigbo_header_mobilebar();
 
-//Header Sticky
-//bigbo_header_sticky();
+if ($ved_sticky_header) {
+	//Header Sticky
+	bigbo_header_sticky();
+}
