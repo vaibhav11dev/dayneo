@@ -414,10 +414,69 @@ endif;
 add_action( 'wp_footer', 'bigbo_newsletter_popup' );
 
 /**
+ * Add Search popup on the footer
  * 
  * 
  */
+if ( ! function_exists( 'bigbo_search_popup' ) ) :
+	function bigbo_search_popup() {
+		$ved_show_search = bigbo_get_option( 'ved_show_search' );
+		$ved_header_type = bigbo_get_option( 'ved_header_type' );
+		if ( ! $ved_show_search || $ved_header_type == 'h1' ) {
+			return;
+		}
+		?>
+		<!-- Search Popup -->
+		<div id="search_popup" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  </div>
+			  <div class="modal-body">
+				<?php 
+					bigbo_header_search(); 
+				?>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<!-- END Search Popup -->
+		<?php
+	}
+endif;
+add_action( 'wp_footer', 'bigbo_search_popup' );
+
+/**
+ * Add Cookies Info on the footer
+ * 
+ */
 function bigbo_cookie_notice(){
-	get_template_part('template-parts/footer/cookies_info');
+	global $ved_options;
+	if(isset($ved_options['ved_cookies_info']) && $ved_options['ved_cookies_info']){
+		if(isset($_COOKIE['bigbo_cookies']) && $_COOKIE['bigbo_cookies']=='accepted'){
+			return;
+		}
+
+		$page_id = false;
+		if( isset($ved_options['ved_cookies_policy_page']) ){
+			$page_id=$ved_options['ved_cookies_policy_page'];
+		}
+		?>
+		<div class="bigbo-cookies-info">
+			<div class="bigbo-cookies-inner">
+				<div class="cookies-info-text">
+					<?php echo do_shortcode( $ved_options['ved_cookies_text'] ); ?>
+				</div>
+				<div class="cookies-buttons">
+					<a href="#" class="cookies-info-accept-btn"><?php esc_html_e( 'Accept', 'bigbo' ); ?></a>
+					<?php if ( $page_id ): ?>
+						<a href="<?php echo esc_url(get_permalink($page_id));?>" class="cookies-more-btn"><?php esc_html_e( 'More info' , 'bigbo' ); ?></a>
+					<?php endif ?>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
 }
-add_action( 'bigbo_after_page_wrapper', 'bigbo_cookie_notice', 10 );
+add_action( 'wp_footer', 'bigbo_cookie_notice' );

@@ -120,39 +120,6 @@ if ( $ved_footer_parallax == 1 ) {
 </div>
 <!-- END WRAPPER -->
 
-<?php 
-    $ved_show_search = bigbo_get_option( 'ved_show_search' );
-    if ( $ved_show_search ) { ?>
-<!-- Search Popup -->
-<div id="search_popup" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body">
-        <?php 
-            if ( $ved_show_search ) {
-                bigbo_header_search(); 
-            }
-        ?>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- END Search Popup -->
-    <?php }
-?>
-
-<?php
-/**
- * Functions hooked in to bigbo_after_page_wrapper action
- *
- * @hooked bigbo_cookie_notice - 10
- */
-do_action( 'bigbo_after_page_wrapper' ); 
-?>
-
 <?php wp_footer(); ?>
 
 </body>

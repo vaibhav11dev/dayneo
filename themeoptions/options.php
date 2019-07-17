@@ -2061,6 +2061,38 @@ Redux::setSection( $ved_options, array(
 );
 
 Redux::setSection( $ved_options, array(
+	'id'              => 'ved_woocommerce_cookie_law_info',
+	'title'           => esc_html__('Cookie Law Info', 'bigbo' ),
+	'subsection'	 => true,
+	'fields' => array(
+			array (
+				'id'      => 'ved_cookies_info',
+				'type'    => 'switch',
+				'title'   => esc_html__('Show Cookies Info', 'bigbo' ),
+				'subtitle'=> esc_html__('Under EU privacy regulations, websites must make it clear to visitors what information about them is being stored. This specifically includes cookies. Turn on this option and user will see info box at the bottom of the page that your web-site is using cookies.', 'bigbo' ),
+				'default' => true
+			),
+			array (
+				'id'      => 'ved_cookies_text',
+				'type'    => 'editor',
+				'title'   => esc_html__('Popup Text', 'bigbo' ),
+				'subtitle'=> esc_html__('Place here some information about cookies usage that will be shown in the popup.', 'bigbo' ),
+				'default' => esc_html__('We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.', 'bigbo' ),
+				'required' => array( 'ved_cookies_info', '=', 1 ),
+			),
+			array (
+				'id'      => 'ved_cookies_policy_page',
+				'type'    => 'select',
+				'title'   => esc_html__('Page with Details', 'bigbo' ),
+				'subtitle'=> esc_html__('Choose page that will contain detailed information about your Privacy Policy', 'bigbo' ),
+				'data'    => 'pages',
+				'required' => array( 'ved_cookies_info', '=', 1 ),
+			),
+		),
+	)
+);
+
+Redux::setSection( $ved_options, array(
 	'id'	 => 'ved-typography-main-tab',
 	'title'	 => esc_html__( 'Typography', 'bigbo' ),
 	'icon'	 => 'fa fa-font icon-large',
