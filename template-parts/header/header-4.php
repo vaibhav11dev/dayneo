@@ -27,7 +27,7 @@ if ( $ved_cat_menu_status == 'enable' ) {
 					<div class="header-logo col-md-4 col-sm-4">
                         <div id="_desktop_logo" class="d-logo">
                             <!-- YOUR LOGO HERE -->
-                            <div class="inner-header site-identity">
+                            <div class="inner-header site-identity text-center">
                                 <?php
                                 $ved_header_logo               = bigbo_get_option( 'ved_header_logo', '' );
                                 $ved_header_logo_retina        = bigbo_get_option( 'ved_header_logo_retina', '' );
@@ -73,7 +73,7 @@ if ( $ved_cat_menu_status == 'enable' ) {
                         </div>
 
                     </div>
-					<div class="col-md-4 col-sm-4">
+					<div class="col-md-4 col-sm-4 top-bar-right">
 						<div class="extras-menu">
 							<?php
 								bigbo_topbar_social();

@@ -16,6 +16,7 @@ if ( !function_exists( 'bigbo_header_cart' ) ) :
 		<!-- SHOP CART -->
 		<?php
 		$ved_header_type = bigbo_get_option( 'ved_header_type', 'h1' );
+		$ved_cart_icon_type = bigbo_get_option( 'ved_header_cart_icon');
 		if ( class_exists( 'Woocommerce' ) ) {
 			global $woocommerce;
 			?>
@@ -23,16 +24,16 @@ if ( !function_exists( 'bigbo_header_cart' ) ) :
 				<div class="cart-hover">
 					<div class="menu-item header-ajax-cart">
 						<a href="<?php echo get_permalink( get_option( 'woocommerce_cart_page_id' ) ); ?>" id="open-cart">
-							<?php if ( $ved_header_type == 'h3' ) { ?>
+							<?php if ( $ved_header_type == 'h8' ) { ?>
 								<div class="icon-wrap">
 									<span class="icon-box">
-										<i class="flaticon-paper-bag"></i>
+										<i class="<?php echo $ved_cart_icon_type; ?>"></i>
 										<span class="mini-item-counter hidden-lg-up"><?php echo (int) $woocommerce->cart->cart_contents_count; ?></span>
 									</span>
 								</div>
 							<?php } else { ?>
 								<div class="icon-box">
-									<i class="flaticon-paper-bag"></i>
+									<i class="<?php echo $ved_cart_icon_type; ?>"></i>
 									<span class="mini-item-counter">
 										<?php echo (int) $woocommerce->cart->cart_contents_count; ?>
 									</span>
@@ -139,7 +140,6 @@ if ( !function_exists( 'bigbo_header_search' ) ) :
 
 		$cats_text	 = bigbo_get_option( 'ved_custom_categories_text' );
 		$search_text = bigbo_get_option( 'ved_custom_search_text' );
-		$button_text = bigbo_get_option( 'ved_custom_search_button' );
 		$search_type = bigbo_get_option( 'ved_search_content_type' );
 
 		if ( $search_type == 'all' ) {
@@ -205,11 +205,9 @@ if ( !function_exists( 'bigbo_header_search' ) ) :
 		if ( $lang ) {
 			$post_type_html .= '<input type="hidden" name="lang" value="' . $lang . '"/>';
 		}
-		if ( isset( $button_text ) && $button_text ) {
-			$search_icon = wp_kses( $button_text, wp_kses_allowed_html( 'post' ) );
-		} else {
-			$search_icon = "<i class='flaticon-search'></i>";
-		}
+		
+		$search_icon = "<i class='flaticon-search'></i>";
+		
 
 		$search_content_type = bigbo_get_option( 'ved_search_content_type' );
 		if ( $search_content_type == 'all' ) {
@@ -274,7 +272,7 @@ if ( !function_exists( 'bigbo_header_search_icon' ) ) :
 	function bigbo_header_search_icon() {
 		?>
 		<div id="_desktop_search" class="extra-menu-item">    			    
-			<i class="fa fa-search"></i>
+			<a href="#" data-toggle="modal" data-target="#search_popup" class="icon-wrap"><i class="fa fa-search"></i></a>
 			<?php 
 			$ved_header_type = bigbo_get_option( 'ved_header_type', 'h1' );
 			if ( $ved_header_type == 'h2' ) {
@@ -436,10 +434,11 @@ if ( !function_exists( 'bigbo_topbar_wishlist' ) ) :
 		}
 
 		$count = YITH_WCWL()->count_products();
+		$ved_wishlist_icon_type = bigbo_get_option( 'ved_header_wishlist_icon');
 		?>
 		<div id="_desktop_wishtlistTop" class="extra-menu-item menu-item-wishlist menu-item-yith">    			    
 			<a class="yith-contents" id="icon-wishlist-contents" href="<?php echo esc_url( get_permalink( get_option( 'yith_wcwl_wishlist_page_id' ) ) ) ?>">
-				<i class="fa fa-heart-o hidden-md-down"></i>
+				<i class="<?php echo $ved_wishlist_icon_type; ?> hidden-md-down"></i>
 				<span class="hidden-lg-up"><?php echo esc_html_e( 'Wishlist', 'bigbo' ); ?></span>
 				<span class="mini-item-counter"><?php echo intval( $count ); ?></span>
 			</a>
@@ -459,12 +458,12 @@ if ( !function_exists( 'bigbo_topbar_compare' ) ) :
 		if ( ! function_exists( 'YITH_WCWL' ) ) {
 			return '';
 		}
-
+		$ved_compare_icon_type = bigbo_get_option( 'ved_header_compare_icon');
 		$count = YITH_WCWL()->count_products();
 		?>
 		<div id="_desktop_compareTop" class="extra-menu-item menu-item-wishlist menu-item-yith">    			    
 			<a class="yith-contents yith-woocompare-open" id="icon-compare-contents" href="javascript:void(0)">    	
-				<i class="fa fa-compress hidden-md-down"></i>
+				<i class="<?php echo $ved_compare_icon_type; ?> hidden-md-down"></i>
 				<span class="hidden-lg-up"><?php echo esc_html_e( 'Compare', 'bigbo' ); ?></span>
 				<span class="mini-item-counter">0</span>
 			</a>

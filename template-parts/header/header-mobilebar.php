@@ -8,6 +8,8 @@
 
 $ved_show_header_wishlist = bigbo_get_option( 'ved_show_header_wishlist' );
 $ved_show_header_compare = bigbo_get_option( 'ved_show_header_compare' );
+$ved_cat_menu_status = bigbo_get_option( 'ved_cat_menu_status' );
+$ved_header_type_check = bigbo_get_option( 'ved_header_type' );
 ?>
 <!--mobile-header-->
 <div class="mobile-menu hidden-lg">
@@ -32,13 +34,15 @@ $ved_show_header_compare = bigbo_get_option( 'ved_show_header_compare' );
     <div id="_mobile_user_info"><?php bigbo_topbar_my_account(); ?></div>
     <div class="js-top-menu-bottom">
         <div class="menu-horizontal">
-            <h4 class="menu-tit"><i class="ti-menu"></i> Menu</h4>
+            <h4 class="menu-tit"><i class="ti-menu"></i> <?php echo esc_html__( 'Menu', 'bigbo' ); ?></h4>
             <div id="_mobile_menu"></div>
         </div>
+        <?php if($ved_cat_menu_status == "enable" && ( $ved_header_type_check == "h1" || $ved_header_type_check == "h2" || $ved_header_type_check == "h4")) { ?>
         <div class="menu-vertical">
-            <h4 class="menu-tit"><i class="ti-menu"></i> Category</h4>
+            <h4 class="menu-tit"><i class="ti-menu"></i> <?php echo esc_html__( 'Category', 'bigbo' ); ?></h4>
             <div id="_mobile_vmenu"></div>
         </div>
+        <?php } ?>
         <div class="slidetoggle mobile-sidebar-meta mb-30">
             <h4 class="menu-tit slidetoggle-init"><i class="ti-settings"></i> Settings</h4>
             <div class="slidetoggle-menu">

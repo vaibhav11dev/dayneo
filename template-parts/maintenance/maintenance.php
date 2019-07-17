@@ -55,36 +55,7 @@ if( $maintenance_mode == 'comingsoon' ){
 					<div class="mntc-cs-item mntc-cs-content coming-soon-countdown">
 						<h2>We'll be back soon in</h2>
 						<div id="DateCountdown" data-date="<?php echo esc_attr($comingsoon_date);?>"></div>
-						<script>
-							$("#DateCountdown").TimeCircles({
-							    "animation": "smooth",
-							    "bg_width": 0.2,
-							    "fg_width": 0.03,
-							    "circle_bg_color": "#666",
-							    "time": {
-							        "Days": {
-							            "text": "Days",
-							            "color": "#fff",
-							            "show": true
-							        },
-							        "Hours": {
-							            "text": "Hours",
-							            "color": "#fff",
-							            "show": true
-							        },
-							        "Minutes": {
-							            "text": "Minutes",
-							            "color": "#fff",
-							            "show": true
-							        },
-							        "Seconds": {
-							            "text": "Seconds",
-							            "color": "#fff",
-							            "show": true
-							        }
-							    }
-							});
-						</script>
+						
 					</div>
 					<?php
 				}
