@@ -425,6 +425,8 @@ if ( ! function_exists( 'bigbo_search_popup' ) ) :
 		if ( ! $ved_show_search || $ved_header_type == 'h1' ) {
 			return;
 		}
+		$ved_search_keywords = bigbo_get_option( 'ved_search_keywords' );
+		$ved_search_keywords_title = bigbo_get_option( 'ved_search_keywords_title' );
 		?>
 		<!-- Search Popup -->
 		<div id="search_popup" class="modal fade" tabindex="-1" role="dialog">
@@ -438,6 +440,25 @@ if ( ! function_exists( 'bigbo_search_popup' ) ) :
 					bigbo_header_search(); 
 				?>
 			  </div>
+				<div class="search_form-keywords-wrap">
+					<div class="search_form-keywords-title">
+							<?php esc_html_e($ved_search_keywords_title); ?>			
+					</div>
+					<div class="search_form-keywords">
+						<ul class="search_form-keywords-list">
+							<?php
+							foreach ( $ved_search_keywords as $term_id ) {
+								$product_category = get_term( $term_id );
+							?>
+								<li class="search_form-keyword-single">
+									<a href="<?php echo esc_url(get_term_link($product_category -> term_id))?>" class="search-keyword" ><?php echo esc_html($product_category -> name);?></a>	
+								</li>
+							<?php 
+							}
+							?>
+						</ul>
+					</div>
+				</div>
 			</div>
 		  </div>
 		</div>

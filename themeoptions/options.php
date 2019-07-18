@@ -1084,16 +1084,6 @@ Redux::setSection( $ved_options, array(
 			)
 		),
 		array(
-			'id'   =>'divider_1',
-			'type' => 'divide'
-		),
-		array(
-			'id'         => 'ved_search_icon_title',
-			'type'       => 'section',
-			'title'      => esc_html__( 'Search Keyword', 'bigbo' ),
-			'indent'     => true,
-		),
-		array(
 			'id'       => 'ved_search_icon',
 			'type'     => 'radio',
 			'title'    => esc_html__('Search Icon', 'bigbo' ),
@@ -1104,9 +1094,78 @@ Redux::setSection( $ved_options, array(
 			),
 			'default' => 'fa fa-search',
 			'class'   => 'cart-icon-large radio-icon-selector-horizontal',
-			'required' => array(
-				array('ved_show_header_cart', '=', 1),
+			'required'=> array(
+				array( 'ved_show_search', '=', 1 ),
+				array( 'ved_header_type', '!=', array('h1') ),
+			)
+		),
+		array(
+			'id'   =>'divider_1',
+			'type' => 'divide'
+		),
+		array(
+			'id'      => 'ved_search_keywords_start',
+			'type'    => 'section',
+			'title'   => esc_html__('Search Keyword', 'bigbo' ),
+			'indent'  => true,
+			'required'=> array(
+				array( 'ved_show_search', '=', 1 ),
+				array( 'ved_search_content_type', '=', array('product') ),
+				array( 'ved_header_type', '!=', array('h1') ),
+			)
+		),
+		array(
+			'id'      => 'ved_show_search_keywords',
+			'type'    => 'switch',
+			'title'   => esc_html__('Show Keywords', 'bigbo' ),
+			'on'      => esc_html__('Yes', 'bigbo' ),
+			'off'     => esc_html__('No', 'bigbo' ),
+			'default' => true,
+			'required'=> array(
+				array( 'ved_show_search', '=', 1 ),
+				array( 'ved_search_content_type', '=', array('product') ),
+				array( 'ved_header_type', '!=', array('h1') ),
+			)
+		),
+		array(
+			'id'         => 'ved_search_keywords_title',
+			'type'       => 'text',
+			'title'      => esc_html__('Search Keyword Title', 'bigbo' ),
+			'default' => esc_html__('Popular Search', 'bigbo' ),	
+			'required'=> array(
+				array( 'ved_show_search_keywords', '=', true ),
+			)
+		),
+		array(
+			'id'       => 'ved_search_keywords',
+			'type'     => 'select',
+			'multi'    => true,
+			'title'    => esc_html__('Keywords', 'bigbo' ), 
+			'desc'     => esc_html__('This keywords will display on search Popup', 'bigbo' ),
+			'sortable' => true,
+			'data'  => 'categories',
+			'args'  => array(
+					'type'        => 'post',
+					'orderby'     => 'id',
+					'order'       => 'DESC',
+					'hide_empty'  => false,
+					'hierarchical'=> 1,
+					'taxonomy'    => 'product_cat',
+					'pad_counts'  => false,
 			),
+			'required'=> array(
+				array( 'ved_show_search_keywords', '=', true ),
+			)
+		),
+		array(
+			'id'     => 'ved_search_keywords_end',
+			'type'   => 'section',
+			'indent' => false,
+			'required'=> array(
+				array( 'ved_show_search', '=', 1 ),
+				array( 'ved_search_content_type', '=', array('product') ),
+				array( 'ved_header_type', '!=', array('h1') ),
+			)
 		),
 	),
 )

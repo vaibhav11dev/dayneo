@@ -425,8 +425,8 @@ $(document).on("click", function () {
         }
 
         var xhr = null,
-                searchCache = {},
-                $form = $('.header-main').find('.products-search');
+        searchCache = {},
+        $form = $('.product-extra-search').find('.products-search');
         $('.search-limit').hide();
 
         $form.on('keyup', '.search-field', function (e) {
