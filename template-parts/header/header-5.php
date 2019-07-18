@@ -6,6 +6,7 @@ $ved_show_header_cart = bigbo_get_option( 'ved_show_header_cart' );
 $ved_show_header_compare = bigbo_get_option( 'ved_show_header_compare' );
 $ved_show_header_wishlist = bigbo_get_option( 'ved_show_header_wishlist' );
 $ved_cat_menu_status = bigbo_get_option( 'ved_cat_menu_status' );
+$ved_sticky_header = bigbo_get_option( 'ved_sticky_header' );
 
 $css_header_menu        = 'col-md-12 col-sm-12';
 if ( $ved_cat_menu_status == 'enable' ) {
@@ -17,7 +18,7 @@ if ( $ved_cat_menu_status == 'enable' ) {
 <div class="header-main-wapper hidden-md-down">
     <div class="header-main">
         <div class="container">
-            <div class="row">
+            <div class="row header-logo-left-style no-gutters">
                     <div class="header-logo col-lg-3 col-md-4 col-sm-3">
                         <div id="_desktop_logo" class="d-logo">
                             <!-- YOUR LOGO HERE -->
@@ -72,7 +73,7 @@ if ( $ved_cat_menu_status == 'enable' ) {
 						</div>
 						<div class="headerbar">
 							<div class="row">
-								<div class="ved-header-menu col-md-9 col-sm-9">
+								<div class="ved-header-main-menu col-md-9 col-sm-9">
 										<?php bigbo_header_menu(); ?>
 								</div>
 								<div class="col-md-3 col-sm-3">
@@ -104,3 +105,8 @@ if ( $ved_cat_menu_status == 'enable' ) {
 <?php
 //Topbar
 bigbo_header_mobilebar();
+
+if ($ved_sticky_header) {
+	//Header Sticky
+	bigbo_header_sticky();
+}

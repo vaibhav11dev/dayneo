@@ -714,6 +714,111 @@ Redux::setSection( $ved_options, array(
 );
 
 Redux::setSection( $ved_options, array(
+	'id'		 => 'ved-sticky-header-tab',
+	'title'		 => esc_html__( 'Sticky Header', 'bigbo' ),
+	'subsection'	 => true,
+	'fields'          => array(
+		array(
+			'id'         => esc_html__('ved_sticky_header', 'bigbo' ),
+			'type'       => 'switch',
+			'title'      => esc_html__('Sticky Header', 'bigbo' ),
+			'subtitle'   => esc_html__('Enable/disable sticky header.', 'bigbo' ),
+			'default'    => true,
+		),
+		array(
+			'id'         => esc_html__('ved_mobile_sticky_header', 'bigbo' ),
+			'type'       => 'switch',
+			'title'      => esc_html__('Mobile Sticky', 'bigbo' ),
+			'subtitle'   => esc_html__('Enable/disable mobile sticky header.', 'bigbo' ),
+			'default'    => true,
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+		array(
+			'id'      => 'ved_woocommerce_sticky_icons-start',
+			'type'    => 'section',
+			'title'   => esc_html__('WooCommerce Icons', 'bigbo' ),
+			'indent'  => true
+		),
+		array(
+			'id'     => 'ved_show_sticky_header_cart',
+			'type'   => 'switch',
+			'title'  => esc_html__('Show Cart Icon', 'bigbo' ),
+			'on'     => esc_html__('Yes', 'bigbo' ),
+			'off'    => esc_html__('No', 'bigbo' ),
+			'default'=> true, 
+		),
+		array(
+			'id'     => 'ved_show_sticky_header_compare',
+			'type'   => 'switch',
+			'title'  => esc_html__('Show Compare Icon', 'bigbo' ),
+			'on'     => esc_html__('Yes', 'bigbo' ),
+			'off'    => esc_html__('No', 'bigbo' ),
+			'default'=> true, 
+		),
+		array(
+			'id'     => 'ved_show_sticky_header_wishlist',
+			'type'   => 'switch',
+			'title'  => esc_html__('Show Wishlist Icon', 'bigbo' ),
+			'on'     => esc_html__('Yes', 'bigbo' ),
+			'off'    => esc_html__('No', 'bigbo' ),
+			'default'=> true, 
+		),
+		array(
+			'id'      => 'ved_woocommerce_sticky_icons-end',
+			'type'   => 'section',
+			'indent' => false,
+		),
+		array(
+			'id'   =>'divider_1',
+			'type' => 'divide'
+		),
+		array(
+			'id'         => 'ved_sticky_color_section_start',
+			'type'       => 'section',
+			'title'      => esc_html__( 'Sticky Color Settings', 'bigbo' ),
+			'indent'     => true,
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+		array(
+			'id'         => esc_html__('ved_sticky_header_color', 'bigbo' ),
+			'type'       => 'color',
+			'title'      => esc_html__('Sticky Header Background Color', 'bigbo' ),
+			'subtitle'   => esc_html__('Set sticky header background color.', 'bigbo' ),
+			'default'    => '#ffffff',
+			'transparent'=> false,
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+		array(
+			'id'         => esc_html__('ved_sticky_header_text_color', 'bigbo' ),
+			'type'       => 'color',
+			'title'      => esc_html__('Sticky Header Text Color', 'bigbo' ),
+			'subtitle'   => esc_html__('Set sticky header text color.', 'bigbo' ),
+			'default'    => '#969696',
+			'transparent'=> false,
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+		array(
+			'id'         => 'ved_sticky_header_link_color',
+			'type'       => 'color',
+			'title'      => esc_html__('Link Color', 'bigbo' ),
+			'subtitle'   => esc_html__('Set sticky header link color.', 'bigbo' ),
+			'mode'       => 'background-color',
+			'validate'   => 'color',
+			'transparent'=> false,
+			'default'    => '#04d39f',
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+		array(
+			'id'         => 'ved_sticky_color_section_end',
+			'type'       => 'section',
+			'indent'     => false,
+			'required'   => array('ved_sticky_header', '=', true),
+		),
+	),
+)
+);
+
+Redux::setSection( $ved_options, array(
 	'id'		 => 'ved-header-subsec-topbar-tab',
 	'title'		 => esc_html__( 'Top Bar', 'bigbo' ),
 	'subsection'	 => true,
@@ -902,6 +1007,21 @@ Redux::setSection( $ved_options, array(
 			)
 		),
 		array(
+			'id'       => 'ved_search_icon',
+			'type'     => 'radio',
+			'title'    => esc_html__('Search Icon', 'bigbo' ),
+			'options'  => array(
+				'fa fa-search'                             => '<i class="fa fa-search fa-2x" aria-hidden="true"></i>',
+				'flaticon-search'=> '<i class="flaticon-search"></i>',
+				'pgsicon-ecommerce-shopping-cart-1'    => '<i class="glyph-icon pgsicon-ecommerce-shopping-cart-1 fa-2x" aria-hidden="true"></i>',
+			),
+			'default' => 'fa fa-search',
+			'class'   => 'cart-icon-large radio-icon-selector-horizontal',
+			'required' => array(
+				array('ved_show_header_cart', '=', 1),
+			),
+		),
+		array(
 			'id'		 => 'ved_search_content_type',
 			'type'		 => 'select',
 			'options'	 => array(
@@ -970,14 +1090,6 @@ Redux::setSection( $ved_options, array(
 			)
 		),
 		array(
-			'id'		 => 'ved_custom_search_button',
-			'type'		 => 'text',
-			'title'		 => esc_html__( 'Button Text', 'bigbo' ),
-			'required'=> array(
-				array('ved_show_search', '=', 1),
-			)
-		),
-		array(
 			'id'		 => 'ved_header_ajax_search',
 			'type'		 => 'switch',
 			'title'		 => esc_html__( 'AJAX Search', 'bigbo' ),
@@ -985,6 +1097,16 @@ Redux::setSection( $ved_options, array(
 			'required'=> array(
 				array('ved_show_search', '=', 1),
 			)
+		),
+		array(
+			'id'   =>'divider_1',
+			'type' => 'divide'
+		),
+		array(
+			'id'         => 'ved_search_icon_title',
+			'type'       => 'section',
+			'title'      => esc_html__( 'Search Keyword', 'bigbo' ),
+			'indent'     => true,
 		),
 	),
 )
@@ -1964,6 +2086,38 @@ Redux::setSection( $ved_options, array(
 );
 
 Redux::setSection( $ved_options, array(
+	'id'              => 'ved_woocommerce_cookie_law_info',
+	'title'           => esc_html__('Cookie Law Info', 'bigbo' ),
+	'subsection'	 => true,
+	'fields' => array(
+			array (
+				'id'      => 'ved_cookies_info',
+				'type'    => 'switch',
+				'title'   => esc_html__('Show Cookies Info', 'bigbo' ),
+				'subtitle'=> esc_html__('Under EU privacy regulations, websites must make it clear to visitors what information about them is being stored. This specifically includes cookies. Turn on this option and user will see info box at the bottom of the page that your web-site is using cookies.', 'bigbo' ),
+				'default' => true
+			),
+			array (
+				'id'      => 'ved_cookies_text',
+				'type'    => 'editor',
+				'title'   => esc_html__('Popup Text', 'bigbo' ),
+				'subtitle'=> esc_html__('Place here some information about cookies usage that will be shown in the popup.', 'bigbo' ),
+				'default' => esc_html__('We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.', 'bigbo' ),
+				'required' => array( 'ved_cookies_info', '=', 1 ),
+			),
+			array (
+				'id'      => 'ved_cookies_policy_page',
+				'type'    => 'select',
+				'title'   => esc_html__('Page with Details', 'bigbo' ),
+				'subtitle'=> esc_html__('Choose page that will contain detailed information about your Privacy Policy', 'bigbo' ),
+				'data'    => 'pages',
+				'required' => array( 'ved_cookies_info', '=', 1 ),
+			),
+		),
+	)
+);
+
+Redux::setSection( $ved_options, array(
 	'id'	 => 'ved-typography-main-tab',
 	'title'	 => esc_html__( 'Typography', 'bigbo' ),
 	'icon'	 => 'fa fa-font icon-large',
@@ -2337,20 +2491,6 @@ Redux::setSection( $ved_options, array(
 			'type'		 => 'text',
 			'title'		 => esc_html__( 'Mega Menu Column Title Size', 'bigbo' ),
 			'default'	 => '15px',
-		),
-		array(
-			'subtitle'	 => esc_html__( 'Set padding between menu items.', 'bigbo' ),
-			'id'		 => 'ved_main_menu_padding',
-			'type'		 => 'spacing',
-			'units'		 => array( 'px', 'em' ),
-			'title'		 => esc_html__( 'Padding Between Menu Items', 'bigbo' ),
-			'default'	 => array(
-				'padding-top'	 => '0px',
-				'padding-right' => '15px',
-				'padding-bottom' => '0px',
-				'padding-left' => '15px',
-				'units'		 => 'px',
-			),
 		),
 		array(
 			'subtitle'	 => esc_html__( 'Main menu text transform', 'bigbo' ),
@@ -2836,6 +2976,17 @@ Redux::setSection( $ved_options, array(
 			'title'        => esc_html__('Maintenance Subtitle', 'bigbo' ),
 			'default'      => esc_html__('This Site is Currently Under Maintenance. We will back shortly', 'bigbo' ),
 			'required'     => array( 'ved_maintenance_mode', '=', 'maintenance' ),
+		),
+		array(
+			'subtitle'	 => esc_html__( 'Upload background image will display in the Comingsoon Background.', 'bigbo' ),
+			'id'		 => 'ved_comingsoon_bg',
+			'type'		 => 'media',
+			'title'        => esc_html__('Coming Soon BG Image', 'bigbo' ),
+			'url'		 => true,
+			'default'	 => array(
+				'url' => BIGBO_DEFAULT . 'comingsoon-bg.jpg'
+			),
+			'required'     => array( 'ved_maintenance_mode', '=', 'comingsoon' ),
 		),
 		array(
 			'id'           => 'ved_comingsoon_title',

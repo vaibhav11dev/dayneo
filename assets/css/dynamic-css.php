@@ -141,10 +141,27 @@ if ( $ved_options['ved_topbar_bg_type'] == 'custom' ) {
 ';
 
 	$bigbo_dynamic_css .= '
-	.top-bar p,.top-bar-list a, .top-bar-right .dropdown > .expand-more,.top-bar .header-social.social-icons > li > a,.top-bar .language > a,.top-bar .woocommerce-currency-switcher-form select {
+	#header .top-bar p,#header .top-bar-list a, #header .top-bar-right .dropdown > .expand-more,#header .top-bar .header-social.social-icons > li > a,#header .top-bar .language > a,#header .top-bar .woocommerce-currency-switcher-form select {
 		color: ' . esc_attr($ved_options[ 'ved_topbar_text_color' ]) . ';
 	}
 ';
+}
+
+//Fixheader bgColor
+if($ved_options['ved_sticky_header']) {
+ 
+	$bigbo_dynamic_css .= '
+	#header-sticky-wrapper {
+		background: ' . esc_attr($ved_options[ 'ved_sticky_header_color' ]) . ';
+	}
+	#header-sticky-wrapper .primary-nav .inner-nav > li > a,#header-sticky-wrapper .extras-menu #open-cart,#header-sticky-wrapper .extras-menu .yith-contents{
+		color: '. esc_attr($ved_options[ 'ved_sticky_header_text_color' ]) .';
+	}
+	#header-sticky-wrapper .inner-nav > li:hover > a,#header-sticky-wrapper .extras-menu #open-cart:hover,#header-sticky-wrapper .extras-menu .yith-contents:hover,#header-sticky-wrapper .sub-menu li > a:hover, #header-sticky-wrapper .sub-menu li > a:focus, #header-sticky-wrapper .sub-menu li.submenu-open > a{
+		color: '. esc_attr($ved_options[ 'ved_sticky_header_link_color' ]) .';	
+	}
+	';
+
 }
 
 // Hero Header Custom Height
@@ -163,7 +180,7 @@ $bigbo_dynamic_css .= '
 	.header-main-wapper {
 		background: ' . esc_attr($ved_options[ 'ved_header_bg_color' ]) . ';
 	}
-	.extras-menu .yith-contents, .extras-menu #open-cart{
+	.extras-menu .yith-contents, .extras-menu #open-cart,.header-2 #_desktop_search,.header-2 #_desktop_search .icon-wrap{
 		color: ' . esc_attr($ved_options[ 'ved_header_text_color' ]) . ';
 	}
 ';
@@ -357,7 +374,7 @@ body,
 	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'ved_tagline_font', '#tagline', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
 
 	//Main Menu Font
-	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'ved_menu_font', '.primary-nav .inner-nav > li > a', $additional_color_css_class = '', $imp = '' );
+	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'ved_menu_font', '.main-menu .primary-nav .inner-nav > li > a', $additional_color_css_class = '', $imp = '' );
 
 	//Top Menu Font
 	$bigbo_dynamic_css		 .= bigbo_print_fonts( 'ved_top_menu_font', '.top-bar-list', $additional_css = 'line-height:1.8', $additional_color_css_class = '', $imp = '' );
@@ -450,19 +467,10 @@ $bigbo_dynamic_css .= '
 /* -----------------------------------------------------------------
   [Menu Style]
  */
-$ved_main_menu_padding	 = bigbo_get_option( 'ved_main_menu_padding', '15px' );
 $ved_menu_text_transform	 = bigbo_get_option( 'ved_menu_text_transform', 'none' );
 $bigbo_dynamic_css	 .= '
 .primary-nav .inner-nav > li > a {
 	text-transform: ' . esc_attr($ved_menu_text_transform) . ';
-	padding-top: ' . esc_attr($ved_main_menu_padding[ 'padding-top' ]) . ';
-	padding-right: ' . esc_attr($ved_main_menu_padding[ 'padding-right' ]) . ';
-	padding-bottom: ' . esc_attr($ved_main_menu_padding[ 'padding-bottom' ]) . ';
-	padding-left: ' . esc_attr($ved_main_menu_padding[ 'padding-left' ]) . ';
-}
-.products-cats-menu .cats-menu-title{
-	padding-top: ' . esc_attr($ved_main_menu_padding[ 'padding-top' ]) . ';
-	padding-bottom: ' . esc_attr($ved_main_menu_padding[ 'padding-bottom' ]) . ';
 }
 ';
 
@@ -577,7 +585,8 @@ a:focus,
 .post-meta>li>a:hover,
 .post-meta>li>a:focus,
 .top-bar-right .dropdown > .expand-more:hover, #_desktop_wishtlistTop .yith-contents:hover,
-.ved-post-item .ved-post-link .read-more:hover
+.ved-post-item .ved-post-link .read-more:hover,
+.header-5 .extras-menu .yith-contents:hover, .header-5 .extras-menu #open-cart:hover, .header-5 .extras-menu #_desktop_search .icon-wrap:hover
 {
     color: ' . esc_attr($ved_primary_color) . ';
 }
@@ -586,6 +595,7 @@ a:focus,
 .alert-brand,
 .label-base,
 .btn.btn-base:hover,
+.btn.btn-hovered,
 button[type=submit]:hover,
 .ved-read-more-button:hover,
 .nav-text-tabs>li>a:after,
@@ -768,7 +778,8 @@ input[type="radio"] + label:before, input[type="radio"] + span:before, input[typ
 .bg-brand-hvr,
 .main-menu,
 .header-1 .products-cats-menu .cats-menu-title,
-.ved-main-megamenu .inner-nav > li:hover > a,
+.header-1 .ved-main-megamenu .ved-header-main-menu .inner-nav > li:hover > a,
+.header-4 .ved-main-megamenu .ved-header-main-menu .inner-nav > li:hover > a,
 .products-search .search-submit,
 .extras-menu .icon-wrap .icon-box .mini-item-counter,
 .extras-menu .icon-wrap-circle:hover .icon-wrap .icon-box,
