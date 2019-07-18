@@ -1007,6 +1007,21 @@ Redux::setSection( $ved_options, array(
 			)
 		),
 		array(
+			'id'       => 'ved_search_icon',
+			'type'     => 'radio',
+			'title'    => esc_html__('Search Icon', 'bigbo' ),
+			'options'  => array(
+				'fa fa-search'                             => '<i class="fa fa-search fa-2x" aria-hidden="true"></i>',
+				'flaticon-search'=> '<i class="flaticon-search"></i>',
+				'pgsicon-ecommerce-shopping-cart-1'    => '<i class="glyph-icon pgsicon-ecommerce-shopping-cart-1 fa-2x" aria-hidden="true"></i>',
+			),
+			'default' => 'fa fa-search',
+			'class'   => 'cart-icon-large radio-icon-selector-horizontal',
+			'required' => array(
+				array('ved_show_header_cart', '=', 1),
+			),
+		),
+		array(
 			'id'		 => 'ved_search_content_type',
 			'type'		 => 'select',
 			'options'	 => array(
@@ -1081,22 +1096,6 @@ Redux::setSection( $ved_options, array(
 			'default'	 => '1',
 			'required'=> array(
 				array('ved_show_search', '=', 1),
-			)
-		),
-		array(
-			'id'       => 'ved_search_icon',
-			'type'     => 'radio',
-			'title'    => esc_html__('Search Icon', 'bigbo' ),
-			'options'  => array(
-				'fa fa-search'                             => '<i class="fa fa-search fa-2x" aria-hidden="true"></i>',
-				'flaticon-search'=> '<i class="flaticon-search"></i>',
-				'pgsicon-ecommerce-shopping-cart-1'    => '<i class="glyph-icon pgsicon-ecommerce-shopping-cart-1 fa-2x" aria-hidden="true"></i>',
-			),
-			'default' => 'fa fa-search',
-			'class'   => 'cart-icon-large radio-icon-selector-horizontal',
-			'required'=> array(
-				array( 'ved_show_search', '=', 1 ),
-				array( 'ved_header_type', '!=', array('h1') ),
 			)
 		),
 		array(

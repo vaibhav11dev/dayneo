@@ -484,15 +484,15 @@ function bigbo_cookie_notice(){
 			$page_id=$ved_options['ved_cookies_policy_page'];
 		}
 		?>
-		<div class="bigbo-cookies-info">
-			<div class="bigbo-cookies-inner">
+		<div class="cookies-info">
+			<div class="cookies-inner">
 				<div class="cookies-info-text">
 					<?php echo do_shortcode( $ved_options['ved_cookies_text'] ); ?>
 				</div>
 				<div class="cookies-buttons">
-					<a href="#" class="cookies-info-accept-btn"><?php esc_html_e( 'Accept', 'bigbo' ); ?></a>
+					<a href="#" class="cookies-info-accept-btn btn btn-base"><?php esc_html_e( 'Accept', 'bigbo' ); ?></a>
 					<?php if ( $page_id ): ?>
-						<a href="<?php echo esc_url(get_permalink($page_id));?>" class="cookies-more-btn"><?php esc_html_e( 'More info' , 'bigbo' ); ?></a>
+						<a href="<?php echo esc_url(get_permalink($page_id));?>" class="cookies-more-btn btn btn-base btn-hovered"><?php esc_html_e( 'More info' , 'bigbo' ); ?></a>
 					<?php endif ?>
 				</div>
 			</div>
